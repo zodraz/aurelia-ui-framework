@@ -1,7 +1,7 @@
 ####
 .DS_STORE
 .sass-cache
-dist
+dist/*
 
 # Logs
 logs
