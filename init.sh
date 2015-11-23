@@ -4,6 +4,7 @@ sudo npm install jspm gulp gulp-compass gulp-plumber gulp-typescript aurelia-bun
 
 sudo jspm init
 
+sudo jspm install text
 sudo jspm install fetch
 sudo jspm install jquery
 sudo jspm install lodash
@@ -11,6 +12,7 @@ sudo jspm install moment
 sudo jspm install numeral
 sudo jspm install core-js
 sudo jspm install npm:markdown
+sudo jspm install aurelia-router
 sudo jspm install aurelia-framework
 sudo jspm install aurelia-validation
 sudo jspm install aurelia-templating

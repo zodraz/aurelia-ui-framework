@@ -12,6 +12,7 @@ System.config({
     "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.1",
+    "aurelia-router": "npm:aurelia-router@1.0.0-beta.1",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0-beta.1.0.1",
     "aurelia-validation": "npm:aurelia-validation@0.6.0",
@@ -22,6 +23,7 @@ System.config({
     "markdown": "npm:markdown@0.5.0",
     "moment": "npm:moment@2.10.6",
     "numeral": "npm:numeral@1.5.3",
+    "text": "github:systemjs/plugin-text@0.0.3",
     "typescript": "npm:typescript@1.6.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

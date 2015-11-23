@@ -2,9 +2,8 @@ var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var compass = require('gulp-compass'),
 	plumber = require('gulp-plumber');
-var ts = require('gulp-typescript'),
-	merge = require('merge2');
-var bundle = require('aurelia-bundler');
+var ts = require('gulp-typescript');
+var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
 var frameworkPath = '~/Workspace/Personal/hmc-aurelia-framework';
@@ -48,9 +47,7 @@ gulp.task('scripts:compile', function () {
 			'**/*.ts', 'typings/**/*.d.ts'])
 		.pipe(ts(tsProject));
 
-	return merge(
-		//tsRoot.dts.pipe(gulp.dest('typings/framework/.')),
-		tsRoot.js.pipe(gulp.dest('.')));
+	return tsRoot.js.pipe(gulp.dest('.'));
 });
 
 
@@ -75,8 +72,7 @@ var config = {
 		"dist/aurelia": {
 			includes: [
 				'jspm_packages/**/aurelia-*',
-				'jspm_packages/**/aurelia-validation*/resources/*',
-				'jspm_packages/**/jquery*'
+				'jspm_packages/**/aurelia-validation*/resources/*'
 			],
 			options: {
 				inject: true,
