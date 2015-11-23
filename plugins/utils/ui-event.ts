@@ -10,7 +10,7 @@ export class UIEvent extends Event {
 	}
 
 	static fireEvent(event:string, element:EventTarget, data?:any, source?:Element) {
-		let e        = new UIEvent(event);
+		let e        = new Event(event) as UIEvent;
 		e.bubbles    = true;
 		e.cancelable = true;
 		e.target     = element;
