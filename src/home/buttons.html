@@ -1,0 +1,114 @@
+<template>
+	<div class="pad-all border-h">
+		<h4>Buttons</h4>
+		<ui-button>Click</ui-button>
+		<ui-button primary default large icon="fi-elegant-check2">Click</ui-button>
+		<ui-button secondary small icon="fi-elegant-close11"></ui-button>
+		<ui-button info icon="fi-elegant-info9">Click</ui-button>
+		<ui-button danger icon="fi-elegant-close9">Click</ui-button>
+		<ui-button success icon="fi-elegant-mini6">Click</ui-button>
+		<ui-button warning icon="fi-elegant-error2">Click</ui-button>
+
+		<div class="margin-v">
+			<h5>Usage</h5>
+
+			<p><code>&lt;ui-button [default] [large|small|<em>normal</em>]
+				[primary|secondary|info|danger|success|warning]
+				icon='' [click.trigger]>{Label}&lt;/ui-button></code></p>
+		</div>
+	</div>
+
+	<div class="pad-all border-h">
+		<h4>Button Group</h4>
+		<ui-button-group secondary>
+			<ui-button icon="fi-elegant-check2">Click</ui-button>
+			<ui-button icon="fi-elegant-close11">Click</ui-button>
+			<ui-button icon="fi-elegant-info9">Click</ui-button>
+			<ui-button icon="fi-elegant-close9">Click</ui-button>
+			<ui-button icon="fi-elegant-mini6">Click</ui-button>
+			<ui-button icon="fi-elegant-error2">Click</ui-button>
+		</ui-button-group>
+
+		<ui-button-group primary vertical>
+			<ui-button icon="fi-elegant-check2">Click</ui-button>
+			<ui-button icon="fi-elegant-close11">Click</ui-button>
+			<ui-button icon="fi-elegant-info9">Click</ui-button>
+			<ui-button icon="fi-elegant-close9">Click</ui-button>
+			<ui-button icon="fi-elegant-mini6">Click</ui-button>
+			<ui-button icon="fi-elegant-error2">Click</ui-button>
+		</ui-button-group>
+
+		<div class="margin-v">
+			<h5>Usage</h5>
+
+			<p>
+				<code>
+					&lt;ui-button-group [vertical] [large|small|<em>normal</em>]
+					[primary|secondary|info|danger|success|warning]>
+					<br/>
+					&nbsp;&nbsp;&lt;ui-button>...
+					<br/>
+					&lt;/ui-button-group>
+				</code>
+			</p>
+
+		</div>
+	</div>
+
+	<div class="pad-all border-h">
+		<h4>Toggle Single (selected: ${t1})</h4>
+		<ui-button-group large secondary toggle value.bind="t1">
+			<ui-button value="0" icon="fi-elegant-check2">Click</ui-button>
+			<ui-button value="1" icon="fi-elegant-close11">Click</ui-button>
+			<ui-button value="2" icon="fi-elegant-info9">Click</ui-button>
+			<ui-button value="3" icon="fi-elegant-close9">Click</ui-button>
+			<ui-button value="4" icon="fi-elegant-mini6">Click</ui-button>
+			<ui-button value="5" icon="fi-elegant-error2">Click</ui-button>
+		</ui-button-group>
+
+		<div class="margin-v">
+			<h5>Usage</h5>
+
+			<p>
+				<code>
+					&lt;ui-button-group toggle[=<em>single</em>|multiple] [vertical] [large|small|<em>normal</em>]
+					[primary|secondary|info|danger|success|warning] [value.bind] [change.trigger]>
+					<br/>
+					&nbsp;&nbsp;&lt;ui-button [data-id=?]>...
+					<br/>
+					&lt;/ui-button-group>
+				</code>
+			</p>
+
+		</div>
+	</div>
+
+	<div class="pad-all border-h">
+		<h4>Dropdown</h4>
+		<ui-button menu.bind="[{id:0,title:'Link'},'-','Section',{id:1,title:'Link'},{id:1,title:'Link'}]">DropDown
+		</ui-button>
+	</div>
+
+	<div class="pad-all border-h">
+		<h4>Switches</h4>
+		<ui-switch>Click Here</ui-switch>
+		<ui-switch primary check></ui-switch>
+		<ui-switch info check></ui-switch>
+		<ui-switch danger check></ui-switch>
+		<ui-switch success check></ui-switch>
+		<ui-switch warning check></ui-switch>
+		<ui-switch ampm></ui-switch>
+		<ui-switch gender></ui-switch>
+		<ui-switch priority></ui-switch>
+
+
+		<div class="margin-v">
+			<h5>Usage</h5>
+
+			<p><code>&lt;ui-switch [check] [checked.bind]
+				[primary|info|danger|success|warning|ampm|gender|priority]>{Label}&lt;/ui-switch></code></p>
+
+		</div>
+	</div>
+	</div>
+</template>

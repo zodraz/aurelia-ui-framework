@@ -1,0 +1,86 @@
+/**
+ *	UI Typography
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+// Headers
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 0.9rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  > span {
+	display: block;
+	font-size: 0.85em;
+  }
+}
+
+code {
+  padding: 0 0.1rem;
+  border-radius: 2px;
+  color: $maroon;
+  line-height: 1.8;
+  background: lighten($tulip, 20%);
+  font-weight: $font-weight-strong;
+}
+
+// Styles
+.ui-strong, strong {
+  font-weight: $font-weight-strong !important;
+}
+
+.ui-bold, b {
+  font-weight: $font-weight-bold !important;
+}
+
+.ui-italic, i, cite, em, var, address, dfn {
+  font-style: italic;
+}
+
+// Colors
+.ui-text-muted {
+  color: $text-muted !important;
+}
+
+.ui-text-primary {
+  color: $primary !important;
+}
+
+.ui-text-info {
+  color: $info !important;
+}
+
+.ui-text-danger {
+  color: $danger !important;
+}
+
+.ui-text-success {
+  color: $success !important;
+}
+
+.ui-text-warning {
+  color: $warning !important;
+}
+

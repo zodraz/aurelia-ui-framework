@@ -1,0 +1,90 @@
+/**
+ *	Grid Layout
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@mixin grid-columns($prefix, $size) {
+  @media (min-width: $size) {
+
+	@for $i from 1 through 12 {
+	  .ui-col-#{$prefix}-#{$i} {
+		@include flex(0 0 (($i/12)*100%));
+	  }
+	}
+  }
+}
+
+.ui-flex-row {
+  @include flexbox((
+		  display:flex,
+		  flex-direction:row,
+		  align-items:stretch,
+		  flex-wrap:nowrap
+  ));
+}
+
+.ui-flex-column {
+  @include flexbox((
+		  display:flex,
+		  flex-direction:column,
+		  align-items:stretch,
+		  flex-wrap:nowrap
+  ));
+}
+
+.ui-row {
+  @include flexbox((
+		  display:flex,
+		  flex-direction: row,
+		  flex-wrap: wrap,
+		  align-items:flex-top,
+		  justify-content: flex-start
+  ));
+
+  &.ui-nowrap {
+	@include flex-wrap(nowrap);
+  }
+  &.ui-stretch {
+	@include align-items(stretch);
+  }
+  &.ui-middle {
+	@include align-items(center);
+  }
+  &.ui-top {
+	@include align-items(flex-start);
+  }
+  &.ui-bottom {
+	@include align-items(flex-end);
+  }
+  &.ui-center {
+	@include justify-content(center);
+  }
+  &.ui-start {
+	@include justify-content(flex-start);
+  }
+  &.ui-end {
+	@include justify-content(flex-end);
+  }
+
+  [class*='ui-col-'], [class~='ui-col-'] {
+	padding: 0.2rem 0.4rem;
+	@include flex(0 0 100%);
+  }
+
+  .ui-col-auto {
+	@include flex(0 0 auto);
+  }
+  .ui-col-fill {
+	@include flex(1 1 auto);
+  }
+  .ui-col-full {
+	@include flex(1 1 100%);
+  }
+
+  @include grid-columns(xs, 0);
+  @include grid-columns(sm, $grid-xs-max);
+  @include grid-columns(md, $grid-sm-max);
+  @include grid-columns(lg, $grid-md-max);
+  @include grid-columns(xl, $grid-lg-max);
+}

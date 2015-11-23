@@ -1,0 +1,67 @@
+/**
+ *	UI Framework Animations
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ */
+
+@include keyframes(spin) {
+  0% {
+	@include transform(rotate(0deg));
+  }
+  100% {
+	@include transform(rotate(360deg));
+  }
+}
+
+@include keyframes(spin-opp) {
+  0% {
+	@include transform(rotate(0deg));
+  }
+  100% {
+	@include transform(rotate(-360deg));
+  }
+}
+
+@include keyframes(pendulum) {
+  0% {
+	@include transform(rotate(0deg));
+  }
+  50% {
+	@include transform(rotate(180deg));
+  }
+  100% {
+	@include transform(rotate(0deg));
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+	@include transform(scale(0.75));
+  }
+  100% {
+	@include transform(scale(2));
+  }
+}
+
+[class^="fi-"], [class*="fi-"] {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  text-align: center;
+  line-height: 1em;
+  @include transform-origin(50% 50%);
+
+  &.spin {
+	@include animation(spin 2.5s linear infinite);
+  }
+  &.spin-opp {
+	@include animation(spin-opp 2.5s linear infinite);
+  }
+  &.pulse {
+	@include animation(spin 1s infinite steps(8));
+  }
+  &.pendulum {
+	@include animation(pendulum 1s linear infinite);
+  }
+}

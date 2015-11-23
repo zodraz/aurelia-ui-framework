@@ -1,0 +1,64 @@
+/**
+ *	UI Framework Containers
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-section {
+  @include flex(1 1 auto);
+}
+
+.ui-content {
+  @include flex(1 1 auto);
+  overflow: auto;
+  padding: 0.5rem 1rem;
+  z-index: 3;
+
+  &.ui-flex-column {
+	overflow: hidden;
+
+  }
+}
+
+.ui-sidebar {
+  @include flex(0 0 250px);
+  overflow: auto;
+  z-index: 2;
+  border: 1px solid $base-border-color;
+  border-width: 0 1px;
+
+  &.first-child {
+	border-left: none;
+  }
+  &.last-child {
+	border-right: none;
+  }
+}
+
+.ui-header {
+  @extend .ui-flex-row;
+  @include flex(0 0 auto);
+  z-index: 1;
+
+  h4 {
+	@include flex(1 1 auto);
+	margin: 0;
+	padding: 0.3rem 0.75rem;
+  }
+
+  .button {
+	margin: 0 5px;
+  }
+}
+
+.ui-statsbar, .ui-toolbar {
+  @extend .ui-flex-row;
+  @include flex(0 0 auto);
+  z-index: 2;
+}
+
+.ui-toolbar {
+  @include align-items(center);
+  @include justify-content(flex-end);
+}

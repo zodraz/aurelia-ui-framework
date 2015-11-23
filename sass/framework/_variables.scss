@@ -1,0 +1,103 @@
+/**
+ *	Framework Variable
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@import "colors";
+
+$dark-theme: false !default;
+
+$primary: $amethyst !default;
+$secondary: $snow !default;
+
+$primary-text: $coconut !default;
+$secondary-text: $primary !default;
+
+$info: $pastel-blue !default;
+$danger: $pastel-red !default;
+$success: $pastel-green !default;
+$warning: $pastel-orange !default;
+
+$base-bg: if($dark-theme, $outer-space, $coconut) !default;
+$base-text: if($dark-theme, $coconut, $black-olive) !default;
+$base-bg-image: if($dark-theme, 'back/black_linen_v1.png', 'back/white_linen.png') !default;
+
+$base-border-radius: 5px !default;
+$base-border-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
+$base-shadow-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
+
+$base-font-size: 0.9rem !default;
+$base-line-height: 1.1 !default;
+$input-font-family: 'Lato', 'Trebuchet MS', Tahoma, san-serif !default;
+$base-font-family-serif: 'Source Code Pro', 'Georgia', 'Times New Roman', serif !default;
+$base-font-family-sans-serif: 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
+$base-font-family: $base-font-family-sans-serif !default;
+
+// APP
+$app-logo: 'logo.png' !default;
+$app-header-bg: $primary !default;
+$app-header-text: $primary-text !default;
+
+$app-menu-bg-image: 'back/black_linen_v3.png' !default;
+$app-menu-bg: $arsenic !default;
+$app-menu-text: $isabelline !default;
+$app-menu-active-bg: $black-coral !default;
+$app-menu-active-text: $coconut !default;
+
+// TYPOGRAPHY
+$font-weight-normal: 400 !default;
+$font-weight-strong: 600 !default;
+$font-weight-bold: 800 !default;
+
+$link-text: $primary !default;
+
+$text-muted: $gray !default;
+
+// GRID SYSTEM
+$grid-xs-max: 20em !default;
+$grid-sm-max: 32em !default;
+$grid-md-max: 48em !default;
+$grid-lg-max: 64em !default;
+$grid-xl-max: 96em !default;
+
+// BUTTONS
+$button-primary-bg: $primary !default;
+$button-secondary-bg: $secondary !default;
+$button-info-bg: $info !default;
+$button-danger-bg: $danger !default;
+$button-success-bg: $success !default;
+$button-warning-bg: $warning !default;
+
+$button-primary-text: $primary-text !default;
+$button-secondary-text: $secondary-text !default;
+$button-info-text: $coconut !default;
+$button-danger-text: $coconut !default;
+$button-success-text: $coconut !default;
+$button-warning-text: $coconut !default;
+
+$button-primary-border: darken($primary, 20%) !default;
+$button-secondary-border: darken($secondary, 20%) !default;
+$button-info-border: darken($info, 20%) !default;
+$button-danger-border: darken($danger, 20%) !default;
+$button-success-border: darken($success, 20%) !default;
+$button-warning-border: darken($warning, 20%) !default;
+
+$button-toggle-active-bg: $primary !default;
+$button-toggle-active-text: $primary-text !default;
+
+// MENU
+$menu-bg: $outer-space !default;
+$menu-text: $primary !default;
+$menu-hover-bg: rgba($primary, 0.6) !default;
+$menu-hover-text: $primary-text !default;
+$menu-active-bg: $primary !default;
+$menu-active-text: $primary-text !default;
+
+// INPUT
+$placeholder-color: if($dark-theme, $slate-gray, $timberwolf) !default;
+$input-bg: $base-bg !default;
+$input-text: $base-text !default;
+$input-label-text: $base-text !default;
+$input-border: $base-border-color !default;
+$input-border-focus: $cerulean !default;

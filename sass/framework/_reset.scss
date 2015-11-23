@@ -1,0 +1,83 @@
+/**
+ *	UI Resets
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@import "compass/reset";
+
+h1, h2, h3, h4, h5, h6, p, ul, li, ol, dt, dd, dl {
+  margin: 0;
+  padding: 0.3rem 0.7rem;
+}
+
+a, button {
+  margin: 0;
+  color: $link-text;
+  font-weight: $font-weight-strong;
+  text-decoration: none;
+  &, * {
+	cursor: pointer;
+	outline: none !important;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+hr {
+  margin: 0.2rem 0;
+  background: none;
+  color: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid darken($base-bg, 20%);
+  border-bottom: 1px solid lighten($base-bg, 20%);
+}
+
+// PADDING
+.pad-all {
+  padding: 0.5rem;
+}
+
+.pad-h {
+  padding: 0 0.5rem;
+}
+
+.pad-v {
+  padding: 0.5rem 0;
+}
+
+// MARGIN
+.margin-all {
+  margin: 0.5rem;
+}
+
+.margin-h {
+  margin: 0 0.5rem;
+}
+
+.margin-v {
+  margin: 0.5rem 0;
+}
+
+// BORDERS
+.border-all {
+  border: 1px solid $base-border-color;
+}
+
+.border-h {
+  border: 1px solid $base-border-color;
+  border-width: 1px 0;
+}
+
+.border-v {
+  border: 1px solid $base-border-color;
+  border-width: 0 1px;
+}
+
+.push-right {
+  float: right;
+}

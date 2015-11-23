@@ -1,0 +1,42 @@
+{
+  "name": "hmc-aurelia-framework",
+  "version": "1.0.0",
+  "description": "Aurelia UX Framework for HMC Applications",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adarsh Pastakia",
+  "license": "MIT",
+  "devDependencies": {
+    "aurelia-bundler": "^0.1.9",
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-typescript": "^2.9.2",
+    "jspm": "^0.16.15",
+    "run-sequence": "^1.1.5"
+  },
+  "jspm": {
+    "dependencies": {
+      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0-beta.1",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1",
+      "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.0.1",
+      "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1",
+      "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0-beta.1.0.1",
+      "aurelia-validation": "npm:aurelia-validation@^0.6.0",
+      "core-js": "npm:core-js@^1.2.6",
+      "fetch": "github:github/fetch@^0.10.1",
+      "jquery": "github:components/jquery@^2.1.4",
+      "lodash": "npm:lodash@^3.10.1",
+      "markdown": "npm:markdown@^0.5.0",
+      "moment": "npm:moment@^2.10.6",
+      "numeral": "npm:numeral@^1.5.3"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  }
+}
