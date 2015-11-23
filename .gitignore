@@ -1,6 +1,6 @@
 .DS_STORE
 .idea
-.sass_cache
+.sass-cache
 
 # Logs
 logs

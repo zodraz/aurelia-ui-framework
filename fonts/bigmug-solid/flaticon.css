@@ -1,0 +1,674 @@
+@font-face {
+	font-family: "BigMugSolid";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="fi-bigmug-solid-"]:before, [class*=" fi-bigmug-solid-"]:before,
+[class^="fi-bigmug-solid-"]:after, [class*=" fi-bigmug-solid-"]:after {
+	font-family: BigMugSolid;
+	font-style: normal;
+}.fi-bigmug-solid-add141:before {
+	content: "\e000";
+}
+.fi-bigmug-solid-adding5:before {
+	content: "\e001";
+}
+.fi-bigmug-solid-addition3:before {
+	content: "\e002";
+}
+.fi-bigmug-solid-airplane87:before {
+	content: "\e003";
+}
+.fi-bigmug-solid-alarm33:before {
+	content: "\e004";
+}
+.fi-bigmug-solid-arrow593:before {
+	content: "\e005";
+}
+.fi-bigmug-solid-arrows91:before {
+	content: "\e006";
+}
+.fi-bigmug-solid-ascendant13:before {
+	content: "\e007";
+}
+.fi-bigmug-solid-attach9:before {
+	content: "\e008";
+}
+.fi-bigmug-solid-auriculars1:before {
+	content: "\e009";
+}
+.fi-bigmug-solid-back40:before {
+	content: "\e00a";
+}
+.fi-bigmug-solid-back47:before {
+	content: "\e00b";
+}
+.fi-bigmug-solid-bag31:before {
+	content: "\e00c";
+}
+.fi-bigmug-solid-bell38:before {
+	content: "\e00d";
+}
+.fi-bigmug-solid-bell39:before {
+	content: "\e00e";
+}
+.fi-bigmug-solid-black369:before {
+	content: "\e00f";
+}
+.fi-bigmug-solid-black371:before {
+	content: "\e010";
+}
+.fi-bigmug-solid-black373:before {
+	content: "\e011";
+}
+.fi-bigmug-solid-black374:before {
+	content: "\e012";
+}
+.fi-bigmug-solid-black376:before {
+	content: "\e013";
+}
+.fi-bigmug-solid-black377:before {
+	content: "\e014";
+}
+.fi-bigmug-solid-black378:before {
+	content: "\e015";
+}
+.fi-bigmug-solid-black380:before {
+	content: "\e016";
+}
+.fi-bigmug-solid-black383:before {
+	content: "\e017";
+}
+.fi-bigmug-solid-black384:before {
+	content: "\e018";
+}
+.fi-bigmug-solid-black386:before {
+	content: "\e019";
+}
+.fi-bigmug-solid-book185:before {
+	content: "\e01a";
+}
+.fi-bigmug-solid-bookmark27:before {
+	content: "\e01b";
+}
+.fi-bigmug-solid-bottle35:before {
+	content: "\e01c";
+}
+.fi-bigmug-solid-broken39:before {
+	content: "\e01d";
+}
+.fi-bigmug-solid-buttons4:before {
+	content: "\e01e";
+}
+.fi-bigmug-solid-calendar144:before {
+	content: "\e01f";
+}
+.fi-bigmug-solid-call42:before {
+	content: "\e020";
+}
+.fi-bigmug-solid-center11:before {
+	content: "\e021";
+}
+.fi-bigmug-solid-chat49:before {
+	content: "\e022";
+}
+.fi-bigmug-solid-chat53:before {
+	content: "\e023";
+}
+.fi-bigmug-solid-chat54:before {
+	content: "\e024";
+}
+.fi-bigmug-solid-clipboard67:before {
+	content: "\e025";
+}
+.fi-bigmug-solid-clock75:before {
+	content: "\e026";
+}
+.fi-bigmug-solid-close41:before {
+	content: "\e027";
+}
+.fi-bigmug-solid-cloud256:before {
+	content: "\e028";
+}
+.fi-bigmug-solid-cloud257:before {
+	content: "\e029";
+}
+.fi-bigmug-solid-compass81:before {
+	content: "\e02a";
+}
+.fi-bigmug-solid-configuration16:before {
+	content: "\e02b";
+}
+.fi-bigmug-solid-copy24:before {
+	content: "\e02c";
+}
+.fi-bigmug-solid-counterclockwise5:before {
+	content: "\e02d";
+}
+.fi-bigmug-solid-cropping:before {
+	content: "\e02e";
+}
+.fi-bigmug-solid-cross76:before {
+	content: "\e02f";
+}
+.fi-bigmug-solid-cross77:before {
+	content: "\e030";
+}
+.fi-bigmug-solid-cross82:before {
+	content: "\e031";
+}
+.fi-bigmug-solid-cup43:before {
+	content: "\e032";
+}
+.fi-bigmug-solid-diagonal4:before {
+	content: "\e033";
+}
+.fi-bigmug-solid-double94:before {
+	content: "\e034";
+}
+.fi-bigmug-solid-double95:before {
+	content: "\e035";
+}
+.fi-bigmug-solid-double96:before {
+	content: "\e036";
+}
+.fi-bigmug-solid-down54:before {
+	content: "\e037";
+}
+.fi-bigmug-solid-down57:before {
+	content: "\e038";
+}
+.fi-bigmug-solid-down60:before {
+	content: "\e039";
+}
+.fi-bigmug-solid-down61:before {
+	content: "\e03a";
+}
+.fi-bigmug-solid-down62:before {
+	content: "\e03b";
+}
+.fi-bigmug-solid-down63:before {
+	content: "\e03c";
+}
+.fi-bigmug-solid-down66:before {
+	content: "\e03d";
+}
+.fi-bigmug-solid-download137:before {
+	content: "\e03e";
+}
+.fi-bigmug-solid-download138:before {
+	content: "\e03f";
+}
+.fi-bigmug-solid-download141:before {
+	content: "\e040";
+}
+.fi-bigmug-solid-email66:before {
+	content: "\e041";
+}
+.fi-bigmug-solid-email69:before {
+	content: "\e042";
+}
+.fi-bigmug-solid-email72:before {
+	content: "\e043";
+}
+.fi-bigmug-solid-equalizer27:before {
+	content: "\e044";
+}
+.fi-bigmug-solid-equalizer28:before {
+	content: "\e045";
+}
+.fi-bigmug-solid-event4:before {
+	content: "\e046";
+}
+.fi-bigmug-solid-expand27:before {
+	content: "\e047";
+}
+.fi-bigmug-solid-expand28:before {
+	content: "\e048";
+}
+.fi-bigmug-solid-fast34:before {
+	content: "\e049";
+}
+.fi-bigmug-solid-fast35:before {
+	content: "\e04a";
+}
+.fi-bigmug-solid-file67:before {
+	content: "\e04b";
+}
+.fi-bigmug-solid-file70:before {
+	content: "\e04c";
+}
+.fi-bigmug-solid-files6:before {
+	content: "\e04d";
+}
+.fi-bigmug-solid-film59:before {
+	content: "\e04e";
+}
+.fi-bigmug-solid-flag52:before {
+	content: "\e04f";
+}
+.fi-bigmug-solid-foggy2:before {
+	content: "\e050";
+}
+.fi-bigmug-solid-foggy4:before {
+	content: "\e051";
+}
+.fi-bigmug-solid-foggy5:before {
+	content: "\e052";
+}
+.fi-bigmug-solid-folder168:before {
+	content: "\e053";
+}
+.fi-bigmug-solid-fork33:before {
+	content: "\e054";
+}
+.fi-bigmug-solid-four85:before {
+	content: "\e055";
+}
+.fi-bigmug-solid-game52:before {
+	content: "\e056";
+}
+.fi-bigmug-solid-games31:before {
+	content: "\e057";
+}
+.fi-bigmug-solid-giftbox53:before {
+	content: "\e058";
+}
+.fi-bigmug-solid-glass46:before {
+	content: "\e059";
+}
+.fi-bigmug-solid-global27:before {
+	content: "\e05a";
+}
+.fi-bigmug-solid-graphic32:before {
+	content: "\e05b";
+}
+.fi-bigmug-solid-hot68:before {
+	content: "\e05c";
+}
+.fi-bigmug-solid-image72:before {
+	content: "\e05d";
+}
+.fi-bigmug-solid-justify9:before {
+	content: "\e05e";
+}
+.fi-bigmug-solid-keyboard49:before {
+	content: "\e05f";
+}
+.fi-bigmug-solid-knife28:before {
+	content: "\e060";
+}
+.fi-bigmug-solid-left147:before {
+	content: "\e061";
+}
+.fi-bigmug-solid-left149:before {
+	content: "\e062";
+}
+.fi-bigmug-solid-left150:before {
+	content: "\e063";
+}
+.fi-bigmug-solid-left151:before {
+	content: "\e064";
+}
+.fi-bigmug-solid-left154:before {
+	content: "\e065";
+}
+.fi-bigmug-solid-left155:before {
+	content: "\e066";
+}
+.fi-bigmug-solid-left156:before {
+	content: "\e067";
+}
+.fi-bigmug-solid-left160:before {
+	content: "\e068";
+}
+.fi-bigmug-solid-like49:before {
+	content: "\e069";
+}
+.fi-bigmug-solid-link51:before {
+	content: "\e06a";
+}
+.fi-bigmug-solid-list62:before {
+	content: "\e06b";
+}
+.fi-bigmug-solid-list67:before {
+	content: "\e06c";
+}
+.fi-bigmug-solid-locked32:before {
+	content: "\e06d";
+}
+.fi-bigmug-solid-login8:before {
+	content: "\e06e";
+}
+.fi-bigmug-solid-megaphone12:before {
+	content: "\e06f";
+}
+.fi-bigmug-solid-menu43:before {
+	content: "\e070";
+}
+.fi-bigmug-solid-menu44:before {
+	content: "\e071";
+}
+.fi-bigmug-solid-menu46:before {
+	content: "\e072";
+}
+.fi-bigmug-solid-minus82:before {
+	content: "\e073";
+}
+.fi-bigmug-solid-minus84:before {
+	content: "\e074";
+}
+.fi-bigmug-solid-minus85:before {
+	content: "\e075";
+}
+.fi-bigmug-solid-mobile217:before {
+	content: "\e076";
+}
+.fi-bigmug-solid-monitor75:before {
+	content: "\e077";
+}
+.fi-bigmug-solid-moon148:before {
+	content: "\e078";
+}
+.fi-bigmug-solid-movie36:before {
+	content: "\e079";
+}
+.fi-bigmug-solid-music211:before {
+	content: "\e07a";
+}
+.fi-bigmug-solid-music212:before {
+	content: "\e07b";
+}
+.fi-bigmug-solid-music213:before {
+	content: "\e07c";
+}
+.fi-bigmug-solid-music220:before {
+	content: "\e07d";
+}
+.fi-bigmug-solid-music222:before {
+	content: "\e07e";
+}
+.fi-bigmug-solid-musical101:before {
+	content: "\e07f";
+}
+.fi-bigmug-solid-musical99:before {
+	content: "\e080";
+}
+.fi-bigmug-solid-mute30:before {
+	content: "\e081";
+}
+.fi-bigmug-solid-mute32:before {
+	content: "\e082";
+}
+.fi-bigmug-solid-new82:before {
+	content: "\e083";
+}
+.fi-bigmug-solid-notebook44:before {
+	content: "\e084";
+}
+.fi-bigmug-solid-oval35:before {
+	content: "\e085";
+}
+.fi-bigmug-solid-oval36:before {
+	content: "\e086";
+}
+.fi-bigmug-solid-paintbrush10:before {
+	content: "\e087";
+}
+.fi-bigmug-solid-paper121:before {
+	content: "\e088";
+}
+.fi-bigmug-solid-paperclip22:before {
+	content: "\e089";
+}
+.fi-bigmug-solid-pause36:before {
+	content: "\e08a";
+}
+.fi-bigmug-solid-pencil87:before {
+	content: "\e08b";
+}
+.fi-bigmug-solid-person306:before {
+	content: "\e08c";
+}
+.fi-bigmug-solid-person307:before {
+	content: "\e08d";
+}
+.fi-bigmug-solid-photo179:before {
+	content: "\e08e";
+}
+.fi-bigmug-solid-pin41:before {
+	content: "\e08f";
+}
+.fi-bigmug-solid-play80:before {
+	content: "\e090";
+}
+.fi-bigmug-solid-plus71:before {
+	content: "\e091";
+}
+.fi-bigmug-solid-portfolio24:before {
+	content: "\e092";
+}
+.fi-bigmug-solid-printing21:before {
+	content: "\e093";
+}
+.fi-bigmug-solid-prize1:before {
+	content: "\e094";
+}
+.fi-bigmug-solid-radio47:before {
+	content: "\e095";
+}
+.fi-bigmug-solid-rewind36:before {
+	content: "\e096";
+}
+.fi-bigmug-solid-right143:before {
+	content: "\e097";
+}
+.fi-bigmug-solid-right146:before {
+	content: "\e098";
+}
+.fi-bigmug-solid-right152:before {
+	content: "\e099";
+}
+.fi-bigmug-solid-right155:before {
+	content: "\e09a";
+}
+.fi-bigmug-solid-right157:before {
+	content: "\e09b";
+}
+.fi-bigmug-solid-right159:before {
+	content: "\e09c";
+}
+.fi-bigmug-solid-right160:before {
+	content: "\e09d";
+}
+.fi-bigmug-solid-ring21:before {
+	content: "\e09e";
+}
+.fi-bigmug-solid-rounded52:before {
+	content: "\e09f";
+}
+.fi-bigmug-solid-sand13:before {
+	content: "\e0a0";
+}
+.fi-bigmug-solid-save17:before {
+	content: "\e0a1";
+}
+.fi-bigmug-solid-search77:before {
+	content: "\e0a2";
+}
+.fi-bigmug-solid-share28:before {
+	content: "\e0a3";
+}
+.fi-bigmug-solid-shopping197:before {
+	content: "\e0a4";
+}
+.fi-bigmug-solid-shopping201:before {
+	content: "\e0a5";
+}
+.fi-bigmug-solid-shopping203:before {
+	content: "\e0a6";
+}
+.fi-bigmug-solid-shuffle16:before {
+	content: "\e0a7";
+}
+.fi-bigmug-solid-solid22:before {
+	content: "\e0a8";
+}
+.fi-bigmug-solid-solid23:before {
+	content: "\e0a9";
+}
+.fi-bigmug-solid-sort45:before {
+	content: "\e0aa";
+}
+.fi-bigmug-solid-sort46:before {
+	content: "\e0ab";
+}
+.fi-bigmug-solid-speaker77:before {
+	content: "\e0ac";
+}
+.fi-bigmug-solid-speaker78:before {
+	content: "\e0ad";
+}
+.fi-bigmug-solid-speaker83:before {
+	content: "\e0ae";
+}
+.fi-bigmug-solid-square151:before {
+	content: "\e0af";
+}
+.fi-bigmug-solid-square163:before {
+	content: "\e0b0";
+}
+.fi-bigmug-solid-squares23:before {
+	content: "\e0b1";
+}
+.fi-bigmug-solid-star155:before {
+	content: "\e0b2";
+}
+.fi-bigmug-solid-store9:before {
+	content: "\e0b3";
+}
+.fi-bigmug-solid-storm10:before {
+	content: "\e0b4";
+}
+.fi-bigmug-solid-storm11:before {
+	content: "\e0b5";
+}
+.fi-bigmug-solid-switch22:before {
+	content: "\e0b6";
+}
+.fi-bigmug-solid-switch25:before {
+	content: "\e0b7";
+}
+.fi-bigmug-solid-tag46:before {
+	content: "\e0b8";
+}
+.fi-bigmug-solid-target40:before {
+	content: "\e0b9";
+}
+.fi-bigmug-solid-three143:before {
+	content: "\e0ba";
+}
+.fi-bigmug-solid-timer36:before {
+	content: "\e0bb";
+}
+.fi-bigmug-solid-trash58:before {
+	content: "\e0bc";
+}
+.fi-bigmug-solid-travel16:before {
+	content: "\e0bd";
+}
+.fi-bigmug-solid-tv25:before {
+	content: "\e0be";
+}
+.fi-bigmug-solid-two309:before {
+	content: "\e0bf";
+}
+.fi-bigmug-solid-two310:before {
+	content: "\e0c0";
+}
+.fi-bigmug-solid-two318:before {
+	content: "\e0c1";
+}
+.fi-bigmug-solid-two320:before {
+	content: "\e0c2";
+}
+.fi-bigmug-solid-two325:before {
+	content: "\e0c3";
+}
+.fi-bigmug-solid-two326:before {
+	content: "\e0c4";
+}
+.fi-bigmug-solid-unlocked26:before {
+	content: "\e0c5";
+}
+.fi-bigmug-solid-up101:before {
+	content: "\e0c6";
+}
+.fi-bigmug-solid-up105:before {
+	content: "\e0c7";
+}
+.fi-bigmug-solid-up108:before {
+	content: "\e0c8";
+}
+.fi-bigmug-solid-up109:before {
+	content: "\e0c9";
+}
+.fi-bigmug-solid-up110:before {
+	content: "\e0ca";
+}
+.fi-bigmug-solid-up115:before {
+	content: "\e0cb";
+}
+.fi-bigmug-solid-up116:before {
+	content: "\e0cc";
+}
+.fi-bigmug-solid-up117:before {
+	content: "\e0cd";
+}
+.fi-bigmug-solid-upload87:before {
+	content: "\e0ce";
+}
+.fi-bigmug-solid-upload89:before {
+	content: "\e0cf";
+}
+.fi-bigmug-solid-verification15:before {
+	content: "\e0d0";
+}
+.fi-bigmug-solid-verify3:before {
+	content: "\e0d1";
+}
+.fi-bigmug-solid-verify4:before {
+	content: "\e0d2";
+}
+.fi-bigmug-solid-voice22:before {
+	content: "\e0d3";
+}
+.fi-bigmug-solid-voice24:before {
+	content: "\e0d4";
+}
+.fi-bigmug-solid-wallet25:before {
+	content: "\e0d5";
+}
+.fi-bigmug-solid-weekly17:before {
+	content: "\e0d6";
+}
+.fi-bigmug-solid-window49:before {
+	content: "\e0d7";
+}
+.fi-bigmug-solid-winds3:before {
+	content: "\e0d8";
+}
+.fi-bigmug-solid-wrench65:before {
+	content: "\e0d9";
+}
+.fi-bigmug-solid-writing23:before {
+	content: "\e0da";
+}
+.fi-bigmug-solid-zoom59:before {
+	content: "\e0db";
+}

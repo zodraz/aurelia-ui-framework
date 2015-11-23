@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flaticon WebFont</title>
+    <link rel="stylesheet" type="text/css" href="flaticon.css">
+    <meta charset="UTF-8">
+    <style>
+    body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-size: 16px;
+        padding: 20px;
+        color:#333;
+    }
+    * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    [class^="fi-elegant-"]:before, [class*=" fi-elegant-"]:before, [class^="fi-elegant-"]:after, [class*=" fi-elegant-"]:after {
+        font-size: 30px;
+        font-style: normal;
+        margin-left: 20px;
+        color: #333;
+    }
+    .image p {
+		font-size: 12px;
+		margin: 0px;
+		clear: none;
+		width: 300px;
+		line-height: 40px;
+	}
+    .text {
+        float: left;
+        font-size:14px;
+        margin-top: 15px;
+    }
+    .text ul {
+        margin-left:0px;
+        color:#111;
+        margin-bottom:20px;
+    }
+    .text .ex {
+        font-size:12px;
+        color:#666;
+        margin-left:35px;
+        display:block;
+    }
+    .text ul li {
+        margin-top:10px;
+        list-style:none;
+    }
+    .num {
+        background:#66A523;
+        color:#fff;
+        border-radius:20px;
+        padding:1px;
+        display:inline-block;
+        width:22px;
+        height:22px;
+        text-align:center;
+        margin-right: 5px;
+    }
+    .text ul strong {
+        font-weight:normal;
+        color:#000;
+    }
+    .image {
+        width: 280px;
+        float: left;
+        margin-bottom: 15px;
+        margin-right: 30px;
+    }
+    #glyphs {
+        clear: both;
+    }
+    .image p:nth-child(even) i {
+        clear: none;
+    }
+    .glyph {
+        display: inline-block;
+        width: 120px;
+        margin: 10px;
+        text-align: center;
+        vertical-align: top;
+        background: #FFF;
+    }
+    .glyph .glyph-icon {
+        padding: 10px;
+        display: block;
+        font-family:"Flaticon";
+        font-size: 64px;
+        line-height: 1;
+    }
+    .glyph .glyph-icon:before {
+        font-size: 64px;
+        color: #666;
+        margin-left: 0;
+    }
+    .class-name {
+        font-size: 12px;
+    }
+    .author-name {
+		font-size: 10px;
+	}
+	a{
+		color: #66A523;
+	}
+    .instructions {
+        font-style:italic;
+        font-size:22px;
+        margin-bottom:10px;
+    }
+    .iconsuse {
+        font-size:22px;
+        font-style:italic;
+        padding-top:20px;
+        margin-top:20px;
+        border-top:1px solid #bbb;
+    }
+    .usetitle {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-style: italic;
+    }
+    .class-name:last-child {
+        font-size: 10px;
+        color:#888;
+    }
+    .class-name:last-child a {
+        font-size: 10px;
+        color:#555;
+    }
+    .class-name:last-child a:hover {
+        color:#66A523;
+    }
+    .glyph > input {
+        display: block;
+        width: 100px;
+        margin: 5px auto;
+        text-align: center;
+        font-size: 12px;
+        cursor: text;
+    }
+    .glyph > input.icon-input {
+        font-family:"Flaticon";
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    h1.logo {
+        font-size: 40px;
+        letter-spacing: -1px;
+        margin-top: -16px;
+        text-transform: lowercase;
+        border-bottom:1px solid #bbb;
+    }
+    h1.logo strong {
+        font-size: 16px;
+        font-family:sans-serif;
+        font-weight:normal;
+        color:#333;
+    }
+    h1.logo a {
+        color:#34302d;
+        text-decoration: none;
+    }
+    h1.logo a span {
+        color:#66A523;
+    }
+    #footer {
+        padding-top:40px;
+        clear:both;
+        text-align:center;
+    }
+    #footer a {
+        color:#66A523;
+    }
+    textarea {
+		margin: 0px;
+		width: 800px;
+		height: 150px;
+		border: 1px solid #CCC;
+		resize: none;
+		background: #EEE;
+    }
+    .author-link, .attrDiv a{
+    	font-size: 12px;
+    	color: #333;
+    	text-decoration: none;
+    }
+    .external {
+    	display: block;
+    }
+    .attrDiv {
+		font-size: 12px;
+	}
+    .attribution {
+        border-top: 1px solid #AAA;
+        margin: 10px 0;
+        padding-top: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href="http://www.flaticon.com">
+                <span>FLAT</span>ICON</a>
+            <strong>Font Demo</strong>
+        </h1>
+    </header>
+
+    <section class="demo">
+        <div class="text">
+
+            <div class="instructions">Instructions:</div>
+
+            <ul>
+                <li>
+                    <p>
+                        <span class="num">1</span>Copy the "Fonts" files and CSS files to your website CSS folder.
+                </li>
+                <li>
+                    <p>
+                        <span class="num">2</span>Add the CSS link to your website source code on header.
+                        <br />
+                        <span class="ex">&lt;head&gt;
+                            <br/>...
+                            <br/>&lt;link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css"&gt;
+                            <br/>...
+                            <br/>&lt;/head&gt;</span>
+                </li>
+
+                <li>
+                    <p>
+                        <span class="num">3</span>Use the icon class on "display:inline" elements:
+                        <br />
+                        <span class="ex">Use example: &lt;i class=&quot;fi-elegant-airplane49&quot;&gt;&lt;/i&gt; or &lt;span class=&quot;fi-elegant-airplane49&quot;&gt;&lt;/span&gt;</span>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section id="glyphs"><div class="glyph">
+		<div class="glyph-icon fi-elegant-2x2"></div>
+		<div class="class-name">.fi-elegant-2x2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/2x2-grid_10758">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-3x3"></div>
+		<div class="class-name">.fi-elegant-3x3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/3x3-grid_8722">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-adjust2"></div>
+		<div class="class-name">.fi-elegant-adjust2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/adjust-levels_7502">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-adjust3"></div>
+		<div class="class-name">.fi-elegant-adjust3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/adjust-horizontal_8759">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-archive5"></div>
+		<div class="class-name">.fi-elegant-archive5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/archive-box_7559">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow100"></div>
+		<div class="class-name">.fi-elegant-arrow100</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-right-up_10191">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow103"></div>
+		<div class="class-name">.fi-elegant-arrow103</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-in-circle-point-to-up_10442">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow105"></div>
+		<div class="class-name">.fi-elegant-arrow105</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-pointing-down_10772">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow106"></div>
+		<div class="class-name">.fi-elegant-arrow106</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-pointing-to-up_10774">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow61"></div>
+		<div class="class-name">.fi-elegant-arrow61</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-left_7517">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow68"></div>
+		<div class="class-name">.fi-elegant-arrow68</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-go-up_8706">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow69"></div>
+		<div class="class-name">.fi-elegant-arrow69</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-right-round_8728">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow70"></div>
+		<div class="class-name">.fi-elegant-arrow70</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-up-down_8748">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow71"></div>
+		<div class="class-name">.fi-elegant-arrow71</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-expand_8757">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow72"></div>
+		<div class="class-name">.fi-elegant-arrow72</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-right-rondure_8764">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow74"></div>
+		<div class="class-name">.fi-elegant-arrow74</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-carrot-to-right_8770">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow75"></div>
+		<div class="class-name">.fi-elegant-arrow75</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-triangle-right-alt_8788">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow76"></div>
+		<div class="class-name">.fi-elegant-arrow76</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-expand-alt_8921">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow83"></div>
+		<div class="class-name">.fi-elegant-arrow83</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-carrot-left-alt_9895">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow84"></div>
+		<div class="class-name">.fi-elegant-arrow84</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-triangle-left-alt_9896">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow85"></div>
+		<div class="class-name">.fi-elegant-arrow85</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-triangle-left_9918">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow86"></div>
+		<div class="class-name">.fi-elegant-arrow86</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-back-left_9920">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow87"></div>
+		<div class="class-name">.fi-elegant-arrow87</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-triangle-up_9934">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow88"></div>
+		<div class="class-name">.fi-elegant-arrow88</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-right-down_9938">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow89"></div>
+		<div class="class-name">.fi-elegant-arrow89</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-right-circle_9943">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow90"></div>
+		<div class="class-name">.fi-elegant-arrow90</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-up-rondure_9946">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow91"></div>
+		<div class="class-name">.fi-elegant-arrow91</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-left-right_9969">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow93"></div>
+		<div class="class-name">.fi-elegant-arrow93</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-triangle-down-alt_9986">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow94"></div>
+		<div class="class-name">.fi-elegant-arrow94</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-carrot-2-left-alt_9987">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow96"></div>
+		<div class="class-name">.fi-elegant-arrow96</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-left-and-right_10148">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow97"></div>
+		<div class="class-name">.fi-elegant-arrow97</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-chevron-down_10166">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow98"></div>
+		<div class="class-name">.fi-elegant-arrow98</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-down-right_10184">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrow99"></div>
+		<div class="class-name">.fi-elegant-arrow99</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-left-in-black-circle_10188">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-arrows6"></div>
+		<div class="class-name">.fi-elegant-arrows6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-inside-a-circle-pointing-up_10777">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-black33"></div>
+		<div class="class-name">.fi-elegant-black33</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-cursor-arrow_7507">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-black64"></div>
+		<div class="class-name">.fi-elegant-black64</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-cart_9973">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-black66"></div>
+		<div class="class-name">.fi-elegant-black66</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-gallon_9981">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-black67"></div>
+		<div class="class-name">.fi-elegant-black67</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-tag_9992">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-black70"></div>
+		<div class="class-name">.fi-elegant-black70</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-watch_10173">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-black73"></div>
+		<div class="class-name">.fi-elegant-black73</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-zoom-out_10183">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-blocked"></div>
+		<div class="class-name">.fi-elegant-blocked</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/blocked_10036">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-blogger1"></div>
+		<div class="class-name">.fi-elegant-blogger1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/blogger-circle_8708">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-blogger2"></div>
+		<div class="class-name">.fi-elegant-blogger2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/blogger_8717">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-book23"></div>
+		<div class="class-name">.fi-elegant-book23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/book-information_10124">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-box9"></div>
+		<div class="class-name">.fi-elegant-box9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/box-side_8659">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-camera19"></div>
+		<div class="class-name">.fi-elegant-camera19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camera-alt_9893">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-chat3"></div>
+		<div class="class-name">.fi-elegant-chat3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/chat-conversation_9915">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-check2"></div>
+		<div class="class-name">.fi-elegant-check2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/check-rondure_8727">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-chevron9"></div>
+		<div class="class-name">.fi-elegant-chevron9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/chevron-arrow-in-right-direction_10022">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circle10"></div>
+		<div class="class-name">.fi-elegant-circle10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circle-arrow-right_8731">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circle11"></div>
+		<div class="class-name">.fi-elegant-circle11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circle-with-a-down-arrow_8805">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circle8"></div>
+		<div class="class-name">.fi-elegant-circle8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circle-with-arrow-to-down-left_7528">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circular3"></div>
+		<div class="class-name">.fi-elegant-circular3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circular-button-with-minus-sign_7524">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circular4"></div>
+		<div class="class-name">.fi-elegant-circular4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circular-clock_7626">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circular6"></div>
+		<div class="class-name">.fi-elegant-circular6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circular-little-menu-button_7655">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circular7"></div>
+		<div class="class-name">.fi-elegant-circular7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circular-pause-button_8802">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circular8"></div>
+		<div class="class-name">.fi-elegant-circular8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circular-piechart_8810">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-circular9"></div>
+		<div class="class-name">.fi-elegant-circular9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/circular-lifesaver_8824">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-close11"></div>
+		<div class="class-name">.fi-elegant-close11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/close-alt_8934">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-close9"></div>
+		<div class="class-name">.fi-elegant-close9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/close-button-with-a-cross-in-a-circle_8783">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-cloud26"></div>
+		<div class="class-name">.fi-elegant-cloud26</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cloud-arrow-donwload_10171">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-cogs"></div>
+		<div class="class-name">.fi-elegant-cogs</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cogs_8808">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-comment2"></div>
+		<div class="class-name">.fi-elegant-comment2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/comment-bubble-outline_8804">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-compass8"></div>
+		<div class="class-name">.fi-elegant-compass8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/compass-east_10129">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-condense"></div>
+		<div class="class-name">.fi-elegant-condense</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/condense-button-arrows-in-a-square_10775">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-condensing"></div>
+		<div class="class-name">.fi-elegant-condensing</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/condensing-arrows_8778">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-cone1"></div>
+		<div class="class-name">.fi-elegant-cone1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cone-road_8746">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-cone2"></div>
+		<div class="class-name">.fi-elegant-cone2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cone-atl_9154">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-contacts1"></div>
+		<div class="class-name">.fi-elegant-contacts1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/contacts-agenda_8650">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-cross8"></div>
+		<div class="class-name">.fi-elegant-cross8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cross-of-plus-sign_8820">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-cursor7"></div>
+		<div class="class-name">.fi-elegant-cursor7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cursor-alt_8917">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-dark9"></div>
+		<div class="class-name">.fi-elegant-dark9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dark-black-lightbulb_7595">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-delicious1"></div>
+		<div class="class-name">.fi-elegant-delicious1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/delicious-social-button_7571">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-desktop1"></div>
+		<div class="class-name">.fi-elegant-desktop1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/desktop-button_7518">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-document9"></div>
+		<div class="class-name">.fi-elegant-document9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/document-page-with-text-lines_8825">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-documents2"></div>
+		<div class="class-name">.fi-elegant-documents2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/documents-pages_10025">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-documents"></div>
+		<div class="class-name">.fi-elegant-documents</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/documents-interface-button_7637">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-double4"></div>
+		<div class="class-name">.fi-elegant-double4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/double-arrow-right_8740">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-double5"></div>
+		<div class="class-name">.fi-elegant-double5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/double-arrow-left_8742">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-double7"></div>
+		<div class="class-name">.fi-elegant-double7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/double-chat_10157">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-down10"></div>
+		<div class="class-name">.fi-elegant-down10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/down-pointing-arrow-in-a-circle_10016">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-down11"></div>
+		<div class="class-name">.fi-elegant-down11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/down-arrows-in-a-circle_10018">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-down4"></div>
+		<div class="class-name">.fi-elegant-down4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/down-arrow-in-small-circle_7584">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-download11"></div>
+		<div class="class-name">.fi-elegant-download11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/download-from-the-cloud_10024">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-download7"></div>
+		<div class="class-name">.fi-elegant-download7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/download-tray-archive_8909">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-drawer1"></div>
+		<div class="class-name">.fi-elegant-drawer1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/drawer-alt-donwload_10006">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-dribble"></div>
+		<div class="class-name">.fi-elegant-dribble</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/basket-ball-in-a-black-circle_10193">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-earphones1"></div>
+		<div class="class-name">.fi-elegant-earphones1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/earphones_10432">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-empty10"></div>
+		<div class="class-name">.fi-elegant-empty10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/empty-rondure_8743">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-error2"></div>
+		<div class="class-name">.fi-elegant-error2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/error-circle_7498">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-error3"></div>
+		<div class="class-name">.fi-elegant-error3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/error-advice-exclamation-sign-in-an-octahedron_7565">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-error4"></div>
+		<div class="class-name">.fi-elegant-error4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/error-circle_8700">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-error5"></div>
+		<div class="class-name">.fi-elegant-error5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/error-advice-triangle-with-exclamation-mark_8798">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-error6"></div>
+		<div class="class-name">.fi-elegant-error6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/error-triangle_9188">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-exclamation1"></div>
+		<div class="class-name">.fi-elegant-exclamation1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/exclamation-mark-inside-an-octahedron_8809">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-expand9"></div>
+		<div class="class-name">.fi-elegant-expand9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/expand-tool-arrows-in-a-square_8781">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-facebook6"></div>
+		<div class="class-name">.fi-elegant-facebook6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/facebook-social-symbol_7664">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-facebook7"></div>
+		<div class="class-name">.fi-elegant-facebook7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/facebook-logo_8730">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-film9"></div>
+		<div class="class-name">.fi-elegant-film9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/film-strip_8806">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-fivepointed"></div>
+		<div class="class-name">.fi-elegant-fivepointed</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/fivepointed-star_7488">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-flickr1"></div>
+		<div class="class-name">.fi-elegant-flickr1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/flickr-circle_8720">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-flickr4"></div>
+		<div class="class-name">.fi-elegant-flickr4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/flickr-quadrate_9968">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-folder22"></div>
+		<div class="class-name">.fi-elegant-folder22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/folder-open-alt_9928">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-full9"></div>
+		<div class="class-name">.fi-elegant-full9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/full-heart_10162">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-genius"></div>
+		<div class="class-name">.fi-elegant-genius</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/genius_8799">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-google15"></div>
+		<div class="class-name">.fi-elegant-google15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/google-drive-logo_9995">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-google16"></div>
+		<div class="class-name">.fi-elegant-google16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/google-plus-logo_10005">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-group2"></div>
+		<div class="class-name">.fi-elegant-group2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/group-shapes_8814">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-half3"></div>
+		<div class="class-name">.fi-elegant-half3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/half-black-and-half-white-star-shape_7698">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-heart19"></div>
+		<div class="class-name">.fi-elegant-heart19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/heart_10429">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-high7"></div>
+		<div class="class-name">.fi-elegant-high7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/high-volume_10430">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-house3"></div>
+		<div class="class-name">.fi-elegant-house3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/house-white_8721">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-house4"></div>
+		<div class="class-name">.fi-elegant-house4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/house-frontal-building_8811">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-icon2"></div>
+		<div class="class-name">.fi-elegant-icon2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/icon-folder-add_8709">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-info9"></div>
+		<div class="class-name">.fi-elegant-info9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/information-signal_9911">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-interface19"></div>
+		<div class="class-name">.fi-elegant-interface19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/interface-edition-tool_10020">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-key9"></div>
+		<div class="class-name">.fi-elegant-key9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/key-play_8918">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-laptop3"></div>
+		<div class="class-name">.fi-elegant-laptop3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/laptop-keyboard_8758">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-left12"></div>
+		<div class="class-name">.fi-elegant-left12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/left-up-arrow-in-a-circle_7622">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-lightbulb"></div>
+		<div class="class-name">.fi-elegant-lightbulb</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lightbulb-outline_8823">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-linkedin2"></div>
+		<div class="class-name">.fi-elegant-linkedin2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/linkedin-rondure_8707">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-linkedin5"></div>
+		<div class="class-name">.fi-elegant-linkedin5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/linkedin-symbol_9942">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-links1"></div>
+		<div class="class-name">.fi-elegant-links1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/links_7624">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-links2"></div>
+		<div class="class-name">.fi-elegant-links2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/links_10424">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-list14"></div>
+		<div class="class-name">.fi-elegant-list14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/list-ul_9966">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little10"></div>
+		<div class="class-name">.fi-elegant-little10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-plus-squared-button_7632">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little11"></div>
+		<div class="class-name">.fi-elegant-little11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-circular-button-with-up-arrow-triangle_7635">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little12"></div>
+		<div class="class-name">.fi-elegant-little12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-social-dribbble-square_7639">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little13"></div>
+		<div class="class-name">.fi-elegant-little13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-open-lock_7640">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little14"></div>
+		<div class="class-name">.fi-elegant-little14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-table-grid_7642">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little16"></div>
+		<div class="class-name">.fi-elegant-little16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-up-arrow-triangle_7645">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little17"></div>
+		<div class="class-name">.fi-elegant-little17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-wrench-tool_7646">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little18"></div>
+		<div class="class-name">.fi-elegant-little18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-envelope_7647">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little19"></div>
+		<div class="class-name">.fi-elegant-little19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-thin-left-arrow_7649">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little20"></div>
+		<div class="class-name">.fi-elegant-little20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-minus-symbol_7659">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little21"></div>
+		<div class="class-name">.fi-elegant-little21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-pushpin_7675">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little22"></div>
+		<div class="class-name">.fi-elegant-little22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-mobile_7678">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little23"></div>
+		<div class="class-name">.fi-elegant-little23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-toolbox_7690">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little26"></div>
+		<div class="class-name">.fi-elegant-little26</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-thin-expand-arrows_7702">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little27"></div>
+		<div class="class-name">.fi-elegant-little27</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-black-star_7717">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little3"></div>
+		<div class="class-name">.fi-elegant-little3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-folder_7606">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little4"></div>
+		<div class="class-name">.fi-elegant-little4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-calendar-button_7610">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little5"></div>
+		<div class="class-name">.fi-elegant-little5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-download-folder_7613">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little6"></div>
+		<div class="class-name">.fi-elegant-little6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-check-sign_7614">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little7"></div>
+		<div class="class-name">.fi-elegant-little7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-black-folder_7619">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-little9"></div>
+		<div class="class-name">.fi-elegant-little9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/little-down-triangular-arrow_7629">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-lock11"></div>
+		<div class="class-name">.fi-elegant-lock11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lock-alt_9932">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-lock12"></div>
+		<div class="class-name">.fi-elegant-lock12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lock-round_9961">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-lock7"></div>
+		<div class="class-name">.fi-elegant-lock7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lock-open-unlocked_9152">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-logo3"></div>
+		<div class="class-name">.fi-elegant-logo3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/logo-vimeo_9955">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-logo4"></div>
+		<div class="class-name">.fi-elegant-logo4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/logo-youtube_9996">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-low6"></div>
+		<div class="class-name">.fi-elegant-low6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/low-volume-small-shape_7661">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mail9"></div>
+		<div class="class-name">.fi-elegant-mail9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mail-alt_9923">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-map5"></div>
+		<div class="class-name">.fi-elegant-map5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/map-pin-circle_8753">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-map7"></div>
+		<div class="class-name">.fi-elegant-map7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/map-country_10134">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-menu7"></div>
+		<div class="class-name">.fi-elegant-menu7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/menu-circle_8738">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-menu8"></div>
+		<div class="class-name">.fi-elegant-menu8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/menu-square-alt_8933">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-menu9"></div>
+		<div class="class-name">.fi-elegant-menu9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/menu-lines_9898">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-microphone9"></div>
+		<div class="class-name">.fi-elegant-microphone9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/microphone-voice_8716">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mic"></div>
+		<div class="class-name">.fi-elegant-mic</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mic_10032">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini10"></div>
+		<div class="class-name">.fi-elegant-mini10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/inbox_7536">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini11"></div>
+		<div class="class-name">.fi-elegant-mini11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-cloud-shape_7538">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini12"></div>
+		<div class="class-name">.fi-elegant-mini12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-creditcard_7688">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini1"></div>
+		<div class="class-name">.fi-elegant-mini1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-gift-box_7489">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini2"></div>
+		<div class="class-name">.fi-elegant-mini2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-trash-container_7491">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini3"></div>
+		<div class="class-name">.fi-elegant-mini3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-social-circular-button_7493">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini4"></div>
+		<div class="class-name">.fi-elegant-mini4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-deviantart-social-circle_7494">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini5"></div>
+		<div class="class-name">.fi-elegant-mini5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-list-button_7501">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini6"></div>
+		<div class="class-name">.fi-elegant-mini6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-check-circular-button_7505">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini7"></div>
+		<div class="class-name">.fi-elegant-mini7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-triangular-arrow-to-right_7520">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini8"></div>
+		<div class="class-name">.fi-elegant-mini8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-stop-button_7523">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini9"></div>
+		<div class="class-name">.fi-elegant-mini9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-half-star_7532">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mini"></div>
+		<div class="class-name">.fi-elegant-mini</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mini-cloud-upload_7487">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-minus11"></div>
+		<div class="class-name">.fi-elegant-minus11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/minus-alt-wii_9901">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-minus6"></div>
+		<div class="class-name">.fi-elegant-minus6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/minus-box_8745">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-move8"></div>
+		<div class="class-name">.fi-elegant-move8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/move-arrows_10194">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mute2"></div>
+		<div class="class-name">.fi-elegant-mute2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mute-volume_8785">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-mute4"></div>
+		<div class="class-name">.fi-elegant-mute4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mute-volume-interface-symbol_10776">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-myspace1"></div>
+		<div class="class-name">.fi-elegant-myspace1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/myspace-logo_7618">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-myspace2"></div>
+		<div class="class-name">.fi-elegant-myspace2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/myspace-logo_7662">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-myspace3"></div>
+		<div class="class-name">.fi-elegant-myspace3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/myspace-logo_8723">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-new6"></div>
+		<div class="class-name">.fi-elegant-new6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/new-add-folder_8715">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-outlined3"></div>
+		<div class="class-name">.fi-elegant-outlined3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/outlined-tags_8784">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-outlined4"></div>
+		<div class="class-name">.fi-elegant-outlined4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/outlined-key_8794">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-paperclip3"></div>
+		<div class="class-name">.fi-elegant-paperclip3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/paperclip-document_8704">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pause5"></div>
+		<div class="class-name">.fi-elegant-pause5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pause-rondure_8725">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pencil10"></div>
+		<div class="class-name">.fi-elegant-pencil10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pencil-quadrate_9940">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pencil12"></div>
+		<div class="class-name">.fi-elegant-pencil12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pencil-write_10443">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pencil9"></div>
+		<div class="class-name">.fi-elegant-pencil9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pencil-edit-square_8761">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-picassa2"></div>
+		<div class="class-name">.fi-elegant-picassa2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/picassa-symbol_9999">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-picassa"></div>
+		<div class="class-name">.fi-elegant-picassa</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/picassa-social-symbol_7654">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pinterest6"></div>
+		<div class="class-name">.fi-elegant-pinterest6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pinterest-round_8763">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pinterest8"></div>
+		<div class="class-name">.fi-elegant-pinterest8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pinterest-square_9935">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-plus7"></div>
+		<div class="class-name">.fi-elegant-plus7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/plus-circular-mini-button_7543">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-present1"></div>
+		<div class="class-name">.fi-elegant-present1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/present-box_9936">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-profile"></div>
+		<div class="class-name">.fi-elegant-profile</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/profile-user_10003">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-prohibited1"></div>
+		<div class="class-name">.fi-elegant-prohibited1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/prohibited-denied_8915">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-pushpin1"></div>
+		<div class="class-name">.fi-elegant-pushpin1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pushpin-hold_8930">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-question3"></div>
+		<div class="class-name">.fi-elegant-question3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/question-rondure_8762">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-quotations1"></div>
+		<div class="class-name">.fi-elegant-quotations1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/quotations-in-a-small-circle_7625">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-quotations2"></div>
+		<div class="class-name">.fi-elegant-quotations2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/quotations-round_8750">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-quotations"></div>
+		<div class="class-name">.fi-elegant-quotations</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/quotations_7560">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-refresh7"></div>
+		<div class="class-name">.fi-elegant-refresh7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/refresh-update_8912">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-right17"></div>
+		<div class="class-name">.fi-elegant-right17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/right-up-arrow-in-a-circle_8779">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-screen"></div>
+		<div class="class-name">.fi-elegant-screen</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/screen-change_8790">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-screwdriver3"></div>
+		<div class="class-name">.fi-elegant-screwdriver3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/screwdriver-wrench_9156">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-search7"></div>
+		<div class="class-name">.fi-elegant-search7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/search-observe_8914">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-selected"></div>
+		<div class="class-name">.fi-elegant-selected</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/selected-box_8714">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-share16"></div>
+		<div class="class-name">.fi-elegant-share16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/share-button_7615">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-share6"></div>
+		<div class="class-name">.fi-elegant-share6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/share-circle_10200">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-shopping9"></div>
+		<div class="class-name">.fi-elegant-shopping9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shopping-bag-outline_8819">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-simple30"></div>
+		<div class="class-name">.fi-elegant-simple30</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/simple-arrow-left_8747">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-simple31"></div>
+		<div class="class-name">.fi-elegant-simple31</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/simple-arrow-down_8756">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-single"></div>
+		<div class="class-name">.fi-elegant-single</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/single-folder_9970">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small62"></div>
+		<div class="class-name">.fi-elegant-small62</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-circular-compass_7551">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small63"></div>
+		<div class="class-name">.fi-elegant-small63</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-circular-dark-button-with-down-thinny-arrow_7557">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small64"></div>
+		<div class="class-name">.fi-elegant-small64</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-google-drive-social-button_7572">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small65"></div>
+		<div class="class-name">.fi-elegant-small65</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-upload-button-with-an-arrow_7577">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small66"></div>
+		<div class="class-name">.fi-elegant-small66</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-document-button_7578">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small67"></div>
+		<div class="class-name">.fi-elegant-small67</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-black-key_7590">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small68"></div>
+		<div class="class-name">.fi-elegant-small68</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-ascending-thin-arrow_7607">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small69"></div>
+		<div class="class-name">.fi-elegant-small69</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-checked-box_7617">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small70"></div>
+		<div class="class-name">.fi-elegant-small70</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-upload-folder_7633">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small71"></div>
+		<div class="class-name">.fi-elegant-small71</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-book-shape_7636">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small72"></div>
+		<div class="class-name">.fi-elegant-small72</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-pin-shape_7650">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small73"></div>
+		<div class="class-name">.fi-elegant-small73</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-black-cloud_7666">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small74"></div>
+		<div class="class-name">.fi-elegant-small74</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-cloud-upload-symbol_7669">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small75"></div>
+		<div class="class-name">.fi-elegant-small75</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-up-arrows-in-a-circle_7681">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-small77"></div>
+		<div class="class-name">.fi-elegant-small77</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-ribbon_7713">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social10"></div>
+		<div class="class-name">.fi-elegant-social10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/spotify-logo_7709">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social11"></div>
+		<div class="class-name">.fi-elegant-social11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/delicious-logo-in-a-circle_7715">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social16"></div>
+		<div class="class-name">.fi-elegant-social16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-deviantart-square_8698">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social17"></div>
+		<div class="class-name">.fi-elegant-social17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-googledrive-symbol_8766">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social18"></div>
+		<div class="class-name">.fi-elegant-social18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-youtube-circle_8782">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social19"></div>
+		<div class="class-name">.fi-elegant-social19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-twitter-bird-symbol_8800">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social21"></div>
+		<div class="class-name">.fi-elegant-social21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-facebook-roundedsquare_8813">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social22"></div>
+		<div class="class-name">.fi-elegant-social22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-linkedin-square_8821">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social23"></div>
+		<div class="class-name">.fi-elegant-social23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-rss_8931">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social34"></div>
+		<div class="class-name">.fi-elegant-social34</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-blogger-square_9108">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social38"></div>
+		<div class="class-name">.fi-elegant-social38</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-twitter-square_9148">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social39"></div>
+		<div class="class-name">.fi-elegant-social39</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-skype-square_9149">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social40"></div>
+		<div class="class-name">.fi-elegant-social40</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-pinterest_9150">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social41"></div>
+		<div class="class-name">.fi-elegant-social41</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-deviantart-image_9151">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social4"></div>
+		<div class="class-name">.fi-elegant-social4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-tumble-upon-sign_7521">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social5"></div>
+		<div class="class-name">.fi-elegant-social5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-google-plus-square-button_7541">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social67"></div>
+		<div class="class-name">.fi-elegant-social67</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-wordpress-square_9906">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social68"></div>
+		<div class="class-name">.fi-elegant-social68</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-rss-square_9926">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social69"></div>
+		<div class="class-name">.fi-elegant-social69</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-delicious-square_10004">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social6"></div>
+		<div class="class-name">.fi-elegant-social6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-buttons-skype_7544">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social70"></div>
+		<div class="class-name">.fi-elegant-social70</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-rss-circle-internet_10010">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social71"></div>
+		<div class="class-name">.fi-elegant-social71</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-twitter-in-acircle-logo_10033">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social76"></div>
+		<div class="class-name">.fi-elegant-social76</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-vimeo-in-a-circle-logo_10132">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social77"></div>
+		<div class="class-name">.fi-elegant-social77</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-instagram-logo_10137">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social78"></div>
+		<div class="class-name">.fi-elegant-social78</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-picassa-in-a-circle-logo_10140">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social7"></div>
+		<div class="class-name">.fi-elegant-social7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-share-symbol_7588">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social8"></div>
+		<div class="class-name">.fi-elegant-social8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dribble-logo_7612">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social92"></div>
+		<div class="class-name">.fi-elegant-social92</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-googleplus-circle_10778">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-social9"></div>
+		<div class="class-name">.fi-elegant-social9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/social-instagram-circle_7679">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-speech18"></div>
+		<div class="class-name">.fi-elegant-speech18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-balloon_10428">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-spotify1"></div>
+		<div class="class-name">.fi-elegant-spotify1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/spotify-rondure_8710">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-spotify2"></div>
+		<div class="class-name">.fi-elegant-spotify2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/spotify-logo_8729">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-square18"></div>
+		<div class="class-name">.fi-elegant-square18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/square-of-menu-with-horizontal-lines_10019">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-stop5"></div>
+		<div class="class-name">.fi-elegant-stop5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/stop-square_8755">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-stop8"></div>
+		<div class="class-name">.fi-elegant-stop8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/stop-button_9959">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-stumbleupon3"></div>
+		<div class="class-name">.fi-elegant-stumbleupon3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/stumbleupon-rondure_8713">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-stumbleupon5"></div>
+		<div class="class-name">.fi-elegant-stumbleupon5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/stumbleupon-square_9962">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-tablet3"></div>
+		<div class="class-name">.fi-elegant-tablet3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tablet_7512">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-tag10"></div>
+		<div class="class-name">.fi-elegant-tag10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tag-product_9985">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-tags"></div>
+		<div class="class-name">.fi-elegant-tags</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tags-outline_8752">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-target"></div>
+		<div class="class-name">.fi-elegant-target</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/target-circle-and-cross_10769">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-telephone1"></div>
+		<div class="class-name">.fi-elegant-telephone1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/telephone-handset_7550">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-thin3"></div>
+		<div class="class-name">.fi-elegant-thin3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thin-left-up-arrow_7547">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-thin4"></div>
+		<div class="class-name">.fi-elegant-thin4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thin-right-arrow_7556">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-thin5"></div>
+		<div class="class-name">.fi-elegant-thin5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thin-little-up-arrow-in-a-circle_7631">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-thin7"></div>
+		<div class="class-name">.fi-elegant-thin7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thin-left-down-arrow_8771">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-thin8"></div>
+		<div class="class-name">.fi-elegant-thin8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thin-arrow-pointing-to-down_8793">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-toolbox"></div>
+		<div class="class-name">.fi-elegant-toolbox</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/toolbox_9950">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-trash8"></div>
+		<div class="class-name">.fi-elegant-trash8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/trash-recycling-plastic_9924">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-triangular1"></div>
+		<div class="class-name">.fi-elegant-triangular1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/triangular-arrow-to-left-inside-a-circle-outline_8816">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-tumblr4"></div>
+		<div class="class-name">.fi-elegant-tumblr4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tumblr-logo_7667">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-tumblr6"></div>
+		<div class="class-name">.fi-elegant-tumblr6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tumblr-quadrate_10163">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-tumblr7"></div>
+		<div class="class-name">.fi-elegant-tumblr7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tumblr-symbol-in-a-black-round_10196">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-two23"></div>
+		<div class="class-name">.fi-elegant-two23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/two-little-parallel-lines-of-pause_7561">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-two24"></div>
+		<div class="class-name">.fi-elegant-two24</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/two-small-arrows-to-right-in-a-little-circle_7586">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-up11"></div>
+		<div class="class-name">.fi-elegant-up11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/up-and-down-arrows_8826">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-vimeo2"></div>
+		<div class="class-name">.fi-elegant-vimeo2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/vimeo-square_8712">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-volume10"></div>
+		<div class="class-name">.fi-elegant-volume10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/volume-high-loud_8736">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-volume11"></div>
+		<div class="class-name">.fi-elegant-volume11</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/volume-low_10152">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-wheel1"></div>
+		<div class="class-name">.fi-elegant-wheel1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wheel-cog-options_9153">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-wordpress2"></div>
+		<div class="class-name">.fi-elegant-wordpress2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wordpress-logo_7663">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-youtube4"></div>
+		<div class="class-name">.fi-elegant-youtube4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/play-in-a-square_8726">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-zoom14"></div>
+		<div class="class-name">.fi-elegant-zoom14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/zoom-out-tool-symbol_8777">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-zoom16"></div>
+		<div class="class-name">.fi-elegant-zoom16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/zoom-in-alt_8935">Elegant Themes</a></div></div><div class="glyph">
+		<div class="glyph-icon fi-elegant-zoom17"></div>
+		<div class="class-name">.fi-elegant-zoom17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/zoom-in-much_9914">Elegant Themes</a></div></div></section>
+
+<section class="attribution">
+
+	<div class="usetitle">License and attribution:</div><div class="attrDiv">Font generated by <a href="http://www.flaticon.com">flaticon.com</a>
+ under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY</a>. The authors are: <a href="http://www.elegantthemes.com">Elegant Themes</a>.</div><div class="usetitle">Copy the Attribution License:</div>
+
+<textarea onclick="this.focus();this.select();">Font generated by &lt;a href=&quot;http://www.flaticon.com&quot;&gt;flaticon.com&lt;/a&gt;
+ under &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY&lt;/a&gt;. The authors are: &lt;a href=&quot;http://www.elegantthemes.com&quot;&gt;Elegant Themes&lt;/a&gt;.</textarea>
+
+</section>
+
+<section class="iconsuse">
+    	<div class="usetitle">Examples:</div>
+		<div class="image"><p>&lt;i class=&quot;fi-elegant-2x2&quot;&gt;&lt;/i&gt; <i class="fi-elegant-2x2"></i></p><p>&lt;i class=&quot;fi-elegant-3x3&quot;&gt;&lt;/i&gt; <i class="fi-elegant-3x3"></i></p><p>&lt;i class=&quot;fi-elegant-adjust2&quot;&gt;&lt;/i&gt; <i class="fi-elegant-adjust2"></i></p><p>&lt;i class=&quot;fi-elegant-adjust3&quot;&gt;&lt;/i&gt; <i class="fi-elegant-adjust3"></i></p><p>&lt;i class=&quot;fi-elegant-archive5&quot;&gt;&lt;/i&gt; <i class="fi-elegant-archive5"></i></p></div><div class="image"><p>&lt;span class=&quot;fi-elegant-arrow100&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow100"></span></p><p>&lt;span class=&quot;fi-elegant-arrow103&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow103"></span></p><p>&lt;span class=&quot;fi-elegant-arrow105&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow105"></span></p><p>&lt;span class=&quot;fi-elegant-arrow106&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow106"></span></p><p>&lt;span class=&quot;fi-elegant-arrow61&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow61"></span></p></div><div class="image"><p>&lt;span class=&quot;fi-elegant-arrow68&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow68"></span></p><p>&lt;i class=&quot;fi-elegant-arrow69&quot;&gt;&lt;/i&gt; <i class="fi-elegant-arrow69"></i></p><p>&lt;i class=&quot;fi-elegant-arrow70&quot;&gt;&lt;/i&gt; <i class="fi-elegant-arrow70"></i></p><p>&lt;i class=&quot;fi-elegant-arrow71&quot;&gt;&lt;/i&gt; <i class="fi-elegant-arrow71"></i></p><p>&lt;i class=&quot;fi-elegant-arrow72&quot;&gt;&lt;/i&gt; <i class="fi-elegant-arrow72"></i></p></div><div class="image"><p>&lt;span class=&quot;fi-elegant-arrow74&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow74"></span></p><p>&lt;span class=&quot;fi-elegant-arrow75&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow75"></span></p><p>&lt;span class=&quot;fi-elegant-arrow76&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow76"></span></p><p>&lt;span class=&quot;fi-elegant-arrow83&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow83"></span></p><p>&lt;span class=&quot;fi-elegant-arrow84&quot;&gt;&lt;/span&gt; <span class="fi-elegant-arrow84"></span></p></div><div class="image"></div>
+</section>
+<div id="footer">
+    <div>Generated by <a href="http://www.flaticon.com">flaticon.com</a>
+    </div>
+</div>
+	</body>
+</html>
