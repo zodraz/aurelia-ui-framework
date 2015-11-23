@@ -1,7 +1,14 @@
 # Aurelia UI Framework for Business Apps
 ----
 
-** Working on completing ui components **
+
+## [Demo Pages](http://adarshpastakia.github.io/aurelia-ui-framework/)
+
+---
+
+> Presently working on completing ui components
+
+----
 
 ### Core
 * App
