@@ -6,7 +6,9 @@ var ts = require('gulp-typescript');
 var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
-var frameworkPath = '~/Workspace/Personal/hmc-aurelia-framework';
+var dist = '../auf-dist';
+
+var frameworkPath = '~/Workspace/Personal/aurelia-ui-framework';
 gulp.task('copy', function () {
 	gulp.src(frameworkPath + '/sass/stylings/*.scss').pipe(gulp.dest('./sass/stylings'));
 	gulp.src([frameworkPath + '/helpers/*.ts', '!' + frameworkPath + '/helpers/constants.ts']).pipe(gulp.dest('./helpers'));
@@ -81,18 +83,16 @@ var config = {
 		}
 	}
 };
-gulp.task('aurelia:bundle', function() {
+gulp.task('aurelia:bundle', function () {
 	return bundler.bundle(config);
 });
-gulp.task('aurelia:unbundle', function() {
+gulp.task('aurelia:unbundle', function () {
 	return bundler.unbundle(config);
 });
-
-gulp.task('bundle', function () {
-	return runSequence('sass:compile', 'scripts:compile', 'aurelia:bundle');
-});
-gulp.task('unbundle', function () {
-	return runSequence('aurelia:unbundle');
+gulp.task('aurelia:copy', function () {
+	return gulp.src(['./index.html', './config.js', './jspm_packages/system*',
+			'./fonts/**/*', './styles/**/*', './images/**/*', './dist/**/*'], {base: './'})
+		.pipe(gulp.dest(dist));
 });
 
 gulp.task('watch', function () {
@@ -100,8 +100,12 @@ gulp.task('watch', function () {
 	gulp.watch('**/*.ts', ['scripts:compile']);
 });
 
-gulp.task('build', function (callback) {
-	return runSequence('sass:compile', 'scripts:compile', callback);
+gulp.task('build', function () {
+	runSequence('sass:compile', 'scripts:compile');
+});
+
+gulp.task('production', ['build'], function () {
+	runSequence('aurelia:bundle', 'aurelia:copy', 'aurelia:unbundle');
 });
 
 gulp.task('serve', ['build'], function (done) {
