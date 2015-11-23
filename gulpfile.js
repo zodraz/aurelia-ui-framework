@@ -4,7 +4,7 @@ var compass = require('gulp-compass'),
 	plumber = require('gulp-plumber');
 var ts = require('gulp-typescript'),
 	merge = require('merge2');
-var bundle = require('aurelia-bundler').bundle;
+var bundle = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
 var frameworkPath = '~/Workspace/Personal/hmc-aurelia-framework';
@@ -61,9 +61,11 @@ var config = {
 	bundles: {
 		"dist/app-build": {
 			includes: [
-				'*',
-				'*.html!text',
-				'*.css!text'
+				'main*',
+				'src/**/*',
+				'plugins/**/*',
+				'src/**/*.html!text',
+				'plugins/**/*.html!text'
 			],
 			options: {
 				inject: true,
@@ -72,7 +74,9 @@ var config = {
 		},
 		"dist/aurelia": {
 			includes: [
-				'aurelia-*'
+				'jspm_packages/**/aurelia-*',
+				'jspm_packages/**/aurelia-validation*/resources/*',
+				'jspm_packages/**/jquery*'
 			],
 			options: {
 				inject: true,
@@ -81,15 +85,23 @@ var config = {
 		}
 	}
 };
+gulp.task('aurelia:bundle', function() {
+	return bundler.bundle(config);
+});
+gulp.task('aurelia:unbundle', function() {
+	return bundler.unbundle(config);
+});
+
 gulp.task('bundle', function () {
-	return runSequence('sass:compile', 'scripts:compile', function () {
-		bundle(config);
-	});
+	return runSequence('sass:compile', 'scripts:compile', 'aurelia:bundle');
+});
+gulp.task('unbundle', function () {
+	return runSequence('aurelia:unbundle');
 });
 
 gulp.task('watch', function () {
 	gulp.watch('./sass/**/*.scss', ['sass:compile']);
-	gulp.watch(['main.ts', './src/**/*.ts', './plugins/**/*.ts', './services/**/*.ts'], ['scripts:compile']);
+	gulp.watch('**/*.ts', ['scripts:compile']);
 });
 
 gulp.task('build', function (callback) {
@@ -118,6 +130,6 @@ gulp.task('default', function () {
 	process.stdout.write('build - Compile SASS and TypeScript files\n');
 	process.stdout.write('serve - Build and start local web-server\n');
 	process.stdout.write('bundle - Bundle aurelia files');
-	process.stdout.write('bundle - Bundle aurelia files\n');
+	process.stdout.write('unbundle - Un-Bundle aurelia files\n');
 	process.stdout.write('\n');
 });
