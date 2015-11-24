@@ -19,6 +19,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.placeholder1 = '';
             this.placeholder2 = '';
             this.type = 'text';
+            this.area = false;
             this.double = false;
             this.checkbox = false;
             this.checked = false;
@@ -40,8 +41,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.readonly = true;
             if (element.hasAttribute('disabled'))
                 this.disabled = true;
-            if (element.hasAttribute('double'))
-                this.double = true;
+            if (element.hasAttribute('area'))
+                this.area = true;
             if (element.hasAttribute('double'))
                 this.double = true;
             if (element.hasAttribute('checkbox'))
@@ -66,25 +67,23 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.double = true;
                 this.type = 'decimal';
             }
-            if (this.double && this.placeholder) {
+            if (this.placeholder) {
                 _a = this.placeholder.split(','), this.placeholder1 = _a[0], this.placeholder2 = _a[1];
             }
-            if (this.double && this.value) {
-                _b = this.value.split(','), this.value1 = _b[0], this.value2 = _b[1];
+            if (this.value) {
+                this.valueChanged(this.value);
             }
-            if (this.value)
-                this.checked = true;
             if (this.checkbox) {
                 this.disabled = this.checked !== true;
             }
-            var _a, _b;
+            var _a;
         };
         UIInput.prototype.attached = function () {
             var _this = this;
             $(this.inputGroup)
                 .data('UIInput', this)
                 .find('input.ui-input')[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
-                .attr(this.readonly !== false ? 'readonly' : 'D', '')
+                .attr(this.readonly !== false ? 'readonly' : 'R', '')
                 .attr(this.disabled !== false ? 'disabled' : 'D', '')
                 .on('input', function (e) {
                 if (!_this.readonly && !_this.disabled) {
@@ -105,7 +104,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 }
             })
                 .keypress(function (e) {
-                console.log('fff');
                 if (_this.type == 'name') {
                     return (/\w*/)
                         .test(String.fromCharCode(e.charCode));
@@ -129,20 +127,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             })
                 .change(function (e) {
                 var val = $(e.target).val().replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
-                if (_this.type == 'name') {
-                    val = val.replace(new RegExp('[' + 'A-Za-z' + ']+(?=[\'\\.\\-&\\s]*)', 'g'), function (txt) {
-                        if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
-                            return txt.toUpperCase();
-                        if (txt.toLowerCase().indexOf("mc") == 0)
-                            return txt.substr(0, 1).toUpperCase() + txt.substr(1, 1).toLowerCase() + txt.substr(2, 1).toUpperCase() + txt.substr(3);
-                        if (txt.toLowerCase().indexOf("mac") == 0)
-                            return txt.substr(0, 1).toUpperCase() + txt.substr(1, 2).toLowerCase() + txt.substr(3, 1).toUpperCase() + txt.substr(4);
-                        return txt.charAt(0).toUpperCase() + txt.substr(1);
-                    });
-                }
-                else if (_this.type == 'email') {
-                    val = val.toLowerCase();
-                }
+                val = _this._format(val);
                 $(e.target).val(val);
                 if (_this.double && $(e.target).hasClass('ui-secondary'))
                     _this.value2 = val;
@@ -159,7 +144,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         UIInput.prototype.readonlyChanged = function (newValue) {
             $(this.inputGroup).find('input.ui-input')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'D', '');
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
         UIInput.prototype.checkedChanged = function (newValue) {
             if (this.checkbox) {
@@ -167,11 +152,29 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             }
         };
         UIInput.prototype.valueChanged = function (newValue) {
-            $(this.inputGroup).find('input.ui-input')[this.value !== '' ? 'addClass' : 'removeClass']('x');
-            if (this.double && newValue) {
-                _a = newValue.split(','), this.value1 = _a[0], this.value2 = _a[1];
-            }
+            _a = (newValue || '').split(','), this.value1 = _a[0], this.value2 = _a[1];
+            this.value1 = this._format(this.value1 || '');
+            this.value2 = this._format(this.value2 || '');
+            $(this.inputGroup).find('input.ui-primary')[this.value1 !== '' ? 'addClass' : 'removeClass']('x');
+            $(this.inputGroup).find('input.ui-secondary')[this.value2 !== '' ? 'addClass' : 'removeClass']('x');
             var _a;
+        };
+        UIInput.prototype._format = function (val) {
+            if (this.type == 'name') {
+                val = val.replace(new RegExp('[' + 'A-Za-z' + ']+(?=[\'\\.\\-&\\s]*)', 'g'), function (txt) {
+                    if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
+                        return txt.toUpperCase();
+                    if (txt.toLowerCase().indexOf("mc") == 0)
+                        return txt.substr(0, 1).toUpperCase() + txt.substr(1, 1).toLowerCase() + txt.substr(2, 1).toUpperCase() + txt.substr(3);
+                    if (txt.toLowerCase().indexOf("mac") == 0)
+                        return txt.substr(0, 1).toUpperCase() + txt.substr(1, 2).toLowerCase() + txt.substr(3, 1).toUpperCase() + txt.substr(4);
+                    return txt.charAt(0).toUpperCase() + txt.substr(1);
+                });
+            }
+            else if (this.type == 'email') {
+                val = val.toLowerCase();
+            }
+            return val;
         };
         __decorate([
             aurelia_framework_1.bindable, 

@@ -3,7 +3,7 @@ define(["require", "exports", 'jquery'], function (require, exports) {
         aurelia.use
             .standardConfiguration()
             .developmentLogging()
-            .feature('plugins')
+            .feature('framework')
             .plugin('aurelia-validation');
         aurelia.start().then(function (a) { return a.setRoot('src/app.js'); });
     }

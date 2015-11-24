@@ -16,6 +16,9 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 	defaultBindingMode: bindingMode.twoWay,
 	defaultValue: ''
 })
+/**
+ * @bindable checked
+ */
 @bindable({
 	name: 'checked',
 	attribute: 'checked',
@@ -35,9 +38,10 @@ export class UIInput {
 	private placeholder1:string = '';
 	private placeholder2:string = '';
 	private type:string         = 'text';
+	private area:boolean        = false;
 	private double:boolean      = false;
 	private checkbox:boolean    = false;
-	private checked:boolean    = false;
+	private checked:boolean     = false;
 	private labelClasses:string = '';
 	private inputClasses:string = '';
 
@@ -55,7 +59,7 @@ export class UIInput {
 		if (element.hasAttribute('required')) this.labelClasses += ' ui-required ';
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
-		if (element.hasAttribute('double')) this.double = true;
+		if (element.hasAttribute('area')) this.area = true;
 		if (element.hasAttribute('double')) this.double = true;
 		if (element.hasAttribute('checkbox')) this.checkbox = true;
 		// check types
@@ -73,13 +77,12 @@ export class UIInput {
 			this.double = true;
 			this.type   = 'decimal';
 		}
-		if (this.double && this.placeholder) {
+		if (this.placeholder) {
 			[this.placeholder1, this.placeholder2] = this.placeholder.split(',');
 		}
-		if (this.double && this.value) {
-			[this.value1, this.value2] = this.value.split(',');
+		if (this.value) {
+			this.valueChanged(this.value);
 		}
-		if (this.value) this.checked = true;
 		if (this.checkbox) {
 			this.disabled = this.checked !== true;
 		}
@@ -90,7 +93,7 @@ export class UIInput {
 			.data('UIInput', this)
 			.find('input.ui-input')
 			[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
-			.attr(this.readonly !== false ? 'readonly' : 'D', '')
+			.attr(this.readonly !== false ? 'readonly' : 'R', '')
 			.attr(this.disabled !== false ? 'disabled' : 'D', '')
 			.on('input', (e)=> {
 				if (!this.readonly && !this.disabled) {
@@ -111,7 +114,6 @@ export class UIInput {
 				}
 			})
 			.keypress((e) => {
-				console.log('fff');
 				if (this.type == 'name') {
 					return (/\w*/)
 						.test(String.fromCharCode(e.charCode));
@@ -136,21 +138,7 @@ export class UIInput {
 			})
 			.change((e) => {
 				var val = $(e.target).val().replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
-
-				if (this.type == 'name') {
-					val = val.replace(new RegExp('[' + 'A-Za-z' + ']+(?=[\'\\.\\-&\\s]*)', 'g'), (txt) => {
-						if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
-							return txt.toUpperCase();
-						if (txt.toLowerCase().indexOf("mc") == 0)
-							return txt.substr(0, 1).toUpperCase() + txt.substr(1, 1).toLowerCase() + txt.substr(2, 1).toUpperCase() + txt.substr(3);
-						if (txt.toLowerCase().indexOf("mac") == 0)
-							return txt.substr(0, 1).toUpperCase() + txt.substr(1, 2).toLowerCase() + txt.substr(3, 1).toUpperCase() + txt.substr(4);
-						return txt.charAt(0).toUpperCase() + txt.substr(1);
-					});
-				}
-				else if (this.type == 'email') {
-					val = val.toLowerCase();
-				}
+				val     = this._format(val);
 				$(e.target).val(val);
 				if (this.double && $(e.target).hasClass('ui-secondary')) this.value2 = val
 				else this.value1 = val;
@@ -167,7 +155,7 @@ export class UIInput {
 	readonlyChanged(newValue) {
 		$(this.inputGroup).find('input.ui-input')
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'D', '');
+			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}
 
 	checkedChanged(newValue) {
@@ -181,9 +169,28 @@ export class UIInput {
 	 * @param newValue
 	 */
 	private valueChanged(newValue) {
-		$(this.inputGroup).find('input.ui-input')[this.value !== '' ? 'addClass' : 'removeClass']('x');
-		if (this.double && newValue) {
-			[this.value1, this.value2] = newValue.split(',');
+		[this.value1, this.value2] = (newValue || '').split(',');
+		this.value1                = this._format(this.value1 || '');
+		this.value2                = this._format(this.value2 || '');
+		$(this.inputGroup).find('input.ui-primary')[this.value1 !== '' ? 'addClass' : 'removeClass']('x');
+		$(this.inputGroup).find('input.ui-secondary')[this.value2 !== '' ? 'addClass' : 'removeClass']('x');
+	}
+
+	private _format(val) {
+		if (this.type == 'name') {
+			val = val.replace(new RegExp('[' + 'A-Za-z' + ']+(?=[\'\\.\\-&\\s]*)', 'g'), (txt) => {
+				if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
+					return txt.toUpperCase();
+				if (txt.toLowerCase().indexOf("mc") == 0)
+					return txt.substr(0, 1).toUpperCase() + txt.substr(1, 1).toLowerCase() + txt.substr(2, 1).toUpperCase() + txt.substr(3);
+				if (txt.toLowerCase().indexOf("mac") == 0)
+					return txt.substr(0, 1).toUpperCase() + txt.substr(1, 2).toLowerCase() + txt.substr(3, 1).toUpperCase() + txt.substr(4);
+				return txt.charAt(0).toUpperCase() + txt.substr(1);
+			});
 		}
+		else if (this.type == 'email') {
+			val = val.toLowerCase();
+		}
+		return val;
 	}
 }

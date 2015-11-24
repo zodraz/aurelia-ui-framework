@@ -70,14 +70,20 @@
 
 	  .ui-addon {
 		@include flex(0 0 auto);
-		padding: 0.2rem 0.3rem;
+		padding: 4px;
+		min-height: 26px;
+		min-width: 26px;
 		color: $input-addon-text;
 		background: $input-addon-bg;
 		font-family: $input-font-family;
 		border: 1px solid $input-border;
-		line-height: 1.4;
 		font-weight: 500;
 		z-index: 1;
+		span {
+		  min-height: 16px;
+		  min-width: 16px;
+		  font-size: 1rem;
+		}
 	  }
 
 	  .ui-checkbox {

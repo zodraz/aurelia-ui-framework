@@ -1,0 +1,12 @@
+<template>
+		<div class="ui-input-group" ref="optionGroup" ref-id="${id}">
+
+			<label class="ui-label ${labelClasses}">
+				${label}
+			</label>
+
+			<div class="ui-option-group" change.delegate="checkChanged($event)">
+				<content></content>
+			</div>
+		</div>
+</template>

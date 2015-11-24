@@ -1,0 +1,8 @@
+<template>
+	<label class="ui-option ${classes}">
+		<input class="ui-option-input" type="${type}" checked.bind="checked"
+			   name="${name}" value="${value}" change.trigger="checkChanged($event)"/>
+		<span class="ui-check-mark"></span>
+		<span class="ui-label"><content></content></span>
+	</label>
+</template>

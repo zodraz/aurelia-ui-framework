@@ -20,8 +20,10 @@ export class UIForm {
 	}
 
 	attached() {
-		$(this.form).data('UIForm', this)
-			.find('input,textarea').first().focus();
+		setTimeout(()=> {
+			$(this.form).data('UIForm', this)
+				.find('input,textarea').first().focus();
+		}, 200);
 	}
 
 	keyup($event) {

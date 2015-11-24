@@ -17,6 +17,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./core/ui-statsbar');
 
 	aurelia.globalResources('./containers/ui-button-group');
+	aurelia.globalResources('./containers/ui-option-group');
 	aurelia.globalResources('./containers/ui-grid-column');
 	aurelia.globalResources('./containers/ui-grid');
 	aurelia.globalResources('./containers/ui-menu');
@@ -25,4 +26,5 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./components/ui-button');
 	aurelia.globalResources('./components/ui-switch');
 	aurelia.globalResources('./components/ui-input');
+	aurelia.globalResources('./components/ui-option');
 }

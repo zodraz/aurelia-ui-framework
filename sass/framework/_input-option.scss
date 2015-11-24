@@ -5,15 +5,20 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-checkbox, .ui-radio {
-  @include size(26px, 26px);
+.ui-option {
+  @include size(auto, 26px);
   position: relative;
   padding: 3px !important;
   text-align: center;
+  display: inline-flex;
   border: 1px solid transparent;
 
+  &.ui-addon {
+	width: 26px;
+  }
+
   .ui-option-input {
-	@include size(26px, 26px);
+	@include size(100%, 26px);
 	@include position(absolute, 0 null null 0);
 	cursor: pointer;
 	z-index: 2;
@@ -27,6 +32,7 @@
 	position: relative;
 	border-radius: 3px;
 	color: $input-option-color;
+	background: $input-bg;
 	border: 1px solid $input-option-color;
 	@include box-shadow(0 0 2px 1px $base-shadow-color inset);
 
@@ -37,32 +43,50 @@
 	  text-align: left;
 	  font-weight: 600;
 	  top: -1px;
-	  left: -0.5px;
+	  left: -1px;
 	  font-family: Essential;
 	  position: relative;
 	}
   }
   .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
-  .ui-option-input:hover:not(:disabled) ~ .ui-check-mark{
+  .ui-option-input:hover:not(:disabled) ~ .ui-check-mark {
 	color: $input-option-color-focus;
 	border-color: $input-option-color-focus;
 	@include box-shadow(0 0 3px 1px $input-option-color-focus inset);
-  }
-  .ui-option-input:checked ~ .ui-check-mark:after {
-	content: '\e035';
   }
   .ui-option-input:disabled ~ .ui-check-mark {
 	color: $input-option-color-disabled;
 	border-color: $input-option-color-disabled;
 	@include box-shadow(0 0 2px 1px tint($input-option-color-disabled, 5%) inset);
   }
-}
-
-.ui-radio {
-  .ui-check-mark {
+  &.ui-radio .ui-check-mark {
 	border-radius: 9px;
   }
-  .ui-option-input:checked ~ .ui-check-mark:after {
+  &.ui-checkbox .ui-option-input:checked ~ .ui-check-mark:after {
+	content: '\e035';
+  }
+  &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
 	content: '\e039';
+  }
+
+  .ui-label {
+	@include size(auto, 26px);
+	display: inline-block;
+	padding: 0.3rem 0.5rem;
+  }
+}
+
+.ui-option-group {
+  @include flex-row(flex-start, flex-start, true);
+  @include flex(1 1 auto);
+  .ui-option {
+	@include flex(1 1 33.33%);
+	.ui-label {
+	  width: auto;
+	  flex: 1 0 0%;
+	  text-align: start;
+	  padding: 0.15rem 0.3rem;
+	  @include ellipsis();
+	}
   }
 }

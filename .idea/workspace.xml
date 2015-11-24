@@ -2,40 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18e4602c-b0b9-41c9-a49b-75ab5838207e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/aurelia-ui-framework.iml" afterPath="$PROJECT_DIR$/.idea/aurelia-ui-framework.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-button.html" afterPath="$PROJECT_DIR$/framework/components/ui-button.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-button.js" afterPath="$PROJECT_DIR$/framework/components/ui-button.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-button.ts" afterPath="$PROJECT_DIR$/framework/components/ui-button.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-input.html" afterPath="$PROJECT_DIR$/framework/components/ui-input.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-input.js" afterPath="$PROJECT_DIR$/framework/components/ui-input.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-input.ts" afterPath="$PROJECT_DIR$/framework/components/ui-input.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-switch.html" afterPath="$PROJECT_DIR$/framework/components/ui-switch.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-switch.js" afterPath="$PROJECT_DIR$/framework/components/ui-switch.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/components/ui-switch.ts" afterPath="$PROJECT_DIR$/framework/components/ui-switch.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-button-group.html" afterPath="$PROJECT_DIR$/framework/containers/ui-button-group.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-button-group.js" afterPath="$PROJECT_DIR$/framework/containers/ui-button-group.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-button-group.ts" afterPath="$PROJECT_DIR$/framework/containers/ui-button-group.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-form.html" afterPath="$PROJECT_DIR$/framework/containers/ui-form.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-form.js" afterPath="$PROJECT_DIR$/framework/containers/ui-form.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-form.ts" afterPath="$PROJECT_DIR$/framework/containers/ui-form.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid-column.html" afterPath="$PROJECT_DIR$/framework/containers/ui-grid-column.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid-column.js" afterPath="$PROJECT_DIR$/framework/containers/ui-grid-column.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid-column.ts" afterPath="$PROJECT_DIR$/framework/containers/ui-grid-column.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid.html" afterPath="$PROJECT_DIR$/framework/containers/ui-grid.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid.js" afterPath="$PROJECT_DIR$/framework/containers/ui-grid.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid.ts" afterPath="$PROJECT_DIR$/framework/containers/ui-grid.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-menu.html" afterPath="$PROJECT_DIR$/framework/containers/ui-menu.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-menu.js" afterPath="$PROJECT_DIR$/framework/containers/ui-menu.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/containers/ui-menu.ts" afterPath="$PROJECT_DIR$/framework/containers/ui-menu.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-app.html" afterPath="$PROJECT_DIR$/framework/core/ui-app.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-app.js" afterPath="$PROJECT_DIR$/framework/core/ui-app.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-app.ts" afterPath="$PROJECT_DIR$/framework/core/ui-app.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-content.html" afterPath="$PROJECT_DIR$/framework/core/ui-content.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-content.js" afterPath="$PROJECT_DIR$/framework/core/ui-content.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-content.ts" afterPath="$PROJECT_DIR$/framework/core/ui-content.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-header.html" afterPath="$PROJECT_DIR$/framework/core/ui-header.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-header.js" afterPath="$PROJECT_DIR$/framework/core/ui-header.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-header.ts" afterPath="$PROJECT_DIR$/framework/core/ui-header.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-page.html" afterPath="$PROJECT_DIR$/framework/core/ui-page.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-page.js" afterPath="$PROJECT_DIR$/framework/core/ui-page.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-page.ts" afterPath="$PROJECT_DIR$/framework/core/ui-page.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-section.html" afterPath="$PROJECT_DIR$/framework/core/ui-section.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-section.js" afterPath="$PROJECT_DIR$/framework/core/ui-section.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-section.ts" afterPath="$PROJECT_DIR$/framework/core/ui-section.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-sidebar.html" afterPath="$PROJECT_DIR$/framework/core/ui-sidebar.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-sidebar.js" afterPath="$PROJECT_DIR$/framework/core/ui-sidebar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-sidebar.ts" afterPath="$PROJECT_DIR$/framework/core/ui-sidebar.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-statsbar.html" afterPath="$PROJECT_DIR$/framework/core/ui-statsbar.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-statsbar.js" afterPath="$PROJECT_DIR$/framework/core/ui-statsbar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-statsbar.ts" afterPath="$PROJECT_DIR$/framework/core/ui-statsbar.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-toolbar.html" afterPath="$PROJECT_DIR$/framework/core/ui-toolbar.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-toolbar.js" afterPath="$PROJECT_DIR$/framework/core/ui-toolbar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/core/ui-toolbar.ts" afterPath="$PROJECT_DIR$/framework/core/ui-toolbar.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/index.js" afterPath="$PROJECT_DIR$/framework/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/index.ts" afterPath="$PROJECT_DIR$/framework/index.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/utils/ui-event.js" afterPath="$PROJECT_DIR$/framework/utils/ui-event.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/plugins/utils/ui-event.ts" afterPath="$PROJECT_DIR$/framework/utils/ui-event.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sass/framework/_option-input.scss" afterPath="$PROJECT_DIR$/sass/framework/_input-option.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/components/ui-button.html" afterPath="$PROJECT_DIR$/plugins/components/ui-button.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/components/ui-button.js" afterPath="$PROJECT_DIR$/plugins/components/ui-button.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/components/ui-button.ts" afterPath="$PROJECT_DIR$/plugins/components/ui-button.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/components/ui-switch.html" afterPath="$PROJECT_DIR$/plugins/components/ui-switch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/components/ui-switch.js" afterPath="$PROJECT_DIR$/plugins/components/ui-switch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/components/ui-switch.ts" afterPath="$PROJECT_DIR$/plugins/components/ui-switch.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-form.html" afterPath="$PROJECT_DIR$/plugins/containers/ui-form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-form.js" afterPath="$PROJECT_DIR$/plugins/containers/ui-form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-form.ts" afterPath="$PROJECT_DIR$/plugins/containers/ui-form.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid-column.html" afterPath="$PROJECT_DIR$/plugins/containers/ui-grid-column.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid-column.js" afterPath="$PROJECT_DIR$/plugins/containers/ui-grid-column.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid-column.ts" afterPath="$PROJECT_DIR$/plugins/containers/ui-grid-column.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid.html" afterPath="$PROJECT_DIR$/plugins/containers/ui-grid.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid.js" afterPath="$PROJECT_DIR$/plugins/containers/ui-grid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/containers/ui-grid.ts" afterPath="$PROJECT_DIR$/plugins/containers/ui-grid.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/core/ui-app.html" afterPath="$PROJECT_DIR$/plugins/core/ui-app.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/index.js" afterPath="$PROJECT_DIR$/plugins/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/index.ts" afterPath="$PROJECT_DIR$/plugins/index.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_base.scss" afterPath="$PROJECT_DIR$/sass/framework/_base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_buttons.scss" afterPath="$PROJECT_DIR$/sass/framework/_buttons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_containers.scss" afterPath="$PROJECT_DIR$/sass/framework/_containers.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.ts" afterPath="$PROJECT_DIR$/main.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_form.scss" afterPath="$PROJECT_DIR$/sass/framework/_form.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_framework.scss" afterPath="$PROJECT_DIR$/sass/framework/_framework.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_grid.scss" afterPath="$PROJECT_DIR$/sass/framework/_grid.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_menu.scss" afterPath="$PROJECT_DIR$/sass/framework/_menu.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_switch.scss" afterPath="$PROJECT_DIR$/sass/framework/_switch.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_variables.scss" afterPath="$PROJECT_DIR$/sass/framework/_variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.ts" afterPath="$PROJECT_DIR$/src/app.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_reset.scss" afterPath="$PROJECT_DIR$/sass/framework/_reset.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/buttons.html" afterPath="$PROJECT_DIR$/src/home/buttons.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/form.html" afterPath="$PROJECT_DIR$/src/home/form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/form.js" afterPath="$PROJECT_DIR$/src/home/form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/form.ts" afterPath="$PROJECT_DIR$/src/home/form.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/grid.html" afterPath="$PROJECT_DIR$/src/home/grid.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/page.html" afterPath="$PROJECT_DIR$/src/home/page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/app.css" afterPath="$PROJECT_DIR$/styles/app.css" />
     </list>
     <ignored path="aurelia-ui-framework.iws" />
@@ -64,7 +94,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/plugins/utils/ui-event.ts" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/init.sh" />
         <option value="$PROJECT_DIR$/config.js" />
@@ -74,9 +103,7 @@
         <option value="$PROJECT_DIR$/plugins/containers/ui-grid.ts" />
         <option value="$PROJECT_DIR$/plugins/core/ui-app.html" />
         <option value="$PROJECT_DIR$/sass/framework/_menu.scss" />
-        <option value="$PROJECT_DIR$/src/home/buttons.html" />
         <option value="$PROJECT_DIR$/src/home/page.html" />
-        <option value="$PROJECT_DIR$/plugins/index.ts" />
         <option value="$PROJECT_DIR$/sass/framework/_grid.scss" />
         <option value="$PROJECT_DIR$/plugins/containers/ui-form.html" />
         <option value="$PROJECT_DIR$/plugins/components/ui-switch.html" />
@@ -84,24 +111,36 @@
         <option value="$PROJECT_DIR$/plugins/components/ui-button.ts" />
         <option value="$PROJECT_DIR$/plugins/components/ui-button.html" />
         <option value="$PROJECT_DIR$/sass/framework/_buttons.scss" />
-        <option value="$PROJECT_DIR$/plugins/containers/ui-form.ts" />
-        <option value="$PROJECT_DIR$/src/home/form.ts" />
         <option value="$PROJECT_DIR$/sass/framework/_switch.scss" />
-        <option value="$PROJECT_DIR$/sass/framework/_framework.scss" />
         <option value="$PROJECT_DIR$/sass/framework/_variables.scss" />
-        <option value="$PROJECT_DIR$/sass/framework/_option-input.scss" />
-        <option value="$PROJECT_DIR$/plugins/components/ui-input.ts" />
         <option value="$PROJECT_DIR$/sass/framework/_containers.scss" />
         <option value="$PROJECT_DIR$/sass/framework/_input.scss" />
         <option value="$PROJECT_DIR$/sass/framework/_base.scss" />
-        <option value="$PROJECT_DIR$/plugins/components/ui-input.html" />
-        <option value="$PROJECT_DIR$/sass/framework/_form.scss" />
         <option value="$PROJECT_DIR$/src/app.ts" />
-        <option value="$PROJECT_DIR$/src/home/form.html" />
-        <option value="$PROJECT_DIR$/src/home/grid.html" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/plugins/containers/ui-grid-column.ts" />
         <option value="$PROJECT_DIR$/plugins/containers/ui-grid-column.html" />
+        <option value="$PROJECT_DIR$/sass/framework/_reset.scss" />
+        <option value="$PROJECT_DIR$/sass/framework/_form.scss" />
+        <option value="$PROJECT_DIR$/sass/framework/_option-input.scss" />
+        <option value="$PROJECT_DIR$/plugins/components/ui-checkbox.ts" />
+        <option value="$PROJECT_DIR$/plugins/components/ui-checkbox.html" />
+        <option value="$PROJECT_DIR$/sass/framework/_framework.scss" />
+        <option value="$PROJECT_DIR$/plugins/components/ui-input.html" />
+        <option value="$PROJECT_DIR$/plugins/index.ts" />
+        <option value="$PROJECT_DIR$/plugins/utils/ui-event.ts" />
+        <option value="$PROJECT_DIR$/plugins/components/ui-option.html" />
+        <option value="$PROJECT_DIR$/plugins/containers/ui-option-group.html" />
+        <option value="$PROJECT_DIR$/sass/framework/_input-option.scss" />
+        <option value="$PROJECT_DIR$/src/home/form.ts" />
+        <option value="$PROJECT_DIR$/plugins/components/ui-input.ts" />
+        <option value="$PROJECT_DIR$/src/home/grid.html" />
+        <option value="$PROJECT_DIR$/src/home/buttons.html" />
+        <option value="$PROJECT_DIR$/plugins/components/ui-option.ts" />
+        <option value="$PROJECT_DIR$/plugins/containers/ui-option-group.ts" />
+        <option value="$PROJECT_DIR$/plugins/containers/ui-form.ts" />
+        <option value="$PROJECT_DIR$/src/home/form.html" />
+        <option value="$PROJECT_DIR$/main.ts" />
       </list>
     </option>
   </component>
@@ -279,7 +318,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,7 +332,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui-event.ts" />
+              <option name="myItemType" value="com.intellij.lang.typescript.compiler.ui.projectView.TypeScriptNestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aurelia-ui-framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aurelia-ui-framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -311,7 +372,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -329,7 +390,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="plugins" />
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -427,7 +488,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954791" sideWeight="0.49898168" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24954791" sideWeight="0.794898" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -450,74 +511,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plugins/utils/ui-event.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30697674">
-          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3322546">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3564464">
-          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26162162">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.1802936">
-          <caret line="268" column="0" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23060797">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-button-group.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-button-group.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-menu.ts">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-menu.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34591195">
           <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
@@ -527,7 +521,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/core/ui-page.html">
+    <entry file="file://$PROJECT_DIR$/framework/core/ui-page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -551,14 +545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/home/page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8387096">
-          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Junk/aurelia-bootstrap-starter/sass/stylings/_form.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.096775">
@@ -567,17 +553,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5073375">
-          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-grid.html">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-grid.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02383532">
           <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
@@ -601,7 +577,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-grid.ts">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-grid.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
@@ -609,26 +585,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/components/ui-switch.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/components/ui-button.html">
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-button.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04777416">
           <caret line="2" column="71" selection-start-line="2" selection-start-column="71" selection-end-line="2" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/components/ui-button.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -641,18 +601,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-form.html">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04777416">
           <caret line="2" column="65" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/home/form.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -661,30 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="89" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-form.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/home/buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.064516">
-          <caret line="17" column="14" selection-start-line="11" selection-start-column="8" selection-end-line="17" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/framework/_reset.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -713,18 +641,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/components/ui-switch.html">
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-switch.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7096774">
           <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/framework/_option-input.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.387096">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -737,18 +657,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/core/ui-app.html">
+    <entry file="file://$PROJECT_DIR$/framework/core/ui-app.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28664497">
           <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/framework/_framework.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42996743">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -769,38 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/components/ui-input.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.023109244">
-          <caret line="113" column="35" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/components/ui-input.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4538545">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/framework/_input.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.516129">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sass/framework/_form.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3170467">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -817,26 +697,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-menu.html">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-menu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59717697">
           <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/home/grid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26275787">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/home/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.412595">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -849,7 +713,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-grid-column.ts">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-grid-column.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
@@ -857,10 +721,206 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/containers/ui-grid-column.html">
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-grid-column.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09554832">
           <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/framework/_reset.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52551574">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/framework/_input.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.05103149">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/framework/_framework.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64495116">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/framework/_form.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4668838">
+          <caret line="81" column="12" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-button-group.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8382353">
+          <caret line="104" column="5" selection-start-line="76" selection-start-column="4" selection-end-line="104" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/utils/ui-event.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4159664">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-option-group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26275787">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sass/framework/_input-option.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5233442">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-input.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.806452">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78827363">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/grid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47448426">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/buttons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66558087">
+          <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-option.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07166124">
+          <caret line="3" column="75" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-option-group.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/containers/ui-form.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/form.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.870968">
+          <caret line="55" column="28" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-option.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-input.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-button.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/components/ui-switch.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5546219">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03497615">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
           <folding />
         </state>
       </provider>

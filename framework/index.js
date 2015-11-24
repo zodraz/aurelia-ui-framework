@@ -9,6 +9,7 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./core/ui-toolbar');
         aurelia.globalResources('./core/ui-statsbar');
         aurelia.globalResources('./containers/ui-button-group');
+        aurelia.globalResources('./containers/ui-option-group');
         aurelia.globalResources('./containers/ui-grid-column');
         aurelia.globalResources('./containers/ui-grid');
         aurelia.globalResources('./containers/ui-menu');
@@ -16,6 +17,7 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./components/ui-button');
         aurelia.globalResources('./components/ui-switch');
         aurelia.globalResources('./components/ui-input');
+        aurelia.globalResources('./components/ui-option');
     }
     exports.configure = configure;
 });

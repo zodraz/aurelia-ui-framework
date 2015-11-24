@@ -10,36 +10,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
-    var UIForm = (function () {
-        function UIForm(element) {
+    var UIOption = (function () {
+        function UIOption(element) {
             this.element = element;
-            this.id = '';
-            this.class = '';
+            this.type = '';
             this.classes = '';
+            this.checked = false;
+            this.checkbox = true;
+            this.name = '';
+            this.value = '';
+            if (element.hasAttribute('radio'))
+                this.checkbox = false;
         }
-        UIForm.prototype.attached = function () {
-            $(this.form).data('UIForm', this)
-                .find('input,textarea').first().focus();
+        UIOption.prototype.bind = function () {
+            this.type = this.checkbox ? 'checkbox' : 'radio';
+            this.classes = this.checkbox ? 'ui-checkbox' : 'ui-radio';
         };
-        UIForm.prototype.keyup = function ($event) {
-            if (!$($event.target).is('textarea') && $event.keyCode == 13)
-                console.log('Submit');
+        UIOption.prototype.checkChanged = function ($event) {
+            $event.data = this.checkbox ? this.checked : this.value;
         };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIForm.prototype, "id");
+        ], UIOption.prototype, "name");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIForm.prototype, "class");
-        UIForm = __decorate([
+        ], UIOption.prototype, "value");
+        UIOption = __decorate([
+            aurelia_framework_1.bindable({
+                name: 'checked',
+                attribute: 'checked',
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
+                defaultValue: false
+            }),
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
-            aurelia_framework_1.customElement('ui-form'), 
+            aurelia_framework_1.customElement('ui-option'), 
             __metadata('design:paramtypes', [Element])
-        ], UIForm);
-        return UIForm;
+        ], UIOption);
+        return UIOption;
     })();
-    exports.UIForm = UIForm;
+    exports.UIOption = UIOption;
 });
