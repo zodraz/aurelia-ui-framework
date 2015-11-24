@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         function UIButton(element) {
             this.element = element;
             this.classes = '';
+            this.disabled = false;
             this.size = "normal";
             this.theme = "default";
             this.default = false;
@@ -48,6 +49,15 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 $(this.button).append('&nbsp;<i class="ui-caret"></i>');
             }
         };
+        UIButton.prototype.attached = function () {
+            $(this.button)
+                .data('UIButton', this)
+                .attr(this.disabled !== false ? 'disabled' : 'x', '');
+        };
+        UIButton.prototype.disabledChanged = function (newValue) {
+            $(this.button)
+                .attr(newValue !== false ? 'disabled' : 'x', '');
+        };
         UIButton.prototype.attachIcon = function () {
             if (!this.iconEl) {
                 this.iconEl = $(this.button).prepend('<i></i>').children('i');
@@ -65,6 +75,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         __decorate([
             aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIButton.prototype, "menu");
+        __decorate([
+            aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIButton.prototype, "value");
         __decorate([
@@ -73,8 +87,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         ], UIButton.prototype, "icon");
         __decorate([
             aurelia_framework_1.bindable, 
-            __metadata('design:type', Object)
-        ], UIButton.prototype, "menu");
+            __metadata('design:type', Boolean)
+        ], UIButton.prototype, "disabled");
         UIButton = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),

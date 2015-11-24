@@ -140,7 +140,14 @@ html, body {
   }
 
   .ui-app-view {
-	@include flex(1 1 auto);
+	@include flexbox((
+			display:flex,
+			flex-direction:column,
+			align-items:stretch,
+			flex-wrap:nowrap
+	));
+	@include flex(1 1 0%);
+	overflow: hidden;
 
 	.ui-page-title {
 	  @include flex(0 0 auto);
@@ -149,7 +156,7 @@ html, body {
 	  color: $app-header-text;
 	  background: lighten($app-header-bg, 4%);
 	  font-size: 1.1rem;
-	  padding: 0.3rem 0.75rem;
+	  padding: $base-padding;
 	  font-weight: $font-weight-strong;
 	  font-variant: small-caps;
 	  text-align: center;
@@ -175,7 +182,7 @@ html, body {
 	.ui-auth-info {
 	  @include sticky();
 	  top: 0;
-	  padding: .5rem 1rem;
+	  padding: $base-padding;
 	  background: $app-menu-bg;
 	  @if ($app-menu-bg-image) {
 		background-image: image_url($app-menu-bg-image);

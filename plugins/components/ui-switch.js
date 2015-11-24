@@ -13,9 +13,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
     var UISwitch = (function () {
         function UISwitch(element) {
             this.element = element;
+            this.id = '';
             this.labelOn = 'On';
             this.labelOff = 'Off';
             this.theme = 'default';
+            this.disabled = false;
             if (element.hasAttribute('check'))
                 this.checked = true;
             if (element.hasAttribute('primary'))
@@ -35,6 +37,16 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (element.hasAttribute('priority'))
                 this.theme = 'priority';
         }
+        UISwitch.prototype.attached = function () {
+            $(this.switch)
+                .data('UISwitch', this)
+                .find('input')
+                .attr(this.disabled !== false ? 'disabled' : 'x', '');
+        };
+        UISwitch.prototype.disabledChanged = function (newValue) {
+            $(this.switch).find('input')
+                .attr(newValue !== false ? 'disabled' : 'x', '');
+        };
         UISwitch.prototype.valueChanged = function (newValue) {
             ui_event_1.UIEvent.fireEvent('change', this.element, newValue);
         };
@@ -47,6 +59,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
+        ], UISwitch.prototype, "id");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
         ], UISwitch.prototype, "labelOn");
         __decorate([
             aurelia_framework_1.bindable, 
@@ -56,6 +72,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UISwitch.prototype, "theme");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UISwitch.prototype, "disabled");
         UISwitch = __decorate([
             aurelia_framework_1.bindable({
                 name: 'checked',

@@ -1,0 +1,70 @@
+<template>
+	<div class="pad-all">
+		<h4 class="margin-v">Forms</h4>
+		<ui-form class="border-all pad-v">
+			<ui-column>
+				<ui-input name required clear value.bind="fname">First Name</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-input name required clear value.bind="lname">Last Name</ui-input>
+			</ui-column>
+			<ui-column full>
+				<ui-input email addon-text="@" required clear value.bind="email">Email</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-input position checkbox checked.bind="hasLoc" value.bind="pos" placeholder="Latitude,Longitude"
+						  addon-icon="fi-elegant-map5"
+						  required clear>Location
+				</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-input number addon-text="+1" required clear value.bind="phone">Phone</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-input addon-text="999" button-text="Go" readonly>Readonly</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-input addon-text="999" button-text="Go" disabled>Disabled<span>Cant Change</span></ui-input>
+			</ui-column>
+		</ui-form>
+
+		<ui-grid>
+			<ui-column width="120px"></ui-column>
+			<ui-column fill>
+				<p>First Name: ${fname}</p>
+
+				<p>Last Name: ${lname}</p>
+
+				<p>Email: ${email}</p>
+			</ui-column>
+			<ui-column width="120px"></ui-column>
+			<ui-column fill>
+
+				<p>Phone: ${phone}</p>
+
+				<p>Has Location: ${hasLoc?'Yes':'No'}</p>
+
+				<p>Location: ${pos}</p>
+
+			</ui-column>
+		</ui-grid>
+
+
+	</div>
+	<div class="margin-v pad-all">
+		<h5>Usage</h5>
+
+		<p>Double input uses comma separated values and placeholders</p>
+
+		<p>Checkbox will add a checkbox addon that will enable/disable input field</p>
+
+		<p><code>&lt;ui-input [readonly|disabled] [double] [required] [clear]<br/>
+			<em>type?</em>[text|email|number|decimal|name|address|position]<br/>
+			<em>addon?</em>[addon-icon='' | addon-text='']<br/>
+			<em>button?</em>[button-icon='' | button-text='']<br/>
+			[checkbox checked.bind="true|false"]<br/>
+			[value.bind='' | value.bind="v1,v2"]<br/>
+			[placeholder.bind='' | placeholder.bind="v1,v2"]<br/>
+			[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
+	</div>
+</template>

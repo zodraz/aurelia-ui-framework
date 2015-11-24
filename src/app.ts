@@ -57,6 +57,6 @@ export class App {
 	}
 
 	logout() {
-		this.router['options'].isAuthenticated = !this.router['options'].isAuthenticated
+		this.router['options'].isAuthenticated = !this.router['options'].isAuthenticated;
 	}
 }

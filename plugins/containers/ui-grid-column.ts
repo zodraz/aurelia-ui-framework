@@ -15,12 +15,17 @@ export class UIGridColumn {
 	@bindable class:string = '';
 	@bindable size:string  = 'auto';
 	@bindable width:string = 'auto';
+	@bindable minWidth:string = '0';
 
 	constructor(el:Element) {
 		if (el.hasAttribute('auto'))this.size = 'auto';
 		if (el.hasAttribute('fill'))this.size = 'fill';
 		if (el.hasAttribute('full'))this.size = 'full';
 		if (el.hasAttribute('row'))this.classes += ' ui-row ';
+		if (el.hasAttribute('stretch'))this.classes += ' ui-stretch ';
+		if (el.hasAttribute('middle')) this.classes += ' ui-middle ';
+		if (el.hasAttribute('bottom')) this.classes += ' ui-bottom ';
+		if (el.hasAttribute('top')) this.classes += ' ui-top ';
 	}
 
 	bind() {

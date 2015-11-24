@@ -1,8 +1,11 @@
 <template>
 	<div class="pad-all">
-		<h4>Grid Layout</h4>
+		<h4 class="margin-v">Grid Layout</h4>
 
 		<ui-grid class="margin-v">
+			<ui-column width="120px" class="border-all">width 120px</ui-column>
+			<ui-column auto class="border-all">col-auto</ui-column>
+			<ui-column fill class="border-all">col-fill</ui-column>
 			<ui-column width="120px" class="border-all">width 120px</ui-column>
 			<ui-column auto class="border-all">col-auto</ui-column>
 			<ui-column fill class="border-all">col-fill</ui-column>
@@ -121,9 +124,9 @@
 			<h5>Usage</h5>
 
 			<p><code>
-				&lt;ui-grid [nowrap]>
+				&lt;ui-grid [nowrap] [start|center|end|stretch]>
 				<br/>
-				&nbsp;&nbsp;&lt;ui-column [ [size=''] | [width=''] | [<em>auto</em>|fill|full] ]>...
+				&nbsp;&nbsp;&lt;ui-column [row] [top|middle|bottom|stretch] [ [size=''] | [width=''] | [<em>auto</em>|fill|full] ]>...
 				<br/>
 				&lt;/ui-grid>
 			</code>

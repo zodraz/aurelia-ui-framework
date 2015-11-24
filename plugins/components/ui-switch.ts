@@ -14,7 +14,7 @@ import {UIEvent} from "../utils/ui-event";
 @bindable({
 	name: 'checked',
 	attribute: 'checked',
-	changeHandler:'valueChanged',
+	changeHandler: 'valueChanged',
 	defaultBindingMode: bindingMode.twoWay,
 	defaultValue: false
 })
@@ -23,9 +23,11 @@ import {UIEvent} from "../utils/ui-event";
 @containerless()
 @customElement('ui-switch')
 export class UISwitch {
-	@bindable labelOn:string  = 'On';
-	@bindable labelOff:string = 'Off';
-	@bindable theme:string    = 'default';
+	@bindable id:string        = '';
+	@bindable labelOn:string   = 'On';
+	@bindable labelOff:string  = 'Off';
+	@bindable theme:string     = 'default';
+	@bindable disabled:boolean = false;
 
 	private switch;
 	private checked:boolean;
@@ -43,6 +45,18 @@ export class UISwitch {
 		if (element.hasAttribute('ampm'))this.theme = 'ampm';
 		if (element.hasAttribute('gender'))this.theme = 'gender';
 		if (element.hasAttribute('priority'))this.theme = 'priority';
+	}
+
+	attached() {
+		$(this.switch)
+			.data('UISwitch', this)
+			.find('input')
+			.attr(this.disabled !== false ? 'disabled' : 'x', '');
+	}
+
+	disabledChanged(newValue) {
+		$(this.switch).find('input')
+			.attr(newValue !== false ? 'disabled' : 'x', '');
 	}
 
 	private valueChanged(newValue) {

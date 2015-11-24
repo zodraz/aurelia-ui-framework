@@ -25,13 +25,11 @@
 	box-sizing: content-box;
 
 	&.ui-focus {
-	  box-shadow: 0 0 3px 0 $input-border-focus, 0 0 8px 1px $input-border-focus inset;
+	  box-shadow: 0 0 3px 0 $input-focus-color, 0 0 8px 1px $input-focus-color inset;
 	}
 
 	.ui-switch-input {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
+	  @include position(absolute, 0);
 	  opacity: 0
 	}
 

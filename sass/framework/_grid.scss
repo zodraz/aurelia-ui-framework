@@ -15,32 +15,28 @@
   }
 }
 
-.ui-flex-row {
+@mixin flex-row($align:center, $justify: flex-start, $wrap:true) {
   @include flexbox((
 		  display:flex,
 		  flex-direction:row,
-		  align-items:stretch,
-		  flex-wrap:nowrap
+		  align-items:$align,
+		  justify-content: $justify,
+		  flex-wrap: if($wrap, wrap, nowrap)
   ));
 }
 
-.ui-flex-column {
+@mixin flex-column($align:stretch, $justify: flex-start, $wrap:true) {
   @include flexbox((
 		  display:flex,
 		  flex-direction:column,
-		  align-items:stretch,
-		  flex-wrap:nowrap
+		  align-items:$align,
+		  justify-content: flex-start,
+		  flex-wrap: if($wrap, wrap, nowrap)
   ));
 }
 
 .ui-row {
-  @include flexbox((
-		  display:flex,
-		  flex-direction: row,
-		  flex-wrap: wrap,
-		  align-items:flex-top,
-		  justify-content: flex-start
-  ));
+  @include flex-row(flex-start);
 
   &.ui-nowrap {
 	@include flex-wrap(nowrap);
@@ -68,7 +64,7 @@
   }
 
   [class*='ui-col-'], [class~='ui-col-'] {
-	padding: 0.2rem 0.4rem;
+	padding: 0.25rem 0.5rem;
 	@include flex(0 0 100%);
   }
 

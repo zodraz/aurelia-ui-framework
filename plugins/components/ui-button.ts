@@ -16,9 +16,10 @@ export class UIButton {
 	private button;
 	private dropdown;
 
+	@bindable menu;
 	@bindable value:string;
 	@bindable icon:string;
-	@bindable menu;
+	@bindable disabled:boolean = false;
 
 	private size:string     = "normal";
 	private theme:string    = "default";
@@ -52,6 +53,17 @@ export class UIButton {
 		if (this.menu) {
 			$(this.button).append('&nbsp;<i class="ui-caret"></i>');
 		}
+	}
+
+	attached() {
+		$(this.button)
+			.data('UIButton', this)
+			.attr(this.disabled !== false ? 'disabled' : 'x', '');
+	}
+
+	disabledChanged(newValue) {
+		$(this.button)
+			.attr(newValue !== false ? 'disabled' : 'x', '');
 	}
 
 	private attachIcon() {

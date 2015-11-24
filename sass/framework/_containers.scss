@@ -6,13 +6,22 @@
  **/
 
 .ui-section {
-  @include flex(1 1 auto);
+  @include flex(1 1 0%);
+  overflow: hidden;
+
+  &.ui-flex-row {
+	@include flex-row($align: stretch, $wrap: false);
+  }
+
+  &.ui-flex-column {
+	@include flex-column($align: stretch, $wrap: false);
+  }
 }
 
 .ui-content {
   @include flex(1 1 auto);
   overflow: auto;
-  padding: 0.5rem 1rem;
+  padding: $base-padding;
   z-index: 3;
 
   &.ui-flex-column {
@@ -37,14 +46,14 @@
 }
 
 .ui-header {
-  @extend .ui-flex-row;
+  @include flex-row($wrap: false);
   @include flex(0 0 auto);
   z-index: 1;
 
   h4 {
 	@include flex(1 1 auto);
 	margin: 0;
-	padding: 0.3rem 0.75rem;
+	padding: $base-padding;
   }
 
   .button {
@@ -52,13 +61,14 @@
   }
 }
 
-.ui-statsbar, .ui-toolbar {
-  @extend .ui-flex-row;
+.ui-statsbar {
+  @include flex-row($align: stretch, $wrap: false);
   @include flex(0 0 auto);
   z-index: 2;
 }
 
 .ui-toolbar {
-  @include align-items(center);
-  @include justify-content(flex-end);
+  @include flex-row($justify: flex-end, $wrap: false);
+  @include flex(0 0 auto);
+  z-index: 2;
 }

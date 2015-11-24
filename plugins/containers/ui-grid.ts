@@ -18,10 +18,7 @@ export class UIGrid {
 		if (el.hasAttribute('nowrap')) this.classes += ' ui-nowrap ';
 		if (el.hasAttribute('stretch')) this.classes += ' ui-stretch ';
 		if (el.hasAttribute('center')) this.classes += ' ui-center ';
-		if (el.hasAttribute('start')) this.classes += ' ui-start';
-		if (el.hasAttribute('end')) this.classes += ' ui-end';
-		if (el.hasAttribute('middle')) this.classes += ' ui-middle ';
-		if (el.hasAttribute('bottom')) this.classes += ' ui-bottom';
-		if (el.hasAttribute('top')) this.classes += ' ui-top';
+		if (el.hasAttribute('start')) this.classes += ' ui-start ';
+		if (el.hasAttribute('end')) this.classes += ' ui-end ';
 	}
 }

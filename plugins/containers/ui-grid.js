@@ -21,15 +21,9 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             if (el.hasAttribute('center'))
                 this.classes += ' ui-center ';
             if (el.hasAttribute('start'))
-                this.classes += ' ui-start';
+                this.classes += ' ui-start ';
             if (el.hasAttribute('end'))
-                this.classes += ' ui-end';
-            if (el.hasAttribute('middle'))
-                this.classes += ' ui-middle ';
-            if (el.hasAttribute('bottom'))
-                this.classes += ' ui-bottom';
-            if (el.hasAttribute('top'))
-                this.classes += ' ui-top';
+                this.classes += ' ui-end ';
         }
         __decorate([
             aurelia_framework_1.bindable, 

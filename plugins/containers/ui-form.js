@@ -11,9 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIForm = (function () {
-        function UIForm(el) {
+        function UIForm(element) {
+            this.element = element;
+            this.id = '';
             this.class = '';
+            this.classes = '';
         }
+        UIForm.prototype.attached = function () {
+            $(this.form).data('UIForm', this)
+                .find('input,textarea').first().focus();
+        };
+        UIForm.prototype.keyup = function ($event) {
+            if (!$($event.target).is('textarea') && $event.keyCode == 13)
+                console.log('Submit');
+        };
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIForm.prototype, "id");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

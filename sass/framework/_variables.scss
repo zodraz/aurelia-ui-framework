@@ -34,6 +34,8 @@ $base-font-family-serif: 'Source Code Pro', 'Georgia', 'Times New Roman', serif 
 $base-font-family-sans-serif: 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 $base-font-family: $base-font-family-sans-serif !default;
 
+$base-padding: 0.3rem .8rem;
+
 // APP
 $app-logo: 'logo.png' !default;
 $app-header-bg: $primary !default;
@@ -98,6 +100,15 @@ $menu-active-text: $primary-text !default;
 $placeholder-color: if($dark-theme, $slate-gray, $timberwolf) !default;
 $input-bg: $base-bg !default;
 $input-text: $base-text !default;
-$input-label-text: $base-text !default;
+$input-label-text: if($dark-theme, $cadet-gray, $smoke) !default;
 $input-border: $base-border-color !default;
-$input-border-focus: $cerulean !default;
+$input-focus-color: $primary !default;
+$input-invalid-color: $madder-lake !default;
+$input-addon-text: $manatee !default;
+$input-addon-bg: if($dark-theme, $black-olive, $white-smoke) !default;
+$input-readonly-bg: shade($input-bg, 2%) !default;
+$input-disabled-bg: darken($input-bg, 10%) !default;
+
+$input-option-color: $charcoal-gray !default;
+$input-option-color-focus: $input-focus-color !default;
+$input-option-color-disabled: $ash-gray !default;

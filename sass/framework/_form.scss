@@ -1,0 +1,109 @@
+/**
+ *	UI Form
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-form {
+  @include flex-row($align: stretch, $justify: flex-start, $wrap: true);
+  border-radius: $base-border-radius;
+
+  .ui-column {
+	min-width: $grid-sm-max;
+	&.ui-col-auto {
+	  @include flex(1 1 50%);
+	  max-width: 100%;
+	  position: relative;
+	}
+  }
+
+  .ui-input-group {
+	@include flex(1 1 auto);
+	@include flex-row($align: flex-start, $wrap: false);
+	margin-bottom: 0.3rem;
+	padding: 0 0.3rem;
+
+	&.ui-invalid .ui-input {
+	  border-color: rgba($input-invalid-color, 0.85);
+	  &:focus {
+		border-color: rgba($input-invalid-color, 0.85);
+		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+	  }
+	}
+
+	.ui-label {
+	  @include flex(0 0 120px);
+	  color: $input-label-text;
+	  padding: 0.4rem 0.95rem 0 0;
+	  text-align: end;
+	  font-weight: 600;
+	  position: relative;
+
+	  &:after {
+		content: ' ';
+		width: 1em;
+		color: $primary;
+		font-size: 0.65rem;
+		font-weight: 300;
+		top: 4px;
+		right: 4px;
+		position: absolute;
+		display: inline-block;
+	  }
+	  &.ui-required:after {
+		content: '\273B';
+	  }
+	  span {
+		display: block;
+		font-weight: 500;
+		font-size: 0.8em;
+		color: $text-muted;
+	  }
+	}
+
+	.ui-form-control {
+	  @include flex-row($align: stretch, $wrap: false);
+	  @include flex(1 1 auto);
+	  min-width: 280px;
+	  padding: 0;
+
+	  .ui-addon {
+		@include flex(0 0 auto);
+		padding: 0.2rem 0.3rem;
+		color: $input-addon-text;
+		background: $input-addon-bg;
+		font-family: $input-font-family;
+		border: 1px solid $input-border;
+		line-height: 1.4;
+		font-weight: 500;
+		z-index: 1;
+	  }
+
+	  .ui-checkbox {
+		@include flex(0 0 28px);
+	  }
+
+	  .ui-button {
+		@include flex(0 0 auto);
+		padding: 0.2rem 0.5rem;
+		&:not(:active):not(:focus) {
+		  box-shadow: none;
+		}
+		z-index: 1;
+	  }
+
+	  > :first-child {
+		@include border-left-radius($base-border-radius);
+		@include border-right-radius(0);
+	  }
+	  > :last-child {
+		@include border-left-radius(0);
+		@include border-right-radius($base-border-radius);
+	  }
+	  > :only-child {
+		border-radius: $base-border-radius;
+	  }
+	}
+  }
+}

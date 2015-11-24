@@ -16,12 +16,16 @@
 @import url(font_url("bigmug-solid/flaticon.css", true));
 @import url(font_url("elegant-font/flaticon.css", true));
 @import url(font_url("extended-ui/flaticon.css", true));
+@import url(font_url("essentials/flaticon.css", true));
 @import url(font_url("ecomm/flaticon.css", true));
 
 @import "reset";
 @import "base";
 @import "grid";
 @import "menu";
+@import "form";
+@import "input";
+@import "option-input";
 @import "switch";
 @import "buttons";
 @import "animations";

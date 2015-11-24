@@ -1,6 +1,6 @@
 <template>
 	<button class="ui-button ${classes}" value.bind="value"
-			ref="button" click.trigger="clicked($event)">
+			ref="button" click.trigger="clicked($event)" ref-id="${id}">
 		<content></content>
 	</button>
 	<ui-menu dropdown if.bind="menu" menu.bind="menu"></ui-menu>

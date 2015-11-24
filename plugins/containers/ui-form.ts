@@ -10,8 +10,22 @@ import {autoinject, customElement, containerless, bindable} from "aurelia-framew
 @containerless()
 @customElement('ui-form')
 export class UIForm {
+	@bindable id:string    = '';
 	@bindable class:string = '';
 
-	constructor(el:Element) {
+	private form;
+	private classes:string = '';
+
+	constructor(public element:Element) {
+	}
+
+	attached() {
+		$(this.form).data('UIForm', this)
+			.find('input,textarea').first().focus();
+	}
+
+	keyup($event) {
+		if (!$($event.target).is('textarea') && $event.keyCode == 13)
+			console.log('Submit')
 	}
 }

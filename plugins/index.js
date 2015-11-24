@@ -12,8 +12,10 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./containers/ui-grid-column');
         aurelia.globalResources('./containers/ui-grid');
         aurelia.globalResources('./containers/ui-menu');
+        aurelia.globalResources('./containers/ui-form');
         aurelia.globalResources('./components/ui-button');
         aurelia.globalResources('./components/ui-switch');
+        aurelia.globalResources('./components/ui-input');
     }
     exports.configure = configure;
 });

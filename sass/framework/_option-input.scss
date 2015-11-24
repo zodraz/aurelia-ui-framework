@@ -1,0 +1,68 @@
+/**
+ *	UI Checkbox and Radio
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-checkbox, .ui-radio {
+  @include size(26px, 26px);
+  position: relative;
+  padding: 3px !important;
+  text-align: center;
+  border: 1px solid transparent;
+
+  .ui-option-input {
+	@include size(26px, 26px);
+	@include position(absolute, 0 null null 0);
+	cursor: pointer;
+	z-index: 2;
+	opacity: 0;
+	margin: 0;
+  }
+  .ui-check-mark {
+	@include size(18px, 18px);
+	z-index: 1;
+	display: inline-block;
+	position: relative;
+	border-radius: 3px;
+	color: $input-option-color;
+	border: 1px solid $input-option-color;
+	@include box-shadow(0 0 2px 1px $base-shadow-color inset);
+
+	&:after {
+	  content: ' ';
+	  font-size: 18px;
+	  line-height: 18px;
+	  text-align: left;
+	  font-weight: 600;
+	  top: -1px;
+	  left: -0.5px;
+	  font-family: Essential;
+	  position: relative;
+	}
+  }
+  .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
+  .ui-option-input:hover:not(:disabled) ~ .ui-check-mark{
+	color: $input-option-color-focus;
+	border-color: $input-option-color-focus;
+	@include box-shadow(0 0 3px 1px $input-option-color-focus inset);
+  }
+  .ui-option-input:checked ~ .ui-check-mark:after {
+	content: '\e035';
+  }
+  .ui-option-input:disabled ~ .ui-check-mark {
+	color: $input-option-color-disabled;
+	border-color: $input-option-color-disabled;
+	@include box-shadow(0 0 2px 1px tint($input-option-color-disabled, 5%) inset);
+  }
+}
+
+.ui-radio {
+  .ui-check-mark {
+	border-radius: 9px;
+  }
+  .ui-option-input:checked ~ .ui-check-mark:after {
+	content: '\e039';
+  }
+}

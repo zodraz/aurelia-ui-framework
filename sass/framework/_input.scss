@@ -1,0 +1,46 @@
+/**
+ *	UI Input
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-input {
+  @include flex(1 1 0%);
+  margin: 0;
+  z-index: 2;
+  outline: none;
+  color: $input-text;
+  background: $input-bg inline_image("clear.gif") no-repeat right -10px center;;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  font-family: $input-font-family;
+  border: 1px solid $input-border;
+  @include box-shadow(0 1px 1px 0 #ddd inset);
+
+  &.ui-clear {
+	padding-right: 22px;
+	transition: background 0.4s;
+
+	&.x {
+	  background-position: right 5px center;
+	}
+	&.onX {
+	  cursor: pointer;
+	}
+  }
+
+  &[readonly] {
+	cursor: default;
+	background-color: $input-readonly-bg;
+  }
+  &[disabled] {
+	cursor: not-allowed;
+	background-color: $input-disabled-bg;
+  }
+
+  &:focus {
+	border-color: rgba($input-focus-color, 0.85);
+	@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 #ddd inset);
+  }
+}

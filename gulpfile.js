@@ -129,7 +129,6 @@ gulp.task('default', function () {
 	process.stdout.write('watch - Watch changes for SASS and TypeScript files\n');
 	process.stdout.write('build - Compile SASS and TypeScript files\n');
 	process.stdout.write('serve - Build and start local web-server\n');
-	process.stdout.write('bundle - Bundle aurelia files');
-	process.stdout.write('unbundle - Un-Bundle aurelia files\n');
+	process.stdout.write('production - Bundle aurelia files into distribution folder');
 	process.stdout.write('\n');
 });

@@ -30,7 +30,7 @@
 }
 
 .ui-button {
-  padding: 0.35rem 0.75rem;
+  padding: $base-padding;
   font-size: 1rem;
   font-weight: $font-weight-normal;
   border: 1px solid $base-border-color;
@@ -39,6 +39,11 @@
 
   &.ui-default {
 	font-weight: $font-weight-strong;
+  }
+
+  &[disabled] {
+	opacity: 0.6;
+	cursor: not-allowed;
   }
 
   &.ui-dropdown {
@@ -66,11 +71,11 @@
 	font-size: 0.85rem;
   }
   &.ui-button-large {
-	padding: 0.5rem 1.2rem;
+	padding: 0.6rem 1.4rem;
 	font-size: 1.2rem;
   }
 
-  @include button-style(default, $base-bg, $base-text, $base-border-color);
+  @include button-style(default, $base-bg, $primary, $base-border-color);
   @include button-style(primary, $button-primary-bg, $button-primary-text, $button-primary-border);
   @include button-style(secondary, $button-secondary-bg, $button-secondary-text, $button-secondary-border);
   @include button-style(info, $button-info-bg, $button-info-text, $button-info-border);
