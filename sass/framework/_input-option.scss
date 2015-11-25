@@ -18,10 +18,8 @@
   }
 
   .ui-option-input {
-	@include size(100%, 26px);
-	@include position(absolute, 0 null null 0);
+	@include position(absolute, 0);
 	cursor: pointer;
-	z-index: 2;
 	opacity: 0;
 	margin: 0;
   }

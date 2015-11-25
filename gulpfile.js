@@ -62,9 +62,10 @@ var config = {
 			includes: [
 				'main*',
 				'src/**/*',
-				'plugins/**/*',
+				'libs/**/*',
+				'framework/**/*',
 				'src/**/*.html!text',
-				'plugins/**/*.html!text'
+				'framework/**/*.html!text'
 			],
 			options: {
 				inject: true,

@@ -27,6 +27,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         UIForm.prototype.keyup = function ($event) {
             if (!$($event.target).is('textarea') && $event.keyCode == 13)
                 console.log('Submit');
+            return true;
         };
         __decorate([
             aurelia_framework_1.bindable, 

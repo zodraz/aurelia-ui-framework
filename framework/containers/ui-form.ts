@@ -28,6 +28,8 @@ export class UIForm {
 
 	keyup($event) {
 		if (!$($event.target).is('textarea') && $event.keyCode == 13)
-			console.log('Submit')
+			console.log('Submit');
+
+		return true;
 	}
 }
