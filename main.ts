@@ -2,9 +2,9 @@ import 'jquery';
 import 'lodash';
 import 'moment';
 import 'numeral';
-import "markdown";
 import 'libs/chosen';
 import 'libs/notify';
+import 'libs/markdown';
 import 'libs/phonelib';
 import {Aurelia} from "aurelia-framework";
 

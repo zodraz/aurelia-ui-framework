@@ -18,6 +18,7 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./components/ui-switch');
         aurelia.globalResources('./components/ui-input');
         aurelia.globalResources('./components/ui-option');
+        aurelia.globalResources('./components/ui-markdown');
     }
     exports.configure = configure;
 });

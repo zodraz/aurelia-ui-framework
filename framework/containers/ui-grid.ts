@@ -12,13 +12,13 @@ import {autoinject, customElement, containerless, bindable} from "aurelia-framew
 export class UIGrid {
 	@bindable class:string = '';
 
-	private classes:string = '';
+	private _classes:string = '';
 
 	constructor(el:Element) {
-		if (el.hasAttribute('nowrap')) this.classes += ' ui-nowrap ';
-		if (el.hasAttribute('stretch')) this.classes += ' ui-stretch ';
-		if (el.hasAttribute('center')) this.classes += ' ui-center ';
-		if (el.hasAttribute('start')) this.classes += ' ui-start ';
-		if (el.hasAttribute('end')) this.classes += ' ui-end ';
+		if (el.hasAttribute('nowrap')) this._classes += ' ui-nowrap ';
+		if (el.hasAttribute('stretch')) this._classes += ' ui-stretch ';
+		if (el.hasAttribute('center')) this._classes += ' ui-center ';
+		if (el.hasAttribute('start')) this._classes += ' ui-start ';
+		if (el.hasAttribute('end')) this._classes += ' ui-end ';
 	}
 }

@@ -11,10 +11,10 @@ import {UIEvent} from "../utils/ui-event";
 @containerless()
 @customElement('ui-button')
 export class UIButton {
-	private classes:string = '';
-	private iconEl;
-	private button;
-	private dropdown;
+	private _classes:string = '';
+	private _iconEl;
+	private _button;
+	private _dropdown;
 
 	@bindable menu;
 	@bindable value:string;
@@ -22,62 +22,60 @@ export class UIButton {
 	@bindable id:string          = '';
 	@bindable disabled:boolean = false;
 
-	private size:string     = "normal";
-	private theme:string    = "default";
-	private default:boolean = false;
-
-	// TODO: Add disabled functionality and styles
+	private _size:string     = "normal";
+	private _theme:string    = "default";
+	private _default:boolean = false;
 
 	constructor(public element:Element) {
-		this.default = element.hasAttribute('default');
+		this._default = element.hasAttribute('default');
 		// check size attributes
-		if (element.hasAttribute('large'))this.size = 'large';
-		if (element.hasAttribute('small'))this.size = 'small';
+		if (element.hasAttribute('large'))this._size = 'large';
+		if (element.hasAttribute('small'))this._size = 'small';
 		// check theme attributes
-		if (element.hasAttribute('primary'))this.theme = 'primary';
-		if (element.hasAttribute('secondary'))this.theme = 'secondary';
-		if (element.hasAttribute('info'))this.theme = 'info';
-		if (element.hasAttribute('danger'))this.theme = 'danger';
-		if (element.hasAttribute('success'))this.theme = 'success';
-		if (element.hasAttribute('warning'))this.theme = 'warning';
+		if (element.hasAttribute('primary'))this._theme = 'primary';
+		if (element.hasAttribute('secondary'))this._theme = 'secondary';
+		if (element.hasAttribute('info'))this._theme = 'info';
+		if (element.hasAttribute('danger'))this._theme = 'danger';
+		if (element.hasAttribute('success'))this._theme = 'success';
+		if (element.hasAttribute('warning'))this._theme = 'warning';
 	}
 
 	bind() {
-		if (this.theme)
-			this.classes += `ui-button-${this.theme} `;
-		if (this.size)
-			this.classes += `ui-button-${this.size} `;
-		if (this.default !== false)
-			this.classes += `ui-default `;
-		if (this.icon) this.attachIcon();
+		if (this._theme)
+			this._classes += `ui-button-${this._theme} `;
+		if (this._size)
+			this._classes += `ui-button-${this._size} `;
+		if (this._default !== false)
+			this._classes += `ui-default `;
+		if (this.icon) this._attachIcon();
 
 		if (this.menu) {
-			$(this.button).append('&nbsp;<i class="ui-caret"></i>');
+			$(this._button).append('&nbsp;<i class="ui-caret"></i>');
 		}
 	}
 
 	attached() {
-		$(this.button)
+		$(this._button)
 			.data('UIButton', this)
 			.attr(this.disabled !== false ? 'disabled' : 'x', '');
 	}
 
 	disabledChanged(newValue) {
-		$(this.button)
+		$(this._button)
 			.attr(newValue !== false ? 'disabled' : 'x', '');
 	}
 
-	private attachIcon() {
-		if (!this.iconEl) {
-			this.iconEl = $(this.button).prepend('<i></i>').children('i');
+	private _attachIcon() {
+		if (!this._iconEl) {
+			this._iconEl = $(this._button).prepend('<i></i>').children('i');
 		}
-		this.iconEl.attr('class', '').addClass(this.icon);
+		this._iconEl.attr('class', '').addClass(this.icon);
 	}
 
-	private clicked($event) {
+	private _clicked($event) {
 		if (this.menu) {
 			$event.cancelBubble = true;
-			$(this.button).toggleClass('ui-dropdown');
+			$(this._button).toggleClass('ui-dropdown');
 		}
 		else {
 			UIEvent.fireEvent('click', this.element);

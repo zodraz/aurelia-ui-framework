@@ -13,25 +13,25 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
     var UIOption = (function () {
         function UIOption(element) {
             this.element = element;
-            this.type = '';
-            this.classes = '';
+            this._type = '';
+            this._classes = '';
+            this._checkbox = true;
             this.checked = false;
-            this.checkbox = true;
             this.id = '';
             this.name = '';
             this.value = '';
             if (element.hasAttribute('radio'))
-                this.checkbox = false;
+                this._checkbox = false;
         }
         UIOption.prototype.bind = function () {
-            this.type = this.checkbox ? 'checkbox' : 'radio';
-            this.classes = this.checkbox ? 'ui-checkbox' : 'ui-radio';
+            this._type = this._checkbox ? 'checkbox' : 'radio';
+            this._classes = this._checkbox ? 'ui-checkbox' : 'ui-radio';
         };
         UIOption.prototype.attached = function () {
-            $(this.option).data('UIOption', this);
+            $(this._option).data('UIOption', this);
         };
-        UIOption.prototype.checkChanged = function ($event) {
-            $event.data = this.checkbox ? this.checked : this.value;
+        UIOption.prototype._checkChanged = function ($event) {
+            $event.data = this._checkbox ? this.checked : this.value;
         };
         __decorate([
             aurelia_framework_1.bindable, 

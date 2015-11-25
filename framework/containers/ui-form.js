@@ -9,24 +9,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
     var UIForm = (function () {
         function UIForm(element) {
             this.element = element;
             this.id = '';
             this.class = '';
-            this.classes = '';
+            this._classes = '';
         }
         UIForm.prototype.attached = function () {
             var _this = this;
             setTimeout(function () {
-                $(_this.form).data('UIForm', _this)
+                $(_this._form).data('UIForm', _this)
                     .find('input,textarea').first().focus();
             }, 200);
         };
-        UIForm.prototype.keyup = function ($event) {
+        UIForm.prototype._keyup = function ($event) {
             if (!$($event.target).is('textarea') && $event.keyCode == 13)
-                console.log('Submit');
+                ui_event_1.UIEvent.fireEvent('submit', this.element);
             return true;
         };
         __decorate([

@@ -3,8 +3,6 @@
  *    @author    Adarsh Pastakia
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
- *    @description
- *    This plugin provides an application drawer menu
  **/
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 import {Router} from "aurelia-router";
@@ -17,19 +15,22 @@ export class UIMenu {
 	@bindable title:string;
 	@bindable menu:string;
 
-	private classes:string   = '';
-	private floating:boolean = false;
+	private _classes:string   = '';
+	private _floating:boolean = false;
 
 	constructor(public element:Element) {
-		this.floating = element.hasAttribute('dropdown');
+		this._floating = element.hasAttribute('dropdown');
 	}
 
 	bind() {
-		if (this.router && this.router.isRoot) this.classes = 'ui-app-menu';
-		if (this.floating !== false) this.classes += ' ui-floating ';
+		if (this.router && this.router.isRoot) this._classes = 'ui-app-menu';
+		if (this._floating !== false) this._classes += ' ui-floating ';
 	}
 
-	linkClicked($event) {
+	private _linkClicked($event) {
+		// Dont trigger event for router menu clicks
+		if (this.router) return true;
+		// Trigger event
 		let el = $($event.target).closest('a');
 		if (el) {
 			let e        = new Event('click');

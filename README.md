@@ -6,6 +6,29 @@
 
 ---
 
+### External Libraries
+
+[NotifyJS](http://notifyjs.com)
+
+[Chosen Dropdown and Tag Editor](http://harvesthq.github.io/chosen/)
+
+[Namp Markdown](https://github.com/gjtorikian/namp/blob/master/README.md)
+
+[Google Phone Number Lib](https://github.com/googlei18n/libphonenumber/tree/master/javascript)
+
+
+### JSPM Dependencies
+
+[jQuery](http://api.jquery.com)
+
+[LoDash](http://lodash.com/)
+
+[Moment](http://momentjs.com)
+
+[Numeral](http://numeraljs.com)
+
+---
+
 > Presently working on completing ui components
 
 ----

@@ -13,62 +13,63 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
     var UIButtonGroup = (function () {
         function UIButtonGroup(element) {
             this.element = element;
-            this.classes = '';
+            this._classes = '';
+            this._toggle = false;
+            this._vertical = false;
+            this.value = '';
             this.id = '';
-            this.toggle = false;
-            this.vertical = false;
             if (element.hasAttribute('toggle'))
-                this.toggle = element.getAttribute('toggle') || 'single';
-            this.vertical = element.hasAttribute('vertical');
+                this._toggle = element.getAttribute('toggle') || 'single';
+            this._vertical = element.hasAttribute('vertical');
             if (element.hasAttribute('large'))
-                this.size = 'large';
+                this._size = 'large';
             if (element.hasAttribute('small'))
-                this.size = 'small';
+                this._size = 'small';
             if (element.hasAttribute('primary'))
-                this.theme = 'primary';
+                this._theme = 'primary';
             if (element.hasAttribute('secondary'))
-                this.theme = 'secondary';
+                this._theme = 'secondary';
             if (element.hasAttribute('info'))
-                this.theme = 'info';
+                this._theme = 'info';
             if (element.hasAttribute('danger'))
-                this.theme = 'danger';
+                this._theme = 'danger';
             if (element.hasAttribute('success'))
-                this.theme = 'success';
+                this._theme = 'success';
             if (element.hasAttribute('warning'))
-                this.theme = 'warning';
+                this._theme = 'warning';
         }
         UIButtonGroup.prototype.bind = function () {
-            if (this.vertical !== false)
-                this.classes += "ui-vertical ";
+            if (this._vertical !== false)
+                this._classes += "ui-vertical ";
         };
         UIButtonGroup.prototype.attached = function () {
-            $(this.buttonGroup).data('UIButtonGroup', this);
-            if (this.size) {
-                $(this.buttonGroup).children('.ui-button')
+            $(this._buttonGroup).data('UIButtonGroup', this);
+            if (this._size) {
+                $(this._buttonGroup).children('.ui-button')
                     .removeClass('ui-button-normal')
-                    .addClass("ui-button-" + this.size);
+                    .addClass("ui-button-" + this._size);
             }
-            if (this.toggle === false && this.theme) {
-                $(this.buttonGroup).children('.ui-button')
+            if (this._toggle === false && this._theme) {
+                $(this._buttonGroup).children('.ui-button')
                     .removeClass('ui-button-default')
-                    .addClass("ui-button-" + this.theme);
+                    .addClass("ui-button-" + this._theme);
             }
-            if (this.toggle !== false) {
-                $(this.buttonGroup).children('.ui-button')
+            if (this._toggle !== false) {
+                $(this._buttonGroup).children('.ui-button')
                     .removeClass('ui-button-default')
                     .addClass("ui-button-secondary ui-button-toggle");
             }
-            if (this.value !== null && this.toggle !== false)
-                this.checkChange();
+            if (this.value !== null && this._toggle !== false)
+                this._checkChange();
         };
-        UIButtonGroup.prototype.valueChanged = function (newValue) {
-            this.checkChange();
+        UIButtonGroup.prototype._valueChanged = function (newValue) {
+            this._checkChange();
         };
-        UIButtonGroup.prototype.clickHandler = function ($event) {
-            if (this.toggle !== false) {
+        UIButtonGroup.prototype._clickHandler = function ($event) {
+            if (this._toggle !== false) {
                 $event.cancelBubble = true;
                 var el = $($event.target.closest('button'));
-                if (this.toggle === 'multiple') {
+                if (this._toggle === 'multiple') {
                 }
                 else {
                     this.value = el.val();
@@ -76,12 +77,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 ui_event_1.UIEvent.fireEvent('change', this.element, this.value, el.get(0));
             }
         };
-        UIButtonGroup.prototype.checkChange = function () {
-            if (this.toggle === 'multiple') {
+        UIButtonGroup.prototype._checkChange = function () {
+            if (this._toggle === 'multiple') {
             }
             else {
-                $(this.buttonGroup).children('.ui-checked').removeClass('ui-checked');
-                var el = $(this.buttonGroup).children("[value='" + this.value + "']");
+                $(this._buttonGroup).children('.ui-checked').removeClass('ui-checked');
+                var el = $(this._buttonGroup).children("[value='" + this.value + "']");
                 el.addClass('ui-checked');
             }
         };
@@ -93,7 +94,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable({
                 name: 'value',
                 attribute: 'value',
-                changeHandler: 'valueChanged',
+                changeHandler: '_valueChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: ''
             }),

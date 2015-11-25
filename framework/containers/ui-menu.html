@@ -1,5 +1,5 @@
 <template>
-	<ul class="ui-menu ${classes}">
+	<ul class="ui-menu ${_classes}" click.delegate="_linkClicked($event)">
 		<div if.bind="router.isRoot && router.options.isAuthenticated" class="ui-auth-info">
 		</div>
 		<li if.bind="router.isRoot && !router.options.isAuthenticated">
@@ -16,7 +16,7 @@
 				<i class="ui-icon ${route.settings.navIcon}"></i>&nbsp;${route.title}</a>
 		</li>
 
-		<li repeat.for="link of menu" click.delegate="linkClicked($event)">
+		<li repeat.for="link of menu">
 			<hr if.bind="link==='-'"/>
 			<p class="ui-menu-section" if.bind="link.length && link!=='-'">${link}</p>
 			<a if.bind="link.title" class="ui-menu-link ${link.isActive ? 'ui-active' : ''}" data-id="${link.id}">

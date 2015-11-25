@@ -9,22 +9,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
     var UIInput = (function () {
         function UIInput(element) {
             this.element = element;
+            this._value1 = '';
+            this._value2 = '';
+            this._placeholder1 = '';
+            this._placeholder2 = '';
+            this._type = 'text';
+            this._area = false;
+            this._double = false;
+            this._checkbox = false;
+            this._labelClasses = '';
+            this._inputClasses = '';
             this.value = '';
-            this.value1 = '';
-            this.value2 = '';
-            this.placeholder1 = '';
-            this.placeholder2 = '';
-            this.type = 'text';
-            this.area = false;
-            this.double = false;
-            this.checkbox = false;
             this.checked = false;
-            this.labelClasses = '';
-            this.inputClasses = '';
             this.phoneCode = '';
             this.phoneNumber = '';
             this.phoneCountry = 'us';
@@ -39,63 +39,64 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.disabled = false;
             this.phoneType = PhoneLib.TYPE.MOBILE;
             if (element.hasAttribute('clear'))
-                this.inputClasses += ' ui-clear ';
+                this._inputClasses += ' ui-clear ';
             if (element.hasAttribute('required'))
-                this.labelClasses += ' ui-required ';
+                this._labelClasses += ' ui-required ';
             if (element.hasAttribute('readonly'))
                 this.readonly = true;
             if (element.hasAttribute('disabled'))
                 this.disabled = true;
             if (element.hasAttribute('area'))
-                this.area = true;
+                this._area = true;
             if (element.hasAttribute('double'))
-                this.double = true;
+                this._double = true;
             if (element.hasAttribute('checkbox'))
-                this.checkbox = true;
+                this._checkbox = true;
             if (element.hasAttribute('email'))
-                this.type = 'email';
+                this._type = 'email';
             if (element.hasAttribute('search'))
-                this.type = 'search';
+                this._type = 'search';
             if (element.hasAttribute('number'))
-                this.type = 'number';
+                this._type = 'number';
             if (element.hasAttribute('decimal'))
-                this.type = 'decimal';
+                this._type = 'decimal';
             if (element.hasAttribute('name'))
-                this.type = 'name';
+                this._type = 'name';
             if (element.hasAttribute('address'))
-                this.type = 'address';
+                this._type = 'address';
             if (element.hasAttribute('position'))
-                this.type = 'position';
+                this._type = 'position';
             if (element.hasAttribute('phone'))
-                this.type = 'phone';
+                this._type = 'phone';
         }
         UIInput.prototype.bind = function () {
-            if (this.type == 'position') {
-                this.double = true;
-                this.type = 'decimal';
+            if (this._type == 'position') {
+                this._double = true;
+                this._type = 'decimal';
             }
             if (this.placeholder) {
-                _a = this.placeholder.split(','), this.placeholder1 = _a[0], this.placeholder2 = _a[1];
+                _a = this.placeholder.split(','), this._placeholder1 = _a[0], this._placeholder2 = _a[1];
             }
             if (this.value) {
-                this.valueChanged(this.value);
+                this._valueChanged(this.value);
             }
-            if (this.checkbox) {
+            if (this._checkbox) {
                 this.disabled = this.checked !== true;
             }
-            if (this.type == 'phone') {
+            if (this._type == 'phone') {
                 this.addonText = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
-                this.placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
-                this.value1 = "" + this.phoneCode + this.phoneNumber;
+                this._placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
+                this._value1 = "" + this.phoneCode + this.phoneNumber;
                 this._processValue();
             }
             var _a;
         };
         UIInput.prototype.attached = function () {
             var _this = this;
-            $(this.inputGroup)
+            this._input = $(this._inputGroup)
                 .data('UIInput', this)
-                .find('input.ui-input')[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
+                .find('.ui-input');
+            this._input[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
                 .attr(this.readonly !== false ? 'readonly' : 'R', '')
                 .attr(this.disabled !== false ? 'disabled' : 'D', '')
                 .on('input', function (e) {
@@ -119,24 +120,24 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 .keypress(function (e) {
                 if (e.ctrlKey || e.altKey || e.metaKey)
                     return true;
-                if (_this.type == 'name') {
+                if (_this._type == 'name') {
                     return (/\w*/)
                         .test(String.fromCharCode(e.charCode));
                 }
-                else if (_this.type == 'address') {
+                else if (_this._type == 'address') {
                     return (/\w*/)
                         .test(String.fromCharCode(e.charCode));
                 }
-                else if (_this.type == 'number') {
+                else if (_this._type == 'number') {
                     return (/[0-9\-]/).test(String.fromCharCode(e.charCode));
                 }
-                else if (_this.type == 'decimal') {
+                else if (_this._type == 'decimal') {
                     return (/[0-9\-\.]/).test(String.fromCharCode(e.charCode));
                 }
-                else if (_this.type == 'email') {
+                else if (_this._type == 'email') {
                     return (/[A-Za-z0-9\-\.@_\+]/).test(String.fromCharCode(e.charCode));
                 }
-                else if (_this.type == 'phone') {
+                else if (_this._type == 'phone') {
                     return /[0-9]/.test(String.fromCharCode(e.charCode));
                 }
                 if (e.keyCode == 13)
@@ -147,57 +148,57 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 var val = $(e.target).val().replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
                 val = _this._format(val);
                 $(e.target).val(val);
-                if (_this.double && $(e.target).hasClass('ui-secondary'))
-                    _this.value2 = val;
+                if (_this._double && $(e.target).hasClass('ui-secondary'))
+                    _this._value2 = val;
                 else
-                    _this.value1 = val;
+                    _this._value1 = val;
                 _this._processValue();
             });
         };
         UIInput.prototype.disabledChanged = function (newValue) {
-            $(this.inputGroup).find('input.ui-input')
+            this._input
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIInput.prototype.readonlyChanged = function (newValue) {
-            $(this.inputGroup).find('input.ui-input')
+            this._input
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '');
         };
-        UIInput.prototype.checkedChanged = function (newValue) {
-            if (this.checkbox) {
+        UIInput.prototype._checkedChanged = function (newValue) {
+            if (this._checkbox) {
                 this.disabled = newValue !== true;
             }
         };
-        UIInput.prototype.valueChanged = function (newValue) {
-            if (this.type == 'phone') {
+        UIInput.prototype._valueChanged = function (newValue) {
+            if (this._type == 'phone') {
             }
             else {
-                _a = (newValue || '').split(','), this.value1 = _a[0], this.value2 = _a[1];
-                this.value1 = this._format(this.value1 || '');
-                this.value2 = this._format(this.value2 || '');
+                _a = (newValue || '').split(','), this._value1 = _a[0], this._value2 = _a[1];
+                this._value1 = this._format(this._value1 || '');
+                this._value2 = this._format(this._value2 || '');
             }
-            $(this.inputGroup).find('input.ui-primary')[this.value1 !== '' ? 'addClass' : 'removeClass']('x');
-            $(this.inputGroup).find('input.ui-secondary')[this.value2 !== '' ? 'addClass' : 'removeClass']('x');
+            $(this._inputGroup).find('input.ui-primary')[this._value1 !== '' ? 'addClass' : 'removeClass']('x');
+            $(this._inputGroup).find('input.ui-secondary')[this._value2 !== '' ? 'addClass' : 'removeClass']('x');
             var _a;
         };
-        UIInput.prototype.countryChanged = function (newValue) {
+        UIInput.prototype._countryChanged = function (newValue) {
             this.addonText = '+' + PhoneLib.getDialingCode(newValue || 'US');
-            this.placeholder1 = PhoneLib.getExample(newValue || 'US', this.phoneType, true);
-            this.value1 = PhoneLib.formatInput(this.value1 || '', newValue || 'US')
+            this._placeholder1 = PhoneLib.getExample(newValue || 'US', this.phoneType, true);
+            this._value1 = PhoneLib.formatInput(this._value1 || '', newValue || 'US')
                 .replace(/[\(\)\s\-]+$/, '');
             this._processValue();
         };
         UIInput.prototype._processValue = function () {
-            this.value = this.double ? this.value1 + "," + this.value2 : this.value1;
-            if (this.type == 'phone') {
-                this.value1 = PhoneLib.formatInput(this.value1, this.phoneCountry || 'us');
-                this.value = PhoneLib.format(this.value1, this.phoneCountry || 'us', PhoneLib.FORMAT.FULL);
+            this.value = this._double ? this._value1 + "," + this._value2 : this._value1;
+            if (this._type == 'phone') {
+                this._value1 = PhoneLib.formatInput(this._value1, this.phoneCountry || 'us');
+                this.value = PhoneLib.format(this._value1, this.phoneCountry || 'us', PhoneLib.FORMAT.FULL);
                 this._updatePhone();
             }
         };
         UIInput.prototype._format = function (val) {
-            if (this.type == 'name') {
+            if (this._type == 'name') {
                 val = val.replace(new RegExp('[' + 'A-Za-z' + ']+(?=[\'\\.\\-&\\s]*)', 'g'), function (txt) {
                     if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
                         return txt.toUpperCase();
@@ -208,10 +209,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                     return txt.charAt(0).toUpperCase() + txt.substr(1);
                 });
             }
-            else if (this.type == 'email') {
+            else if (this._type == 'email') {
                 val = val.toLowerCase();
             }
-            else if (this.type == 'phone') {
+            else if (this._type == 'phone') {
                 val = PhoneLib.formatInput(val || '', this.phoneCountry || 'US')
                     .replace(/[\(\)\s\-]+$/, '');
             }
@@ -219,7 +220,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         };
         UIInput.prototype._updatePhone = function () {
             try {
-                var info = PhoneLib.getNumberInfo(this.value1 || '', this.phoneCountry || 'US');
+                var info = PhoneLib.getNumberInfo(this._value1 || '', this.phoneCountry || 'US');
                 this.phoneCode = info.areaCode;
                 this.phoneNumber = isNaN(info.phone) ? '' : info.phone;
             }
@@ -227,6 +228,9 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.phoneCode = '';
                 this.phoneNumber = '';
             }
+        };
+        UIInput.prototype._buttonClick = function ($event) {
+            ui_event_1.UIEvent.fireEvent('click', this.element);
         };
         __decorate([
             aurelia_framework_1.bindable, 
@@ -272,14 +276,14 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable({
                 name: 'value',
                 attribute: 'value',
-                changeHandler: 'valueChanged',
+                changeHandler: '_valueChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: ''
             }),
             aurelia_framework_1.bindable({
                 name: 'checked',
                 attribute: 'checked',
-                changeHandler: 'checkedChanged',
+                changeHandler: '_checkedChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: false
             }),
@@ -298,7 +302,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable({
                 name: 'phoneCountry',
                 attribute: 'phone-country',
-                changeHandler: 'countryChanged',
+                changeHandler: '_countryChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: 'us'
             }),

@@ -13,21 +13,21 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
     var UIOptionGroup = (function () {
         function UIOptionGroup(element) {
             this.element = element;
-            this.value = '';
             this.id = '';
             this.label = '';
+            this.value = '';
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;
-            $(this.optionGroup).data('UIOptionGroup', this);
+            $(this._optionGroup).data('UIOptionGroup', this);
             setTimeout(function () {
-                $(_this.optionGroup).find(".ui-radio .ui-option-input[value=\"" + _this.value + "\"]").prop('checked', true);
+                $(_this._optionGroup).find(".ui-radio .ui-option-input[value=\"" + _this.value + "\"]").prop('checked', true);
             }, 200);
         };
-        UIOptionGroup.prototype.valueChanged = function (newValue) {
-            $(this.optionGroup).find(".ui-radio .ui-option-input[value=\"" + newValue + "\"]").prop('checked', true);
+        UIOptionGroup.prototype._valueChanged = function (newValue) {
+            $(this._optionGroup).find(".ui-radio .ui-option-input[value=\"" + newValue + "\"]").prop('checked', true);
         };
-        UIOptionGroup.prototype.checkChanged = function ($event) {
+        UIOptionGroup.prototype._checkChanged = function ($event) {
             this.value = $event.data;
         };
         __decorate([
@@ -42,7 +42,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable({
                 name: 'value',
                 attribute: 'value',
-                changeHandler: 'valueChanged',
+                changeHandler: '_valueChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: ''
             }),

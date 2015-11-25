@@ -32,7 +32,6 @@
       "fetch": "github:github/fetch@^0.10.1",
       "jquery": "github:components/jquery@^2.1.4",
       "lodash": "npm:lodash@^3.10.1",
-      "markdown": "npm:markdown@^0.5.0",
       "moment": "npm:moment@^2.10.6",
       "numeral": "npm:numeral@^1.5.3",
       "text": "github:systemjs/plugin-text@^0.0.3"

@@ -12,7 +12,7 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 @bindable({
 	name: 'value',
 	attribute: 'value',
-	changeHandler: 'valueChanged',
+	changeHandler: '_valueChanged',
 	defaultBindingMode: bindingMode.twoWay,
 	defaultValue: ''
 })
@@ -21,27 +21,27 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 @containerless()
 @customElement('ui-option-group')
 export class UIOptionGroup {
-	private optionGroup;
-	private value:string = '';
+	private _optionGroup;
 
 	@bindable id:string    = '';
 	@bindable label:string = '';
+	private value:string = '';
 
 	constructor(public element:Element) {
 	}
 
 	attached() {
-		$(this.optionGroup).data('UIOptionGroup', this);
+		$(this._optionGroup).data('UIOptionGroup', this);
 		setTimeout(()=> {
-			$(this.optionGroup).find(`.ui-radio .ui-option-input[value="${this.value}"]`).prop('checked', true);
+			$(this._optionGroup).find(`.ui-radio .ui-option-input[value="${this.value}"]`).prop('checked', true);
 		}, 200);
 	}
 
-	private valueChanged(newValue) {
-		$(this.optionGroup).find(`.ui-radio .ui-option-input[value="${newValue}"]`).prop('checked', true);
+	private _valueChanged(newValue) {
+		$(this._optionGroup).find(`.ui-radio .ui-option-input[value="${newValue}"]`).prop('checked', true);
 	}
 
-	private checkChanged($event) {
+	private _checkChanged($event) {
 		this.value = $event.data;
 	}
 }

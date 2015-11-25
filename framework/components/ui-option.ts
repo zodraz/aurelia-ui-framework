@@ -18,30 +18,30 @@ import {UIEvent} from "../utils/ui-event";
 @containerless()
 @customElement('ui-option')
 export class UIOption {
-	private option;
-	private type:string      = '';
-	private classes:string   = '';
-	private checked:boolean  = false;
-	private checkbox:boolean = true;
+	private _option;
+	private _type:string      = '';
+	private _classes:string   = '';
+	private _checkbox:boolean = true;
 
+	private checked:boolean  = false;
 	@bindable id:string    = '';
 	@bindable name:string  = '';
 	@bindable value:string = '';
 
 	constructor(public element:Element) {
-		if (element.hasAttribute('radio')) this.checkbox = false;
+		if (element.hasAttribute('radio')) this._checkbox = false;
 	}
 
 	bind() {
-		this.type    = this.checkbox ? 'checkbox' : 'radio';
-		this.classes = this.checkbox ? 'ui-checkbox' : 'ui-radio';
+		this._type    = this._checkbox ? 'checkbox' : 'radio';
+		this._classes = this._checkbox ? 'ui-checkbox' : 'ui-radio';
 	}
 
 	attached() {
-		$(this.option).data('UIOption', this);
+		$(this._option).data('UIOption', this);
 	}
 
-	checkChanged($event:UIEvent) {
-		$event.data = this.checkbox ? this.checked : this.value;
+	private _checkChanged($event:UIEvent) {
+		$event.data = this._checkbox ? this.checked : this.value;
 	}
 }

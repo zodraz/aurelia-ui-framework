@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIGridColumn = (function () {
         function UIGridColumn(el) {
-            this.classes = '';
+            this._classes = '';
             this.class = '';
             this.size = 'auto';
             this.width = 'auto';
@@ -24,24 +24,24 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             if (el.hasAttribute('full'))
                 this.size = 'full';
             if (el.hasAttribute('row'))
-                this.classes += ' ui-row ';
+                this._classes += ' ui-row ';
             if (el.hasAttribute('stretch'))
-                this.classes += ' ui-stretch ';
+                this._classes += ' ui-stretch ';
             if (el.hasAttribute('middle'))
-                this.classes += ' ui-middle ';
+                this._classes += ' ui-middle ';
             if (el.hasAttribute('bottom'))
-                this.classes += ' ui-bottom ';
+                this._classes += ' ui-bottom ';
             if (el.hasAttribute('top'))
-                this.classes += ' ui-top ';
+                this._classes += ' ui-top ';
         }
         UIGridColumn.prototype.bind = function () {
             for (var _i = 0, _a = this.class.split(' '); _i < _a.length; _i++) {
                 var cls = _a[_i];
-                this.classes += " " + cls + " ";
+                this._classes += " " + cls + " ";
             }
             for (var _b = 0, _c = this.size.split(' '); _b < _c.length; _b++) {
                 var size = _c[_b];
-                this.classes += " ui-col-" + size + " ";
+                this._classes += " ui-col-" + size + " ";
             }
         };
         __decorate([

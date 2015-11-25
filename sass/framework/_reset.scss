@@ -41,6 +41,14 @@ textarea {
   resize: vertical;
 }
 
+.ui-hide {
+  display: none !important;
+}
+
+.ui-hidden {
+  visibility: hidden !important;
+}
+
 // PADDING
 .pad-all {
   padding: 0.5rem;

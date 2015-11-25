@@ -5,6 +5,7 @@
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
+import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
 @containerless()
@@ -13,22 +14,22 @@ export class UIForm {
 	@bindable id:string    = '';
 	@bindable class:string = '';
 
-	private form;
-	private classes:string = '';
+	private _form;
+	private _classes:string = '';
 
 	constructor(public element:Element) {
 	}
 
 	attached() {
 		setTimeout(()=> {
-			$(this.form).data('UIForm', this)
+			$(this._form).data('UIForm', this)
 				.find('input,textarea').first().focus();
 		}, 200);
 	}
 
-	keyup($event) {
+	private _keyup($event) {
 		if (!$($event.target).is('textarea') && $event.keyCode == 13)
-			console.log('Submit');
+			UIEvent.fireEvent('submit', this.element);
 
 		return true;
 	}

@@ -13,17 +13,19 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
     var UIMenu = (function () {
         function UIMenu(element) {
             this.element = element;
-            this.classes = '';
-            this.floating = false;
-            this.floating = element.hasAttribute('dropdown');
+            this._classes = '';
+            this._floating = false;
+            this._floating = element.hasAttribute('dropdown');
         }
         UIMenu.prototype.bind = function () {
             if (this.router && this.router.isRoot)
-                this.classes = 'ui-app-menu';
-            if (this.floating !== false)
-                this.classes += ' ui-floating ';
+                this._classes = 'ui-app-menu';
+            if (this._floating !== false)
+                this._classes += ' ui-floating ';
         };
-        UIMenu.prototype.linkClicked = function ($event) {
+        UIMenu.prototype._linkClicked = function ($event) {
+            if (this.router)
+                return true;
             var el = $($event.target).closest('a');
             if (el) {
                 var e = new Event('click');

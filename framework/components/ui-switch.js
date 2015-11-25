@@ -38,23 +38,23 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.theme = 'priority';
         }
         UISwitch.prototype.attached = function () {
-            $(this.switch)
+            $(this._switch)
                 .data('UISwitch', this)
                 .find('input')
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UISwitch.prototype.disabledChanged = function (newValue) {
-            $(this.switch).find('input')
+            $(this._switch).find('input')
                 .attr(newValue !== false ? 'disabled' : 'x', '');
         };
-        UISwitch.prototype.valueChanged = function (newValue) {
+        UISwitch.prototype._valueChanged = function (newValue) {
             ui_event_1.UIEvent.fireEvent('change', this.element, newValue);
         };
-        UISwitch.prototype.onFocus = function () {
-            $(this.switch).children().first().addClass('ui-focus');
+        UISwitch.prototype._focus = function () {
+            $(this._switch).children().first().addClass('ui-focus');
         };
-        UISwitch.prototype.onBlur = function () {
-            $(this.switch).children().first().removeClass('ui-focus');
+        UISwitch.prototype._blur = function () {
+            $(this._switch).children().first().removeClass('ui-focus');
         };
         __decorate([
             aurelia_framework_1.bindable, 
@@ -80,7 +80,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable({
                 name: 'checked',
                 attribute: 'checked',
-                changeHandler: 'valueChanged',
+                changeHandler: '_valueChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: false
             }),

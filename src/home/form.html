@@ -35,6 +35,26 @@
 			<ui-column>
 				<ui-input addon-text="999 999 999" disabled>Disabled<span>Cant Change</span></ui-input>
 			</ui-column>
+			<ui-column full row>
+				<ui-column width="120px"></ui-column>
+				<ui-column fill>
+					<p>First Name: ${fname}</p>
+
+					<p>Last Name: ${lname}</p>
+
+					<p>Email: ${email}</p>
+				</ui-column>
+				<ui-column width="120px"></ui-column>
+				<ui-column fill>
+
+					<p>Phone: ${phone}, Code: ${phoneCode}, Number: ${phoneNumber}</p>
+
+					<p>Has Location: ${hasLoc?'Yes':'No'}</p>
+
+					<p>Location: ${pos}, Radio: ${opts}</p>
+
+				</ui-column>
+			</ui-column>
 			<ui-column full>
 				<ui-input area required clear value.bind="tem" button-icon="fi-elegant-search7">Template</ui-input>
 			</ui-column>
@@ -58,29 +78,10 @@
 					<ui-option radio name="radio" value="6">Radio 6</ui-option>
 				</ui-option-group>
 			</ui-column>
+			<ui-column full>
+				<ui-markdown required value.bind="md">Markdown</ui-markdown>
+			</ui-column>
 		</ui-form>
-
-		<ui-grid>
-			<ui-column width="120px"></ui-column>
-			<ui-column fill>
-				<p>First Name: ${fname}</p>
-
-				<p>Last Name: ${lname}</p>
-
-				<p>Email: ${email}</p>
-			</ui-column>
-			<ui-column width="120px"></ui-column>
-			<ui-column fill>
-
-				<p>Phone: ${phone}, Code: ${phoneCode}, Number: ${phoneNumber}</p>
-
-				<p>Has Location: ${hasLoc?'Yes':'No'}</p>
-
-				<p>Location: ${pos}, Radio: ${opts}</p>
-
-			</ui-column>
-		</ui-grid>
-
 
 	</div>
 	<hr/>

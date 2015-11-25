@@ -1,7 +1,7 @@
 <template>
-	<div class="ui-input-group" ref="inputGroup" ref-id="${id}">
+	<div class="ui-input-group" ref="_inputGroup" ref-id="${id}">
 
-		<label class="ui-label ${labelClasses}">
+		<label class="ui-label ${_labelClasses}">
 			<content></content>
 		</label>
 
@@ -10,19 +10,19 @@
 				<span class="${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
 				<span if.bind="addonText">${addonText}</span>
 			</div>
-			<div class="ui-addon ui-option ui-checkbox" if.bind="checkbox">
+			<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
 				<input class="ui-option-input" type="checkbox" checked.bind="checked"/>
 				<span class="ui-check-mark"></span>
 			</div>
-			<input class="ui-input ${inputClasses} ui-primary" placeholder="${placeholder1}" value.bind="value1"
-				   size="1" if.bind="!area"/>
-			<input class="ui-input ${inputClasses} ui-secondary" placeholder="${placeholder2}" value.bind="value2"
-				   size="1" if.bind="!area && double"/>
+			<input class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
+				   size="1" if.bind="!_area"/>
+			<input class="ui-input ${_inputClasses} ui-secondary" placeholder="${_placeholder2}" value.bind="_value2"
+				   size="1" if.bind="!_area && _double"/>
 
-			<textarea class="ui-input ${inputClasses} ui-primary" placeholder="${placeholder1}" value.bind="value1"
-				   cols="10" rows="5" if.bind="area"></textarea>
+			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
+				   cols="10" rows="5" if.bind="_area"></textarea>
 
-			<button if.bind="buttonText || buttonIcon" class="ui-button ui-button-default">
+			<button if.bind="buttonText || buttonIcon" class="ui-button ui-button-default" click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>
 		</div>

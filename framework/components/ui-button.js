@@ -13,62 +13,62 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
     var UIButton = (function () {
         function UIButton(element) {
             this.element = element;
-            this.classes = '';
+            this._classes = '';
             this.id = '';
             this.disabled = false;
-            this.size = "normal";
-            this.theme = "default";
-            this.default = false;
-            this.default = element.hasAttribute('default');
+            this._size = "normal";
+            this._theme = "default";
+            this._default = false;
+            this._default = element.hasAttribute('default');
             if (element.hasAttribute('large'))
-                this.size = 'large';
+                this._size = 'large';
             if (element.hasAttribute('small'))
-                this.size = 'small';
+                this._size = 'small';
             if (element.hasAttribute('primary'))
-                this.theme = 'primary';
+                this._theme = 'primary';
             if (element.hasAttribute('secondary'))
-                this.theme = 'secondary';
+                this._theme = 'secondary';
             if (element.hasAttribute('info'))
-                this.theme = 'info';
+                this._theme = 'info';
             if (element.hasAttribute('danger'))
-                this.theme = 'danger';
+                this._theme = 'danger';
             if (element.hasAttribute('success'))
-                this.theme = 'success';
+                this._theme = 'success';
             if (element.hasAttribute('warning'))
-                this.theme = 'warning';
+                this._theme = 'warning';
         }
         UIButton.prototype.bind = function () {
-            if (this.theme)
-                this.classes += "ui-button-" + this.theme + " ";
-            if (this.size)
-                this.classes += "ui-button-" + this.size + " ";
-            if (this.default !== false)
-                this.classes += "ui-default ";
+            if (this._theme)
+                this._classes += "ui-button-" + this._theme + " ";
+            if (this._size)
+                this._classes += "ui-button-" + this._size + " ";
+            if (this._default !== false)
+                this._classes += "ui-default ";
             if (this.icon)
-                this.attachIcon();
+                this._attachIcon();
             if (this.menu) {
-                $(this.button).append('&nbsp;<i class="ui-caret"></i>');
+                $(this._button).append('&nbsp;<i class="ui-caret"></i>');
             }
         };
         UIButton.prototype.attached = function () {
-            $(this.button)
+            $(this._button)
                 .data('UIButton', this)
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UIButton.prototype.disabledChanged = function (newValue) {
-            $(this.button)
+            $(this._button)
                 .attr(newValue !== false ? 'disabled' : 'x', '');
         };
-        UIButton.prototype.attachIcon = function () {
-            if (!this.iconEl) {
-                this.iconEl = $(this.button).prepend('<i></i>').children('i');
+        UIButton.prototype._attachIcon = function () {
+            if (!this._iconEl) {
+                this._iconEl = $(this._button).prepend('<i></i>').children('i');
             }
-            this.iconEl.attr('class', '').addClass(this.icon);
+            this._iconEl.attr('class', '').addClass(this.icon);
         };
-        UIButton.prototype.clicked = function ($event) {
+        UIButton.prototype._clicked = function ($event) {
             if (this.menu) {
                 $event.cancelBubble = true;
-                $(this.button).toggleClass('ui-dropdown');
+                $(this._button).toggleClass('ui-dropdown');
             }
             else {
                 ui_event_1.UIEvent.fireEvent('click', this.element);

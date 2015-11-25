@@ -13,17 +13,17 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
     var UIGrid = (function () {
         function UIGrid(el) {
             this.class = '';
-            this.classes = '';
+            this._classes = '';
             if (el.hasAttribute('nowrap'))
-                this.classes += ' ui-nowrap ';
+                this._classes += ' ui-nowrap ';
             if (el.hasAttribute('stretch'))
-                this.classes += ' ui-stretch ';
+                this._classes += ' ui-stretch ';
             if (el.hasAttribute('center'))
-                this.classes += ' ui-center ';
+                this._classes += ' ui-center ';
             if (el.hasAttribute('start'))
-                this.classes += ' ui-start ';
+                this._classes += ' ui-start ';
             if (el.hasAttribute('end'))
-                this.classes += ' ui-end ';
+                this._classes += ' ui-end ';
         }
         __decorate([
             aurelia_framework_1.bindable, 
