@@ -6,27 +6,27 @@
  **/
 
 // Headers
-h1 {
+h1, .ui-h1 {
   font-size: 2rem;
 }
 
-h2 {
+h2, .ui-h2 {
   font-size: 1.8rem;
 }
 
-h3 {
+h3, .ui-h3 {
   font-size: 1.5rem;
 }
 
-h4 {
+h4, .ui-h4 {
   font-size: 1.25rem;
 }
 
-h5 {
+h5, .ui-h5 {
   font-size: 1.1rem;
 }
 
-h6 {
+h6, .ui-h6 {
   font-size: 0.9rem;
 }
 
@@ -59,6 +59,35 @@ code {
 
 .ui-italic, i, cite, em, var, address, dfn {
   font-style: italic;
+}
+
+.ui-small-caps {
+  font-variant: small-caps;
+}
+
+.ui-uppercase {
+  text-transform: uppercase;
+}
+
+.ui-lowercase {
+  text-transform: lowercase;
+}
+
+.ui-titlecase {
+  text-transform: capitalize;
+}
+
+// Sizes
+.ui-font-small, small {
+  font-size: 0.75rem;
+}
+
+.ui-font-big {
+  font-size: 1.15rem;
+}
+
+.ui-font-large, big {
+  font-size: 1.5rem;
 }
 
 // Colors

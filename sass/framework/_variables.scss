@@ -19,6 +19,8 @@ $danger: $pastel-red !default;
 $success: $pastel-green !default;
 $warning: $pastel-orange !default;
 
+$toolbar-bg: $baby-powder !default;
+
 $base-bg: if($dark-theme, $outer-space, $coconut) !default;
 $base-text: if($dark-theme, $coconut, $black-olive) !default;
 $base-bg-image: if($dark-theme, 'back/black_linen_v1.png', 'back/white_linen.png') !default;

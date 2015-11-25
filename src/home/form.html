@@ -30,10 +30,10 @@
 				</ui-input>
 			</ui-column>
 			<ui-column>
-				<ui-input addon-text="999 999 999" readonly>Readonly</ui-input>
+				<ui-input addon-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>
 			</ui-column>
 			<ui-column>
-				<ui-input addon-text="999 999 999" disabled>Disabled<span>Cant Change</span></ui-input>
+				<ui-input addon-text="999 999 999" disabled>Disabled<span>Cant Select</span></ui-input>
 			</ui-column>
 			<ui-column full row>
 				<ui-column width="120px"></ui-column>
@@ -108,6 +108,8 @@
 				&nbsp;&nbsp;&lt;ui-option [<em>checkbox</em>|radio] [name=''] [value='']<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;[checked.bind='']>{Label}&lt;ui-option><br/>
 				&lt;/ui-option-group></code></p>
+			<hr/>
+			<p><code>&lt;ui-markdown [required] [value.bind='']>{Label}&lt;/ui-markdown></code></p>
 		</ui-column>
 	</ui-grid>
 </template>

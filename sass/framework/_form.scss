@@ -88,7 +88,10 @@
 	  }
 
 	  .ui-checkbox {
-		@include flex(0 0 28px);
+		@include flex(0 0 26px);
+		.ui-option-input:checked ~ .ui-check-mark:after {
+		  content: '\e005';
+		}
 	  }
 
 	  .ui-button {
@@ -98,10 +101,6 @@
 		  box-shadow: none;
 		}
 		z-index: 1;
-	  }
-
-	  .ui-button-group {
-		@include flex-direction(column);
 	  }
 
 	  > :first-child {
@@ -116,7 +115,37 @@
 		border-radius: $base-border-radius;
 	  }
 
-	  .ui-markdown-preview {
+	  .ui-markdown-editor {
+		.ui-button-group {
+		  padding: 0;
+		  background: $toolbar-bg;
+		  border: 1px solid $input-border;
+		  border-bottom: none;
+		  @include flex-wrap(wrap);
+		  @include border-top-radius($base-border-radius);
+		  > .ui-button {
+			margin: 0;
+			border-radius: 0;
+			border-width: 0 1px 0 0;
+			&:first-child {
+			  @include border-top-left-radius($base-border-radius);
+			}
+		  }
+		  .ui-divider {
+			@include flex(0 0 8px);
+
+			~ .ui-button {
+			  border-left-width: 1px;
+			}
+		  }
+		}
+		.ui-input {
+		  @include border-top-radius(0);
+		  @include border-bottom-radius($base-border-radius);
+		}
+	  }
+
+	  .ui-markdown-preview, .ui-markdown-help {
 		@include position(absolute, 0);
 		overflow: auto;
 		padding: 0.5rem 1rem;
@@ -128,9 +157,10 @@
 		border-radius: $base-border-radius;
 		@include box-shadow(0 0 3px 0 #ccc inset);
 
-		.ui-close {
+		~ .ui-close {
 		  @include position(absolute, 0 0 null null);
 		  opacity: .3;
+		  z-index: 9;
 		  font-size: 1.5rem;
 		  color: $base-text;
 

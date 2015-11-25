@@ -49,7 +49,27 @@ textarea {
   visibility: hidden !important;
 }
 
+.ui-inline {
+  display: inline !important;
+}
+
+.ui-align-start {
+  text-align: start;
+}
+
+.ui-align-center {
+  text-align: center;
+}
+
+.ui-align-end {
+  text-align: end;
+}
+
 // PADDING
+.pad-0 {
+  padding: 0 !important;
+}
+
 .pad-all {
   padding: 0.5rem;
 }
@@ -63,6 +83,10 @@ textarea {
 }
 
 // MARGIN
+.margin-0 {
+  margin: 0 !important;
+}
+
 .margin-all {
   margin: 0.5rem;
 }

@@ -29,16 +29,25 @@
 
   ul {
 	list-style-type: disc;
-	padding-left: 20px;
+	list-style-position: inside;
   }
 
   ol {
 	list-style-type: decimal;
-	padding-left: 20px;
+	list-style-position: inside;
   }
 
   td, th {
 	padding: 4px 10px;
+  }
+
+  th {
+	font-weight: bold;
+	border-bottom: 1px solid #e5e5e5;
+  }
+
+  tr:nth-of-type(even) td {
+	background: #f0f0f0;
   }
 
   hr {

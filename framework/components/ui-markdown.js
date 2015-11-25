@@ -16,9 +16,6 @@ define(["require", "exports", "aurelia-framework", '../utils/ui-converters'], fu
             this._labelClasses = '';
             this._inputClasses = '';
             this.id = '';
-            this.addonIcon = '';
-            this.addonText = '';
-            this.addonClass = '';
             this.placeholder = '';
             this.readonly = false;
             this.disabled = false;
@@ -53,37 +50,88 @@ define(["require", "exports", "aurelia-framework", '../utils/ui-converters'], fu
         };
         UIMarkdown.prototype._toolClick = function ($event) {
             var id = $($event.target).closest('button').data('id');
-            var start = this._input[0].selectionStart, end = this._input[0].selectionEnd;
+            var start = this._input[0].selectionStart, end = this._input[0].selectionEnd, sub = this.value.substr(start, end - start) || 'EditThis';
+            var diff = 0;
             if (id == 'preview') {
-                this._togglePreview();
+                this._toggle('preview');
+            }
+            else if (id == 'help') {
+                this._toggle('help');
             }
             else if (id == 'h1') {
-                var s = this.value.substr(start, end - start);
-                this.value = this.value.substr(0, start) + '\n\n# ' + s + '\n\n' + this.value.substr(end);
+                diff = 3;
+                this.value = this.value.substr(0, start) + ("\n\n#" + sub + "\n\n") + this.value.substr(end);
+            }
+            else if (id == 'h2') {
+                diff = 4;
+                this.value = this.value.substr(0, start) + ("\n\n##" + sub + "\n\n") + this.value.substr(end);
+            }
+            else if (id == 'h3') {
+                diff = 5;
+                this.value = this.value.substr(0, start) + ("\n\n###" + sub + "\n\n") + this.value.substr(end);
+            }
+            else if (id == 'h4') {
+                diff = 6;
+                this.value = this.value.substr(0, start) + ("\n\n####" + sub + "\n\n") + this.value.substr(end);
+            }
+            else if (id == 'h5') {
+                diff = 7;
+                this.value = this.value.substr(0, start) + ("\n\n#####" + sub + "\n\n") + this.value.substr(end);
+            }
+            else if (id == 'h6') {
+                diff = 8;
+                this.value = this.value.substr(0, start) + ("\n\n######" + sub + "\n\n") + this.value.substr(end);
+            }
+            else if (id == 'b') {
+                diff = 2;
+                this.value = this.value.substr(0, start) + ("__" + sub + "__") + this.value.substr(end);
+            }
+            else if (id == 'i') {
+                diff = 1;
+                this.value = this.value.substr(0, start) + ("_" + sub + "_") + this.value.substr(end);
+            }
+            else if (id == 's') {
+                diff = 2;
+                this.value = this.value.substr(0, start) + ("~~" + sub + "~~") + this.value.substr(end);
+            }
+            else if (id == 'a') {
+                diff = 1;
+                this.value = this.value.substr(0, start) + ("[" + sub + "](" + sub + ")") + this.value.substr(end);
+            }
+            else if (id == 'img') {
+                diff = 2;
+                this.value = this.value.substr(0, start) + ("![" + sub + "](" + sub + ")") + this.value.substr(end);
+            }
+            else if (id == 'ul') {
+                diff = 1;
+                sub = sub.replace(/^.+$/gm, function (t) { return ("* " + t); });
+                this.value = this.value.substr(0, start) + ("\n" + sub + "\n") + this.value.substr(end);
+            }
+            else if (id == 'ol') {
+                diff = 1;
+                var i = 1;
+                sub = sub.replace(/^.+$/gm, function (t) { return (i++ + ". " + t); });
+                this.value = this.value.substr(0, start) + ("\n" + sub + "\n") + this.value.substr(end);
+            }
+            if (id != 'preview' && id != 'help') {
                 this._input.focus();
-                this._input[0].selectionStart = end + 6;
-                this._input[0].selectionEnd = end + 6;
+                this._input[0].selectionStart = start + diff;
+                this._input[0].selectionEnd = start + diff + sub.length;
             }
         };
-        UIMarkdown.prototype._togglePreview = function () {
-            $(this._markdown).find('.ui-markdown-preview').toggleClass('ui-hide');
+        UIMarkdown.prototype._toggle = function (type) {
+            $(this._markdown).find('.ui-close').toggleClass('ui-hide');
+            if (type == 'close') {
+                $(this._markdown).find('.ui-markdown:not(.ui-hide)').addClass('ui-hide');
+            }
+            else {
+                $(this._markdown).find(".ui-markdown-" + type).toggleClass('ui-hide');
+            }
         };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIMarkdown.prototype, "id");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIMarkdown.prototype, "addonIcon");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIMarkdown.prototype, "addonText");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIMarkdown.prototype, "addonClass");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
