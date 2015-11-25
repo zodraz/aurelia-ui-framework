@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18e4602c-b0b9-41c9-a49b-75ab5838207e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/editor/flaticon.eot" afterPath="$PROJECT_DIR$/fonts/editor/flaticon.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/editor/flaticon.ttf" afterPath="$PROJECT_DIR$/fonts/editor/flaticon.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/editor/flaticon.woff" afterPath="$PROJECT_DIR$/fonts/editor/flaticon.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/editor/flaticon.css" afterPath="$PROJECT_DIR$/fonts/editor/flaticon.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/editor/flaticon.html" afterPath="$PROJECT_DIR$/fonts/editor/flaticon.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonts/editor/flaticon.svg" afterPath="$PROJECT_DIR$/fonts/editor/flaticon.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework/components/ui-markdown.html" afterPath="$PROJECT_DIR$/framework/components/ui-markdown.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework/components/ui-markdown.js" afterPath="$PROJECT_DIR$/framework/components/ui-markdown.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/framework/components/ui-markdown.ts" afterPath="$PROJECT_DIR$/framework/components/ui-markdown.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_form.scss" afterPath="$PROJECT_DIR$/sass/framework/_form.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_input-option.scss" afterPath="$PROJECT_DIR$/sass/framework/_input-option.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_markdown.scss" afterPath="$PROJECT_DIR$/sass/framework/_markdown.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_reset.scss" afterPath="$PROJECT_DIR$/sass/framework/_reset.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_typography.scss" afterPath="$PROJECT_DIR$/sass/framework/_typography.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/framework/_variables.scss" afterPath="$PROJECT_DIR$/sass/framework/_variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/form.html" afterPath="$PROJECT_DIR$/src/home/form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/app.css" afterPath="$PROJECT_DIR$/styles/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/buttons.js" afterPath="$PROJECT_DIR$/src/home/buttons.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/home/buttons.ts" afterPath="$PROJECT_DIR$/src/home/buttons.ts" />
     </list>
     <ignored path="aurelia-ui-framework.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +24,18 @@
     <favorites_list name="aurelia-ui-framework" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="buttons.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/home/buttons.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27672955">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +44,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/typings/external/notify.d.ts" />
-        <option value="$PROJECT_DIR$/src/home/buttons.ts" />
         <option value="$PROJECT_DIR$/src/home/buttons.html" />
         <option value="$PROJECT_DIR$/src/home/page.html" />
         <option value="$PROJECT_DIR$/sass/framework/_notify.scss" />
@@ -98,6 +93,7 @@
         <option value="$PROJECT_DIR$/framework/components/ui-markdown.html" />
         <option value="$PROJECT_DIR$/sass/framework/_form.scss" />
         <option value="$PROJECT_DIR$/src/home/form.html" />
+        <option value="$PROJECT_DIR$/src/home/buttons.ts" />
       </list>
     </option>
   </component>
@@ -516,7 +512,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -526,7 +522,7 @@
       <window_info id="Run" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24954791" sideWeight="0.2107943" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24954791" sideWeight="0.2107943" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24954791" sideWeight="0.78920573" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24954791" sideWeight="0.78920573" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892057" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -691,14 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8569881">
           <caret line="48" column="1" selection-start-line="6" selection-start-column="0" selection-end-line="48" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/home/buttons.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -996,6 +984,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45612136">
           <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/home/buttons.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27672955">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
           <folding />
         </state>
       </provider>
