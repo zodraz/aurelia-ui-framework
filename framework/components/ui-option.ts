@@ -18,11 +18,13 @@ import {UIEvent} from "../utils/ui-event";
 @containerless()
 @customElement('ui-option')
 export class UIOption {
+	private option;
 	private type:string      = '';
 	private classes:string   = '';
 	private checked:boolean  = false;
 	private checkbox:boolean = true;
 
+	@bindable id:string    = '';
 	@bindable name:string  = '';
 	@bindable value:string = '';
 
@@ -33,6 +35,10 @@ export class UIOption {
 	bind() {
 		this.type    = this.checkbox ? 'checkbox' : 'radio';
 		this.classes = this.checkbox ? 'ui-checkbox' : 'ui-radio';
+	}
+
+	attached() {
+		$(this.option).data('UIOption', this);
 	}
 
 	checkChanged($event:UIEvent) {

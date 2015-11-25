@@ -23,8 +23,7 @@ export class UIButtonGroup {
 	private buttonGroup;
 	private value;
 
-	// Toggle change caller
-	@bindable change;
+	@bindable id:string = '';
 
 	private size:string;
 	private theme:string;
@@ -55,6 +54,7 @@ export class UIButtonGroup {
 	}
 
 	attached() {
+		$(this.buttonGroup).data('UIButtonGroup', this);
 		if (this.size) {
 			$(this.buttonGroup).children('.ui-button')
 				.removeClass('ui-button-normal')

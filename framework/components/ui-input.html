@@ -7,7 +7,7 @@
 
 		<div class="ui-form-control">
 			<div class="ui-addon" if.bind="addonIcon || addonText">
-				<span class="${addonIcon}" if.bind="addonIcon"></span>
+				<span class="${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
 				<span if.bind="addonText">${addonText}</span>
 			</div>
 			<div class="ui-addon ui-option ui-checkbox" if.bind="checkbox">

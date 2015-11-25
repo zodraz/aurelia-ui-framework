@@ -8,8 +8,13 @@
 			<ui-column>
 				<ui-input name required clear value.bind="lname">Last Name</ui-input>
 			</ui-column>
-			<ui-column full>
+			<ui-column>
 				<ui-input email addon-icon="fi-elegant-mail9" required clear value.bind="email">Email</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-input email addon-icon.bind="phoneCountry" addon-class="ui-flag" required clear
+						  value.bind="phoneCountry">Country
+				</ui-input>
 			</ui-column>
 			<ui-column>
 				<ui-input position checkbox checked.bind="hasLoc" value.bind="pos" placeholder="Latitude,Longitude"
@@ -18,7 +23,11 @@
 				</ui-input>
 			</ui-column>
 			<ui-column>
-				<ui-input number addon-text="+1" required clear value.bind="phone">Phone</ui-input>
+				<ui-input phone required clear value.bind="phone"
+						  phone-code.bind="phoneCode"
+						  phone-number.bind="phoneNumber"
+						  phone-country.bind="phoneCountry">Phone
+				</ui-input>
 			</ui-column>
 			<ui-column>
 				<ui-input addon-text="999 999 999" readonly>Readonly</ui-input>
@@ -63,7 +72,7 @@
 			<ui-column width="120px"></ui-column>
 			<ui-column fill>
 
-				<p>Phone: ${phone}</p>
+				<p>Phone: ${phone}, Code: ${phoneCode}, Number: ${phoneNumber}</p>
 
 				<p>Has Location: ${hasLoc?'Yes':'No'}</p>
 
@@ -77,14 +86,12 @@
 	<hr/>
 	<ui-grid class="margin-v">
 		<ui-column fill class="pad-all">
-			<h5>Usage</h5>
-
-			<p>Double input uses comma separated values and placeholders</p>
-
-			<p>Checkbox will add a checkbox addon that will enable/disable input field</p>
-
+			<h5>Usage
+				<small>Double input uses comma separated values and placeholders</small>
+				<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
+			</h5>
 			<p><code>&lt;ui-input [readonly|disabled] [double] [required] [clear]<br/>
-				<em>type?</em>[area|<em>text</em>|email|number|decimal|name|address|position]<br/>
+				<em>type?</em>[<em>text</em>|email|number|decimal|area|phone|name|address|position]<br/>
 				<em>addon?</em>[addon-icon='' | addon-text='']<br/>
 				<em>button?</em>[button-icon='' | button-text='']<br/>
 				[checkbox checked.bind="true|false"]<br/>
@@ -93,10 +100,9 @@
 				[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
 		</ui-column>
 		<ui-column fill class="pad-all">
-			<h5>Usage</h5>
-
-			<p>Radio option group can have value.bind</p>
-
+			<h5>Usage
+				<small>Radio option group can have value.bind</small>
+			</h5>
 			<p><code>&lt;ui-option-group label='' [value.bind='']><br/>
 				&nbsp;&nbsp;&lt;ui-option [<em>checkbox</em>|radio] [name=''] [value='']<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;[checked.bind='']>{Label}&lt;ui-option><br/>

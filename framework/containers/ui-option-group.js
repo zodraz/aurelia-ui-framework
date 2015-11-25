@@ -14,10 +14,12 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UIOptionGroup(element) {
             this.element = element;
             this.value = '';
+            this.id = '';
             this.label = '';
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;
+            $(this.optionGroup).data('UIOptionGroup', this);
             setTimeout(function () {
                 $(_this.optionGroup).find(".ui-radio .ui-option-input[value=\"" + _this.value + "\"]").prop('checked', true);
             }, 200);
@@ -28,6 +30,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         UIOptionGroup.prototype.checkChanged = function ($event) {
             this.value = $event.data;
         };
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIOptionGroup.prototype, "id");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

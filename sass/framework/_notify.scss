@@ -1,0 +1,72 @@
+/**
+ *	NotifyJS Stylings
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ */
+
+@mixin notify-theme($theme, $bg, $text, $border, $icon) {
+  &.notifyjs-bootstrap-#{$theme} {
+	&:before {
+	  content: $icon;
+	}
+	color: $text !important;
+	border-color: $border !important;
+	background: linear-gradient($bg, darken($bg, 5%));
+  }
+}
+
+.notifyjs-container {
+  max-width: 600px;
+  .notifyjs-bootstrap-base {
+	font-weight: $font-weight-strong;
+	font-size: 1.1em;
+	padding: 1rem 1.5rem 1rem 3rem;
+	color: $coconut !important;
+	border-color: $outer-space !important;
+	background: linear-gradient(tint($licorice, 25%), $licorice);
+
+	&:before {
+	  content: '\e0c6';
+	  font-family: Elegant;
+	  font-size: 1.2em;
+	  position: absolute;
+	  left: 1rem;
+	  top: 1rem;
+	}
+	&:after {
+	  content: '×';
+	  opacity: 0.3;
+	  font-size: 1.3rem;
+	  color: #444;
+	  text-shadow: 0 1px #fff;
+	  position: absolute;
+	  top: 1px;
+	  right: 6px;
+	}
+	&:hover:after {
+	  opacity: 0.5;
+	}
+
+	@include notify-theme(primary, $notify-primary-bg, $notify-primary-text, $notify-primary-border, '\e077');
+	@include notify-theme(info, $notify-info-bg, $notify-info-text, $notify-info-border, '\e072');
+	@include notify-theme(danger, $notify-danger-bg, $notify-danger-text, $notify-danger-border, '\e03b');
+	@include notify-theme(success, $notify-success-bg, $notify-success-text, $notify-success-border, '\e02f');
+	@include notify-theme(warning, $notify-warning-bg, $notify-warning-text, $notify-warning-border, '\e059');
+  }
+}
+
+.notifyjs-corner {
+  top: 60px !important;
+
+  @include flex-column(flex-end, flex-start, false);
+
+  .notifyjs-wrapper {
+	@include flex(1 1 auto);
+	max-width: 300px;
+
+	.notifyjs-bootstrap-base {
+	  white-space: normal;
+	}
+  }
+}

@@ -10,7 +10,6 @@
 @import "colors";
 @import "mixins";
 @import "variables";
-
 // fonts
 @import url(font_url("bigmug-line/flaticon.css", true));
 @import url(font_url("bigmug-solid/flaticon.css", true));
@@ -18,7 +17,6 @@
 @import url(font_url("extended-ui/flaticon.css", true));
 @import url(font_url("essentials/flaticon.css", true));
 @import url(font_url("ecomm/flaticon.css", true));
-
 @import "reset";
 @import "base";
 @import "grid";
@@ -28,6 +26,7 @@
 @import "input-option";
 @import "switch";
 @import "buttons";
+@import "notify";
 @import "animations";
 @import "typography";
 @import "containers";

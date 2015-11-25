@@ -112,3 +112,20 @@ $input-disabled-bg: darken($input-bg, 10%) !default;
 $input-option-color: $charcoal-gray !default;
 $input-option-color-focus: $input-focus-color !default;
 $input-option-color-disabled: $ash-gray !default;
+
+// NOTIFY
+$notify-info-bg: tint($info, 90%);
+$notify-info-text: darken(desaturate($info, 20%), 20%);
+$notify-info-border: desaturate($info, 15%);
+$notify-danger-bg: tint($danger, 90%);
+$notify-danger-text: darken(desaturate($danger, 20%), 20%);
+$notify-danger-border: desaturate($danger, 15%);
+$notify-success-bg: tint($success, 90%);
+$notify-success-text: darken(desaturate($success, 20%), 20%);
+$notify-success-border: desaturate($success, 15%);
+$notify-warning-bg: tint($warning, 90%);
+$notify-warning-text: darken(desaturate($warning, 20%), 20%);
+$notify-warning-border: desaturate($warning, 15%);
+$notify-primary-bg: tint($primary, 90%);
+$notify-primary-text: darken(desaturate($primary, 20%), 20%);
+$notify-primary-border: desaturate($primary, 15%);

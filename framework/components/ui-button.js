@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         function UIButton(element) {
             this.element = element;
             this.classes = '';
+            this.id = '';
             this.disabled = false;
             this.size = "normal";
             this.theme = "default";
@@ -85,6 +86,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIButton.prototype, "icon");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIButton.prototype, "id");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)

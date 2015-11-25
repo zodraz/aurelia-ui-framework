@@ -19,6 +19,7 @@ export class UIButton {
 	@bindable menu;
 	@bindable value:string;
 	@bindable icon:string;
+	@bindable id:string          = '';
 	@bindable disabled:boolean = false;
 
 	private size:string     = "normal";

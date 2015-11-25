@@ -26,6 +26,38 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 	defaultBindingMode: bindingMode.twoWay,
 	defaultValue: false
 })
+/**
+ * @bindable area code
+ * @type {string}
+ */
+@bindable({
+	name: 'phoneCode',
+	attribute: 'phone-code',
+	defaultBindingMode: bindingMode.twoWay,
+	defaultValue: ''
+})
+/**
+ * @bindable phone number
+ * @type {string}
+ */
+@bindable({
+	name: 'phoneNumber',
+	attribute: 'phone-number',
+	defaultBindingMode: bindingMode.twoWay,
+	defaultValue: ''
+})
+/**
+ * @bindable country code (iso2 code)
+ * @type {string}
+ */
+@bindable({
+	name: 'phoneCountry',
+	attribute: 'phone-country',
+	changeHandler: 'countryChanged',
+	defaultBindingMode: bindingMode.twoWay,
+	defaultValue: 'us'
+})
+
 
 @autoinject()
 @containerless()
@@ -45,14 +77,21 @@ export class UIInput {
 	private labelClasses:string = '';
 	private inputClasses:string = '';
 
+	// For Phone Input Only
+	private phoneCode:string    = '';
+	private phoneNumber:string  = '';
+	private phoneCountry:string = 'us';
+
 	@bindable id:string          = '';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';
+	@bindable addonClass:string  = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
 	@bindable placeholder:string = '';
 	@bindable readonly:boolean   = false;
 	@bindable disabled:boolean   = false;
+	@bindable phoneType:number   = PhoneLib.TYPE.MOBILE;
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('clear')) this.inputClasses += ' ui-clear ';
@@ -70,6 +109,7 @@ export class UIInput {
 		if (element.hasAttribute('name')) this.type = 'name';
 		if (element.hasAttribute('address')) this.type = 'address';
 		if (element.hasAttribute('position')) this.type = 'position';
+		if (element.hasAttribute('phone')) this.type = 'phone';
 	}
 
 	bind() {
@@ -86,6 +126,13 @@ export class UIInput {
 		if (this.checkbox) {
 			this.disabled = this.checked !== true;
 		}
+		if (this.type == 'phone') {
+			this.addonText    = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
+			this.placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
+
+			this.value1 = `${this.phoneCode}${this.phoneNumber}`;
+			this._processValue();
+		}
 	}
 
 	attached() {
@@ -100,20 +147,21 @@ export class UIInput {
 					var el = $(e.target);
 					el[el.val() !== '' ? 'addClass' : 'removeClass']('x');
 				}
-				this.value = this.double ? `${this.value1},${this.value2}` : this.value1;
+				this._processValue();
 			})
 			.on('mousemove', (e)=> {
 				if ($(e.target).hasClass('x'))
 					$(e.target)[(e.target.offsetWidth - 18 < e.clientX - e.target.getBoundingClientRect().left) ? 'addClass' : 'removeClass']('onX');
 			})
 			.on('touchstart mousedown', (e)=> {
-				if ($(e.target).hasClass('onX')) {
+				if (e.button == 0 && $(e.target).hasClass('onX')) {
 					e.preventDefault();
 					e.cancelBubble = true;
 					$(e.target).removeClass('x onX').val('');
 				}
 			})
 			.keypress((e) => {
+				if (e.ctrlKey || e.altKey || e.metaKey) return true;
 				if (this.type == 'name') {
 					return (/\w*/)
 						.test(String.fromCharCode(e.charCode));
@@ -131,6 +179,9 @@ export class UIInput {
 				else if (this.type == 'email') {
 					return (/[A-Za-z0-9\-\.@_\+]/).test(String.fromCharCode(e.charCode));
 				}
+				else if (this.type == 'phone') {
+					return /[0-9]/.test(String.fromCharCode(e.charCode));
+				}
 
 				if (e.keyCode == 13) $(e.target).trigger('change', e);
 
@@ -142,7 +193,7 @@ export class UIInput {
 				$(e.target).val(val);
 				if (this.double && $(e.target).hasClass('ui-secondary')) this.value2 = val
 				else this.value1 = val;
-				this.value = this.double ? `${this.value1},${this.value2}` : this.value1;
+				this._processValue();
 			});
 	}
 
@@ -169,11 +220,34 @@ export class UIInput {
 	 * @param newValue
 	 */
 	private valueChanged(newValue) {
-		[this.value1, this.value2] = (newValue || '').split(',');
-		this.value1                = this._format(this.value1 || '');
-		this.value2                = this._format(this.value2 || '');
+		if (this.type == 'phone') {
+			// DONOT USE VALUE FOR PHONE, INSTEAD USE AREACODE AND NUMBER
+		}
+		else {
+			[this.value1, this.value2] = (newValue || '').split(',');
+			this.value1                = this._format(this.value1 || '');
+			this.value2                = this._format(this.value2 || '');
+		}
 		$(this.inputGroup).find('input.ui-primary')[this.value1 !== '' ? 'addClass' : 'removeClass']('x');
 		$(this.inputGroup).find('input.ui-secondary')[this.value2 !== '' ? 'addClass' : 'removeClass']('x');
+	}
+
+	private countryChanged(newValue) {
+		this.addonText    = '+' + PhoneLib.getDialingCode(newValue || 'US');
+		this.placeholder1 = PhoneLib.getExample(newValue || 'US', this.phoneType, true);
+
+		this.value1 = PhoneLib.formatInput(this.value1 || '', newValue || 'US')
+			.replace(/[\(\)\s\-]+$/, '');
+		this._processValue();
+	}
+
+	private _processValue() {
+		this.value = this.double ? `${this.value1},${this.value2}` : this.value1;
+		if (this.type == 'phone') {
+			this.value1 = PhoneLib.formatInput(this.value1, this.phoneCountry || 'us');
+			this.value  = PhoneLib.format(this.value1, this.phoneCountry || 'us', PhoneLib.FORMAT.FULL);
+			this._updatePhone();
+		}
 	}
 
 	private _format(val) {
@@ -191,6 +265,21 @@ export class UIInput {
 		else if (this.type == 'email') {
 			val = val.toLowerCase();
 		}
+		else if (this.type == 'phone') {
+			val = PhoneLib.formatInput(val || '', this.phoneCountry || 'US')
+				.replace(/[\(\)\s\-]+$/, '');
+		}
 		return val;
+	}
+
+	private _updatePhone() {
+		try {
+			var info         = PhoneLib.getNumberInfo(this.value1 || '', this.phoneCountry || 'US');
+			this.phoneCode   = info.areaCode;
+			this.phoneNumber = isNaN(info.phone) ? '' : info.phone;
+		} catch (e) {
+			this.phoneCode   = '';
+			this.phoneNumber = '';
+		}
 	}
 }

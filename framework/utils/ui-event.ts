@@ -1,3 +1,9 @@
+/**
+ *    UI Utils: Custom Event
+ *    @author    Adarsh Pastakia
+ *    @company   HMC
+ *    @copyright 2015-2016, Adarsh Pastakia
+ **/
 export class UIEvent extends Event {
 	private _data:any;
 

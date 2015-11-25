@@ -10,6 +10,7 @@ sudo jspm install jquery
 sudo jspm install lodash
 sudo jspm install moment
 sudo jspm install numeral
+sudo jspm install chosen
 sudo jspm install core-js
 sudo jspm install npm:markdown
 sudo jspm install aurelia-router

@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         function UIButtonGroup(element) {
             this.element = element;
             this.classes = '';
+            this.id = '';
             this.toggle = false;
             this.vertical = false;
             if (element.hasAttribute('toggle'))
@@ -41,6 +42,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.classes += "ui-vertical ";
         };
         UIButtonGroup.prototype.attached = function () {
+            $(this.buttonGroup).data('UIButtonGroup', this);
             if (this.size) {
                 $(this.buttonGroup).children('.ui-button')
                     .removeClass('ui-button-normal')
@@ -85,8 +87,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         __decorate([
             aurelia_framework_1.bindable, 
-            __metadata('design:type', Object)
-        ], UIButtonGroup.prototype, "change");
+            __metadata('design:type', String)
+        ], UIButtonGroup.prototype, "id");
         UIButtonGroup = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',

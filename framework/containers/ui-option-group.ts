@@ -24,13 +24,15 @@ export class UIOptionGroup {
 	private optionGroup;
 	private value:string = '';
 
+	@bindable id:string    = '';
 	@bindable label:string = '';
 
 	constructor(public element:Element) {
 	}
 
 	attached() {
-		setTimeout(()=>{
+		$(this.optionGroup).data('UIOptionGroup', this);
+		setTimeout(()=> {
 			$(this.optionGroup).find(`.ui-radio .ui-option-input[value="${this.value}"]`).prop('checked', true);
 		}, 200);
 	}

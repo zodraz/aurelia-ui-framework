@@ -17,6 +17,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.classes = '';
             this.checked = false;
             this.checkbox = true;
+            this.id = '';
             this.name = '';
             this.value = '';
             if (element.hasAttribute('radio'))
@@ -26,9 +27,16 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.type = this.checkbox ? 'checkbox' : 'radio';
             this.classes = this.checkbox ? 'ui-checkbox' : 'ui-radio';
         };
+        UIOption.prototype.attached = function () {
+            $(this.option).data('UIOption', this);
+        };
         UIOption.prototype.checkChanged = function ($event) {
             $event.data = this.checkbox ? this.checked : this.value;
         };
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIOption.prototype, "id");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
