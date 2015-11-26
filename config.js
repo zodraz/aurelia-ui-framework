@@ -328,6 +328,8 @@ System.config({
       "framework/components/ui-chosen.js",
       "framework/components/ui-input.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-input.js",
+      "framework/components/ui-list.html!github:systemjs/plugin-text@0.0.3",
+      "framework/components/ui-list.js",
       "framework/components/ui-markdown.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-markdown.js",
       "framework/components/ui-option.html!github:systemjs/plugin-text@0.0.3",
@@ -372,7 +374,7 @@ System.config({
       "github:jspm/nodelibs-process@0.1.2/index",
       "libs/chosen.js",
       "libs/countries.js",
-      "libs/markdown.js",
+      "libs/marked.js",
       "libs/notify.js",
       "libs/phonelib.js",
       "main.js",
@@ -626,7 +628,9 @@ System.config({
       "src/home/page.html!github:systemjs/plugin-text@0.0.3",
       "src/home/page.js",
       "src/home/view.html!github:systemjs/plugin-text@0.0.3",
-      "src/home/view.js"
+      "src/home/view.js",
+      "src/home/welcome.html!github:systemjs/plugin-text@0.0.3",
+      "src/home/welcome.js"
     ]
   },
 

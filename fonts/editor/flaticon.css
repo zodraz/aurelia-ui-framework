@@ -8,8 +8,8 @@
 	font-weight: normal;
 	font-style: normal;
 }
-[class^="fi-editor-"]:before, [class*=" fi-editor-"]:before,
-[class^="fi-editor-"]:after, [class*=" fi-editor-"]:after {   
+[class^="fi-editor-"]:before, [class*="fi-editor-"]:before,
+[class^="fi-editor-"]:after, [class*="fi-editor-"]:after {   
 	font-family: Editor;
 	font-size: 1em;
 }.fi-editor-anchor16:before {
@@ -24,60 +24,66 @@
 .fi-editor-bold14:before {
 	content: "\e003";
 }
-.fi-editor-button11:before {
+.fi-editor-check51:before {
 	content: "\e004";
 }
-.fi-editor-check51:before {
+.fi-editor-check52:before {
 	content: "\e005";
 }
-.fi-editor-check52:before {
+.fi-editor-circle107:before {
 	content: "\e006";
 }
-.fi-editor-circle107:before {
+.fi-editor-close47:before {
 	content: "\e007";
 }
-.fi-editor-close47:before {
+.fi-editor-italicize:before {
 	content: "\e008";
 }
-.fi-editor-italicize:before {
+.fi-editor-link15:before {
 	content: "\e009";
 }
-.fi-editor-link15:before {
+.fi-editor-list29:before {
 	content: "\e00a";
 }
-.fi-editor-list29:before {
+.fi-editor-list30:before {
 	content: "\e00b";
 }
-.fi-editor-list30:before {
+.fi-editor-minus18:before {
 	content: "\e00c";
 }
-.fi-editor-minus18:before {
+.fi-editor-numbered4:before {
 	content: "\e00d";
 }
-.fi-editor-numbered4:before {
+.fi-editor-picture13:before {
 	content: "\e00e";
 }
-.fi-editor-picture13:before {
+.fi-editor-question22:before {
 	content: "\e00f";
 }
-.fi-editor-question22:before {
+.fi-editor-question23:before {
 	content: "\e010";
 }
-.fi-editor-question23:before {
+.fi-editor-quote2:before {
 	content: "\e011";
 }
-.fi-editor-quote2:before {
+.fi-editor-radio51:before {
 	content: "\e012";
 }
-.fi-editor-radio51:before {
+.fi-editor-search19:before {
 	content: "\e013";
 }
-.fi-editor-search19:before {
+.fi-editor-square56:before {
 	content: "\e014";
 }
-.fi-editor-strikethrough1:before {
+.fi-editor-square57:before {
 	content: "\e015";
 }
-.fi-editor-tick7:before {
+.fi-editor-square58:before {
 	content: "\e016";
+}
+.fi-editor-strikethrough1:before {
+	content: "\e017";
+}
+.fi-editor-tick7:before {
+	content: "\e018";
 }
