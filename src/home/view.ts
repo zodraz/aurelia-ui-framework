@@ -7,9 +7,19 @@ export class Home {
 	private configureRouter(config, router:Router) {
 		this.router = router;
 		config.map([{
+			route: 'welcome',
+			moduleId: './welcome',
+			settings: {
+				navIcon: 'fi-elegant-house3'
+			},
+			title: 'Welcome',
+			nav: true,
+			name: 'welcome'
+		}, {
 			route: 'buttons',
 			moduleId: './buttons',
 			settings: {
+				sectionStart: true,
 				sectionTitle: 'Components',
 				navIcon: 'fi-elegant-selected'
 			},
@@ -21,7 +31,6 @@ export class Home {
 			moduleId: './grid',
 			settings: {
 				sectionTitle: 'Containers',
-				sectionStart: true,
 				navIcon: 'fi-elegant-3x3'
 			},
 			title: 'Grid',
@@ -46,7 +55,7 @@ export class Home {
 			nav: true,
 			name: 'page'
 		}, {
-			route: '', redirect: 'buttons'
+			route: '', redirect: 'welcome'
 		}]);
 	}
 }

@@ -6,9 +6,19 @@ define(["require", "exports"], function (require, exports) {
         Home.prototype.configureRouter = function (config, router) {
             this.router = router;
             config.map([{
+                    route: 'welcome',
+                    moduleId: './welcome',
+                    settings: {
+                        navIcon: 'fi-elegant-house3'
+                    },
+                    title: 'Welcome',
+                    nav: true,
+                    name: 'welcome'
+                }, {
                     route: 'buttons',
                     moduleId: './buttons',
                     settings: {
+                        sectionStart: true,
                         sectionTitle: 'Components',
                         navIcon: 'fi-elegant-selected'
                     },
@@ -20,7 +30,6 @@ define(["require", "exports"], function (require, exports) {
                     moduleId: './grid',
                     settings: {
                         sectionTitle: 'Containers',
-                        sectionStart: true,
                         navIcon: 'fi-elegant-3x3'
                     },
                     title: 'Grid',
@@ -45,7 +54,7 @@ define(["require", "exports"], function (require, exports) {
                     nav: true,
                     name: 'page'
                 }, {
-                    route: '', redirect: 'buttons'
+                    route: '', redirect: 'welcome'
                 }]);
         };
         return Home;
