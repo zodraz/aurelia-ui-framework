@@ -77,9 +77,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.placeholder) {
                 _a = this.placeholder.split(','), this._placeholder1 = _a[0], this._placeholder2 = _a[1];
             }
-            if (this.value) {
-                this._valueChanged(this.value);
-            }
             if (this._checkbox) {
                 this.disabled = this.checked !== true;
             }
@@ -87,6 +84,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.addonText = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
                 this._placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
                 this._value1 = "" + this.phoneCode + this.phoneNumber;
+                this._processValue();
+            }
+            else if (this.value) {
+                this._valueChanged(this.value);
                 this._processValue();
             }
             var _a;

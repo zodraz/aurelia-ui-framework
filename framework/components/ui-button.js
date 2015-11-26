@@ -19,7 +19,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this._size = "normal";
             this._theme = "default";
             this._default = false;
-            this._default = element.hasAttribute('default');
+            if (element.hasAttribute('default'))
+                this._default = true;
+            if (element.hasAttribute('disabled'))
+                this.disabled = true;
             if (element.hasAttribute('large'))
                 this._size = 'large';
             if (element.hasAttribute('small'))

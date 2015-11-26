@@ -12,7 +12,7 @@
   > .ui-column {
 	min-width: $grid-sm-max;
 	&.ui-col-auto {
-	  @include flex(1 1 50%);
+	  @include flex(1 1 420px);
 	  max-width: 100%;
 	  position: relative;
 	}
@@ -20,7 +20,7 @@
 
   .ui-input-group {
 	@include flex(1 1 auto);
-	@include flex-row($align: flex-start, $wrap: false);
+	@include flex-row($align: flex-start, $wrap: true);
 	margin-bottom: 0.3rem;
 	padding: 0 0.3rem;
 
@@ -35,7 +35,7 @@
 	.ui-label {
 	  @include flex(0 0 120px);
 	  color: $input-label-text;
-	  padding: 0.4rem 0.95rem 0 0;
+	  padding: 0.4rem 0.95rem 0.2rem 0;
 	  text-align: end;
 	  font-weight: 600;
 	  position: relative;
@@ -68,8 +68,7 @@
 
 	.ui-form-control {
 	  @include flex-row($align: stretch, $wrap: false);
-	  @include flex(1 1 auto);
-	  min-width: 280px;
+	  @include flex(1 0 280px);
 	  padding: 0;
 	  position: relative;
 

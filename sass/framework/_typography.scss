@@ -46,6 +46,7 @@ code {
   line-height: 1.8;
   background: lighten($tulip, 20%);
   font-weight: $font-weight-strong;
+  word-break: keep-all;
 }
 
 // Styles

@@ -88,7 +88,7 @@
 
 .ui-option-group {
   @include flex-row(flex-start, flex-start, true);
-  @include flex(1 1 auto);
+  @include flex(1 0 280px);
   .ui-option {
 	@include flex(1 1 33.33%);
 	.ui-label {

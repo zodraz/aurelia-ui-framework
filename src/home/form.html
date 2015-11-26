@@ -123,7 +123,7 @@
 	</div>
 	<hr/>
 	<ui-grid class="margin-v">
-		<ui-column fill class="pad-all">
+		<ui-column size="xl-6" class="pad-all">
 			<h5>Usage
 				<small>Double input uses comma separated values and placeholders</small>
 				<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
@@ -132,20 +132,21 @@
 				<small>Input</small>
 				<br/>
 				<code>&lt;ui-input [readonly|disabled] [double] [required] [clear]<br/>
-					<em>type?</em>[<em>text</em>|email|number|decimal|area|phone|name|address|position]<br/>
+					<em>type?</em>[<em>text</em>| email | number | decimal | area | phone | name | address | position]<br/>
 					<em>addon?</em>[addon-icon='' | addon-text='']<br/>
 					<em>button?</em>[button-icon='' | button-text='']<br/>
 					[checkbox checked.bind="true|false"]<br/>
 					[value.bind='' | value.bind="v1,v2"]<br/>
 					[placeholder.bind='' | placeholder.bind="v1,v2"]<br/>
+					<em>phone?</em>[phone-code.bind='' phone-number.bind='' phone-country.bind='{iso2-code}']<br/>
 					[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
 			<hr/>
 			<p>
 				<small>Markdown</small>
 				<br/>
-				<code>&lt;ui-markdown [required] [value.bind='']>{Label}&lt;/ui-markdown></code></p>
+				<code>&lt;ui-markdown [required] [readonly|disabled] [value.bind='']>{Label}&lt;/ui-markdown></code></p>
 		</ui-column>
-		<ui-column fill class="pad-all">
+		<ui-column size="xl-6" class="pad-all">
 			<h5>Usage
 				<small>Radio option group can have value.bind</small>
 			</h5>

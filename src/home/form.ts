@@ -4,11 +4,15 @@ export {KeysValueConverter} from "../../framework/utils/ui-converters";
 export class HomeForm {
 	opts   = 3;
 	hasLoc = true;
-	fname  = 'test';
+	fname  = 'adarsh';
+	lname  = 'pastakia';
+	email  = 'adarshpastakia@outlook.com';
+
+	pos = '25.4,76.5';
 
 	phoneCode    = '055';
 	phoneNumber  = '6347342';
-	phoneCountry = '';
+	phoneCountry = 'ae';
 
 	list = '4';
 

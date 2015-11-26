@@ -19,7 +19,7 @@ export class UIButton {
 	@bindable menu;
 	@bindable value:string;
 	@bindable icon:string;
-	@bindable id:string          = '';
+	@bindable id:string        = '';
 	@bindable disabled:boolean = false;
 
 	private _size:string     = "normal";
@@ -27,7 +27,8 @@ export class UIButton {
 	private _default:boolean = false;
 
 	constructor(public element:Element) {
-		this._default = element.hasAttribute('default');
+		if (element.hasAttribute('default'))this._default = true;
+		if (element.hasAttribute('disabled'))this.disabled = true;
 		// check size attributes
 		if (element.hasAttribute('large'))this._size = 'large';
 		if (element.hasAttribute('small'))this._size = 'small';

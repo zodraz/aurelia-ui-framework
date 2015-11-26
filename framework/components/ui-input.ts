@@ -123,9 +123,6 @@ export class UIInput {
 		if (this.placeholder) {
 			[this._placeholder1, this._placeholder2] = this.placeholder.split(',');
 		}
-		if (this.value) {
-			this._valueChanged(this.value);
-		}
 		if (this._checkbox) {
 			this.disabled = this.checked !== true;
 		}
@@ -134,6 +131,10 @@ export class UIInput {
 			this._placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
 
 			this._value1 = `${this.phoneCode}${this.phoneNumber}`;
+			this._processValue();
+		}
+		else if (this.value) {
+			this._valueChanged(this.value);
 			this._processValue();
 		}
 	}
