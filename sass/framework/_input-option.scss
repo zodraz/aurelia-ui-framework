@@ -39,18 +39,21 @@
 
 	&:after {
 	  content: '\e002';
-	  font-size: 18px;
 	  line-height: 18px;
 	  text-align: left;
-	  font-weight: 100;
-	  font-family: Editor;
 	  position: relative;
+	  font: {
+		weight: 100;
+		size: 18px;
+		family: Editor;
+	  }
 	}
   }
   .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
   .ui-option-input:hover:not(:disabled) ~ .ui-check-mark {
 	color: $input-option-color-focus;
 	border-color: $input-option-color-focus;
+	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 8px 0px $input-focus-color);
   }
   .ui-option-input:disabled ~ .ui-check-mark {
 	color: $input-option-color-disabled;

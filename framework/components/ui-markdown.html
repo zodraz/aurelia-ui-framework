@@ -8,45 +8,45 @@
 		<div class="ui-form-control">
 			<div class="ui-markdown-editor ui-row ui-col-fill pad-0">
 				<div class="ui-button-group ui-col-full" click.delegate="_toolClick($event)">
-					<button data-id="h1" class="ui-button ui-button-small ui-button-secondary"><b>H1</b></button>
-					<button data-id="h2" class="ui-button ui-button-small ui-button-secondary"><b>H2</b></button>
-					<button data-id="h3" class="ui-button ui-button-small ui-button-secondary"><b>H3</b></button>
-					<button data-id="h4" class="ui-button ui-button-small ui-button-secondary"><b>H4</b></button>
-					<button data-id="h5" class="ui-button ui-button-small ui-button-secondary"><b>H5</b></button>
-					<button data-id="h6" class="ui-button ui-button-small ui-button-secondary"><b>H6</b></button>
+					<button tabindex="-1" data-id="h1" class="ui-button ui-button-small ui-button-secondary"><b>H1</b></button>
+					<button tabindex="-1" data-id="h2" class="ui-button ui-button-small ui-button-secondary"><b>H2</b></button>
+					<button tabindex="-1" data-id="h3" class="ui-button ui-button-small ui-button-secondary"><b>H3</b></button>
+					<button tabindex="-1" data-id="h4" class="ui-button ui-button-small ui-button-secondary"><b>H4</b></button>
+					<button tabindex="-1" data-id="h5" class="ui-button ui-button-small ui-button-secondary"><b>H5</b></button>
+					<button tabindex="-1" data-id="h6" class="ui-button ui-button-small ui-button-secondary"><b>H6</b></button>
 					<div class="ui-divider"></div>
-					<button data-id="b" class="ui-button ui-button-small ui-button-secondary" title="Bold"><span
+					<button tabindex="-1" data-id="b" class="ui-button ui-button-small ui-button-secondary" title="Bold"><span
 							class="fi-editor-bold14"></span></button>
-					<button data-id="i" class="ui-button ui-button-small ui-button-secondary" title="Italic"><span
+					<button tabindex="-1" data-id="i" class="ui-button ui-button-small ui-button-secondary" title="Italic"><span
 							class="fi-editor-italicize"></span></button>
-					<button data-id="s" class="ui-button ui-button-small ui-button-secondary"
+					<button tabindex="-1" data-id="s" class="ui-button ui-button-small ui-button-secondary"
 							title="Strikethrough"><span
 							class="fi-editor-strikethrough1"></span></button>
 					<div class="ui-divider"></div>
-					<button data-id="a" class="ui-button ui-button-small ui-button-secondary" title="Link"><span
+					<button tabindex="-1" data-id="a" class="ui-button ui-button-small ui-button-secondary" title="Link"><span
 							class="fi-editor-anchor16"></span></button>
-					<button data-id="img" class="ui-button ui-button-small ui-button-secondary" title="Image"><span
+					<button tabindex="-1" data-id="img" class="ui-button ui-button-small ui-button-secondary" title="Image"><span
 							class="fi-editor-picture13"></span></button>
 					<div class="ui-divider"></div>
-					<button data-id="ul" class="ui-button ui-button-small ui-button-secondary" title="Bullet List"><span
+					<button tabindex="-1" data-id="ul" class="ui-button ui-button-small ui-button-secondary" title="Bullet List"><span
 							class="fi-editor-list29"></span></button>
-					<button data-id="ol" class="ui-button ui-button-small ui-button-secondary"
+					<button tabindex="-1" data-id="ol" class="ui-button ui-button-small ui-button-secondary"
 							title="Numbered List"><span
 							class="fi-editor-numbered4"></span></button>
-					<button data-id="table" class="ui-button ui-button-small ui-button-secondary" title="Table"><span
-							class="fi-editor-list30"></span></button>
+					<!--<button tabindex="-1" data-id="table" class="ui-button ui-button-small ui-button-secondary" title="Table"><span-->
+							<!--class="fi-editor-list30"></span></button>-->
 					<div class="ui-divider"></div>
-					<button data-id="help" class="ui-button ui-button-small ui-button-secondary"
+					<button tabindex="-1" data-id="help" class="ui-button ui-button-small ui-button-secondary"
 							title="Syntax Help"><span
 							class="fi-editor-question23"></span></button>
-					<button data-id="preview" class="ui-button ui-button-small ui-button-secondary"
+					<button tabindex="-1" data-id="preview" class="ui-button ui-button-small ui-button-secondary"
 							title="Preview"><span
 							class="fi-editor-search19"></span></button>
 				</div>
 
 			<textarea class="ui-input ui-col-full ${_inputClasses} ui-primary"
 					  placeholder="${placeholder}" value.bind="value"
-					  cols="10" rows="15"></textarea>
+					  cols="10" rows="15" ref="_input"></textarea>
 
 				<small class="ui-text-muted">Styles can be applied by selecting the text and clicking on any of the style
 					buttons</small>

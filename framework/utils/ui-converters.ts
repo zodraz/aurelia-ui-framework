@@ -6,7 +6,7 @@
  **/
 import {Markdown} from "./ui-utils";
 
-export class KeyValueConverter {
+export class KeysValueConverter {
 	toView(object:any) {
 		return Object.keys(object);
 	}

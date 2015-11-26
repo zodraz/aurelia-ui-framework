@@ -1,13 +1,13 @@
 define(["require", "exports", "./ui-utils"], function (require, exports, ui_utils_1) {
-    var KeyValueConverter = (function () {
-        function KeyValueConverter() {
+    var KeysValueConverter = (function () {
+        function KeysValueConverter() {
         }
-        KeyValueConverter.prototype.toView = function (object) {
+        KeysValueConverter.prototype.toView = function (object) {
             return Object.keys(object);
         };
-        return KeyValueConverter;
+        return KeysValueConverter;
     })();
-    exports.KeyValueConverter = KeyValueConverter;
+    exports.KeysValueConverter = KeysValueConverter;
     var MarkdownValueConverter = (function () {
         function MarkdownValueConverter() {
         }

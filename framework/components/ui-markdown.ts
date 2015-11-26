@@ -44,30 +44,28 @@ export class UIMarkdown {
 	}
 
 	attached() {
-		this._input = $(this._markdown)
-			.data('UIMarkdown', this)
-			.find('.ui-input');
-		this._input
+		$(this._markdown).data('UIMarkdown', this);
+		$(this._input)
 			.attr(this.readonly !== false ? 'readonly' : 'R', '')
 			.attr(this.disabled !== false ? 'disabled' : 'D', '')
 	}
 
 	disabledChanged(newValue) {
-		this._input
+		$(this._input)
 			.removeAttr('disabled')
 			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
-		this._input
+		$(this._input)
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}
 
 	private _toolClick($event) {
 		let id    = $($event.target).closest('button').data('id');
-		let start = this._input[0].selectionStart,
-			end   = this._input[0].selectionEnd,
+		let start = this._input.selectionStart,
+			end   = this._input.selectionEnd,
 			sub   = this.value.substr(start, end - start) || 'EditThis';
 
 		var diff = 0;
@@ -135,8 +133,8 @@ export class UIMarkdown {
 		}
 		if (id != 'preview' && id != 'help') {
 			this._input.focus();
-			this._input[0].selectionStart = start + diff;
-			this._input[0].selectionEnd   = start + diff + sub.length;
+			this._input.selectionStart = start + diff;
+			this._input.selectionEnd   = start + diff + sub.length;
 		}
 	}
 

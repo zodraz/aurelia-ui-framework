@@ -11,10 +11,13 @@
   z-index: 2;
   outline: none;
   color: $input-text;
-  background: $input-bg inline_image("clear.gif") no-repeat right -10px center;;
-  font-size: 1rem;
+  background: $input-bg inline_image(if($dark-theme, "clear-dark.png", "clear.png")) no-repeat right -10px center;
+  background-size: 8px 8px;
+  font: {
+	size: 1rem;
+	family: $input-font-family;
+  }
   padding: 0.2rem 0.5rem;
-  font-family: $input-font-family;
   border: 1px solid $input-border;
   @include box-shadow(0 1px 1px 0 #ddd inset);
 

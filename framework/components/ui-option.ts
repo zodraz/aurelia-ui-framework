@@ -19,14 +19,17 @@ import {UIEvent} from "../utils/ui-event";
 @customElement('ui-option')
 export class UIOption {
 	private _option;
+	private _input;
 	private _type:string      = '';
 	private _classes:string   = '';
 	private _checkbox:boolean = true;
 
-	private checked:boolean  = false;
+	private checked:any    = false;
 	@bindable id:string    = '';
 	@bindable name:string  = '';
 	@bindable value:string = '';
+
+	// TODO: disable functionality
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('radio')) this._checkbox = false;
@@ -42,6 +45,6 @@ export class UIOption {
 	}
 
 	private _checkChanged($event:UIEvent) {
-		$event.data = this._checkbox ? this.checked : this.value;
+		$event.data = this.checked;
 	}
 }

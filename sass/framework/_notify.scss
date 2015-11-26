@@ -12,6 +12,7 @@
 	}
 	color: $text !important;
 	border-color: $border !important;
+	text-shadow: 0 1px 0 rgba($white, 0.5);
 	background: linear-gradient($bg, darken($bg, 5%));
   }
 }
@@ -24,6 +25,7 @@
 	padding: 1rem 1.5rem 1rem 3rem;
 	color: $coconut !important;
 	border-color: $outer-space !important;
+	text-shadow: 0 1px 0 rgba($black, 0.5);
 	background: linear-gradient(tint($licorice, 25%), $licorice);
 
 	&:before {

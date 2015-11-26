@@ -31,7 +31,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             $(this._option).data('UIOption', this);
         };
         UIOption.prototype._checkChanged = function ($event) {
-            $event.data = this._checkbox ? this.checked : this.value;
+            $event.data = this.checked;
         };
         __decorate([
             aurelia_framework_1.bindable, 

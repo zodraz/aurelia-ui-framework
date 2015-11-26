@@ -28,13 +28,17 @@
   }
 
   ul {
-	list-style-type: disc;
-	list-style-position: inside;
+	list-style: {
+	  type: disc;
+	  position: inside;
+	}
   }
 
   ol {
-	list-style-type: decimal;
-	list-style-position: inside;
+	list-style: {
+	  type: decimal;
+	  position: inside;
+	}
   }
 
   td, th {
@@ -52,8 +56,12 @@
 
   hr {
 	margin: 5px 0;
-	border-width: 1px 0 0;
-	border-top: 1px solid $black;
+	background: none;
+	border: {
+	  width: 1px 0 1px;
+	  style: solid;
+	  color: $smoke none $white;
+	}
   }
 
   a > img {

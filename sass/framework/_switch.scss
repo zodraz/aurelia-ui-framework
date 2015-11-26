@@ -82,6 +82,15 @@
 	  opacity: 1
 	}
 
+	.ui-switch-input:read-only ~ .ui-switch-handle {
+	  opacity: 0.5;
+	}
+	.ui-switch-input:disabled {
+	  ~ .ui-switch-handle, ~ .ui-switch-label {
+		opacity: 0.5;
+	  }
+	}
+
 	.ui-switch-handle {
 	  cursor: pointer;
 	  width: 20px;

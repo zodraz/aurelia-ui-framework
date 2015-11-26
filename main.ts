@@ -6,6 +6,7 @@ import 'libs/chosen';
 import 'libs/notify';
 import 'libs/markdown';
 import 'libs/phonelib';
+import 'libs/countries';
 import {Aurelia} from "aurelia-framework";
 
 export function configure(aurelia:Aurelia) {

@@ -31,10 +31,16 @@
 
 .ui-button {
   padding: $base-padding;
-  font-size: 1rem;
-  font-weight: $font-weight-normal;
-  border: 1px solid $base-border-color;
-  border-radius: $base-border-radius;
+  font: {
+	size: 1rem;
+	weight: $font-weight-normal;
+  }
+  border: {
+	width: 1px;
+	style: solid;
+	color: $base-border-color;
+	radius: $base-border-radius;
+  }
   @include box-shadow(1px 1px 1px 0 $base-shadow-color);
 
   &.ui-default {

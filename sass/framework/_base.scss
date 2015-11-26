@@ -27,9 +27,11 @@ html, body {
 	background-image: image_url($base-bg-image);
   }
 
-  font-size: $base-font-size;
-  font-family: $base-font-family;
-  font-weight: $font-weight-normal;
+  font: {
+	size: $base-font-size;
+	family: $base-font-family;
+	weight: $font-weight-normal;
+  }
   line-height: $base-line-height;
 
   box-sizing: border-box;
@@ -155,10 +157,12 @@ html, body {
 
 	  color: $app-header-text;
 	  background: lighten($app-header-bg, 4%);
-	  font-size: 1.1rem;
 	  padding: $base-padding;
-	  font-weight: $font-weight-strong;
-	  font-variant: small-caps;
+	  font: {
+		weight: $font-weight-strong;
+		variant: small-caps;
+		size: 1.1rem;
+	  }
 	  text-align: center;
 	  z-index: 4;
 	}
@@ -208,9 +212,11 @@ html, body {
 		  @include position(absolute, 50% 0 null null);
 		  @include size($arrow-size*2, $arrow-size*2);
 		  margin-top: -$arrow-size;
-		  border-top: $arrow-size solid transparent;
-		  border-bottom: $arrow-size solid transparent;
-		  border-right: $arrow-size solid tint($menu-active-bg, 40%);
+		  border: {
+			top: $arrow-size solid transparent;
+			bottom: $arrow-size solid transparent;
+			right: $arrow-size solid tint($menu-active-bg, 40%);
+		  }
 		}
 	  }
 	}

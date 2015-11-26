@@ -1,3 +1,6 @@
+import * as _ from "lodash";
+export {KeysValueConverter} from "../../framework/utils/ui-converters";
+
 export class HomeForm {
 	opts   = 3;
 	hasLoc = true;
@@ -5,7 +8,9 @@ export class HomeForm {
 
 	phoneCode    = '055';
 	phoneNumber  = '6347342';
-	phoneCountry = 'ae';
+	phoneCountry = '';
+
+	countries = _.groupBy(window.countries, 'continent');
 
 	md = `
 # Hello World

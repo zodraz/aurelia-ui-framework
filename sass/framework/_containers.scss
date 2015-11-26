@@ -34,8 +34,11 @@
   @include flex(0 0 250px);
   overflow: auto;
   z-index: 2;
-  border: 1px solid $base-border-color;
-  border-width: 0 1px;
+  border: {
+	width: 0 1px;
+	style: solid;
+	color: $base-border-color;
+  }
 
   &.first-child {
 	border-left: none;
