@@ -101,7 +101,7 @@
 	  .ui-checkbox {
 		@include flex(0 0 26px);
 		.ui-option-input:checked ~ .ui-check-mark:after {
-		  content: '\e005';
+		  content: '\e004';
 		}
 	  }
 

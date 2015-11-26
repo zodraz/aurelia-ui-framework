@@ -20,8 +20,11 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.id = '';
             this.name = '';
             this.value = '';
+            this.disabled = false;
             if (element.hasAttribute('radio'))
                 this._checkbox = false;
+            if (element.hasAttribute('disabled'))
+                this.disabled = true;
         }
         UIOption.prototype.bind = function () {
             this._type = this._checkbox ? 'checkbox' : 'radio';
@@ -29,6 +32,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         };
         UIOption.prototype.attached = function () {
             $(this._option).data('UIOption', this);
+            $(this._input).attr(this.disabled !== false ? 'disabled' : 'x', '');
+        };
+        UIOption.prototype.disabledChanged = function (newValue) {
+            $(this._input).attr(newValue !== false ? 'disabled' : 'x', '');
         };
         UIOption.prototype._checkChanged = function ($event) {
             $event.data = this.checked;
@@ -45,6 +52,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIOption.prototype, "value");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UIOption.prototype, "disabled");
         UIOption = __decorate([
             aurelia_framework_1.bindable({
                 name: 'checked',

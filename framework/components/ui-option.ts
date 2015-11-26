@@ -24,15 +24,15 @@ export class UIOption {
 	private _classes:string   = '';
 	private _checkbox:boolean = true;
 
-	private checked:any    = false;
-	@bindable id:string    = '';
-	@bindable name:string  = '';
-	@bindable value:string = '';
-
-	// TODO: disable functionality
+	private checked:any        = false;
+	@bindable id:string        = '';
+	@bindable name:string      = '';
+	@bindable value:string     = '';
+	@bindable disabled:boolean = false;
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('radio')) this._checkbox = false;
+		if (element.hasAttribute('disabled'))this.disabled = true;
 	}
 
 	bind() {
@@ -42,6 +42,11 @@ export class UIOption {
 
 	attached() {
 		$(this._option).data('UIOption', this);
+		$(this._input).attr(this.disabled !== false ? 'disabled' : 'x', '');
+	}
+
+	disabledChanged(newValue) {
+		$(this._input).attr(newValue !== false ? 'disabled' : 'x', '');
 	}
 
 	private _checkChanged($event:UIEvent) {

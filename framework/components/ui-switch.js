@@ -20,6 +20,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.disabled = false;
             if (element.hasAttribute('check'))
                 this.checked = true;
+            if (element.hasAttribute('disabled'))
+                this.disabled = true;
             if (element.hasAttribute('primary'))
                 this.theme = 'primary';
             if (element.hasAttribute('info'))
@@ -42,10 +44,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 .data('UISwitch', this)
                 .find('input')
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
+            $(this._switch).find('label').last()
+                .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UISwitch.prototype.disabledChanged = function (newValue) {
             $(this._switch).find('input')
                 .attr(newValue !== false ? 'disabled' : 'x', '');
+            $(this._switch).find('label').last()
+                .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UISwitch.prototype._valueChanged = function (newValue) {
             ui_event_1.UIEvent.fireEvent('change', this.element, newValue);

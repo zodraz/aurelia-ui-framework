@@ -28,14 +28,16 @@ import {UIEvent} from "../utils/ui-event";
 	defaultValue: false
 })
 
+// TODO: add support for multi select
+
 @autoinject()
 @containerless()
-@customElement('ui-chosen')
-export class UIChosen {
-	private _chosen;
+@customElement('ui-list')
+export class UIList {
+	private _list;
+	private _input;
 	private _select;
 	private _options;
-	private _value;
 	private _clear:boolean       = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
@@ -46,16 +48,15 @@ export class UIChosen {
 	private value:string    = '';
 	private checked:boolean = false;
 
-	@bindable id:string          = '';
-	@bindable label:string       = '';
-	@bindable addonIcon:string   = '';
-	@bindable addonText:string   = '';
-	@bindable addonClass:string  = '';
-	@bindable buttonIcon:string  = '';
-	@bindable buttonText:string  = '';
-	@bindable placeholder:string = '';
-	@bindable readonly:boolean   = false;
-	@bindable disabled:boolean   = false;
+	@bindable id:string         = '';
+	@bindable label:string      = '';
+	@bindable addonIcon:string  = '';
+	@bindable addonText:string  = '';
+	@bindable addonClass:string = '';
+	@bindable buttonIcon:string = '';
+	@bindable buttonText:string = '';
+	@bindable readonly:boolean  = false;
+	@bindable disabled:boolean  = false;
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
@@ -76,41 +77,23 @@ export class UIChosen {
 	}
 
 	attached() {
-		$(this._chosen).data('UIChosen', this)
+		$(this._list).data('UIList', this)
 		$(this._select)
-			.append($(this._options).children())
-			.val(this.value)
-			.attr(this._multiple ? 'multiple' : 'single', '')
-			.chosen({
-				width: '100%',
-				search_contains: true,
-				disable_search_threshold: 10,
-				allow_single_deselect: this._clear,
-				placeholder_text_single: this.placeholder,
-				placeholder_text_multiple: this.placeholder
-			})
-			.change(()=> {
-				/**
-				 * convert value to string is multiple is true
-				 */
-				let v = $(this._select).val();
-				this.value = (this._multiple ? (v || ['']).join(',') : v);
-			});
+			.html(this._getListItems())
+			.find(`li[value="${this.value}"]`).addClass('active');
 		$(this._options).remove();
 	}
 
 	disabledChanged(newValue) {
 		$(this._select)
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '')
-			.trigger('chosen:updated');
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
 		$(this._select)
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'R', '')
-			.trigger('chosen:updated');
+			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}
 
 	private _checkedChanged(newValue) {
@@ -122,13 +105,42 @@ export class UIChosen {
 	private _valueChanged(newValue) {
 		if (this._multiple) newValue = (newValue || '').split(',');
 		setTimeout(() => {
-			$(this._select)
-				.val(newValue)
-				.trigger('chosen:updated');
-		}, 200);
+			if (newValue && newValue != '') {
+				$(this._select).find('.ui-active').removeClass('ui-active');
+				var s, t = (s = $(this._select))
+					.find(`li[value="${newValue}"]`)
+					.addClass('ui-active')
+					.offset().top;
+				t -= s.offset().top - s.scrollTop();
+				if (t > s.height() + s.scrollTop())s.scrollTop(t - 30);
+				else if (t - 30 < s.scrollTop())s.scrollTop(t - 30);
+			}
+		}, 100);
 	}
 
 	private _buttonClick($event) {
 		UIEvent.fireEvent('click', this.element);
+	}
+
+	private _getListItems() {
+		$(this._input).html($(this._options).html());
+		$(this._options).find('option').addClass('ui-list-option');
+		$(this._options).find('optgroup').addClass('ui-list-group');
+		var html = $(this._options).html();
+		return html
+			.replace(/<optgroup/gi, '<li')
+			.replace(/optgroup>/gi, 'li>')
+			.replace(/<option/gi, '<li')
+			.replace(/option>/gi, 'li>');
+	}
+
+	_changeSelection($event) {
+		if ($event.type == 'click') {
+			this._input.focus();
+			this.value = $($event.target).closest('li').attr('value');
+		}
+		if ($event.type == 'change') {
+			this.value = $($event.target).val();
+		}
 	}
 }

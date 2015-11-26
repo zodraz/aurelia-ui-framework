@@ -10,6 +10,8 @@ export class HomeForm {
 	phoneNumber  = '6347342';
 	phoneCountry = '';
 
+	list = '4';
+
 	countries = _.groupBy(window.countries, 'continent');
 
 	md = `

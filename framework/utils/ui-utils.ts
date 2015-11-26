@@ -11,6 +11,6 @@ import * as numeral from "numeral";
 // Markdown
 export module Markdown {
 	export function toHTML(value:string):string {
-		return marked(value, {sanitize: true, highlight: (v=>v)}).html;
+		return marked(value, {sanitize: true, highlight: (v=>v)});
 	}
 }

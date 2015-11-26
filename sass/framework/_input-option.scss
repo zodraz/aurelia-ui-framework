@@ -55,13 +55,20 @@
 	border-color: $input-option-color-focus;
 	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 8px 0px $input-focus-color);
   }
-  .ui-option-input:disabled ~ .ui-check-mark {
-	color: $input-option-color-disabled;
-	border-color: $input-border;
+  .ui-option-input:disabled{
+	cursor: not-allowed;
+	~ .ui-check-mark {
+	  color: $input-option-color-disabled;
+	  border-color: $input-border;
+	}
+	~ .ui-label {
+	  cursor: not-allowed;
+	  color: $input-option-color-disabled;
+	}
   }
   &.ui-radio .ui-check-mark {
 	&:after {
-	  content: '\e007';
+	  content: '\e006';
 	}
 	border-radius: 9px;
   }
@@ -69,7 +76,7 @@
 	content: '\e001';
   }
   &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
-	content: '\e013';
+	content: '\e012';
   }
 
   .ui-label {

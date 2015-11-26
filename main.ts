@@ -4,7 +4,7 @@ import 'moment';
 import 'numeral';
 import 'libs/chosen';
 import 'libs/notify';
-import 'libs/markdown';
+import 'libs/marked';
 import 'libs/phonelib';
 import 'libs/countries';
 import {Aurelia} from "aurelia-framework";

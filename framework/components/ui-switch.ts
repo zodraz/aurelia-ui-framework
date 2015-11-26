@@ -32,10 +32,9 @@ export class UISwitch {
 	private _switch;
 	private checked:boolean;
 
-	// TODO: Add disabled functionality and styles
-
 	constructor(public element:Element) {
 		if (element.hasAttribute('check'))this.checked = true;
+		if (element.hasAttribute('disabled'))this.disabled = true;
 		// check theme attributes
 		if (element.hasAttribute('primary'))this.theme = 'primary';
 		if (element.hasAttribute('info'))this.theme = 'info';
@@ -52,11 +51,15 @@ export class UISwitch {
 			.data('UISwitch', this)
 			.find('input')
 			.attr(this.disabled !== false ? 'disabled' : 'x', '');
+		$(this._switch).find('label').last()
+			.attr(this.disabled !== false ? 'disabled' : 'x', '');
 	}
 
 	disabledChanged(newValue) {
 		$(this._switch).find('input')
 			.attr(newValue !== false ? 'disabled' : 'x', '');
+		$(this._switch).find('label').last()
+			.attr(this.disabled !== false ? 'disabled' : 'x', '');
 	}
 
 	private _valueChanged(newValue) {

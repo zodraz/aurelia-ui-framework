@@ -222,7 +222,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             try {
                 var info = PhoneLib.getNumberInfo(this._value1 || '', this.phoneCountry || 'US');
                 this.phoneCode = info.areaCode;
-                this.phoneNumber = isNaN(info.phone) ? '' : info.phone;
+                this.phoneNumber = isNaN(info.phone) ? '' : info.phone + '';
             }
             catch (e) {
                 this.phoneCode = '';

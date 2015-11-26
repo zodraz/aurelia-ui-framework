@@ -1,9 +1,5 @@
-interface MarkedObject {
-	html:string;
-}
 
-
-declare function marked(text:string, opts?:any):MarkedObject;
+declare function marked(text:string, opts?:any):string;
 
 declare module "marked" {
 

@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
-    var UIChosen = (function () {
-        function UIChosen(element) {
+    var UIList = (function () {
+        function UIList(element) {
             this.element = element;
             this._clear = false;
             this._checkbox = false;
@@ -27,7 +27,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.addonClass = '';
             this.buttonIcon = '';
             this.buttonText = '';
-            this.placeholder = '';
             this.readonly = false;
             this.disabled = false;
             if (element.hasAttribute('required'))
@@ -43,7 +42,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (element.hasAttribute('multiple'))
                 this._multiple = true;
         }
-        UIChosen.prototype.bind = function () {
+        UIList.prototype.bind = function () {
             if (this.value) {
                 this._valueChanged(this.value);
             }
@@ -51,98 +50,107 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.disabled = this.checked !== true;
             }
         };
-        UIChosen.prototype.attached = function () {
-            var _this = this;
-            $(this._chosen).data('UIChosen', this);
+        UIList.prototype.attached = function () {
+            $(this._list).data('UIList', this);
             $(this._select)
-                .append($(this._options).children())
-                .val(this.value)
-                .attr(this._multiple ? 'multiple' : 'single', '')
-                .chosen({
-                width: '100%',
-                search_contains: true,
-                disable_search_threshold: 10,
-                allow_single_deselect: this._clear,
-                placeholder_text_single: this.placeholder,
-                placeholder_text_multiple: this.placeholder
-            })
-                .change(function () {
-                var v = $(_this._select).val();
-                _this.value = (_this._multiple ? (v || ['']).join(',') : v);
-            });
+                .html(this._getListItems())
+                .find("li[value=\"" + this.value + "\"]").addClass('active');
             $(this._options).remove();
         };
-        UIChosen.prototype.disabledChanged = function (newValue) {
+        UIList.prototype.disabledChanged = function (newValue) {
             $(this._select)
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '')
-                .trigger('chosen:updated');
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
-        UIChosen.prototype.readonlyChanged = function (newValue) {
+        UIList.prototype.readonlyChanged = function (newValue) {
             $(this._select)
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '')
-                .trigger('chosen:updated');
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
-        UIChosen.prototype._checkedChanged = function (newValue) {
+        UIList.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
                 this.disabled = newValue !== true;
             }
         };
-        UIChosen.prototype._valueChanged = function (newValue) {
+        UIList.prototype._valueChanged = function (newValue) {
             var _this = this;
             if (this._multiple)
                 newValue = (newValue || '').split(',');
             setTimeout(function () {
-                $(_this._select)
-                    .val(newValue)
-                    .trigger('chosen:updated');
-            }, 200);
+                if (newValue && newValue != '') {
+                    $(_this._select).find('.ui-active').removeClass('ui-active');
+                    var s, t = (s = $(_this._select))
+                        .find("li[value=\"" + newValue + "\"]")
+                        .addClass('ui-active')
+                        .offset().top;
+                    t -= s.offset().top - s.scrollTop();
+                    if (t > s.height() + s.scrollTop())
+                        s.scrollTop(t - 30);
+                    else if (t - 30 < s.scrollTop())
+                        s.scrollTop(t - 30);
+                }
+            }, 100);
         };
-        UIChosen.prototype._buttonClick = function ($event) {
+        UIList.prototype._buttonClick = function ($event) {
             ui_event_1.UIEvent.fireEvent('click', this.element);
         };
+        UIList.prototype._getListItems = function () {
+            $(this._input).html($(this._options).html());
+            $(this._options).find('option').addClass('ui-list-option');
+            $(this._options).find('optgroup').addClass('ui-list-group');
+            var html = $(this._options).html();
+            return html
+                .replace(/<optgroup/gi, '<li')
+                .replace(/optgroup>/gi, 'li>')
+                .replace(/<option/gi, '<li')
+                .replace(/option>/gi, 'li>');
+        };
+        UIList.prototype._changeSelection = function ($event) {
+            if ($event.type == 'click') {
+                this._input.focus();
+                this.value = $($event.target).closest('li').attr('value');
+            }
+            if ($event.type == 'change') {
+                this.value = $($event.target).val();
+            }
+        };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "id");
+        ], UIList.prototype, "id");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "label");
+        ], UIList.prototype, "label");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "addonIcon");
+        ], UIList.prototype, "addonIcon");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "addonText");
+        ], UIList.prototype, "addonText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "addonClass");
+        ], UIList.prototype, "addonClass");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "buttonIcon");
+        ], UIList.prototype, "buttonIcon");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "buttonText");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIChosen.prototype, "placeholder");
+        ], UIList.prototype, "buttonText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
-        ], UIChosen.prototype, "readonly");
+        ], UIList.prototype, "readonly");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
-        ], UIChosen.prototype, "disabled");
-        UIChosen = __decorate([
+        ], UIList.prototype, "disabled");
+        UIList = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',
                 attribute: 'value',
@@ -159,10 +167,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }),
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
-            aurelia_framework_1.customElement('ui-chosen'), 
+            aurelia_framework_1.customElement('ui-list'), 
             __metadata('design:paramtypes', [Element])
-        ], UIChosen);
-        return UIChosen;
+        ], UIList);
+        return UIList;
     })();
-    exports.UIChosen = UIChosen;
+    exports.UIList = UIList;
 });

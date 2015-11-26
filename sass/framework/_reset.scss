@@ -20,6 +20,15 @@ a, button {
 	cursor: pointer;
 	outline: none !important;
   }
+
+  &[target='_blank']:after {
+	font-size: 7px;
+	content: '\e0c1';
+	opacity: 0.75;
+	font-family: BigMugLine;
+	vertical-align: super;
+	margin-left: 2px;
+  }
 }
 
 button {

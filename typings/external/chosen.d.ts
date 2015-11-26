@@ -7,6 +7,7 @@
 /// <reference path="jquery.d.ts"/>
 
 interface ChosenOptions {
+	width?:string;
 	allow_single_deselect?: boolean;
 	disable_search_threshold?: number;
 	disable_search?: boolean;

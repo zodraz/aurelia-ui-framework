@@ -1,6 +1,5 @@
 <template>
 	<div class="pad-all">
-		<option value="bu">FFFFFF</option>
 		<h4 class="margin-v">Forms</h4>
 		<ui-form class="border-all pad-v">
 			<ui-column>
@@ -56,9 +55,9 @@
 
 					<p>Phone: ${phone}, Code: ${phoneCode}, Number: ${phoneNumber}</p>
 
-					<p>Has Location: ${hasLoc?'Yes':'No'}</p>
+					<p>Has Location: ${hasLoc?'Yes':'No'}, Location: ${pos}</p>
 
-					<p>Location: ${pos}, Radio: ${opts}</p>
+					<p>Radio: ${opts}, List: ${list}</p>
 
 				</ui-column>
 			</ui-column>
@@ -76,14 +75,31 @@
 				</ui-chosen>
 				<p class="ui-text-muted ui-font-small" style="padding-left: 125px;">Tags: ${tags}</p>
 			</ui-column>
-			<ui-column full>
+			<ui-column>
 				<ui-input area required clear value.bind="tem" button-icon="fi-elegant-search7">Template</ui-input>
+			</ui-column>
+			<ui-column>
+				<ui-list label="Simple List" value.bind="list">
+					<optgroup label="Primary">
+						<option value="1" class="ui-icon ui-flag ae">Emirate</option>
+						<option value="2" class="ui-icon ui-flag in">India</option>
+						<option value="3" class="ui-icon ui-flag us">States</option>
+						<option value="4" class="ui-icon ui-flag gb">Britain</option>
+					</optgroup>
+					<optgroup label="Secondary">
+						<option value="5" class="ui-icon ui-flag es">España</option>
+						<option value="6" class="ui-icon ui-flag fr">Français</option>
+						<option value="7" class="ui-icon ui-flag it">Italia</option>
+						<option value="8" class="ui-icon ui-flag de">Duetch</option>
+						<option value="9" class="ui-icon ui-flag au">Oz</option>
+					</optgroup>
+				</ui-list>
 			</ui-column>
 			<ui-column>
 				<ui-option-group label="Checkboxes">
 					<ui-option>Check 1</ui-option>
 					<ui-option>Check 2</ui-option>
-					<ui-option>Check 3</ui-option>
+					<ui-option disabled>Check 3</ui-option>
 					<ui-option>Check 4</ui-option>
 					<ui-option>Check 5</ui-option>
 					<ui-option>Check 6</ui-option>
@@ -145,9 +161,20 @@
 				<small>Chosen</small>
 				<br/>
 				<code>&lt;ui-chosen label='' [required] [multiple] [value.bind='']><br/>
-					&nbsp;[&lt;optgroup title=''>]
-					&nbsp;&nbsp;&lt;option reapeat.for='' value='' [class='']>{Label}&lt;/option>
-					&nbsp;[&lt;/optgroup>]
+					&nbsp;[&lt;optgroup label=''>]<br/>
+					&nbsp;&nbsp;&lt;option value='' [repeat.for=''] [class='']>{Label}&lt;/option><br/>
+					&nbsp;&nbsp;...<br/>
+					&nbsp;[&lt;/optgroup>]<br/>
+					&lt;/ui-markdown></code></p>
+			<hr/>
+			<p>
+				<small>List</small>
+				<br/>
+				<code>&lt;ui-list label='' [required] [value.bind='']><br/>
+					&nbsp;[&lt;optgroup label=''>]<br/>
+					&nbsp;&nbsp;&lt;option value='' [repeat.for=''] [class='']>{Label}&lt;/option><br/>
+					&nbsp;&nbsp;...<br/>
+					&nbsp;[&lt;/optgroup>]<br/>
 					&lt;/ui-markdown></code></p>
 		</ui-column>
 	</ui-grid>
