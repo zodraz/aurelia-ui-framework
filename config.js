@@ -324,6 +324,8 @@ System.config({
     "dist/app-build.js": [
       "framework/components/ui-button.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-button.js",
+      "framework/components/ui-chosen.html!github:systemjs/plugin-text@0.0.3",
+      "framework/components/ui-chosen.js",
       "framework/components/ui-input.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-input.js",
       "framework/components/ui-markdown.html!github:systemjs/plugin-text@0.0.3",
@@ -369,6 +371,7 @@ System.config({
       "github:jspm/nodelibs-process@0.1.2",
       "github:jspm/nodelibs-process@0.1.2/index",
       "libs/chosen.js",
+      "libs/countries.js",
       "libs/markdown.js",
       "libs/notify.js",
       "libs/phonelib.js",
