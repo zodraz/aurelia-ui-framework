@@ -2,7 +2,6 @@ import 'jquery';
 import 'lodash';
 import 'moment';
 import 'numeral';
-import 'libs/anchor';
 import 'libs/chosen';
 import 'libs/notify';
 import 'libs/marked';

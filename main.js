@@ -1,4 +1,4 @@
-define(["require", "exports", 'jquery', 'lodash', 'moment', 'numeral', 'libs/anchor', 'libs/chosen', 'libs/notify', 'libs/marked', 'libs/phonelib', 'libs/countries'], function (require, exports) {
+define(["require", "exports", 'jquery', 'lodash', 'moment', 'numeral', 'libs/chosen', 'libs/notify', 'libs/marked', 'libs/phonelib', 'libs/countries'], function (require, exports) {
     function configure(aurelia) {
         aurelia.use
             .standardConfiguration()

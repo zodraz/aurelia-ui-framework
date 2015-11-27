@@ -125,11 +125,12 @@ export class UIButton {
 				}
 			}
 			else {
+				$(this._button).removeClass('ui-menu-reverse');
+				l += (w - 2);
 				if (o.top + mh > ph) {
 					t -= (mh - h);
 					$(this._button).addClass('ui-menu-reverse');
 				}
-				l += (w - 2);
 			}
 			$(this._menu).offset({left: l, top: t});
 		}

@@ -58,6 +58,7 @@
 	  @include border-top-radius(0);
 	  display: block;
 	  max-height: 280px;
+	  @include box-shadow(2px 3px 5px 0 rgba($black, 0.25));
 	}
   }
   &.ui-dropdown.ui-menu-reverse {
@@ -66,6 +67,7 @@
 	  @include border-bottom-radius(0);
 	  display: block;
 	  max-height: 280px;
+	  @include box-shadow(2px -3px 5px 0 rgba($black, 0.25));
 	}
   }
 
@@ -93,12 +95,14 @@
 		@include border-top-left-radius(0);
 		display: block;
 		max-height: 480px;
+		@include box-shadow(3px 2px 5px 0 rgba($black, 0.25));
 	  }
 	}
 	&.ui-dropdown.ui-menu-reverse {
 	  + .ui-floating {
 		@include border-radius($base-border-radius);
 		@include border-bottom-left-radius(0);
+		@include box-shadow(3px -2px 5px 0 rgba($black, 0.25));
 	  }
 	}
 	i.ui-caret:after {
