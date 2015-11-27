@@ -132,7 +132,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 else if (_this._type == 'number') {
                     return (/[0-9\-]/).test(String.fromCharCode(e.charCode));
                 }
-                else if (_this._type == 'decimal') {
+                else if (_this._type == 'decimal' || _this._type == 'position') {
                     return (/[0-9\-\.]/).test(String.fromCharCode(e.charCode));
                 }
                 else if (_this._type == 'email') {

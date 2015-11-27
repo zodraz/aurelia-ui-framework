@@ -90,7 +90,7 @@
   @include flex-row(flex-start, flex-start, true);
   @include flex(1 0 280px);
   .ui-option {
-	@include flex(1 1 33.33%);
+	@include flex(1 0 33.33%);
 	.ui-label {
 	  width: auto;
 	  flex: 1 0 0%;

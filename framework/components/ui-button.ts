@@ -103,10 +103,11 @@ export class UIButton {
 				return $(this._button).removeClass('ui-dropdown');
 			if (!this._menu) this._menu = $(this._button).next('.ui-menu');
 			$(this._menu)
-				.width($(this._button).outerWidth())
 				.offset({left: -1000, top: -1000});
 			$('.ui-dropdown').removeClass('ui-dropdown');
-			$(this._button).toggleClass('ui-dropdown');
+			$(this._button)
+				.toggleClass('ui-dropdown')
+				.removeClass('ui-menu-reverse');
 			let o  = $(this._button).offset(),
 				t  = o.top, l = o.left,
 				w  = $(this._button).outerWidth(),
@@ -115,18 +116,17 @@ export class UIButton {
 				ph = $(this._menu).offsetParent().height();
 
 			if (!this._menuRight) {
+				$(this._menu).css('min-width', w);
 				if (o.top + mh > ph) {
-					t -= (mh - 2);
+					t -= mh;
 					$(this._button).addClass('ui-menu-reverse');
 				}
 				else {
-					t += (h - 2);
-					$(this._button).removeClass('ui-menu-reverse');
+					t += h;
 				}
 			}
 			else {
-				$(this._button).removeClass('ui-menu-reverse');
-				l += (w - 2);
+				l += w;
 				if (o.top + mh > ph) {
 					t -= (mh - h);
 					$(this._button).addClass('ui-menu-reverse');

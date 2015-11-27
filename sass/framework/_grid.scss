@@ -63,10 +63,13 @@
 	@include justify-content(flex-end);
   }
 
-  [class*='ui-col-'], [class~='ui-col-'] {
+  .ui-column {
 	padding: 0.25rem 0.5rem;
 	@include flex(0 0 100%);
 	max-width: 100%;
+	> .ui-column {
+	  padding: 0.25rem 0;
+	}
   }
 
   .ui-col-auto {

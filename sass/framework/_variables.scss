@@ -115,6 +115,12 @@ $input-option-color: $charcoal-gray !default;
 $input-option-color-focus: $input-focus-color !default;
 $input-option-color-disabled: $ash-gray !default;
 
+// DATE
+$date-active-bg: $primary !default;
+$date-active-text: $primary-text !default;
+$date-disabled-text: if($dark-theme, $smoke, $ash-gray) !default;
+$date-next-text: if($dark-theme, $ash-gray, $smoke) !default;
+
 // NOTIFY
 $notify-info-bg: tint($info, 90%);
 $notify-info-text: darken(desaturate($info, 20%), 20%);

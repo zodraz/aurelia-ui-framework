@@ -61,39 +61,44 @@
 
 				</ui-column>
 			</ui-column>
-			<ui-column full>
-				<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="tags">
-					<option value="tag-1">Tag-1</option>
-					<option value="tag-2">Tag-2</option>
-					<option value="tag-3">Tag-3</option>
-					<option value="tag-4">Tag-4</option>
-					<option value="tag-5">Tag-5</option>
-					<option value="tag-6">Tag-6</option>
-					<option value="tag-7">Tag-7</option>
-					<option value="tag-8">Tag-8</option>
-					<option value="tag-9">Tag-9</option>
-				</ui-chosen>
-				<p class="ui-text-muted ui-font-small" style="padding-left: 125px;">Tags: ${tags}</p>
-			</ui-column>
 			<ui-column>
-				<ui-input area required clear value.bind="tem" button-icon="fi-elegant-search7">Template</ui-input>
+				<ui-column>
+					<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="tags">
+						<option value="tag-1">Tag-1</option>
+						<option value="tag-2">Tag-2</option>
+						<option value="tag-3">Tag-3</option>
+						<option value="tag-4">Tag-4</option>
+						<option value="tag-5">Tag-5</option>
+						<option value="tag-6">Tag-6</option>
+						<option value="tag-7">Tag-7</option>
+						<option value="tag-8">Tag-8</option>
+						<option value="tag-9">Tag-9</option>
+					</ui-chosen>
+					<p class="ui-text-muted ui-font-small" style="padding-left: 125px;">Tags: ${tags}</p>
+				</ui-column>
+				<ui-column>
+					<ui-date required>Date</ui-date>
+				</ui-column>
+				<ui-column>
+					<ui-list label="Simple List" value.bind="list">
+						<optgroup label="Primary">
+							<option value="1" class="ui-icon ui-flag ae">Emirate</option>
+							<option value="2" class="ui-icon ui-flag in">India</option>
+							<option value="3" class="ui-icon ui-flag us">States</option>
+							<option value="4" class="ui-icon ui-flag gb">Britain</option>
+						</optgroup>
+						<optgroup label="Secondary">
+							<option value="5" class="ui-icon ui-flag es">España</option>
+							<option value="6" class="ui-icon ui-flag fr">Français</option>
+							<option value="7" class="ui-icon ui-flag it">Italia</option>
+							<option value="8" class="ui-icon ui-flag de">Duetch</option>
+							<option value="9" class="ui-icon ui-flag au">Oz</option>
+						</optgroup>
+					</ui-list>
+				</ui-column>
 			</ui-column>
-			<ui-column>
-				<ui-list label="Simple List" value.bind="list">
-					<optgroup label="Primary">
-						<option value="1" class="ui-icon ui-flag ae">Emirate</option>
-						<option value="2" class="ui-icon ui-flag in">India</option>
-						<option value="3" class="ui-icon ui-flag us">States</option>
-						<option value="4" class="ui-icon ui-flag gb">Britain</option>
-					</optgroup>
-					<optgroup label="Secondary">
-						<option value="5" class="ui-icon ui-flag es">España</option>
-						<option value="6" class="ui-icon ui-flag fr">Français</option>
-						<option value="7" class="ui-icon ui-flag it">Italia</option>
-						<option value="8" class="ui-icon ui-flag de">Duetch</option>
-						<option value="9" class="ui-icon ui-flag au">Oz</option>
-					</optgroup>
-				</ui-list>
+			<ui-column class="ui-align-center">
+				<ui-date inline format="DD/MM/YYYY">Inline Date</ui-date>
 			</ui-column>
 			<ui-column>
 				<ui-option-group label="Checkboxes">
@@ -132,7 +137,8 @@
 				<small>Input</small>
 				<br/>
 				<code>&lt;ui-input [readonly|disabled] [double] [required] [clear]<br/>
-					<em>type?</em>[<em>text</em>| email | number | decimal | area | phone | name | address | position]<br/>
+					<em>type?</em>[<em>text</em>| email | number | decimal | area | phone | name | address |
+					position]<br/>
 					<em>addon?</em>[addon-icon=? | addon-text=?]<br/>
 					<em>button?</em>[button-icon=? | button-text=?]<br/>
 					[checkbox checked.bind="true|false"]<br/>

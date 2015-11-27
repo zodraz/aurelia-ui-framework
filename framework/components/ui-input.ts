@@ -96,6 +96,10 @@ export class UIInput {
 	@bindable disabled:boolean   = false;
 	@bindable phoneType:number   = PhoneLib.TYPE.MOBILE;
 
+	//LATITUDE REGEX  /^-?(90|([0-8]?[0-9]{1,1}(\.[0-9]*)?))$/
+	//LONGITUDE REGEX /^-?(180|(1[0-7][0-9]|[0-9]{0,2})(\.[0-9]*)?)$/
+
+
 	constructor(public element:Element) {
 		if (element.hasAttribute('clear')) this._inputClasses += ' ui-clear ';
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
@@ -178,7 +182,7 @@ export class UIInput {
 				else if (this._type == 'number') {
 					return (/[0-9\-]/).test(String.fromCharCode(e.charCode));
 				}
-				else if (this._type == 'decimal') {
+				else if (this._type == 'decimal' || this._type == 'position') {
 					return (/[0-9\-\.]/).test(String.fromCharCode(e.charCode));
 				}
 				else if (this._type == 'email') {

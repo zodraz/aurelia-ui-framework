@@ -1,4 +1,7 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "lodash", "moment", "numeral"], function (require, exports, ld, mm, nm) {
+    exports._ = ld;
+    exports.moment = mm;
+    exports.numeral = nm;
     var Markdown;
     (function (Markdown) {
         function toHTML(value) {
