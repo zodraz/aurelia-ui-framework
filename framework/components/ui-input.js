@@ -231,7 +231,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
         };
         UIInput.prototype._buttonClick = function ($event) {
-            ui_event_1.UIEvent.fireEvent('click', this.element);
+            $event.cancelBubble = true;
+            ui_event_1.UIEvent.fireEvent('click', this.element, this, this._input);
         };
         __decorate([
             aurelia_framework_1.bindable, 

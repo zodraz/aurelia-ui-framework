@@ -1,5 +1,5 @@
 <template>
-	<ul class="ui-menu ${_classes}" click.delegate="_linkClicked($event)">
+	<ul class="ui-menu ${_classes}" click.delegate="_linkClicked($event)" ref="_menu">
 		<div if.bind="router.isRoot && router.options.isAuthenticated" class="ui-auth-info">
 		</div>
 		<li if.bind="router.isRoot && !router.options.isAuthenticated">

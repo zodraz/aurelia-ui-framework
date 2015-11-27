@@ -100,7 +100,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }, 200);
         };
         UIChosen.prototype._buttonClick = function ($event) {
-            ui_event_1.UIEvent.fireEvent('click', this.element);
+            ui_event_1.UIEvent.fireEvent('click', this.element, this, this._select);
+            return false;
         };
         __decorate([
             aurelia_framework_1.bindable, 

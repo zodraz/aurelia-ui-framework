@@ -21,6 +21,7 @@
 .ui-content {
   @include flex(1 1 auto);
   overflow: auto;
+  position: relative;
   padding: $base-padding;
   z-index: 3;
 
@@ -33,6 +34,7 @@
 .ui-sidebar {
   @include flex(0 0 250px);
   overflow: auto;
+  position: relative;
   z-index: 2;
   border: {
 	width: 0 1px;

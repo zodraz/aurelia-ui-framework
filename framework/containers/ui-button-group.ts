@@ -81,14 +81,13 @@ export class UIButtonGroup {
 		if (this._toggle !== false) {
 			$event.cancelBubble = true;
 
-			var el = $($event.target.closest('button'));
 			if (this._toggle === 'multiple') {
 				// TODO: add multiple check functionality
 			}
 			else {
-				this.value = el.val();
+				this.value = $event.data.value;
 			}
-			UIEvent.fireEvent('change', this.element, this.value, el.get(0));
+			UIEvent.fireEvent('change', this.element, this.value, this._buttonGroup);
 		}
 	}
 

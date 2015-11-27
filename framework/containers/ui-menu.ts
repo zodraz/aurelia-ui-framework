@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
 @containerless()
@@ -15,6 +16,7 @@ export class UIMenu {
 	@bindable title:string;
 	@bindable menu:string;
 
+	private _menu;
 	private _classes:string   = '';
 	private _floating:boolean = false;
 
@@ -31,13 +33,10 @@ export class UIMenu {
 		// Dont trigger event for router menu clicks
 		if (this.router) return true;
 		// Trigger event
-		let el = $($event.target).closest('a');
-		if (el) {
-			let e        = new Event('click');
-			e.bubbles    = true;
-			e.cancelable = true;
-			e.target     = el.get(0);
-			this.element.dispatchEvent(e);
+		$event.cancelBubble = true;
+		let el              = $($event.target).closest('a');
+		if (el.length == 1) {
+			UIEvent.fireEvent('click', this.element, {linkId: el.data('id'), title: el.text()}, this._menu);
 		}
 	}
 }

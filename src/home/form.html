@@ -133,18 +133,18 @@
 				<br/>
 				<code>&lt;ui-input [readonly|disabled] [double] [required] [clear]<br/>
 					<em>type?</em>[<em>text</em>| email | number | decimal | area | phone | name | address | position]<br/>
-					<em>addon?</em>[addon-icon='' | addon-text='']<br/>
-					<em>button?</em>[button-icon='' | button-text='']<br/>
+					<em>addon?</em>[addon-icon=? | addon-text=?]<br/>
+					<em>button?</em>[button-icon=? | button-text=?]<br/>
 					[checkbox checked.bind="true|false"]<br/>
-					[value.bind='' | value.bind="v1,v2"]<br/>
-					[placeholder.bind='' | placeholder.bind="v1,v2"]<br/>
-					<em>phone?</em>[phone-code.bind='' phone-number.bind='' phone-country.bind='{iso2-code}']<br/>
+					[value.bind=? | value.bind="v1,v2"]<br/>
+					[placeholder.bind=? | placeholder.bind="v1,v2"]<br/>
+					<em>phone?</em>[phone-code.bind=? phone-number.bind=? phone-country.bind='{iso2-code}']<br/>
 					[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
 			<hr/>
 			<p>
 				<small>Markdown</small>
 				<br/>
-				<code>&lt;ui-markdown [required] [readonly|disabled] [value.bind='']>{Label}&lt;/ui-markdown></code></p>
+				<code>&lt;ui-markdown [required] [readonly|disabled] [value.bind=?]>{Label}&lt;/ui-markdown></code></p>
 		</ui-column>
 		<ui-column size="xl-6" class="pad-all">
 			<h5>Usage
@@ -153,30 +153,30 @@
 			<p>
 				<small>Checkbox/Radio</small>
 				<br/>
-				<code>&lt;ui-option-group label='' [value.bind='']><br/>
-					&nbsp;&nbsp;&lt;ui-option [<em>checkbox</em>|radio] [name=''] [value='']<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;[checked.bind='']>{Label}&lt;ui-option><br/>
+				<code>&lt;ui-option-group label=? [value.bind=?]><br/>
+					&nbsp;&nbsp;&lt;ui-option [<em>checkbox</em>|radio] [name=?] [value=?]<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;[checked.bind=?]>{Label}&lt;ui-option><br/>
 					&lt;/ui-option-group></code></p>
 			<hr/>
 			<p>
 				<small>Chosen</small>
 				<br/>
-				<code>&lt;ui-chosen label='' [required] [multiple] [value.bind='']><br/>
-					&nbsp;[&lt;optgroup label=''>]<br/>
-					&nbsp;&nbsp;&lt;option value='' [repeat.for=''] [class='']>{Label}&lt;/option><br/>
+				<code>&lt;ui-chosen label=? [required] [multiple] [value.bind=?]><br/>
+					&nbsp;[&lt;optgroup label=?>]<br/>
+					&nbsp;&nbsp;&lt;option value=? [repeat.for=?] [class=?]>{Label}&lt;/option><br/>
 					&nbsp;&nbsp;...<br/>
 					&nbsp;[&lt;/optgroup>]<br/>
-					&lt;/ui-markdown></code></p>
+					&lt;/ui-chosen></code></p>
 			<hr/>
 			<p>
 				<small>List</small>
 				<br/>
-				<code>&lt;ui-list label='' [required] [value.bind='']><br/>
-					&nbsp;[&lt;optgroup label=''>]<br/>
-					&nbsp;&nbsp;&lt;option value='' [repeat.for=''] [class='']>{Label}&lt;/option><br/>
+				<code>&lt;ui-list label=? [required] [value.bind=?]><br/>
+					&nbsp;[&lt;optgroup label=?>]<br/>
+					&nbsp;&nbsp;&lt;option value=? [repeat.for=?] [class=?]>{Label}&lt;/option><br/>
 					&nbsp;&nbsp;...<br/>
 					&nbsp;[&lt;/optgroup>]<br/>
-					&lt;/ui-markdown></code></p>
+					&lt;/ui-list></code></p>
 		</ui-column>
 	</ui-grid>
 </template>

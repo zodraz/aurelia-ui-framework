@@ -16,12 +16,9 @@ export class UIEvent extends Event {
 	}
 
 	static fireEvent(event:string, element:EventTarget, data?:any, source?:Element) {
-		let e        = new Event(event) as UIEvent;
-		e.bubbles    = true;
-		e.cancelable = true;
-		e.target     = element;
+		let e        = new Event(event, {bubbles: true, cancelable: true}) as UIEvent;
 		e.data       = data;
-		e.srcElement = source;
+		e.srcElement = source; // UNABLE TO SET SOURCE ELEMENT
 		element.dispatchEvent(e);
 	}
 }

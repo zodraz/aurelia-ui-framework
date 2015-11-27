@@ -1,6 +1,8 @@
 <template>
 	<div class="pad-all border-h" click.delegate="buttonclick($event)">
-		<h4 class="margin-v">Buttons<small>Click the buttons for toast messages</small></h4>
+		<h4 class="margin-v">Buttons
+			<small>Click the buttons for toast messages</small>
+		</h4>
 		<ui-button>Click</ui-button>
 		<ui-button primary default large icon="fi-elegant-check2">Click</ui-button>
 		<ui-button secondary small icon="fi-elegant-close11"></ui-button>
@@ -15,7 +17,7 @@
 
 			<p><code>&lt;ui-button [disabled] [default] [large|small|<em>normal</em>]
 				[primary|secondary|info|danger|success|warning]
-				icon='' [click.trigger]>{Label}&lt;/ui-button></code></p>
+				[icon=?] [click.trigger]>{Label}&lt;/ui-button></code></p>
 		</div>
 	</div>
 
@@ -77,7 +79,7 @@
 					&lt;ui-button-group toggle[=<em>single</em>|multiple] [vertical] [large|small|<em>normal</em>]
 					[primary|secondary|info|danger|success|warning] [value.bind] [change.trigger]>
 					<br/>
-					&nbsp;&nbsp;&lt;ui-button [data-id=?]>...
+					&nbsp;&nbsp;&lt;ui-button [value=?]>...
 					<br/>
 					&lt;/ui-button-group>
 				</code>
@@ -86,13 +88,51 @@
 		</div>
 	</div>
 
-	<!--
-	<div class="pad-all border-h">
+	<div class="pad-all border-h" menuclick.delegate="menuclicked($event)">
 		<h4>Dropdown</h4>
-		<ui-button menu.bind="[{id:0,title:'Link'},'-','Section',{id:1,title:'Link'},{id:1,title:'Link'}]">DropDown
+		<ui-button label="Dropdown Menu">
+			<menu link-id="0">Link 0</menu>
+			<menu link-id="1">Link 1</menu>
+			<menu link-id="2">Link 2</menu>
+			<divider></divider>
+			<section>Section</section>
+			<menu link-id="3">Link 3</menu>
+			<menu link-id="4">Link 4</menu>
+			<menu link-id="5">Link 5</menu>
+			<divider></divider>
+			<menu link-id="6">Link 6</menu>
+			<menu link-id="7">Link 7</menu>
+			<menu link-id="8">Link 8</menu>
+			<menu link-id="9">Link 9</menu>
 		</ui-button>
+		<ui-button menu-right label="Dropdown Right">
+			<menu link-id="0">Link 0</menu>
+			<menu link-id="1">Link 1</menu>
+			<menu link-id="2">Link 2</menu>
+			<divider></divider>
+			<section>Section</section>
+			<menu link-id="3">Link 3</menu>
+			<menu link-id="4">Link 4</menu>
+			<menu link-id="5">Link 5</menu>
+			<divider></divider>
+			<menu link-id="6">Link 6</menu>
+			<menu link-id="7">Link 7</menu>
+			<menu link-id="8">Link 8</menu>
+			<menu link-id="9">Link 9</menu>
+		</ui-button>
+
+		<hr/>
+		<div class="margin-v">
+			<h5>Usage</h5>
+
+			<p><code>&lt;ui-button ... label=? [menuclick.trigger]><br/>
+				&nbsp;&nbsp;&lt;menu link-id=? [icon=?]>{Label}&lt;/menu><br/>
+				&nbsp;&nbsp;[&lt;divider>&lt;/divider>]<br/>
+				&nbsp;&nbsp;[&lt;section>{Title}&lt;/section>]<br/>
+				&nbsp;&nbsp;...<br/>
+				&lt;/ui-button></code></p>
+		</div>
 	</div>
-	-->
 
 	<div class="pad-all border-h">
 		<h4 class="margin-v">Switches</h4>

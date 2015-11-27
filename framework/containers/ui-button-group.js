@@ -68,13 +68,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIButtonGroup.prototype._clickHandler = function ($event) {
             if (this._toggle !== false) {
                 $event.cancelBubble = true;
-                var el = $($event.target.closest('button'));
                 if (this._toggle === 'multiple') {
                 }
                 else {
-                    this.value = el.val();
+                    this.value = $event.data.value;
                 }
-                ui_event_1.UIEvent.fireEvent('change', this.element, this.value, el.get(0));
+                ui_event_1.UIEvent.fireEvent('change', this.element, this.value, this._buttonGroup);
             }
         };
         UIButtonGroup.prototype._checkChange = function () {

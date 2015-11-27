@@ -19,6 +19,7 @@
 	max-width: 220px;
 	max-height: 0;
 	display: none;
+	z-index: 10001;
 	background: $base-bg;
 	border-radius: $base-border-radius;
 	border: 1px solid $base-border-color;

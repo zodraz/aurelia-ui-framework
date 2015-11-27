@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_router_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-event"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_event_1) {
     var UIMenu = (function () {
         function UIMenu(element) {
             this.element = element;
@@ -26,13 +26,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
         UIMenu.prototype._linkClicked = function ($event) {
             if (this.router)
                 return true;
+            $event.cancelBubble = true;
             var el = $($event.target).closest('a');
-            if (el) {
-                var e = new Event('click');
-                e.bubbles = true;
-                e.cancelable = true;
-                e.target = el.get(0);
-                this.element.dispatchEvent(e);
+            if (el.length == 1) {
+                ui_event_1.UIEvent.fireEvent('click', this.element, { linkId: el.data('id'), title: el.text() }, this._menu);
             }
         };
         __decorate([

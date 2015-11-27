@@ -63,7 +63,7 @@ export class UISwitch {
 	}
 
 	private _valueChanged(newValue) {
-		UIEvent.fireEvent('change', this.element, newValue);
+		UIEvent.fireEvent('change', this.element, newValue, this._switch);
 	}
 
 	private _focus() {

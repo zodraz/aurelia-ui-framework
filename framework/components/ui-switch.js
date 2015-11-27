@@ -54,7 +54,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UISwitch.prototype._valueChanged = function (newValue) {
-            ui_event_1.UIEvent.fireEvent('change', this.element, newValue);
+            ui_event_1.UIEvent.fireEvent('change', this.element, newValue, this._switch);
         };
         UISwitch.prototype._focus = function () {
             $(this._switch).children().first().addClass('ui-focus');

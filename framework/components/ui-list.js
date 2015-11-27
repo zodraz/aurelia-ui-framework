@@ -92,7 +92,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }, 100);
         };
         UIList.prototype._buttonClick = function ($event) {
-            ui_event_1.UIEvent.fireEvent('click', this.element);
+            $event.cancelBubble = true;
+            ui_event_1.UIEvent.fireEvent('click', this.element, this, this._input);
         };
         UIList.prototype._getListItems = function () {
             $(this._input).html($(this._options).html());

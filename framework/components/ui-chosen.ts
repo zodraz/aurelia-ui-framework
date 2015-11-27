@@ -129,6 +129,7 @@ export class UIChosen {
 	}
 
 	private _buttonClick($event) {
-		UIEvent.fireEvent('click', this.element);
+		UIEvent.fireEvent('click', this.element, this, this._select);
+		return false;
 	}
 }

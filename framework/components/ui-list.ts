@@ -119,7 +119,8 @@ export class UIList {
 	}
 
 	private _buttonClick($event) {
-		UIEvent.fireEvent('click', this.element);
+		$event.cancelBubble = true;
+		UIEvent.fireEvent('click', this.element, this, this._input);
 	}
 
 	private _getListItems() {

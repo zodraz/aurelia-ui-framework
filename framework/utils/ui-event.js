@@ -20,10 +20,7 @@ define(["require", "exports"], function (require, exports) {
             configurable: true
         });
         UIEvent.fireEvent = function (event, element, data, source) {
-            var e = new Event(event);
-            e.bubbles = true;
-            e.cancelable = true;
-            e.target = element;
+            var e = new Event(event, { bubbles: true, cancelable: true });
             e.data = data;
             e.srcElement = source;
             element.dispatchEvent(e);
