@@ -19,6 +19,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./containers/ui-button-group');
 	aurelia.globalResources('./containers/ui-option-group');
 	aurelia.globalResources('./containers/ui-grid-column');
+	aurelia.globalResources('./containers/ui-datagrid');
 	aurelia.globalResources('./containers/ui-grid');
 	aurelia.globalResources('./containers/ui-menu');
 	aurelia.globalResources('./containers/ui-form');

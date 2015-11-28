@@ -8,6 +8,7 @@
 .ui-section {
   @include flex(1 1 0%);
   overflow: hidden;
+  position: relative;
 
   &.ui-flex-row {
 	@include flex-row($align: stretch, $wrap: false);

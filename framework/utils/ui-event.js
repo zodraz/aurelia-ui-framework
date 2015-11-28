@@ -19,11 +19,22 @@ define(["require", "exports"], function (require, exports) {
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(UIEvent.prototype, "value", {
+            get: function () {
+                return this._value;
+            },
+            set: function (any) {
+                this._value = any;
+            },
+            enumerable: true,
+            configurable: true
+        });
         UIEvent.fireEvent = function (event, element, data, source) {
             var e = new Event(event, { bubbles: true, cancelable: true });
             e.data = data;
             e.srcElement = source;
             element.dispatchEvent(e);
+            return e;
         };
         return UIEvent;
     })(Event);

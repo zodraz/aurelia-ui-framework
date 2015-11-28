@@ -21,11 +21,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.dt = '';
             this.value = '';
             this.checked = false;
+            this.minDate = null;
+            this.maxDate = null;
             this.format = 'DD/MM/YYYY';
             this.id = '';
             this.buttonIcon = '';
             this.buttonText = '';
             this.placeholder = '';
+            this.options = {};
             this.inline = false;
             this.disabled = false;
             if (element.hasAttribute('required'))
@@ -45,12 +48,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                 $(this._date).remove();
             else
                 $(this._inputinline).remove();
-            $(this._input).datetimepicker({
+            var opts = ui_utils_1._.merge(this.options, {
                 useCurrent: false,
                 collapse: false,
                 keepOpen: false,
                 showTodayButton: true,
-                minDate: ui_utils_1.moment().startOf('day'),
                 inline: this.inline,
                 format: this.format,
                 ignoreReadonly: true,
@@ -61,6 +63,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                     down: 'ui-font-large fi-elegant-little9'
                 }
             });
+            if (this.minDate)
+                opts.minDate = ui_utils_1.moment(this.minDate);
+            if (this.maxDate)
+                opts.maxDate = ui_utils_1.moment(this.maxDate);
+            $(this._input).datetimepicker(opts);
         };
         UIDate.prototype.disabledChanged = function (newValue) {
             this._input
@@ -98,6 +105,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
         ], UIDate.prototype, "placeholder");
         __decorate([
             aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIDate.prototype, "options");
+        __decorate([
+            aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIDate.prototype, "inline");
         __decorate([
@@ -118,6 +129,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                 changeHandler: '_checkedChanged',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: false
+            }),
+            aurelia_framework_1.bindable({
+                name: 'data-min',
+                attribute: 'minDate',
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
+                defaultValue: null
+            }),
+            aurelia_framework_1.bindable({
+                name: 'data-max',
+                attribute: 'maxDate',
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
+                defaultValue: null
             }),
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),

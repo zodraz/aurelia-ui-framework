@@ -27,13 +27,19 @@
   backdrop-filter: blur($value);
 }
 
-@function contrast($color, $dark: $black-olive, $light: $coconut) {
-  @return contrast-color($color, $dark, $light);
-}
-
 @mixin size($width: auto, $height: auto) {
   width: $width;
   height: $height;
+}
+
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@function contrast($color, $dark: $black-olive, $light: $coconut) {
+  @return contrast-color($color, $dark, $light);
 }
 
 /// Checks for a valid CSS length.

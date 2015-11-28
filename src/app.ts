@@ -28,7 +28,7 @@ export class App {
 			name: 'home'
 		}, {
 			route: 'data',
-			moduleId: './home/view',
+			moduleId: './data/view',
 			settings: { navIcon: 'fi-elegant-little14'},
 			title: 'Data Elements',
 			nav: true,

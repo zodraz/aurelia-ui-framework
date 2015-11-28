@@ -121,6 +121,13 @@ $date-active-text: $primary-text !default;
 $date-disabled-text: if($dark-theme, $smoke, $ash-gray) !default;
 $date-next-text: if($dark-theme, $ash-gray, $smoke) !default;
 
+// DATAGRID
+$table-bg: $base-bg;
+$table-text: $base-text;
+$table-alt-bg: shade($base-bg, 4%);
+$table-hover-bg: rgba($primary, 0.1);
+$table-active-bg: rgba($primary, 0.15);
+
 // NOTIFY
 $notify-info-bg: tint($info, 90%);
 $notify-info-text: darken(desaturate($info, 20%), 20%);

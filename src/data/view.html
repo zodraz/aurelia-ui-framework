@@ -1,0 +1,15 @@
+<template>
+	<ui-page title="${title}">
+		<ui-section>
+			<ui-data-grid data-list.bind="data" data-summary="true">
+				<ui-data-column data-id="id" width="80" locked>ID</ui-data-column>
+				<ui-data-column data-id="FName" locked resizeable sortable
+								data-summary="Total" datavalue.trigger="getFullName($event)">Full Name</ui-data-column>
+				<ui-data-column data-id="SDate" data-type="date" sortable data-format="DD MMM YYYY">Birth Date</ui-data-column>
+				<ui-data-column data-id="SDate" data-type="fromnow" data-align="center"></ui-data-column>
+				<ui-data-column data-id="Amount" data-type="currency" data-symbol="$" data-summary="sum">Amount</ui-data-column>
+				<ui-data-column data-id="Count" data-type="number" data-format="0.000a" data-summary="sum">Count</ui-data-column>
+			</ui-data-grid>
+		</ui-section>
+	</ui-page>
+</template>

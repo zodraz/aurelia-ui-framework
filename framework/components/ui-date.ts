@@ -6,7 +6,8 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
-import {moment} from "../utils/ui-utils";
+import {moment, _} from "../utils/ui-utils";
+import DPOptions = DatetimePicker.DPOptions;
 
 /**
  * @bindable value
@@ -29,6 +30,19 @@ import {moment} from "../utils/ui-utils";
 	defaultValue: false
 })
 
+@bindable({
+	name: 'data-min',
+	attribute: 'minDate',
+	defaultBindingMode: bindingMode.twoWay,
+	defaultValue: null
+})
+@bindable({
+	name: 'data-max',
+	attribute: 'maxDate',
+	defaultBindingMode: bindingMode.twoWay,
+	defaultValue: null
+})
+
 @autoinject()
 @containerless()
 @customElement('ui-date')
@@ -45,12 +59,15 @@ export class UIDate {
 	private dt      = '';
 	private value   = '';
 	private checked = false;
+	private minDate = null;
+	private maxDate = null;
 
 	@bindable format:string      = 'DD/MM/YYYY';
 	@bindable id:string          = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
 	@bindable placeholder:string = '';
+	@bindable options:DPOptions  = {};
 	@bindable inline:boolean     = false;
 	@bindable disabled:boolean   = false;
 
@@ -68,12 +85,12 @@ export class UIDate {
 	attached() {
 		if (this.inline && (this._input = this._inputinline)) $(this._date).remove();
 		else $(this._inputinline).remove();
-		$(this._input).datetimepicker({
+
+		var opts:any = _.merge(this.options, {
 			useCurrent: false,
 			collapse: false,
 			keepOpen: false,
 			showTodayButton: true,
-			minDate: moment().startOf('day'),
 			inline: this.inline,
 			format: this.format,
 			ignoreReadonly: true,
@@ -84,6 +101,10 @@ export class UIDate {
 				down: 'ui-font-large fi-elegant-little9'
 			}
 		});
+		if(this.minDate) opts.minDate = moment(this.minDate);
+		if(this.maxDate) opts.maxDate = moment(this.maxDate);
+
+		$(this._input).datetimepicker(opts);
 	}
 
 	disabledChanged(newValue) {

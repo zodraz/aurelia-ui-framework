@@ -4,7 +4,7 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {Markdown} from "./ui-utils";
+import {Format} from "./ui-utils";
 
 export class KeysValueConverter {
 	toView(object:any) {
@@ -14,6 +14,6 @@ export class KeysValueConverter {
 
 export class MarkdownValueConverter {
 	toView(value:string) {
-		return Markdown.toHTML(value || '');
+		return Format.toHTML(value || '');
 	}
 }

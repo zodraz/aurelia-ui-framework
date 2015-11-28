@@ -12,48 +12,105 @@
 	</p>
 	<br/>
 
-	<p>
-		The framework consists of three main aspects:
-	<ul>
-		<li>Core Elements <a href="#/home/page"><span class="ui-font-big fi-elegant-circle10"></span></a>
-		<li><span class="ui-text-muted">UIApp: Main application layout</span></li>
-		<li><span class="ui-text-muted">UIPage: Routing pages layout</span></li>
-		<li><span class="ui-text-muted">UISection: Defines page sections</span></li>
-		<li><span class="ui-text-muted">UIContent: Main page content</span></li>
-		<li><span class="ui-text-muted">UISidebar: Sidebar section</span></li>
-		<li><span class="ui-text-muted">UIHeader: Header template for pages and panels</span></li>
-		<li><span class="ui-text-muted">UIToolbar: Toolbar template for pages and panels</span></li>
-		<li><span class="ui-text-muted">UIStatsbar: Statsbar template for pages and panels</span></li>
-		</li>
-		<br/>
-		<li>Container Elements
-		<li><span class="ui-text-muted">UIGrid: <a href="#/home/grid"><span
-				class="ui-font-big fi-elegant-circle10"></span></a> Responsive grid layout using CSS3 FlexBox</span>
-		</li>
-		<li><span class="ui-text-muted">UIGridColumn</span></li>
-		<li><span
-				class="ui-text-muted">UIMenu: Generic menu template that can be applied for routers or list of links</span>
-		</li>
-		<li><span class="ui-text-muted">UIForm <a href="#/home/form"><span
-				class="ui-font-big fi-elegant-circle10"></span></a></span></li>
-		<li><span class="ui-text-muted">UIButtonGroup <a href="#/home/buttons"><span
-				class="ui-font-big fi-elegant-circle10"></span></a></span>
-		</li>
-		<li><span class="ui-text-muted">UIOptionGroup</span></li>
-		</li>
-		<br/>
-		<li>Components
-		<li><span class="ui-text-muted">UIInput</span></li>
-		<li><span class="ui-text-muted">UIOption</span></li>
-		<li><span class="ui-text-muted">UIButton</span></li>
-		<li><span class="ui-text-muted">UISwitch</span></li>
-		<li><span class="ui-text-muted">UIList</span></li>
-		<li><span class="ui-text-muted">UIChosen: A dropdown select box using <a
-				href="http://harvesthq.github.io/chosen/" target="_blank">ChosenJS</a></a></span></li>
-		<li><span class="ui-text-muted">UIMarkdown: Markdown editor using <a href="https://github.com/chjj/marked"
-																			 target="_blank">Marked library</a></span>
-		</li>
-		</li>
-	</ul>
-	</p>
+	<div class="ui-row">
+		<div class="ui-col-md-6">
+			<p>
+				The framework consists of three main aspects:
+			<ul>
+				<li>Core Elements <a href="#/home/page"><span class="ui-font-big fi-elegant-circle10"></span></a>
+				<li class="ui-text-muted">UIApp: Main application layout</li>
+				<li class="ui-text-muted">UIPage: Routing pages layout</li>
+				<li class="ui-text-muted">UISection: Defines page sections</li>
+				<li class="ui-text-muted">UIContent: Main page content</li>
+				<li class="ui-text-muted">UISidebar: Sidebar section</li>
+				<li class="ui-text-muted">UIHeader: Header template for pages and panels</li>
+				<li class="ui-text-muted">UIToolbar: Toolbar template for pages and panels</li>
+				<li class="ui-text-muted">UIStatsbar: Statsbar template for pages and panels</li>
+				</li>
+				<br/>
+				<li>Container Elements
+				<li class="ui-text-muted">UIGrid: <a href="#/home/grid"><span
+						class="ui-font-big fi-elegant-circle10"></span></a> Responsive grid layout using CSS3 FlexBox
+				</li>
+				<li class="ui-text-muted">UIGridColumn</li>
+				<li class="ui-text-muted">UIMenu: Generic menu template that can be applied for routers or list of links
+				</li>
+				<li class="ui-text-muted">UIDataGrid <a href="#/data"><span
+						class="ui-font-big fi-elegant-circle10"></span></a></li>
+				<li class="ui-text-muted">UIForm <a href="#/home/form"><span
+						class="ui-font-big fi-elegant-circle10"></span></a></li>
+				<li class="ui-text-muted">UIButtonGroup <a href="#/home/buttons"><span
+						class="ui-font-big fi-elegant-circle10"></span></a>
+				</li>
+				<li class="ui-text-muted">UIOptionGroup</li>
+				</li>
+				<br/>
+				<li>Components
+				<li class="ui-text-muted">UIInput</li>
+				<li class="ui-text-muted">UIOption</li>
+				<li class="ui-text-muted">UIButton</li>
+				<li class="ui-text-muted">UISwitch</li>
+				<li class="ui-text-muted">UIList</li>
+				<li class="ui-text-muted">UIChosen: A dropdown select box using <a
+						href="http://harvesthq.github.io/chosen/" target="_blank">ChosenJS</a></a></li>
+				<li class="ui-text-muted">UIMarkdown: Markdown editor using <a href="https://github.com/chjj/marked"
+																			   target="_blank">Marked library</a>
+				</li>
+				</li>
+			</ul>
+			</p>
+		</div>
+		<div class="ui-col-md-6">
+
+			<style type="text/css">
+				ul.external > li:not(.ignore) > a {
+					width: 80px;
+					text-align: end;
+					display: inline-block;
+				}
+			</style>
+
+
+			<p>
+				External dependencies:
+			<ul class="external">
+				<li class="ui-text-muted"><a target="_blank" href="http://jquery.com">jQuery</a>
+					a javascript utility library
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://lodash.com">LoDash</a>
+					a javascript library for manipulating data arrays and objects
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://momentjs.com">MomentJS</a>
+					a javascript library for formatting and manipulating dates
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://numeraljs.com">NumeralJS</a>
+					a javascript library for formatting and manipulating numbers
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://notifyjs.com">NotifyJS</a>
+					a jQuery notification plugin
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://harvesthq.github.io/chosen">ChosenJS</a>
+					a jQuery plugin for creating user friendly select boxes
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://eternicode.github.io/bootstrap-datepicker/">DatePicker</a>
+					a javascript library for creating date pickers
+				</li>
+				<li class="ui-text-muted"><a target="_blank" href="http://github.com/chjj/marked">Marked</a>
+					a javascript library for parsing Markdown into HTML
+				</li>
+				<br/>
+				<li class="ui-text-muted ignore"><a target="_blank"
+													href="https://github.com/googlei18n/libphonenumber/tree/master/javascript">LibPhoneNumber</a>
+					Google's JavaScript library for parsing, formatting, and validating international phone numbers.
+				</li>
+				<br/>
+				<li class="ui-text-muted ignore">This framework styles are built using
+					<a target="_blank" href="http://sass-lang.com">SASS</a> and the
+					<a target="_blank" href="http://compass-style.org">Compass</a> library
+				</li>
+			</ul>
+			</p>
+
+		</div>
+	</div>
 </template>

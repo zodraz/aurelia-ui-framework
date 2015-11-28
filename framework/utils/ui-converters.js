@@ -12,7 +12,7 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         function MarkdownValueConverter() {
         }
         MarkdownValueConverter.prototype.toView = function (value) {
-            return ui_utils_1.Markdown.toHTML(value || '');
+            return ui_utils_1.Format.toHTML(value || '');
         };
         return MarkdownValueConverter;
     })();
