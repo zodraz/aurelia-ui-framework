@@ -16,7 +16,7 @@
 			<input ref="_input" class="ui-input ${_inputClasses} ui-primary"
 				   readonly placeholder="${placeholder}" value.bind="_value"/>
 
-			<button if.bind="(buttonText || buttonIcon)" class="ui-button ui-button-default"
+			<button type="button" if.bind="(buttonText || buttonIcon)" class="ui-button ui-button-default"
 					click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>

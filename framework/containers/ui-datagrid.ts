@@ -55,21 +55,21 @@ export class UIDataGrid {
 
 	bind() {
 		if (this.summaryRow === true || this.summaryRow === "true") this.summaryRow = true;
+		var cols = [];
 		$(this._colDefs).children().each((i, c:any)=> {
 			let col       = $(c).data('UIDataColumn');
 			col.title     = c.innerText;
 			col.columnDef = c;
-			this.columns.push(col);
+			cols.push(col);
 		});
-		this.columns = _.sortByOrder(this.columns, ['locked'], ['desc']);
+		this.columns = _.sortByOrder(cols, ['locked'], ['desc']);
 	}
 
 	private attached() {
 		var w = 0;
-		$(this._colDefs).children().each((i, c:any)=> {
-			let col  = $(c).data('UIDataColumn');
-			col.edge = w;
-			w += parseInt(col.width || 250);
+		_.forEach(this.columns, (c:any)=> {
+			c.edge = w;
+			w += parseInt(c.width || 250);
 		});
 		this._table.width = w;
 
@@ -90,22 +90,34 @@ export class UIDataGrid {
 		this.isProcessing      = true;
 		this.currentSortColumn = column.dataId;
 		this.currentSortOrder  = $($event.target).hasClass('asc') ? 'desc' : 'asc';
+		var sibling = column.dataSort || this.idColumn;
 		setTimeout(()=> {
 			this.data         = _.sortByOrder(this.data,
-				[this.currentSortColumn, this.idColumn],
-				[this.currentSortOrder, this.currentSortOrder]);
+				[this.currentSortColumn, sibling],
+				[this.currentSortOrder, 'asc']);
 			this.isProcessing = false;
 		}, 100);
 	}
 
 	private highlight($event) {
+		if ($($event.target).closest('a,button').length > 0) return true;
 		if ($event.shiftKey && $($event.target).closest('tr').hasClass('active')) {
 			$($event.target).closest('tr').removeClass('active');
 		} else {
 			if (!$event.shiftKey)
-				$(this.element).find('tbody tr.active').removeClass('active');
+				$(this._table).find('tbody tr.active').removeClass('active');
 			$($event.target).closest('tr').addClass('active');
 		}
+	}
+
+	private linkClicked($event, id, model) {
+		$event.preventDefault();
+		try {
+			UIEvent.fireEvent('linkclick', this.element, {link: id, model: model})
+		}
+		catch (e) {
+		}
+		return false;
 	}
 
 	private getAlignment(col) {
@@ -221,13 +233,13 @@ export class UIDataGrid {
 export class UIDataColumn {
 	@bindable dataId:string;
 	@bindable dataType:string;
+	@bindable dataSort:string;
 	@bindable dataAlign:string;
 	@bindable dataFormat:string;
 	@bindable dataSymbol:string;
 	@bindable dataSummary:string;
 	@bindable dataLabels:any;
 
-	@bindable button:boolean     = false;
 	@bindable buttonGlyph:string = '';
 
 	@bindable width:number;
@@ -235,11 +247,15 @@ export class UIDataColumn {
 
 	private columnDef;
 	private title:string       = '';
+	private link:boolean       = false;
+	private button:boolean     = false;
 	private locked:boolean     = false;
 	private sortable:boolean   = false;
 	private resizeable:boolean = false;
 
 	constructor(public element:Element) {
+		if (element.hasAttribute('link'))this.link = true;
+		if (element.hasAttribute('button') || element.hasAttribute('button-glyph'))this.button = true;
 		if (element.hasAttribute('locked'))this.locked = true;
 		if (element.hasAttribute('sortable'))this.sortable = true;
 		if (element.hasAttribute('resizeable'))this.resizeable = true;
@@ -248,7 +264,11 @@ export class UIDataColumn {
 	}
 
 	bind() {
-		if (this.dataType == 'date') this.width = 150;
+		if (this.buttonGlyph) {
+			this.width  = 30;
+			this.button = true;
+		}
+		else if (this.dataType == 'date') this.width = 150;
 		else if (this.dataType == 'exrate') this.width = 100;
 		else if (this.dataType == 'fromnow') this.width = 120;
 		else if (this.dataType == 'number') this.width = 120;

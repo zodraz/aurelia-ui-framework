@@ -34,12 +34,14 @@ export class HomeButtons {
 			if (data._theme == 'warning')msg = 'HOUSTON! We have a problem';
 			if (data._theme != 'secondary') {
 				$.notify(msg, {
+					style: 'ui',
 					className: data._theme,
 					autoHide: false
 				});
 			}
 			else {
 				$('.ui-page-title').notify('Error contacting web-service. Please try again later.', {
+					style: 'ui',
 					elementPosition: 'b c',
 					arrowShow: false,
 					className: 'danger'
@@ -50,6 +52,7 @@ export class HomeButtons {
 
 	menuclicked($event) {
 		$.notify(`You clicked ${$event.data.title}`, {
+			style: 'ui',
 			className: 'primary',
 			autoHide: true
 		});

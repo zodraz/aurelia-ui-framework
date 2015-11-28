@@ -141,8 +141,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 else if (_this._type == 'phone') {
                     return /[0-9]/.test(String.fromCharCode(e.charCode));
                 }
-                if (e.keyCode == 13)
+                if (e.keyCode == 13) {
                     $(e.target).trigger('change', e);
+                    return false;
+                }
                 return true;
             })
                 .change(function (e) {

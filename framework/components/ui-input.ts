@@ -192,7 +192,10 @@ export class UIInput {
 					return /[0-9]/.test(String.fromCharCode(e.charCode));
 				}
 
-				if (e.keyCode == 13) $(e.target).trigger('change', e);
+				if (e.keyCode == 13) {
+					$(e.target).trigger('change', e);
+					return false;
+				}
 
 				return true;
 			})

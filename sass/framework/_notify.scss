@@ -6,7 +6,7 @@
  */
 
 @mixin notify-theme($theme, $bg, $text, $border, $icon) {
-  &.notifyjs-bootstrap-#{$theme} {
+  &.notifyjs-ui-#{$theme} {
 	&:before {
 	  content: $icon;
 	}
@@ -19,14 +19,21 @@
 
 .notifyjs-container {
   max-width: 600px;
-  .notifyjs-bootstrap-base {
+  .notifyjs-ui-base {
 	font-weight: $font-weight-strong;
 	font-size: 1.1em;
+	white-space: nowrap;
 	padding: 1rem 1.5rem 1rem 3rem;
 	color: $coconut !important;
-	border-color: $outer-space !important;
+	border: 1px solid $outer-space !important;
 	text-shadow: 0 1px 0 rgba($black, 0.5);
 	background: linear-gradient(tint($licorice, 25%), $licorice);
+	@include box-shadow(0 0 5px 0 rgba($black, 0.5));
+	border-radius: $base-border-radius;
+
+	strong {
+	  font-weight: 700;
+	}
 
 	&:before {
 	  content: '\e0c6';
@@ -67,7 +74,7 @@
 	@include flex(1 1 auto);
 	max-width: 300px;
 
-	.notifyjs-bootstrap-base {
+	.notifyjs-ui-base {
 	  white-space: normal;
 	}
   }

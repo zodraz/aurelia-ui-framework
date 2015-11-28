@@ -24,23 +24,22 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             $(this.element).data('UIDataGrid', this);
         }
         UIDataGrid.prototype.bind = function () {
-            var _this = this;
             if (this.summaryRow === true || this.summaryRow === "true")
                 this.summaryRow = true;
+            var cols = [];
             $(this._colDefs).children().each(function (i, c) {
                 var col = $(c).data('UIDataColumn');
                 col.title = c.innerText;
                 col.columnDef = c;
-                _this.columns.push(col);
+                cols.push(col);
             });
-            this.columns = ui_utils_1._.sortByOrder(this.columns, ['locked'], ['desc']);
+            this.columns = ui_utils_1._.sortByOrder(cols, ['locked'], ['desc']);
         };
         UIDataGrid.prototype.attached = function () {
             var w = 0;
-            $(this._colDefs).children().each(function (i, c) {
-                var col = $(c).data('UIDataColumn');
-                col.edge = w;
-                w += parseInt(col.width || 250);
+            ui_utils_1._.forEach(this.columns, function (c) {
+                c.edge = w;
+                w += parseInt(c.width || 250);
             });
             this._table.width = w;
             this._data = this.data;
@@ -58,20 +57,32 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.isProcessing = true;
             this.currentSortColumn = column.dataId;
             this.currentSortOrder = $($event.target).hasClass('asc') ? 'desc' : 'asc';
+            var sibling = column.dataSort || this.idColumn;
             setTimeout(function () {
-                _this.data = ui_utils_1._.sortByOrder(_this.data, [_this.currentSortColumn, _this.idColumn], [_this.currentSortOrder, _this.currentSortOrder]);
+                _this.data = ui_utils_1._.sortByOrder(_this.data, [_this.currentSortColumn, sibling], [_this.currentSortOrder, 'asc']);
                 _this.isProcessing = false;
             }, 100);
         };
         UIDataGrid.prototype.highlight = function ($event) {
+            if ($($event.target).closest('a,button').length > 0)
+                return true;
             if ($event.shiftKey && $($event.target).closest('tr').hasClass('active')) {
                 $($event.target).closest('tr').removeClass('active');
             }
             else {
                 if (!$event.shiftKey)
-                    $(this.element).find('tbody tr.active').removeClass('active');
+                    $(this._table).find('tbody tr.active').removeClass('active');
                 $($event.target).closest('tr').addClass('active');
             }
+        };
+        UIDataGrid.prototype.linkClicked = function ($event, id, model) {
+            $event.preventDefault();
+            try {
+                ui_event_1.UIEvent.fireEvent('linkclick', this.element, { link: id, model: model });
+            }
+            catch (e) {
+            }
+            return false;
         };
         UIDataGrid.prototype.getAlignment = function (col) {
             if (col.button || col.dataType == 'date')
@@ -194,12 +205,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
     var UIDataColumn = (function () {
         function UIDataColumn(element) {
             this.element = element;
-            this.button = false;
             this.buttonGlyph = '';
             this.title = '';
+            this.link = false;
+            this.button = false;
             this.locked = false;
             this.sortable = false;
             this.resizeable = false;
+            if (element.hasAttribute('link'))
+                this.link = true;
+            if (element.hasAttribute('button') || element.hasAttribute('button-glyph'))
+                this.button = true;
             if (element.hasAttribute('locked'))
                 this.locked = true;
             if (element.hasAttribute('sortable'))
@@ -210,7 +226,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.columnDef = element;
         }
         UIDataColumn.prototype.bind = function () {
-            if (this.dataType == 'date')
+            if (this.buttonGlyph) {
+                this.width = 30;
+                this.button = true;
+            }
+            else if (this.dataType == 'date')
                 this.width = 150;
             else if (this.dataType == 'exrate')
                 this.width = 100;
@@ -234,6 +254,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
+        ], UIDataColumn.prototype, "dataSort");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
         ], UIDataColumn.prototype, "dataAlign");
         __decorate([
             aurelia_framework_1.bindable, 
@@ -251,10 +275,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable, 
             __metadata('design:type', Object)
         ], UIDataColumn.prototype, "dataLabels");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', Boolean)
-        ], UIDataColumn.prototype, "button");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

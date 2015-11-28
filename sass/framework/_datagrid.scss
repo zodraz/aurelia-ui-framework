@@ -15,9 +15,10 @@
 
   .ui-button-small {
 	padding: 0;
-	width: 20px;
-	height: 20px;
+	width: 22px;
+	height: 22px;
 	margin: 2px;
+	font-size: 1.1em;
 	line-height: 0;
 	font-weight: $font-weight-strong;
 	color: $primary;
@@ -26,8 +27,14 @@
 	  visibility: hidden;
 	}
   }
-  p > a {
+  div > a {
 	font-weight: $font-weight-strong;
+	strong {
+	  font-weight: 700;
+	}
+	&:hover {
+	  text-decoration: underline;
+	}
   }
 
   @include flex(1 1 auto);
@@ -64,6 +71,7 @@
 
 	  &.button-cell {
 		padding: 0;
+		height: 100%;
 	  }
 	}
 

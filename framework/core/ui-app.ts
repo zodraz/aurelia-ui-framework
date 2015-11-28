@@ -23,6 +23,12 @@ export class UIApp {
 
 	private uiApp;
 
+	constructor() {
+		$.notify.addStyle('ui', {
+			html: "<div><div data-notify-html></div></div>"
+		});
+	}
+
 	private showMenu($event) {
 		$event.stopPropagation();
 		$(this.uiApp).addClass('show-menu');

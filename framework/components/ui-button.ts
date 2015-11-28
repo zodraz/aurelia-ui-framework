@@ -99,8 +99,12 @@ export class UIButton {
 	private _clicked($event) {
 		$event.cancelBubble = true;
 		if (this.menu) {
-			if ($(this._button).hasClass('ui-dropdown'))
-				return $(this._button).removeClass('ui-dropdown');
+			if ($(this._button).hasClass('ui-dropdown')) {
+				$(this._button).removeClass('ui-dropdown');
+				console.log('hide');
+				return false;
+			}
+			console.log('show');
 			if (!this._menu) this._menu = $(this._button).next('.ui-menu');
 			$(this._menu)
 				.offset({left: -1000, top: -1000});
@@ -114,7 +118,6 @@ export class UIButton {
 				h  = $(this._button).outerHeight(),
 				mh = $(this._menu).outerHeight(),
 				ph = $(this._menu).offsetParent().height();
-
 			if (!this._menuRight) {
 				$(this._menu).css('min-width', w);
 				if (o.top + mh > ph) {

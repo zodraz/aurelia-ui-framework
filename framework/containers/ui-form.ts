@@ -29,7 +29,7 @@ export class UIForm {
 
 	private _keyup($event) {
 		if (!$($event.target).is('textarea') && $event.keyCode == 13)
-			UIEvent.fireEvent('submit', this.element, this, this._form);
+			UIEvent.fireEvent('submit', this._form, this, this._form);
 
 		return true;
 	}

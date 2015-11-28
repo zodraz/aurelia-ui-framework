@@ -51,11 +51,11 @@ code {
 
 // Styles
 .ui-strong, strong {
-  font-weight: $font-weight-strong !important;
+  font-weight: $font-weight-strong;
 }
 
 .ui-bold, b {
-  font-weight: $font-weight-bold !important;
+  font-weight: $font-weight-bold;
 }
 
 .ui-italic, i, cite, em, var, address, dfn {
@@ -93,26 +93,26 @@ code {
 
 // Colors
 .ui-text-muted {
-  color: $text-muted !important;
+  color: $text-muted;
 }
 
 .ui-text-primary {
-  color: $primary !important;
+  color: $primary;
 }
 
 .ui-text-info {
-  color: $info !important;
+  color: $info;
 }
 
 .ui-text-danger {
-  color: $danger !important;
+  color: $danger;
 }
 
 .ui-text-success {
-  color: $success !important;
+  color: $success;
 }
 
 .ui-text-warning {
-  color: $warning !important;
+  color: $warning;
 }
 

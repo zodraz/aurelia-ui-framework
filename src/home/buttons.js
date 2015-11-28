@@ -40,12 +40,14 @@ define(["require", "exports"], function (require, exports) {
                     msg = 'HOUSTON! We have a problem';
                 if (data._theme != 'secondary') {
                     $.notify(msg, {
+                        style: 'ui',
                         className: data._theme,
                         autoHide: false
                     });
                 }
                 else {
                     $('.ui-page-title').notify('Error contacting web-service. Please try again later.', {
+                        style: 'ui',
                         elementPosition: 'b c',
                         arrowShow: false,
                         className: 'danger'
@@ -55,6 +57,7 @@ define(["require", "exports"], function (require, exports) {
         };
         HomeButtons.prototype.menuclicked = function ($event) {
             $.notify("You clicked " + $event.data.title, {
+                style: 'ui',
                 className: 'primary',
                 autoHide: true
             });

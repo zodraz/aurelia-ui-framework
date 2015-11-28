@@ -22,7 +22,7 @@
 			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
 				   cols="10" rows="5" if.bind="_area"></textarea>
 
-			<button if.bind="buttonText || buttonIcon" class="ui-button ui-button-default" click.trigger="_buttonClick($event)">
+			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default" click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>
 		</div>

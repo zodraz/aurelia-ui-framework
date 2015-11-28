@@ -20,18 +20,19 @@
 					data-col="${$index}"
 					data-row="${$parent.$index}"
 					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}">
-					<div class="selectable" if.bind="!col.button && !col.link"
-						 innerHTML.bind="format(model[col.dataId], col, model)"></div>
-
-					<div if.bind="col.link"><a click.trigger="linkClicked($event, col.dataId, model)"
-											   innerHTML.bind="format(model[col.dataId], col, model)"></a></div>
-
 					<div if.bind="col.button" class="button-cell">
 						<button class="ui-button ui-button-secondary ui-button-small ${col.enabled(model)!==false?'':'noshow'}"
 								click.trigger="linkClicked($event, col.dataId, model)"><span
 								class="${col.buttonGlyph}"></span>
 						</button>
 					</div>
+
+					<div class="selectable" if.bind="!col.button && !col.link"
+						 innerHTML.bind="format(model[col.dataId], col, model)"></div>
+
+					<div if.bind="col.link"><a click.trigger="linkClicked($event, col.dataId, model)"
+											   innerHTML.bind="format(model[col.dataId], col, model)"></a></div>
+
 				</td>
 				<td style="min-width: 20px;">
 					<div>&nbsp;</div>

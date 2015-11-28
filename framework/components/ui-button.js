@@ -98,8 +98,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIButton.prototype._clicked = function ($event) {
             $event.cancelBubble = true;
             if (this.menu) {
-                if ($(this._button).hasClass('ui-dropdown'))
-                    return $(this._button).removeClass('ui-dropdown');
+                if ($(this._button).hasClass('ui-dropdown')) {
+                    $(this._button).removeClass('ui-dropdown');
+                    console.log('hide');
+                    return false;
+                }
+                console.log('show');
                 if (!this._menu)
                     this._menu = $(this._button).next('.ui-menu');
                 $(this._menu)

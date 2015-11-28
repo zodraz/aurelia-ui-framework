@@ -13,6 +13,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
     var UIApp = (function () {
         function UIApp() {
             this.thisYear = new Date().getFullYear();
+            $.notify.addStyle('ui', {
+                html: "<div><div data-notify-html></div></div>"
+            });
         }
         UIApp.prototype.showMenu = function ($event) {
             $event.stopPropagation();
