@@ -65,8 +65,13 @@
   }
 }
 
+.notifyjs-wrapper {
+  z-index: $zindex-notify !important;
+}
+
 .notifyjs-corner {
   top: 60px !important;
+  z-index: $zindex-notify;
 
   @include flex-column(flex-end, flex-start, false);
 

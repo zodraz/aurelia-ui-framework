@@ -17,4 +17,13 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         return MarkdownValueConverter;
     })();
     exports.MarkdownValueConverter = MarkdownValueConverter;
+    var DateValueConverter = (function () {
+        function DateValueConverter() {
+        }
+        DateValueConverter.prototype.toView = function (value, format) {
+            return ui_utils_1.Format.dateDisplay(value, format);
+        };
+        return DateValueConverter;
+    })();
+    exports.DateValueConverter = DateValueConverter;
 });

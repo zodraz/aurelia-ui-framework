@@ -9,6 +9,11 @@
 h1, h2, h3, h4, h5, h6, p, ul, li, ol, dt, dd, dl {
   margin: 0;
   padding: 0.3rem 0.7rem;
+  position: relative;
+}
+
+div {
+  position: relative;
 }
 
 p {
@@ -64,6 +69,10 @@ textarea {
 
 .ui-inline {
   display: inline !important;
+}
+
+.ui-scroll {
+  overflow: auto !important;
 }
 
 .ui-align-start {

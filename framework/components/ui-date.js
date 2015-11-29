@@ -29,14 +29,22 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.buttonText = '';
             this.placeholder = '';
             this.options = {};
+            this.range = false;
             this.inline = false;
             this.disabled = false;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('clear'))
                 this._clear = true;
-            if (element.hasAttribute('inline'))
+            if (element.hasAttribute('range')) {
+                this.range = true;
+                this.inline = false;
+                this.format = 'DD/MM/YYYY';
+            }
+            else if (element.hasAttribute('inline')) {
                 this.inline = true;
+                this.range = false;
+            }
             if (element.hasAttribute('disabled'))
                 this.disabled = true;
             if (element.hasAttribute('checkbox'))
@@ -44,10 +52,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.dt = ui_utils_1.moment().format('DD');
         }
         UIDate.prototype.attached = function () {
-            if (this.inline && (this._input = this._inputinline))
+            if (this.inline && (this._inputStart = this._inputInline))
                 $(this._date).remove();
             else
-                $(this._inputinline).remove();
+                $(this._inputInline).remove();
             var opts = ui_utils_1._.merge(this.options, {
                 useCurrent: false,
                 collapse: false,
@@ -63,16 +71,67 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                     down: 'ui-font-large fi-elegant-little9'
                 }
             });
-            if (this.minDate)
-                opts.minDate = ui_utils_1.moment(this.minDate);
-            if (this.maxDate)
-                opts.maxDate = ui_utils_1.moment(this.maxDate);
-            $(this._input).datetimepicker(opts);
+            if (this.range) {
+                var optStart = ui_utils_1._.merge({}, opts);
+                var optEnd = ui_utils_1._.merge({}, opts);
+                if (this.minDate)
+                    optStart.minDate = ui_utils_1.moment(this.minDate);
+                if (this.maxDate)
+                    optStart.maxDate = ui_utils_1.moment(this.maxDate);
+                if (this.minDate)
+                    optEnd.minDate = ui_utils_1.moment(this.minDate);
+                if (this.maxDate)
+                    optEnd.maxDate = ui_utils_1.moment(this.maxDate);
+                this._initPicker(this._inputStart, optStart, true);
+                this._initPicker(this._inputEnd, optEnd, false);
+            }
+            else {
+                if (this.minDate)
+                    opts.minDate = ui_utils_1.moment(this.minDate);
+                if (this.maxDate)
+                    opts.maxDate = ui_utils_1.moment(this.maxDate);
+                this._initPicker(this._inputStart, opts);
+            }
+            if (this.range && this.value && this.value.start !== null && this.value.end !== null) {
+                $(this._inputStart).data('DateTimePicker').date(this.value.start);
+                $(this._inputEnd).data('DateTimePicker').date(this.value.end);
+            }
+            else if (!this.range && this.value) {
+                $(this._inputStart).data('DateTimePicker').date(this.value);
+            }
+        };
+        UIDate.prototype._initPicker = function (el, options, primary) {
+            var _this = this;
+            $(el).datetimepicker(options)
+                .on('dp.change', function (e) {
+                if (_this.range) {
+                    if (primary) {
+                        _this.value.start = e.date;
+                        $(_this._inputEnd).data('DateTimePicker').minDate(e.date);
+                        $(_this._inputEnd).focus();
+                    }
+                    if (!primary) {
+                        _this.value.end = e.date;
+                        $(_this._inputStart).data('DateTimePicker').maxDate(e.date);
+                    }
+                }
+                else {
+                    _this.value = e.date;
+                }
+            });
         };
         UIDate.prototype.disabledChanged = function (newValue) {
-            this._input
+            $(this._inputStart)
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '');
+            if (this._inputEnd) {
+                $(this._inputEnd)
+                    .removeAttr('disabled')
+                    .attr(newValue !== false ? 'disabled' : 'D', '');
+            }
+        };
+        UIDate.prototype.rangeChanged = function (newValue) {
+            this.range = newValue !== false;
         };
         UIDate.prototype.inlineChanged = function (newValue) {
             this.inline = newValue !== false;
@@ -80,6 +139,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                 this._labelClasses += ' ui-hide ';
         };
         UIDate.prototype._valueChanged = function (newValue) {
+            if ($(this._inputStart).data('DateTimePicker')) {
+                if (this.range && newValue && newValue.start && newValue.end) {
+                    if (!newValue)
+                        newValue = { start: ui_utils_1.moment(), end: ui_utils_1.moment() };
+                    $(this._inputStart).data('DateTimePicker').date(newValue.start);
+                    $(this._inputEnd).data('DateTimePicker').date(newValue.end);
+                }
+                else if (newValue) {
+                    $(this._inputStart).data('DateTimePicker').date(newValue);
+                }
+            }
         };
         UIDate.prototype._checkedChanged = function (newValue) {
         };
@@ -110,6 +180,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
+        ], UIDate.prototype, "range");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
         ], UIDate.prototype, "inline");
         __decorate([
             aurelia_framework_1.bindable, 
@@ -120,8 +194,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                 name: 'value',
                 attribute: 'value',
                 changeHandler: '_valueChanged',
-                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
-                defaultValue: ''
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay
             }),
             aurelia_framework_1.bindable({
                 name: 'checked',
@@ -131,14 +204,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                 defaultValue: false
             }),
             aurelia_framework_1.bindable({
-                name: 'data-min',
-                attribute: 'minDate',
+                name: 'minDate',
+                attribute: 'date-min',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: null
             }),
             aurelia_framework_1.bindable({
-                name: 'data-max',
-                attribute: 'maxDate',
+                name: 'maxDate',
+                attribute: 'date-max',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: null
             }),

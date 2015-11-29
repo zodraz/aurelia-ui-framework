@@ -71,9 +71,9 @@ declare module DatetimePicker {
 	}
 
 	interface DPDatePicker {
-		setDate(date:any): void;
-		setMinDate(date:any): void;
-		setMaxDate(date:any): void;
+		date(date?:any): void;
+		minDate(date?:any): void;
+		maxDate(date?:any): void;
 		show(): void;
 		disable(): void;
 		enable(): void;

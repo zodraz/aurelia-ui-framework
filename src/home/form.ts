@@ -1,5 +1,5 @@
-import * as _ from "lodash";
-export {KeysValueConverter} from "../../framework/utils/ui-converters";
+import {_, moment} from "../../framework/utils/ui-utils";
+export {KeysValueConverter, DateValueConverter} from "../../framework/utils/ui-converters";
 
 export class HomeForm {
 	opts   = 3;
@@ -15,6 +15,9 @@ export class HomeForm {
 	phoneCountry = 'ae';
 
 	list = '4';
+
+	date  = null;
+	range = {start: null, end: null};
 
 	countries = _.groupBy(window.countries, 'continent');
 

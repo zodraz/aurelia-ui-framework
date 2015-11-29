@@ -43,7 +43,7 @@ html, body {
 }
 
 .ui-splash {
-  z-index: 10000;
+  z-index: $zindex-splash;
   @include position(absolute, 0);
   @include transition(opacity 1s);
   @include box-shadow(0 0 5px 0 #333);
@@ -251,7 +251,7 @@ html, body {
 		  align-items:center
   ));
 
-  z-index: 10000;
+  z-index: $zindex-splash;
   background: rgba(#fff, 0);
   @include position(absolute, 0 0 12px);
 

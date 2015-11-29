@@ -26,6 +26,15 @@ define(["require", "exports"], function (require, exports) {
                     nav: true,
                     name: 'buttons'
                 }, {
+                    route: 'form',
+                    moduleId: './form',
+                    settings: {
+                        navIcon: 'fi-elegant-interface19 ui-flip'
+                    },
+                    title: 'Inputs',
+                    nav: true,
+                    name: 'form'
+                }, {
                     route: 'grid',
                     moduleId: './grid',
                     settings: {
@@ -36,14 +45,14 @@ define(["require", "exports"], function (require, exports) {
                     nav: true,
                     name: 'grid'
                 }, {
-                    route: 'form',
-                    moduleId: './form',
+                    route: 'tabs',
+                    moduleId: './tabs',
                     settings: {
-                        navIcon: 'fi-elegant-interface19'
+                        navIcon: 'fi-elegant-folder22 ui-flip'
                     },
-                    title: 'Forms',
+                    title: 'Tab Panel',
                     nav: true,
-                    name: 'form'
+                    name: 'tabs'
                 }, {
                     route: 'page',
                     moduleId: './page',
@@ -53,6 +62,16 @@ define(["require", "exports"], function (require, exports) {
                     title: 'Page Elements',
                     nav: true,
                     name: 'page'
+                }, {
+                    route: 'datagrid',
+                    moduleId: './datagrid',
+                    settings: {
+                        sectionTitle: 'Data Components',
+                        navIcon: 'fi-elegant-little14'
+                    },
+                    title: 'Data Grid',
+                    nav: true,
+                    name: 'datagrid'
                 }, {
                     route: '', redirect: 'welcome'
                 }]);

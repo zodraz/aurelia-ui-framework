@@ -17,3 +17,9 @@ export class MarkdownValueConverter {
 		return Format.toHTML(value || '');
 	}
 }
+
+export class DateValueConverter {
+	toView(value:any, format?:string) {
+		return Format.dateDisplay(value, format);
+	}
+}

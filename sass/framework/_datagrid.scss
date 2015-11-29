@@ -11,7 +11,7 @@
   width: 100%;
   top: 0;
   bottom: 0;
-  border: 1px solid $base-border-color;
+  //border: 1px solid $base-border-color;
 
   .ui-button-small {
 	padding: 0;
@@ -47,6 +47,10 @@
 	min-width: 100%;
 	min-height: 100%;
 	table-layout: fixed;
+
+	colgroup > col {
+	  border-right: 1px solid $baby-powder;
+	}
 
 	td {
 	  overflow: hidden;
@@ -101,7 +105,6 @@
 		  @include text-truncate();
 		  font-weight: $font-weight-strong;
 		  position: relative;
-		  padding-right: 0;
 		  line-height: 1.4;
 		}
 

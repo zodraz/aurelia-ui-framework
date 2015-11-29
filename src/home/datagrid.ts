@@ -1,6 +1,6 @@
 import {moment} from "../../framework/utils/ui-utils";
 
-export class DataView {
+export class HomeDataGrid {
 	title = 'DataGrid Example';
 
 	data = [{

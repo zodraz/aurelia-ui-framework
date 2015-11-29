@@ -23,7 +23,6 @@
   @include flex(1 1 auto);
   overflow: auto;
   position: relative;
-  padding: $base-padding;
   z-index: 3;
 
   &.ui-flex-column {

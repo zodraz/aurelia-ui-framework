@@ -38,6 +38,11 @@ $base-font-family: $base-font-family-sans-serif !default;
 
 $base-padding: 0.3rem .8rem;
 
+$zindex-splash: 50000;
+$zindex-notify: 10000;
+$zindex-floating: 500;
+$zindex-ribbon: 200;
+
 // APP
 $app-logo: 'logo.png' !default;
 $app-header-bg: $primary !default;

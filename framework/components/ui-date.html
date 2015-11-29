@@ -13,8 +13,12 @@
 				<input class="ui-option-input" type="checkbox" checked.bind="checked"/>
 				<span class="ui-check-mark"></span>
 			</div>
-			<input ref="_input" class="ui-input ${_inputClasses} ui-primary"
-				   readonly placeholder="${placeholder}" value.bind="_value"/>
+			<input ref="_inputStart" class="ui-input ${_inputClasses} ui-primary"
+				   readonly placeholder="${placeholder}" value.bind="_valueStart"/>
+
+			<div if.bind="range" class="ui-addon ui-align-center"><span class="ui-small-caps">to</span></div>
+			<input if.bind="range" ref="_inputEnd" class="ui-input ${_inputClasses} ui-secondary"
+				   readonly placeholder="${placeholder}" value.bind="_valueEnd"/>
 
 			<button type="button" if.bind="(buttonText || buttonIcon)" class="ui-button ui-button-default"
 					click.trigger="_buttonClick($event)">
@@ -22,5 +26,5 @@
 			</button>
 		</div>
 	</div>
-	<div ref="_inputinline" class="ui-date ui-date-container"></div>
+	<div ref="_inputInline" class="ui-date ui-date-container"></div>
 </template>

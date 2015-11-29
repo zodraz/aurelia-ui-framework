@@ -33,14 +33,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                     auth: false,
                     name: 'home'
                 }, {
-                    route: 'data',
-                    moduleId: './data/view',
-                    settings: { navIcon: 'fi-elegant-little14' },
-                    title: 'Data Elements',
-                    nav: true,
-                    auth: false,
-                    name: 'data'
-                }, {
                     route: 'badurl',
                     moduleId: './home/view',
                     settings: {},

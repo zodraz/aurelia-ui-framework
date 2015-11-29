@@ -154,20 +154,26 @@
 			background: $date-active-bg;
 		  }
 		}
-	  }
-	  td.new, td.old {
-		color: $date-next-text;
-	  }
-	  td.today {
-		color: $date-active-bg;
-		font-weight: $font-weight-strong !important;
-		&:before {
-		  bottom: 0;
-		  right: 0;
-		  border-bottom-color: $date-active-bg;
+		td.new, td.old {
+		  color: $date-next-text;
+		  &.active {
+			color: $date-active-text;
+			background: rgba($date-active-bg, 0.5);
+		  }
 		}
-		&.active:before {
-		  border-bottom-color: $date-active-text;
+		td.today {
+		  font-weight: $font-weight-strong !important;
+		  &:not(.old):not(.new):not(.active) {
+			color: $date-active-bg;
+		  }
+		  &:before {
+			bottom: 0;
+			right: 0;
+			border-bottom-color: $date-active-bg;
+		  }
+		  &.active:before {
+			border-bottom-color: $date-active-text;
+		  }
 		}
 	  }
 

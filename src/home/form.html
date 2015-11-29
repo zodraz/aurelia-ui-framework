@@ -49,6 +49,8 @@
 					<p>Last Name: ${lname}</p>
 
 					<p>Email: ${email}</p>
+
+					<p>Date: ${date | date}</p>
 				</ui-column>
 				<ui-column width="120px"></ui-column>
 				<ui-column fill>
@@ -58,6 +60,8 @@
 					<p>Has Location: ${hasLoc?'Yes':'No'}, Location: ${pos}</p>
 
 					<p>Radio: ${opts}, List: ${list}</p>
+
+					<p>Range: ${range.start | date} - ${range.end | date}</p>
 
 				</ui-column>
 			</ui-column>
@@ -77,7 +81,10 @@
 					<p class="ui-text-muted ui-font-small" style="padding-left: 125px;">Tags: ${tags}</p>
 				</ui-column>
 				<ui-column>
-					<ui-date required>Date</ui-date>
+					<ui-date required value.bind="date">Date</ui-date>
+				</ui-column>
+				<ui-column>
+					<ui-date range required value.bind="range">Range</ui-date>
 				</ui-column>
 				<ui-column>
 					<ui-list label="Simple List" value.bind="list">
@@ -98,7 +105,7 @@
 				</ui-column>
 			</ui-column>
 			<ui-column class="ui-align-center">
-				<ui-date inline format="DD/MM/YYYY">Inline Date</ui-date>
+				<ui-date inline value.bind="date">Inline Date</ui-date>
 			</ui-column>
 			<ui-column>
 				<ui-option-group label="Checkboxes">
@@ -128,7 +135,7 @@
 	</div>
 	<hr/>
 	<ui-grid class="margin-v">
-		<ui-column size="xl-6" class="pad-all">
+		<ui-column size="lg-6" class="pad-all">
 			<h5>Usage
 				<small>Double input uses comma separated values and placeholders</small>
 				<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
@@ -150,7 +157,9 @@
 			<p>
 				<small>Date</small>
 				<br/>
-				<code>&lt;ui-date [required] [inline] [disabled] [value.bind=?] [format.bind=?]<br/>
+				<small>For date range value must be object of {start?, end?}</small>
+				<br/>
+				<code>&lt;ui-date [range] [required] [inline] [disabled] [value.bind=?] [format.bind=?]<br/>
 					<em>button?</em>[button-icon=? | button-text=?]<br/>
 					[checkbox checked.bind="true|false"] [placeholder.bind=?]<br/>
 					[data-min.bind=?] [data-max.bind=?] [options.bind=?]>{Label}&lt;/ui-date></code></p>
@@ -160,7 +169,7 @@
 				<br/>
 				<code>&lt;ui-markdown [required] [readonly|disabled] [value.bind=?]>{Label}&lt;/ui-markdown></code></p>
 		</ui-column>
-		<ui-column size="xl-6" class="pad-all">
+		<ui-column size="lg-6" class="pad-all">
 			<h5>Usage
 				<small>Radio option group can have value.bind</small>
 			</h5>

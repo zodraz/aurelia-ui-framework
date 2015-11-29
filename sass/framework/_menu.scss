@@ -20,7 +20,7 @@
 	max-height: 0;
 	display: none;
 	overflow: auto;
-	z-index: 10001;
+	z-index: $zindex-floating;
 	background: $base-bg;
 	border-radius: $base-border-radius;
 	border: 1px solid $base-border-color;
@@ -55,7 +55,7 @@
 	  color: $text-muted;
 	  font-size: 0.85rem;
 	  text-align: start;
-	  padding: 0.1rem 1rem 0.1rem 2.2rem;
+	  padding: 0.4rem 1rem 0.1rem 2.2rem;
 	}
 
 	> .ui-menu-link {

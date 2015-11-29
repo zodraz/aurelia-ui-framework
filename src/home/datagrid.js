@@ -1,6 +1,6 @@
 define(["require", "exports", "../../framework/utils/ui-utils"], function (require, exports, ui_utils_1) {
-    var DataView = (function () {
-        function DataView() {
+    var HomeDataGrid = (function () {
+        function HomeDataGrid() {
             this.title = 'DataGrid Example';
             this.data = [{
                     id: 1,
@@ -103,13 +103,13 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
                     Currency: 'USD'
                 }];
         }
-        DataView.prototype.getGender = function ($event) {
+        HomeDataGrid.prototype.getGender = function ($event) {
             $event.value = "<span class=\"ui-text-primary ui-font-big " + ($event.data.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23') + "\"></span>";
         };
-        DataView.prototype.getFullName = function ($event) {
+        HomeDataGrid.prototype.getFullName = function ($event) {
             $event.value = $event.data.model.FName + " <strong>" + $event.data.model.LName + "</strong>";
         };
-        DataView.prototype.linkclicked = function ($event) {
+        HomeDataGrid.prototype.linkclicked = function ($event) {
             this.getGender($event);
             var d = $event.data.model;
             if ($event.data.link == 'edit') {
@@ -134,7 +134,7 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
                 });
             }
         };
-        return DataView;
+        return HomeDataGrid;
     })();
-    exports.DataView = DataView;
+    exports.HomeDataGrid = HomeDataGrid;
 });
