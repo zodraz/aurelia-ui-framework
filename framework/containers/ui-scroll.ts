@@ -4,7 +4,7 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement containerless, inlineView} from "aurelia-framework";
+import {autoinject, customElement, containerless, inlineView} from "aurelia-framework";
 
 @autoinject()
 @containerless()
