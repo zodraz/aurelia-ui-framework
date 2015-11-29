@@ -124,15 +124,22 @@
 .ui-panel {
   margin: 5px;
   min-height: 100px;
+  max-height: 600px;
   color: $base-text;
   position: relative;
   border-radius: $base-border-radius;
   border: 1px solid $base-border-color;
   background: $base-bg;
   @include flex-column(stretch, center, false);
-  @include transition(max-height 0.5s);
+  @include transition(all 0.5s);
 
   &.ui-collapse {
+	min-height: 0;
 	max-height: 2em;
+	overflow: hidden;
+
+	button.ui-collapse span:before {
+	  content: '\e07d';
+	}
   }
 }

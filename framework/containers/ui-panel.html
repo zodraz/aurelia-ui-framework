@@ -1,5 +1,6 @@
 <template>
-	<div class="ui-panel">
+	<div ref="_panel" class="ui-panel ${collapse?'ui-collapse':''}"
+		 collapse.delegate="collapse=!collapse" close.delegate="close()">
 		<content></content>
 	</div>
 </template>

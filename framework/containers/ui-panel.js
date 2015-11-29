@@ -13,7 +13,11 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
     var UIPanel = (function () {
         function UIPanel(element) {
             this.element = element;
+            this.collapse = false;
         }
+        UIPanel.prototype.close = function () {
+            $(this._panel).remove();
+        };
         UIPanel = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),

@@ -10,7 +10,14 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 @containerless()
 @customElement('ui-panel')
 export class UIPanel {
+	private _panel;
+	private collapse:boolean = false;
+
 	constructor(public element:Element) {
 
+	}
+
+	close() {
+		$(this._panel).remove();
 	}
 }
