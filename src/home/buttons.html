@@ -1,7 +1,6 @@
 <template>
 
 	<div class="pad-all border-h" click.delegate="buttonclick($event)">
-		<ui-ribbon info top right>Buttons</ui-ribbon>
 		<h4 class="margin-v">Buttons
 			<small>Click the buttons for toast messages</small>
 		</h4>
@@ -24,7 +23,6 @@
 	</div>
 
 	<div class="pad-all border-h">
-		<ui-ribbon danger top left>Buttons</ui-ribbon>
 		<h4 class="margin-v">Button Group</h4>
 		<ui-button-group secondary>
 			<ui-button icon="fi-elegant-check2">Click</ui-button>
@@ -63,7 +61,6 @@
 	</div>
 
 	<div class="pad-all border-h">
-		<ui-ribbon success bottom right>Buttons</ui-ribbon>
 		<h4 class="margin-v">Toggle Single (selected: ${t1})</h4>
 		<ui-button-group large secondary toggle value.bind="t1">
 			<ui-button value="0" icon="fi-elegant-check2">Click</ui-button>
@@ -93,7 +90,6 @@
 	</div>
 
 	<div class="pad-all border-h" menuclick.delegate="menuclicked($event)">
-		<ui-ribbon warning bottom left>Buttons</ui-ribbon>
 		<h4>Dropdown</h4>
 		<ui-button label="Dropdown Menu">
 			<menu link-id="0">Link 0</menu>

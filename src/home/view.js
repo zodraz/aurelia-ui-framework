@@ -54,6 +54,15 @@ define(["require", "exports"], function (require, exports) {
                     nav: true,
                     name: 'tabs'
                 }, {
+                    route: 'panels',
+                    moduleId: './panels',
+                    settings: {
+                        navIcon: 'fi-elegant-mini12 ui-flip'
+                    },
+                    title: 'Card Panel',
+                    nav: true,
+                    name: 'panels'
+                }, {
                     route: 'page',
                     moduleId: './page',
                     settings: {

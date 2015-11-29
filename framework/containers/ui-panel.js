@@ -10,27 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
-    var UIHeader = (function () {
-        function UIHeader(element) {
+    var UIPanel = (function () {
+        function UIPanel(element) {
             this.element = element;
-            this.class = '';
-            this.theme = 'ui-default';
-            if (element.hasAttribute('primary'))
-                this.theme = 'ui-primary';
-            if (element.hasAttribute('secondary'))
-                this.theme = 'ui-secondary';
         }
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIHeader.prototype, "class");
-        UIHeader = __decorate([
+        UIPanel = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
-            aurelia_framework_1.customElement("ui-header"), 
+            aurelia_framework_1.customElement('ui-panel'), 
             __metadata('design:paramtypes', [Element])
-        ], UIHeader);
-        return UIHeader;
+        ], UIPanel);
+        return UIPanel;
     })();
-    exports.UIHeader = UIHeader;
+    exports.UIPanel = UIPanel;
 });

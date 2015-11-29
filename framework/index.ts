@@ -23,13 +23,14 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./containers/ui-grid');
 	aurelia.globalResources('./containers/ui-menu');
 	aurelia.globalResources('./containers/ui-form');
+	aurelia.globalResources('./containers/ui-panel');
+	aurelia.globalResources('./containers/ui-tab');
 
 	aurelia.globalResources('./components/ui-button');
 	aurelia.globalResources('./components/ui-switch');
 	aurelia.globalResources('./components/ui-input');
 	aurelia.globalResources('./components/ui-date');
 	aurelia.globalResources('./components/ui-list');
-	aurelia.globalResources('./components/ui-tab');
 	aurelia.globalResources('./components/ui-ribbon');
 	aurelia.globalResources('./components/ui-option');
 	aurelia.globalResources('./components/ui-chosen');

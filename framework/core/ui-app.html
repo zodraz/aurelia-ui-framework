@@ -19,13 +19,13 @@
 
 		<div class="ui-app-menu-shim"></div>
 		<ui-menu router.bind="router"></ui-menu>
-	</div>
 
 
-	<div class="ui-loading-shim" if.bind="router.isNavigating || $parent.isHttpInUse">
-		<div class="ui-loader">
-			<span class="spin fi-elegant-wheel1"></span>
-			<span class="spin-opp fi-elegant-wheel1 second"></span>
+		<div class="ui-loading-shim" if.bind="router.isNavigating || $parent.isHttpInUse">
+			<div class="ui-loader">
+				<span class="spin fi-elegant-wheel1"></span>
+				<span class="spin-opp fi-elegant-wheel1 second"></span>
+			</div>
 		</div>
 	</div>
 
