@@ -36,6 +36,15 @@ export class Home {
 			nav: true,
 			name: 'form'
 		}, {
+			route: 'tree',
+			moduleId: './tree',
+			settings: {
+				navIcon: 'fi-elegant-list14'
+			},
+			title: 'Tree',
+			nav: true,
+			name: 'tree'
+		}, {
 			route: 'grid',
 			moduleId: './grid',
 			settings: {

@@ -1,5 +1,5 @@
 /**
- *    UI Component: Tabs
+ *    UI Container: Tabs
  *    @author    Adarsh Pastakia
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia

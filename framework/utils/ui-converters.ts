@@ -4,11 +4,17 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {Format} from "./ui-utils";
+import {_, Format} from "./ui-utils";
 
 export class KeysValueConverter {
 	toView(object:any) {
 		return Object.keys(object);
+	}
+}
+
+export class SortValueConverter {
+	toView(value:any, property:any) {
+		return _.sortBy(value, property);
 	}
 }
 

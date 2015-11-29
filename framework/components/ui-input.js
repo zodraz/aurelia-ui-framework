@@ -19,6 +19,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this._placeholder2 = '';
             this._type = 'text';
             this._area = false;
+            this._noLabel = false;
             this._double = false;
             this._checkbox = false;
             this._labelClasses = '';
@@ -48,6 +49,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.disabled = true;
             if (element.hasAttribute('area'))
                 this._area = true;
+            if (element.hasAttribute('nolabel'))
+                this._noLabel = true;
             if (element.hasAttribute('double'))
                 this._double = true;
             if (element.hasAttribute('checkbox'))
@@ -115,7 +118,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 if (e.button == 0 && $(e.target).hasClass('onX')) {
                     e.preventDefault();
                     e.cancelBubble = true;
-                    $(e.target).removeClass('x onX').val('');
+                    $(e.target).removeClass('x onX').val('').trigger('change');
                 }
             })
                 .keypress(function (e) {

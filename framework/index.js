@@ -16,6 +16,7 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./containers/ui-menu');
         aurelia.globalResources('./containers/ui-form');
         aurelia.globalResources('./containers/ui-panel');
+        aurelia.globalResources('./containers/ui-scroll');
         aurelia.globalResources('./containers/ui-tab');
         aurelia.globalResources('./components/ui-button');
         aurelia.globalResources('./components/ui-switch');
@@ -25,6 +26,7 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./components/ui-ribbon');
         aurelia.globalResources('./components/ui-option');
         aurelia.globalResources('./components/ui-chosen');
+        aurelia.globalResources('./components/ui-tree');
         aurelia.globalResources('./components/ui-markdown');
     }
     exports.configure = configure;

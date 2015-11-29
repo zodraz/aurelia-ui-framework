@@ -72,6 +72,7 @@ export class UIInput {
 	private _placeholder2:string = '';
 	private _type:string         = 'text';
 	private _area:boolean        = false;
+	private _noLabel:boolean     = false;
 	private _double:boolean      = false;
 	private _checkbox:boolean    = false;
 	private _labelClasses:string = '';
@@ -106,6 +107,7 @@ export class UIInput {
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('area')) this._area = true;
+		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('double')) this._double = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		// check types
@@ -166,7 +168,7 @@ export class UIInput {
 				if (e.button == 0 && $(e.target).hasClass('onX')) {
 					e.preventDefault();
 					e.cancelBubble = true;
-					$(e.target).removeClass('x onX').val('');
+					$(e.target).removeClass('x onX').val('').trigger('change');
 				}
 			})
 			.keypress((e) => {

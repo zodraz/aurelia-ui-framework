@@ -8,6 +8,15 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         return KeysValueConverter;
     })();
     exports.KeysValueConverter = KeysValueConverter;
+    var SortValueConverter = (function () {
+        function SortValueConverter() {
+        }
+        SortValueConverter.prototype.toView = function (value, property) {
+            return ui_utils_1._.sortBy(value, property);
+        };
+        return SortValueConverter;
+    })();
+    exports.SortValueConverter = SortValueConverter;
     var MarkdownValueConverter = (function () {
         function MarkdownValueConverter() {
         }

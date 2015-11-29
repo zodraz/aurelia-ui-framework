@@ -27,7 +27,7 @@
 
   &.ui-flex-column {
 	overflow: hidden;
-
+	@include flex-column($align: stretch, $wrap: false);
   }
 }
 
