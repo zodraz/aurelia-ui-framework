@@ -1,7 +1,7 @@
 @import "compass/css3";
-@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/framework/colors";
-@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/framework/mixins";
-@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/framework/variables";
+@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/sass/colors";
+@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/sass/mixins";
+@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/sass/variables";
 //
 // IF THESE FONTS ARE CHANGED MAKE SURE TO UPDATE RELEVANT VARIABLES
 // $font-family-input
@@ -11,6 +11,6 @@
 // $font-family-serif
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 // Comment next line to not include flags
-@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/framework";
+@import "../jspm_packages/github/adarshpastakia/aurelia-ui-framework@release/sass/flags";
 
 // OVERRIDE APP VARIABLES HERE
