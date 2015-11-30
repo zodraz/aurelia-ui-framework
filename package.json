@@ -40,7 +40,7 @@
       "typescript": "npm:typescript@^1.6.2"
     },
     "map": {
-      "aurelia-ui-framework": "."
+      "aurelia-ui-framework": "dist/framework.js"
     }
   }
 }
