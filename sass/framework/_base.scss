@@ -1,0 +1,278 @@
+/**
+ *	UI Framework Base
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+*, *:after, *:before {
+  @include box-sizing(border-box);
+  @include selection($primary, $coconut);
+  @include input-placeholder {
+	color: $placeholder-color;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: default;
+
+  @include size(100%, 100%);
+  @include user-select(none);
+
+  color: $base-text;
+  background-color: $base-bg;
+  @if ($base-bg-image) {
+	background-image: image_url($base-bg-image);
+  }
+
+  font: {
+	size: $base-font-size;
+	family: $base-font-family;
+	weight: $font-weight-normal;
+  }
+  line-height: $base-line-height;
+
+  box-sizing: border-box;
+
+  .ui-selectable {
+	cursor: text;
+	@include user-select(text);
+  }
+}
+
+.ui-splash {
+  z-index: $zindex-splash;
+  @include position(absolute, 0);
+  @include transition(opacity 1s);
+  @include box-shadow(0 0 5px 0 #333);
+  background: #fff image_url("page-loader.gif") no-repeat center center;
+
+  &.animate {
+	background: #fff;
+	opacity: 0;
+  }
+}
+
+.ui-app {
+  @include position(fixed, 0);
+  @include flexbox((
+		  display:flex,
+		  flex-direction:column,
+		  align-items:stretch,
+		  flex-wrap:nowrap
+  ));
+
+  .ui-app-header {
+	@include flexbox((
+			display:flex,
+			flex-direction:row,
+			align-items:center,
+			flex-wrap:nowrap
+	));
+	@include flex(0 0 auto);
+	@include box-shadow(0 0 2px 0 #333);
+
+	background: $app-header-bg;
+	color: $app-header-text;
+	z-index: 5;
+	padding-right: .3rem;
+
+	.ui-app-logo {
+	  @include flex(0 0 auto);
+	  @if ($app-logo) {
+		width: 38px;
+		height: 38px;
+		margin: 0 0.2rem;
+		background: image_url($app-logo) no-repeat center center;
+		background-size: 100% 100%;
+	  }
+	}
+	h1 {
+	  @include flex(1 1 auto);
+	  font-variant: small-caps;
+	  padding: 0.35rem 0.3rem;
+	  span {
+		font-size: 0.9rem;
+		display: block;
+	  }
+	}
+
+	.ui-divider {
+	  @include flex(0 0 auto);
+	  height: 2rem;
+	  border-left: 1px solid darken($app-header-bg, 10%);
+	  border-right: 1px solid lighten($app-header-bg, 10%);
+	}
+
+	.ui-app-menu-handle {
+	  margin: 0 0.3rem;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  color: $app-header-text;
+
+	  &:hover {
+		color: rgba($app-header-text, 0.7);
+	  }
+	  &:active {
+		color: rgba($app-header-text, 0.4);
+	  }
+	}
+  }
+  .ui-app-footer {
+	@include flexbox((
+			display:flex,
+			flex-direction:row,
+			align-items:center,
+			flex-wrap:nowrap,
+			justify-content: space-between
+	));
+	@include flex(0 0 auto);
+
+	font-size: 0.5rem;
+	color: $spanish-gray;
+	background: $black-olive;
+	border-top: 1px solid $base-border-color;
+
+	p {
+	  @include flex(0 0 auto);
+	  padding: 2px 10px;
+	}
+  }
+
+  .ui-app-view {
+	@include flexbox((
+			display:flex,
+			flex-direction:column,
+			align-items:stretch,
+			flex-wrap:nowrap
+	));
+	@include flex(1 1 0%);
+	overflow: hidden;
+
+	.ui-page-title {
+	  @include flex(0 0 auto);
+	  @include box-shadow(0 0 2px 0 #333);
+
+	  color: $app-header-text;
+	  background: lighten($app-header-bg, 4%);
+	  padding: $base-padding;
+	  font: {
+		weight: $font-weight-strong;
+		variant: small-caps;
+		size: 1.1rem;
+	  }
+	  text-align: center;
+	  z-index: 4;
+	}
+  }
+
+  .ui-app-menu {
+	@include position(fixed, 0 null 0 -305px);
+	@include transition(left 0.6s ease-out);
+	@include box-shadow(0 0 5px 1px #000);
+
+	min-width: 220px;
+	max-width: 300px;
+	color: $app-menu-text;
+	background: $app-menu-bg;
+	overflow: auto;
+	z-index: 1001;
+	@if ($app-menu-bg-image) {
+	  background-image: image_url($app-menu-bg-image);
+	}
+
+	.ui-auth-info {
+	  @include sticky();
+	  top: 0;
+	  padding: $base-padding;
+	  background: $app-menu-bg;
+	  @if ($app-menu-bg-image) {
+		background-image: image_url($app-menu-bg-image);
+	  }
+	  border-bottom: 1px solid darken($app-menu-bg, 15%);
+	}
+
+	.ui-menu-link {
+	  color: $app-menu-text;
+	  border: none;
+
+	  &.ui-active {
+		position: relative;
+		color: $menu-active-text;
+		background: $menu-active-bg;
+		@include box-shadow(0 0 3px 0 #222 inset);
+
+		&:after {
+		  $arrow-size: 7px;
+
+		  content: ' ';
+		  display: block;
+		  @include position(absolute, 50% 0 null null);
+		  @include size($arrow-size*2, $arrow-size*2);
+		  margin-top: -$arrow-size;
+		  border: {
+			top: $arrow-size solid transparent;
+			bottom: $arrow-size solid transparent;
+			right: $arrow-size solid tint($menu-active-bg, 40%);
+		  }
+		}
+	  }
+	}
+  }
+  .ui-app-menu-shim {
+	@include position(fixed, 0);
+	@include backdrop-blur(1px);
+	@include transition(opacity 0.3s);
+
+	opacity: 0;
+	display: none;
+	background: rgba(#888, 0.5);
+	z-index: 1000;
+  }
+
+  &.show-menu {
+	.ui-app-menu {
+	  left: 0;
+	}
+	.ui-app-menu-shim {
+	  display: block;
+	  opacity: 1;
+	}
+  }
+}
+
+.ui-loading-shim {
+  @include flexbox((
+		  display:flex,
+		  flex-direction:column,
+		  justify-content:center,
+		  align-items:center
+  ));
+
+  z-index: $zindex-splash;
+  background: rgba(#fff, 0);
+  @include position(absolute, 0 0 12px);
+
+  > .ui-loader {
+	@include flex(0 0 auto);
+	@include backdrop-blur(2px);
+	background: rgba($white-smoke, 0.85);
+	box-shadow: 0 0 4px 1px rgba($smoke, .3);
+	border-radius: 0.5rem;
+	padding: 17px 17px 8px 8px;
+	color: $smoke;
+	position: relative;
+
+	span {
+	  font-size: 1.8em;
+	}
+	span.second {
+	  font-size: 1em;
+	  position: absolute;
+	  top: 8px;
+	  right: 8px;
+	}
+  }
+}
