@@ -25,7 +25,7 @@ declare module 'aurelia-fetch-client' {
       *
       * @param error - The rejection value from the previous interceptor.
       */
-    requestError?: (error: any) => Request | Response | Promise<Request | Response>;
+    requestError?: (error: any) => any;
     
     /**
       * Called with the response after it is received. Response interceptors can modify
@@ -43,7 +43,7 @@ declare module 'aurelia-fetch-client' {
        * @param error - The rejection value from the fetch request or from a
        * previous interceptor.
        */
-    responseError?: (error: any) => Response | Promise<Response>;
+    responseError?: (error: any) => any;
   }
   
   /**

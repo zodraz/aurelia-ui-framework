@@ -1,5 +1,6 @@
 import {autoinject} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIApplicationState} from "aurelia-ui-framework";
 
 @autoinject()
 export class App {
@@ -44,11 +45,12 @@ export class App {
 		}, 500);
 	}
 
-	constructor() {
+	constructor(public appState:UIApplicationState) {
 
 	}
 
 	logout() {
-		this.router['options'].isAuthenticated = !this.router['options'].isAuthenticated;
+		this.appState.IsAuthenticated = false;
+		this.appState.Username = null;
 	}
 }

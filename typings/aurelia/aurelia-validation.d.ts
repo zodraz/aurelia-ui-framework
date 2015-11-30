@@ -75,7 +75,8 @@ declare module 'aurelia-validation' {
     isLessThanOrEqualTo(maximumValue: any): any;
     isEqualTo(otherValue: any, otherValueLabel: any): any;
     isNotEqualTo(otherValue: any, otherValueLabel: any): any;
-    isEmail(): any;
+	  isEmail(): any;
+	  isPhone(): any;
     isURL(): any;
     hasMinLength(minimumValue: any): any;
     hasMaxLength(maximumValue: any): any;
@@ -208,6 +209,8 @@ declare module 'aurelia-validation' {
        * @returns {ValidationGroup} returns this ValidationGroup, to enable fluent API
        */
     isEmail(): any;
+
+	  isPhone():any;
     
     /**
        * Adds a validation rule that checks a value for being a valid URL
