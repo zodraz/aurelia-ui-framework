@@ -1,0 +1,202 @@
+/**
+ *	UI Form
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-form {
+  @include flex-row($align: stretch, $justify: flex-start, $wrap: true);
+  border-radius: $base-border-radius;
+
+  > .ui-column {
+	min-width: $grid-sm-max;
+	&.ui-col-auto {
+	  @include flex(1 1 420px);
+	  max-width: 100%;
+	  position: relative;
+	}
+  }
+
+  .ui-input-group > .ui-form-control {
+	@include flex(1 0 280px);
+  }
+}
+
+.ui-input-group {
+  @include flex(1 1 auto);
+  @include flex-row($align: flex-start, $wrap: true);
+  margin-bottom: 0.3rem;
+  padding: 0 0.3rem;
+
+  &.ui-invalid .ui-input {
+	border-color: rgba($input-invalid-color, 0.85);
+	&:focus {
+	  border-color: rgba($input-invalid-color, 0.85);
+	  @include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+	}
+  }
+
+  .ui-label {
+	@include flex(0 0 120px);
+	color: $input-label-text;
+	padding: 0.4rem 0.95rem 0.2rem 0;
+	text-align: end;
+	font-weight: 600;
+	position: relative;
+
+	&:after {
+	  content: ' ';
+	  width: 1em;
+	  color: $primary;
+	  font: {
+		size: 0.65rem;
+		weight: 300;
+	  }
+	  top: 4px;
+	  right: 4px;
+	  position: absolute;
+	  display: inline-block;
+	}
+	&.ui-required:after {
+	  content: '\273B';
+	}
+	span {
+	  display: block;
+	  font: {
+		weight: 500;
+		size: 0.8em;
+	  }
+	  color: $text-muted;
+	}
+  }
+
+  .ui-form-control {
+	@include flex-row($align: stretch, $wrap: false);
+	@include flex(1 0 auto);
+	padding: 0;
+	position: relative;
+
+	.ui-addon {
+	  @include flex(0 0 auto);
+	  padding: 4px;
+	  line-height: 0;
+	  min-height: 26px;
+	  min-width: 26px;
+	  color: $input-addon-text;
+	  background: $input-addon-bg;
+	  font: {
+		family: $input-font-family;
+		weight: 500;
+	  }
+	  border: 1px solid $input-border;
+	  z-index: 1;
+	  span {
+		min-height: 16px;
+		min-width: 16px;
+		font-size: 1rem;
+		line-height: 1.1;
+		&.ui-flag {
+		  background-size: 18px 18px;
+		}
+	  }
+
+	  .ui-icon {
+		font-size: 1.3em;
+		margin-top: -2px;
+	  }
+	}
+
+	.ui-checkbox {
+	  @include flex(0 0 26px);
+	  .ui-option-input:checked ~ .ui-check-mark:after {
+		content: '\e004';
+	  }
+	}
+
+	.ui-button {
+	  @include flex(0 0 auto);
+	  padding: 0.2rem 0.5rem;
+	  &:not(:active):not(:focus) {
+		box-shadow: none;
+	  }
+	  z-index: 1;
+	}
+
+	> :first-child {
+	  @include border-left-radius($base-border-radius);
+	  @include border-right-radius(0);
+	}
+	> :last-child {
+	  @include border-left-radius(0);
+	  @include border-right-radius($base-border-radius);
+	}
+	> :only-child {
+	  border-radius: $base-border-radius;
+	}
+
+	.ui-markdown-editor {
+	  .ui-button-group {
+		padding: 0;
+		background: $toolbar-bg;
+		border: {
+		  width: 1px 1px 0;
+		  style: solid;
+		  color: $input-border;
+		}
+		@include flex-wrap(wrap);
+		@include border-top-radius($base-border-radius);
+		> .ui-button {
+		  margin: 0;
+		  border: {
+			radius: 0;
+			width: 0 1px 0 0;
+		  }
+		  &:first-child {
+			@include border-top-left-radius($base-border-radius);
+		  }
+		}
+		.ui-divider {
+		  @include flex(0 0 8px);
+
+		  ~ .ui-button {
+			border-left-width: 1px;
+		  }
+		}
+	  }
+	  .ui-input {
+		@include border-top-radius(0);
+		@include border-bottom-radius($base-border-radius);
+	  }
+	}
+
+	.ui-markdown-preview, .ui-markdown-help {
+	  @include position(absolute, 0);
+	  overflow: auto;
+	  padding: 0.5rem 1rem;
+	  z-index: 5;
+
+	  background: $input-bg;
+	  color: $input-text;
+	  border: {
+		width: 1px;
+		style: solid;
+		color: $input-border;
+		radius: $base-border-radius;
+	  }
+	  @include box-shadow(0 0 3px 0 #ccc inset);
+
+	  ~ .ui-close {
+		@include position(absolute, 0 0 null null);
+		opacity: .3;
+		z-index: 9;
+		font-size: 1.5rem;
+		color: $base-text;
+
+		&:hover {
+		  opacity: .6;
+		}
+	  }
+	}
+  }
+}

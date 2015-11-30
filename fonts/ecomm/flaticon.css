@@ -1,0 +1,197 @@
+@font-face {
+	font-family: "Ecommerce";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="fi-ecomm-"]:before, [class*=" fi-ecomm-"]:before,
+[class^="fi-ecomm-"]:after, [class*=" fi-ecomm-"]:after {
+	font-family: Ecommerce;
+	font-size: 1em;
+}.fi-ecomm-accessibility2:before {
+	content: "\e000";
+}
+.fi-ecomm-archive55:before {
+	content: "\e001";
+}
+.fi-ecomm-banking12:before {
+	content: "\e002";
+}
+.fi-ecomm-buildings32:before {
+	content: "\e003";
+}
+.fi-ecomm-calculating6:before {
+	content: "\e004";
+}
+.fi-ecomm-carts2:before {
+	content: "\e005";
+}
+.fi-ecomm-chess-piece7:before {
+	content: "\e006";
+}
+.fi-ecomm-computer257:before {
+	content: "\e007";
+}
+.fi-ecomm-computer-screen45:before {
+	content: "\e008";
+}
+.fi-ecomm-computin:before {
+	content: "\e009";
+}
+.fi-ecomm-daily-calendar12:before {
+	content: "\e00a";
+}
+.fi-ecomm-document280:before {
+	content: "\e00b";
+}
+.fi-ecomm-earphones26:before {
+	content: "\e00c";
+}
+.fi-ecomm-elegant25:before {
+	content: "\e00d";
+}
+.fi-ecomm-envelopes6:before {
+	content: "\e00e";
+}
+.fi-ecomm-file224:before {
+	content: "\e00f";
+}
+.fi-ecomm-help30:before {
+	content: "\e010";
+}
+.fi-ecomm-id-card8:before {
+	content: "\e011";
+}
+.fi-ecomm-industry13:before {
+	content: "\e012";
+}
+.fi-ecomm-internet83:before {
+	content: "\e013";
+}
+.fi-ecomm-ipad40:before {
+	content: "\e014";
+}
+.fi-ecomm-lamps10:before {
+	content: "\e015";
+}
+.fi-ecomm-laptop-computer30:before {
+	content: "\e016";
+}
+.fi-ecomm-len:before {
+	content: "\e017";
+}
+.fi-ecomm-mail121:before {
+	content: "\e018";
+}
+.fi-ecomm-maths69:before {
+	content: "\e019";
+}
+.fi-ecomm-money403:before {
+	content: "\e01a";
+}
+.fi-ecomm-money405:before {
+	content: "\e01b";
+}
+.fi-ecomm-money406:before {
+	content: "\e01c";
+}
+.fi-ecomm-network21:before {
+	content: "\e01d";
+}
+.fi-ecomm-notebook112:before {
+	content: "\e01e";
+}
+.fi-ecomm-office-material15:before {
+	content: "\e01f";
+}
+.fi-ecomm-paper-clips:before {
+	content: "\e020";
+}
+.fi-ecomm-parachuting:before {
+	content: "\e021";
+}
+.fi-ecomm-phone-call16:before {
+	content: "\e022";
+}
+.fi-ecomm-pins11:before {
+	content: "\e023";
+}
+.fi-ecomm-plant64:before {
+	content: "\e024";
+}
+.fi-ecomm-presentation25:before {
+	content: "\e025";
+}
+.fi-ecomm-presentation26:before {
+	content: "\e026";
+}
+.fi-ecomm-reading2:before {
+	content: "\e027";
+}
+.fi-ecomm-reading-glasses2:before {
+	content: "\e028";
+}
+.fi-ecomm-reading:before {
+	content: "\e029";
+}
+.fi-ecomm-rocket-ship4:before {
+	content: "\e02a";
+}
+.fi-ecomm-savings6:before {
+	content: "\e02b";
+}
+.fi-ecomm-settings72:before {
+	content: "\e02c";
+}
+.fi-ecomm-shake-hands:before {
+	content: "\e02d";
+}
+.fi-ecomm-shopping-cart30:before {
+	content: "\e02e";
+}
+.fi-ecomm-shopping-store34:before {
+	content: "\e02f";
+}
+.fi-ecomm-shout1:before {
+	content: "\e030";
+}
+.fi-ecomm-stats66:before {
+	content: "\e031";
+}
+.fi-ecomm-sticker3:before {
+	content: "\e032";
+}
+.fi-ecomm-tea34:before {
+	content: "\e033";
+}
+.fi-ecomm-text-lines17:before {
+	content: "\e034";
+}
+.fi-ecomm-transport325:before {
+	content: "\e035";
+}
+.fi-ecomm-user229:before {
+	content: "\e036";
+}
+.fi-ecomm-watch32:before {
+	content: "\e037";
+}
+.fi-ecomm-website37:before {
+	content: "\e038";
+}
+.fi-ecomm-wrench110:before {
+	content: "\e039";
+}
+.fi-ecomm-writing60:before {
+	content: "\e03a";
+}
+.fi-ecomm-writing61:before {
+	content: "\e03b";
+}
+.fi-ecomm-writing62:before {
+	content: "\e03c";
+}

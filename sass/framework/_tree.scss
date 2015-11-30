@@ -1,0 +1,114 @@
+/**
+ *	UI Tree
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-tree-panel {
+  display: block;
+  font-size: 0.9em;
+
+  a {
+	text-decoration: none;
+  }
+
+  .ui-search {
+	@include sticky();
+	top: 0;
+	border-bottom: 1px solid $base-border-color;
+	padding: 5px 10px 0;
+	z-index: 50;
+	background: $base-bg;
+  }
+
+  .ui-tree-level {
+	padding: 10px;
+	z-index: 10;
+  }
+
+  .ui-tree-level .ui-tree-level {
+	padding: 0 10px 0 20px;
+  }
+
+  .ui-tree-item {
+	display: block;
+  }
+
+  .ui-tree-item > .ui-tree-item-link {
+	@include display-flex(flex);
+	@include flex-direction(row);
+	@include flex-wrap(nowrap);
+	@include align-items(center);
+
+	a.ui-expander {
+	  @include flex(0 0 auto);
+
+	  padding: 2px;
+	  font-size: 1.3em;
+	  line-height: 1;
+	  width: 20px;
+	  color: $shadow;
+	  &:hover {
+		color: $primary;
+	  }
+	}
+
+	a.ui-node-checkbox {
+	  @include flex(0 0 auto);
+
+	  padding: 2px;
+	  font-size: 1em;
+	  font-weight: $font-weight-strong;
+	  color: $primary;
+	  /*&.off:hover span:before {
+		font-family: BigMugSolid;
+		content: '\e0af';
+	  }
+	  &.on:hover span:before {
+		font-family: BigMugSolid;
+		content: '\e0d1';
+	  }
+	  &.partial:hover span:before {
+		font-family: BigMugSolid;
+		content: '\e075';
+	  }*/
+
+	  &.on {
+		color: $primary;
+
+		& ~ a.link {
+		  font-weight: $font-weight-strong;
+		}
+	  }
+	}
+
+	a.ui-link {
+	  color: $base-text;
+	  padding: 0.35rem 0.25rem;
+	  @include flex(1 1 auto);
+	  min-width: 200px;
+	  white-space: nowrap;
+
+	  @include flex-row($wrap: false);
+
+	  span.ui-icon {
+		font-weight: normal;
+		margin-right: 4px;
+		background-size: auto 18px;
+	  }
+
+	  b {
+		color: $primary;
+		text-decoration: underline;
+	  }
+
+	  &:hover {
+		background-color: rgba($primary, 0.5);
+	  }
+	  &.ui-active {
+		background-color: rgba($primary, 0.75);
+	  }
+	}
+  }
+}

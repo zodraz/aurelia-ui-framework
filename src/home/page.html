@@ -1,0 +1,76 @@
+<template>
+	<ui-scroll>
+		<ui-grid class="pad-all" center>
+
+			<h4 class="ui-col-full margin-v">Page Elements
+				<small>having toolbars for the entire page</small>
+			</h4>
+
+			<ui-column size="md-8" class="border-all">
+
+				<h5 class="ui-col-full"><code>&lt;ui-page title=''></code></h5>
+
+				<p class="ui-col-full" style="background: #e5e5e5">Page Title</p>
+
+				<p class="ui-col-full border-h"><code>&lt;ui-statsbar></code></p>
+
+				<p class="ui-col-full border-h"><code>&lt;ui-toolbar></code></p>
+
+				<ui-column full stretch row class="border-all">
+					<p class="ui-col-full"><code>&lt;ui-section row></code></p>
+
+					<ui-column width="250px" auto class="border-v">
+						<p class="ui-col-full"><code>&lt;ui-sidebar></code></p>
+
+						<p>can contain <code>ui-menu</code> for child routing</p>
+					</ui-column>
+					<ui-column fill class="border-v">
+						<p class="ui-col-full" style="height: 220px;"><code>&lt;ui-content></code></p>
+					</ui-column>
+				</ui-column>
+				<p class="ui-col-full border-h"><code>&lt;ui-toolbar></code></p>
+
+			</ui-column>
+
+		</ui-grid>
+
+		<ui-grid class="pad-all" center>
+
+			<h4 class="ui-col-full margin-v">Page Elements
+				<small>having toolbars only within content section</small>
+			</h4>
+
+			<ui-column size="md-8" class="border-all">
+
+				<h5 class="ui-col-full"><code>&lt;ui-page title=''></code></h5>
+
+				<p class="ui-col-full" style="background: #e5e5e5">Page Title</p>
+
+				<ui-column full stretch row class="border-all">
+					<p class="ui-col-full"><code>&lt;ui-section row></code></p>
+					<ui-column width="250px" auto class="border-v">
+						<p class="ui-col-full"><code>&lt;ui-sidebar></code></p>
+
+						<p>can contain <code>ui-menu</code> for child routing</p>
+					</ui-column>
+
+					<ui-column fill class="border-all">
+						<p class="ui-col-full"><code>&lt;ui-section column></code></p>
+
+						<p class="ui-col-full border-h"><code>&lt;ui-statsbar></code></p>
+
+						<p class="ui-col-full border-h"><code>&lt;ui-toolbar></code></p>
+
+						<ui-column full class="border-v">
+							<p class="ui-col-full" style="height: 220px;"><code>&lt;ui-content></code></p>
+						</ui-column>
+
+						<p class="ui-col-full border-h"><code>&lt;ui-toolbar></code></p>
+					</ui-column>
+				</ui-column>
+
+			</ui-column>
+
+		</ui-grid>
+	</ui-scroll>
+</template>

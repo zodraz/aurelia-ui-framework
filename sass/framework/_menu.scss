@@ -1,0 +1,90 @@
+/**
+ *	Menu List
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+
+  &.ui-floating {
+	@include position(absolute, null);
+	@include transition(height 0.3s);
+	padding: 2px 0;
+	min-width: 120px;
+	max-width: 220px;
+	max-height: 0;
+	display: none;
+	overflow: auto;
+	z-index: $zindex-floating;
+	background: $base-bg;
+	border-radius: $base-border-radius;
+	border: 1px solid $base-border-color;
+  }
+
+  &.ui-app-menu {
+	hr {
+	  border-top-color: darken($menu-bg, 20%);
+	  border-bottom-color: lighten($menu-bg, 20%);
+	}
+  }
+
+  .ui-menu-title {
+	font-size: 1.2rem;
+	margin-bottom: 0.4rem;
+	font-weight: $font-weight-strong;
+	color: $menu-text;
+	border-bottom: 2px solid $menu-text;
+  }
+
+  > li {
+	padding: 0;
+	margin: 0;
+
+	hr {
+	  margin: 2px 0;
+	  border-top-color: darken($base-bg, 20%);
+	  border-bottom-color: lighten($base-bg, 20%);
+	}
+
+	> .ui-menu-section {
+	  color: $text-muted;
+	  font-size: 0.85rem;
+	  text-align: start;
+	  padding: 0.4rem 1rem 0.1rem 2.2rem;
+	}
+
+	> .ui-menu-link {
+	  display: block;
+	  font-size: 1rem;
+	  color: $menu-text;
+	  margin: 1px 0;
+	  text-align: start;
+	  font-weight: $font-weight-normal;
+	  padding: $base-padding;
+	  border-left: 3px solid transparent;
+
+	  .ui-icon {
+		display: inline-block;
+		width: 1.2rem;
+	  }
+
+	  &:hover {
+		color: $menu-hover-text;
+		background: $menu-hover-bg;
+	  }
+	  &:active {
+		color: $menu-active-text;
+		background: $menu-active-bg;
+	  }
+	  &.ui-active {
+		font-weight: $font-weight-strong;
+		border-color: $menu-active-bg;
+	  }
+	}
+  }
+}

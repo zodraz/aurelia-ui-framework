@@ -1,0 +1,268 @@
+/**
+ *	DatePicker Stylings
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@import "datepicker.min";
+
+.ui-date {
+
+  .ui-input {
+	background-color: $input-bg;
+  }
+
+  .ui-icon:after {
+	content: attr(data-date);
+	font-size: 0.4em;
+	margin-left: -13px;
+	font-family: sans-serif;
+  }
+
+  &.ui-date-container {
+	padding: 0;
+	overflow: hidden;
+	display: inline-block;
+	border-radius: $base-border-radius;
+	border: 1px solid $base-border-color;
+  }
+
+  .bootstrap-datetimepicker-widget {
+	padding: 2px 0 0;
+	background: $base-bg;
+
+	> ul, > ul > li {
+	  padding: 0;
+	}
+
+	li.picker-switch table {
+	  width: 100%;
+	  td a {
+		display: none;
+	  }
+	  td a[data-action="today"] {
+		display: block;
+		margin: 2px;
+		color: $primary-text;
+		border: 1px solid $primary;
+		border-radius: $base-border-radius;
+		background: linear-gradient(top, lighten($primary, 25%), lighten($primary, 20%));
+		&:hover {
+		  background: linear-gradient(top, lighten($primary, 15%), lighten($primary, 10%));
+		}
+		&:active {
+		  @include box-shadow(0 0 2px 0 #000 inset);
+		}
+		span {
+		  height: auto;
+		  line-height: 1;
+		  background: none !important;
+		}
+		span:before {
+		  content: 'Today';
+		}
+	  }
+	}
+
+	&.dropdown-menu {
+	  width: auto;
+	  border-radius: $base-border-radius !important;
+	  @include box-shadow(0 3px 5px 0 rgba($black, 0.5));
+	  &.top {
+		@include box-shadow(0 -3px 5px 0 rgba($black, 0.5));
+	  }
+	}
+
+	.row {
+	  margin: 0;
+	  @include flex-column($align: stretch, $justify: flex-start, $wrap: false);
+	}
+	.col-md-6 {
+	  padding: 0;
+	}
+	.col-md-6:first-child {
+	  @include flex(0 0 auto);
+	}
+	.col-md-6:last-child {
+	  @include flex(0 0 auto);
+	}
+
+	table, td {
+	  padding: 0;
+	  min-width: 30px;
+	  border: {
+		collapse: collapse;
+		spacing: 0;
+	  }
+	}
+
+	.datepicker {
+	  th.picker-switch {
+		color: $primary;
+		font-weight: $font-weight-strong !important;
+		&:hover {
+		  background: rgba($date-active-bg, 0.25);
+		}
+		&:after {
+		  content: '\e091';
+		  font-family: Elegant;
+		  margin-left: 5px;
+		}
+	  }
+	  .prev, .next {
+		color: $primary;
+		&:hover:not(.disabled) {
+		  background: rgba($date-active-bg, 0.25);
+		}
+		&.disabled {
+		  color: $date-disabled-text;
+		}
+	  }
+	  thead {
+		th.dow {
+		  padding-top: 0.5rem;
+		  font-size: 0.85rem;
+		  color: $primary;
+		  font-weight: $font-weight-strong;
+		}
+
+		th.picker-switch {
+		  padding: 0.3rem 0.5rem;
+		}
+	  }
+	  .datepicker-days tbody {
+		td, span {
+		  width: auto;
+		  height: auto;
+		  line-height: 1;
+		  border-radius: 0;
+		}
+		td {
+		  padding: 0.5rem 0.35rem;
+		  border: 1px solid $base-border-color;
+		  &:first-child {
+			border-left: none;
+		  }
+		  &:last-child {
+			border-right: none;
+		  }
+		  &:hover:not(.disabled):not(.active) {
+			background-color: rgba($date-active-bg, 0.25);
+		  }
+		  &.active {
+			color: $date-active-text;
+			background: $date-active-bg;
+		  }
+		}
+		td.new, td.old {
+		  color: $date-next-text;
+		  &.active {
+			color: $date-active-text;
+			background: rgba($date-active-bg, 0.5);
+		  }
+		}
+		td.today {
+		  font-weight: $font-weight-strong !important;
+		  &:not(.old):not(.new):not(.active) {
+			color: $date-active-bg;
+		  }
+		  &:before {
+			bottom: 0;
+			right: 0;
+			border-bottom-color: $date-active-bg;
+		  }
+		  &.active:before {
+			border-bottom-color: $date-active-text;
+		  }
+		}
+	  }
+
+	  .month, .year {
+		padding: 0;
+		width: 38px;
+		height: 38px;
+		line-height: 38px;
+		display: inline-block;
+		border-radius: $base-border-radius;
+		&:hover:not(.disabled):not(.active) {
+		  background-color: rgba($date-active-bg, 0.25);
+		}
+		&.active {
+		  color: $date-active-text;
+		  background: $date-active-bg;
+		}
+		&.disabled {
+		  color: $date-disabled-text;
+		  background: none !important;
+		}
+	  }
+	}
+
+	.timepicker {
+	  td, span {
+		width: auto;
+		height: auto;
+		line-height: 1;
+		border-radius: 0;
+	  }
+	  td {
+		padding: 0;
+	  }
+	  .timepicker-hour, .timepicker-minute {
+		width: 38px;
+		height: 38px;
+		line-height: 38px;
+		font-weight: $font-weight-strong;
+		color: $date-next-text;
+		&:hover {
+		  background-color: rgba($date-active-bg, 0.25);
+		}
+		border-radius: $base-border-radius;
+	  }
+	  .btn {
+		width: 38px;
+		height: 38px;
+		&:hover {
+		  background-color: rgba($date-active-bg, 0.25);
+		}
+		span {
+		  background: none !important;
+		}
+		border-radius: $base-border-radius;
+	  }
+	  .btn-primary {
+		font-weight: $font-weight-strong;
+	  }
+	  .separator {
+		width: 38px;
+	  }
+
+	  .btn.disabled,
+	  .timepicker-hour.disabled,
+	  .timepicker-minute.disabled {
+		color: $date-disabled-text;
+		background: none !important;
+	  }
+
+	  .hour, .minute {
+		padding: 0;
+		width: 38px;
+		height: 38px;
+		line-height: 38px;
+		border-radius: $base-border-radius;
+		&:hover {
+		  background-color: rgba($date-active-bg, 0.25);
+		}
+	  }
+	}
+
+	.datepicker, .timepicker {
+	  margin: 0;
+	}
+
+	td.disabled {
+	  color: $date-disabled-text !important;
+	  background: none !important;
+	}
+  }
+}

@@ -1,0 +1,153 @@
+/**
+ *	Framework Variable
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@import "colors";
+
+$dark-theme: false !default;
+
+$primary: $amethyst !default;
+$secondary: $snow !default;
+
+$primary-text: $coconut !default;
+$secondary-text: $primary !default;
+
+$info: $pastel-blue !default;
+$danger: $pastel-red !default;
+$success: $pastel-green !default;
+$warning: $pastel-orange !default;
+
+$toolbar-bg: $baby-powder !default;
+
+$base-bg: if($dark-theme, $outer-space, $coconut) !default;
+$base-text: if($dark-theme, $coconut, $black-olive) !default;
+$base-bg-image: if($dark-theme, 'back/black_linen_v1.png', 'back/white_linen.png') !default;
+
+$base-border-radius: 5px !default;
+$base-border-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
+$base-shadow-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
+
+$base-font-size: 0.9rem !default;
+$base-line-height: 1.1 !default;
+$input-font-family: 'Lato', 'Trebuchet MS', Tahoma, san-serif !default;
+$base-font-family-serif: 'Source Code Pro', 'Georgia', 'Times New Roman', serif !default;
+$base-font-family-sans-serif: 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
+$base-font-family: $base-font-family-sans-serif !default;
+
+$base-padding: 0.3rem .8rem;
+
+$zindex-splash: 50000;
+$zindex-notify: 10000;
+$zindex-floating: 500;
+$zindex-ribbon: 200;
+
+// APP
+$app-logo: 'logo.png' !default;
+$app-header-bg: $primary !default;
+$app-header-text: $primary-text !default;
+
+$app-menu-bg-image: 'back/black_linen_v3.png' !default;
+$app-menu-bg: $arsenic !default;
+$app-menu-text: $isabelline !default;
+$app-menu-active-bg: $black-coral !default;
+$app-menu-active-text: $coconut !default;
+
+// TYPOGRAPHY
+$font-weight-normal: 400 !default;
+$font-weight-strong: 600 !default;
+$font-weight-bold: 800 !default;
+
+$link-text: $primary !default;
+
+$text-muted: $gray !default;
+
+// GRID SYSTEM
+$grid-xs-max: 30em !default; // 0 - 480
+$grid-sm-max: 48em !default; // 480 - 768
+$grid-md-max: 64em !default; // 768 - 1024
+$grid-lg-max: 96em !default; // 1024 - 1536
+$grid-xl-max: 128em !default; // 1536 - 2048
+// XS below 480px
+// XL above 1536px
+
+// BUTTONS
+$button-primary-bg: $primary !default;
+$button-secondary-bg: $secondary !default;
+$button-info-bg: $info !default;
+$button-danger-bg: $danger !default;
+$button-success-bg: $success !default;
+$button-warning-bg: $warning !default;
+
+$button-primary-text: $primary-text !default;
+$button-secondary-text: $secondary-text !default;
+$button-info-text: $coconut !default;
+$button-danger-text: $coconut !default;
+$button-success-text: $coconut !default;
+$button-warning-text: $coconut !default;
+
+$button-primary-border: darken($primary, 20%) !default;
+$button-secondary-border: darken($secondary, 20%) !default;
+$button-info-border: darken($info, 20%) !default;
+$button-danger-border: darken($danger, 20%) !default;
+$button-success-border: darken($success, 20%) !default;
+$button-warning-border: darken($warning, 20%) !default;
+
+$button-toggle-active-bg: $primary !default;
+$button-toggle-active-text: $primary-text !default;
+
+// MENU
+$menu-bg: $outer-space !default;
+$menu-text: $primary !default;
+$menu-hover-bg: rgba($primary, 0.6) !default;
+$menu-hover-text: $primary-text !default;
+$menu-active-bg: $primary !default;
+$menu-active-text: $primary-text !default;
+
+// INPUT
+$placeholder-color: if($dark-theme, $slate-gray, $timberwolf) !default;
+$input-bg: $base-bg !default;
+$input-text: $base-text !default;
+$input-label-text: if($dark-theme, $cadet-gray, $smoke) !default;
+$input-border: $base-border-color !default;
+$input-focus-color: $primary !default;
+$input-invalid-color: $madder-lake !default;
+$input-addon-text: $manatee !default;
+$input-addon-bg: if($dark-theme, $black-olive, $white-smoke) !default;
+$input-readonly-bg: shade($input-bg, 2%) !default;
+$input-disabled-bg: darken($input-bg, 10%) !default;
+
+$input-option-color: $charcoal-gray !default;
+$input-option-color-focus: $input-focus-color !default;
+$input-option-color-disabled: $ash-gray !default;
+
+// DATE
+$date-active-bg: $primary !default;
+$date-active-text: $primary-text !default;
+$date-disabled-text: if($dark-theme, $smoke, $ash-gray) !default;
+$date-next-text: if($dark-theme, $ash-gray, $smoke) !default;
+
+// DATAGRID
+$table-bg: $base-bg;
+$table-text: $base-text;
+$table-alt-bg: shade($base-bg, 4%);
+$table-hover-bg: rgba($primary, 0.15);
+$table-active-bg: rgba($primary, 0.25);
+
+// NOTIFY
+$notify-info-bg: tint($info, 90%);
+$notify-info-text: darken(desaturate($info, 20%), 20%);
+$notify-info-border: desaturate($info, 15%);
+$notify-danger-bg: tint($danger, 90%);
+$notify-danger-text: darken(desaturate($danger, 20%), 20%);
+$notify-danger-border: desaturate($danger, 15%);
+$notify-success-bg: tint($success, 90%);
+$notify-success-text: darken(desaturate($success, 20%), 20%);
+$notify-success-border: desaturate($success, 15%);
+$notify-warning-bg: tint($warning, 90%);
+$notify-warning-text: darken(desaturate($warning, 20%), 20%);
+$notify-warning-border: desaturate($warning, 15%);
+$notify-primary-bg: tint($primary, 90%);
+$notify-primary-text: darken(desaturate($primary, 20%), 20%);
+$notify-primary-border: desaturate($primary, 15%);

@@ -1,0 +1,37 @@
+<template>
+	<ui-tab-panel>
+		<ui-tab label="Usage" class="pad-all">
+			<div class="pad-all">
+				This UITab has been composed using the following:
+				<ul>
+					<li><strong>Markdown</strong>: a simple div with innerHTML binding using the MarkdownConverter<br/>
+						<code>&lt;div innerhtml.bind='markdownText | markdown'>&lt;/div></code>
+					</li>
+					<li><strong>Datagrid</strong>: a compose element of datagrid<br/><code>&lt;compose view-model='./datagrid'>&lt;/compose></code></li>
+					<li><strong>Form</strong>: a compose element of forms<br/><code>&lt;compose view-model='./form'>&lt;/compose></code></li>
+				</ul>
+				<hr/>
+				<h5>Usage</h5>
+
+				<p>
+					<code>&lt;ui-tab-panel><br/>
+						&nbsp;&nbsp;&lt;ui-tab label='' [icon-glyph='']><br/>
+						&nbsp;&nbsp;[ui-form | ui-datagrid | ui-grid | <em>any html markup</em>]<br/>
+						&nbsp;&nbsp;&lt;/ui-tab><br/>
+						&nbsp;&nbsp;....<br/>
+						&lt;/ui-tab-panel>
+					</code>
+				</p>
+			</div>
+		</ui-tab>
+		<ui-tab label="Markdown">
+			<div innerhtml.bind="md | markdown"></div>
+		</ui-tab>
+		<ui-tab label="DataGrid">
+			<compose view-model="./datagrid"></compose>
+		</ui-tab>
+		<ui-tab label="Form" icon-glyph="fi-elegant-interface19 ui-flip">
+			<compose view-model="./form"></compose>
+		</ui-tab>
+	</ui-tab-panel>
+</template>
