@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adarshpastakia/aurelia-ui-framework.git"
+  },
+  "keywords": "aurelia-ui-framework",
   "author": "Adarsh Pastakia",
   "license": "MIT",
   "devDependencies": {
@@ -19,6 +24,7 @@
     "run-sequence": "^1.1.5"
   },
   "jspm": {
+    "registry": "jspm",
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0-beta.1",
