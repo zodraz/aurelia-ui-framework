@@ -1,8 +1,4 @@
 import 'jquery';
-import 'lodash';
-import 'moment';
-import 'numeral';
-import 'aurelia-ui-framework';
 import {Aurelia} from "aurelia-framework";
 import {UIValidation} from "aurelia-ui-framework";
 
