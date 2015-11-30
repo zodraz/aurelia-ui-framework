@@ -1,4 +1,4 @@
-export {MarkdownValueConverter} from "../../framework/utils/ui-converters";
+export {MarkdownValueConverter} from "aurelia-ui-framework";
 export class HomeTabs {
 	md = `
 # Hello World

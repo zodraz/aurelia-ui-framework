@@ -1,0 +1,675 @@
+@font-face {
+	font-family: "BigMugLine";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="fi-bigmug-line-"]:before, [class*=" fi-bigmug-line-"]:before,
+[class^="fi-bigmug-line-"]:after, [class*=" fi-bigmug-line-"]:after {   
+	font-family: BigMugLine;
+	font-size: 1em;
+	font-style: normal;
+}.fi-bigmug-line-add137:before {
+	content: "\e000";
+}
+.fi-bigmug-line-add139:before {
+	content: "\e001";
+}
+.fi-bigmug-line-add149:before {
+	content: "\e002";
+}
+.fi-bigmug-line-airplane86:before {
+	content: "\e003";
+}
+.fi-bigmug-line-alarm31:before {
+	content: "\e004";
+}
+.fi-bigmug-line-arrow592:before {
+	content: "\e005";
+}
+.fi-bigmug-line-attach8:before {
+	content: "\e006";
+}
+.fi-bigmug-line-attachment15:before {
+	content: "\e007";
+}
+.fi-bigmug-line-audio46:before {
+	content: "\e008";
+}
+.fi-bigmug-line-back44:before {
+	content: "\e009";
+}
+.fi-bigmug-line-back46:before {
+	content: "\e00a";
+}
+.fi-bigmug-line-big104:before {
+	content: "\e00b";
+}
+.fi-bigmug-line-book188:before {
+	content: "\e00c";
+}
+.fi-bigmug-line-bookmark28:before {
+	content: "\e00d";
+}
+.fi-bigmug-line-bottle34:before {
+	content: "\e00e";
+}
+.fi-bigmug-line-button5:before {
+	content: "\e00f";
+}
+.fi-bigmug-line-buttons5:before {
+	content: "\e010";
+}
+.fi-bigmug-line-cellphone55:before {
+	content: "\e011";
+}
+.fi-bigmug-line-cellular9:before {
+	content: "\e012";
+}
+.fi-bigmug-line-center10:before {
+	content: "\e013";
+}
+.fi-bigmug-line-chat51:before {
+	content: "\e014";
+}
+.fi-bigmug-line-chat55:before {
+	content: "\e015";
+}
+.fi-bigmug-line-checkmark14:before {
+	content: "\e016";
+}
+.fi-bigmug-line-checkmark15:before {
+	content: "\e017";
+}
+.fi-bigmug-line-checkmark16:before {
+	content: "\e018";
+}
+.fi-bigmug-line-circular220:before {
+	content: "\e019";
+}
+.fi-bigmug-line-circular224:before {
+	content: "\e01a";
+}
+.fi-bigmug-line-circular228:before {
+	content: "\e01b";
+}
+.fi-bigmug-line-circular229:before {
+	content: "\e01c";
+}
+.fi-bigmug-line-clipboard68:before {
+	content: "\e01d";
+}
+.fi-bigmug-line-close42:before {
+	content: "\e01e";
+}
+.fi-bigmug-line-cloud255:before {
+	content: "\e01f";
+}
+.fi-bigmug-line-cloud260:before {
+	content: "\e020";
+}
+.fi-bigmug-line-cocktail26:before {
+	content: "\e021";
+}
+.fi-bigmug-line-code30:before {
+	content: "\e022";
+}
+.fi-bigmug-line-collapse5:before {
+	content: "\e023";
+}
+.fi-bigmug-line-comment45:before {
+	content: "\e024";
+}
+.fi-bigmug-line-compass80:before {
+	content: "\e025";
+}
+.fi-bigmug-line-contract5:before {
+	content: "\e026";
+}
+.fi-bigmug-line-copy23:before {
+	content: "\e027";
+}
+.fi-bigmug-line-crescent23:before {
+	content: "\e028";
+}
+.fi-bigmug-line-cropping1:before {
+	content: "\e029";
+}
+.fi-bigmug-line-cross81:before {
+	content: "\e02a";
+}
+.fi-bigmug-line-cross83:before {
+	content: "\e02b";
+}
+.fi-bigmug-line-cube29:before {
+	content: "\e02c";
+}
+.fi-bigmug-line-double97:before {
+	content: "\e02d";
+}
+.fi-bigmug-line-double98:before {
+	content: "\e02e";
+}
+.fi-bigmug-line-double99:before {
+	content: "\e02f";
+}
+.fi-bigmug-line-down55:before {
+	content: "\e030";
+}
+.fi-bigmug-line-down56:before {
+	content: "\e031";
+}
+.fi-bigmug-line-down58:before {
+	content: "\e032";
+}
+.fi-bigmug-line-down59:before {
+	content: "\e033";
+}
+.fi-bigmug-line-down64:before {
+	content: "\e034";
+}
+.fi-bigmug-line-download136:before {
+	content: "\e035";
+}
+.fi-bigmug-line-download142:before {
+	content: "\e036";
+}
+.fi-bigmug-line-download146:before {
+	content: "\e037";
+}
+.fi-bigmug-line-download147:before {
+	content: "\e038";
+}
+.fi-bigmug-line-download148:before {
+	content: "\e039";
+}
+.fi-bigmug-line-electrical17:before {
+	content: "\e03a";
+}
+.fi-bigmug-line-electronic57:before {
+	content: "\e03b";
+}
+.fi-bigmug-line-email64:before {
+	content: "\e03c";
+}
+.fi-bigmug-line-email67:before {
+	content: "\e03d";
+}
+.fi-bigmug-line-equalization3:before {
+	content: "\e03e";
+}
+.fi-bigmug-line-equalizer26:before {
+	content: "\e03f";
+}
+.fi-bigmug-line-event6:before {
+	content: "\e040";
+}
+.fi-bigmug-line-expand25:before {
+	content: "\e041";
+}
+.fi-bigmug-line-expanding2:before {
+	content: "\e042";
+}
+.fi-bigmug-line-fast33:before {
+	content: "\e043";
+}
+.fi-bigmug-line-favourites5:before {
+	content: "\e044";
+}
+.fi-bigmug-line-file68:before {
+	content: "\e045";
+}
+.fi-bigmug-line-file69:before {
+	content: "\e046";
+}
+.fi-bigmug-line-film57:before {
+	content: "\e047";
+}
+.fi-bigmug-line-flag53:before {
+	content: "\e048";
+}
+.fi-bigmug-line-fog10:before {
+	content: "\e049";
+}
+.fi-bigmug-line-foggy3:before {
+	content: "\e04a";
+}
+.fi-bigmug-line-folder173:before {
+	content: "\e04b";
+}
+.fi-bigmug-line-fork34:before {
+	content: "\e04c";
+}
+.fi-bigmug-line-four87:before {
+	content: "\e04d";
+}
+.fi-bigmug-line-full40:before {
+	content: "\e04e";
+}
+.fi-bigmug-line-games32:before {
+	content: "\e04f";
+}
+.fi-bigmug-line-gear30:before {
+	content: "\e050";
+}
+.fi-bigmug-line-giftbox54:before {
+	content: "\e051";
+}
+.fi-bigmug-line-graphical8:before {
+	content: "\e052";
+}
+.fi-bigmug-line-headphones32:before {
+	content: "\e053";
+}
+.fi-bigmug-line-hot67:before {
+	content: "\e054";
+}
+.fi-bigmug-line-images21:before {
+	content: "\e055";
+}
+.fi-bigmug-line-ink12:before {
+	content: "\e056";
+}
+.fi-bigmug-line-label25:before {
+	content: "\e057";
+}
+.fi-bigmug-line-left144:before {
+	content: "\e058";
+}
+.fi-bigmug-line-left145:before {
+	content: "\e059";
+}
+.fi-bigmug-line-left146:before {
+	content: "\e05a";
+}
+.fi-bigmug-line-left148:before {
+	content: "\e05b";
+}
+.fi-bigmug-line-left152:before {
+	content: "\e05c";
+}
+.fi-bigmug-line-left153:before {
+	content: "\e05d";
+}
+.fi-bigmug-line-left158:before {
+	content: "\e05e";
+}
+.fi-bigmug-line-left159:before {
+	content: "\e05f";
+}
+.fi-bigmug-line-like51:before {
+	content: "\e060";
+}
+.fi-bigmug-line-link52:before {
+	content: "\e061";
+}
+.fi-bigmug-line-list63:before {
+	content: "\e062";
+}
+.fi-bigmug-line-list65:before {
+	content: "\e063";
+}
+.fi-bigmug-line-lock64:before {
+	content: "\e064";
+}
+.fi-bigmug-line-login12:before {
+	content: "\e065";
+}
+.fi-bigmug-line-login9:before {
+	content: "\e066";
+}
+.fi-bigmug-line-map87:before {
+	content: "\e067";
+}
+.fi-bigmug-line-megaphone11:before {
+	content: "\e068";
+}
+.fi-bigmug-line-men25:before {
+	content: "\e069";
+}
+.fi-bigmug-line-menu40:before {
+	content: "\e06a";
+}
+.fi-bigmug-line-menu41:before {
+	content: "\e06b";
+}
+.fi-bigmug-line-microphone76:before {
+	content: "\e06c";
+}
+.fi-bigmug-line-microphone77:before {
+	content: "\e06d";
+}
+.fi-bigmug-line-minus79:before {
+	content: "\e06e";
+}
+.fi-bigmug-line-minus80:before {
+	content: "\e06f";
+}
+.fi-bigmug-line-minus83:before {
+	content: "\e070";
+}
+.fi-bigmug-line-minus86:before {
+	content: "\e071";
+}
+.fi-bigmug-line-monitor74:before {
+	content: "\e072";
+}
+.fi-bigmug-line-music218:before {
+	content: "\e073";
+}
+.fi-bigmug-line-music219:before {
+	content: "\e074";
+}
+.fi-bigmug-line-music221:before {
+	content: "\e075";
+}
+.fi-bigmug-line-musical100:before {
+	content: "\e076";
+}
+.fi-bigmug-line-musical98:before {
+	content: "\e077";
+}
+.fi-bigmug-line-mute34:before {
+	content: "\e078";
+}
+.fi-bigmug-line-new83:before {
+	content: "\e079";
+}
+.fi-bigmug-line-nine16:before {
+	content: "\e07a";
+}
+.fi-bigmug-line-note35:before {
+	content: "\e07b";
+}
+.fi-bigmug-line-notebook41:before {
+	content: "\e07c";
+}
+.fi-bigmug-line-notification4:before {
+	content: "\e07d";
+}
+.fi-bigmug-line-notification5:before {
+	content: "\e07e";
+}
+.fi-bigmug-line-opened25:before {
+	content: "\e07f";
+}
+.fi-bigmug-line-oval34:before {
+	content: "\e080";
+}
+.fi-bigmug-line-paintbrush9:before {
+	content: "\e081";
+}
+.fi-bigmug-line-paper122:before {
+	content: "\e082";
+}
+.fi-bigmug-line-pause37:before {
+	content: "\e083";
+}
+.fi-bigmug-line-pencil85:before {
+	content: "\e084";
+}
+.fi-bigmug-line-phone351:before {
+	content: "\e085";
+}
+.fi-bigmug-line-photo181:before {
+	content: "\e086";
+}
+.fi-bigmug-line-pin42:before {
+	content: "\e087";
+}
+.fi-bigmug-line-planetary2:before {
+	content: "\e088";
+}
+.fi-bigmug-line-play83:before {
+	content: "\e089";
+}
+.fi-bigmug-line-portfolio23:before {
+	content: "\e08a";
+}
+.fi-bigmug-line-print34:before {
+	content: "\e08b";
+}
+.fi-bigmug-line-radio46:before {
+	content: "\e08c";
+}
+.fi-bigmug-line-rain30:before {
+	content: "\e08d";
+}
+.fi-bigmug-line-rectangular78:before {
+	content: "\e08e";
+}
+.fi-bigmug-line-recycling10:before {
+	content: "\e08f";
+}
+.fi-bigmug-line-rewind37:before {
+	content: "\e090";
+}
+.fi-bigmug-line-right139:before {
+	content: "\e091";
+}
+.fi-bigmug-line-right141:before {
+	content: "\e092";
+}
+.fi-bigmug-line-right142:before {
+	content: "\e093";
+}
+.fi-bigmug-line-right144:before {
+	content: "\e094";
+}
+.fi-bigmug-line-right148:before {
+	content: "\e095";
+}
+.fi-bigmug-line-right153:before {
+	content: "\e096";
+}
+.fi-bigmug-line-right154:before {
+	content: "\e097";
+}
+.fi-bigmug-line-right156:before {
+	content: "\e098";
+}
+.fi-bigmug-line-rounded51:before {
+	content: "\e099";
+}
+.fi-bigmug-line-sand14:before {
+	content: "\e09a";
+}
+.fi-bigmug-line-save15:before {
+	content: "\e09b";
+}
+.fi-bigmug-line-search74:before {
+	content: "\e09c";
+}
+.fi-bigmug-line-search78:before {
+	content: "\e09d";
+}
+.fi-bigmug-line-share27:before {
+	content: "\e09e";
+}
+.fi-bigmug-line-shopping198:before {
+	content: "\e09f";
+}
+.fi-bigmug-line-shopping199:before {
+	content: "\e0a0";
+}
+.fi-bigmug-line-shopping202:before {
+	content: "\e0a1";
+}
+.fi-bigmug-line-shopping204:before {
+	content: "\e0a2";
+}
+.fi-bigmug-line-shuffle17:before {
+	content: "\e0a3";
+}
+.fi-bigmug-line-sort47:before {
+	content: "\e0a4";
+}
+.fi-bigmug-line-sort48:before {
+	content: "\e0a5";
+}
+.fi-bigmug-line-speaker75:before {
+	content: "\e0a6";
+}
+.fi-bigmug-line-speaker80:before {
+	content: "\e0a7";
+}
+.fi-bigmug-line-speaker81:before {
+	content: "\e0a8";
+}
+.fi-bigmug-line-speaker86:before {
+	content: "\e0a9";
+}
+.fi-bigmug-line-speaker87:before {
+	content: "\e0aa";
+}
+.fi-bigmug-line-speech96:before {
+	content: "\e0ab";
+}
+.fi-bigmug-line-square152:before {
+	content: "\e0ac";
+}
+.fi-bigmug-line-square156:before {
+	content: "\e0ad";
+}
+.fi-bigmug-line-square160:before {
+	content: "\e0ae";
+}
+.fi-bigmug-line-store10:before {
+	content: "\e0af";
+}
+.fi-bigmug-line-sun81:before {
+	content: "\e0b0";
+}
+.fi-bigmug-line-sunrise3:before {
+	content: "\e0b1";
+}
+.fi-bigmug-line-switch23:before {
+	content: "\e0b2";
+}
+.fi-bigmug-line-switch24:before {
+	content: "\e0b3";
+}
+.fi-bigmug-line-tag47:before {
+	content: "\e0b4";
+}
+.fi-bigmug-line-television20:before {
+	content: "\e0b5";
+}
+.fi-bigmug-line-text108:before {
+	content: "\e0b6";
+}
+.fi-bigmug-line-text109:before {
+	content: "\e0b7";
+}
+.fi-bigmug-line-three142:before {
+	content: "\e0b8";
+}
+.fi-bigmug-line-timer35:before {
+	content: "\e0b9";
+}
+.fi-bigmug-line-tool16:before {
+	content: "\e0ba";
+}
+.fi-bigmug-line-triangle33:before {
+	content: "\e0bb";
+}
+.fi-bigmug-line-trophy55:before {
+	content: "\e0bc";
+}
+.fi-bigmug-line-two311:before {
+	content: "\e0bd";
+}
+.fi-bigmug-line-two316:before {
+	content: "\e0be";
+}
+.fi-bigmug-line-two317:before {
+	content: "\e0bf";
+}
+.fi-bigmug-line-two319:before {
+	content: "\e0c0";
+}
+.fi-bigmug-line-two323:before {
+	content: "\e0c1";
+}
+.fi-bigmug-line-unlocked27:before {
+	content: "\e0c2";
+}
+.fi-bigmug-line-up100:before {
+	content: "\e0c3";
+}
+.fi-bigmug-line-up102:before {
+	content: "\e0c4";
+}
+.fi-bigmug-line-up103:before {
+	content: "\e0c5";
+}
+.fi-bigmug-line-up104:before {
+	content: "\e0c6";
+}
+.fi-bigmug-line-up107:before {
+	content: "\e0c7";
+}
+.fi-bigmug-line-up111:before {
+	content: "\e0c8";
+}
+.fi-bigmug-line-up112:before {
+	content: "\e0c9";
+}
+.fi-bigmug-line-up114:before {
+	content: "\e0ca";
+}
+.fi-bigmug-line-up98:before {
+	content: "\e0cb";
+}
+.fi-bigmug-line-up99:before {
+	content: "\e0cc";
+}
+.fi-bigmug-line-upload91:before {
+	content: "\e0cd";
+}
+.fi-bigmug-line-upload92:before {
+	content: "\e0ce";
+}
+.fi-bigmug-line-upper8:before {
+	content: "\e0cf";
+}
+.fi-bigmug-line-user143:before {
+	content: "\e0d0";
+}
+.fi-bigmug-line-user144:before {
+	content: "\e0d1";
+}
+.fi-bigmug-line-video163:before {
+	content: "\e0d2";
+}
+.fi-bigmug-line-wallet26:before {
+	content: "\e0d3";
+}
+.fi-bigmug-line-weather21:before {
+	content: "\e0d4";
+}
+.fi-bigmug-line-weekly14:before {
+	content: "\e0d5";
+}
+.fi-bigmug-line-weekly15:before {
+	content: "\e0d6";
+}
+.fi-bigmug-line-wind24:before {
+	content: "\e0d7";
+}
+.fi-bigmug-line-window50:before {
+	content: "\e0d8";
+}
+.fi-bigmug-line-winds4:before {
+	content: "\e0d9";
+}
+.fi-bigmug-line-wrench66:before {
+	content: "\e0da";
+}
+.fi-bigmug-line-zoom60:before {
+	content: "\e0db";
+}

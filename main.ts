@@ -2,12 +2,7 @@ import 'jquery';
 import 'lodash';
 import 'moment';
 import 'numeral';
-import 'libs/chosen';
-import 'libs/notify';
-import 'libs/marked';
-import 'libs/phonelib';
-import 'libs/countries';
-import 'libs/datepicker';
+import 'aurelia-ui-framework';
 import {Aurelia} from "aurelia-framework";
 
 export function configure(aurelia:Aurelia) {

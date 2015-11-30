@@ -1,4 +1,4 @@
-import {moment} from "../../framework/utils/ui-utils";
+import {moment} from "aurelia-ui-framework";
 
 export class HomeDataGrid {
 	title = 'DataGrid Example';

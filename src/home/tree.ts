@@ -1,5 +1,4 @@
-import {UITreeOptionsModel} from "../../framework/utils/ui-tree-models";
-import {_} from "../../framework/utils/ui-utils";
+import {_, UITreeOptionsModel} from "aurelia-ui-framework";
 
 export class HomeTree {
 	options:UITreeOptionsModel = {

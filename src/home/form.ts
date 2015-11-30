@@ -1,5 +1,5 @@
-import {_, moment} from "../../framework/utils/ui-utils";
-export {KeysValueConverter, DateValueConverter} from "../../framework/utils/ui-converters";
+import {_, moment} from "aurelia-ui-framework";
+export {KeysValueConverter, DateValueConverter} from "aurelia-ui-framework";
 
 export class HomeForm {
 	opts   = 3;
