@@ -7,148 +7,115 @@
 @import "chosen.min";
 
 .ui-chosen {
-  li.ui-icon {
-	padding-left: 26px !important;
-	background-position: 2px center;
 
-	&.ui-flag {
-	  background-size: 18px 18px;
-	}
-  }
+  .ui-form-control {
+	li.ui-icon {
+	  padding-left: 26px !important;
+	  background-position: 2px center;
 
-  li.highlighted {
-	color: $primary-text;
-	font-weight: $font-weight-strong;
-	background-color: rgba($primary, 0.5);
-  }
-
-  li.result-selected {
-	color: $primary-text;
-	font-weight: $font-weight-strong;
-	background-color: rgba($primary, 0.75);
-  }
-
-  .chosen-container {
-	border: 1px solid $input-border;
-	background: $input-bg;
-
-	&:nth-child(2) {
-	  border-top-left-radius: $base-border-radius !important;
-	  border-bottom-left-radius: $base-border-radius !important;
+	  &.ui-flag {
+		background-size: 18px 18px;
+	  }
 	}
 
-	.chosen-drop {
+	li.highlighted {
+	  color: $primary-text;
+	  font-weight: $font-weight-strong;
+	  background-color: rgba($primary, 0.5);
+	}
+
+	li.result-selected {
+	  color: $primary-text;
+	  font-weight: $font-weight-strong;
+	  background-color: rgba($primary, 0.75);
+	}
+
+	.chosen-container {
+	  border: 1px solid $input-border;
 	  background: $input-bg;
 
-	  .group-result {
-		color: $text-muted;
-		padding: 4px 5px 1px;
-		font-size: 0.9em;
-		font-weight: 600;
+	  &:nth-child(2) {
+		border-top-left-radius: $base-border-radius !important;
+		border-bottom-left-radius: $base-border-radius !important;
 	  }
 
-	  .chosen-search input {
-		border: 1px solid $input-border;
-		border-radius: $base-border-radius;
-		&:focus {
-		  border-color: $input-focus-color;
-		  @include box-shadow(0 0 2px 0 $input-focus-color inset);
-		}
-	  }
-	}
-
-	&.chosen-container-active {
-	  border-color: $input-focus-color;
-	  @include box-shadow(0 0 4px 0 $input-focus-color);
-
-	  li.search-field input[type=text] {
-		color: $input-text;
-	  }
-	}
-
-	&.chosen-with-drop {
-	  .chosen-single {
-		> div > b:after {
-		  content: '\e082';
-		}
-		@include border-bottom-radius(0);
-		background: linear-gradient(bottom, $input-bg, shade($input-bg, 5%));
-	  }
-	  .chosen-choices {
-		@include border-bottom-radius(0);
-	  }
 	  .chosen-drop {
-		left: -1px;
-		right: -1px;
-		width: auto;
-		border: {
-		  style: solid;
-		  width: 1px;
-		  color: rgba($base-border-color, 0.5) $input-focus-color $input-focus-color;
+		background: $input-bg;
+
+		.group-result {
+		  color: $text-muted;
+		  padding: 4px 5px 1px;
+		  font-size: 0.9em;
+		  font-weight: 600;
 		}
-		@include border-bottom-radius($base-border-radius);
-		@include box-shadow(0 4px 5px rgba($black, 0.35));
+
+		.chosen-search input {
+		  border: 1px solid $input-border;
+		  border-radius: $base-border-radius;
+		  &:focus {
+			border-color: $input-focus-color;
+			@include box-shadow(0 0 2px 0 $input-focus-color inset);
+		  }
+		}
+	  }
+
+	  &.chosen-container-active {
+		border-color: $input-focus-color;
+		@include box-shadow(0 0 4px 0 $input-focus-color);
+
+		li.search-field input[type=text] {
+		  color: $input-text;
+		}
+	  }
+
+	  &.chosen-with-drop {
+		.chosen-single {
+		  > div > b:after {
+			content: '\e082';
+		  }
+		  @include border-bottom-radius(0);
+		  background: linear-gradient(bottom, $input-bg, shade($input-bg, 2%));
+		}
+		.chosen-choices {
+		  @include border-bottom-radius(0);
+		}
+		.chosen-drop {
+		  left: -1px;
+		  right: -1px;
+		  width: auto;
+		  border: {
+			style: solid;
+			width: 1px;
+			color: rgba($base-border-color, 0.5) $input-focus-color $input-focus-color;
+		  }
+		  @include border-bottom-radius($base-border-radius);
+		  @include box-shadow(0 4px 5px rgba($black, 0.35));
+		}
 	  }
 	}
-  }
 
-  .chosen-container-single {
-	.chosen-single {
-	  height: 26px;
-	  line-height: 26px;
-	  border: none;
-	  border-radius: inherit;
-	  box-shadow: none;
-	  background: linear-gradient(top, $input-bg, shade($input-bg, 5%));
-
-	  > div > b:after {
-		content: '\e091';
-		color: $text-muted;
-		font-family: Elegant;
-	  }
-
-	  &.chosen-default {
-		color: $placeholder-color;
-	  }
-	  .search-choice-close {
-		top: 0;
-		right: 22px;
+	.chosen-container-single {
+	  .chosen-single {
 		height: 26px;
-	  }
-	  .search-choice-close:after {
-		content: '\00D7';
-		font-size: 1.2rem;
-		color: $text-muted;
-		text-shadow: 0 1px 0 #fff;
-	  }
-	}
-  }
+		line-height: 26px;
+		border: none;
+		border-radius: inherit;
+		box-shadow: none;
+		background: linear-gradient(top, $input-bg, shade($input-bg, 2%));
 
-  .chosen-container-multi {
-	.chosen-choices {
-	  line-height: 1;
-	  padding: 0;
-	  border: none;
-	  border-radius: inherit;
-	  box-shadow: none;
-	  @include flex-row(flex-start, flex-start, true);
+		> div > b:after {
+		  content: '\e091';
+		  color: $text-muted;
+		  font-family: Elegant;
+		}
 
-	  li.search-choice {
-		height: 20px;
-		position: relative;
-		margin: 2px 0 2px 5px;
-		padding: 4px 16px 4px 4px;
-		float: none;
-		line-height: 0.85;
-		@include flex(0 0 auto);
-		border: 1px solid $input-border;
-		border-radius: $base-border-radius;
-		background: linear-gradient(top, $input-bg, shade($input-bg, 5%));
+		&.chosen-default {
+		  color: $placeholder-color;
+		}
 		.search-choice-close {
-		  top: 2px;
-		  right: 2px;
-		  width: 10px;
-		  height: 10px;
+		  top: 0;
+		  right: 22px;
+		  height: 26px;
 		}
 		.search-choice-close:after {
 		  content: '\00D7';
@@ -157,17 +124,78 @@
 		  text-shadow: 0 1px 0 #fff;
 		}
 	  }
-	  li.search-field {
-		input[type=text] {
+	}
+
+	.chosen-container-multi {
+	  .chosen-choices {
+		line-height: 1;
+		padding: 0;
+		border: none;
+		border-radius: inherit;
+		box-shadow: none;
+		@include flex-row(flex-start, flex-start, true);
+
+		li.search-choice {
 		  height: 20px;
-		  line-height: 1;
+		  position: relative;
 		  margin: 2px 0 2px 5px;
-		  min-width: 60px;
-		  color: $placeholder-color;
-		  font-family: $input-font-family;
+		  padding: 4px 16px 4px 4px;
+		  float: none;
+		  line-height: 0.85;
+		  @include flex(0 0 auto);
+		  border: 1px solid $input-border;
+		  border-radius: $base-border-radius;
+		  background: linear-gradient(top, $input-bg, shade($input-bg, 5%));
+		  .search-choice-close {
+			top: 2px;
+			right: 2px;
+			width: 10px;
+			height: 10px;
+		  }
+		  .search-choice-close:after {
+			content: '\00D7';
+			font-size: 1.2rem;
+			color: $text-muted;
+			text-shadow: 0 1px 0 #fff;
+		  }
 		}
-		float: none;
-		@include flex(0 0 auto);
+		li.search-field {
+		  input[type=text] {
+			height: 20px;
+			line-height: 1;
+			margin: 2px 0 2px 5px;
+			min-width: 60px;
+			color: $placeholder-color;
+			font-family: $input-font-family;
+		  }
+		  float: none;
+		  @include flex(0 0 auto);
+		}
+	  }
+	}
+  }
+
+  &.ui-valid {
+	.chosen-container {
+	  &.chosen-with-drop .chosen-drop {
+		border-color: $input-border rgba($input-valid-color, 0.85) rgba($input-valid-color, 0.85);
+	  }
+	  border-color: $input-valid-color;
+	  &.chosen-container-active {
+		border-color: $input-valid-color;
+		@include box-shadow(0 0 4px 0 $input-valid-color);
+	  }
+	}
+  }
+  &.ui-invalid {
+	.chosen-container {
+	  &.chosen-with-drop .chosen-drop {
+		border-color: $input-border rgba($input-invalid-color, 0.85) rgba($input-invalid-color, 0.85);
+	  }
+	  border-color: $input-invalid-color;
+	  &.chosen-container-active {
+		border-color: $input-invalid-color;
+		@include box-shadow(0 0 4px 0 $input-invalid-color);
 	  }
 	}
   }
