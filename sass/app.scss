@@ -1,4 +1,19 @@
+@import "compass/css3";
+@import "colors";
+@import "mixins";
 @import "variables";
-@import "framework/framework";
+//
+// IF THESE FONTS ARE CHANGED MAKE SURE TO UPDATE RELEVANT VARIABLES
+// $font-family-input
+@import url('https://fonts.googleapis.com/css?family=Lato');
+// $font-family-sans-serif
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,800italic,400,300,600,800');
+// $font-family-serif
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+// Comment next line to not include flags
+@import "flags";
+
+// OVERRIDE APP VARIABLES HERE
+@import "framework";
 
 // INCLUDE APP SPECIFIC STYLES HERE

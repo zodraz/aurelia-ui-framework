@@ -6,7 +6,9 @@ var ts = require('gulp-typescript');
 var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
-var dist = '../auf-dist';
+var pages = '../auf-pages';
+var release = '../auf-release';
+var skeleton = '../auf-skeleton';
 
 var frameworkPath = '~/Workspace/Personal/aurelia-ui-framework';
 gulp.task('copy', function () {
@@ -58,7 +60,7 @@ var config = {
 	force: true,
 	packagePath: '.',
 	bundles: {
-		"dist/app-build": {
+		"dist/framework": {
 			includes: [
 				'main*',
 				'src/**/*',
@@ -90,10 +92,20 @@ gulp.task('aurelia:bundle', function () {
 gulp.task('aurelia:unbundle', function () {
 	return bundler.unbundle(config);
 });
-gulp.task('aurelia:copy', function () {
+gulp.task('aurelia:pages', function () {
 	return gulp.src(['./index.html', './config.js', './jspm_packages/system*',
 			'./fonts/**/*', './styles/**/*', './images/**/*', './dist/**/*'], {base: './'})
-		.pipe(gulp.dest(dist));
+		.pipe(gulp.dest(pages));
+});
+gulp.task('aurelia:skeleton', function () {
+	return gulp.src(['./index.html', './browserconfig.xml', './manifest.json',
+			'./main.ts', './typings/**/*',
+			'./fonts/**/*', './images/**/*', './src/**/*'], {base: './'})
+		.pipe(gulp.dest(skeleton));
+});
+gulp.task('aurelia:release', function () {
+	return gulp.src(['./config.js', './package.json', './sass/_*.scss', './dist/framework.js'], {base: './'})
+		.pipe(gulp.dest(release));
 });
 
 gulp.task('watch', function () {
@@ -106,7 +118,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('production', ['build'], function () {
-	runSequence('aurelia:bundle', 'aurelia:copy', 'aurelia:unbundle');
+	runSequence('aurelia:bundle', 'aurelia:pages', 'aurelia:skeleton', 'aurelia:release', 'aurelia:unbundle');
 });
 
 gulp.task('serve', ['build'], function (done) {

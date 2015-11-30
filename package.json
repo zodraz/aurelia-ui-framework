@@ -2,7 +2,7 @@
   "name": "hmc-aurelia-framework",
   "version": "1.0.0",
   "description": "Aurelia UX Framework for HMC Applications",
-  "main": "main.js",
+  "main": "dist/framework.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
