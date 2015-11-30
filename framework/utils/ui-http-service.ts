@@ -88,7 +88,7 @@ export class UIHttpService {
 			.then((response:Response) => response.json());
 	}
 
-	remove(slug:string) {
+	delete(slug:string) {
 		return this.httpClient
 			.fetch(slug, {
 				method: 'delete',

@@ -52,7 +52,7 @@ var config = {
 	force: true,
 	packagePath: '.',
 	bundles: {
-		"dist/framework": {
+		"dist/aurelia-ui-framework": {
 			includes: [
 				'main*',
 				'src/**/*',
@@ -95,7 +95,7 @@ gulp.task('aurelia:skeleton', function () {
 		.pipe(gulp.dest(skeleton));
 });
 gulp.task('aurelia:release', function () {
-	return gulp.src(['./config.js', './package.json', './sass/_*.scss', './dist/framework.js'], {base: './'})
+	return gulp.src(['./config.js', './package.json', './sass/_*.scss', './dist/aurelia-ui-framework.js'], {base: './'})
 		.pipe(gulp.dest(release));
 });
 
