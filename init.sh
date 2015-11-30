@@ -4,4 +4,4 @@ sudo npm install jspm gulp gulp-compass gulp-plumber gulp-typescript aurelia-bun
 
 sudo jspm init
 
-sudo jspm install github:adarshpastakia/aurelia-ui-framework
+sudo jspm install github:adarshpastakia/aurelia-ui-framework@release
