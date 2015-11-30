@@ -11,6 +11,8 @@
     </option>
   </component>
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../auf-release" />
+    <content url="file://$MODULE_DIR$/../auf-skeleton" />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.sass-cache" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />

@@ -9,10 +9,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-event"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-event", "../utils/ui-app-state"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_event_1, ui_app_state_1) {
     var UIMenu = (function () {
-        function UIMenu(element) {
+        function UIMenu(element, appState) {
             this.element = element;
+            this.appState = appState;
             this._classes = '';
             this._floating = false;
             this._floating = element.hasAttribute('dropdown');
@@ -48,7 +49,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-menu"), 
-            __metadata('design:paramtypes', [Element])
+            __metadata('design:paramtypes', [Element, ui_app_state_1.UIApplicationState])
         ], UIMenu);
         return UIMenu;
     })();

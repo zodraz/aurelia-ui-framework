@@ -10,14 +10,6 @@ var pages = '../auf-pages';
 var release = '../auf-release';
 var skeleton = '../auf-skeleton';
 
-var frameworkPath = '~/Workspace/Personal/aurelia-ui-framework';
-gulp.task('copy', function () {
-	gulp.src(frameworkPath + '/sass/stylings/*.scss').pipe(gulp.dest('./sass/stylings'));
-	gulp.src([frameworkPath + '/helpers/*.ts', '!' + frameworkPath + '/helpers/constants.ts']).pipe(gulp.dest('./helpers'));
-	gulp.src(frameworkPath + '/plugins/**/*').pipe(gulp.dest('./plugins'));
-	gulp.src(frameworkPath + '/services/*.ts').pipe(gulp.dest('./services'));
-});
-
 // SASS/Compass compiler
 gulp.task('sass:compile', function (done) {
 	return gulp.src('./sass/**/*.scss')
@@ -99,8 +91,7 @@ gulp.task('aurelia:pages', function () {
 });
 gulp.task('aurelia:skeleton', function () {
 	return gulp.src(['./index.html', './browserconfig.xml', './manifest.json',
-			'./main.ts', './typings/**/*',
-			'./fonts/**/*', './images/**/*', './src/**/*'], {base: './'})
+			'./typings/**/*', './fonts/**/*', './images/**/*'], {base: './'})
 		.pipe(gulp.dest(skeleton));
 });
 gulp.task('aurelia:release', function () {

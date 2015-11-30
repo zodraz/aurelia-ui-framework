@@ -1,5 +1,6 @@
 import {autoinject} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIApplicationState} from "../framework/utils/ui-app-state";
 
 @autoinject()
 export class App {
@@ -14,7 +15,7 @@ export class App {
 		//.addPipelineStep('authorize', AuthInterceptor)
 		config.map([{
 			route: 'login',
-			moduleId: './login/login',
+			moduleId: './login/view',
 			title: 'Login',
 			name: 'login',
 			isLogin: true
@@ -26,7 +27,7 @@ export class App {
 			nav: true,
 			auth: false,
 			name: 'home'
-		},  {
+		}, {
 			route: 'badurl',
 			moduleId: './home/view',
 			settings: {},
@@ -44,11 +45,12 @@ export class App {
 		}, 500);
 	}
 
-	constructor() {
+	constructor(public appState:UIApplicationState) {
 
 	}
 
 	logout() {
-		this.router['options'].isAuthenticated = !this.router['options'].isAuthenticated;
+		this.appState.IsAuthenticated = false;
+		this.appState.Username = null;
 	}
 }

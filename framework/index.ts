@@ -36,5 +36,15 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./components/ui-option');
 	aurelia.globalResources('./components/ui-chosen');
 	aurelia.globalResources('./components/ui-tree');
+	aurelia.globalResources('./components/ui-login');
 	aurelia.globalResources('./components/ui-markdown');
 }
+
+export * from "./utils/ui-app-state";
+export * from "./utils/ui-converters";
+export * from "./utils/ui-event";
+export * from "./utils/ui-http-service";
+export * from "./utils/ui-model";
+export * from "./utils/ui-tree-models";
+export * from "./utils/ui-utils";
+export * from "./utils/ui-validations";

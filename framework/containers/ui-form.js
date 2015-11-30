@@ -15,6 +15,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.element = element;
             this.id = '';
             this.class = '';
+            this.busy = false;
             this._classes = '';
         }
         UIForm.prototype.attached = function () {
@@ -24,9 +25,32 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                     .find('input,textarea').first().focus();
             }, 200);
         };
+        UIForm.prototype.busyChanged = function (newValue) {
+            try {
+                $(this.element).find('input, select, textarea, button').attr(newValue === true ? 'disabled' : 'd', '');
+            }
+            catch (e) {
+            }
+            try {
+                $(this.element).find('select').trigger('chosen:updated');
+            }
+            catch (e) {
+            }
+            try {
+                $(this.element).find('multiline').data('disabled', newValue === true);
+            }
+            catch (e) {
+            }
+            try {
+                $(this.element).find('date-field').children('div').data('DateTimePicker')[newValue === true ? 'disable' : 'enable']();
+            }
+            catch (e) {
+            }
+        };
         UIForm.prototype._keyup = function ($event) {
-            if (!$($event.target).is('textarea') && $event.keyCode == 13)
-                ui_event_1.UIEvent.fireEvent('submit', this._form, this, this._form);
+            if (!$($event.target).is('textarea') && $event.keyCode == 13) {
+                ui_event_1.UIEvent.fireEvent('submit', this.element, this, this._form);
+            }
             return true;
         };
         __decorate([
@@ -37,9 +61,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIForm.prototype, "class");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UIForm.prototype, "busy");
         UIForm = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-form'), 
             __metadata('design:paramtypes', [Element])
         ], UIForm);

@@ -9,9 +9,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "aurelia-framework", "../framework/utils/ui-app-state"], function (require, exports, aurelia_framework_1, ui_app_state_1) {
     var App = (function () {
-        function App() {
+        function App(appState) {
+            this.appState = appState;
             this.appTitle = "Aurelia UI Framework";
         }
         App.prototype.configureRouter = function (config, router) {
@@ -20,7 +21,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             config.options.isAuthenticated = false;
             config.map([{
                     route: 'login',
-                    moduleId: './login/login',
+                    moduleId: './login/view',
                     title: 'Login',
                     name: 'login',
                     isLogin: true
@@ -49,11 +50,12 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             }, 500);
         };
         App.prototype.logout = function () {
-            this.router['options'].isAuthenticated = !this.router['options'].isAuthenticated;
+            this.appState.IsAuthenticated = false;
+            this.appState.Username = null;
         };
         App = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])
         ], App);
         return App;
     })();

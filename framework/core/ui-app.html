@@ -21,7 +21,7 @@
 		<ui-menu router.bind="router"></ui-menu>
 
 
-		<div class="ui-loading-shim" if.bind="router.isNavigating || $parent.isHttpInUse">
+		<div class="ui-loading-shim" if.bind="router.isNavigating || appState.isHttpInUse">
 			<div class="ui-loader">
 				<span class="spin fi-elegant-wheel1"></span>
 				<span class="spin-opp fi-elegant-wheel1 second"></span>

@@ -1,9 +1,8 @@
-<template>
-	<div class="ui-input-group" ref="_list" ref-id="${id}">
+<template class="ui-input-group ui-list" ref="_list" ref-id="${id}">
 
-		<label class="ui-label ${_labelClasses}" innerhtml.bind="label"></label>
+		<label class="ui-label ${_labelClasses}" innerhtml.bind="label" show.bind="!_noLabel" for.bind="_id"></label>
 
-		<div class="ui-form-control ui-list">
+		<div class="ui-form-control">
 			<div class="ui-addon" if.bind="addonClass || addonIcon || addonText">
 				<span class="${addonIcon} ${addonClass}" if.bind="addonClass || addonIcon"></span>
 				<span if.bind="addonText">${addonText}</span>
@@ -15,7 +14,7 @@
 			<div ref="_options">
 				<content></content>
 			</div>
-			<select ref="_input" value.bind="value" size="2" class="ui-list-input" maxlength="0" change.trigger="_changeSelection($event)"></select>
+			<select id.bind="_id" ref="_input" value.bind="value" size="2" class="ui-list-input" maxlength="0" change.trigger="_changeSelection($event)"></select>
 			<ul size="5" ref="_select" class="ui-input ui-list-container ${_inputClasses}"
 				click.delegate="_changeSelection($event)">
 			</ul>
@@ -25,5 +24,4 @@
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>
 		</div>
-	</div>
 </template>

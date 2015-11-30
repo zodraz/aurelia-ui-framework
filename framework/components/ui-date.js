@@ -9,11 +9,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_utils_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-input"], function (require, exports, aurelia_framework_1, ui_utils_1, ui_input_1) {
     var UIDate = (function () {
         function UIDate(element) {
             this.element = element;
             this._clear = false;
+            this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;
             this._labelClasses = '';
@@ -34,6 +35,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.disabled = false;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
+            if (element.hasAttribute('nolabel'))
+                this._noLabel = true;
             if (element.hasAttribute('clear'))
                 this._clear = true;
             if (element.hasAttribute('range')) {
@@ -43,6 +46,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             }
             else if (element.hasAttribute('inline')) {
                 this.inline = true;
+                this._noLabel = true;
                 this.range = false;
             }
             if (element.hasAttribute('disabled'))
@@ -52,6 +56,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.dt = ui_utils_1.moment().format('DD');
         }
         UIDate.prototype.attached = function () {
+            this._id = "date-" + ui_input_1.UIInput._id++;
             if (this.inline && (this._inputStart = this._inputInline))
                 $(this._date).remove();
             else
@@ -216,7 +221,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
                 defaultValue: null
             }),
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-date'), 
             __metadata('design:paramtypes', [Element])
         ], UIDate);

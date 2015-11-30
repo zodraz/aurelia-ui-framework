@@ -7,11 +7,18 @@
 import * as ld from "lodash";
 import * as mm from "moment";
 import * as nm from "numeral";
+import {Lazy} from "aurelia-framework";
 
 
 export var _       = ld;
 export var moment  = mm;
 export var numeral = nm;
+
+export module Utils {
+	export function lazy(T, container) {
+		return Lazy.of(T).get(container);
+	}
+}
 
 // Format
 export module Format {

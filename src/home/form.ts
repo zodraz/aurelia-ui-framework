@@ -1,23 +1,53 @@
 import {_, moment} from "../../framework/utils/ui-utils";
+import {autoinject} from "aurelia-framework";
+import {ensure, Validation} from "aurelia-validation";
 export {KeysValueConverter, DateValueConverter} from "../../framework/utils/ui-converters";
 
+@autoinject()
 export class HomeForm {
-	opts   = 3;
-	hasLoc = true;
-	fname  = 'adarsh';
-	lname  = 'pastakia';
-	email  = 'adarshpastakia@outlook.com';
+	model = {
+		opts: 3,
+		hasLoc: true,
+		fname: 'adarsh',
+		lname: 'pastakia',
 
-	pos = '25.4,76.5';
+		email: 'adarshpastakia@outlook.com',
+		pos: '25.4,76.5',
 
-	phoneCode    = '055';
-	phoneNumber  = '6347342';
-	phoneCountry = 'ae';
+		phoneCode: '055',
+		phoneNumber: '6347342',
+		phoneCountry: 'ae',
+		phone: '',
 
-	list = '4';
+		list: '4',
 
-	date  = null;
-	range = {start: null, end: null};
+		date: null,
+		range: {start: null, end: null}
+
+	}
+
+	validation;
+
+	constructor(_validation:Validation) {
+		this.validation = _validation
+			.on(this, null)
+			.ensure('model.email')
+			.isNotEmpty()
+			.ensure('model.fname')
+			.isNotEmpty()
+			.ensure('model.lname')
+			.isNotEmpty()
+			.ensure('model.phoneCountry')
+			.isNotEmpty()
+			.ensure('model.phone')
+			.isNotEmpty()
+			.isPhone();
+	}
+
+	onSubmit() {
+		this.validation.validate();
+	}
+
 
 	countries = _.groupBy(window.countries, 'continent');
 

@@ -6,9 +6,11 @@
  *    @description
  *    This plugin provides an application container with header, footer and side drawer menu
  **/
-import {customElement, containerless, bindable} from "aurelia-framework";
+import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIApplicationState} from "../utils/ui-app-state";
 
+@autoinject()
 @containerless()
 @customElement("ui-app")
 export class UIApp {
@@ -23,7 +25,7 @@ export class UIApp {
 
 	private uiApp;
 
-	constructor() {
+	constructor(public appState:UIApplicationState) {
 		$.notify.addStyle('ui', {
 			html: "<div><div data-notify-html></div></div>"
 		});

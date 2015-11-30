@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
+import {UIInput} from "./ui-input";
 
 /**
  * @bindable value
@@ -31,14 +32,15 @@ import {UIEvent} from "../utils/ui-event";
 // TODO: add support for multi select
 
 @autoinject()
-@containerless()
 @customElement('ui-list')
 export class UIList {
+	private _id;
 	private _list;
 	private _input;
 	private _select;
 	private _options;
 	private _clear:boolean       = false;
+	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
 	private _labelClasses:string = '';
@@ -61,6 +63,7 @@ export class UIList {
 	constructor(public element:Element) {
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('clear')) this._clear = true;
+		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
@@ -77,6 +80,7 @@ export class UIList {
 	}
 
 	attached() {
+		this._id = `list-${UIInput._id++}`;
 		$(this._list).data('UIList', this)
 		$(this._select)
 			.html(this._getListItems())

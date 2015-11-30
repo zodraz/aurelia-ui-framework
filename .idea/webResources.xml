@@ -2,6 +2,20 @@
 <project version="4">
   <component name="WebResourcesPaths">
     <contentEntries>
+      <entry url="file://$PROJECT_DIR$/../auf-release">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/../auf-release" />
+          </resourceRoots>
+        </entryData>
+      </entry>
+      <entry url="file://$PROJECT_DIR$/../auf-skeleton">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/../auf-skeleton" />
+          </resourceRoots>
+        </entryData>
+      </entry>
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>

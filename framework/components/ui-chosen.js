@@ -9,11 +9,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-input"], function (require, exports, aurelia_framework_1, ui_event_1, ui_input_1) {
     var UIChosen = (function () {
         function UIChosen(element) {
             this.element = element;
             this._clear = false;
+            this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;
             this._labelClasses = '';
@@ -34,6 +35,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('clear'))
                 this._clear = true;
+            if (element.hasAttribute('nolabel'))
+                this._noLabel = true;
             if (element.hasAttribute('readonly'))
                 this.readonly = true;
             if (element.hasAttribute('disabled'))
@@ -53,6 +56,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIChosen.prototype.attached = function () {
             var _this = this;
+            this._id = "chosen-" + ui_input_1.UIInput._id++;
             $(this._chosen).data('UIChosen', this);
             $(this._select)
                 .append($(this._options).children())
@@ -159,7 +163,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 defaultValue: false
             }),
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-chosen'), 
             __metadata('design:paramtypes', [Element])
         ], UIChosen);

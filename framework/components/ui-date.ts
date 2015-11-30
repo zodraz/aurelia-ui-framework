@@ -8,6 +8,7 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 import {UIEvent} from "../utils/ui-event";
 import {moment, _} from "../utils/ui-utils";
 import DPOptions = DatetimePicker.DPOptions;
+import {UIInput} from "./ui-input";
 
 /**
  * @bindable value
@@ -44,14 +45,15 @@ import DPOptions = DatetimePicker.DPOptions;
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-date')
 export class UIDate {
+	private _id;
 	private _date;
 	private _inputStart;
 	private _inputEnd;
 	private _inputInline;
 	private _clear:boolean       = false;
+	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
 	private _labelClasses:string = '';
@@ -79,6 +81,7 @@ export class UIDate {
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
+		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('clear')) this._clear = true;
 		if (element.hasAttribute('range')) {
 			this.range  = true;
@@ -86,8 +89,9 @@ export class UIDate {
 			this.format = 'DD/MM/YYYY';
 		}
 		else if (element.hasAttribute('inline')) {
-			this.inline = true;
-			this.range  = false;
+			this.inline   = true;
+			this._noLabel = true;
+			this.range    = false;
 		}
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
@@ -96,6 +100,7 @@ export class UIDate {
 	}
 
 	attached() {
+		this._id = `date-${UIInput._id++}`;
 		if (this.inline && (this._inputStart = this._inputInline)) $(this._date).remove();
 		else $(this._inputInline).remove();
 

@@ -112,6 +112,7 @@ $input-text: $base-text !default;
 $input-label-text: if($dark-theme, $cadet-gray, $smoke) !default;
 $input-border: $base-border-color !default;
 $input-focus-color: $primary !default;
+$input-valid-color: $pine !default;
 $input-invalid-color: $madder-lake !default;
 $input-addon-text: $manatee !default;
 $input-addon-bg: if($dark-theme, $black-olive, $white-smoke) !default;

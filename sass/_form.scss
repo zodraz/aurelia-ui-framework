@@ -9,7 +9,7 @@
   @include flex-row($align: stretch, $justify: flex-start, $wrap: true);
   border-radius: $base-border-radius;
 
-  > .ui-column {
+  > .ui-row > .ui-column {
 	min-width: $grid-sm-max;
 	&.ui-col-auto {
 	  @include flex(1 1 420px);
@@ -29,11 +29,21 @@
   margin-bottom: 0.3rem;
   padding: 0 0.3rem;
 
-  &.ui-invalid .ui-input {
-	border-color: rgba($input-invalid-color, 0.85);
-	&:focus {
-	  border-color: rgba($input-invalid-color, 0.85);
-	  @include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+  .ui-help-block {
+	@include flex(1 1 100%);
+	font-size: 0.85rem;
+	color: $danger;
+	display: inline-block;
+	padding: 0 0.2rem 0 120px;
+  }
+
+  &.ui-label-top {
+	.ui-label {
+	  text-align: start;
+	}
+
+	.ui-help-block {
+	  padding: 0 0.2rem;
 	}
   }
 
@@ -197,6 +207,51 @@
 		  opacity: .6;
 		}
 	  }
+	}
+  }
+
+  &.ui-invalid {
+	.ui-label {
+	  color: $danger;
+	}
+
+	.ui-input, .ui-addon, .ui-button, .ui-checkbox {
+	  border-color: rgba($input-invalid-color, 0.85);
+	}
+
+	.ui-input {
+	  border-color: rgba($input-invalid-color, 0.85);
+	  &:focus {
+		border-color: rgba($input-invalid-color, 0.85);
+		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+	  }
+	}
+
+	.ui-addon {
+	  color: $coconut;
+	  background-color: $input-invalid-color;
+	}
+  }
+
+  &.ui-valid {
+	.ui-label {
+	  color: $input-valid-color;
+	}
+
+	.ui-input, .ui-addon, .ui-button, .ui-checkbox {
+	  border-color: rgba($input-valid-color, 0.85);
+	}
+
+	.ui-input {
+	  &:focus {
+		border-color: rgba($input-valid-color, 0.85);
+		@include box-shadow(0 0 4px 0 $success, 0 1px 1px 0 #ddd inset);
+	  }
+	}
+
+	.ui-addon {
+	  color: $coconut;
+	  background-color: $input-valid-color;
 	}
   }
 }

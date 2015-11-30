@@ -22,6 +22,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this._noLabel = false;
             this._double = false;
             this._checkbox = false;
+            this._classes = '';
             this._labelClasses = '';
             this._inputClasses = '';
             this.value = '';
@@ -55,6 +56,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._double = true;
             if (element.hasAttribute('checkbox'))
                 this._checkbox = true;
+            if (element.hasAttribute('label-top'))
+                this._classes = 'ui-label-top';
+            if (element.hasAttribute('password'))
+                this._type = 'password';
             if (element.hasAttribute('email'))
                 this._type = 'email';
             if (element.hasAttribute('search'))
@@ -97,9 +102,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIInput.prototype.attached = function () {
             var _this = this;
+            this._id = "input-" + UIInput._id++;
             this._input = $(this._inputGroup)
                 .data('UIInput', this)
                 .find('.ui-input');
+            if (this._type == 'password') {
+                this._input.attr('type', 'password');
+            }
             this._input[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
                 .attr(this.readonly !== false ? 'readonly' : 'R', '')
                 .attr(this.disabled !== false ? 'disabled' : 'D', '')
@@ -239,6 +248,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             $event.cancelBubble = true;
             ui_event_1.UIEvent.fireEvent('click', this.element, this, this._input);
         };
+        UIInput._id = 0;
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
@@ -314,7 +324,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 defaultValue: 'us'
             }),
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-input'), 
             __metadata('design:paramtypes', [Element])
         ], UIInput);

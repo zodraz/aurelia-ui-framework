@@ -61,11 +61,13 @@ import {UIEvent} from "../utils/ui-event";
 
 
 @autoinject()
-@containerless()
 @customElement('ui-input')
 export class UIInput {
-	private _inputGroup;
+	static _id = 0;
+
+	private _id;
 	private _input;
+	private _inputGroup;
 	private _value1:string       = '';
 	private _value2:string       = '';
 	private _placeholder1:string = '';
@@ -75,6 +77,7 @@ export class UIInput {
 	private _noLabel:boolean     = false;
 	private _double:boolean      = false;
 	private _checkbox:boolean    = false;
+	private _classes:string      = '';
 	private _labelClasses:string = '';
 	private _inputClasses:string = '';
 
@@ -110,7 +113,9 @@ export class UIInput {
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('double')) this._double = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
+		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 		// check types
+		if (element.hasAttribute('password')) this._type = 'password';
 		if (element.hasAttribute('email')) this._type = 'email';
 		if (element.hasAttribute('search')) this._type = 'search';
 		if (element.hasAttribute('number')) this._type = 'number';
@@ -146,9 +151,13 @@ export class UIInput {
 	}
 
 	attached() {
+		this._id    = `input-${UIInput._id++}`;
 		this._input = $(this._inputGroup)
 			.data('UIInput', this)
 			.find('.ui-input');
+		if (this._type == 'password') {
+			this._input.attr('type', 'password');
+		}
 		this._input
 			[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
 			.attr(this.readonly !== false ? 'readonly' : 'R', '')

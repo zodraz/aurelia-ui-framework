@@ -70,6 +70,16 @@
 	> .ui-column {
 	  padding: 0.25rem 0;
 	}
+
+	&.ui-self-start {
+	  @include align-self(flex-start);
+	}
+	&.ui-self-center {
+	  @include align-self(center);
+	}
+	&.ui-self-end {
+	  @include align-self(flex-end);
+	}
   }
 
   .ui-col-auto {

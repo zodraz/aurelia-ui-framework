@@ -1,11 +1,12 @@
 <template>
 	<ui-app title.bind="appTitle" start-year="2015" router.bind="router">
 		<template replace-part="quick-links">
-			<p if.bind="router.options.isAuthenticated">Logged in as user@clubhotel.com</p>
+			<p if.bind="appState.IsAuthenticated">Logged in as user@clubhotel.com</p>
 			<ui-button primary icon="fi-bigmug-line-right153"
-					   click.trigger="logout()" if.bind="router.options.isAuthenticated"></ui-button>
-			<ui-button primary icon="fi-bigmug-line-login12"
-					   click.trigger="login()" if.bind="!router.options.isAuthenticated">Sign In</ui-button>
+					   click.trigger="logout()" if.bind="appState.IsAuthenticated"></ui-button>
+			<a class="ui-button ui-button-primary"
+			   href="#/login" if.bind="!appState.IsAuthenticated">
+				<span class="fi-bigmug-line-login12"></span> Sign In</a>
 		</template>
 	</ui-app>
 </template>

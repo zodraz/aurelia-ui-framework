@@ -1,5 +1,5 @@
-<template>
-	<form class="ui-form ui-row ${_classes} ${class}"
+<template class="ui-form">
+	<form class="ui-row ${_classes}" role="form" validate.bind="validation"
 		  keyup.delegate="_keyup($event)" ref="_form" ref-id="${id}">
 		<content></content>
 	</form>

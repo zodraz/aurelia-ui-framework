@@ -1,4 +1,7 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations"], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1) {
+    function __export(m) {
+        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
     function configure(aurelia) {
         aurelia.globalResources('./core/ui-app');
         aurelia.globalResources('./core/ui-page');
@@ -27,7 +30,16 @@ define(["require", "exports"], function (require, exports) {
         aurelia.globalResources('./components/ui-option');
         aurelia.globalResources('./components/ui-chosen');
         aurelia.globalResources('./components/ui-tree');
+        aurelia.globalResources('./components/ui-login');
         aurelia.globalResources('./components/ui-markdown');
     }
     exports.configure = configure;
+    __export(ui_app_state_1);
+    __export(ui_converters_1);
+    __export(ui_event_1);
+    __export(ui_http_service_1);
+    __export(ui_model_1);
+    __export(ui_tree_models_1);
+    __export(ui_utils_1);
+    __export(ui_validations_1);
 });

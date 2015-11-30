@@ -1,15 +1,15 @@
 <template>
 	<ul class="ui-menu ${_classes}" click.delegate="_linkClicked($event)" ref="_menu">
-		<div if.bind="router.isRoot && router.options.isAuthenticated" class="ui-auth-info">
+		<div if.bind="router.isRoot && appState.IsAuthenticated" class="ui-auth-info">
 		</div>
-		<li if.bind="router.isRoot && !router.options.isAuthenticated">
+		<li if.bind="router.isRoot && !appState.IsAuthenticated">
 			<a class="ui-menu-link ui-strong" href="#/login">Sign In
 				<i class="push-right fi-bigmug-line-login12"></i></a>
 			<hr/>
 		</li>
 		<p class="ui-menu-title" if.bind="title">${title}</p>
 		<li repeat.for="route of router.navigation"
-			if.bind="!route.config.auth || (route.config.auth && router.options.isAuthenticated)">
+			if.bind="!route.config.auth || (route.config.auth && appState.IsAuthenticated)">
 			<hr if.bind="route.settings.sectionStart"/>
 			<p class="ui-menu-section" if.bind="route.settings.sectionTitle">${route.settings.sectionTitle}</p>
 			<a class="ui-menu-link ${route.isActive ? 'ui-active' : ''}" href.bind="route.href">

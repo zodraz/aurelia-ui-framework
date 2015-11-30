@@ -7,6 +7,7 @@
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 import {Router} from "aurelia-router";
 import {UIEvent} from "../utils/ui-event";
+import {UIApplicationState} from "../utils/ui-app-state";
 
 @autoinject()
 @containerless()
@@ -20,7 +21,7 @@ export class UIMenu {
 	private _classes:string   = '';
 	private _floating:boolean = false;
 
-	constructor(public element:Element) {
+	constructor(public element:Element, public appState:UIApplicationState) {
 		this._floating = element.hasAttribute('dropdown');
 	}
 

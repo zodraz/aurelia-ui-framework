@@ -13,6 +13,7 @@ System.config({
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.1",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1",
+	"aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1",
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.0.0-beta.1.0.1",
     "aurelia-validation": "npm:aurelia-validation@0.6.0",

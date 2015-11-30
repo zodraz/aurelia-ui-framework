@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
+import {UIInput} from "./ui-input";
 
 /**
  * @bindable value
@@ -29,14 +30,15 @@ import {UIEvent} from "../utils/ui-event";
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-chosen')
 export class UIChosen {
+	private _id;
+	private _value;
 	private _chosen;
 	private _select;
 	private _options;
-	private _value;
 	private _clear:boolean       = false;
+	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
 	private _labelClasses:string = '';
@@ -60,6 +62,7 @@ export class UIChosen {
 	constructor(public element:Element) {
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('clear')) this._clear = true;
+		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
@@ -76,6 +79,7 @@ export class UIChosen {
 	}
 
 	attached() {
+		this._id    = `chosen-${UIInput._id++}`;
 		$(this._chosen).data('UIChosen', this)
 		$(this._select)
 			.append($(this._options).children())

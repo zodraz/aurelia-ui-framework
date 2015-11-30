@@ -2,19 +2,20 @@
 	<ui-scroll>
 		<div class="pad-all">
 			<h4 class="margin-v">Forms</h4>
-			<ui-form class="border-all pad-v">
+			<ui-form class="border-all pad-v" validate.bind="validation" submit.trigger="onSubmit()">
 				<ui-column>
-					<ui-input name required clear value.bind="fname">First Name</ui-input>
+					<ui-input name required clear value.bind="model.fname">First Name</ui-input>
 				</ui-column>
 				<ui-column>
-					<ui-input name required clear value.bind="lname">Last Name</ui-input>
+					<ui-input name required clear value.bind="model.lname">Last Name</ui-input>
 				</ui-column>
 				<ui-column>
-					<ui-input email addon-icon="fi-elegant-mail9" required clear value.bind="email">Email</ui-input>
+					<ui-input email addon-icon="fi-elegant-mail9" required clear value.bind="model.email">Email
+					</ui-input>
 				</ui-column>
 				<ui-column>
-					<ui-chosen addon-icon.bind="phoneCountry" addon-class="ui-flag" required
-							   value.bind="phoneCountry" label="Country" placeholder="Select a country">
+					<ui-chosen addon-icon.bind="model.phoneCountry" addon-class="ui-flag" required
+							   value.bind="model.phoneCountry" label="Country" placeholder="Select a country">
 						<optgroup repeat.for="region of countries | keys" label="${region}">
 							<option value="${ctry.iso2.toLowerCase()}" repeat.for="ctry of countries[region]"
 									class="ui-icon ui-flag ${ctry.iso2}" model.bind="ctry">
@@ -24,16 +25,17 @@
 					</ui-chosen>
 				</ui-column>
 				<ui-column>
-					<ui-input position checkbox checked.bind="hasLoc" value.bind="pos" placeholder="Latitude,Longitude"
+					<ui-input position checkbox checked.bind="model.hasLoc" value.bind="model.pos"
+							  placeholder="Latitude,Longitude"
 							  addon-icon="fi-elegant-map5"
 							  required clear>Location
 					</ui-input>
 				</ui-column>
 				<ui-column>
-					<ui-input phone required clear value.bind="phone"
-							  phone-code.bind="phoneCode"
-							  phone-number.bind="phoneNumber"
-							  phone-country.bind="phoneCountry">Phone
+					<ui-input phone required clear value.bind="model.phone"
+							  phone-code.bind="model.phoneCode"
+							  phone-number.bind="model.phoneNumber"
+							  phone-country.bind="model.phoneCountry">Phone
 					</ui-input>
 				</ui-column>
 				<ui-column>
@@ -45,30 +47,30 @@
 				<ui-column full row>
 					<ui-column width="120px"></ui-column>
 					<ui-column fill>
-						<p>First Name: ${fname}</p>
+						<p>First Name: ${model.fname}</p>
 
-						<p>Last Name: ${lname}</p>
+						<p>Last Name: ${model.lname}</p>
 
-						<p>Email: ${email}</p>
+						<p>Email: ${model.email}</p>
 
-						<p>Date: ${date | date}</p>
+						<p>Date: ${model.date | date}</p>
 					</ui-column>
 					<ui-column width="120px"></ui-column>
 					<ui-column fill>
 
-						<p>Phone: ${phone}, Code: ${phoneCode}, Number: ${phoneNumber}</p>
+						<p>Phone: ${model.phone}, Code: ${model.phoneCode}, Number: ${model.phoneNumber}</p>
 
-						<p>Has Location: ${hasLoc?'Yes':'No'}, Location: ${pos}</p>
+						<p>Has Location: ${model.hasLoc?'Yes':'No'}, Location: ${model.pos}</p>
 
-						<p>Radio: ${opts}, List: ${list}</p>
+						<p>Radio: ${model.opts}, List: ${model.list}</p>
 
-						<p>Range: ${range.start | date} - ${range.end | date}</p>
+						<p>Range: ${model.range.start | date} - ${model.range.end | date}</p>
 
 					</ui-column>
 				</ui-column>
 				<ui-column>
 					<ui-column>
-						<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="tags">
+						<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="model.tags">
 							<option value="tag-1">Tag-1</option>
 							<option value="tag-2">Tag-2</option>
 							<option value="tag-3">Tag-3</option>
@@ -79,16 +81,16 @@
 							<option value="tag-8">Tag-8</option>
 							<option value="tag-9">Tag-9</option>
 						</ui-chosen>
-						<p class="ui-text-muted ui-font-small" style="padding-left: 125px;">Tags: ${tags}</p>
+						<p class="ui-text-muted ui-font-small" style="padding-left: 125px;">Tags: ${model.tags}</p>
 					</ui-column>
 					<ui-column>
-						<ui-date required value.bind="date">Date</ui-date>
+						<ui-date required value.bind="model.date">Date</ui-date>
 					</ui-column>
 					<ui-column>
-						<ui-date range required value.bind="range">Range</ui-date>
+						<ui-date range required value.bind="model.range">Range</ui-date>
 					</ui-column>
 					<ui-column>
-						<ui-list label="Simple List" value.bind="list">
+						<ui-list label="Simple List" value.bind="model.list">
 							<optgroup label="Primary">
 								<option value="1" class="ui-icon ui-flag ae">Emirate</option>
 								<option value="2" class="ui-icon ui-flag in">India</option>
@@ -106,7 +108,7 @@
 					</ui-column>
 				</ui-column>
 				<ui-column class="ui-align-center">
-					<ui-date inline value.bind="date">Inline Date</ui-date>
+					<ui-date inline value.bind="model.date">Inline Date</ui-date>
 				</ui-column>
 				<ui-column>
 					<ui-option-group label="Checkboxes">
@@ -119,7 +121,7 @@
 					</ui-option-group>
 				</ui-column>
 				<ui-column>
-					<ui-option-group label="Radios" value.bind="opts">
+					<ui-option-group label="Radios" value.bind="model.opts">
 						<ui-option radio name="radio" value="1">Radio 1</ui-option>
 						<ui-option radio name="radio" value="2">Radio 2</ui-option>
 						<ui-option radio name="radio" value="3">Radio 3</ui-option>

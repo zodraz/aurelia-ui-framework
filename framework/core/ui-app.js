@@ -9,9 +9,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_router_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-app-state"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_app_state_1) {
     var UIApp = (function () {
-        function UIApp() {
+        function UIApp(appState) {
+            this.appState = appState;
             this.thisYear = new Date().getFullYear();
             $.notify.addStyle('ui', {
                 html: "<div><div data-notify-html></div></div>"
@@ -49,9 +50,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
             __metadata('design:type', String)
         ], UIApp.prototype, "startYear");
         UIApp = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-app"), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])
         ], UIApp);
         return UIApp;
     })();

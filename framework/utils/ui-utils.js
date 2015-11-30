@@ -1,7 +1,14 @@
-define(["require", "exports", "lodash", "moment", "numeral"], function (require, exports, ld, mm, nm) {
+define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"], function (require, exports, ld, mm, nm, aurelia_framework_1) {
     exports._ = ld;
     exports.moment = mm;
     exports.numeral = nm;
+    var Utils;
+    (function (Utils) {
+        function lazy(T, container) {
+            return aurelia_framework_1.Lazy.of(T).get(container);
+        }
+        Utils.lazy = lazy;
+    })(Utils = exports.Utils || (exports.Utils = {}));
     var Format;
     (function (Format) {
         function toHTML(value) {

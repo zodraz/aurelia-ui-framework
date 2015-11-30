@@ -45,9 +45,7 @@ All application components will be written using custom aurelia elements.
 	* Body `ui-body`
 	* Stats Bar `ui-statsbar`
 	* Sidebar `ui-sidebar`
-	
-Find library for anchoring floating divs, toast (maybe toastr)
-	
+		
 # IMPORTANT
 Convert existing page components to generic components that can be used for modal, panel and page
 
