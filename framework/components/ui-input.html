@@ -1,0 +1,29 @@
+<template class="form-group ui-input-group ${_classes}" ref="_inputGroup" ref-id="${id}">
+
+	<label class="ui-label ${_labelClasses}" show.bind="!_noLabel" for.bind="_id">
+		<content></content>
+	</label>
+
+	<div class="ui-form-control">
+		<div class="ui-addon" if.bind="addonIcon || addonText">
+			<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
+			<span if.bind="addonText">${addonText}</span>
+		</div>
+		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
+			<input class="ui-option-input" type="checkbox" checked.bind="checked"/>
+			<span class="ui-check-mark"></span>
+		</div>
+		<input class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
+			   size="1" if.bind="!_area" id.bind="_id"/>
+		<input class="ui-input ${_inputClasses} ui-secondary" placeholder="${_placeholder2}" value.bind="_value2"
+			   size="1" if.bind="!_area && _double" id.bind="_id"/>
+
+			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
+					  cols="10" rows="5" if.bind="_area" id.bind="_id"></textarea>
+
+		<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
+				click.trigger="_buttonClick($event)">
+			<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
+		</button>
+	</div>
+</template>
