@@ -5,9 +5,9 @@ declare module "aurelia-ui-framework" {
 	import {Logger} from "aurelia-logging";
 	import {ValidationGroup} from "aurelia-validation";
 
-	export var _;
-	export var moment;
-	export var numeral;
+	export var _:_.LoDashStatic;
+	export var moment:moment.Moment;
+	export var numeral:numeral.Numeral;
 
 	export class UIValidation {}
 	export class AuthInterceptor {}
