@@ -6,7 +6,7 @@ export function configure(aurelia:Aurelia) {
 	aurelia.use
 		.standardConfiguration()
 		.developmentLogging()
-		.feature('framework')
+		.plugin('aurelia-ui-framework')
 		.plugin('aurelia-validation', (config) => {
 			config.useViewStrategy(new UIValidation());
 		});
