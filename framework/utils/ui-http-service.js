@@ -79,7 +79,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             })
                 .then(function (response) { return response.json(); });
         };
-        UIHttpService.prototype.remove = function (slug) {
+        UIHttpService.prototype.delete = function (slug) {
             return this.httpClient
                 .fetch(slug, {
                 method: 'delete',

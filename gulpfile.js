@@ -95,8 +95,11 @@ gulp.task('aurelia:skeleton', function () {
 		.pipe(gulp.dest(skeleton));
 });
 gulp.task('aurelia:release', function () {
-	return gulp.src(['./config.js', './package.json', './sass/_*.scss', './dist/aurelia-ui-framework.js'], {base: './'})
+	gulp.src(['./config.js', './package.json', './sass/_*.scss'], {base: './'})
 		.pipe(gulp.dest(release));
+	gulp.src(['./framework/**/*.js', './framework/**/*.html'], {base: './framework'})
+		.pipe(gulp.dest(release));
+	return;
 });
 
 gulp.task('watch', function () {
@@ -108,8 +111,8 @@ gulp.task('build', function () {
 	runSequence('sass:compile', 'scripts:compile');
 });
 
-gulp.task('production', ['build'], function () {
-	runSequence('aurelia:bundle', 'aurelia:pages', 'aurelia:skeleton', 'aurelia:release', 'aurelia:unbundle');
+gulp.task('production', function () {
+	runSequence('build', 'aurelia:bundle', 'aurelia:pages', 'aurelia:skeleton', 'aurelia:release', 'aurelia:unbundle');
 });
 
 gulp.task('serve', ['build'], function (done) {

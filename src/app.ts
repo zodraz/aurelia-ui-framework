@@ -46,7 +46,6 @@ export class App {
 	}
 
 	constructor(public appState:UIApplicationState) {
-
 	}
 
 	logout() {

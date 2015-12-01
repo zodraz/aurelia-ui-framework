@@ -1,7 +1,4 @@
-define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations"], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1) {
-    function __export(m) {
-        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-    }
+define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations", './libs/chosen', './libs/notify', './libs/marked', './libs/phonelib', './libs/countries', './libs/datepicker'], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1) {
     function configure(aurelia) {
         aurelia.globalResources('./core/ui-app');
         aurelia.globalResources('./core/ui-page');
@@ -34,12 +31,19 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
         aurelia.globalResources('./components/ui-markdown');
     }
     exports.configure = configure;
-    __export(ui_app_state_1);
-    __export(ui_converters_1);
-    __export(ui_event_1);
-    __export(ui_http_service_1);
-    __export(ui_model_1);
-    __export(ui_tree_models_1);
-    __export(ui_utils_1);
-    __export(ui_validations_1);
+    exports.UIApplicationState = ui_app_state_1.UIApplicationState;
+    exports.DateValueConverter = ui_converters_1.DateValueConverter;
+    exports.KeysValueConverter = ui_converters_1.KeysValueConverter;
+    exports.MarkdownValueConverter = ui_converters_1.MarkdownValueConverter;
+    exports.SortValueConverter = ui_converters_1.SortValueConverter;
+    exports.UIEvent = ui_event_1.UIEvent;
+    exports.UIHttpService = ui_http_service_1.UIHttpService;
+    exports.UIModel = ui_model_1.UIModel;
+    exports.UITreeModel = ui_tree_models_1.UITreeModel;
+    exports._ = ui_utils_1._;
+    exports.moment = ui_utils_1.moment;
+    exports.numeral = ui_utils_1.numeral;
+    exports.Format = ui_utils_1.Format;
+    exports.Utils = ui_utils_1.Utils;
+    exports.UIValidation = ui_validations_1.UIValidation;
 });

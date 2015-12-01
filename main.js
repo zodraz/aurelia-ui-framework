@@ -1,4 +1,4 @@
-define(["require", "exports", "./framework/utils/ui-validations", 'jquery', 'lodash', 'moment', 'numeral', 'libs/chosen', 'libs/notify', 'libs/marked', 'libs/phonelib', 'libs/countries', 'libs/datepicker'], function (require, exports, ui_validations_1) {
+define(["require", "exports", "./framework/utils/ui-validations", 'jquery', 'lodash', 'moment', 'numeral', './framework/libs/chosen', './framework/libs/notify', './framework/libs/marked', './framework/libs/phonelib', './framework/libs/countries', './framework/libs/datepicker'], function (require, exports, ui_validations_1) {
     function configure(aurelia) {
         aurelia.use
             .standardConfiguration()
