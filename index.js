@@ -1,4 +1,4 @@
-define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations"], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1) {
+define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations", 'libs/chosen', 'libs/notify', 'libs/marked', 'libs/phonelib', 'libs/countries', 'libs/datepicker'], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1) {
     function configure(aurelia) {
         aurelia.globalResources('./core/ui-app');
         aurelia.globalResources('./core/ui-page');
