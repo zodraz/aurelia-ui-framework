@@ -15,7 +15,7 @@ export class App {
 		//.addPipelineStep('authorize', AuthInterceptor)
 		config.map([{
 			route: 'login',
-			moduleId: './login/login',
+			moduleId: './login/view',
 			title: 'Login',
 			name: 'login',
 			isLogin: true
