@@ -1,0 +1,32 @@
+<template>
+	<div ref="uiApp" class="ui-app" mouseup.delegate="hideMenu($event)">
+		<div class="ui-app-header">
+			<button class="ui-app-menu-handle" click.trigger="showMenu($event)">
+				<span class="fi-elegant-square18"></span>
+			</button>
+			<div class="ui-divider"></div>
+			<div class="ui-app-logo"></div>
+			<h1>${title}<span if.bind="subTitle">${subTitle}</span></h1>
+
+			<template replaceable part="quick-links"></template>
+		</div>
+		<router-view class="ui-app-view"></router-view>
+		<div class="ui-app-footer">
+			<p>&copy; ${startYear}-${thisYear} Hospitality Marketing Concepts</p>
+
+			<p>With &hearts; for HMC</p>
+		</div>
+
+		<div class="ui-app-menu-shim"></div>
+		<ui-menu router.bind="router"></ui-menu>
+
+
+		<div class="ui-loading-shim" if.bind="router.isNavigating || appState.isHttpInUse">
+			<div class="ui-loader">
+				<span class="spin fi-elegant-wheel1"></span>
+				<span class="spin-opp fi-elegant-wheel1 second"></span>
+			</div>
+		</div>
+	</div>
+
+</template>
