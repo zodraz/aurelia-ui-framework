@@ -9,6 +9,7 @@ sudo jspm install text
 sudo jspm install jquery
 sudo jspm install core-js
 sudo jspm install aurelia-router
+sudo jspm install aurelia-logging
 sudo jspm install aurelia-framework
 sudo jspm install aurelia-validation
 sudo jspm install aurelia-bootstrapper
