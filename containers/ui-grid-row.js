@@ -10,26 +10,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
-    var UIPanel = (function () {
-        function UIPanel(element) {
-            this.element = element;
-            this.collapse = false;
+    var UIGridRow = (function () {
+        function UIGridRow(el) {
             this.class = '';
+            this._classes = '';
+            if (el.hasAttribute('nowrap'))
+                this._classes += ' ui-nowrap ';
+            if (el.hasAttribute('stretch'))
+                this._classes += ' ui-stretch ';
+            if (el.hasAttribute('center'))
+                this._classes += ' ui-center ';
+            if (el.hasAttribute('start'))
+                this._classes += ' ui-start ';
+            if (el.hasAttribute('end'))
+                this._classes += ' ui-end ';
         }
-        UIPanel.prototype.close = function () {
-            $(this._panel).remove();
-        };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIPanel.prototype, "class");
-        UIPanel = __decorate([
+        ], UIGridRow.prototype, "class");
+        UIGridRow = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
-            aurelia_framework_1.customElement('ui-panel'), 
+            aurelia_framework_1.customElement('ui-row'), 
             __metadata('design:paramtypes', [Element])
-        ], UIPanel);
-        return UIPanel;
+        ], UIGridRow);
+        return UIGridRow;
     })();
-    exports.UIPanel = UIPanel;
+    exports.UIGridRow = UIGridRow;
 });

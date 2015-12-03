@@ -1,9 +1,13 @@
 <template>
-	<div class="ui-hide" ref="_temp"><content></content></div>
-	<button type="submit" class="ui-button ${_classes}" value.bind="value"
+	<div class="ui-hide" ref="_temp">
+		<content></content>
+	</div>
+	<button if.bind="!href" type="button" class="ui-button ${_classes}" value.bind="value"
 			ref="_button" click.trigger="_clicked($event)" ref-id="${id}">
 		${label}
 	</button>
+	<a if.bind="href" class="ui-button ${_classes}" value.bind="value" href.bind="href"
+	   ref="_link" role="button" click.trigger="_clicked($event)" ref-id="${id}">${label}</a>
 	<ui-menu dropdown if.bind="menu" menu.bind="_menuItems"
 			 click.trigger="_menuClicked($event)">
 	</ui-menu>

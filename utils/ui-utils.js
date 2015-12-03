@@ -1,11 +1,12 @@
-define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"], function (require, exports, ld, mm, nm, aurelia_framework_1) {
+define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework", "aurelia-dependency-injection"], function (require, exports, ld, mm, nm, aurelia_framework_1, aurelia_dependency_injection_1) {
     exports._ = ld;
     exports.moment = mm;
     exports.numeral = nm;
     var Utils;
     (function (Utils) {
-        function lazy(T, container) {
-            return aurelia_framework_1.Lazy.of(T).get(container);
+        var _c = new aurelia_dependency_injection_1.Container();
+        function lazy(T) {
+            return aurelia_framework_1.Lazy.of(T).get(_c)();
         }
         Utils.lazy = lazy;
     })(Utils = exports.Utils || (exports.Utils = {}));
@@ -44,9 +45,22 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
             return exports.moment(value).fromNow(false);
         }
         Format.fromNow = fromNow;
-        function numberDisplay(value, format, symbol) {
+        function numberDisplay(value, format) {
+            if (format === void 0) { format = '0[.]00'; }
+            if (isNaN(parseFloat(value)))
+                return value;
+            return exports.numeral(value)
+                .format(format)
+                .replace(/[^\d]+/g, function (txt) {
+                return "<small>" + txt.toUpperCase() + "</small>";
+            });
+        }
+        Format.numberDisplay = numberDisplay;
+        function currencyDisplay(value, format, symbol) {
             if (format === void 0) { format = '$ 0[.]00'; }
-            if (symbol === void 0) { symbol = ''; }
+            if (symbol === void 0) { symbol = '$'; }
+            if (isNaN(parseFloat(value)))
+                return value;
             return exports.numeral(value)
                 .format(format)
                 .replace('$', symbol)
@@ -54,8 +68,10 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                 return "<small>" + txt.toUpperCase() + "</small>";
             });
         }
-        Format.numberDisplay = numberDisplay;
+        Format.currencyDisplay = currencyDisplay;
         function exRate(value) {
+            if (isNaN(parseFloat(value)))
+                return ' ';
             if (parseFloat(value || 0) <= 0)
                 return ' ';
             return numberDisplay(1 / parseFloat(value), '0.0000a') + '/$';

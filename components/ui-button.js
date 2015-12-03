@@ -56,6 +56,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._classes += "ui-button-" + this._size + " ";
             if (this._default !== false)
                 this._classes += "ui-default ";
+        };
+        UIButton.prototype.attached = function () {
+            var _this = this;
+            if (this.href)
+                this._button = this._link;
             if (this.icon)
                 this._attachIcon();
             if (this.menu && this._menuRight) {
@@ -64,9 +69,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.menu) {
                 $(this._button).append('&nbsp;<i class="ui-caret"></i>');
             }
-        };
-        UIButton.prototype.attached = function () {
-            var _this = this;
             if (this.menu) {
                 $(this._temp).children().each(function (i, c) {
                     c = $(c);
@@ -75,7 +77,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                     if (c.is('section'))
                         _this._menuItems.push(c.text());
                     if (c.is('menu'))
-                        _this._menuItems.push({ id: c.attr('link-id'), icon: c.attr('icon'), title: c.text() });
+                        _this._menuItems.push({
+                            id: c.attr('data-id'),
+                            icon: c.attr('icon'),
+                            href: c.attr('href') || 'javascript:;',
+                            title: c.text()
+                        });
                 });
             }
             else
@@ -103,7 +110,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                     console.log('hide');
                     return false;
                 }
-                console.log('show');
                 if (!this._menu)
                     this._menu = $(this._button).next('.ui-menu');
                 $(this._menu)
@@ -112,7 +118,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 $(this._button)
                     .toggleClass('ui-dropdown')
                     .removeClass('ui-menu-reverse');
-                var o = $(this._button).offset(), t = o.top, l = o.left, w = $(this._button).outerWidth(), h = $(this._button).outerHeight(), mh = $(this._menu).outerHeight(), ph = $(this._menu).offsetParent().height();
+                var o = $(this._button).offset(), t = o.top, l = o.left, w = $(this._button).outerWidth(), h = $(this._button).outerHeight(), mh = $(this._menu).outerHeight(), mw = $(this._menu).outerWidth(), pw = $(this._menu).offsetParent().width(), ph = $(this._menu).offsetParent().height();
                 if (!this._menuRight) {
                     $(this._menu).css('min-width', w);
                     if (o.top + mh > ph) {
@@ -121,6 +127,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                     }
                     else {
                         t += h;
+                    }
+                    if (o.left + mw > pw) {
+                        l -= (mw - w);
                     }
                 }
                 else {
@@ -135,11 +144,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             else {
                 ui_event_1.UIEvent.fireEvent('click', this.element, this, this._button);
             }
+            return true;
         };
         UIButton.prototype._menuClicked = function ($event) {
             $event.cancelBubble = true;
             $('.ui-dropdown').removeClass('ui-dropdown');
             ui_event_1.UIEvent.fireEvent('menuclick', this.element, $event.data, this._button);
+            return true;
         };
         __decorate([
             aurelia_framework_1.bindable, 
@@ -157,6 +168,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIButton.prototype, "icon");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIButton.prototype, "href");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

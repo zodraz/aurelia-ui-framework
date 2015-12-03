@@ -35,4 +35,22 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         return DateValueConverter;
     })();
     exports.DateValueConverter = DateValueConverter;
+    var NumberValueConverter = (function () {
+        function NumberValueConverter() {
+        }
+        NumberValueConverter.prototype.toView = function (value, format) {
+            return ui_utils_1.Format.numberDisplay(value, format);
+        };
+        return NumberValueConverter;
+    })();
+    exports.NumberValueConverter = NumberValueConverter;
+    var CurrencyValueConverter = (function () {
+        function CurrencyValueConverter() {
+        }
+        CurrencyValueConverter.prototype.toView = function (value, format, symbol) {
+            return ui_utils_1.Format.currencyDisplay(value, format, symbol);
+        };
+        return CurrencyValueConverter;
+    })();
+    exports.CurrencyValueConverter = CurrencyValueConverter;
 });

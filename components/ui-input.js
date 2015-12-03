@@ -173,12 +173,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIInput.prototype.disabledChanged = function (newValue) {
             this._input
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+                .attr(newValue !== false ? 'disabled' : '', '');
         };
         UIInput.prototype.readonlyChanged = function (newValue) {
             this._input
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
+                .attr(newValue !== false ? 'readonly' : '', '');
         };
         UIInput.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {

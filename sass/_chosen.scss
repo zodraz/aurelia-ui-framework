@@ -32,7 +32,7 @@
 
 	.chosen-container {
 	  border: 1px solid $input-border;
-	  background: $input-bg;
+	  background-color: $input-bg;
 
 	  &:nth-child(2) {
 		border-top-left-radius: $base-border-radius !important;
@@ -40,7 +40,7 @@
 	  }
 
 	  .chosen-drop {
-		background: $input-bg;
+		background-color: $input-bg;
 
 		.group-result {
 		  color: $text-muted;

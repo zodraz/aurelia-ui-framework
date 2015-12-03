@@ -29,7 +29,7 @@
 
   .bootstrap-datetimepicker-widget {
 	padding: 2px 0 0;
-	background: $base-bg;
+	background-color: $base-bg;
 
 	> ul, > ul > li {
 	  padding: 0;
@@ -101,7 +101,7 @@
 		color: $primary;
 		font-weight: $font-weight-strong !important;
 		&:hover {
-		  background: rgba($date-active-bg, 0.25);
+		  background-color: rgba($date-active-bg, 0.25);
 		}
 		&:after {
 		  content: '\e091';
@@ -112,7 +112,7 @@
 	  .prev, .next {
 		color: $primary;
 		&:hover:not(.disabled) {
-		  background: rgba($date-active-bg, 0.25);
+		  background-color: rgba($date-active-bg, 0.25);
 		}
 		&.disabled {
 		  color: $date-disabled-text;
@@ -151,14 +151,14 @@
 		  }
 		  &.active {
 			color: $date-active-text;
-			background: $date-active-bg;
+			background-color: $date-active-bg;
 		  }
 		}
 		td.new, td.old {
 		  color: $date-next-text;
 		  &.active {
 			color: $date-active-text;
-			background: rgba($date-active-bg, 0.5);
+			background-color: rgba($date-active-bg, 0.5);
 		  }
 		}
 		td.today {
@@ -189,7 +189,7 @@
 		}
 		&.active {
 		  color: $date-active-text;
-		  background: $date-active-bg;
+		  background-color: $date-active-bg;
 		}
 		&.disabled {
 		  color: $date-disabled-text;

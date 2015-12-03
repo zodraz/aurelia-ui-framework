@@ -27,7 +27,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIForm.prototype.busyChanged = function (newValue) {
             try {
-                $(this.element).find('input, select, textarea, button').attr(newValue === true ? 'disabled' : 'd', '');
+                $(this.element).find('input, select, textarea, button')
+                    .removeAttr('disabled')
+                    .attr(newValue === true ? 'disabled' : '', '');
             }
             catch (e) {
             }

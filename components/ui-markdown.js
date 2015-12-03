@@ -13,6 +13,7 @@ define(["require", "exports", "aurelia-framework", '../utils/ui-converters'], fu
     exports.MarkdownValueConverter = ui_converters_1.MarkdownValueConverter;
     var UIMarkdown = (function () {
         function UIMarkdown(element) {
+            this._classes = '';
             this._labelClasses = '';
             this._inputClasses = '';
             this.id = '';
@@ -26,6 +27,8 @@ define(["require", "exports", "aurelia-framework", '../utils/ui-converters'], fu
                 this.readonly = true;
             if (element.hasAttribute('disabled'))
                 this.disabled = true;
+            if (element.hasAttribute('label-top'))
+                this._classes = 'ui-label-top';
         }
         UIMarkdown.prototype.bind = function () {
             this.value = this.value || '';

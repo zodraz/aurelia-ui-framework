@@ -9,11 +9,11 @@
 h1, h2, h3, h4, h5, h6, p, ul, li, ol, dt, dd, dl {
   margin: 0;
   padding: 0.3rem 0.7rem;
-  position: relative;
+  position: initial;
 }
 
 div, template {
-  position: relative;
+  position: initial;
   display: block;
 }
 

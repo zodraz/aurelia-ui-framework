@@ -33,7 +33,7 @@
 	position: relative;
 	border-radius: 3px;
 	color: $input-option-color;
-	background: $input-bg;
+	background-color: $input-bg;
 	//border: 1px solid $input-option-color;
 	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 $white);
 

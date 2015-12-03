@@ -74,7 +74,7 @@ html, body {
 	@include flex(0 0 auto);
 	@include box-shadow(0 0 2px 0 #333);
 
-	background: $app-header-bg;
+	background-color: $app-header-bg;
 	color: $app-header-text;
 	z-index: 5;
 	padding-right: .3rem;
@@ -94,7 +94,7 @@ html, body {
 	  font-variant: small-caps;
 	  padding: 0.35rem 0.3rem;
 	  span {
-		font-size: 0.9rem;
+		font-size: 0.75em;
 		display: block;
 	  }
 	}
@@ -132,7 +132,7 @@ html, body {
 
 	font-size: 0.5rem;
 	color: $spanish-gray;
-	background: $black-olive;
+	background-color: $black-olive;
 	border-top: 1px solid $base-border-color;
 
 	p {
@@ -156,7 +156,7 @@ html, body {
 	  @include box-shadow(0 0 2px 0 #333);
 
 	  color: $app-header-text;
-	  background: lighten($app-header-bg, 4%);
+	  background-color: lighten($app-header-bg, 4%);
 	  padding: $base-padding;
 	  font: {
 		weight: $font-weight-strong;
@@ -176,7 +176,7 @@ html, body {
 	min-width: 220px;
 	max-width: 300px;
 	color: $app-menu-text;
-	background: $app-menu-bg;
+	background-color: $app-menu-bg;
 	overflow: auto;
 	z-index: 1001;
 	@if ($app-menu-bg-image) {
@@ -187,7 +187,7 @@ html, body {
 	  @include sticky();
 	  top: 0;
 	  padding: $base-padding;
-	  background: $app-menu-bg;
+	  background-color: $app-menu-bg;
 	  @if ($app-menu-bg-image) {
 		background-image: image_url($app-menu-bg-image);
 	  }
@@ -201,7 +201,7 @@ html, body {
 	  &.ui-active {
 		position: relative;
 		color: $menu-active-text;
-		background: $menu-active-bg;
+		background-color: $menu-active-bg;
 		@include box-shadow(0 0 3px 0 #222 inset);
 
 		&:after {
@@ -228,7 +228,7 @@ html, body {
 
 	opacity: 0;
 	display: none;
-	background: rgba(#888, 0.5);
+	background-color: rgba(#888, 0.5);
 	z-index: 1000;
   }
 
@@ -258,7 +258,7 @@ html, body {
   > .ui-loader {
 	@include flex(0 0 auto);
 	@include backdrop-blur(2px);
-	background: rgba($white-smoke, 0.85);
+	background-color: rgba($white-smoke, 0.85);
 	box-shadow: 0 0 4px 1px rgba($smoke, .3);
 	border-radius: 0.5rem;
 	padding: 17px 17px 8px 8px;

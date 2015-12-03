@@ -17,6 +17,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             this.eventAggregator = eventAggregator;
             var self = this;
             this.logger = aurelia_logging_1.getLogger('HttpService');
+            this.logger.debug('Initialized');
             httpClient.configure(function (config) {
                 config
                     .withBaseUrl(appState.BaseUrl)
@@ -50,6 +51,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             });
         }
         UIHttpService.prototype.get = function (slug) {
+            this.logger.debug("get [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'get',
@@ -59,6 +61,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                 .then(function (response) { return response.json(); });
         };
         UIHttpService.prototype.put = function (slug, obj) {
+            this.logger.debug("put [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'put',
@@ -69,7 +72,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                 .then(function (response) { return response.json(); });
         };
         UIHttpService.prototype.post = function (slug, obj) {
-            this.logger.info('DoPost!');
+            this.logger.debug("post [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'post',
@@ -80,6 +83,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                 .then(function (response) { return response.json(); });
         };
         UIHttpService.prototype.delete = function (slug) {
+            this.logger.debug("delete [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'delete',
@@ -97,7 +101,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             };
             if (this.appState.AllowAuthHeader &&
                 this.appState.Username !== null) {
-                var token = this.appState.Username + ":" + this.appState.PassToken;
+                var token = this.appState.AuthUser + ":" + this.appState.AuthToken;
                 var hash = btoa(token);
                 headers['Authorization'] = "Basic " + hash;
             }

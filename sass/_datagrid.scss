@@ -54,7 +54,7 @@
 
 	td {
 	  overflow: hidden;
-	  background: $white;
+	  background-color: $white;
 	}
 
 	td.sticky {
@@ -98,7 +98,7 @@
 		@include flex-direction(row);
 		@include align-items(stretch);
 		overflow: hidden;
-		background: $table-bg;
+		background-color: $table-bg;
 		border-bottom: 1px solid $base-border-color;
 		p {
 		  @include flex(1 1 auto);
@@ -111,7 +111,7 @@
 		&.sortable {
 		  cursor: pointer;
 		  &:hover {
-			background: $table-hover-bg;
+			background-color: $table-hover-bg;
 		  }
 
 		  p {
@@ -173,20 +173,20 @@
 	  z-index: 10;
 
 	  tr:nth-of-type(odd) > td > div {
-		background: $table-bg;
+		background-color: $table-bg;
 	  }
 	  tr:nth-of-type(even) > td > div {
-		background: $table-alt-bg;
+		background-color: $table-alt-bg;
 	  }
 
 	  tr:hover:not(.active) > td > div {
-		background: $table-hover-bg;
+		background-color: $table-hover-bg;
 		@include transition(background 0.2s linear 0.5s);
 	  }
 
 	  tr.active > td > div {
 		@include transition(background 0.05s linear 0s);
-		background: $table-active-bg;
+		background-color: $table-active-bg;
 	  }
 
 	  tr:last-child {
@@ -201,7 +201,7 @@
 		height: 28px;
 		font-weight: $font-weight-strong;
 		font-size: 1.1em;
-		background: $table-bg;
+		background-color: $table-bg;
 		border-top: 1px solid $base-border-color;
 	  }
 	}

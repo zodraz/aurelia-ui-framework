@@ -12,7 +12,7 @@
   display: block;
 
   &.ui-floating {
-	@include position(absolute, null);
+	@include position(fixed, null);
 	@include transition(height 0.3s);
 	padding: 2px 0;
 	min-width: 120px;
@@ -21,7 +21,7 @@
 	display: none;
 	overflow: auto;
 	z-index: $zindex-floating;
-	background: $base-bg;
+	background-color: $base-bg;
 	border-radius: $base-border-radius;
 	border: 1px solid $base-border-color;
   }
@@ -30,6 +30,15 @@
 	hr {
 	  border-top-color: darken($menu-bg, 20%);
 	  border-bottom-color: lighten($menu-bg, 20%);
+	}
+
+	.ui-app-logo {
+	  @if ($app-logo) {
+		height: 45px;
+		margin: 0.2rem;
+		background: image_url($app-logo) no-repeat center center;
+		background-size: auto 100%;
+	  }
 	}
   }
 
@@ -75,11 +84,11 @@
 
 	  &:hover {
 		color: $menu-hover-text;
-		background: $menu-hover-bg;
+		background-color: $menu-hover-bg;
 	  }
 	  &:active {
 		color: $menu-active-text;
-		background: $menu-active-bg;
+		background-color: $menu-active-bg;
 	  }
 	  &.ui-active {
 		font-weight: $font-weight-strong;

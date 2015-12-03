@@ -26,6 +26,9 @@
 			  1px 1px 1px 0 rgba(#000, 0.5) inset,
 			  -1px -1px 1px 0 rgba(#fff, 0.5) inset);
 	}
+	i.ui-caret {
+	  color: rgba($color, 0.6);
+	}
   }
 }
 
@@ -35,6 +38,7 @@
 	size: 1rem;
 	weight: $font-weight-normal;
   }
+  line-height: 1.2rem;
   border: {
 	width: 1px;
 	style: solid;
