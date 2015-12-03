@@ -20,8 +20,8 @@ System.config({
       "npm:aurelia-event-aggregator@1.0.0-beta.1/aurelia-event-aggregator",
       "npm:aurelia-fetch-client@1.0.0-beta.1",
       "npm:aurelia-fetch-client@1.0.0-beta.1/aurelia-fetch-client",
-      "npm:aurelia-framework@1.0.0-beta.1.0.1",
-      "npm:aurelia-framework@1.0.0-beta.1.0.1/aurelia-framework",
+      "npm:aurelia-framework@1.0.0-beta.1.0.2",
+      "npm:aurelia-framework@1.0.0-beta.1.0.2/aurelia-framework",
       "npm:aurelia-history-browser@1.0.0-beta.1",
       "npm:aurelia-history-browser@1.0.0-beta.1/aurelia-history-browser",
       "npm:aurelia-history@1.0.0-beta.1",
@@ -354,8 +354,8 @@ System.config({
       "framework/containers/ui-form.js",
       "framework/containers/ui-grid-column.html!github:systemjs/plugin-text@0.0.3",
       "framework/containers/ui-grid-column.js",
-      "framework/containers/ui-grid.html!github:systemjs/plugin-text@0.0.3",
-      "framework/containers/ui-grid.js",
+      "framework/containers/ui-grid-row.html!github:systemjs/plugin-text@0.0.3",
+      "framework/containers/ui-grid-row.js",
       "framework/containers/ui-menu.html!github:systemjs/plugin-text@0.0.3",
       "framework/containers/ui-menu.js",
       "framework/containers/ui-option-group.html!github:systemjs/plugin-text@0.0.3",
@@ -391,6 +391,7 @@ System.config({
       "framework/libs/phonelib.js",
       "framework/utils/ui-app-state.js",
       "framework/utils/ui-converters.js",
+      "framework/utils/ui-dwr-service.js",
       "framework/utils/ui-event.js",
       "framework/utils/ui-http-service.js",
       "framework/utils/ui-model.js",
@@ -412,8 +413,8 @@ System.config({
       "npm:aurelia-event-aggregator@1.0.0-beta.1/aurelia-event-aggregator",
       "npm:aurelia-fetch-client@1.0.0-beta.1",
       "npm:aurelia-fetch-client@1.0.0-beta.1/aurelia-fetch-client",
-      "npm:aurelia-framework@1.0.0-beta.1.0.1",
-      "npm:aurelia-framework@1.0.0-beta.1.0.1/aurelia-framework",
+      "npm:aurelia-framework@1.0.0-beta.1.0.2",
+      "npm:aurelia-framework@1.0.0-beta.1.0.2/aurelia-framework",
       "npm:aurelia-history@1.0.0-beta.1",
       "npm:aurelia-history@1.0.0-beta.1/aurelia-history",
       "npm:aurelia-loader@1.0.0-beta.1",
@@ -695,7 +696,7 @@ System.config({
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
     "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
-    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.1",
+    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1",
@@ -708,7 +709,7 @@ System.config({
     "moment": "npm:moment@2.10.6",
     "numeral": "npm:numeral@1.5.3",
     "text": "github:systemjs/plugin-text@0.0.3",
-    "typescript": "npm:typescript@1.6.2",
+    "typescript": "npm:typescript@1.7.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -732,7 +733,7 @@ System.config({
     },
     "npm:aurelia-bootstrapper@1.0.0-beta.1": {
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1",
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.1",
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
       "aurelia-history": "npm:aurelia-history@1.0.0-beta.1",
       "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0-beta.1",
       "aurelia-loader-default": "npm:aurelia-loader-default@1.0.0-beta.1.0.1",
@@ -758,7 +759,7 @@ System.config({
     "npm:aurelia-fetch-client@1.0.0-beta.1": {
       "core-js": "npm:core-js@1.2.6"
     },
-    "npm:aurelia-framework@1.0.0-beta.1.0.1": {
+    "npm:aurelia-framework@1.0.0-beta.1.0.2": {
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.1",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
       "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1",
