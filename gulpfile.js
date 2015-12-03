@@ -48,21 +48,15 @@ var config = {
 	force: true,
 	packagePath: '.',
 	bundles: {
-		"dist/framework": {
+		"dist/app": {
 			includes: [
 				'main*',
 				'src/**/*',
-				'src/**/*.html!text'
-			],
-			options: {
-				inject: true,
-				minify: true
-			}
-		},
-		"dist/aurelia": {
-			includes: [
+				'src/**/*.html!text',
 				'jspm_packages/**/aurelia-*',
-				'jspm_packages/**/aurelia-validation*/resources/*'
+				'jspm_packages/**/aurelia-validation*/resources/*',
+				'jspm_packages/github/adarshpastakia/**/*',
+				'jspm_packages/github/adarshpastakia/**/*.html!text'
 			],
 			options: {
 				inject: true,

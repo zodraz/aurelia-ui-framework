@@ -1,3 +1,7 @@
+declare interface Window {
+	unescape(v?:any);
+}
+
 declare module "aurelia-ui-framework" {
 	import * as _ from "lodash";
 	import * as moment from "moment";
@@ -15,6 +19,8 @@ declare module "aurelia-ui-framework" {
 	export class KeysValueConverter {}
 	export class SortValueConverter {}
 	export class DateValueConverter {}
+	export class NumberValueConverter {}
+	export class CurrencyValueConverter {}
 	export class MarkdownValueConverter {}
 
 	export class UIEvent {
@@ -24,36 +30,69 @@ declare module "aurelia-ui-framework" {
 		static fireEvent(event:string, element:EventTarget, data?:any, source?:Element);
 	}
 
-	export interface UIHttpService {
+	export class UIHttpService {
 		get(slug:string);
+
 		post(slug:string, obj:any);
+
 		put(slug:string, obj:any);
+
 		delete(slug:string);
 	}
 
-	export interface UIModel {
+	export class UIDwrService {
+		execute(method:string, params:Array<any>, inject:boolean = true):Promise<ResponseHandler>;
+	}
+
+	export interface ResponseHandler {
+		data:any;
+		secondaryData:any;
+		thirdData:any;
+		fourthData:any;
+		fifthData:any;
+
+		exitCode:number;
+		error:string;
+	}
+
+	export class UIModel {
 		logger:Logger;
 		httpClient:UIHttpService;
 		validation:ValidationGroup;
+
 		get();
+
 		post();
+
 		put();
+
 		delete();
 	}
 
-	export interface UIApplicationState {
+	export class UIApplicationState {
 		IsAuthenticated:boolean;
 		IsHttpInUse:boolean;
 
 		Username:string;
-		PassToken:string;
+		AuthUser:string;
+		AuthToken:string;
 		UserGroup:string;
 		BaseUrl:string;
 
 		navigateTo(route:string, params?:any);
+
+		// Notifications
+		notifyError(msg);
+
+		notifyPageError(msg);
+
+		// Local Storage
+		getLocal(key:string):string;
+
+		setLocal(key:string, value?:string);
 	}
 
-	export interface UITreeModel {
+	export class UITreeModel {
 		id:any;
 		name:string;
 		level:number;
@@ -97,23 +136,30 @@ declare module "aurelia-ui-framework" {
 	}
 
 
-	export interface Utils {
-		lazy(T, container);
+	export module Utils {
+		export function lazy(T, container);
 	}
 
 	// Format
-	export interface Format {
-		toHTML(value:string):string;
-		// Dates
-		dateDisplay(value:any, format?:string);
+	export module Format {
+		export function toHTML(value:string):string;
 
-		dateISO(value:any);
-		dateOracle(value:any);
-		dateSql(value:any);
-		fromNow(value:any):string ;
+		// Dates
+		export function dateDisplay(value:any, format?:string);
+
+		export function dateISO(value:any);
+
+		export function dateOracle(value:any);
+
+		export function dateSql(value:any);
+
+		export function fromNow(value:any):string ;
 
 		// Numbers
-		numberDisplay(value:any, format?:string, symbol?:string);
-		exRate(value);
+		export function numberDisplay(value:any, format?:string);
+
+		export function currencyDisplay(value:any, format?:string, symbol?:string);
+
+		export function exRate(value);
 	}
 }
