@@ -3,7 +3,7 @@
 		<div class="ui-temp ui-hide">
 			<content></content>
 		</div>
-		<ui-form submit.trigger="doLogin()" class="ui-form ui-row ui-login pad-all" validate.bind="model.validation">
+		<ui-form submit.trigger="doLogin()" busy.bind="busy" class="ui-form ui-login pad-all" validate.bind="model.validation">
 			<div class="ui-col-fill pad-all">
 				<div class="ui-login-content"></div>
 				<hr/>
@@ -15,7 +15,7 @@
 				<ui-input clear label-top password value.bind="model.password" validate="password"
 						  placeholder="password">Password</ui-input>
 
-				<ui-option-group label="">
+				<ui-option-group label="" label-top>
 					<ui-option checkbox value.bind="model.remember">Login Automatically</ui-option>
 				</ui-option-group>
 

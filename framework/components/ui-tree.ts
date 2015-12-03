@@ -9,8 +9,6 @@ import {EventAggregator} from "aurelia-event-aggregator";
 import {UITreeModel, UITreeOptionsModel} from "../utils/ui-tree-models";
 import {_} from "../utils/ui-utils";
 
-export {SortValueConverter} from "../utils/ui-converters";
-
 /**
  * @bindable selected node value
  */

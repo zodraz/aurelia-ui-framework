@@ -6,8 +6,6 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 
-export {MarkdownValueConverter} from '../utils/ui-converters';
-
 /**
  * @bindable value
  */
@@ -24,6 +22,7 @@ export {MarkdownValueConverter} from '../utils/ui-converters';
 export class UIMarkdown {
 	private _input;
 	private _markdown;
+	private _classes:string      = '';
 	private _labelClasses:string = '';
 	private _inputClasses:string = '';
 
@@ -37,6 +36,7 @@ export class UIMarkdown {
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
+		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 	}
 
 	bind() {

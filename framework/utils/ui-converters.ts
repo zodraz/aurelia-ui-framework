@@ -29,3 +29,15 @@ export class DateValueConverter {
 		return Format.dateDisplay(value, format);
 	}
 }
+
+export class NumberValueConverter {
+	toView(value:any, format?:string) {
+		return Format.numberDisplay(value, format);
+	}
+}
+
+export class CurrencyValueConverter {
+	toView(value:any, format?:string, symbol?:string) {
+		return Format.currencyDisplay(value, format, symbol);
+	}
+}

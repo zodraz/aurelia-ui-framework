@@ -31,7 +31,7 @@ h6, .ui-h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  > small {
+  small {
 	display: block;
 	font-size: 0.85em;
 	color: $text-muted;
@@ -44,7 +44,7 @@ code {
   border-radius: 2px;
   color: $maroon;
   line-height: 1.8;
-  background: lighten($tulip, 20%);
+  background-color: lighten($tulip, 20%);
   font-weight: $font-weight-strong;
   word-break: keep-all;
 }
@@ -84,15 +84,15 @@ code {
 
 // Sizes
 .ui-font-small, small {
-  font-size: 0.75rem;
+  font-size: 0.75em;
 }
 
 .ui-font-big {
-  font-size: 1.15rem;
+  font-size: 1.15em;
 }
 
 .ui-font-large, big {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 // Colors
@@ -118,5 +118,30 @@ code {
 
 .ui-text-warning {
   color: $warning;
+}
+
+.ui-bg-primary {
+  background-color: $primary;
+  color: $primary-text;
+}
+
+.ui-bg-info {
+  background-color: $info;
+  color: $coconut;
+}
+
+.ui-bg-danger {
+  background-color: $danger;
+  color: $coconut;
+}
+
+.ui-bg-success {
+  background-color: $success;
+  color: $coconut;
+}
+
+.ui-bg-warning {
+  background-color: $warning;
+  color: $coconut;
 }
 

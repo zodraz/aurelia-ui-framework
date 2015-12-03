@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
     var UIButton = (function () {
         function UIButton(element) {
             this.element = element;
@@ -56,6 +56,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._classes += "ui-button-" + this._size + " ";
             if (this._default !== false)
                 this._classes += "ui-default ";
+        };
+        UIButton.prototype.attached = function () {
+            var _this = this;
+            if (this.href)
+                this._button = this._link;
             if (this.icon)
                 this._attachIcon();
             if (this.menu && this._menuRight) {
@@ -64,9 +69,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.menu) {
                 $(this._button).append('&nbsp;<i class="ui-caret"></i>');
             }
-        };
-        UIButton.prototype.attached = function () {
-            var _this = this;
             if (this.menu) {
                 $(this._temp).children().each(function (i, c) {
                     c = $(c);
@@ -75,7 +77,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                     if (c.is('section'))
                         _this._menuItems.push(c.text());
                     if (c.is('menu'))
-                        _this._menuItems.push({ id: c.attr('link-id'), icon: c.attr('icon'), title: c.text() });
+                        _this._menuItems.push({
+                            id: c.attr('data-id'),
+                            icon: c.attr('icon'),
+                            href: c.attr('href') || 'javascript:;',
+                            title: c.text()
+                        });
                 });
             }
             else
@@ -100,46 +107,31 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.menu) {
                 if ($(this._button).hasClass('ui-dropdown')) {
                     $(this._button).removeClass('ui-dropdown');
-                    console.log('hide');
                     return false;
                 }
-                console.log('show');
                 if (!this._menu)
                     this._menu = $(this._button).next('.ui-menu');
-                $(this._menu)
-                    .offset({ left: -1000, top: -1000 });
                 $('.ui-dropdown').removeClass('ui-dropdown');
+                var pos = ui_utils_1.Utils.getFloatPosition(this._button, this._menu, this._menuRight);
+                $(this._menu).offset({ left: pos.left, top: pos.top });
                 $(this._button)
                     .toggleClass('ui-dropdown')
                     .removeClass('ui-menu-reverse');
-                var o = $(this._button).offset(), t = o.top, l = o.left, w = $(this._button).outerWidth(), h = $(this._button).outerHeight(), mh = $(this._menu).outerHeight(), ph = $(this._menu).offsetParent().height();
-                if (!this._menuRight) {
-                    $(this._menu).css('min-width', w);
-                    if (o.top + mh > ph) {
-                        t -= mh;
-                        $(this._button).addClass('ui-menu-reverse');
-                    }
-                    else {
-                        t += h;
-                    }
-                }
-                else {
-                    l += w;
-                    if (o.top + mh > ph) {
-                        t -= (mh - h);
-                        $(this._button).addClass('ui-menu-reverse');
-                    }
-                }
-                $(this._menu).offset({ left: l, top: t });
+                if (pos.vReverse)
+                    $(this._button).addClass('ui-menu-reverse');
+                if (pos.hReverse)
+                    $(this._button).addClass('ui-menu-left');
             }
             else {
                 ui_event_1.UIEvent.fireEvent('click', this.element, this, this._button);
             }
+            return true;
         };
         UIButton.prototype._menuClicked = function ($event) {
             $event.cancelBubble = true;
             $('.ui-dropdown').removeClass('ui-dropdown');
             ui_event_1.UIEvent.fireEvent('menuclick', this.element, $event.data, this._button);
+            return true;
         };
         __decorate([
             aurelia_framework_1.bindable, 
@@ -157,6 +149,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIButton.prototype, "icon");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIButton.prototype, "href");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

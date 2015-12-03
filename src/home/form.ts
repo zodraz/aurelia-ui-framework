@@ -1,7 +1,6 @@
 import {_, moment} from "../../framework/utils/ui-utils";
 import {autoinject} from "aurelia-framework";
 import {ensure, Validation} from "aurelia-validation";
-export {KeysValueConverter, DateValueConverter} from "../../framework/utils/ui-converters";
 
 @autoinject()
 export class HomeForm {
@@ -24,6 +23,24 @@ export class HomeForm {
 		date: null,
 		range: {start: null, end: null}
 
+	}
+
+	lang        = 'null';
+	content:any = {
+		'null': 'No Language',
+		'EN': 'english sentence',
+		'VI': 'câu tiếng việt',
+		'ES': 'frase española',
+		'FR': 'phrase française'
+	};
+
+	languageChanged($event) {
+		if (!this.content[$event.data + '']) this.content[$event.data + ''] = '';
+		this.lang = $event.data + '';
+	}
+
+	languageRemoved($event) {
+		delete this.content[$event.data];
 	}
 
 	validation;

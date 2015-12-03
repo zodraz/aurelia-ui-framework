@@ -21,6 +21,7 @@ export class UIHttpService {
 				public eventAggregator:EventAggregator) {
 		var self    = this;
 		this.logger = getLogger('HttpService');
+		this.logger.debug('Initialized');
 
 		httpClient.configure(config => {
 			config
@@ -56,6 +57,7 @@ export class UIHttpService {
 
 	//**** SHARED METHODS ****//
 	get(slug:string) {
+		this.logger.debug(`get [${slug}]`);
 		return this.httpClient
 			.fetch(slug, {
 				method: 'get',
@@ -66,6 +68,7 @@ export class UIHttpService {
 	}
 
 	put(slug:string, obj) {
+		this.logger.debug(`put [${slug}]`);
 		return this.httpClient
 			.fetch(slug, {
 				method: 'put',
@@ -77,7 +80,7 @@ export class UIHttpService {
 	}
 
 	post(slug:string, obj) {
-		this.logger.info('DoPost!');
+		this.logger.debug(`post [${slug}]`);
 		return this.httpClient
 			.fetch(slug, {
 				method: 'post',
@@ -89,6 +92,7 @@ export class UIHttpService {
 	}
 
 	delete(slug:string) {
+		this.logger.debug(`delete [${slug}]`);
 		return this.httpClient
 			.fetch(slug, {
 				method: 'delete',
@@ -108,7 +112,7 @@ export class UIHttpService {
 
 		if (this.appState.AllowAuthHeader &&
 			this.appState.Username !== null) {
-			var token                = this.appState.Username + ":" + this.appState.PassToken;
+			var token                = this.appState.AuthUser + ":" + this.appState.AuthToken;
 			var hash                 = btoa(token);
 			headers['Authorization'] = "Basic " + hash;
 		}

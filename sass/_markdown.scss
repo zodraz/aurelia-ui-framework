@@ -19,7 +19,7 @@
   blockquote {
 	padding: 8px 15px;
 	border-left: 4px solid $primary;
-	background: darken($base-bg, 5%);
+	background-color: darken($base-bg, 5%);
   }
 
   a {
@@ -51,7 +51,7 @@
   }
 
   tr:nth-of-type(even) td {
-	background: #f0f0f0;
+	background-color: #f0f0f0;
   }
 
   hr {

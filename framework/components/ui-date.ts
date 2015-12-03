@@ -56,6 +56,7 @@ export class UIDate {
 	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
+	private _classes:string      = '';
 	private _labelClasses:string = '';
 	private _inputClasses:string = '';
 
@@ -95,6 +96,7 @@ export class UIDate {
 		}
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
+		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 
 		this.dt = moment().format('DD');
 	}
@@ -165,10 +167,12 @@ export class UIDate {
 
 	disabledChanged(newValue) {
 		$(this._inputStart)
+			.removeAttr('D')
 			.removeAttr('disabled')
 			.attr(newValue !== false ? 'disabled' : 'D', '');
 		if (this._inputEnd) {
 			$(this._inputEnd)
+				.removeAttr('D')
 				.removeAttr('disabled')
 				.attr(newValue !== false ? 'disabled' : 'D', '');
 		}

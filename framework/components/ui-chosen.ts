@@ -41,6 +41,7 @@ export class UIChosen {
 	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
+	private _classes:string      = '';
 	private _labelClasses:string = '';
 	private _inputClasses:string = '';
 
@@ -67,6 +68,7 @@ export class UIChosen {
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('multiple')) this._multiple = true;
+		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 	}
 
 	bind() {
@@ -105,6 +107,7 @@ export class UIChosen {
 
 	disabledChanged(newValue) {
 		$(this._select)
+			.removeAttr('D')
 			.removeAttr('disabled')
 			.attr(newValue !== false ? 'disabled' : 'D', '')
 			.trigger('chosen:updated');
@@ -112,6 +115,7 @@ export class UIChosen {
 
 	readonlyChanged(newValue) {
 		$(this._select)
+			.removeAttr('R')
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '')
 			.trigger('chosen:updated');

@@ -2,7 +2,7 @@
 	<div class="pad-all">
 		<h4 class="margin-v">Grid Layout</h4>
 
-		<ui-grid class="margin-v">
+		<ui-row class="margin-v">
 			<ui-column width="120px" class="border-all">width 120px</ui-column>
 			<ui-column auto class="border-all">col-auto</ui-column>
 			<ui-column fill class="border-all">col-fill</ui-column>
@@ -10,9 +10,9 @@
 			<ui-column auto class="border-all">col-auto</ui-column>
 			<ui-column fill class="border-all">col-fill</ui-column>
 			<ui-column full class="border-all">col-full</ui-column>
-		</ui-grid>
+		</ui-row>
 
-		<ui-grid class="margin-v">
+		<ui-row class="margin-v">
 			<ui-column row size="xl-6" class="margin-v border-all">
 				<p class="ui-col-full">xl-6</p>
 				<ui-column row size="lg-6" class="margin-v border-all">
@@ -103,9 +103,9 @@
 					</ui-column>
 				</ui-column>
 			</ui-column>
-		</ui-grid>
+		</ui-row>
 
-		<ui-grid class="margin-v">
+		<ui-row class="margin-v">
 			<ui-column size="xl-1 lg-2 md-4 sm-6" class="border-all">xl-1<br/>lg-2<br/>md-4<br/>sm-6</ui-column>
 			<ui-column size="xl-1 lg-2 md-4 sm-6" class="border-all">xl-1<br/>lg-2<br/>md-4<br/>sm-6</ui-column>
 			<ui-column size="xl-1 lg-2 md-4 sm-6" class="border-all">xl-1<br/>lg-2<br/>md-4<br/>sm-6</ui-column>
@@ -118,18 +118,18 @@
 			<ui-column size="xl-1 lg-2 md-4 sm-6" class="border-all">xl-1<br/>lg-2<br/>md-4<br/>sm-6</ui-column>
 			<ui-column size="xl-1 lg-2 md-4 sm-6" class="border-all">xl-1<br/>lg-2<br/>md-4<br/>sm-6</ui-column>
 			<ui-column size="xl-1 lg-2 md-4 sm-6" class="border-all">xl-1<br/>lg-2<br/>md-4<br/>sm-6</ui-column>
-		</ui-grid>
+		</ui-row>
 		<hr/>
 
 		<div class="margin-v">
 			<h5>Usage</h5>
 
 			<p><code>
-				&lt;ui-grid [nowrap] [start|center|end|stretch]>
+				&lt;ui-row [nowrap] [start|center|end|stretch]>
 				<br/>
 				&nbsp;&nbsp;&lt;ui-column [row] [top|middle|bottom|stretch] [ [size=?] | [width=?] | [<em>auto</em>|fill|full] ]>...
 				<br/>
-				&lt;/ui-grid>
+				&lt;/ui-row>
 			</code>
 
 			<p>Sizes: <code>xs-[1-12]</code>, <code>sm-[1-12]</code>, <code>md-[1-12]</code>, <code>lg-[1-12]</code>,

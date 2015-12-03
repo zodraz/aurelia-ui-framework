@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
+import {Utils} from "../utils/ui-utils";
 
 @autoinject()
 @containerless()
@@ -15,6 +16,7 @@ export class UIButton {
 	private _iconEl;
 	private _temp;
 	private _button;
+	private _link;
 	private _menu;
 	private _dropdown;
 
@@ -22,6 +24,7 @@ export class UIButton {
 	@bindable value:string;
 	@bindable label:string;
 	@bindable icon:string;
+	@bindable href:string;
 	@bindable id:string        = '';
 	@bindable disabled:boolean = false;
 
@@ -58,23 +61,29 @@ export class UIButton {
 			this._classes += `ui-button-${this._size} `;
 		if (this._default !== false)
 			this._classes += `ui-default `;
-		if (this.icon) this._attachIcon();
+	}
 
+	attached() {
+		if (this.href) this._button = this._link;
+		if (this.icon) this._attachIcon();
 		if (this.menu && this._menuRight) {
 			$(this._button).addClass('ui-menu-right');
 		}
 		if (this.menu) {
 			$(this._button).append('&nbsp;<i class="ui-caret"></i>');
 		}
-	}
 
-	attached() {
 		if (this.menu) {
 			$(this._temp).children().each((i, c:any)=> {
 				c = $(c);
 				if (c.is('divider'))this._menuItems.push('-');
 				if (c.is('section'))this._menuItems.push(c.text());
-				if (c.is('menu'))this._menuItems.push({id: c.attr('link-id'), icon: c.attr('icon'), title: c.text()});
+				if (c.is('menu'))this._menuItems.push({
+					id: c.attr('data-id'),
+					icon: c.attr('icon'),
+					href: c.attr('href') || 'javascript:;',
+					title: c.text()
+				});
 			});
 		}
 		else this.label = $(this._temp).text();
@@ -101,50 +110,30 @@ export class UIButton {
 		if (this.menu) {
 			if ($(this._button).hasClass('ui-dropdown')) {
 				$(this._button).removeClass('ui-dropdown');
-				console.log('hide');
 				return false;
 			}
-			console.log('show');
 			if (!this._menu) this._menu = $(this._button).next('.ui-menu');
-			$(this._menu)
-				.offset({left: -1000, top: -1000});
 			$('.ui-dropdown').removeClass('ui-dropdown');
+
+			let pos = Utils.getFloatPosition(this._button, this._menu, this._menuRight);
+			$(this._menu).offset({left: pos.left, top: pos.top});
 			$(this._button)
 				.toggleClass('ui-dropdown')
 				.removeClass('ui-menu-reverse');
-			let o  = $(this._button).offset(),
-				t  = o.top, l = o.left,
-				w  = $(this._button).outerWidth(),
-				h  = $(this._button).outerHeight(),
-				mh = $(this._menu).outerHeight(),
-				ph = $(this._menu).offsetParent().height();
-			if (!this._menuRight) {
-				$(this._menu).css('min-width', w);
-				if (o.top + mh > ph) {
-					t -= mh;
-					$(this._button).addClass('ui-menu-reverse');
-				}
-				else {
-					t += h;
-				}
-			}
-			else {
-				l += w;
-				if (o.top + mh > ph) {
-					t -= (mh - h);
-					$(this._button).addClass('ui-menu-reverse');
-				}
-			}
-			$(this._menu).offset({left: l, top: t});
+
+			if (pos.vReverse) $(this._button).addClass('ui-menu-reverse');
+			if (pos.hReverse) $(this._button).addClass('ui-menu-left');
 		}
 		else {
 			UIEvent.fireEvent('click', this.element, this, this._button);
 		}
+		return true;
 	}
 
 	_menuClicked($event) {
 		$event.cancelBubble = true;
 		$('.ui-dropdown').removeClass('ui-dropdown');
 		UIEvent.fireEvent('menuclick', this.element, $event.data, this._button);
+		return true;
 	}
 }

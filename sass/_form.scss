@@ -14,12 +14,10 @@
 	&.ui-col-auto {
 	  @include flex(1 1 420px);
 	  max-width: 100%;
-	  position: relative;
 	}
   }
 
   .ui-input-group > .ui-form-control {
-	@include flex(1 0 280px);
   }
 }
 
@@ -30,7 +28,7 @@
   padding: 0 0.3rem;
 
   .ui-help-block {
-	@include flex(1 1 100%);
+	@include flex(0 0 100%);
 	font-size: 0.85rem;
 	color: $danger;
 	display: inline-block;
@@ -38,6 +36,7 @@
   }
 
   &.ui-label-top {
+	width: 290px;
 	.ui-label {
 	  text-align: start;
 	}
@@ -49,6 +48,7 @@
 
   .ui-label {
 	@include flex(0 0 120px);
+	width: 120px;
 	color: $input-label-text;
 	padding: 0.4rem 0.95rem 0.2rem 0;
 	text-align: end;
@@ -83,7 +83,7 @@
 
   .ui-form-control {
 	@include flex-row($align: stretch, $wrap: false);
-	@include flex(1 0 auto);
+	@include flex(1 0 280px);
 	padding: 0;
 	position: relative;
 
@@ -94,7 +94,7 @@
 	  min-height: 26px;
 	  min-width: 26px;
 	  color: $input-addon-text;
-	  background: $input-addon-bg;
+	  background-color: $input-addon-bg;
 	  font: {
 		family: $input-font-family;
 		weight: 500;
@@ -148,7 +148,7 @@
 	.ui-markdown-editor {
 	  .ui-button-group {
 		padding: 0;
-		background: $toolbar-bg;
+		background-color: $toolbar-bg;
 		border: {
 		  width: 1px 1px 0;
 		  style: solid;
@@ -186,7 +186,7 @@
 	  padding: 0.5rem 1rem;
 	  z-index: 5;
 
-	  background: $input-bg;
+	  background-color: $input-bg;
 	  color: $input-text;
 	  border: {
 		width: 1px;

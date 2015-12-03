@@ -43,15 +43,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             $(this._switch)
                 .data('UISwitch', this)
                 .find('input')
-                .attr(this.disabled !== false ? 'disabled' : 'x', '');
+                .attr(this.disabled !== false ? 'disabled' : 'D', '');
             $(this._switch).find('label').last()
-                .attr(this.disabled !== false ? 'disabled' : 'x', '');
+                .attr(this.disabled !== false ? 'disabled' : 'D', '');
         };
         UISwitch.prototype.disabledChanged = function (newValue) {
             $(this._switch).find('input')
-                .attr(newValue !== false ? 'disabled' : 'x', '');
+                .removeAttr('D')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
             $(this._switch).find('label').last()
-                .attr(this.disabled !== false ? 'disabled' : 'x', '');
+                .removeAttr('D')
+                .attr(this.disabled !== false ? 'disabled' : 'D', '');
         };
         UISwitch.prototype._valueChanged = function (newValue) {
             ui_event_1.UIEvent.fireEvent('change', this.element, newValue, this._switch);

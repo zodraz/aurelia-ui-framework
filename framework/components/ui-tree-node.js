@@ -9,8 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "../utils/ui-tree-models", "../utils/ui-converters"], function (require, exports, aurelia_framework_1, aurelia_event_aggregator_1, ui_tree_models_1, ui_converters_1) {
-    exports.SortValueConverter = ui_converters_1.SortValueConverter;
+define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "../utils/ui-tree-models"], function (require, exports, aurelia_framework_1, aurelia_event_aggregator_1, ui_tree_models_1) {
     var TreeNode = (function () {
         function TreeNode(eventAggregator) {
             this.eventAggregator = eventAggregator;

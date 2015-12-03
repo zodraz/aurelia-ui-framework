@@ -39,5 +39,6 @@ export class UIMenu {
 		if (el.length == 1) {
 			UIEvent.fireEvent('click', this.element, {linkId: el.data('id'), title: el.text()}, this._menu);
 		}
+		return true;
 	}
 }

@@ -9,9 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-converters"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_converters_1) {
-    exports.KeysValueConverter = ui_converters_1.KeysValueConverter;
-    exports.DateValueConverter = ui_converters_1.DateValueConverter;
+define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1) {
     var HomeForm = (function () {
         function HomeForm(_validation) {
             this.model = {
@@ -29,6 +27,14 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 date: null,
                 range: { start: null, end: null }
             };
+            this.lang = 'null';
+            this.content = {
+                'null': 'No Language',
+                'EN': 'english sentence',
+                'VI': 'câu tiếng việt',
+                'ES': 'frase española',
+                'FR': 'phrase française'
+            };
             this.countries = ui_utils_1._.groupBy(window.countries, 'continent');
             this.md = "\n# Hello World\n\n##### I _Love_ ~~HTML~~ __Markdown__!\n\n---\n\nI can be __BOLD__, I can also be _ITALIC_, or you can ~~DELETE~~ me too!\n\nLook at me I'm a list\n\n* Item\n* Item\n* Item\n\nAnd I'm numbered\n\n1. Item\n2. Item\n3. Item\n\nI can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or show the whole url http://google.com\n\n![Image](images/heart.png) Dont you just love images!\n\n\n";
             this.validation = _validation
@@ -45,6 +51,14 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 .isNotEmpty()
                 .isPhone();
         }
+        HomeForm.prototype.languageChanged = function ($event) {
+            if (!this.content[$event.data + ''])
+                this.content[$event.data + ''] = '';
+            this.lang = $event.data + '';
+        };
+        HomeForm.prototype.languageRemoved = function ($event) {
+            delete this.content[$event.data];
+        };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
         };

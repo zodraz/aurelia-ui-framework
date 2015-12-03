@@ -36,12 +36,12 @@ $base-font-family-serif: 'Source Code Pro', 'Georgia', 'Times New Roman', serif 
 $base-font-family-sans-serif: 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 $base-font-family: $base-font-family-sans-serif !default;
 
-$base-padding: 0.3rem .8rem;
+$base-padding: 0.3rem .8rem !default;
 
-$zindex-splash: 50000;
-$zindex-notify: 10000;
-$zindex-floating: 500;
-$zindex-ribbon: 200;
+$zindex-splash: 50000 !default;
+$zindex-notify: 10000 !default;
+$zindex-floating: 500 !default;
+$zindex-ribbon: 200 !default;
 
 // APP
 $app-logo: 'logo.png' !default;
@@ -130,25 +130,25 @@ $date-disabled-text: if($dark-theme, $smoke, $ash-gray) !default;
 $date-next-text: if($dark-theme, $ash-gray, $smoke) !default;
 
 // DATAGRID
-$table-bg: $base-bg;
-$table-text: $base-text;
-$table-alt-bg: shade($base-bg, 4%);
-$table-hover-bg: rgba($primary, 0.15);
-$table-active-bg: rgba($primary, 0.25);
+$table-bg: $base-bg !default;
+$table-text: $base-text !default;
+$table-alt-bg: shade($base-bg, 4%) !default;
+$table-hover-bg: rgba($primary, 0.15) !default;
+$table-active-bg: rgba($primary, 0.25) !default;
 
 // NOTIFY
-$notify-info-bg: tint($info, 90%);
-$notify-info-text: darken(desaturate($info, 20%), 20%);
-$notify-info-border: desaturate($info, 15%);
-$notify-danger-bg: tint($danger, 90%);
-$notify-danger-text: darken(desaturate($danger, 20%), 20%);
-$notify-danger-border: desaturate($danger, 15%);
-$notify-success-bg: tint($success, 90%);
-$notify-success-text: darken(desaturate($success, 20%), 20%);
-$notify-success-border: desaturate($success, 15%);
-$notify-warning-bg: tint($warning, 90%);
-$notify-warning-text: darken(desaturate($warning, 20%), 20%);
-$notify-warning-border: desaturate($warning, 15%);
-$notify-primary-bg: tint($primary, 90%);
-$notify-primary-text: darken(desaturate($primary, 20%), 20%);
-$notify-primary-border: desaturate($primary, 15%);
+$notify-info-bg: tint($info, 90%) !default;
+$notify-info-text: darken(desaturate($info, 20%), 20%) !default;
+$notify-info-border: desaturate($info, 15%) !default;
+$notify-danger-bg: tint($danger, 90%) !default;
+$notify-danger-text: darken(desaturate($danger, 20%), 20%) !default;
+$notify-danger-border: desaturate($danger, 15%) !default;
+$notify-success-bg: tint($success, 90%) !default;
+$notify-success-text: darken(desaturate($success, 20%), 20%) !default;
+$notify-success-border: desaturate($success, 15%) !default;
+$notify-warning-bg: tint($warning, 90%) !default;
+$notify-warning-text: darken(desaturate($warning, 20%), 20%) !default;
+$notify-warning-border: desaturate($warning, 15%) !default;
+$notify-primary-bg: tint($primary, 90%) !default;
+$notify-primary-text: darken(desaturate($primary, 20%), 20%) !default;
+$notify-primary-border: desaturate($primary, 15%) !default;

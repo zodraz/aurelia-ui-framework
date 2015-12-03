@@ -222,12 +222,14 @@ export class UIInput {
 
 	disabledChanged(newValue) {
 		this._input
+			.removeAttr('D')
 			.removeAttr('disabled')
 			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
 		this._input
+			.removeAttr('R')
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}

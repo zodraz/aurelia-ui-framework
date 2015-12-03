@@ -1,4 +1,3 @@
-export {MarkdownValueConverter} from "../../framework/utils/ui-converters";
 export class HomeTabs {
 	md = `
 # Hello World

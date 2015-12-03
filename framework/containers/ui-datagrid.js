@@ -101,7 +101,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 return x.value;
             switch (column.dataType) {
                 case 'currency':
-                    return ui_utils_1.Format.numberDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
+                    return ui_utils_1.Format.currencyDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
                 case 'number':
                     return ui_utils_1.Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
                 case 'date':

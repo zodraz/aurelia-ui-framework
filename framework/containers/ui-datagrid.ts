@@ -135,7 +135,7 @@ export class UIDataGrid {
 		if (x.value) return x.value;
 		switch (column.dataType) {
 			case 'currency':
-				return Format.numberDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
+				return Format.currencyDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
 			case 'number':
 				return Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
 			case 'date':

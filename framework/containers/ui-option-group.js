@@ -13,9 +13,12 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
     var UIOptionGroup = (function () {
         function UIOptionGroup(element) {
             this.element = element;
+            this._classes = '';
             this.id = '';
             this.label = '';
             this.value = '';
+            if (element.hasAttribute('label-top'))
+                this._classes = 'ui-label-top';
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;

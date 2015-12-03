@@ -14,10 +14,15 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UIPanel(element) {
             this.element = element;
             this.collapse = false;
+            this.class = '';
         }
         UIPanel.prototype.close = function () {
             $(this._panel).remove();
         };
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIPanel.prototype, "class");
         UIPanel = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),

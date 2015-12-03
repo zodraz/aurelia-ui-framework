@@ -32,6 +32,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
             if (el.length == 1) {
                 ui_event_1.UIEvent.fireEvent('click', this.element, { linkId: el.data('id'), title: el.text() }, this._menu);
             }
+            return true;
         };
         __decorate([
             aurelia_framework_1.bindable, 

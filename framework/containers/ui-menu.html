@@ -1,6 +1,9 @@
 <template>
 	<ul class="ui-menu ${_classes}" click.delegate="_linkClicked($event)" ref="_menu">
 		<div if.bind="router.isRoot && appState.IsAuthenticated" class="ui-auth-info">
+			<div class="ui-app-logo" if.bind="router.options.showLogo"></div>
+			<p>Logged in as ${appState.Username}</p>
+			<p if.bind="appState.ipAddress">IP ${appState.ipAddress}</p>
 		</div>
 		<li if.bind="router.isRoot && !appState.IsAuthenticated">
 			<a class="ui-menu-link ui-strong" href="#/login">Sign In
@@ -13,13 +16,20 @@
 			<hr if.bind="route.settings.sectionStart"/>
 			<p class="ui-menu-section" if.bind="route.settings.sectionTitle">${route.settings.sectionTitle}</p>
 			<a class="ui-menu-link ${route.isActive ? 'ui-active' : ''}" href.bind="route.href">
-				<i class="ui-icon ${route.settings.navIcon}"></i>&nbsp;${route.title}</a>
+				<i class="ui-icon ${route.settings.navIcon}"></i>&nbsp;${route.settings.menuTitle || route.title}</a>
+		</li>
+
+		<li if.bind="router.isRoot && appState.IsAuthenticated">
+			<hr/>
+			<a class="ui-menu-link" click.trigger="logout()">
+				<i class="ui-icon fi-bigmug-line-right153"></i>&nbsp;Logout</a>
 		</li>
 
 		<li repeat.for="link of menu">
 			<hr if.bind="link==='-'"/>
 			<p class="ui-menu-section" if.bind="link.length && link!=='-'">${link}</p>
-			<a if.bind="link.title" class="ui-menu-link ${link.isActive ? 'ui-active' : ''}" data-id="${link.id}">
+			<a if.bind="link.title" class="ui-menu-link ${link.isActive ? 'ui-active' : ''}"
+			   data-id="${link.id}" href.bind="link.href">
 				<i class="ui-icon ${link.icon}"></i>&nbsp;${link.title}</a>
 		</li>
 	</ul>

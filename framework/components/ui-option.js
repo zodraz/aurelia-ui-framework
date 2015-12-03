@@ -32,10 +32,13 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         };
         UIOption.prototype.attached = function () {
             $(this._option).data('UIOption', this);
-            $(this._input).attr(this.disabled !== false ? 'disabled' : 'x', '');
+            $(this._input).attr(this.disabled !== false ? 'disabled' : 'D', '');
         };
         UIOption.prototype.disabledChanged = function (newValue) {
-            $(this._input).attr(newValue !== false ? 'disabled' : 'x', '');
+            $(this._input)
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIOption.prototype._checkChanged = function ($event) {
             $event.data = this.checked;

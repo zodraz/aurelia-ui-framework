@@ -17,6 +17,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;
+            this._classes = '';
             this._labelClasses = '';
             this._inputClasses = '';
             this.value = '';
@@ -45,6 +46,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._checkbox = true;
             if (element.hasAttribute('multiple'))
                 this._multiple = true;
+            if (element.hasAttribute('label-top'))
+                this._classes = 'ui-label-top';
         }
         UIChosen.prototype.bind = function () {
             if (this.value) {
@@ -78,12 +81,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         };
         UIChosen.prototype.disabledChanged = function (newValue) {
             $(this._select)
+                .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '')
                 .trigger('chosen:updated');
         };
         UIChosen.prototype.readonlyChanged = function (newValue) {
             $(this._select)
+                .removeAttr('R')
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '')
                 .trigger('chosen:updated');

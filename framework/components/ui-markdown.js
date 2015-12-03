@@ -9,10 +9,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", '../utils/ui-converters'], function (require, exports, aurelia_framework_1, ui_converters_1) {
-    exports.MarkdownValueConverter = ui_converters_1.MarkdownValueConverter;
+define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIMarkdown = (function () {
         function UIMarkdown(element) {
+            this._classes = '';
             this._labelClasses = '';
             this._inputClasses = '';
             this.id = '';
@@ -26,6 +26,8 @@ define(["require", "exports", "aurelia-framework", '../utils/ui-converters'], fu
                 this.readonly = true;
             if (element.hasAttribute('disabled'))
                 this.disabled = true;
+            if (element.hasAttribute('label-top'))
+                this._classes = 'ui-label-top';
         }
         UIMarkdown.prototype.bind = function () {
             this.value = this.value || '';

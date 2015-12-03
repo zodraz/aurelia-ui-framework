@@ -48,7 +48,7 @@
   }
 
   .ui-ribbon {
-	background: $base-bg;
+	background-color: $base-bg;
 	color: $base-text;
 	text-align: center;
 	width: 125%;
@@ -66,31 +66,31 @@
 	}
 
 	&.ui-ribbon-primary {
-	  background: $primary;
+	  background-color: $primary;
 	  color: $primary-text;
 	  border-color: darken($primary, 20%);
 	}
 
 	&.ui-ribbon-success {
-	  background: $success;
+	  background-color: $success;
 	  color: $button-success-text;
 	  border-color: darken($success, 20%);
 	}
 
 	&.ui-ribbon-warning {
-	  background: $warning;
+	  background-color: $warning;
 	  color: $button-warning-text;
 	  border-color: darken($warning, 20%);
 	}
 
 	&.ui-ribbon-info {
-	  background: $info;
+	  background-color: $info;
 	  color: $button-info-text;
 	  border-color: darken($info, 20%);
 	}
 
 	&.ui-ribbon-danger {
-	  background: $danger;
+	  background-color: $danger;
 	  color: $button-danger-text;
 	  border-color: darken($danger, 20%);
 	}

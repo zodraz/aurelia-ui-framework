@@ -90,12 +90,14 @@ export class UIList {
 
 	disabledChanged(newValue) {
 		$(this._select)
+			.removeAttr('D')
 			.removeAttr('disabled')
 			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
 		$(this._select)
+			.removeAttr('R')
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}

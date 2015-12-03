@@ -17,6 +17,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;
+            this._classes = '';
             this._labelClasses = '';
             this._inputClasses = '';
             this.dt = '';
@@ -53,6 +54,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                 this.disabled = true;
             if (element.hasAttribute('checkbox'))
                 this._checkbox = true;
+            if (element.hasAttribute('label-top'))
+                this._classes = 'ui-label-top';
             this.dt = ui_utils_1.moment().format('DD');
         }
         UIDate.prototype.attached = function () {
@@ -127,10 +130,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         };
         UIDate.prototype.disabledChanged = function (newValue) {
             $(this._inputStart)
+                .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '');
             if (this._inputEnd) {
                 $(this._inputEnd)
+                    .removeAttr('D')
                     .removeAttr('disabled')
                     .attr(newValue !== false ? 'disabled' : 'D', '');
             }

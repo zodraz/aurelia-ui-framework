@@ -13,6 +13,8 @@ export class UIPanel {
 	private _panel;
 	private collapse:boolean = false;
 
+	@bindable class:string = '';
+
 	constructor(public element:Element) {
 
 	}

@@ -29,7 +29,9 @@ export class UIForm {
 
 	busyChanged(newValue:any) {
 		try {
-			$(this.element).find('input, select, textarea, button').attr(newValue === true ? 'disabled' : 'd', '');
+			$(this.element).find('input, select, textarea, button')
+				.removeAttr('disabled')
+				.attr(newValue === true ? 'disabled' : '', '');
 		} catch (e) {
 		}
 		try {

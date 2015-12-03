@@ -24,9 +24,9 @@ export function configure(aurelia:FrameworkConfiguration) {
 
 	aurelia.globalResources('./containers/ui-button-group');
 	aurelia.globalResources('./containers/ui-option-group');
+	aurelia.globalResources('./containers/ui-grid-row');
 	aurelia.globalResources('./containers/ui-grid-column');
 	aurelia.globalResources('./containers/ui-datagrid');
-	aurelia.globalResources('./containers/ui-grid');
 	aurelia.globalResources('./containers/ui-menu');
 	aurelia.globalResources('./containers/ui-form');
 	aurelia.globalResources('./containers/ui-panel');
@@ -44,12 +44,16 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./components/ui-tree');
 	aurelia.globalResources('./components/ui-login');
 	aurelia.globalResources('./components/ui-markdown');
+	aurelia.globalResources('./components/ui-lang-select');
+
+	aurelia.globalResources('./utils/ui-converters');
 }
 
-export {UIApplicationState} from "./utils/ui-app-state";
-export {DateValueConverter,KeysValueConverter,MarkdownValueConverter,SortValueConverter} from "./utils/ui-converters";
+export {UIApplicationState, AuthInterceptor} from "./utils/ui-app-state";
+export {DateValueConverter,NumberValueConverter,CurrencyValueConverter,KeysValueConverter,MarkdownValueConverter,SortValueConverter} from "./utils/ui-converters";
 export {UIEvent} from "./utils/ui-event";
 export {UIHttpService} from "./utils/ui-http-service";
+export {UIDwrService} from "./utils/ui-dwr-service";
 export {UIModel} from "./utils/ui-model";
 export {UITreeModel,UITreeOptionsModel,UITreePanel} from "./utils/ui-tree-models";
 export {_, moment, numeral, Format, Utils} from "./utils/ui-utils";

@@ -42,11 +42,14 @@ export class UIOption {
 
 	attached() {
 		$(this._option).data('UIOption', this);
-		$(this._input).attr(this.disabled !== false ? 'disabled' : 'x', '');
+		$(this._input).attr(this.disabled !== false ? 'disabled' : 'D', '');
 	}
 
 	disabledChanged(newValue) {
-		$(this._input).attr(newValue !== false ? 'disabled' : 'x', '');
+		$(this._input)
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	private _checkChanged($event:UIEvent) {

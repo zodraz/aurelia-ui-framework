@@ -1,13 +1,53 @@
-define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"], function (require, exports, ld, mm, nm, aurelia_framework_1) {
+define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework", "aurelia-dependency-injection"], function (require, exports, ld, mm, nm, aurelia_framework_1, aurelia_dependency_injection_1) {
     exports._ = ld;
     exports.moment = mm;
     exports.numeral = nm;
     var Utils;
     (function (Utils) {
-        function lazy(T, container) {
-            return aurelia_framework_1.Lazy.of(T).get(container);
+        var _c = new aurelia_dependency_injection_1.Container();
+        function lazy(T) {
+            return aurelia_framework_1.Lazy.of(T).get(_c)();
         }
         Utils.lazy = lazy;
+        function getFloatPosition(anchor, floater, side) {
+            if (side === void 0) { side = false; }
+            var _f = $(floater), _a = $(anchor);
+            _f.offset({ left: -1000, top: -1000 })
+                .css('max-height', side ? '480px' : '320px')
+                .css('visibility', 'visible');
+            var o = _a.offset(), aw = _a.outerWidth(), ah = _a.outerHeight(), fh = _f.outerHeight(), fw = _f.outerWidth(), pw = _f.offsetParent().width(), ph = _f.offsetParent().height();
+            var _hr = false, _vr = false;
+            var t = o.top, l = o.left;
+            if (!side) {
+                _f.css('min-width', aw);
+                if (t + ah + fh > ph) {
+                    t -= fh;
+                    _vr = true;
+                }
+                else {
+                    t += ah;
+                }
+                if (l + fw > pw) {
+                    l -= (fw - aw);
+                }
+            }
+            else {
+                if (t + fh > ph) {
+                    t -= (fh - ah);
+                    _vr = true;
+                }
+                if (l + aw + fw > pw) {
+                    l -= fw;
+                    _hr = true;
+                }
+                else {
+                    l += aw;
+                }
+            }
+            _f.css('max-height', '0').css('visibility', 'hidden');
+            return { top: t, left: l, hReverse: _hr, vReverse: _vr };
+        }
+        Utils.getFloatPosition = getFloatPosition;
     })(Utils = exports.Utils || (exports.Utils = {}));
     var Format;
     (function (Format) {
@@ -44,9 +84,22 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
             return exports.moment(value).fromNow(false);
         }
         Format.fromNow = fromNow;
-        function numberDisplay(value, format, symbol) {
+        function numberDisplay(value, format) {
+            if (format === void 0) { format = '0[.]00'; }
+            if (isNaN(parseFloat(value)))
+                return value;
+            return exports.numeral(value)
+                .format(format)
+                .replace(/[^\d]+/g, function (txt) {
+                return "<small>" + txt.toUpperCase() + "</small>";
+            });
+        }
+        Format.numberDisplay = numberDisplay;
+        function currencyDisplay(value, format, symbol) {
             if (format === void 0) { format = '$ 0[.]00'; }
-            if (symbol === void 0) { symbol = ''; }
+            if (symbol === void 0) { symbol = '$'; }
+            if (isNaN(parseFloat(value)))
+                return value;
             return exports.numeral(value)
                 .format(format)
                 .replace('$', symbol)
@@ -54,8 +107,10 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                 return "<small>" + txt.toUpperCase() + "</small>";
             });
         }
-        Format.numberDisplay = numberDisplay;
+        Format.currencyDisplay = currencyDisplay;
         function exRate(value) {
+            if (isNaN(parseFloat(value)))
+                return ' ';
             if (parseFloat(value || 0) <= 0)
                 return ' ';
             return numberDisplay(1 / parseFloat(value), '0.0000a') + '/$';

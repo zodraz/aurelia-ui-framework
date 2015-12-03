@@ -63,11 +63,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         };
         UIList.prototype.disabledChanged = function (newValue) {
             $(this._select)
+                .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIList.prototype.readonlyChanged = function (newValue) {
             $(this._select)
+                .removeAttr('R')
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '');
         };

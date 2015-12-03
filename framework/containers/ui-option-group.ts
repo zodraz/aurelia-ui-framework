@@ -22,12 +22,14 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 @customElement('ui-option-group')
 export class UIOptionGroup {
 	private _optionGroup;
+	private _classes:string = '';
 
 	@bindable id:string    = '';
 	@bindable label:string = '';
-	private value:string = '';
+	private value:string   = '';
 
 	constructor(public element:Element) {
+		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 	}
 
 	attached() {

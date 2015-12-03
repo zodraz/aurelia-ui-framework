@@ -63,7 +63,11 @@
 	@include justify-content(flex-end);
   }
 
-  .ui-column {
+  > .ui-row:not(.ui-column) {
+	@include flex(0 0 100%);
+  }
+
+  > .ui-column {
 	padding: 0.25rem 0.5rem;
 	@include flex(0 0 100%);
 	max-width: 100%;
@@ -86,10 +90,10 @@
 	@include flex(0 0 auto);
   }
   .ui-col-fill {
-	@include flex(1 0 auto);
+	@include flex(1 1 auto);
   }
   .ui-col-full {
-	@include flex(1 0 100%);
+	@include flex(1 1 100%);
   }
 
   @include grid-columns(xs, 0);
