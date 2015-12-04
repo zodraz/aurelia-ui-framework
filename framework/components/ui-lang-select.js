@@ -16,9 +16,27 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._selected = [];
             this._languages = [];
             this._current = null;
-            this._languages = UILangSelect.LANGUAGES;
+            this._languages = ui_utils_1._.clone(UILangSelect.LANGUAGES);
+            $(this.element).data('UILangSelect', this);
         }
-        UILangSelect.prototype.openList = function () {
+        UILangSelect.prototype.addLanguages = function (newValue) {
+            for (var _a = 0; _a < newValue.length; _a++) {
+                var l = newValue[_a];
+                var _i = ui_utils_1._.findIndex(this._languages, 'id', l);
+                if (_i >= 0) {
+                    var _l = this._languages.splice(_i, 1);
+                    if (_l.length == 1)
+                        this._selected.push(_l[0]);
+                }
+            }
+            return this;
+        };
+        UILangSelect.prototype.setLanguage = function (newValue) {
+            this._current = ui_utils_1._.find(this._selected, 'id', newValue);
+            this._selectLanguage(this._current);
+            return this;
+        };
+        UILangSelect.prototype._openList = function () {
             var pos = ui_utils_1.Utils.getFloatPosition(this._selector, this._menu);
             $(this._menu).offset({ left: pos.left, top: pos.top });
             $(this._selector)
@@ -27,20 +45,20 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (pos.vReverse)
                 $(this._selector).addClass('ui-menu-reverse');
         };
-        UILangSelect.prototype.selectLanguage = function (lang) {
+        UILangSelect.prototype._selectLanguage = function (lang) {
             this._current = lang;
-            ui_event_1.UIEvent.fireEvent('change', this.element, lang ? lang.id : null);
+            ui_event_1.UIEvent.fireEvent('change', this.element, lang || { id: 'null' });
         };
-        UILangSelect.prototype.addLanguage = function (lang) {
+        UILangSelect.prototype._addLanguage = function (lang) {
             this._selected.push(lang);
             this._languages.splice(ui_utils_1._.findIndex(this._languages, 'id', lang.id), 1);
-            this.selectLanguage(lang);
+            this._selectLanguage(lang);
         };
-        UILangSelect.prototype.removeLanguage = function (lang) {
+        UILangSelect.prototype._removeLanguage = function (lang) {
             this._languages.push(lang);
             this._selected.splice(ui_utils_1._.findIndex(this._selected, 'id', lang.id), 1);
             if (this._current.id == lang.id)
-                this.selectLanguage(this._selected[0] || null);
+                this._selectLanguage(this._selected[0] || null);
             ui_event_1.UIEvent.fireEvent('remove', this.element, lang.id);
         };
         UILangSelect.LANGUAGES = [

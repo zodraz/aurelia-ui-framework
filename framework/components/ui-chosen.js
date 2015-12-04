@@ -32,6 +32,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.placeholder = '';
             this.readonly = false;
             this.disabled = false;
+            this._id = "chosen-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('clear'))
@@ -48,6 +49,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._multiple = true;
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
+            $(this.element).data('UIChosen', this);
         }
         UIChosen.prototype.bind = function () {
             if (this.value) {
@@ -59,8 +61,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         };
         UIChosen.prototype.attached = function () {
             var _this = this;
-            this._id = "chosen-" + ui_input_1.UIInput._id++;
-            $(this._chosen).data('UIChosen', this);
             $(this._select)
                 .append($(this._options).children())
                 .val(this.value)

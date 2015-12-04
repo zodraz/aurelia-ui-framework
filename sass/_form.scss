@@ -119,6 +119,8 @@
 
 	.ui-checkbox {
 	  @include flex(0 0 26px);
+	  padding: 0.25rem 0.5rem;
+	  height: auto;
 	  .ui-option-input:checked ~ .ui-check-mark:after {
 		content: '\e004';
 	  }
@@ -197,7 +199,7 @@
 	  @include box-shadow(0 0 3px 0 #ccc inset);
 
 	  ~ .ui-close {
-		@include position(absolute, 0 0 null null);
+		@include position(absolute, 0 0 auto auto);
 		opacity: .3;
 		z-index: 9;
 		font-size: 1.5rem;
@@ -206,6 +208,9 @@
 		&:hover {
 		  opacity: .6;
 		}
+	  }
+	  &[dir="rtl"] ~ .ui-close {
+		@include position(absolute, 0 auto auto 0);
 	  }
 	}
   }
@@ -216,14 +221,14 @@
 	}
 
 	.ui-input, .ui-addon, .ui-button, .ui-checkbox {
-	  border-color: rgba($input-invalid-color, 0.85);
+	  border-color: $input-invalid-color;
 	}
 
 	.ui-input {
-	  border-color: rgba($input-invalid-color, 0.85);
+	  border-color: $input-invalid-color;
 	  &:focus {
-		border-color: rgba($input-invalid-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+		border-color: $input-invalid-color;
+		@include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 #eee inset);
 	  }
 	}
 
@@ -239,13 +244,13 @@
 	}
 
 	.ui-input, .ui-addon, .ui-button, .ui-checkbox {
-	  border-color: rgba($input-valid-color, 0.85);
+	  border-color: $input-valid-color;
 	}
 
 	.ui-input {
 	  &:focus {
-		border-color: rgba($input-valid-color, 0.85);
-		@include box-shadow(0 0 4px 0 $success, 0 1px 1px 0 #ddd inset);
+		border-color: $input-valid-color;
+		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
 	  }
 	}
 

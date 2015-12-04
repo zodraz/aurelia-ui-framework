@@ -38,10 +38,28 @@ export class UILangSelect {
 	private _current:any = null;
 
 	constructor(public element:Element) {
-		this._languages = UILangSelect.LANGUAGES;
+		this._languages = _.clone(UILangSelect.LANGUAGES);
+		$(this.element).data('UILangSelect', this);
 	}
 
-	openList() {
+	addLanguages(newValue) {
+		for (var l of newValue) {
+			let _i = _.findIndex(this._languages, 'id', l);
+			if (_i >= 0) {
+				let _l = this._languages.splice(_i, 1);
+				if (_l.length == 1)this._selected.push(_l[0]);
+			}
+		}
+		return this;
+	}
+
+	setLanguage(newValue) {
+		this._current = _.find(this._selected, 'id', newValue);
+		this._selectLanguage(this._current);
+		return this;
+	}
+
+	private _openList() {
 		let pos = Utils.getFloatPosition(this._selector, this._menu);
 		$(this._menu).offset({left: pos.left, top: pos.top});
 		$(this._selector)
@@ -51,21 +69,21 @@ export class UILangSelect {
 		if (pos.vReverse) $(this._selector).addClass('ui-menu-reverse');
 	}
 
-	selectLanguage(lang) {
+	private _selectLanguage(lang) {
 		this._current = lang;
-		UIEvent.fireEvent('change', this.element, lang ? lang.id : null);
+		UIEvent.fireEvent('change', this.element, lang || {id: 'null'});
 	}
 
-	addLanguage(lang) {
+	private _addLanguage(lang) {
 		this._selected.push(lang);
 		this._languages.splice(_.findIndex(this._languages, 'id', lang.id), 1);
-		this.selectLanguage(lang);
+		this._selectLanguage(lang);
 	}
 
-	removeLanguage(lang) {
+	private _removeLanguage(lang) {
 		this._languages.push(lang);
 		this._selected.splice(_.findIndex(this._selected, 'id', lang.id), 1);
-		if (this._current.id == lang.id) this.selectLanguage(this._selected[0] || null);
+		if (this._current.id == lang.id) this._selectLanguage(this._selected[0] || null);
 		UIEvent.fireEvent('remove', this.element, lang.id);
 	}
 }

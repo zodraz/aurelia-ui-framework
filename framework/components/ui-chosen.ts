@@ -61,6 +61,7 @@ export class UIChosen {
 	@bindable disabled:boolean   = false;
 
 	constructor(public element:Element) {
+		this._id = `chosen-${UIInput._id++}`;
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('clear')) this._clear = true;
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
@@ -69,6 +70,7 @@ export class UIChosen {
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('multiple')) this._multiple = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
+		$(this.element).data('UIChosen', this)
 	}
 
 	bind() {
@@ -81,8 +83,6 @@ export class UIChosen {
 	}
 
 	attached() {
-		this._id    = `chosen-${UIInput._id++}`;
-		$(this._chosen).data('UIChosen', this)
 		$(this._select)
 			.append($(this._options).children())
 			.val(this.value)

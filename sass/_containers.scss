@@ -24,10 +24,32 @@
   position: relative;
 
   &:not(.ui-scroll) {
-	@include flex-column($align: stretch, $wrap: false);
+	@include flex-column($align: stretch, $justify: stretch, $wrap: false);
   }
   &.ui-scroll {
 	overflow: auto;
+  }
+  &.ui-middle {
+	@include align-items(center);
+  }
+  &.ui-top {
+	@include align-items(flex-start);
+  }
+  &.ui-bottom {
+	@include align-items(flex-end);
+  }
+  &.ui-center {
+	@include justify-content(center);
+  }
+  &.ui-start {
+	@include justify-content(flex-start);
+  }
+  &.ui-end {
+	@include justify-content(flex-end);
+  }
+
+  > .ui-scroll {
+	@include flex(1 1 auto);
   }
 }
 

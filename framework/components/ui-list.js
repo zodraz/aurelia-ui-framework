@@ -30,6 +30,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.buttonText = '';
             this.readonly = false;
             this.disabled = false;
+            this._id = "list-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('clear'))
@@ -54,8 +55,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             }
         };
         UIList.prototype.attached = function () {
-            this._id = "list-" + ui_input_1.UIInput._id++;
-            $(this._list).data('UIList', this);
+            $(this.element).data('UIList', this);
             $(this._select)
                 .html(this._getListItems())
                 .find("li[value=\"" + this.value + "\"]").addClass('active');

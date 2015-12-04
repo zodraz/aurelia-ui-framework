@@ -7,7 +7,6 @@
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @customElement('ui-ribbon')
 export class UIRibbon {
 	@bindable class:string;

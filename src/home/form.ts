@@ -1,5 +1,6 @@
 import {_, moment} from "../../framework/utils/ui-utils";
 import {autoinject} from "aurelia-framework";
+import {activationStrategy} from "aurelia-router";
 import {ensure, Validation} from "aurelia-validation";
 
 @autoinject()
@@ -26,17 +27,16 @@ export class HomeForm {
 	}
 
 	lang        = 'null';
+	contentDir  = 'ltr';
 	content:any = {
-		'null': 'No Language',
-		'EN': 'english sentence',
-		'VI': 'câu tiếng việt',
-		'ES': 'frase española',
-		'FR': 'phrase française'
+		'EN': {title: 'Hello World', md: this.md},
+		'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
 	};
 
 	languageChanged($event) {
-		if (!this.content[$event.data + '']) this.content[$event.data + ''] = '';
-		this.lang = $event.data + '';
+		this.lang = $event.data.id + '';
+		if (this.lang != 'null' && !this.content[this.lang]) this.content[this.lang] = {title: '', md: ''};
+		this.contentDir = $event.data.rtl ? 'rtl' : 'ltr';
 	}
 
 	languageRemoved($event) {
@@ -44,6 +44,7 @@ export class HomeForm {
 	}
 
 	validation;
+	_langSelect;
 
 	constructor(_validation:Validation) {
 		this.validation = _validation
@@ -59,6 +60,17 @@ export class HomeForm {
 			.ensure('model.phone')
 			.isNotEmpty()
 			.isPhone();
+
+		this.content = {
+			'EN': {title: 'Hello World', md: this.md},
+			'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+		};
+	}
+
+	attached() {
+		$(this._langSelect).data('UILangSelect')
+			.addLanguages(Object.keys(this.content))
+			.setLanguage('AR');
 	}
 
 	onSubmit() {
@@ -95,4 +107,31 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 
 
 `;
+
+	mdAr = `
+# مرحبا بالعالم
+
+##### أنا _أحب_ ~~HTML~~ ن __Markdown__  !
+
+---
+
+أنا يمكن أن يكون __BOLD__، ويمكن أيضا أن تكون _ITALIC_، أو يمكنك ~~DELETE~~ لي أيضا!
+
+انظروا لي أنا القائمة
+
+* العنصر
+* العنصر
+* العنصر
+
+وأنا مرقمة
+
+1. البند
+2. البند
+3. البند
+
+يمكنني أيضا أن يكون الرابط [إضغط هنا](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) أو إظهار رابط كله http://google.com
+
+![صورة](images/heart.png) لا أميل تحب فقط الصور!
+
+	`;
 }

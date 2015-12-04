@@ -54,14 +54,16 @@
 		  border-radius: $base-border-radius;
 		  &:focus {
 			border-color: $input-focus-color;
-			@include box-shadow(0 0 2px 0 $input-focus-color inset);
+			@include box-shadow(0 -2px 0 0 $input-focus-color inset);
 		  }
 		}
 	  }
 
 	  &.chosen-container-active {
-		border-color: $input-focus-color;
-		@include box-shadow(0 0 4px 0 $input-focus-color);
+		//border-color: $input-focus-color;
+		.chosen-single, .chosen-choices {
+		  @include box-shadow(0 -3px 0 0 $input-focus-color inset);
+		}
 
 		li.search-field input[type=text] {
 		  color: $input-text;
@@ -138,7 +140,7 @@
 		li.search-choice {
 		  height: 20px;
 		  position: relative;
-		  margin: 2px 0 2px 5px;
+		  margin: 2px 0 5px 5px;
 		  padding: 4px 16px 4px 4px;
 		  float: none;
 		  line-height: 0.85;
@@ -183,7 +185,7 @@
 	  border-color: $input-valid-color;
 	  &.chosen-container-active {
 		border-color: $input-valid-color;
-		@include box-shadow(0 0 4px 0 $input-valid-color);
+		@include box-shadow(0 3px 0 0 $input-valid-color);
 	  }
 	}
   }
@@ -195,7 +197,7 @@
 	  border-color: $input-invalid-color;
 	  &.chosen-container-active {
 		border-color: $input-invalid-color;
-		@include box-shadow(0 0 4px 0 $input-invalid-color);
+		@include box-shadow(0 3px 0 0 $input-invalid-color);
 	  }
 	}
   }

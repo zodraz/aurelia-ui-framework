@@ -43,6 +43,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./components/ui-chosen');
 	aurelia.globalResources('./components/ui-tree');
 	aurelia.globalResources('./components/ui-login');
+	aurelia.globalResources('./components/ui-divider');
 	aurelia.globalResources('./components/ui-markdown');
 	aurelia.globalResources('./components/ui-lang-select');
 

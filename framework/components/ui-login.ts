@@ -21,7 +21,7 @@ export class UILogin {
 	@bindable error:string;
 	@bindable busy:boolean = false;
 
-	constructor(public element:Element) {
+	constructor(public element:Element, public appState:UIApplicationState) {
 		this.model = new LoginModel();
 	}
 

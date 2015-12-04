@@ -133,15 +133,14 @@
 					</ui-column>
 				</ui-column>
 				<ui-column>
-					<ui-lang-select change.trigger="languageChanged($event)"
-									remove.trigger="languageRemoved($event)">Languages
-					</ui-lang-select>
-				</ui-column>
-				<ui-column>
-					<ui-input value.bind="content[lang]" disabled.bind="lang=='null'">Language Content</ui-input>
+					<ui-lang-select ref="_langSelect" languages.one-time="content | keys" change.trigger="languageChanged($event)"
+									remove.trigger="languageRemoved($event)">Languages</ui-lang-select>
 				</ui-column>
 				<ui-column full>
-					<ui-markdown required value.bind="md">Markdown</ui-markdown>
+					<ui-input dir.bind="contentDir" required value.bind="content[lang].title" disabled.bind="lang=='null'">Title</ui-input>
+				</ui-column>
+				<ui-column full>
+					<ui-markdown dir.bind="contentDir" required value.bind="content[lang].md" disabled.bind="lang=='null'">Markdown</ui-markdown>
 				</ui-column>
 			</ui-form>
 

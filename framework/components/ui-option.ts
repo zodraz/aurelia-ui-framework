@@ -15,7 +15,6 @@ import {UIEvent} from "../utils/ui-event";
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-option')
 export class UIOption {
 	private _option;

@@ -90,6 +90,7 @@ export class UIInput {
 	private phoneCountry:string = 'us';
 
 	@bindable id:string          = '';
+	@bindable dir:string         = 'ltr';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';
 	@bindable addonClass:string  = '';
@@ -105,6 +106,7 @@ export class UIInput {
 
 
 	constructor(public element:Element) {
+		this._id = `input-${UIInput._id++}`;
 		if (element.hasAttribute('clear')) this._inputClasses += ' ui-clear ';
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('readonly')) this.readonly = true;
@@ -124,6 +126,7 @@ export class UIInput {
 		if (element.hasAttribute('address')) this._type = 'address';
 		if (element.hasAttribute('position')) this._type = 'position';
 		if (element.hasAttribute('phone')) this._type = 'phone';
+		$(this.element).data('UIInput', this)
 	}
 
 	bind() {
@@ -151,12 +154,21 @@ export class UIInput {
 	}
 
 	attached() {
-		this._id    = `input-${UIInput._id++}`;
-		this._input = $(this._inputGroup)
-			.data('UIInput', this)
-			.find('.ui-input');
+		this._input = $(this._inputGroup).find('.ui-input');
 		if (this._type == 'password') {
 			this._input.attr('type', 'password');
+		}
+		else if (this._type == 'email') {
+			this._input.attr('type', 'email');
+		}
+		else if (this._type == 'search') {
+			this._input.attr('type', 'search');
+		}
+		else if (this._type == 'phone') {
+			this._input.attr('type', 'tel');
+		}
+		else if (this._type == 'number' || this._type == 'decimal' || this._type == 'position') {
+			this._input.attr('type', 'number');
 		}
 		this._input
 			[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')

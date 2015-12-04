@@ -8,10 +8,12 @@
 @mixin button-style($prefix, $bg, $color, $border) {
 
   &.ui-button-#{$prefix} {
-	color: $color;
 	background: linear-gradient(top, $bg, darken($bg, 2%));
 	border-color: $border;
-	text-shadow: 0 1px 0 rgba(contrast($color, #787878, #fff), 0.5);
+	button, a {
+	  color: $color;
+	  text-shadow: 0 1px 0 rgba(contrast($color, #787878, #fff), 0.5);
+	}
 
 	&:hover, &.ui-dropdown {
 	  $hover-bg: shade($bg, 6%);
@@ -33,12 +35,8 @@
 }
 
 .ui-button {
-  padding: $base-padding;
-  font: {
-	size: 1rem;
-	weight: $font-weight-normal;
-  }
-  line-height: 1.2rem;
+  display: inline-block;
+
   border: {
 	width: 1px;
 	style: solid;
@@ -53,31 +51,12 @@
 
   &[disabled] {
 	opacity: 0.6;
-	cursor: not-allowed;
-  }
-
-  &.ui-dropdown:not(.ui-menu-reverse) {
-	@include border-bottom-radius(0);
-	+ .ui-floating {
-	  @include transition(max-height 0.3s);
-	  @include border-top-radius(0);
-	  visibility: visible !important;
-	  max-height: 320px !important;
-	  @include box-shadow(2px 3px 5px 0 rgba($black, 0.25));
-	}
-  }
-  &.ui-dropdown.ui-menu-reverse {
-	@include border-top-radius(0);
-	+ .ui-floating {
-	  @include transition(max-height 0.3s);
-	  @include border-bottom-radius(0);
-	  visibility: visible !important;
-	  max-height: 320px !important;
-	  @include box-shadow(2px -3px 5px 0 rgba($black, 0.25));
+	&, & * {
+	  cursor: not-allowed;
 	}
   }
 
-  &, & i {
+  &, & * {
 	cursor: pointer;
   }
 
@@ -92,11 +71,40 @@
 	}
   }
 
+  button, a {
+	display: block;
+	padding: $base-padding;
+	font: {
+	  size: 1rem;
+	  weight: $font-weight-normal;
+	}
+	line-height: 1.2rem;
+  }
+  &.ui-dropdown:not(.ui-menu-reverse) {
+	@include border-bottom-radius(0);
+	.ui-floating, + .ui-floating {
+	  @include transition(max-height 0.3s);
+	  @include border-top-radius(0);
+	  visibility: visible !important;
+	  max-height: 320px !important;
+	  @include box-shadow(2px 3px 5px 0 rgba($black, 0.25));
+	}
+  }
+  &.ui-dropdown.ui-menu-reverse {
+	@include border-top-radius(0);
+	.ui-floating, + .ui-floating {
+	  @include transition(max-height 0.3s);
+	  @include border-bottom-radius(0);
+	  visibility: visible !important;
+	  max-height: 320px !important;
+	  @include box-shadow(2px -3px 5px 0 rgba($black, 0.25));
+	}
+  }
   &.ui-menu-right {
 	&.ui-dropdown {
 	  @include border-left-radius($base-border-radius);
 	  @include border-right-radius(0);
-	  + .ui-floating {
+	  .ui-floating {
 		@include transition(max-height 0.3s);
 		@include border-radius($base-border-radius);
 		@include border-top-left-radius(0);
@@ -106,7 +114,7 @@
 	  }
 	}
 	&.ui-dropdown.ui-menu-reverse {
-	  + .ui-floating {
+	  .ui-floating {
 		@include border-radius($base-border-radius);
 		@include border-bottom-left-radius(0);
 		@include box-shadow(3px -2px 5px 0 rgba($black, 0.25));
@@ -135,12 +143,16 @@
   }
 
   &.ui-button-small {
-	padding: 0.1rem 0.3rem;
-	font-size: 0.85rem;
+	button, a {
+	  padding: 0.1rem 0.3rem;
+	  font-size: 0.85rem;
+	}
   }
   &.ui-button-large {
-	padding: 0.6rem 1.4rem;
-	font-size: 1.2rem;
+	button, a {
+	  padding: 0.6rem 1.4rem;
+	  font-size: 1.2rem;
+	}
   }
 
   @include button-style(default, $base-bg, $primary, $base-border-color);
@@ -165,8 +177,10 @@
 	border-radius: 0;
 
 	&.ui-checked {
-	  color: $button-toggle-active-text;
-	  text-shadow: 0 -1px 0 contrast($button-toggle-active-text, #787878, #fff);
+	  button {
+		color: $button-toggle-active-text;
+		text-shadow: 0 -1px 0 contrast($button-toggle-active-text, #787878, #fff);
+	  }
 	  background: linear-gradient(top, darken($button-toggle-active-bg, 5%), $button-toggle-active-bg);
 	  @include box-shadow(1px 1px 1px 0 $base-shadow-color, 1px 1px 3px 2px darken($button-toggle-active-bg, 15%) inset);
 	}

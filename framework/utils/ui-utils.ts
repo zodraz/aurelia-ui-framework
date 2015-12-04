@@ -32,8 +32,8 @@ export module Utils {
 			ah = _a.outerHeight(),
 			fh = _f.outerHeight(),
 			fw = _f.outerWidth(),
-			pw = _f.offsetParent().width(),
-			ph = _f.offsetParent().height();
+			pw = window.innerWidth,
+			ph = window.innerHeight;
 
 		var _hr = false, _vr = false;
 		var t   = o.top, l = o.left;

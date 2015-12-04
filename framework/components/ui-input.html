@@ -4,7 +4,7 @@
 		<content></content>
 	</label>
 
-	<div class="ui-form-control">
+	<div class="ui-form-control" dir='ltr'>
 		<div class="ui-addon" if.bind="addonIcon || addonText">
 			<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
 			<span if.bind="addonText">${addonText}</span>
@@ -14,12 +14,12 @@
 			<span class="ui-check-mark"></span>
 		</div>
 		<input class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
-			   size="1" if.bind="!_area" id.bind="_id"/>
+			   size="1" if.bind="!_area" id.bind="_id" dir.bind="dir"/>
 		<input class="ui-input ${_inputClasses} ui-secondary" placeholder="${_placeholder2}" value.bind="_value2"
-			   size="1" if.bind="!_area && _double" id.bind="_id"/>
+			   size="1" if.bind="!_area && _double" id.bind="_id" dir.bind="dir"/>
 
 			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
-					  cols="10" rows="5" if.bind="_area" id.bind="_id"></textarea>
+					  cols="10" rows="5" if.bind="_area" id.bind="_id" dir.bind="dir"></textarea>
 
 		<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
 				click.trigger="_buttonClick($event)">

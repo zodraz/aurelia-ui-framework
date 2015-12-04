@@ -81,6 +81,7 @@ export class UIDate {
 
 
 	constructor(public element:Element) {
+		this._id = `date-${UIInput._id++}`;
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('clear')) this._clear = true;
@@ -102,7 +103,6 @@ export class UIDate {
 	}
 
 	attached() {
-		this._id = `date-${UIInput._id++}`;
 		if (this.inline && (this._inputStart = this._inputInline)) $(this._date).remove();
 		else $(this._inputInline).remove();
 

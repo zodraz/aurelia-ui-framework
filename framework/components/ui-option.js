@@ -67,7 +67,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 defaultValue: false
             }),
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-option'), 
             __metadata('design:paramtypes', [Element])
         ], UIOption);

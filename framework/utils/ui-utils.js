@@ -15,7 +15,7 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
             _f.offset({ left: -1000, top: -1000 })
                 .css('max-height', side ? '480px' : '320px')
                 .css('visibility', 'visible');
-            var o = _a.offset(), aw = _a.outerWidth(), ah = _a.outerHeight(), fh = _f.outerHeight(), fw = _f.outerWidth(), pw = _f.offsetParent().width(), ph = _f.offsetParent().height();
+            var o = _a.offset(), aw = _a.outerWidth(), ah = _a.outerHeight(), fh = _f.outerHeight(), fw = _f.outerWidth(), pw = window.innerWidth, ph = window.innerHeight;
             var _hr = false, _vr = false;
             var t = o.top, l = o.left;
             if (!side) {

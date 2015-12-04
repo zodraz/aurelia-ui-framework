@@ -17,9 +17,9 @@
 	size: 1rem;
 	family: $input-font-family;
   }
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.5rem 5px;
   border: 1px solid $input-border;
-  @include box-shadow(0 1px 1px 0 #ddd inset);
+  @include box-shadow(0 1px 1px 0 #eee inset);
 
   &.ui-clear {
 	padding-right: 22px;
@@ -43,8 +43,8 @@
   }
 
   &:focus {
-	border-color: rgba($input-focus-color, 0.85);
-	@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 #ddd inset);
+	//border-bottom-color: $primary;
+	@include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 #eee inset);
   }
 }
 
@@ -59,7 +59,7 @@
 	}
 	.ui-list-input:focus ~ .ui-list-container {
 	  border-color: rgba($input-focus-color, 0.85);
-	  @include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 #ddd inset);
+	  @include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 #eee inset);
 	}
 	.ui-list-container {
 	  $item-height: 26px;
@@ -71,7 +71,7 @@
 
 	  &:hover {
 		border-color: rgba($input-focus-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 #ddd inset);
+		@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 #eee inset);
 	  }
 
 	  &:nth-child(2) {
@@ -115,27 +115,54 @@
 
   &.ui-valid {
 	.ui-list-input:focus ~ .ui-list-container {
-	  border-color: rgba($input-valid-color, 0.85);
-	  @include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 #ddd inset);
+	  border-color: $input-valid-color;
+	  @include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
 	}
 	.ui-list-container {
 	  &:hover {
-		border-color: rgba($input-valid-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 #ddd inset);
+		border-color: $input-valid-color;
+		@include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 #eee inset);
 	  }
 	}
   }
 
   &.ui-invalid {
 	.ui-list-input:focus ~ .ui-list-container {
-	  border-color: rgba($input-invalid-color, 0.85);
-	  @include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+	  border-color: $input-invalid-color;
+	  @include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 #eee inset);
 	}
 	.ui-list-container {
 	  &:hover {
-		border-color: rgba($input-invalid-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
+		border-color: $input-invalid-color;
+		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #eee inset);
 	  }
+	}
+  }
+}
+
+.ui-lang-select {
+  .ui-button {
+	padding: 0.25rem 0.5rem;
+	line-height: 1.2;
+
+	box-shadow: none !important;
+	background: white !important;
+
+	&.ui-dropdown {
+	  box-shadow: 0 -3px 0 0 $primary inset !important;
+	}
+
+	span.ui-right {
+	  float: right;
+	  margin-top: 3px;
+	}
+  }
+
+  .ui-menu-link.ui-col-auto {
+	opacity: 0.5;
+	&:hover {
+	  opacity: 0.85;
+	  background: none;
 	}
   }
 }

@@ -16,11 +16,16 @@ export class UIApplicationState {
 	public IsHttpInUse:boolean     = false;
 	public AllowAuthHeader:boolean = false;
 
-	public BaseUrl:string = '';
+	// Application Settings
+	public AppKey:string    = 'AUF';
+	public Version:string   = "0.0.1";
+	public StartYear:string = '2015';
+	public Copyright:string = 'Adarsh Pastakia';
 
 	public Username:string;
 
 	// Api Connections
+	public BaseUrl:string = '';
 	public AuthUser:string;
 	public AuthToken:string;
 
@@ -75,26 +80,26 @@ export class UIApplicationState {
 
 	// Local Storage
 	getLocal(key:string):string {
-		return JSON.parse(window.localStorage.getItem(key));
+		return JSON.parse(window.localStorage.getItem(`${this.AppKey}_${key}`));
 	}
 
 	saveLocal(key:string, value:string = null) {
 		if (value)
-			window.localStorage.setItem(key, JSON.stringify(value));
+			window.localStorage.setItem(`${this.AppKey}_${key}`, JSON.stringify(value));
 		else
-			window.localStorage.removeItem(key);
+			window.localStorage.removeItem(`${this.AppKey}_${key}`);
 	}
 
 	// Session Storage
 	getState(key:string):string {
-		return JSON.parse(window.sessionStorage.getItem(key));
+		return JSON.parse(window.sessionStorage.getItem(`${this.AppKey}_${key}`));
 	}
 
 	saveState(key:string, value:string = null) {
 		if (value)
-			window.sessionStorage.setItem(key, JSON.stringify(value));
+			window.sessionStorage.setItem(`${this.AppKey}_${key}`, JSON.stringify(value));
 		else
-			window.sessionStorage.removeItem(key);
+			window.sessionStorage.removeItem(`${this.AppKey}_${key}`);
 	}
 }
 

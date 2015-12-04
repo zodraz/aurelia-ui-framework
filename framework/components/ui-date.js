@@ -34,6 +34,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.range = false;
             this.inline = false;
             this.disabled = false;
+            this._id = "date-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('nolabel'))
@@ -59,7 +60,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.dt = ui_utils_1.moment().format('DD');
         }
         UIDate.prototype.attached = function () {
-            this._id = "date-" + ui_input_1.UIInput._id++;
             if (this.inline && (this._inputStart = this._inputInline))
                 $(this._date).remove();
             else

@@ -20,7 +20,6 @@ import {UIEvent} from "../utils/ui-event";
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-switch')
 export class UISwitch {
 	@bindable id:string        = '';

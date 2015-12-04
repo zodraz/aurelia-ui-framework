@@ -9,7 +9,6 @@ import {UIEvent} from "../utils/ui-event";
 import {Utils} from "../utils/ui-utils";
 
 @autoinject()
-@containerless()
 @customElement('ui-button')
 export class UIButton {
 	private _classes:string = '';
@@ -67,7 +66,7 @@ export class UIButton {
 		if (this.href) this._button = this._link;
 		if (this.icon) this._attachIcon();
 		if (this.menu && this._menuRight) {
-			$(this._button).addClass('ui-menu-right');
+			$(this.element).addClass('ui-menu-right');
 		}
 		if (this.menu) {
 			$(this._button).append('&nbsp;<i class="ui-caret"></i>');
@@ -88,13 +87,13 @@ export class UIButton {
 		}
 		else this.label = $(this._temp).text();
 		$(this._temp).remove();
-		$(this._button)
+		$(this.element)
 			.data('UIButton', this)
 			.attr(this.disabled !== false ? 'disabled' : 'x', '');
 	}
 
 	disabledChanged(newValue) {
-		$(this._button)
+		$(this.element)
 			.attr(newValue !== false ? 'disabled' : 'x', '');
 	}
 
@@ -108,21 +107,22 @@ export class UIButton {
 	private _clicked($event) {
 		$event.cancelBubble = true;
 		if (this.menu) {
-			if ($(this._button).hasClass('ui-dropdown')) {
-				$(this._button).removeClass('ui-dropdown');
+			if ($(this.element).hasClass('ui-dropdown')) {
+				$(this.element).removeClass('ui-dropdown');
+				$event.preventDefault();
 				return false;
 			}
 			if (!this._menu) this._menu = $(this._button).next('.ui-menu');
 			$('.ui-dropdown').removeClass('ui-dropdown');
 
-			let pos = Utils.getFloatPosition(this._button, this._menu, this._menuRight);
+			let pos = Utils.getFloatPosition(this.element, this._menu, this._menuRight);
 			$(this._menu).offset({left: pos.left, top: pos.top});
-			$(this._button)
+			$(this.element)
 				.toggleClass('ui-dropdown')
 				.removeClass('ui-menu-reverse');
 
-			if (pos.vReverse) $(this._button).addClass('ui-menu-reverse');
-			if (pos.hReverse) $(this._button).addClass('ui-menu-left');
+			if (pos.vReverse) $(this.element).addClass('ui-menu-reverse');
+			if (pos.hReverse) $(this.element).addClass('ui-menu-left');
 		}
 		else {
 			UIEvent.fireEvent('click', this.element, this, this._button);

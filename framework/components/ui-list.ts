@@ -61,6 +61,7 @@ export class UIList {
 	@bindable disabled:boolean  = false;
 
 	constructor(public element:Element) {
+		this._id = `list-${UIInput._id++}`;
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('clear')) this._clear = true;
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
@@ -80,8 +81,7 @@ export class UIList {
 	}
 
 	attached() {
-		this._id = `list-${UIInput._id++}`;
-		$(this._list).data('UIList', this)
+		$(this.element).data('UIList', this)
 		$(this._select)
 			.html(this._getListItems())
 			.find(`li[value="${this.value}"]`).addClass('active');

@@ -20,7 +20,6 @@ export class UIApp {
 	@bindable router:Router;
 	@bindable authenticated:boolean;
 
-	@bindable startYear:string;
 	private thisYear = new Date().getFullYear();
 
 	private uiApp;
@@ -40,7 +39,9 @@ export class UIApp {
 		if (!$($event.target).closest('button').hasClass('ui-app-menu-handle')) {
 			$(this.uiApp).removeClass('show-menu');
 		}
-		$('.ui-dropdown').removeClass('ui-dropdown');
+		if (!$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
+			$('.ui-dropdown').removeClass('ui-dropdown');
+		}
 		return true;
 	}
 }
