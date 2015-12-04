@@ -328,6 +328,7 @@ System.config({
       "framework/components/ui-chosen.js",
       "framework/components/ui-date.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-date.js",
+      "framework/components/ui-divider.js",
       "framework/components/ui-input.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-input.js",
       "framework/components/ui-lang-select.html!github:systemjs/plugin-text@0.0.3",
