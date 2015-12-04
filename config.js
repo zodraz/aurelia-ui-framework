@@ -330,6 +330,8 @@ System.config({
       "framework/components/ui-date.js",
       "framework/components/ui-input.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-input.js",
+      "framework/components/ui-lang-select.html!github:systemjs/plugin-text@0.0.3",
+      "framework/components/ui-lang-select.js",
       "framework/components/ui-list.html!github:systemjs/plugin-text@0.0.3",
       "framework/components/ui-list.js",
       "framework/components/ui-login.html!github:systemjs/plugin-text@0.0.3",
