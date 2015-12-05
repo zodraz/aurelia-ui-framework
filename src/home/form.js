@@ -70,6 +70,8 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
         };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
+            $(this._langSelect).data('UILangSelect')
+                .errorLanguages('AR,EN');
         };
         HomeForm = __decorate([
             aurelia_framework_1.autoinject(), 

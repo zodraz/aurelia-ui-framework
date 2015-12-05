@@ -12,8 +12,8 @@ export class UIRibbon {
 	@bindable class:string;
 
 	private theme:string = 'default';
-	private posH         = 'right';
-	private posV         = 'top';
+	private posH         = 'r';
+	private posV         = 't';
 
 	constructor(public element:Element) {
 		// check theme attributes
@@ -24,9 +24,9 @@ export class UIRibbon {
 		if (element.hasAttribute('success'))this.theme = 'success';
 		if (element.hasAttribute('warning'))this.theme = 'warning';
 		// position
-		if (element.hasAttribute('top'))this.posV = 'top';
-		if (element.hasAttribute('bottom'))this.posV = 'bottom';
-		if (element.hasAttribute('left'))this.posH = 'left';
-		if (element.hasAttribute('right'))this.posH = 'right';
+		if (element.hasAttribute('top'))this.posV = 't';
+		if (element.hasAttribute('bottom'))this.posV = 'b';
+		if (element.hasAttribute('left'))this.posH = 'l';
+		if (element.hasAttribute('right'))this.posH = 'r';
 	}
 }

@@ -51,9 +51,11 @@
 * Menu
 * Tab Panel
 * Card Panel
-* Dialog Panel
+* Dialog Panel __TODO__
 * Option Group
 * Button Group
+* Scroll
+* Login Panel
 
 ### Components
 * Button
@@ -65,6 +67,7 @@
 * Combobox
 * Checkbox
 * Telephone (Formatted input for phone numbers using Google libphonenumber library)
+* Divider
 
 ### Data Views
 * DataGrid

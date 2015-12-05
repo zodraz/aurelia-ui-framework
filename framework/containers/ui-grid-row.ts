@@ -15,10 +15,10 @@ export class UIGridRow {
 	private _classes:string = '';
 
 	constructor(el:Element) {
-		if (el.hasAttribute('nowrap')) this._classes += ' ui-nowrap ';
-		if (el.hasAttribute('stretch')) this._classes += ' ui-stretch ';
-		if (el.hasAttribute('center')) this._classes += ' ui-center ';
-		if (el.hasAttribute('start')) this._classes += ' ui-start ';
-		if (el.hasAttribute('end')) this._classes += ' ui-end ';
+		if (el.hasAttribute('nowrap')) this._classes += ' ui-flex-nowrap ';
+		if (el.hasAttribute('stretch')) this._classes += ' ui-flex-stretch ';
+		if (el.hasAttribute('center')) this._classes += ' ui-flex-center ';
+		if (el.hasAttribute('start')) this._classes += ' ui-flex-start ';
+		if (el.hasAttribute('end')) this._classes += ' ui-flex-end ';
 	}
 }

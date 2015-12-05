@@ -23,10 +23,10 @@ export class UIGridColumn {
 		if (el.hasAttribute('full'))this.size = 'full';
 		if (el.hasAttribute('pad'))this._classes += ' ui-padding ';
 		if (el.hasAttribute('row'))this._classes += ' ui-row ';
-		if (el.hasAttribute('stretch'))this._classes += ' ui-stretch ';
-		if (el.hasAttribute('middle')) this._classes += ' ui-middle ';
-		if (el.hasAttribute('bottom')) this._classes += ' ui-bottom ';
-		if (el.hasAttribute('top')) this._classes += ' ui-top ';
+		if (el.hasAttribute('stretch'))this._classes += ' ui-flex-stretch ';
+		if (el.hasAttribute('middle')) this._classes += ' ui-flex-middle ';
+		if (el.hasAttribute('bottom')) this._classes += ' ui-flex-bottom ';
+		if (el.hasAttribute('top')) this._classes += ' ui-flex-top ';
 	}
 
 	bind() {

@@ -15,15 +15,15 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.class = '';
             this._classes = '';
             if (el.hasAttribute('nowrap'))
-                this._classes += ' ui-nowrap ';
+                this._classes += ' ui-flex-nowrap ';
             if (el.hasAttribute('stretch'))
-                this._classes += ' ui-stretch ';
+                this._classes += ' ui-flex-stretch ';
             if (el.hasAttribute('center'))
-                this._classes += ' ui-center ';
+                this._classes += ' ui-flex-center ';
             if (el.hasAttribute('start'))
-                this._classes += ' ui-start ';
+                this._classes += ' ui-flex-start ';
             if (el.hasAttribute('end'))
-                this._classes += ' ui-end ';
+                this._classes += ' ui-flex-end ';
         }
         __decorate([
             aurelia_framework_1.bindable, 

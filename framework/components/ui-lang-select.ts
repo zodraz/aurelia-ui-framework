@@ -32,8 +32,9 @@ export class UILangSelect {
 
 	private _selector;
 	private _menu;
-	private _selected  = [];
-	private _languages = [];
+	private _errorLangs = [];
+	private _selected   = [];
+	private _languages  = [];
 
 	private _current:any = null;
 
@@ -57,6 +58,11 @@ export class UILangSelect {
 		this._current = _.find(this._selected, 'id', newValue);
 		this._selectLanguage(this._current);
 		return this;
+	}
+
+	errorLanguages(langs) {
+		if (langs.push) this._errorLangs = langs;
+		else this._errorLangs = (langs || '').split(',');
 	}
 
 	private _openList() {

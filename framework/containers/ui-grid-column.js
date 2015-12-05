@@ -28,13 +28,13 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             if (el.hasAttribute('row'))
                 this._classes += ' ui-row ';
             if (el.hasAttribute('stretch'))
-                this._classes += ' ui-stretch ';
+                this._classes += ' ui-flex-stretch ';
             if (el.hasAttribute('middle'))
-                this._classes += ' ui-middle ';
+                this._classes += ' ui-flex-middle ';
             if (el.hasAttribute('bottom'))
-                this._classes += ' ui-bottom ';
+                this._classes += ' ui-flex-bottom ';
             if (el.hasAttribute('top'))
-                this._classes += ' ui-top ';
+                this._classes += ' ui-flex-top ';
         }
         UIGridColumn.prototype.bind = function () {
             for (var _i = 0, _a = this.class.split(' '); _i < _a.length; _i++) {

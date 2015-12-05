@@ -75,6 +75,8 @@ export class HomeForm {
 
 	onSubmit() {
 		this.validation.validate();
+		$(this._langSelect).data('UILangSelect')
+			.errorLanguages('AR,EN');
 	}
 
 

@@ -29,22 +29,22 @@
   &.ui-scroll {
 	overflow: auto;
   }
-  &.ui-middle {
+  &.ui-flex-middle {
 	@include align-items(center);
   }
-  &.ui-top {
+  &.ui-flex-top {
 	@include align-items(flex-start);
   }
-  &.ui-bottom {
+  &.ui-flex-bottom {
 	@include align-items(flex-end);
   }
-  &.ui-center {
+  &.ui-flex-center {
 	@include justify-content(center);
   }
-  &.ui-start {
+  &.ui-flex-start {
 	@include justify-content(flex-start);
   }
-  &.ui-end {
+  &.ui-flex-end {
 	@include justify-content(flex-end);
   }
 

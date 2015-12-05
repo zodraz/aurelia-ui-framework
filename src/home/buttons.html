@@ -20,8 +20,8 @@
 		</ui-button>
 	</ui-toolbar>
 	<ui-scroll>
-		<div class="pad-all border-b" click.delegate="buttonclick($event)">
-			<h4 class="margin-v">Buttons
+		<div class="ui-pad-all ui-border-b" click.delegate="buttonclick($event)">
+			<h4 class="ui-margin-v">Buttons
 				<small>Click the buttons for toast messages</small>
 			</h4>
 			<ui-button>Click</ui-button>
@@ -33,7 +33,7 @@
 			<ui-button warning icon="fi-elegant-error2">Click</ui-button>
 
 			<hr/>
-			<div class="margin-v">
+			<div class="ui-margin-v">
 				<h5>Usage</h5>
 
 				<p><code>&lt;ui-button [disabled] [default] [large|small|<em>normal</em>]
@@ -42,8 +42,8 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-b">
-			<h4 class="margin-v">Button Group</h4>
+		<div class="ui-pad-all ui-border-b">
+			<h4 class="ui-margin-v">Button Group</h4>
 			<ui-button-group secondary>
 				<ui-button icon="fi-elegant-check2">Click</ui-button>
 				<ui-button icon="fi-elegant-close11">Click</ui-button>
@@ -63,7 +63,7 @@
 			</ui-button-group>
 
 			<hr/>
-			<div class="margin-v">
+			<div class="ui-margin-v">
 				<h5>Usage</h5>
 
 				<p>
@@ -80,8 +80,8 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-b">
-			<h4 class="margin-v">Toggle Single (selected: ${t1})</h4>
+		<div class="ui-pad-all ui-border-b">
+			<h4 class="ui-margin-v">Toggle Single (selected: ${t1})</h4>
 			<ui-button-group large secondary toggle value.bind="t1">
 				<ui-button value="0" icon="fi-elegant-check2">Click</ui-button>
 				<ui-button value="1" icon="fi-elegant-close11">Click</ui-button>
@@ -92,7 +92,7 @@
 			</ui-button-group>
 
 			<hr/>
-			<div class="margin-v">
+			<div class="ui-margin-v">
 				<h5>Usage</h5>
 
 				<p>
@@ -109,7 +109,7 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-b" menuclick.delegate="menuclicked($event)">
+		<div class="ui-pad-all ui-border-b" menuclick.delegate="menuclicked($event)">
 			<h4>Dropdown</h4>
 			<ui-button label="Dropdown Menu">
 				<menu data-id="0">Link 0</menu>
@@ -143,7 +143,7 @@
 			</ui-button>
 
 			<hr/>
-			<div class="margin-v">
+			<div class="ui-margin-v">
 				<h5>Usage</h5>
 
 				<p><code>&lt;ui-button ... label=? [menuclick.trigger]><br/>
@@ -155,8 +155,8 @@
 			</div>
 		</div>
 
-		<div class="pad-all">
-			<h4 class="margin-v">Switches</h4>
+		<div class="ui-pad-all">
+			<h4 class="ui-margin-v">Switches</h4>
 			<ui-switch disabled>Click Here</ui-switch>
 			<ui-switch primary check></ui-switch>
 			<ui-switch info check></ui-switch>
@@ -169,7 +169,7 @@
 
 
 			<hr/>
-			<div class="margin-v">
+			<div class="ui-margin-v">
 				<h5>Usage</h5>
 
 				<p><code>&lt;ui-switch [check] [checked.bind] [readonly|disabled]
