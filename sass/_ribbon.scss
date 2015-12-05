@@ -11,7 +11,7 @@
   z-index: $zindex-ribbon;
   overflow: hidden;
 
-  &.ui-top-right {
+  &.ui-tr {
 	top: -1px;
 	right: -1px;
 	.ui-ribbon {
@@ -19,7 +19,7 @@
 	  top: 25%;
 	}
   }
-  &.ui-top-left {
+  &.ui-tl {
 	top: -1px;
 	left: -1px;
 	.ui-ribbon {
@@ -28,7 +28,7 @@
 	  left: -25%;
 	}
   }
-  &.ui-bottom-right {
+  &.ui-br {
 	bottom: -1px;
 	right: -1px;
 	.ui-ribbon {
@@ -37,7 +37,7 @@
 	  left: 5%;
 	}
   }
-  &.ui-bottom-left {
+  &.ui-bl {
 	bottom: -1px;
 	left: -1px;
 	.ui-ribbon {

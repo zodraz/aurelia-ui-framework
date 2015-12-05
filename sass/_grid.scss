@@ -38,28 +38,28 @@
 .ui-row {
   @include flex-row(flex-start);
 
-  &.ui-nowrap {
+  &.ui-flex-nowrap {
 	@include flex-wrap(nowrap);
   }
-  &.ui-stretch {
+  &.ui-flex-stretch {
 	@include align-items(stretch);
   }
-  &.ui-middle {
+  &.ui-flex-middle {
 	@include align-items(center);
   }
-  &.ui-top {
+  &.ui-flex-top {
 	@include align-items(flex-start);
   }
   &.ui-bottom {
 	@include align-items(flex-end);
   }
-  &.ui-center {
+  &.ui-flex-center {
 	@include justify-content(center);
   }
-  &.ui-start {
+  &.ui-flex-start {
 	@include justify-content(flex-start);
   }
-  &.ui-end {
+  &.ui-flex-end {
 	@include justify-content(flex-end);
   }
 

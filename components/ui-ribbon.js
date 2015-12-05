@@ -14,8 +14,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UIRibbon(element) {
             this.element = element;
             this.theme = 'default';
-            this.posH = 'right';
-            this.posV = 'top';
+            this.posH = 'r';
+            this.posV = 't';
             if (element.hasAttribute('primary'))
                 this.theme = 'primary';
             if (element.hasAttribute('secondary'))
@@ -29,13 +29,13 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             if (element.hasAttribute('warning'))
                 this.theme = 'warning';
             if (element.hasAttribute('top'))
-                this.posV = 'top';
+                this.posV = 't';
             if (element.hasAttribute('bottom'))
-                this.posV = 'bottom';
+                this.posV = 'b';
             if (element.hasAttribute('left'))
-                this.posH = 'left';
+                this.posH = 'l';
             if (element.hasAttribute('right'))
-                this.posH = 'right';
+                this.posH = 'r';
         }
         __decorate([
             aurelia_framework_1.bindable, 

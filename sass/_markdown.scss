@@ -56,11 +56,13 @@
 
   hr {
 	margin: 5px 0;
-	background: none;
+	background: if($dark-theme, $base-border-color, $white);
+	color: transparent;
 	border: {
-	  width: 1px 0 1px;
 	  style: solid;
-	  color: $smoke none $white;
+	  radius: 0.5rem;
+	  width: 0.06rem 0 0;
+	  color: if($dark-theme, $black, $base-border-color);
 	}
   }
 

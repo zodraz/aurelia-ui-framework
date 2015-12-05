@@ -13,6 +13,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
     var UILangSelect = (function () {
         function UILangSelect(element) {
             this.element = element;
+            this._errorLangs = [];
             this._selected = [];
             this._languages = [];
             this._current = null;
@@ -35,6 +36,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._current = ui_utils_1._.find(this._selected, 'id', newValue);
             this._selectLanguage(this._current);
             return this;
+        };
+        UILangSelect.prototype.errorLanguages = function (langs) {
+            if (langs.push)
+                this._errorLangs = langs;
+            else
+                this._errorLangs = (langs || '').split(',');
         };
         UILangSelect.prototype._openList = function () {
             var pos = ui_utils_1.Utils.getFloatPosition(this._selector, this._menu);

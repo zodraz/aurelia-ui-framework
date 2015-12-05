@@ -80,35 +80,36 @@ textarea {
   overflow: auto !important;
 }
 
-.ui-align-start {
+// TEXT ALIGN
+.ui-text-start {
   text-align: start;
 }
 
-.ui-align-center {
+.ui-text-center {
   text-align: center;
 }
 
-.ui-align-end {
+.ui-text-end {
   text-align: end;
 }
 
 // PADDING
-.pad-0 {
+.ui-pad-0 {
   padding: 0 !important;
 }
 
-.pad-all {
+.ui-pad-all {
   padding: 0.5rem;
 }
 
-.pad-h {
+.ui-pad-h {
   padding: {
 	left: 0.5rem;
 	right: 0.5rem;
   }
 }
 
-.pad-v {
+.ui-pad-v {
   padding: {
 	top: 0.5rem;
 	bottom: 0.5rem;
@@ -116,22 +117,22 @@ textarea {
 }
 
 // MARGIN
-.margin-0 {
+.ui-margin-0 {
   margin: 0 !important;
 }
 
-.margin-all {
+.ui-margin-all {
   margin: 0.5rem;
 }
 
-.margin-h {
+.ui-margin-h {
   margin: {
 	left: 0.5rem;
 	right: 0.5rem;
   }
 }
 
-.margin-v {
+.ui-margin-v {
   margin: {
 	top: 0.5rem;
 	bottom: 0.5rem;
@@ -139,11 +140,11 @@ textarea {
 }
 
 // BORDERS
-.border-all {
+.ui-border-all {
   border: 1px solid $base-border-color;
 }
 
-.border-h {
+.ui-border-h {
   border: {
 	style: solid;
 	width: 1px 0;
@@ -151,7 +152,7 @@ textarea {
   }
 }
 
-.border-v {
+.ui-border-v {
   border: {
 	style: solid;
 	width: 0 1px;
@@ -159,22 +160,22 @@ textarea {
   }
 }
 
-.border-t {
+.ui-border-t {
   border-top: 1px solid $base-border-color;
 }
 
-.border-b {
+.ui-border-b {
   border-bottom: 1px solid $base-border-color;
 }
 
-.border-l {
+.ui-border-l {
   border-left: 1px solid $base-border-color;
 }
 
-.border-r {
+.ui-border-r {
   border-right: 1px solid $base-border-color;
 }
 
-.push-right {
+.ui-push-right {
   float: right;
 }

@@ -52,16 +52,16 @@
   line-height: 1em;
   @include transform-origin(50% 50%);
 
-  &.spin {
+  &.ui-spin {
 	@include animation(spin 2.5s linear infinite);
   }
-  &.spin-opp {
+  &.ui-spin-opp {
 	@include animation(spin-opp 2.5s linear infinite);
   }
-  &.pulse {
+  &.ui-pulse {
 	@include animation(spin 1s infinite steps(8));
   }
-  &.pendulum {
+  &.ui-pendulum {
 	@include animation(pendulum 1s linear infinite);
   }
 }
