@@ -681,6 +681,8 @@ System.config({
       "src/home/page.js",
       "src/home/panels.html!github:systemjs/plugin-text@0.0.3",
       "src/home/panels.js",
+      "src/home/styles.html!github:systemjs/plugin-text@0.0.3",
+      "src/home/styles.js",
       "src/home/tabs.html!github:systemjs/plugin-text@0.0.3",
       "src/home/tabs.js",
       "src/home/tree.html!github:systemjs/plugin-text@0.0.3",
