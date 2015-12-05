@@ -3,7 +3,7 @@ define(["require", "exports"], function (require, exports) {
         function AppLogin() {
         }
         AppLogin.prototype.onLogin = function ($event) {
-            $.notify($event.data.username + "/" + $event.data.password);
+            $.notify($event.detail.username + "/" + $event.detail.password);
         };
         return AppLogin;
     })();

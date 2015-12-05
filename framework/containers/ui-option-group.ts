@@ -44,6 +44,6 @@ export class UIOptionGroup {
 	}
 
 	private _checkChanged($event) {
-		this.value = $event.data;
+		this.value = $event.detail;
 	}
 }

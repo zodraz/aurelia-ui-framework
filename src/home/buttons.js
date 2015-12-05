@@ -26,7 +26,7 @@ define(["require", "exports"], function (require, exports) {
         }
         HomeButtons.prototype.buttonclick = function ($event) {
             var data;
-            if (data = $event.data) {
+            if (data = $event.detail) {
                 var msg = 'OOPS! You clicked the wrong button';
                 if (data._theme == 'primary')
                     msg = 'YIPEE! Im the primary color';
@@ -56,7 +56,7 @@ define(["require", "exports"], function (require, exports) {
             }
         };
         HomeButtons.prototype.menuclicked = function ($event) {
-            $.notify("You clicked " + $event.data.title, {
+            $.notify("You clicked " + $event.detail.title, {
                 style: 'ui',
                 className: 'primary',
                 autoHide: true

@@ -31,7 +31,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             $(this._optionGroup).find(".ui-radio .ui-option-input[value=\"" + newValue + "\"]").prop('checked', true);
         };
         UIOptionGroup.prototype._checkChanged = function ($event) {
-            this.value = $event.data;
+            this.value = $event.detail;
         };
         __decorate([
             aurelia_framework_1.bindable, 

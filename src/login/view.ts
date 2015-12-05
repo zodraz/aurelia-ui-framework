@@ -1,6 +1,6 @@
 export class AppLogin {
 
 	onLogin($event) {
-		$.notify(`${$event.data.username}/${$event.data.password}`);
+		$.notify(`${$event.detail.username}/${$event.detail.password}`);
 	}
 }

@@ -41,7 +41,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIOption.prototype._checkChanged = function ($event) {
-            $event.data = this.checked;
+            $event.detail = this.checked;
         };
         __decorate([
             aurelia_framework_1.bindable, 

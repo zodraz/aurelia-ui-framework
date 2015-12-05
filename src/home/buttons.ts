@@ -25,7 +25,7 @@ export class HomeButtons {
 
 	buttonclick($event) {
 		let data;
-		if (data = $event.data) {
+		if (data = $event.detail) {
 			var msg = 'OOPS! You clicked the wrong button';
 			if (data._theme == 'primary')msg = 'YIPEE! Im the primary color';
 			if (data._theme == 'info')msg = 'HOUSTON! We have lift-off';
@@ -51,7 +51,7 @@ export class HomeButtons {
 	}
 
 	menuclicked($event) {
-		$.notify(`You clicked ${$event.data.title}`, {
+		$.notify(`You clicked ${$event.detail.title}`, {
 			style: 'ui',
 			className: 'primary',
 			autoHide: true

@@ -131,7 +131,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         UIButton.prototype._menuClicked = function ($event) {
             $event.cancelBubble = true;
             $('.ui-dropdown').removeClass('ui-dropdown');
-            ui_event_1.UIEvent.fireEvent('menuclick', this.element, $event.data, this._button);
+            ui_event_1.UIEvent.fireEvent('menuclick', this.element, $event.detail, this._button);
             return true;
         };
         __decorate([

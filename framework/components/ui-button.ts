@@ -133,7 +133,7 @@ export class UIButton {
 	_menuClicked($event) {
 		$event.cancelBubble = true;
 		$('.ui-dropdown').removeClass('ui-dropdown');
-		UIEvent.fireEvent('menuclick', this.element, $event.data, this._button);
+		UIEvent.fireEvent('menuclick', this.element, $event.detail, this._button);
 		return true;
 	}
 }

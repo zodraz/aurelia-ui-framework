@@ -52,6 +52,6 @@ export class UIOption {
 	}
 
 	private _checkChanged($event:UIEvent) {
-		$event.data = this.checked;
+		$event.detail = this.checked;
 	}
 }

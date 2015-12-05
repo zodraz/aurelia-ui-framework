@@ -55,13 +55,13 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             };
         }
         HomeForm.prototype.languageChanged = function ($event) {
-            this.lang = $event.data.id + '';
+            this.lang = $event.detail.id + '';
             if (this.lang != 'null' && !this.content[this.lang])
                 this.content[this.lang] = { title: '', md: '' };
-            this.contentDir = $event.data.rtl ? 'rtl' : 'ltr';
+            this.contentDir = $event.detail.rtl ? 'rtl' : 'ltr';
         };
         HomeForm.prototype.languageRemoved = function ($event) {
-            delete this.content[$event.data];
+            delete this.content[$event.detail];
         };
         HomeForm.prototype.attached = function () {
             $(this._langSelect).data('UILangSelect')

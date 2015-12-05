@@ -85,7 +85,7 @@ export class UIButtonGroup {
 				// TODO: add multiple check functionality
 			}
 			else {
-				this.value = $event.data.value;
+				this.value = $event.detail.value;
 			}
 			UIEvent.fireEvent('change', this.element, this.value, this._buttonGroup);
 		}

@@ -4,17 +4,8 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-export class UIEvent extends Event {
-	private _data:any;
+export class UIEvent extends CustomEvent {
 	private _value:any;
-
-	get data() {
-		return this._data;
-	}
-
-	set data(any) {
-		this._data = any;
-	}
 
 	get value() {
 		return this._value;
@@ -25,10 +16,17 @@ export class UIEvent extends Event {
 	}
 
 	static fireEvent(event:string, element:EventTarget, data?:any, source?:Element) {
-		let e        = new Event(event, {bubbles: true, cancelable: true}) as UIEvent;
-		e.data       = data;
-		e.srcElement = source; // UNABLE TO SET SOURCE ELEMENT
-		element.dispatchEvent(e);
-		return e;
+		try {
+			let e        = new Event(event, {bubbles: true, cancelable: true}) as UIEvent;
+			e.detail     = data;
+			e.srcElement = source; // UNABLE TO SET SOURCE ELEMENT
+			element.dispatchEvent(e);
+			return e;
+		} catch (e) {
+			var evt = document.createEvent('CustomEvent') as UIEvent;
+			evt.initCustomEvent(event, true, true, data);
+			element.dispatchEvent(evt);
+			return evt;
+		}
 	}
 }

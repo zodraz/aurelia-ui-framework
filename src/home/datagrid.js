@@ -104,29 +104,29 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
                 }];
         }
         HomeDataGrid.prototype.getGender = function ($event) {
-            $event.value = "<span class=\"ui-text-primary ui-font-big " + ($event.data.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23') + "\"></span>";
+            $event.value = "<span class=\"ui-text-primary ui-font-big " + ($event.detail.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23') + "\"></span>";
         };
         HomeDataGrid.prototype.getFullName = function ($event) {
-            $event.value = $event.data.model.FName + " <strong>" + $event.data.model.LName + "</strong>";
+            $event.value = $event.detail.model.FName + " <strong>" + $event.detail.model.LName + "</strong>";
         };
         HomeDataGrid.prototype.linkclicked = function ($event) {
             this.getGender($event);
-            var d = $event.data.model;
-            if ($event.data.link == 'edit') {
+            var d = $event.detail.model;
+            if ($event.detail.link == 'edit') {
                 $.notify("You want to edit " + d.FName + " <strong>" + d.LName + "</strong>", {
                     style: 'ui',
                     className: 'warning',
                     autoHide: true
                 });
             }
-            if ($event.data.link == 'delete') {
+            if ($event.detail.link == 'delete') {
                 $.notify("You want to delete " + d.FName + " <strong>" + d.LName + "</strong>?", {
                     style: 'ui',
                     className: 'danger',
                     autoHide: true
                 });
             }
-            if ($event.data.link == 'FName') {
+            if ($event.detail.link == 'FName') {
                 $.notify("Details for " + $event.value + " " + d.FName + " <strong>" + d.LName + "</strong>\n\t\t\t<br/>" + (d.Gender == 'MALE' ? 'He' : 'She') + " is " + ui_utils_1.moment(d.SDate).fromNow(true) + " old", {
                     style: 'ui',
                     className: 'info',
