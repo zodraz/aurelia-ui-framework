@@ -74,6 +74,7 @@ export class UIInput {
 	private _placeholder2:string = '';
 	private _type:string         = 'text';
 	private _area:boolean        = false;
+	private _focus:boolean       = false;
 	private _noLabel:boolean     = false;
 	private _double:boolean      = false;
 	private _checkbox:boolean    = false;

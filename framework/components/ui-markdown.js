@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "aurelia-framework", "./ui-input"], function (require, exports, aurelia_framework_1, ui_input_1) {
     var UIMarkdown = (function () {
         function UIMarkdown(element) {
+            this._focus = false;
             this._classes = '';
             this._labelClasses = '';
             this._inputClasses = '';

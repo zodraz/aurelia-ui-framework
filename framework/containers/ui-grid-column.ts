@@ -21,6 +21,7 @@ export class UIGridColumn {
 		if (el.hasAttribute('auto'))this.size = 'auto';
 		if (el.hasAttribute('fill'))this.size = 'fill';
 		if (el.hasAttribute('full'))this.size = 'full';
+		if (el.hasAttribute('pad'))this._classes += ' ui-padding ';
 		if (el.hasAttribute('row'))this._classes += ' ui-row ';
 		if (el.hasAttribute('stretch'))this._classes += ' ui-stretch ';
 		if (el.hasAttribute('middle')) this._classes += ' ui-middle ';

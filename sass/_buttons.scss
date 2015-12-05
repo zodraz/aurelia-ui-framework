@@ -20,12 +20,12 @@
 	  border-color: shade($border, 10%);
 	  background: linear-gradient(top, $hover-bg, darken($hover-bg, 4%));
 	}
-	&:focus {
-	  @include box-shadow(1px 1px 1px 0 $base-shadow-color, 0 0 3px 0 $color inset);
+	button:focus {
+	  @include box-shadow(0 0 2px 1px $color inset);
 	}
-	&:active, &.ui-dropdown {
-	  @include box-shadow(1px 1px 1px 0 $base-shadow-color,
-			  1px 1px 1px 0 rgba(#000, 0.5) inset,
+	button:active, &.ui-dropdown {
+	  background: linear-gradient(top, darken($bg, 4%), $bg);
+	  @include box-shadow(1px 1px 1px 0 rgba(#000, 0.5) inset,
 			  -1px -1px 1px 0 rgba(#fff, 0.5) inset);
 	}
 	i.ui-caret {
@@ -43,10 +43,12 @@
 	color: $base-border-color;
 	radius: $base-border-radius;
   }
-  @include box-shadow(1px 1px 1px 0 $base-shadow-color);
+  @include box-shadow(1px 1px 1px 0 rgba($base-shadow-color, 0.5));
 
   &.ui-default {
-	font-weight: $font-weight-strong;
+	button, a {
+	  font-weight: $font-weight-strong;
+	}
   }
 
   &[disabled] {

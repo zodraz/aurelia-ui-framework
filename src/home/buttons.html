@@ -1,7 +1,7 @@
 <template>
 	<ui-toolbar>
 		<h5 class="ui-col-fill">Sample Toolbar</h5>
-		<ui-button>Tool</ui-button>
+		<ui-button icon="fi-elegant-black64"></ui-button>
 		<ui-divider></ui-divider>
 		<ui-button label="Dropdown Menu">
 			<menu data-id="0">Link 0</menu>
@@ -20,7 +20,7 @@
 		</ui-button>
 	</ui-toolbar>
 	<ui-scroll>
-		<div class="pad-all border-h" click.delegate="buttonclick($event)">
+		<div class="pad-all border-b" click.delegate="buttonclick($event)">
 			<h4 class="margin-v">Buttons
 				<small>Click the buttons for toast messages</small>
 			</h4>
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-h">
+		<div class="pad-all border-b">
 			<h4 class="margin-v">Button Group</h4>
 			<ui-button-group secondary>
 				<ui-button icon="fi-elegant-check2">Click</ui-button>
@@ -80,7 +80,7 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-h">
+		<div class="pad-all border-b">
 			<h4 class="margin-v">Toggle Single (selected: ${t1})</h4>
 			<ui-button-group large secondary toggle value.bind="t1">
 				<ui-button value="0" icon="fi-elegant-check2">Click</ui-button>
@@ -109,7 +109,7 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-h" menuclick.delegate="menuclicked($event)">
+		<div class="pad-all border-b" menuclick.delegate="menuclicked($event)">
 			<h4>Dropdown</h4>
 			<ui-button label="Dropdown Menu">
 				<menu data-id="0">Link 0</menu>
@@ -155,7 +155,7 @@
 			</div>
 		</div>
 
-		<div class="pad-all border-h">
+		<div class="pad-all">
 			<h4 class="margin-v">Switches</h4>
 			<ui-switch disabled>Click Here</ui-switch>
 			<ui-switch primary check></ui-switch>

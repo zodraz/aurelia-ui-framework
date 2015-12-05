@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         function UIDate(element) {
             this.element = element;
             this._clear = false;
+            this._focus = false;
             this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;

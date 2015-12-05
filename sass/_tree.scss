@@ -16,10 +16,14 @@
   .ui-search {
 	@include sticky();
 	top: 0;
-	border-bottom: 1px solid $base-border-color;
-	padding: 5px 10px 0;
 	z-index: 50;
+	padding: 5px 0 0;
 	background-color: $base-bg;
+	border-bottom: 1px solid $base-border-color;
+	.ui-form-control {
+	  @include flex(1 1 auto);
+	  border-width: 0 0 1px;
+	}
   }
 
   .ui-tree-level {

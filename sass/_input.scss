@@ -43,7 +43,7 @@
   }
 
   &:focus {
-	//border-bottom-color: $primary;
+	border-color: $primary;
 	@include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 #eee inset);
   }
 }
@@ -113,15 +113,17 @@
 	}
   }
 
-  &.ui-valid {
-	.ui-list-input:focus ~ .ui-list-container {
-	  border-color: $input-valid-color;
-	  @include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
-	}
-	.ui-list-container {
-	  &:hover {
+  @if($input-hilight-valid) {
+	&.ui-valid {
+	  .ui-list-input:focus ~ .ui-list-container {
 		border-color: $input-valid-color;
-		@include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 #eee inset);
+		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
+	  }
+	  .ui-list-container {
+		&:hover {
+		  border-color: $input-valid-color;
+		  @include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 #eee inset);
+		}
 	  }
 	}
   }

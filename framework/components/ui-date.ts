@@ -53,6 +53,7 @@ export class UIDate {
 	private _inputEnd;
 	private _inputInline;
 	private _clear:boolean       = false;
+	private _focus:boolean       = false;
 	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;

@@ -23,6 +23,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.size = 'fill';
             if (el.hasAttribute('full'))
                 this.size = 'full';
+            if (el.hasAttribute('pad'))
+                this._classes += ' ui-padding ';
             if (el.hasAttribute('row'))
                 this._classes += ' ui-row ';
             if (el.hasAttribute('stretch'))

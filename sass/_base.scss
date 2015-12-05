@@ -252,7 +252,7 @@ html, body {
   ));
 
   z-index: $zindex-splash;
-  background: rgba(#fff, 0);
+  background: rgba(#fff, 0.3);
   @include position(absolute, 0 0 12px);
 
   > .ui-loader {

@@ -25,6 +25,7 @@ export class UIMarkdown {
 	private _input;
 	private _tools;
 	private _markdown;
+	private _focus:boolean       = false;
 	private _classes:string      = '';
 	private _labelClasses:string = '';
 	private _inputClasses:string = '';

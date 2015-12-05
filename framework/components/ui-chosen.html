@@ -2,13 +2,14 @@
 
 	<label class="ui-label ${_labelClasses}" innerhtml.bind="label" show.bind="!_noLabel" for.bind="_id"></label>
 
-	<div class="ui-form-control">
+	<div class="ui-form-control ${focus?'ui-focus':''}">
 		<div class="ui-addon" if.bind="addonClass || addonIcon || addonText">
 			<span class="${addonIcon} ${addonClass}" if.bind="addonClass || addonIcon"></span>
 			<span if.bind="addonText">${addonText}</span>
 		</div>
 		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
-			<input class="ui-option-input" type="checkbox" checked.bind="checked"/>
+			<input class="ui-option-input" type="checkbox" checked.bind="checked"
+				   focus.trigger="focus=true" blur.trigger="focus=false"/>
 			<span class="ui-check-mark"></span>
 		</div>
 		<div ref="_options">

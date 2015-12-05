@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         function UIChosen(element) {
             this.element = element;
             this._clear = false;
+            this._focus = false;
             this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;

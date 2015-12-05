@@ -19,6 +19,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this._placeholder2 = '';
             this._type = 'text';
             this._area = false;
+            this._focus = false;
             this._noLabel = false;
             this._double = false;
             this._checkbox = false;

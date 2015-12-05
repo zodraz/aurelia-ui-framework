@@ -38,6 +38,7 @@ export class UIChosen {
 	private _select;
 	private _options;
 	private _clear:boolean       = false;
+	private _focus:boolean       = false;
 	private _noLabel:boolean     = false;
 	private _checkbox:boolean    = false;
 	private _multiple:boolean    = false;
