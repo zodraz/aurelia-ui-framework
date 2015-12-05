@@ -71,7 +71,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 if (this._toggle === 'multiple') {
                 }
                 else {
-                    this.value = $event.data.value;
+                    this.value = $event.detail.value;
                 }
                 ui_event_1.UIEvent.fireEvent('change', this.element, this.value, this._buttonGroup);
             }

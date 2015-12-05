@@ -9,16 +9,6 @@ define(["require", "exports"], function (require, exports) {
         function UIEvent() {
             _super.apply(this, arguments);
         }
-        Object.defineProperty(UIEvent.prototype, "data", {
-            get: function () {
-                return this._data;
-            },
-            set: function (any) {
-                this._data = any;
-            },
-            enumerable: true,
-            configurable: true
-        });
         Object.defineProperty(UIEvent.prototype, "value", {
             get: function () {
                 return this._value;
@@ -30,13 +20,21 @@ define(["require", "exports"], function (require, exports) {
             configurable: true
         });
         UIEvent.fireEvent = function (event, element, data, source) {
-            var e = new Event(event, { bubbles: true, cancelable: true });
-            e.data = data;
-            e.srcElement = source;
-            element.dispatchEvent(e);
-            return e;
+            try {
+                var e = new Event(event, { bubbles: true, cancelable: true });
+                e.detail = data;
+                e.srcElement = source;
+                element.dispatchEvent(e);
+                return e;
+            }
+            catch (e) {
+                var evt = document.createEvent('CustomEvent');
+                evt.initCustomEvent(event, true, true, data);
+                element.dispatchEvent(evt);
+                return evt;
+            }
         };
         return UIEvent;
-    })(Event);
+    })(CustomEvent);
     exports.UIEvent = UIEvent;
 });
