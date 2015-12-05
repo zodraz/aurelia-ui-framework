@@ -16,8 +16,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework", "aurelia-validation", "../utils/ui-event", "../utils/ui-utils", "../utils/ui-model", "../utils/ui-app-state"], function (require, exports, aurelia_framework_1, aurelia_validation_1, ui_event_1, ui_utils_1, ui_model_1, ui_app_state_1) {
     var UILogin = (function () {
-        function UILogin(element) {
+        function UILogin(element, appState) {
             this.element = element;
+            this.appState = appState;
             this.busy = false;
             this.model = new LoginModel();
         }
@@ -50,7 +51,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-validation", "../uti
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-login'), 
-            __metadata('design:paramtypes', [Element])
+            __metadata('design:paramtypes', [Element, ui_app_state_1.UIApplicationState])
         ], UILogin);
         return UILogin;
     })();
@@ -72,8 +73,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-validation", "../uti
             return this.validation.validate();
         };
         LoginModel.prototype.save = function () {
-            this.appState.setLocal('AppUsername', this.username);
-            this.appState.setLocal('AppPassword', this.remember ? this.password : null);
+            this.appState.saveLocal('AppUsername', this.username);
+            this.appState.saveLocal('AppPassword', this.remember ? this.password : null);
         };
         __decorate([
             aurelia_validation_1.ensure(function (t) { return t.isNotEmpty().isEmail(); }), 

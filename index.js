@@ -28,7 +28,10 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
         aurelia.globalResources('./components/ui-chosen');
         aurelia.globalResources('./components/ui-tree');
         aurelia.globalResources('./components/ui-login');
+        aurelia.globalResources('./components/ui-divider');
         aurelia.globalResources('./components/ui-markdown');
+        aurelia.globalResources('./components/ui-lang-select');
+        aurelia.globalResources('./utils/ui-converters');
     }
     exports.configure = configure;
     exports.UIApplicationState = ui_app_state_1.UIApplicationState;

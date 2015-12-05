@@ -48,12 +48,15 @@ button {
 
 hr {
   margin: 0.2rem 0;
-  background: none;
+  height: 0.15rem;
+  background: if($dark-theme, $base-border-color, $white);
   color: transparent;
-  border-left: none;
-  border-right: none;
-  border-top: 1px solid darken($base-bg, 20%);
-  border-bottom: 1px solid lighten($base-bg, 20%);
+  border: {
+	style: solid;
+	radius: 0.5rem;
+	width: 0.06rem 0 0;
+	color: if($dark-theme, $black, $base-border-color);
+  }
 }
 
 textarea {
@@ -73,6 +76,7 @@ textarea {
 }
 
 .ui-scroll {
+  position: relative;
   overflow: auto !important;
 }
 
@@ -98,11 +102,17 @@ textarea {
 }
 
 .pad-h {
-  padding: 0 0.5rem;
+  padding: {
+	left: 0.5rem;
+	right: 0.5rem;
+  }
 }
 
 .pad-v {
-  padding: 0.5rem 0;
+  padding: {
+	top: 0.5rem;
+	bottom: 0.5rem;
+  }
 }
 
 // MARGIN
@@ -115,11 +125,17 @@ textarea {
 }
 
 .margin-h {
-  margin: 0 0.5rem;
+  margin: {
+	left: 0.5rem;
+	right: 0.5rem;
+  }
 }
 
 .margin-v {
-  margin: 0.5rem 0;
+  margin: {
+	top: 0.5rem;
+	bottom: 0.5rem;
+  }
 }
 
 // BORDERS
@@ -128,13 +144,35 @@ textarea {
 }
 
 .border-h {
-  border: 1px solid $base-border-color;
-  border-width: 1px 0;
+  border: {
+	style: solid;
+	width: 1px 0;
+	color: $base-border-color;
+  }
 }
 
 .border-v {
-  border: 1px solid $base-border-color;
-  border-width: 0 1px;
+  border: {
+	style: solid;
+	width: 0 1px;
+	color: $base-border-color;
+  }
+}
+
+.border-t {
+  border-top: 1px solid $base-border-color;
+}
+
+.border-b {
+  border-bottom: 1px solid $base-border-color;
+}
+
+.border-l {
+  border-left: 1px solid $base-border-color;
+}
+
+.border-r {
+  border-right: 1px solid $base-border-color;
 }
 
 .push-right {

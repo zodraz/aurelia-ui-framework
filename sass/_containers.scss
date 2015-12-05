@@ -21,12 +21,35 @@
 
 .ui-content {
   @include flex(1 1 auto);
-  overflow: auto;
   position: relative;
 
-  &.ui-flex-column {
-	overflow: hidden;
-	@include flex-column($align: stretch, $wrap: false);
+  &:not(.ui-scroll) {
+	@include flex-column($align: stretch, $justify: stretch, $wrap: false);
+  }
+  &.ui-scroll {
+	overflow: auto;
+  }
+  &.ui-middle {
+	@include align-items(center);
+  }
+  &.ui-top {
+	@include align-items(flex-start);
+  }
+  &.ui-bottom {
+	@include align-items(flex-end);
+  }
+  &.ui-center {
+	@include justify-content(center);
+  }
+  &.ui-start {
+	@include justify-content(flex-start);
+  }
+  &.ui-end {
+	@include justify-content(flex-end);
+  }
+
+  > .ui-scroll {
+	@include flex(1 1 auto);
   }
 }
 
@@ -106,8 +129,8 @@
   }
   .ui-divider {
 	@include flex(0 0 auto);
-	border-left: 1px solid darken($base-border-color, 15%);
-	border-right: 1px solid lighten($base-border-color, 15%);
+	border-left: 1px solid $base-border-color;
+	border-right: 1px solid if($dark-theme, $black, $white);
   }
 
   h1 {
@@ -142,8 +165,8 @@
   .ui-divider {
 	@include flex(0 0 auto);
 	height: 2rem;
-	border-left: 1px solid darken($base-border-color, 15%);
-	border-right: 1px solid lighten($base-border-color, 15%);
+	border-left: 1px solid $base-border-color;
+	border-right: 1px solid if($dark-theme, $black, $white);
   }
 }
 

@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
     var UIButton = (function () {
         function UIButton(element) {
             this.element = element;
@@ -64,7 +64,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.icon)
                 this._attachIcon();
             if (this.menu && this._menuRight) {
-                $(this._button).addClass('ui-menu-right');
+                $(this.element).addClass('ui-menu-right');
             }
             if (this.menu) {
                 $(this._button).append('&nbsp;<i class="ui-caret"></i>');
@@ -88,12 +88,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             else
                 this.label = $(this._temp).text();
             $(this._temp).remove();
-            $(this._button)
+            $(this.element)
                 .data('UIButton', this)
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UIButton.prototype.disabledChanged = function (newValue) {
-            $(this._button)
+            $(this.element)
                 .attr(newValue !== false ? 'disabled' : 'x', '');
         };
         UIButton.prototype._attachIcon = function () {
@@ -105,41 +105,23 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIButton.prototype._clicked = function ($event) {
             $event.cancelBubble = true;
             if (this.menu) {
-                if ($(this._button).hasClass('ui-dropdown')) {
-                    $(this._button).removeClass('ui-dropdown');
-                    console.log('hide');
+                if ($(this.element).hasClass('ui-dropdown')) {
+                    $(this.element).removeClass('ui-dropdown');
+                    $event.preventDefault();
                     return false;
                 }
                 if (!this._menu)
                     this._menu = $(this._button).next('.ui-menu');
-                $(this._menu)
-                    .offset({ left: -1000, top: -1000 });
                 $('.ui-dropdown').removeClass('ui-dropdown');
-                $(this._button)
+                var pos = ui_utils_1.Utils.getFloatPosition(this.element, this._menu, this._menuRight);
+                $(this._menu).offset({ left: pos.left, top: pos.top });
+                $(this.element)
                     .toggleClass('ui-dropdown')
                     .removeClass('ui-menu-reverse');
-                var o = $(this._button).offset(), t = o.top, l = o.left, w = $(this._button).outerWidth(), h = $(this._button).outerHeight(), mh = $(this._menu).outerHeight(), mw = $(this._menu).outerWidth(), pw = $(this._menu).offsetParent().width(), ph = $(this._menu).offsetParent().height();
-                if (!this._menuRight) {
-                    $(this._menu).css('min-width', w);
-                    if (o.top + mh > ph) {
-                        t -= mh;
-                        $(this._button).addClass('ui-menu-reverse');
-                    }
-                    else {
-                        t += h;
-                    }
-                    if (o.left + mw > pw) {
-                        l -= (mw - w);
-                    }
-                }
-                else {
-                    l += w;
-                    if (o.top + mh > ph) {
-                        t -= (mh - h);
-                        $(this._button).addClass('ui-menu-reverse');
-                    }
-                }
-                $(this._menu).offset({ left: l, top: t });
+                if (pos.vReverse)
+                    $(this.element).addClass('ui-menu-reverse');
+                if (pos.hReverse)
+                    $(this.element).addClass('ui-menu-left');
             }
             else {
                 ui_event_1.UIEvent.fireEvent('click', this.element, this, this._button);
@@ -182,7 +164,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         ], UIButton.prototype, "disabled");
         UIButton = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-button'), 
             __metadata('design:paramtypes', [Element])
         ], UIButton);

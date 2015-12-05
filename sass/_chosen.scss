@@ -31,13 +31,13 @@
 	}
 
 	.chosen-container {
-	  border: 1px solid $input-border;
+	  border: none;
 	  background-color: $input-bg;
 
-	  &:nth-child(2) {
-		border-top-left-radius: $base-border-radius !important;
-		border-bottom-left-radius: $base-border-radius !important;
-	  }
+	  //&:nth-child(2) {
+	  //border-top-left-radius: $base-border-radius !important;
+	  //border-bottom-left-radius: $base-border-radius !important;
+	  //}
 
 	  .chosen-drop {
 		background-color: $input-bg;
@@ -50,18 +50,24 @@
 		}
 
 		.chosen-search input {
-		  border: 1px solid $input-border;
+		  border: {
+			width: 0 0 1px;
+			style: solid;
+			color: $input-border;
+		  }
 		  border-radius: $base-border-radius;
 		  &:focus {
 			border-color: $input-focus-color;
-			@include box-shadow(0 0 2px 0 $input-focus-color inset);
+			@include box-shadow(0 -2px 0 0 $input-focus-color inset);
 		  }
 		}
 	  }
 
 	  &.chosen-container-active {
 		border-color: $input-focus-color;
-		@include box-shadow(0 0 4px 0 $input-focus-color);
+		.chosen-single, .chosen-choices {
+		  @include box-shadow(0 -3px 0 0 $input-focus-color inset);
+		}
 
 		li.search-field input[type=text] {
 		  color: $input-text;
@@ -73,11 +79,11 @@
 		  > div > b:after {
 			content: '\e082';
 		  }
-		  @include border-bottom-radius(0);
+		  //@include border-bottom-radius(0);
 		  background: linear-gradient(bottom, $input-bg, shade($input-bg, 2%));
 		}
 		.chosen-choices {
-		  @include border-bottom-radius(0);
+		  //@include border-bottom-radius(0);
 		}
 		.chosen-drop {
 		  left: -1px;
@@ -86,9 +92,9 @@
 		  border: {
 			style: solid;
 			width: 1px;
-			color: rgba($base-border-color, 0.5) $input-focus-color $input-focus-color;
+			color: $input-focus-color;
 		  }
-		  @include border-bottom-radius($base-border-radius);
+		  //@include border-bottom-radius($base-border-radius);
 		  @include box-shadow(0 4px 5px rgba($black, 0.35));
 		}
 	  }
@@ -138,7 +144,7 @@
 		li.search-choice {
 		  height: 20px;
 		  position: relative;
-		  margin: 2px 0 2px 5px;
+		  margin: 2px 0 5px 5px;
 		  padding: 4px 16px 4px 4px;
 		  float: none;
 		  line-height: 0.85;
@@ -175,15 +181,17 @@
 	}
   }
 
-  &.ui-valid {
-	.chosen-container {
-	  &.chosen-with-drop .chosen-drop {
-		border-color: $input-border rgba($input-valid-color, 0.85) rgba($input-valid-color, 0.85);
-	  }
-	  border-color: $input-valid-color;
-	  &.chosen-container-active {
+  @if ($input-hilight-valid) {
+	&.ui-valid {
+	  .chosen-container {
+		&.chosen-with-drop .chosen-drop {
+		  border-color: $input-border rgba($input-valid-color, 0.85) rgba($input-valid-color, 0.85);
+		}
 		border-color: $input-valid-color;
-		@include box-shadow(0 0 4px 0 $input-valid-color);
+		&.chosen-container-active {
+		  border-color: $input-valid-color;
+		  @include box-shadow(0 3px 0 0 $input-valid-color);
+		}
 	  }
 	}
   }
@@ -195,7 +203,7 @@
 	  border-color: $input-invalid-color;
 	  &.chosen-container-active {
 		border-color: $input-invalid-color;
-		@include box-shadow(0 0 4px 0 $input-invalid-color);
+		@include box-shadow(0 3px 0 0 $input-invalid-color);
 	  }
 	}
   }

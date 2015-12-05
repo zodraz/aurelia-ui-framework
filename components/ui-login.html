@@ -1,9 +1,9 @@
 <template>
-	<div class="ui-content ui-row ui-center ui-middle" ref="_form">
+	<div class="ui-content ui-center ui-middle" ref="_form">
 		<div class="ui-temp ui-hide">
 			<content></content>
 		</div>
-		<ui-form submit.trigger="doLogin()" busy.bind="busy" class="ui-form ui-login pad-all" validate.bind="model.validation">
+		<ui-form submit.trigger="doLogin()" busy.bind="busy" class="ui-login pad-all" validate.bind="model.validation">
 			<div class="ui-col-fill pad-all">
 				<div class="ui-login-content"></div>
 				<hr/>
@@ -11,9 +11,11 @@
 				<p class="ui-bg-danger ui-align-center" if.bind="error">${error}</p>
 
 				<ui-input clear label-top label="Username" email value.bind="model.username" validate="username"
-						  placeholder="user@clubhotel.com">Username</ui-input>
+						  placeholder="user@clubhotel.com">Username
+				</ui-input>
 				<ui-input clear label-top password value.bind="model.password" validate="password"
-						  placeholder="password">Password</ui-input>
+						  placeholder="password">Password
+				</ui-input>
 
 				<ui-option-group label="" label-top>
 					<ui-option checkbox value.bind="model.remember">Login Automatically</ui-option>
@@ -27,7 +29,7 @@
 				<p class="ui-font-small ui-align-center ui-text-muted">This app is designed to run on desktop and
 					tablets</p>
 
-				<p class="ui-font-small ui-align-center ui-text-muted">Version 1.0.0</p>
+				<p class="ui-font-small ui-align-center ui-text-muted">Version ${appState.Version}</p>
 			</div>
 		</ui-form>
 	</div>

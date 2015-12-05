@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         function UIDate(element) {
             this.element = element;
             this._clear = false;
+            this._focus = false;
             this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;
@@ -34,6 +35,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.range = false;
             this.inline = false;
             this.disabled = false;
+            this._id = "date-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('nolabel'))
@@ -59,7 +61,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.dt = ui_utils_1.moment().format('DD');
         }
         UIDate.prototype.attached = function () {
-            this._id = "date-" + ui_input_1.UIInput._id++;
             if (this.inline && (this._inputStart = this._inputInline))
                 $(this._date).remove();
             else
@@ -130,10 +131,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         };
         UIDate.prototype.disabledChanged = function (newValue) {
             $(this._inputStart)
+                .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '');
             if (this._inputEnd) {
                 $(this._inputEnd)
+                    .removeAttr('D')
                     .removeAttr('disabled')
                     .attr(newValue !== false ? 'disabled' : 'D', '');
             }

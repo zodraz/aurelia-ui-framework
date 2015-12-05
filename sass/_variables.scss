@@ -25,7 +25,7 @@ $base-bg: if($dark-theme, $outer-space, $coconut) !default;
 $base-text: if($dark-theme, $coconut, $black-olive) !default;
 $base-bg-image: if($dark-theme, 'back/black_linen_v1.png', 'back/white_linen.png') !default;
 
-$base-border-radius: 5px !default;
+$base-border-radius: 1px !default;
 $base-border-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
 $base-shadow-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
 
@@ -114,10 +114,12 @@ $input-border: $base-border-color !default;
 $input-focus-color: $primary !default;
 $input-valid-color: $pine !default;
 $input-invalid-color: $madder-lake !default;
-$input-addon-text: $manatee !default;
+$input-addon-text: $primary !default;
 $input-addon-bg: if($dark-theme, $black-olive, $white-smoke) !default;
 $input-readonly-bg: shade($input-bg, 2%) !default;
 $input-disabled-bg: darken($input-bg, 10%) !default;
+
+$input-hilight-valid: false !default;
 
 $input-option-color: $charcoal-gray !default;
 $input-option-color-focus: $input-focus-color !default;

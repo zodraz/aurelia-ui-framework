@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         function UIList(element) {
             this.element = element;
             this._clear = false;
+            this._focus = false;
             this._noLabel = false;
             this._checkbox = false;
             this._multiple = false;
@@ -30,6 +31,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.buttonText = '';
             this.readonly = false;
             this.disabled = false;
+            this._id = "list-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
             if (element.hasAttribute('clear'))
@@ -54,8 +56,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             }
         };
         UIList.prototype.attached = function () {
-            this._id = "list-" + ui_input_1.UIInput._id++;
-            $(this._list).data('UIList', this);
+            $(this.element).data('UIList', this);
             $(this._select)
                 .html(this._getListItems())
                 .find("li[value=\"" + this.value + "\"]").addClass('active');
@@ -63,11 +64,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         };
         UIList.prototype.disabledChanged = function (newValue) {
             $(this._select)
+                .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIList.prototype.readonlyChanged = function (newValue) {
             $(this._select)
+                .removeAttr('R')
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '');
         };

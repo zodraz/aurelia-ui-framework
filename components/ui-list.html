@@ -2,19 +2,22 @@
 
 		<label class="ui-label ${_labelClasses}" innerhtml.bind="label" show.bind="!_noLabel" for.bind="_id"></label>
 
-		<div class="ui-form-control">
+		<div class="ui-form-control ${focus?'ui-focus':''}">
 			<div class="ui-addon" if.bind="addonClass || addonIcon || addonText">
 				<span class="${addonIcon} ${addonClass}" if.bind="addonClass || addonIcon"></span>
 				<span if.bind="addonText">${addonText}</span>
 			</div>
 			<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
-				<input class="ui-option-input" type="checkbox" checked.bind="checked"/>
+				<input class="ui-option-input" type="checkbox" checked.bind="checked"
+					   focus.trigger="focus=true" blur.trigger="focus=false"/>
 				<span class="ui-check-mark"></span>
 			</div>
 			<div ref="_options">
 				<content></content>
 			</div>
-			<select id.bind="_id" ref="_input" value.bind="value" size="2" class="ui-list-input" maxlength="0" change.trigger="_changeSelection($event)"></select>
+			<select id.bind="_id" ref="_input" value.bind="value" size="2" class="ui-list-input"
+					focus.trigger="focus=true" blur.trigger="focus=false"
+					maxlength="0" change.trigger="_changeSelection($event)"></select>
 			<ul size="5" ref="_select" class="ui-input ui-list-container ${_inputClasses}"
 				click.delegate="_changeSelection($event)">
 			</ul>

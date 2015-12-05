@@ -9,6 +9,45 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
             return aurelia_framework_1.Lazy.of(T).get(_c)();
         }
         Utils.lazy = lazy;
+        function getFloatPosition(anchor, floater, side) {
+            if (side === void 0) { side = false; }
+            var _f = $(floater), _a = $(anchor);
+            _f.offset({ left: -1000, top: -1000 })
+                .css('max-height', side ? '480px' : '320px')
+                .css('visibility', 'visible');
+            var o = _a.offset(), aw = _a.outerWidth(), ah = _a.outerHeight(), fh = _f.outerHeight(), fw = _f.outerWidth(), pw = window.innerWidth, ph = window.innerHeight;
+            var _hr = false, _vr = false;
+            var t = o.top, l = o.left;
+            if (!side) {
+                _f.css('min-width', aw);
+                if (t + ah + fh > ph) {
+                    t -= fh;
+                    _vr = true;
+                }
+                else {
+                    t += ah;
+                }
+                if (l + fw > pw) {
+                    l -= (fw - aw);
+                }
+            }
+            else {
+                if (t + fh > ph) {
+                    t -= (fh - ah);
+                    _vr = true;
+                }
+                if (l + aw + fw > pw) {
+                    l -= fw;
+                    _hr = true;
+                }
+                else {
+                    l += aw;
+                }
+            }
+            _f.css('max-height', '0').css('visibility', 'hidden');
+            return { top: t, left: l, hReverse: _hr, vReverse: _vr };
+        }
+        Utils.getFloatPosition = getFloatPosition;
     })(Utils = exports.Utils || (exports.Utils = {}));
     var Format;
     (function (Format) {

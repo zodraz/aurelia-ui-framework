@@ -19,6 +19,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this._placeholder2 = '';
             this._type = 'text';
             this._area = false;
+            this._focus = false;
             this._noLabel = false;
             this._double = false;
             this._checkbox = false;
@@ -31,6 +32,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.phoneNumber = '';
             this.phoneCountry = 'us';
             this.id = '';
+            this.dir = 'ltr';
             this.addonIcon = '';
             this.addonText = '';
             this.addonClass = '';
@@ -40,6 +42,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.readonly = false;
             this.disabled = false;
             this.phoneType = PhoneLib.TYPE.MOBILE;
+            this._id = "input-" + UIInput._id++;
             if (element.hasAttribute('clear'))
                 this._inputClasses += ' ui-clear ';
             if (element.hasAttribute('required'))
@@ -76,6 +79,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._type = 'position';
             if (element.hasAttribute('phone'))
                 this._type = 'phone';
+            $(this.element).data('UIInput', this);
         }
         UIInput.prototype.bind = function () {
             if (this._type == 'position') {
@@ -102,12 +106,21 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIInput.prototype.attached = function () {
             var _this = this;
-            this._id = "input-" + UIInput._id++;
-            this._input = $(this._inputGroup)
-                .data('UIInput', this)
-                .find('.ui-input');
+            this._input = $(this._inputGroup).find('.ui-input');
             if (this._type == 'password') {
                 this._input.attr('type', 'password');
+            }
+            else if (this._type == 'email') {
+                this._input.attr('type', 'email');
+            }
+            else if (this._type == 'search') {
+                this._input.attr('type', 'search');
+            }
+            else if (this._type == 'phone') {
+                this._input.attr('type', 'tel');
+            }
+            else if (this._type == 'number' || this._type == 'decimal' || this._type == 'position') {
+                this._input.attr('type', 'number');
             }
             this._input[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
                 .attr(this.readonly !== false ? 'readonly' : 'R', '')
@@ -172,13 +185,15 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIInput.prototype.disabledChanged = function (newValue) {
             this._input
+                .removeAttr('D')
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : '', '');
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIInput.prototype.readonlyChanged = function (newValue) {
             this._input
+                .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : '', '');
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
         UIInput.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
@@ -253,6 +268,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIInput.prototype, "id");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "dir");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

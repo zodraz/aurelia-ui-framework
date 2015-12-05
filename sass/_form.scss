@@ -14,7 +14,6 @@
 	&.ui-col-auto {
 	  @include flex(1 1 420px);
 	  max-width: 100%;
-	  position: relative;
 	}
   }
 
@@ -25,8 +24,18 @@
 .ui-input-group {
   @include flex(1 1 auto);
   @include flex-row($align: flex-start, $wrap: true);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   padding: 0 0.3rem;
+
+  &.ui-center {
+	@include justify-content(center);
+  }
+  &.ui-start {
+	@include justify-content(flex-start);
+  }
+  &.ui-end {
+	@include justify-content(flex-end);
+  }
 
   .ui-help-block {
 	@include flex(0 0 100%);
@@ -87,6 +96,16 @@
 	@include flex(1 0 280px);
 	padding: 0;
 	position: relative;
+	border: 1px solid $input-border;
+	border-radius: $base-border-radius;
+
+	&.ui-focus {
+	  border-color: $input-focus-color;
+	}
+
+	.ui-input {
+	  border: none;
+	}
 
 	.ui-addon {
 	  @include flex(0 0 auto);
@@ -100,13 +119,12 @@
 		family: $input-font-family;
 		weight: 500;
 	  }
-	  border: 1px solid $input-border;
 	  z-index: 1;
 	  span {
 		min-height: 16px;
 		min-width: 16px;
 		font-size: 1rem;
-		line-height: 1.1;
+		line-height: 1.3;
 		&.ui-flag {
 		  background-size: 18px 18px;
 		}
@@ -114,12 +132,14 @@
 
 	  .ui-icon {
 		font-size: 1.3em;
-		margin-top: -2px;
+		line-height: 0.9;
 	  }
 	}
 
 	.ui-checkbox {
 	  @include flex(0 0 26px);
+	  padding: 0.25rem 0.5rem;
+	  height: auto;
 	  .ui-option-input:checked ~ .ui-check-mark:after {
 		content: '\e004';
 	  }
@@ -128,43 +148,29 @@
 	.ui-button {
 	  @include flex(0 0 auto);
 	  padding: 0.2rem 0.5rem;
+	  border-width: 0;
 	  &:not(:active):not(:focus) {
 		box-shadow: none;
 	  }
 	  z-index: 1;
 	}
 
-	> :first-child {
-	  @include border-left-radius($base-border-radius);
-	  @include border-right-radius(0);
-	}
-	> :last-child {
-	  @include border-left-radius(0);
-	  @include border-right-radius($base-border-radius);
-	}
-	> :only-child {
-	  border-radius: $base-border-radius;
+	> :not(:last-child) {
+	  border-right: 1px solid $input-border;
 	}
 
 	.ui-markdown-editor {
+	  border-right: none !important;
 	  .ui-button-group {
 		padding: 0;
 		background-color: $toolbar-bg;
-		border: {
-		  width: 1px 1px 0;
-		  style: solid;
-		  color: $input-border;
-		}
+		border-bottom: 1px solid $input-border;
 		@include flex-wrap(wrap);
-		@include border-top-radius($base-border-radius);
 		> .ui-button {
 		  margin: 0;
 		  border: {
 			radius: 0;
 			width: 0 1px 0 0;
-		  }
-		  &:first-child {
-			@include border-top-left-radius($base-border-radius);
 		  }
 		}
 		.ui-divider {
@@ -176,8 +182,7 @@
 		}
 	  }
 	  .ui-input {
-		@include border-top-radius(0);
-		@include border-bottom-radius($base-border-radius);
+		border-bottom: 1px solid $input-border;
 	  }
 	}
 
@@ -189,16 +194,11 @@
 
 	  background-color: $input-bg;
 	  color: $input-text;
-	  border: {
-		width: 1px;
-		style: solid;
-		color: $input-border;
-		radius: $base-border-radius;
-	  }
+	  border: none;
 	  @include box-shadow(0 0 3px 0 #ccc inset);
 
 	  ~ .ui-close {
-		@include position(absolute, 0 0 null null);
+		@include position(absolute, 0 0 auto auto);
 		opacity: .3;
 		z-index: 9;
 		font-size: 1.5rem;
@@ -208,6 +208,9 @@
 		  opacity: .6;
 		}
 	  }
+	  &[dir="rtl"]:not(.ui-hide) ~ .ui-close {
+		@include position(absolute, 0 auto auto 0);
+	  }
 	}
   }
 
@@ -216,16 +219,12 @@
 	  color: $danger;
 	}
 
-	.ui-input, .ui-addon, .ui-button, .ui-checkbox {
-	  border-color: rgba($input-invalid-color, 0.85);
+	.ui-form-control {
+	  border-color: $input-invalid-color;
 	}
 
-	.ui-input {
-	  border-color: rgba($input-invalid-color, 0.85);
-	  &:focus {
-		border-color: rgba($input-invalid-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #ddd inset);
-	  }
+	.ui-input:focus {
+	  @include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 #eee inset);
 	}
 
 	.ui-addon {
@@ -234,25 +233,24 @@
 	}
   }
 
-  &.ui-valid {
-	.ui-label {
-	  color: $input-valid-color;
-	}
-
-	.ui-input, .ui-addon, .ui-button, .ui-checkbox {
-	  border-color: rgba($input-valid-color, 0.85);
-	}
-
-	.ui-input {
-	  &:focus {
-		border-color: rgba($input-valid-color, 0.85);
-		@include box-shadow(0 0 4px 0 $success, 0 1px 1px 0 #ddd inset);
+  @if ($input-hilight-valid) {
+	&.ui-valid {
+	  .ui-label {
+		color: $input-valid-color;
 	  }
-	}
 
-	.ui-addon {
-	  color: $coconut;
-	  background-color: $input-valid-color;
+	  .ui-form-control {
+		border-color: $input-valid-color;
+	  }
+
+	  .ui-input:focus {
+		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
+	  }
+
+	  .ui-addon {
+		color: $coconut;
+		background-color: $input-valid-color;
+	  }
 	}
   }
 }

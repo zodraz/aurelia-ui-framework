@@ -18,6 +18,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this.IsAuthenticated = false;
             this.IsHttpInUse = false;
             this.AllowAuthHeader = false;
+            this.AppKey = 'AUF';
+            this.Version = "0.0.1";
+            this.StartYear = '2015';
+            this.Copyright = 'Adarsh Pastakia';
             this.BaseUrl = '';
             this.IpAddress = '';
             this.AppSource = 0;
@@ -57,14 +61,24 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             });
         };
         UIApplicationState.prototype.getLocal = function (key) {
-            return window.localStorage.getItem(key);
+            return JSON.parse(window.localStorage.getItem(this.AppKey + "_" + key));
         };
-        UIApplicationState.prototype.setLocal = function (key, value) {
+        UIApplicationState.prototype.saveLocal = function (key, value) {
             if (value === void 0) { value = null; }
             if (value)
-                window.localStorage.setItem(key, value);
+                window.localStorage.setItem(this.AppKey + "_" + key, JSON.stringify(value));
             else
-                window.localStorage.removeItem(key);
+                window.localStorage.removeItem(this.AppKey + "_" + key);
+        };
+        UIApplicationState.prototype.getState = function (key) {
+            return JSON.parse(window.sessionStorage.getItem(this.AppKey + "_" + key));
+        };
+        UIApplicationState.prototype.saveState = function (key, value) {
+            if (value === void 0) { value = null; }
+            if (value)
+                window.sessionStorage.setItem(this.AppKey + "_" + key, JSON.stringify(value));
+            else
+                window.sessionStorage.removeItem(this.AppKey + "_" + key);
         };
         UIApplicationState = __decorate([
             aurelia_framework_1.autoinject(), 

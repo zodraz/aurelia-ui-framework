@@ -43,7 +43,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UIRibbon.prototype, "class");
         UIRibbon = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-ribbon'), 
             __metadata('design:paramtypes', [Element])
         ], UIRibbon);

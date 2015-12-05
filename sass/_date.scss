@@ -14,8 +14,10 @@
 
   .ui-icon:after {
 	content: attr(data-date);
-	font-size: 0.4em;
-	margin-left: -13px;
+	font-size: 0.4rem;
+	left: 0.6rem;
+	top: 0.77rem;
+	position: absolute;
 	font-family: sans-serif;
   }
 
@@ -28,7 +30,7 @@
   }
 
   .bootstrap-datetimepicker-widget {
-	padding: 2px 0 0;
+	padding: 0;
 	background-color: $base-bg;
 
 	> ul, > ul > li {
@@ -61,6 +63,9 @@
 		span:before {
 		  content: 'Today';
 		}
+	  }
+	  td:last-child {
+		display: none;
 	  }
 	}
 
@@ -100,6 +105,7 @@
 	  th.picker-switch {
 		color: $primary;
 		font-weight: $font-weight-strong !important;
+		border-radius: $base-border-radius;
 		&:hover {
 		  background-color: rgba($date-active-bg, 0.25);
 		}
@@ -111,6 +117,7 @@
 	  }
 	  .prev, .next {
 		color: $primary;
+		border-radius: $base-border-radius;
 		&:hover:not(.disabled) {
 		  background-color: rgba($date-active-bg, 0.25);
 		}

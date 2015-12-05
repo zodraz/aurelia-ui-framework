@@ -12,14 +12,12 @@
   display: block;
 
   &.ui-floating {
-	@include position(fixed, null);
-	@include transition(height 0.3s);
+	@include position(absolute, null);
 	padding: 2px 0;
 	min-width: 120px;
 	max-width: 220px;
-	max-height: 0;
-	display: none;
 	overflow: auto;
+	visibility: hidden;
 	z-index: $zindex-floating;
 	background-color: $base-bg;
 	border-radius: $base-border-radius;
@@ -56,8 +54,6 @@
 
 	hr {
 	  margin: 2px 0;
-	  border-top-color: darken($base-bg, 20%);
-	  border-bottom-color: lighten($base-bg, 20%);
 	}
 
 	> .ui-menu-section {
