@@ -105,31 +105,31 @@ export class HomeDataGrid {
 	}];
 
 	getGender($event) {
-		$event.value = `<span class="ui-text-primary ui-font-big ${$event.data.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23'}"></span>`;
+		$event.value = `<span class="ui-text-primary ui-font-big ${$event.detail.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23'}"></span>`;
 	}
 
 	getFullName($event) {
-		$event.value = `${$event.data.model.FName} <strong>${$event.data.model.LName}</strong>`;
+		$event.value = `${$event.detail.model.FName} <strong>${$event.detail.model.LName}</strong>`;
 	}
 
 	linkclicked($event) {
 		this.getGender($event);
-		var d = $event.data.model;
-		if ($event.data.link == 'edit') {
+		var d = $event.detail.model;
+		if ($event.detail.link == 'edit') {
 			$.notify(`You want to edit ${d.FName} <strong>${d.LName}</strong>`, {
 				style: 'ui',
 				className: 'warning',
 				autoHide: true
 			});
 		}
-		if ($event.data.link == 'delete') {
+		if ($event.v.link == 'delete') {
 			$.notify(`You want to delete ${d.FName} <strong>${d.LName}</strong>?`, {
 				style: 'ui',
 				className: 'danger',
 				autoHide: true
 			});
 		}
-		if ($event.data.link == 'FName') {
+		if ($event.detail.link == 'FName') {
 			$.notify(`Details for ${$event.value} ${d.FName} <strong>${d.LName}</strong>
 			<br/>${d.Gender == 'MALE' ? 'He' : 'She'} is ${moment(d.SDate).fromNow(true)} old`, {
 				style: 'ui',

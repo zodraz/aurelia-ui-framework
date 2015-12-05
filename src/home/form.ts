@@ -34,13 +34,13 @@ export class HomeForm {
 	};
 
 	languageChanged($event) {
-		this.lang = $event.data.id + '';
+		this.lang = $event.detail.id + '';
 		if (this.lang != 'null' && !this.content[this.lang]) this.content[this.lang] = '';
-		this.contentDir = $event.data.rtl ? 'rtl' : 'ltr';
+		this.contentDir = $event.detail.rtl ? 'rtl' : 'ltr';
 	}
 
 	languageRemoved($event) {
-		delete this.content[$event.data];
+		delete this.content[$event.detail];
 	}
 
 	validation;

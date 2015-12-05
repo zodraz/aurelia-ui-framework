@@ -27,7 +27,7 @@ export class App {
 			nav: true,
 			auth: false,
 			name: 'home'
-		},  {
+		}, {
 			route: 'badurl',
 			moduleId: './home/view',
 			settings: {},
@@ -46,11 +46,13 @@ export class App {
 	}
 
 	constructor(public appState:UIApplicationState) {
-
+		appState.Copyright = "Company Name";
+		appState.StartYear = '2015';
+		appState.Version   = '1.0.0';
 	}
 
 	logout() {
 		this.appState.IsAuthenticated = false;
-		this.appState.Username = null;
+		this.appState.Username        = null;
 	}
 }

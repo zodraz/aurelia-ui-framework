@@ -92,6 +92,16 @@ export class Home {
 			nav: true,
 			name: 'datagrid'
 		}, {
+			route: 'styles',
+			moduleId: './styles',
+			settings: {
+				sectionStart: true,
+				navIcon: 'fi-ext-programming-language2'
+			},
+			title: 'CSS Helper Classes',
+			nav: true,
+			name: 'styles'
+		}, {
 			route: '', redirect: 'welcome'
 		}]);
 	}
