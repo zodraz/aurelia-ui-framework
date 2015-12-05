@@ -1,7 +1,7 @@
 import {_, moment} from "aurelia-ui-framework";
 import {autoinject} from "aurelia-framework";
+import {activationStrategy} from "aurelia-router";
 import {ensure, Validation} from "aurelia-validation";
-export {KeysValueConverter, DateValueConverter} from "aurelia-ui-framework";
 
 @autoinject()
 export class HomeForm {
@@ -26,7 +26,25 @@ export class HomeForm {
 
 	}
 
+	lang        = 'null';
+	contentDir  = 'ltr';
+	content:any = {
+		'EN': {title: 'Hello World', md: this.md},
+		'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+	};
+
+	languageChanged($event) {
+		this.lang = $event.data.id + '';
+		if (this.lang != 'null' && !this.content[this.lang]) this.content[this.lang] = '';
+		this.contentDir = $event.data.rtl ? 'rtl' : 'ltr';
+	}
+
+	languageRemoved($event) {
+		delete this.content[$event.data];
+	}
+
 	validation;
+	_langSelect;
 
 	constructor(_validation:Validation) {
 		this.validation = _validation
@@ -42,6 +60,17 @@ export class HomeForm {
 			.ensure('model.phone')
 			.isNotEmpty()
 			.isPhone();
+
+		this.content = {
+			'EN': {title: 'Hello World', md: this.md},
+			'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+		};
+	}
+
+	attached() {
+		$(this._langSelect).data('UILangSelect')
+			.addLanguages(Object.keys(this.content))
+			.setLanguage('AR');
 	}
 
 	onSubmit() {
@@ -78,4 +107,31 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 
 
 `;
+
+	mdAr = `
+# مرحبا بالعالم
+
+##### أنا _أحب_ ~~HTML~~ ن __Markdown__  !
+
+---
+
+أنا يمكن أن يكون __BOLD__، ويمكن أيضا أن تكون _ITALIC_، أو يمكنك ~~DELETE~~ لي أيضا!
+
+انظروا لي أنا القائمة
+
+* العنصر
+* العنصر
+* العنصر
+
+وأنا مرقمة
+
+1. البند
+2. البند
+3. البند
+
+يمكنني أيضا أن يكون الرابط [إضغط هنا](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) أو إظهار رابط كله http://google.com
+
+![صورة](images/heart.png) لا أميل تحب فقط الصور!
+
+	`;
 }

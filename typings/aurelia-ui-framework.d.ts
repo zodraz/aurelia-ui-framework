@@ -73,11 +73,22 @@ declare module "aurelia-ui-framework" {
 		IsAuthenticated:boolean;
 		IsHttpInUse:boolean;
 
-		Username:string;
-		AuthUser:string;
-		AuthToken:string;
-		UserGroup:string;
-		BaseUrl:string;
+		// Application Settings
+		public Version:string;
+		public StartYear:string;
+		public Copyright:string;
+
+		public Username:string;
+
+		// Api Connections
+		public BaseUrl:string;
+		public AuthUser:string;
+		public AuthToken:string;
+
+		// Mosaic/Voila
+		public IpAddress:string;
+		public AppSource:number;
+		public UserGroup:string;
 
 		navigateTo(route:string, params?:any);
 
@@ -88,8 +99,11 @@ declare module "aurelia-ui-framework" {
 
 		// Local Storage
 		getLocal(key:string):string;
+		saveLocal(key:string, value?:string);
 
-		setLocal(key:string, value?:string);
+		// Session Storage
+		getState(key:string):string;
+		saveState(key:string, value?:string);
 	}
 
 	export class UITreeModel {

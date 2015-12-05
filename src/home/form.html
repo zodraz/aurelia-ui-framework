@@ -110,34 +110,43 @@
 				<ui-column class="ui-align-center">
 					<ui-date inline value.bind="model.date">Inline Date</ui-date>
 				</ui-column>
-				<ui-column>
-					<ui-option-group label="Checkboxes">
-						<ui-option>Check 1</ui-option>
-						<ui-option>Check 2</ui-option>
-						<ui-option disabled>Check 3</ui-option>
-						<ui-option>Check 4</ui-option>
-						<ui-option>Check 5</ui-option>
-						<ui-option>Check 6</ui-option>
-					</ui-option-group>
+				<ui-column full row>
+					<ui-column size="md-6">
+						<ui-option-group label="Checkboxes">
+							<ui-option>Check 1</ui-option>
+							<ui-option>Check 2</ui-option>
+							<ui-option disabled>Check 3</ui-option>
+							<ui-option>Check 4</ui-option>
+							<ui-option>Check 5</ui-option>
+							<ui-option>Check 6</ui-option>
+						</ui-option-group>
+					</ui-column>
+					<ui-column size="md-6">
+						<ui-option-group label="Radios" value.bind="model.opts">
+							<ui-option radio name="radio" value="1">Radio 1</ui-option>
+							<ui-option radio name="radio" value="2">Radio 2</ui-option>
+							<ui-option radio name="radio" value="3">Radio 3</ui-option>
+							<ui-option radio name="radio" value="4">Radio 4</ui-option>
+							<ui-option radio name="radio" value="5">Radio 5</ui-option>
+							<ui-option radio name="radio" value="6">Radio 6</ui-option>
+						</ui-option-group>
+					</ui-column>
 				</ui-column>
 				<ui-column>
-					<ui-option-group label="Radios" value.bind="model.opts">
-						<ui-option radio name="radio" value="1">Radio 1</ui-option>
-						<ui-option radio name="radio" value="2">Radio 2</ui-option>
-						<ui-option radio name="radio" value="3">Radio 3</ui-option>
-						<ui-option radio name="radio" value="4">Radio 4</ui-option>
-						<ui-option radio name="radio" value="5">Radio 5</ui-option>
-						<ui-option radio name="radio" value="6">Radio 6</ui-option>
-					</ui-option-group>
+					<ui-lang-select ref="_langSelect" languages.one-time="content | keys" change.trigger="languageChanged($event)"
+									remove.trigger="languageRemoved($event)">Languages</ui-lang-select>
 				</ui-column>
 				<ui-column full>
-					<ui-markdown required value.bind="md">Markdown</ui-markdown>
+					<ui-input dir.bind="contentDir" required value.bind="content[lang].title" disabled.bind="lang=='null'">Title</ui-input>
+				</ui-column>
+				<ui-column full>
+					<ui-markdown dir.bind="contentDir" required value.bind="content[lang].md" disabled.bind="lang=='null'">Markdown</ui-markdown>
 				</ui-column>
 			</ui-form>
 
 		</div>
 		<hr/>
-		<ui-grid class="margin-v">
+		<ui-row class="margin-v">
 			<ui-column size="lg-6" class="pad-all">
 				<h5>Usage
 					<small>Double input uses comma separated values and placeholders</small>
@@ -205,6 +214,6 @@
 						&nbsp;[&lt;/optgroup>]<br/>
 						&lt;/ui-list></code></p>
 			</ui-column>
-		</ui-grid>
+		</ui-row>
 	</ui-scroll>
 </template>

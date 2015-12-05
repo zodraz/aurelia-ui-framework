@@ -1,5 +1,5 @@
 <template>
-	<ui-app title.bind="appTitle" start-year="2015" router.bind="router">
+	<ui-app title.bind="appTitle" router.bind="router">
 		<template replace-part="quick-links">
 			<p if.bind="appState.IsAuthenticated">Logged in as user@clubhotel.com</p>
 			<ui-button primary icon="fi-bigmug-line-right153"
