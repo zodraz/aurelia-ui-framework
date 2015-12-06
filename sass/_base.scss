@@ -155,8 +155,8 @@ html, body {
 	  @include flex(0 0 auto);
 	  @include box-shadow(0 0 2px 0 #333);
 
-	  color: $app-header-text;
-	  background-color: lighten($app-header-bg, 4%);
+	  color: $page-title-text;
+	  background-color: $page-title-bg;
 	  padding: $base-padding;
 	  font: {
 		weight: $font-weight-strong;

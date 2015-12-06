@@ -48,6 +48,9 @@ $app-logo: 'logo.png' !default;
 $app-header-bg: $primary !default;
 $app-header-text: $primary-text !default;
 
+$page-title-bg: lighten($app-header-bg, 4%) !default;
+$page-title-text: $app-header-text !default;
+
 $app-menu-bg-image: 'back/black_linen_v3.png' !default;
 $app-menu-bg: $arsenic !default;
 $app-menu-text: $isabelline !default;

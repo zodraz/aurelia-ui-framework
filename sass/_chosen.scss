@@ -71,6 +71,7 @@
 
 		li.search-field input[type=text] {
 		  color: $input-text;
+		  background-color: $input-bg;
 		}
 	  }
 
@@ -107,6 +108,7 @@
 		border: none;
 		border-radius: inherit;
 		box-shadow: none;
+		color: $input-text;
 		background: linear-gradient(top, $input-bg, shade($input-bg, 2%));
 
 		> div > b:after {
@@ -136,6 +138,7 @@
 	  .chosen-choices {
 		line-height: 1;
 		padding: 0;
+		background-color: $input-bg;
 		border: none;
 		border-radius: inherit;
 		box-shadow: none;
