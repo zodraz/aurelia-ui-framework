@@ -19,7 +19,7 @@
   }
   padding: 0.2rem 0.5rem 5px;
   border: 1px solid $input-border;
-  @include box-shadow(0 1px 1px 0 #eee inset);
+  @include box-shadow(0 1px 1px 0 if($dark-theme, #111, #eee) inset);
 
   &.ui-clear {
 	padding-right: 22px;

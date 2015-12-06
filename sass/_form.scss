@@ -195,7 +195,7 @@
 	  background-color: $input-bg;
 	  color: $input-text;
 	  border: none;
-	  @include box-shadow(0 0 3px 0 #ccc inset);
+	  @include box-shadow(0 0 3px 0 if($dark-theme, #333, #ccc) inset);
 
 	  ~ .ui-close {
 		@include position(absolute, 0 0 auto auto);
@@ -224,7 +224,7 @@
 	}
 
 	.ui-input:focus {
-	  @include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 #eee inset);
+	  @include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 if($dark-theme, #111, #eee) inset);
 	}
 
 	.ui-addon {
@@ -244,7 +244,7 @@
 	  }
 
 	  .ui-input:focus {
-		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
+		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 if($dark-theme, #111, #eee) inset);
 	  }
 
 	  .ui-addon {

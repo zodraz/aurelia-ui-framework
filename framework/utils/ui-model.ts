@@ -4,11 +4,11 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {Lazy} from "aurelia-framework";
 import {Container} from "aurelia-dependency-injection";
 import {getLogger, Logger} from "aurelia-logging";
 import {Validation,ValidationGroup} from "aurelia-validation";
 import {UIHttpService} from "./ui-http-service";
+import {_, Utils} from "./ui-utils";
 
 export class UIModel {
 	public logger:Logger;
@@ -16,9 +16,8 @@ export class UIModel {
 	public validation:ValidationGroup;
 
 	constructor() {
-		let _c          = new Container();
-		let _v          = Lazy.of(Validation).get(_c)();
-		this.httpClient = Lazy.of(UIHttpService).get(_c)();
+		let _v          = Utils.lazy(Validation);
+		this.httpClient = Utils.lazy(UIHttpService);
 		this.validation = _v.on(this, null);
 		this.logger     = getLogger(this.constructor.name);
 	}
@@ -41,5 +40,14 @@ export class UIModel {
 
 	validate() {
 		return this.validation.validate();
+	}
+
+	deserialize(json) {
+		_.forEach(json, (v, k)=> {
+			if (this.hasOwnProperty(k)) this[k] = v;
+		});
+	}
+	serialize() {
+		throw new Error('Not implemented [serialize]');
 	}
 }
