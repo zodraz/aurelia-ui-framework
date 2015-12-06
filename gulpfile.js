@@ -52,6 +52,7 @@ var config = {
 			includes: [
 				'main*',
 				'src/**/*',
+				'models/**/*',
 				'src/**/*.html!text',
 				'jspm_packages/**/aurelia-*',
 				'jspm_packages/**/aurelia-validation*/resources/*',
