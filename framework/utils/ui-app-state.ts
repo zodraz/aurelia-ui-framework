@@ -4,12 +4,13 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject} from "aurelia-framework";
+import {autoinject, singleton} from "aurelia-framework";
 import {Router, Redirect} from "aurelia-router";
 import {getLogger} from "aurelia-logging";
 import {EventAggregator} from "aurelia-event-aggregator";
 import {Logger} from "aurelia-logging";
 
+@singleton()
 @autoinject()
 export class UIApplicationState {
 	public IsAuthenticated:boolean = false;
@@ -34,20 +35,22 @@ export class UIApplicationState {
 	public AppSource:number = 0;
 	public UserGroup:string;
 
-	private logger:Logger;
+	private _keyObjects = {};
+
+	private _logger:Logger;
 
 	constructor(public router:Router, public eventAggregator:EventAggregator) {
-		this.logger = getLogger('UIApplicationState');
-		this.logger.debug('Initialized');
+		this._logger = getLogger('UIApplicationState');
+		this._logger.debug('Initialized');
 
 		this.eventAggregator.subscribe('Unauthorized', () => {
-			this.logger.debug('Unauthorized');
+			this._logger.debug('Unauthorized');
 			this.Username        = null;
 			this.IsAuthenticated = false;
 			this.navigateTo('login', {message: '401 Unauthorized'});
 		});
 		this.eventAggregator.subscribe('Logout', () => {
-			this.logger.debug('Logout');
+			this._logger.debug('Logout');
 			this.Username        = null;
 			this.IsAuthenticated = false;
 			this.navigateTo('login');
@@ -59,19 +62,28 @@ export class UIApplicationState {
 		});
 	}
 
+	get(key) {
+		return this._keyObjects[key];
+	}
+
+	set(key, value) {
+		this._keyObjects[key] = value;
+		return value;
+	}
+
 	navigateTo(route:string, params:any = {}) {
-		this.logger.debug(`navigateTo::${route}`);
+		this._logger.debug(`navigateTo::${route}`);
 		this.router.navigateToRoute(route, params, {});
 	}
 
 	// Notifications
 	notifyError(msg) {
-		this.logger.debug(`notify::${msg}`);
+		this._logger.debug(`notify::${msg}`);
 		$.notify(msg);
 	}
 
 	notifyPageError(msg) {
-		this.logger.debug(`notifyPage::${msg}`);
+		this._logger.debug(`notifyPage::${msg}`);
 		$('.ui-page-title').notify(msg, {
 			elementPosition: 'b c',
 			arrowShow: false

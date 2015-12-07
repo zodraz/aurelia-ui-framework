@@ -106,6 +106,10 @@ html, body {
 	  border-right: 1px solid lighten($app-header-bg, 10%);
 	}
 
+	.ui-button {
+	  margin: 3px 5px;
+	}
+
 	.ui-app-menu-handle {
 	  margin: 0 0.3rem;
 	  font-size: 1.5rem;

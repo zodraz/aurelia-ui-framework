@@ -21,13 +21,13 @@
 	li.highlighted {
 	  color: $primary-text;
 	  font-weight: $font-weight-strong;
-	  background-color: rgba($primary, 0.5);
+	  background-color: rgba($primary, 0.65);
 	}
 
 	li.result-selected {
 	  color: $primary-text;
 	  font-weight: $font-weight-strong;
-	  background-color: rgba($primary, 0.75);
+	  background-color: rgba($primary, 0.85);
 	}
 
 	.chosen-container {

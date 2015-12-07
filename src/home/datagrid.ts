@@ -113,8 +113,8 @@ export class HomeDataGrid {
 	}
 
 	linkclicked($event) {
-		this.getGender($event);
-		var d = $event.detail.model;
+		let g = this.getGender($event);
+		let d = $event.detail.model;
 		if ($event.detail.link == 'edit') {
 			$.notify(`You want to edit ${d.FName} <strong>${d.LName}</strong>`, {
 				style: 'ui',

@@ -9,6 +9,7 @@ import './libs/notify';
 import './libs/marked';
 import './libs/phonelib';
 import './libs/countries';
+import './libs/currencies';
 import './libs/datepicker';
 import {FrameworkConfiguration} from "aurelia-framework";
 

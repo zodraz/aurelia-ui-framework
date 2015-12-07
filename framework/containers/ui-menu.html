@@ -3,7 +3,10 @@
 		<div if.bind="router.isRoot && appState.IsAuthenticated" class="ui-auth-info">
 			<div class="ui-app-logo" if.bind="router.options.showLogo"></div>
 			<p>Logged in as ${appState.Username}</p>
-			<p if.bind="appState.ipAddress">IP ${appState.ipAddress}</p>
+			<p class="ui-font-small">
+				<span if.bind="appState.UserGroup">${appState.UserGroup}&nbsp;&nbsp;</span>
+				<span if.bind="appState.IpAddress">(${appState.IpAddress})</span>
+			</p>
 		</div>
 		<li if.bind="router.isRoot && !appState.IsAuthenticated">
 			<a class="ui-menu-link ui-strong" href="#/login">Sign In

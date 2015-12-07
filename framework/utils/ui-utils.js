@@ -4,9 +4,8 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
     exports.numeral = nm;
     var Utils;
     (function (Utils) {
-        var _c = new aurelia_dependency_injection_1.Container();
         function lazy(T) {
-            return aurelia_framework_1.Lazy.of(T).get(_c)();
+            return aurelia_framework_1.Lazy.of(T).get(new aurelia_dependency_injection_1.Container())();
         }
         Utils.lazy = lazy;
         function getFloatPosition(anchor, floater, side) {

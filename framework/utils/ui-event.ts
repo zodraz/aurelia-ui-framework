@@ -4,6 +4,9 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
+import {EventAggregator} from "aurelia-event-aggregator";
+import {Utils} from "./ui-utils";
+
 export class UIEvent extends CustomEvent {
 	private _value:any;
 
@@ -15,7 +18,7 @@ export class UIEvent extends CustomEvent {
 		this._value = any;
 	}
 
-	static fireEvent(event:string, element:EventTarget, data?:any, source?:Element) {
+	static fireEvent(event:string, element:EventTarget, data?:any, source?:Element):any {
 		try {
 			let e        = new Event(event, {bubbles: true, cancelable: true}) as UIEvent;
 			e.detail     = data;
@@ -28,5 +31,18 @@ export class UIEvent extends CustomEvent {
 			element.dispatchEvent(evt);
 			return evt;
 		}
+	}
+
+
+	static ea;
+
+	static broadcast(evt, data) {
+		if (!UIEvent.ea) UIEvent.ea = Utils.lazy(EventAggregator);
+		UIEvent.ea.publish(evt, data);
+	}
+
+	static subscribe(evt, fn) {
+		if (!UIEvent.ea) UIEvent.ea = Utils.lazy(EventAggregator);
+		UIEvent.ea.subscribe(evt, fn);
 	}
 }

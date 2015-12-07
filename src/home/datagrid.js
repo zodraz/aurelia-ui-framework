@@ -110,7 +110,7 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
             $event.value = $event.detail.model.FName + " <strong>" + $event.detail.model.LName + "</strong>";
         };
         HomeDataGrid.prototype.linkclicked = function ($event) {
-            this.getGender($event);
+            var g = this.getGender($event);
             var d = $event.detail.model;
             if ($event.detail.link == 'edit') {
                 $.notify("You want to edit " + d.FName + " <strong>" + d.LName + "</strong>", {

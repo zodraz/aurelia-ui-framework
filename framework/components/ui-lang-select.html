@@ -4,27 +4,33 @@
 		<content></content>
 	</label>
 
-	<a class="ui-button ui-button-secondary ${_current ? '' : 'ui-text-muted'}" ref="_selector"
-	   click.trigger="_openList()" style="width: 200px">
-		${_current ? _current.name : '--Choose a Language--'}&nbsp;&nbsp;
-		<span class="fi-elegant-little9 ui-text-muted ui-right"></span>
-	</a>
-	<ul class="ui-menu ui-floating" ref="_menu">
-		<p class="ui-menu-section ui-text-muted">Added</p>
-		<li repeat.for="lang of _selected | sort:'id'" class="ui-row">
-			<a class="ui-col-fill ui-menu-link" click.trigger="_selectLanguage(lang)">
-				<span if.bind="_errorLangs.indexOf(lang.id)>-1" class="ui-text-warning fi-elegant-error6"></span>
-				${lang.name}</a>
-			<a class="ui-col-auto ui-menu-link" click.trigger="_removeLanguage(lang)"><span
-					class="fi-elegant-minus11 ui-text-danger"></span></a>
-		</li>
-		<li if.bind="_selected.length==0"><p class="ui-pad-all ui-text-muted">No Languages Added</p></li>
-		<hr/>
-		<p class="ui-menu-section ui-text-muted">Available</p>
-		<li repeat.for="lang of _languages | sort:'id'">
-			<a class="ui-menu-link" click.trigger="_addLanguage(lang)">
-				${lang.name}<span style="float:right" class="fi-bigmug-line-add149 ui-text-info"></span></a>
-		</li>
-	</ul>
-	<p if.bind="_errorLangs.length>0" class="ui-text-muted"><span class="ui-text-warning fi-elegant-error6"></span> Language(s) [${_errorLangs.join(', ')}] contains invalid content</p>
+	<div class="ui-form-control">
+		<div class="ui-addon">
+			<span class="ui-icon fi-editor-translation"></span>
+		</div>
+		<a class="ui-input ui-button ui-button-secondary ${_current ? '' : 'ui-text-muted'}" ref="_selector"
+		   click.trigger="_openList()" style="width: 200px">
+			${_current ? _current.name : '--Choose a Language--'}&nbsp;&nbsp;
+			<span class="fi-elegant-little9 ui-text-muted ui-right"></span>
+		</a>
+		<ul class="ui-menu ui-floating" ref="_menu">
+			<p class="ui-menu-section ui-text-muted">Added</p>
+			<li repeat.for="lang of _selected | sort:'id'" class="ui-row">
+				<a class="ui-col-fill ui-menu-link" click.trigger="_selectLanguage(lang)">
+					<span if.bind="_errorLangs.indexOf(lang.id)>-1" class="ui-text-warning fi-elegant-error6"></span>
+					${lang.name}</a>
+				<a class="ui-col-auto ui-menu-link" click.trigger="_removeLanguage(lang)"><span
+						class="fi-elegant-minus11 ui-text-danger"></span></a>
+			</li>
+			<li if.bind="_selected.length==0"><p class="ui-pad-all ui-text-muted">No Languages Added</p></li>
+			<hr/>
+			<p class="ui-menu-section ui-text-muted">Available</p>
+			<li repeat.for="lang of _languages | sort:'id'">
+				<a class="ui-menu-link" click.trigger="_addLanguage(lang)">
+					${lang.name}<span style="float:right" class="fi-bigmug-line-add149 ui-text-info"></span></a>
+			</li>
+		</ul>
+		<p if.bind="_errorLangs.length>0" class="ui-text-muted"><span class="ui-text-warning fi-elegant-error6"></span>
+			Language(s) [${_errorLangs.join(', ')}] contains invalid content</p>
+	</div>
 </template>

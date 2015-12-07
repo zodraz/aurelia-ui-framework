@@ -4,10 +4,9 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {Container} from "aurelia-dependency-injection";
 import {getLogger, Logger} from "aurelia-logging";
-import {Validation,ValidationGroup} from "aurelia-validation";
 import {UIHttpService} from "./ui-http-service";
+import {Validation,ValidationGroup} from "aurelia-validation";
 import {_, Utils} from "./ui-utils";
 
 export class UIModel {
@@ -20,6 +19,7 @@ export class UIModel {
 		this.httpClient = Utils.lazy(UIHttpService);
 		this.validation = _v.on(this, null);
 		this.logger     = getLogger(this.constructor.name);
+		this.logger.debug("Model Initialized");
 	}
 
 	get(...rest) {
@@ -44,9 +44,10 @@ export class UIModel {
 
 	deserialize(json) {
 		_.forEach(json, (v, k)=> {
-			if (this.hasOwnProperty(k)) this[k] = v;
+			this[k] = _.isString(v) ? _.trim(v) : v;
 		});
 	}
+
 	serialize() {
 		throw new Error('Not implemented [serialize]');
 	}

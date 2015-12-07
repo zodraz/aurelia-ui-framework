@@ -16,10 +16,8 @@ export var moment  = mm;
 export var numeral = nm;
 
 export module Utils {
-	let _c = new Container();
-
 	export function lazy(T) {
-		return Lazy.of(T).get(_c)();
+		return Lazy.of(T).get(new Container())();
 	}
 
 	export function getFloatPosition(anchor, floater, side:boolean = false) {

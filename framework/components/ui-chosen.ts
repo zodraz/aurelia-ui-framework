@@ -102,6 +102,7 @@ export class UIChosen {
 				 */
 				let v = $(this._select).val();
 				this.value = (this._multiple ? (v || ['']).join(',') : v);
+				UIEvent.fireEvent('change', this.element, this._select.options[this._select.selectedIndex].model);
 			});
 		$(this._options).remove();
 	}

@@ -18,5 +18,8 @@ interface Window {
 	dwr:any;
 
 	countries:Array<ICountry>;
+	currencies:any;
+
+	unescape(v?:any);
 }
 

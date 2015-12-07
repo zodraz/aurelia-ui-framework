@@ -25,16 +25,17 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this.BaseUrl = '';
             this.IpAddress = '';
             this.AppSource = 0;
-            this.logger = aurelia_logging_1.getLogger('UIApplicationState');
-            this.logger.debug('Initialized');
+            this._keyObjects = {};
+            this._logger = aurelia_logging_1.getLogger('UIApplicationState');
+            this._logger.debug('Initialized');
             this.eventAggregator.subscribe('Unauthorized', function () {
-                _this.logger.debug('Unauthorized');
+                _this._logger.debug('Unauthorized');
                 _this.Username = null;
                 _this.IsAuthenticated = false;
                 _this.navigateTo('login', { message: '401 Unauthorized' });
             });
             this.eventAggregator.subscribe('Logout', function () {
-                _this.logger.debug('Logout');
+                _this._logger.debug('Logout');
                 _this.Username = null;
                 _this.IsAuthenticated = false;
                 _this.navigateTo('login');
@@ -44,17 +45,24 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
                 className: 'danger'
             });
         }
+        UIApplicationState.prototype.get = function (key) {
+            return this._keyObjects[key];
+        };
+        UIApplicationState.prototype.set = function (key, value) {
+            this._keyObjects[key] = value;
+            return value;
+        };
         UIApplicationState.prototype.navigateTo = function (route, params) {
             if (params === void 0) { params = {}; }
-            this.logger.debug("navigateTo::" + route);
+            this._logger.debug("navigateTo::" + route);
             this.router.navigateToRoute(route, params, {});
         };
         UIApplicationState.prototype.notifyError = function (msg) {
-            this.logger.debug("notify::" + msg);
+            this._logger.debug("notify::" + msg);
             $.notify(msg);
         };
         UIApplicationState.prototype.notifyPageError = function (msg) {
-            this.logger.debug("notifyPage::" + msg);
+            this._logger.debug("notifyPage::" + msg);
             $('.ui-page-title').notify(msg, {
                 elementPosition: 'b c',
                 arrowShow: false
@@ -81,6 +89,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
                 window.sessionStorage.removeItem(this.AppKey + "_" + key);
         };
         UIApplicationState = __decorate([
+            aurelia_framework_1.singleton(),
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [aurelia_router_1.Router, aurelia_event_aggregator_1.EventAggregator])
         ], UIApplicationState);

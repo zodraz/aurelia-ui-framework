@@ -131,7 +131,7 @@ export class UIDataGrid {
 		if (column.labels) {
 			newValue = column.labels[value];
 		}
-		var x = UIEvent.fireEvent('datavalue', column.columnDef, {value: value, column: column, model: model});
+		let x = UIEvent.fireEvent('datavalue', column.columnDef, {value: value, column: column, model: model});
 		if (x.value) return x.value;
 		switch (column.dataType) {
 			case 'currency':
