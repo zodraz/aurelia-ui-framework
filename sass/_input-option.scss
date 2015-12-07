@@ -68,7 +68,7 @@
   }
   &.ui-radio .ui-check-mark {
 	&:after {
-	  content: '\e006';
+	  content: '\e007';
 	}
 	border-radius: 9px;
   }
@@ -76,7 +76,7 @@
 	content: '\e001';
   }
   &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
-	content: '\e012';
+	content: '\e014';
   }
 
   .ui-label {
@@ -90,7 +90,7 @@
   @include flex-row(flex-start, flex-start, true);
   @include flex(1 0 280px);
   .ui-option {
-	@include flex(1 0 33.33%);
+	@include flex(1 0 120px);
 	.ui-label {
 	  width: auto;
 	  flex: 1 0 0%;

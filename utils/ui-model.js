@@ -1,10 +1,11 @@
-define(["require", "exports", "aurelia-logging", "aurelia-validation", "./ui-http-service", "./ui-utils"], function (require, exports, aurelia_logging_1, aurelia_validation_1, ui_http_service_1, ui_utils_1) {
+define(["require", "exports", "aurelia-logging", "./ui-http-service", "aurelia-validation", "./ui-utils"], function (require, exports, aurelia_logging_1, ui_http_service_1, aurelia_validation_1, ui_utils_1) {
     var UIModel = (function () {
         function UIModel() {
             var _v = ui_utils_1.Utils.lazy(aurelia_validation_1.Validation);
             this.httpClient = ui_utils_1.Utils.lazy(ui_http_service_1.UIHttpService);
             this.validation = _v.on(this, null);
             this.logger = aurelia_logging_1.getLogger(this.constructor.name);
+            this.logger.debug("Model Initialized");
         }
         UIModel.prototype.get = function () {
             var rest = [];
@@ -40,8 +41,7 @@ define(["require", "exports", "aurelia-logging", "aurelia-validation", "./ui-htt
         UIModel.prototype.deserialize = function (json) {
             var _this = this;
             ui_utils_1._.forEach(json, function (v, k) {
-                if (_this.hasOwnProperty(k))
-                    _this[k] = v;
+                _this[k] = ui_utils_1._.isString(v) ? ui_utils_1._.trim(v) : v;
             });
         };
         UIModel.prototype.serialize = function () {

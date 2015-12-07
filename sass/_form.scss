@@ -8,7 +8,9 @@
 .ui-form {
   @include flex-row($align: stretch, $justify: flex-start, $wrap: true);
   border-radius: $base-border-radius;
-
+  > form {
+	@include flex(1 1 auto);
+  }
   > .ui-row > .ui-column {
 	min-width: $grid-sm-max;
 	&.ui-col-auto {
@@ -141,7 +143,7 @@
 	  padding: 0.25rem 0.5rem;
 	  height: auto;
 	  .ui-option-input:checked ~ .ui-check-mark:after {
-		content: '\e004';
+		content: '\e005';
 	  }
 	}
 
