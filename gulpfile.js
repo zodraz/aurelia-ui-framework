@@ -74,7 +74,7 @@ gulp.task('aurelia:unbundle', function () {
 });
 gulp.task('aurelia:build', function () {
 	return gulp.src(['./index.html', './browserconfig.xml', './manifest.json',
-			'./config.js', './jspm_packages/system*',
+			'./config.js', './Web.config', './jspm_packages/system*',
 			'./fonts/**/*', './styles/**/*', './images/**/*', './dist/**/*'], {base: './'})
 		.pipe(gulp.dest('./build'));
 });

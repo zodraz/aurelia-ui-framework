@@ -1,8 +1,8 @@
 <template>
 	<ui-scroll>
-		<div class="pad-all">
-			<h4 class="margin-v">Forms</h4>
-			<ui-form class="border-all pad-v" validate.bind="validation" submit.trigger="onSubmit()">
+		<div class="ui-pad-all">
+			<h4 class="ui-margin-v">Forms</h4>
+			<ui-form class="ui-border-all ui-pad-v" validate.bind="validation" submit.trigger="onSubmit()">
 				<ui-column>
 					<ui-input name required clear value.bind="model.fname">First Name</ui-input>
 				</ui-column>
@@ -107,8 +107,8 @@
 						</ui-list>
 					</ui-column>
 				</ui-column>
-				<ui-column class="ui-align-center">
-					<ui-date inline value.bind="model.date">Inline Date</ui-date>
+				<ui-column>
+					<ui-date inline class="ui-flex-center" format="DD/MMM/YYYY hh:mm A" value.bind="model.date">Inline Date</ui-date>
 				</ui-column>
 				<ui-column full row>
 					<ui-column size="md-6">
@@ -146,8 +146,8 @@
 
 		</div>
 		<hr/>
-		<ui-row class="margin-v">
-			<ui-column size="lg-6" class="pad-all">
+		<ui-row class="ui-margin-v">
+			<ui-column size="lg-6" class="ui-pad-all">
 				<h5>Usage
 					<small>Double input uses comma separated values and placeholders</small>
 					<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
@@ -182,7 +182,7 @@
 					<code>&lt;ui-markdown [required] [readonly|disabled] [value.bind=?]>{Label}&lt;/ui-markdown></code>
 				</p>
 			</ui-column>
-			<ui-column size="lg-6" class="pad-all">
+			<ui-column size="lg-6" class="ui-pad-all">
 				<h5>Usage
 					<small>Radio option group can have value.bind</small>
 				</h5>

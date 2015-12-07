@@ -1,7 +1,3 @@
-declare interface Window {
-	unescape(v?:any);
-}
-
 declare module "aurelia-ui-framework" {
 	import * as _ from "lodash";
 	import * as moment from "moment";
@@ -28,6 +24,10 @@ declare module "aurelia-ui-framework" {
 		value:any;
 
 		static fireEvent(event:string, element:EventTarget, data?:any, source?:Element);
+
+		static broadcast(evt:string, data?:any);
+
+		static subscribe(evt:string, fn:any);
 	}
 
 	export class UIHttpService {
@@ -41,7 +41,7 @@ declare module "aurelia-ui-framework" {
 	}
 
 	export class UIDwrService {
-		execute(method:string, params:Array<any>, inject:boolean = true):Promise<ResponseHandler>;
+		execute(method:string, params:Array<any>, inject?:boolean):Promise<ResponseHandler>;
 	}
 
 	export interface ResponseHandler {
@@ -67,6 +67,10 @@ declare module "aurelia-ui-framework" {
 		put();
 
 		delete();
+
+		deserialize(json:any);
+
+		serialize():any;
 	}
 
 	export class UIApplicationState {
@@ -84,6 +88,7 @@ declare module "aurelia-ui-framework" {
 		public BaseUrl:string;
 		public AuthUser:string;
 		public AuthToken:string;
+		public AllowAuthHeader:boolean;
 
 		// Mosaic/Voila
 		public IpAddress:string;
@@ -92,6 +97,9 @@ declare module "aurelia-ui-framework" {
 
 		navigateTo(route:string, params?:any);
 
+		get(key:string):any;
+		set(key:string, value:any):any;
+
 		// Notifications
 		notifyError(msg);
 
@@ -99,10 +107,12 @@ declare module "aurelia-ui-framework" {
 
 		// Local Storage
 		getLocal(key:string):string;
+
 		saveLocal(key:string, value?:string);
 
 		// Session Storage
 		getState(key:string):string;
+
 		saveState(key:string, value?:string);
 	}
 
