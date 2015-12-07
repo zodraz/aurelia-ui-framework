@@ -390,6 +390,7 @@ System.config({
       "framework/index.js",
       "framework/libs/chosen.js",
       "framework/libs/countries.js",
+      "framework/libs/currencies.js",
       "framework/libs/datepicker.js",
       "framework/libs/marked.js",
       "framework/libs/notify.js",
