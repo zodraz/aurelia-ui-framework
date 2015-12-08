@@ -17,7 +17,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
             this.selectedNode = {};
             var self = this;
             eventAggregator.subscribe('tree-select', function (v) { return self._itemSelect(v); });
-            observer.getObserver(this, 'searchText')
+            observer.propertyObserver(this, 'searchText')
                 .subscribe(function (v) { return self._searchTextChanged(v); });
             $(this.element).data('UITree', this);
         }
@@ -149,7 +149,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
             }),
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-tree'), 
-            __metadata('design:paramtypes', [Element, aurelia_event_aggregator_1.EventAggregator, aurelia_framework_1.ObserverLocator])
+            __metadata('design:paramtypes', [Element, aurelia_event_aggregator_1.EventAggregator, aurelia_framework_1.BindingEngine])
         ], UITree);
         return UITree;
     })();

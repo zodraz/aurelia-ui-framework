@@ -33,6 +33,7 @@
 				</ui-column>
 				<ui-column>
 					<ui-input phone required clear value.bind="model.phone"
+							  phone-ext.bind="model.phoneExt"
 							  phone-code.bind="model.phoneCode"
 							  phone-number.bind="model.phoneNumber"
 							  phone-country.bind="model.phoneCountry">Phone
@@ -58,7 +59,10 @@
 					<ui-column width="120px"></ui-column>
 					<ui-column fill>
 
-						<p>Phone: ${model.phone}, Code: ${model.phoneCode}, Number: ${model.phoneNumber}</p>
+						<p>Phone: ${model.phone}</p>
+
+						<p>Code: ${model.phoneCode}, Number: ${model.phoneNumber}, Ext:
+							${model.phoneExt}</p>
 
 						<p>Has Location: ${model.hasLoc?'Yes':'No'}, Location: ${model.pos}</p>
 
@@ -108,7 +112,9 @@
 					</ui-column>
 				</ui-column>
 				<ui-column>
-					<ui-date inline class="ui-flex-center" format="DD/MMM/YYYY hh:mm A" value.bind="model.date">Inline Date</ui-date>
+					<ui-date inline class="ui-flex-center" format="DD/MMM/YYYY hh:mm A" value.bind="model.date">Inline
+						Date
+					</ui-date>
 				</ui-column>
 				<ui-column full row>
 					<ui-column size="md-6">
@@ -133,14 +139,20 @@
 					</ui-column>
 				</ui-column>
 				<ui-column>
-					<ui-lang-select ref="_langSelect" languages.one-time="content | keys" change.trigger="languageChanged($event)"
-									remove.trigger="languageRemoved($event)">Languages</ui-lang-select>
+					<ui-lang-select ref="_langSelect" languages.one-time="content | keys"
+									change.trigger="languageChanged($event)"
+									remove.trigger="languageRemoved($event)">Languages
+					</ui-lang-select>
 				</ui-column>
 				<ui-column full>
-					<ui-input dir.bind="contentDir" required value.bind="content[lang].title" disabled.bind="lang=='null'">Title</ui-input>
+					<ui-input dir.bind="contentDir" required value.bind="content[lang].title"
+							  disabled.bind="lang=='null'">Title
+					</ui-input>
 				</ui-column>
 				<ui-column full>
-					<ui-markdown dir.bind="contentDir" required value.bind="content[lang].md" disabled.bind="lang=='null'">Markdown</ui-markdown>
+					<ui-markdown dir.bind="contentDir" required value.bind="content[lang].md"
+								 disabled.bind="lang=='null'">Markdown
+					</ui-markdown>
 				</ui-column>
 			</ui-form>
 

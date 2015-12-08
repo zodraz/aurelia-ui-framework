@@ -142,4 +142,13 @@ export class UIChosen {
 		UIEvent.fireEvent('click', this.element, this, this._select);
 		return false;
 	}
+
+	private _keyup($event) {
+		if ($event.keyCode == 13) {
+			$event.cancelBubble = true;
+			$event.preventDefault();
+			return false;
+		}
+		return true;
+	}
 }

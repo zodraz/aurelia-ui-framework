@@ -4,7 +4,7 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject, singleton} from "aurelia-framework";
+import {autoinject, transient} from "aurelia-framework";
 import {getLogger, Logger} from "aurelia-logging";
 import {HttpClient, json} from "aurelia-fetch-client";
 import {EventAggregator} from "aurelia-event-aggregator";
@@ -13,7 +13,7 @@ import {UIApplicationState} from "./ui-app-state";
 import {Response} from "fetch";
 import "fetch";
 
-@singleton()
+@transient()
 @autoinject()
 export class UIHttpService {
 	logger:Logger;

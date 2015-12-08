@@ -19,6 +19,7 @@
 
 .notifyjs-container {
   max-width: 600px;
+
   .notifyjs-ui-base {
 	font-weight: $font-weight-strong;
 	font-size: 1.1em;
@@ -81,6 +82,64 @@
 
 	.notifyjs-ui-base {
 	  white-space: normal;
+	}
+  }
+}
+
+.ui-notify-confirm {
+  z-index: $zindex-splash;
+  @include position(absolute, 0);
+  background: rgba($white, 0.25);
+  @include flex-row($align: center, $justify: center);
+
+  .ui-notify {
+	@include flex-row($align: stretch, $wrap: false);
+	color: $notify-primary-text;
+	text-shadow: 0 1px 0 rgba($white, 0.5);
+	background: linear-gradient($notify-primary-bg, darken($notify-primary-bg, 2%));
+	border: 1px solid $notify-primary-border;
+	@include box-shadow(0 0 12px 0 rgba($black, 0.5));
+	border-radius: $base-border-radius;
+
+	.title {
+	  min-width: 150px;
+	  font-size: 1.1em;
+	  @include flex(1 1 auto);
+	  padding: 1rem 1.5rem 1rem 3rem;
+	  position: relative;
+	  &:before {
+		content: '\e0c6';
+		font-family: Elegant;
+		font-size: 1.2em;
+		position: absolute;
+		left: 1rem;
+		top: 1rem;
+	  }
+	}
+
+	.buttons {
+	  overflow: hidden;
+	  border-left: 1px solid $primary;
+	  @include flex(0 0 auto);
+	  @include flex-column($wrap: false);
+	  .btn {
+		@include flex(1 1 auto);
+		padding: 0.3rem 0.75rem;
+		min-width: 80px;
+		font-size: 1.2em;
+		opacity: 0.7;
+		&:hover {
+		  opacity: 1;
+		}
+		color: $button-primary-text;
+		border-bottom: 1px solid $button-secondary-border;
+		background: linear-gradient($button-primary-bg, darken($button-primary-bg, 2%));
+	  }
+	  .btn.no {
+		color: $button-secondary-text;
+		border-top: 1px solid $button-primary-border;
+		background: linear-gradient($button-secondary-bg, darken($button-secondary-bg, 2%));
+	  }
 	}
   }
 }

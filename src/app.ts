@@ -50,6 +50,6 @@ export class App {
 
 	logout() {
 		this.appState.IsAuthenticated = false;
-		this.appState.Username = null;
+		this.appState.Username        = null;
 	}
 }

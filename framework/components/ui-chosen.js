@@ -114,6 +114,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             ui_event_1.UIEvent.fireEvent('click', this.element, this, this._select);
             return false;
         };
+        UIChosen.prototype._keyup = function ($event) {
+            if ($event.keyCode == 13) {
+                $event.cancelBubble = true;
+                $event.preventDefault();
+                return false;
+            }
+            return true;
+        };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

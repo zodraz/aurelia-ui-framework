@@ -20,5 +20,6 @@ export class UIGridRow {
 		if (el.hasAttribute('center')) this._classes += ' ui-flex-center ';
 		if (el.hasAttribute('start')) this._classes += ' ui-flex-start ';
 		if (el.hasAttribute('end')) this._classes += ' ui-flex-end ';
+		if (el.hasAttribute('spaced')) this._classes += ' ui-flex-spaced ';
 	}
 }

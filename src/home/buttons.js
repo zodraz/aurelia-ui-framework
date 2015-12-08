@@ -1,6 +1,18 @@
-define(["require", "exports"], function (require, exports) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
+        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
+        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
+    }
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app-state"], function (require, exports, aurelia_framework_1, ui_app_state_1) {
     var HomeButtons = (function () {
-        function HomeButtons() {
+        function HomeButtons(appState) {
+            this.appState = appState;
             this.t1 = 0;
             this.menu1 = [{
                     id: 0, title: 'Link 0'
@@ -24,6 +36,11 @@ define(["require", "exports"], function (require, exports) {
                     id: 9, title: 'Link 9'
                 }];
         }
+        HomeButtons.prototype.confirm = function () {
+            this.appState.notifyConfirm("Are you sure?")
+                .then(function () { return alert('yes'); })
+                .catch(function (e) { return alert('no'); });
+        };
         HomeButtons.prototype.buttonclick = function ($event) {
             var data;
             if (data = $event.detail) {
@@ -62,6 +79,10 @@ define(["require", "exports"], function (require, exports) {
                 autoHide: true
             });
         };
+        HomeButtons = __decorate([
+            aurelia_framework_1.autoinject(), 
+            __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])
+        ], HomeButtons);
         return HomeButtons;
     })();
     exports.HomeButtons = HomeButtons;

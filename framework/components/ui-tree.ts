@@ -4,7 +4,7 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject, bindable, computedFrom, customElement, bindingMode, ObserverLocator} from "aurelia-framework";
+import {autoinject, bindable, computedFrom, customElement, bindingMode, BindingEngine} from "aurelia-framework";
 import {EventAggregator} from "aurelia-event-aggregator";
 import {UITreeModel, UITreeOptionsModel} from "../utils/ui-tree-models";
 import {_} from "../utils/ui-utils";
@@ -54,10 +54,10 @@ export class UITree {
 
 	private selectedNode:any = {};
 
-	constructor(public element:Element, eventAggregator:EventAggregator, observer:ObserverLocator) {
+	constructor(public element:Element, eventAggregator:EventAggregator, observer:BindingEngine) {
 		var self = this;
 		eventAggregator.subscribe('tree-select', v=>self._itemSelect(v));
-		observer.getObserver(this, 'searchText')
+		observer.propertyObserver(this, 'searchText')
 			.subscribe(v=>self._searchTextChanged(v));
 
 		$(this.element).data('UITree', this);

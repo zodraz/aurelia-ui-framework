@@ -9,11 +9,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-logging", "aurelia-event-aggregator"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_logging_1, aurelia_event_aggregator_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-logging", "aurelia-event-aggregator", "aurelia-dependency-injection", "./ui-utils"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_logging_1, aurelia_event_aggregator_1, aurelia_dependency_injection_1, ui_utils_1) {
     var UIApplicationState = (function () {
-        function UIApplicationState(router, eventAggregator) {
+        function UIApplicationState(router, container, eventAggregator) {
             var _this = this;
             this.router = router;
+            this.container = container;
             this.eventAggregator = eventAggregator;
             this.IsAuthenticated = false;
             this.IsHttpInUse = false;
@@ -28,6 +29,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this._keyObjects = {};
             this._logger = aurelia_logging_1.getLogger('UIApplicationState');
             this._logger.debug('Initialized');
+            ui_utils_1.Utils.container = container;
             this.eventAggregator.subscribe('Unauthorized', function () {
                 _this._logger.debug('Unauthorized');
                 _this.Username = null;
@@ -43,6 +45,17 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             $.notify.defaults({
                 style: 'ui',
                 className: 'danger'
+            });
+            $.notify.addStyle('confirm', {
+                html: "<div class='ui-notify-confirm'>" +
+                    "<div class='ui-notify'>" +
+                    "<div class='title' data-notify-html='title'/>" +
+                    "<div class='buttons'>" +
+                    "<button class='btn yes' data-notify-text='yes'></button>" +
+                    "<button class='btn no' data-notify-text='no'></button>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>"
             });
         }
         UIApplicationState.prototype.get = function (key) {
@@ -68,6 +81,15 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
                 arrowShow: false
             });
         };
+        UIApplicationState.prototype.notifyConfirm = function (msg) {
+            return new Promise(function (resolve, reject) {
+                var _el = $('body').append("\n\t\t\t<div class='ui-notify-confirm'>\n\t\t\t\t<div class='ui-notify'>\n\t\t\t\t\t<div class='title'>" + msg + "</div>\n\t\t\t\t\t<div class='buttons'>\n\t\t\t\t\t\t<button class='btn yes'>Yes</button>\n\t\t\t\t\t\t<button class='btn no'>No</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t").children('.ui-notify-confirm');
+                _el.one('click', '.btn', function (e) {
+                    ($(e.target).hasClass('yes')) ? resolve() : reject();
+                    _el.remove();
+                });
+            });
+        };
         UIApplicationState.prototype.getLocal = function (key) {
             return JSON.parse(window.localStorage.getItem(this.AppKey + "_" + key));
         };
@@ -91,7 +113,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
         UIApplicationState = __decorate([
             aurelia_framework_1.singleton(),
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [aurelia_router_1.Router, aurelia_event_aggregator_1.EventAggregator])
+            __metadata('design:paramtypes', [aurelia_router_1.Router, aurelia_dependency_injection_1.Container, aurelia_event_aggregator_1.EventAggregator])
         ], UIApplicationState);
         return UIApplicationState;
     })();

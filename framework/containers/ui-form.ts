@@ -23,7 +23,7 @@ export class UIForm {
 	attached() {
 		setTimeout(()=> {
 			$(this._form).data('UIForm', this)
-				.find('input,textarea').first().focus();
+				.find('input,select,textarea').first().focus();
 		}, 200);
 	}
 

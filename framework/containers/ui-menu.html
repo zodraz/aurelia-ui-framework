@@ -3,6 +3,7 @@
 		<div if.bind="router.isRoot && appState.IsAuthenticated" class="ui-auth-info">
 			<div class="ui-app-logo" if.bind="router.options.showLogo"></div>
 			<p>Logged in as ${appState.Username}</p>
+
 			<p class="ui-font-small">
 				<span if.bind="appState.UserGroup">${appState.UserGroup}&nbsp;&nbsp;</span>
 				<span if.bind="appState.IpAddress">(${appState.IpAddress})</span>
@@ -18,7 +19,8 @@
 			if.bind="!route.config.auth || (route.config.auth && appState.IsAuthenticated)">
 			<hr if.bind="route.settings.sectionStart"/>
 			<p class="ui-menu-section" if.bind="route.settings.sectionTitle">${route.settings.sectionTitle}</p>
-			<a class="ui-menu-link ${route.isActive ? 'ui-active' : ''}" href.bind="route.href">
+			<a class="ui-menu-link ${route.isActive ? 'ui-active' : ''}"
+			   data-disabled="${route.settings.disabled}" href.bind="route.href">
 				<i class="ui-icon ${route.settings.navIcon}"></i>&nbsp;${route.settings.menuTitle || route.title}</a>
 		</li>
 

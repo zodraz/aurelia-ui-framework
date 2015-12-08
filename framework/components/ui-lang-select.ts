@@ -27,7 +27,8 @@ export class UILangSelect {
 		{id: 'RU', name: 'Русский'},
 		{id: 'TL', name: 'Tagalog'},
 		{id: 'VI', name: 'Tiếng Việt'},
-		{id: 'ZH', name: '中文'}
+		{id: 'CH', name: '中文'},
+		{id: 'ZH', name: '漢語'}
 	];
 
 	private _selector;
@@ -44,6 +45,8 @@ export class UILangSelect {
 	}
 
 	addLanguages(newValue) {
+		this._selected  = [];
+		this._languages = _.clone(UILangSelect.LANGUAGES);
 		for (var l of newValue) {
 			let _i = _.findIndex(this._languages, 'id', l);
 			if (_i >= 0) {

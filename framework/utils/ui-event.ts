@@ -6,6 +6,7 @@
  **/
 import {EventAggregator} from "aurelia-event-aggregator";
 import {Utils} from "./ui-utils";
+import {Subscription} from "aurelia-event-aggregator";
 
 export class UIEvent extends CustomEvent {
 	private _value:any;
@@ -41,8 +42,8 @@ export class UIEvent extends CustomEvent {
 		UIEvent.ea.publish(evt, data);
 	}
 
-	static subscribe(evt, fn) {
+	static subscribe(evt, fn):Subscription {
 		if (!UIEvent.ea) UIEvent.ea = Utils.lazy(EventAggregator);
-		UIEvent.ea.subscribe(evt, fn);
+		return UIEvent.ea.subscribe(evt, fn);
 	}
 }

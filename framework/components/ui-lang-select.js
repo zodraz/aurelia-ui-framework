@@ -21,6 +21,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             $(this.element).data('UILangSelect', this);
         }
         UILangSelect.prototype.addLanguages = function (newValue) {
+            this._selected = [];
+            this._languages = ui_utils_1._.clone(UILangSelect.LANGUAGES);
             for (var _a = 0; _a < newValue.length; _a++) {
                 var l = newValue[_a];
                 var _i = ui_utils_1._.findIndex(this._languages, 'id', l);
@@ -84,7 +86,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             { id: 'RU', name: 'Русский' },
             { id: 'TL', name: 'Tagalog' },
             { id: 'VI', name: 'Tiếng Việt' },
-            { id: 'ZH', name: '中文' }
+            { id: 'CH', name: '中文' },
+            { id: 'ZH', name: '漢語' }
         ];
         UILangSelect = __decorate([
             aurelia_framework_1.autoinject(),

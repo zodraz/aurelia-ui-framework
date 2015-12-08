@@ -6,7 +6,8 @@
  **/
 
 .ui-input {
-  @include flex(1 1 0%);
+  @include flex(1 1 auto);
+  width: 80px;
   margin: 0;
   z-index: 2;
   outline: none;

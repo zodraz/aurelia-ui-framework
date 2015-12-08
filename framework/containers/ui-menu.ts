@@ -31,6 +31,10 @@ export class UIMenu {
 	}
 
 	private _linkClicked($event) {
+		if ($($event.target).closest('a').data('disabled') === true) {
+			$event.preventDefault();
+			return false;
+		}
 		// Dont trigger event for router menu clicks
 		if (this.router) return true;
 		// Trigger event

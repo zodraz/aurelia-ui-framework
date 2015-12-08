@@ -12,7 +12,7 @@ declare module UIPhoneLib {
 		isValid(phone:string, code?:string):boolean;
 		getError(phone:string, code?:string):number;
 		getExample(code:string, type?:number, national?:boolean):string;
-		formatInput(phone:string, code?:string):string;
+		formatInput(phone:string, code?:string, suf?:boolean, ext?:boolean):string;
 		getIso2Code(phone:string, code?:string):string;
 		getDialingCode(code:string):string;
 		getNumberInfo(phone:string, code?:string):any;

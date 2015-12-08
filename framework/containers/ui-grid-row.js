@@ -24,6 +24,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this._classes += ' ui-flex-start ';
             if (el.hasAttribute('end'))
                 this._classes += ' ui-flex-end ';
+            if (el.hasAttribute('spaced'))
+                this._classes += ' ui-flex-spaced ';
         }
         __decorate([
             aurelia_framework_1.bindable, 

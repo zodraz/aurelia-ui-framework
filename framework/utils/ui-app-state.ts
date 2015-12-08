@@ -9,6 +9,8 @@ import {Router, Redirect} from "aurelia-router";
 import {getLogger} from "aurelia-logging";
 import {EventAggregator} from "aurelia-event-aggregator";
 import {Logger} from "aurelia-logging";
+import {Container} from "aurelia-dependency-injection";
+import {Utils} from "./ui-utils";
 
 @singleton()
 @autoinject()
@@ -39,9 +41,11 @@ export class UIApplicationState {
 
 	private _logger:Logger;
 
-	constructor(public router:Router, public eventAggregator:EventAggregator) {
+	constructor(public router:Router, public container:Container, public eventAggregator:EventAggregator) {
 		this._logger = getLogger('UIApplicationState');
 		this._logger.debug('Initialized');
+
+		Utils.container = container;
 
 		this.eventAggregator.subscribe('Unauthorized', () => {
 			this._logger.debug('Unauthorized');
@@ -59,6 +63,18 @@ export class UIApplicationState {
 		$.notify.defaults({
 			style: 'ui',
 			className: 'danger'
+		});
+
+		$.notify.addStyle('confirm', {
+			html: "<div class='ui-notify-confirm'>" +
+			"<div class='ui-notify'>" +
+			"<div class='title' data-notify-html='title'/>" +
+			"<div class='buttons'>" +
+			"<button class='btn yes' data-notify-text='yes'></button>" +
+			"<button class='btn no' data-notify-text='no'></button>" +
+			"</div>" +
+			"</div>" +
+			"</div>"
 		});
 	}
 
@@ -87,6 +103,26 @@ export class UIApplicationState {
 		$('.ui-page-title').notify(msg, {
 			elementPosition: 'b c',
 			arrowShow: false
+		});
+	}
+
+	notifyConfirm(msg) {
+		return new Promise((resolve, reject)=> {
+			let _el = $('body').append(`
+			<div class='ui-notify-confirm'>
+				<div class='ui-notify'>
+					<div class='title'>${msg}</div>
+					<div class='buttons'>
+						<button class='btn yes'>Yes</button>
+						<button class='btn no'>No</button>
+					</div>
+				</div>
+			</div>
+			`).children('.ui-notify-confirm');
+			_el.one('click', '.btn', function (e) {
+				($(e.target).hasClass('yes')) ? resolve() : reject();
+				_el.remove();
+			});
 		});
 	}
 

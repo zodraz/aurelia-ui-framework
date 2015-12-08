@@ -1,3 +1,7 @@
+import {autoinject} from "aurelia-framework";
+import {UIApplicationState} from "../../framework/utils/ui-app-state";
+
+@autoinject()
 export class HomeButtons {
 	t1 = 0;
 
@@ -22,6 +26,15 @@ export class HomeButtons {
 	}, {
 		id: 9, title: 'Link 9'
 	}];
+
+	constructor(public appState:UIApplicationState) {
+	}
+
+	confirm() {
+		this.appState.notifyConfirm("Are you sure?")
+			.then(()=>alert('yes'))
+			.catch((e)=>alert('no'));
+	}
 
 	buttonclick($event) {
 		let data;

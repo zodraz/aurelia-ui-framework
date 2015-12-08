@@ -1222,6 +1222,24 @@ declare module _ {
 		): LoDashExplicitWrapper<number>;
 	}
 
+	interface LoDashExplicitObjectWrapper<T> {
+		/**
+		 * @see _.indexBy
+		 */
+		indexBy<TValue>(
+			value: TValue
+		): LoDashExplicitObjectWrapper<any>;
+	}
+
+	interface LoDashExplicitObjectWrapper<T> {
+		/**
+		 * @see _.mapValues
+		 */
+		mapValues<TValue>(
+			value: TValue
+		): LoDashExplicitWrapper<any>;
+	}
+
 	//_.initial
 	interface LoDashStatic {
 		/**

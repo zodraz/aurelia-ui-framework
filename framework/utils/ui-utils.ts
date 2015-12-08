@@ -7,7 +7,7 @@
 import * as ld from "lodash";
 import * as mm from "moment";
 import * as nm from "numeral";
-import {Lazy} from "aurelia-framework";
+import {Lazy, Optional} from "aurelia-framework";
 import {Container} from "aurelia-dependency-injection";
 
 
@@ -16,8 +16,11 @@ export var moment  = mm;
 export var numeral = nm;
 
 export module Utils {
+	export var container:Container;
+
 	export function lazy(T) {
-		return Lazy.of(T).get(new Container())();
+		if (!container) return;
+		return Lazy.of(T).get(container)();
 	}
 
 	export function getFloatPosition(anchor, floater, side:boolean = false) {
