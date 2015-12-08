@@ -82,7 +82,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
         };
         UIModel.prototype.dispose = function () {
             while (this._subscriptions.length) {
-                this._subscriptions.pop()();
+                this._subscriptions.pop().dispose();
             }
         };
         UIModel.prototype.isDirty = function () {
