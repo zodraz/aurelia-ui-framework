@@ -11,13 +11,16 @@ declare module "aurelia-ui-framework" {
 
 	export class UIValidation {}
 	export class AuthInterceptor {}
-
 	export class KeysValueConverter {}
 	export class SortValueConverter {}
 	export class DateValueConverter {}
 	export class NumberValueConverter {}
 	export class CurrencyValueConverter {}
 	export class MarkdownValueConverter {}
+
+	export class UILangSelect {
+		static LANGUAGES;
+	}
 
 	export class UIEvent {
 		data:any;
@@ -27,7 +30,7 @@ declare module "aurelia-ui-framework" {
 
 		static broadcast(evt:string, data?:any);
 
-		static subscribe(evt:string, fn:any);
+		static subscribe(evt:string, fn:any):any;
 	}
 
 	export class UIHttpService {
@@ -71,6 +74,12 @@ declare module "aurelia-ui-framework" {
 		deserialize(json:any);
 
 		serialize():any;
+
+		discardChanges();
+
+		isDirty():boolean;
+
+		dispose();
 	}
 
 	export class UIApplicationState {
@@ -78,6 +87,7 @@ declare module "aurelia-ui-framework" {
 		IsHttpInUse:boolean;
 
 		// Application Settings
+		public AppKey:string;
 		public Version:string;
 		public StartYear:string;
 		public Copyright:string;
@@ -98,12 +108,15 @@ declare module "aurelia-ui-framework" {
 		navigateTo(route:string, params?:any);
 
 		get(key:string):any;
+
 		set(key:string, value:any):any;
 
 		// Notifications
 		notifyError(msg);
 
 		notifyPageError(msg);
+
+		notifyConfirm(msg):Promise<boolean>;
 
 		// Local Storage
 		getLocal(key:string):string;
