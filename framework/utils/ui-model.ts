@@ -81,7 +81,7 @@ export class UIModel {
 
 	dispose() {
 		while (this._subscriptions.length) {
-			this._subscriptions.pop()();
+			this._subscriptions.pop().dispose();
 		}
 	}
 
