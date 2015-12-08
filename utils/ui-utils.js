@@ -1,11 +1,13 @@
-define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework", "aurelia-dependency-injection"], function (require, exports, ld, mm, nm, aurelia_framework_1, aurelia_dependency_injection_1) {
+define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"], function (require, exports, ld, mm, nm, aurelia_framework_1) {
     exports._ = ld;
     exports.moment = mm;
     exports.numeral = nm;
     var Utils;
     (function (Utils) {
         function lazy(T) {
-            return aurelia_framework_1.Lazy.of(T).get(new aurelia_dependency_injection_1.Container())();
+            if (!Utils.container)
+                return;
+            return aurelia_framework_1.Lazy.of(T).get(Utils.container)();
         }
         Utils.lazy = lazy;
         function getFloatPosition(anchor, floater, side) {

@@ -42,7 +42,7 @@ define(["require", "exports", "aurelia-event-aggregator", "./ui-utils"], functio
         UIEvent.subscribe = function (evt, fn) {
             if (!UIEvent.ea)
                 UIEvent.ea = ui_utils_1.Utils.lazy(aurelia_event_aggregator_1.EventAggregator);
-            UIEvent.ea.subscribe(evt, fn);
+            return UIEvent.ea.subscribe(evt, fn);
         };
         return UIEvent;
     })(CustomEvent);

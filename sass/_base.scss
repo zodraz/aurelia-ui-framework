@@ -257,7 +257,7 @@ html, body {
 
   z-index: $zindex-splash;
   background: rgba(#fff, 0.3);
-  @include position(absolute, 0 0 12px);
+  @include position(absolute, 0 0 17px);
 
   > .ui-loader {
 	@include flex(0 0 auto);

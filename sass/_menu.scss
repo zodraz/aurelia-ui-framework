@@ -78,6 +78,12 @@
 		width: 1.2rem;
 	  }
 
+	  &[data-disabled="true"] {
+		color: $black-olive !important;
+		background: rgba(#333, 0.01) !important;
+		cursor: not-allowed !important;
+	  }
+
 	  &:hover {
 		color: $menu-hover-text;
 		background-color: $menu-hover-bg;

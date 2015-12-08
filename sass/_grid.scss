@@ -62,6 +62,9 @@
   &.ui-flex-end {
 	@include justify-content(flex-end);
   }
+  &.ui-flex-spaced {
+	@include justify-content(space-between);
+  }
 
   > .ui-row:not(.ui-column) {
 	@include flex(0 0 100%);

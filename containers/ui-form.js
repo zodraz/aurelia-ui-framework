@@ -22,7 +22,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             var _this = this;
             setTimeout(function () {
                 $(_this._form).data('UIForm', _this)
-                    .find('input,textarea').first().focus();
+                    .find('input,select,textarea').first().focus();
             }, 200);
         };
         UIForm.prototype.busyChanged = function (newValue) {

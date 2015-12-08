@@ -30,6 +30,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.checked = false;
             this.phoneCode = '';
             this.phoneNumber = '';
+            this.phoneExt = '';
             this.phoneCountry = 'us';
             this.id = '';
             this.dir = 'ltr';
@@ -92,7 +93,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIInput.prototype.bind = function () {
             if (this._type == 'position') {
                 this._double = true;
-                this._type = 'decimal';
             }
             if (this.placeholder) {
                 _a = this.placeholder.split(','), this._placeholder1 = _a[0], this._placeholder2 = _a[1];
@@ -102,14 +102,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
             if (this._type == 'phone') {
                 if (this.value != null && this.value != '') {
+                    if (!/^\+/.test(this.value))
+                        this.value = '+' + this.value;
                     this.phoneCountry = PhoneLib.getIso2Code(this.value) || 'US';
                     var info = PhoneLib.getNumberInfo(this.value, this.phoneCountry || 'US');
                     this.phoneCode = info.areaCode;
                     this.phoneNumber = info.phone;
+                    this.phoneExt = info.ext;
                 }
                 this.addonText = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
                 this._placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
-                this._value1 = "" + this.phoneCode + this.phoneNumber;
+                this._value1 = "" + this.phoneCode + this.phoneNumber + this.phoneExt;
                 this._processValue();
             }
             else if (this.value) {
@@ -158,10 +161,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 }
             })
                 .keypress(function (e) {
-                if (e.ctrlKey || e.altKey || e.metaKey)
+                if (e.ctrlKey || e.altKey || e.metaKey || e.charCode == 0)
                     return true;
                 if (_this._type == 'name') {
-                    return (/\w*/)
+                    return (new RegExp('[' + _this.ALPHA + '\'\\.\\-&\\s]', 'g'))
                         .test(String.fromCharCode(e.charCode));
                 }
                 else if (_this._type == 'address') {
@@ -180,7 +183,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 else if (_this._type == 'phone') {
                     return /[0-9]/.test(String.fromCharCode(e.charCode));
                 }
-                if (e.keyCode == 13) {
+                if ((e.which || e.keyCode) == 13) {
                     $(e.target).trigger('change', e);
                     return false;
                 }
@@ -217,11 +220,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIInput.prototype._valueChanged = function (newValue) {
             if (this._type == 'phone') {
                 if (!this._ignorechange && newValue != null && newValue != '') {
+                    if (!/^\+/.test(newValue))
+                        newValue = '+' + newValue;
                     var ctry = PhoneLib.getIso2Code(newValue) || 'US';
                     var info = PhoneLib.getNumberInfo(newValue, ctry || 'US');
                     this.phoneCode = info.areaCode;
                     this.phoneNumber = isNaN(info.phone) ? '' : info.phone + '';
-                    this._value1 = "" + this.phoneCode + this.phoneNumber;
+                    this.phoneExt = info.ext;
+                    this._value1 = "" + this.phoneCode + this.phoneNumber + this.phoneExt;
                     this.phoneCountry = ctry;
                     this._processValue();
                 }
@@ -248,8 +254,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIInput.prototype._processValue = function () {
             if (this._type == 'phone') {
                 this._ignorechange = true;
-                this._value1 = PhoneLib.formatInput(this._value1, this.phoneCountry || 'us');
-                this.value = PhoneLib.format(this._value1, this.phoneCountry || 'us', PhoneLib.FORMAT.FULL);
+                this._value1 = PhoneLib.formatInput(this._value1, this.phoneCountry || 'us', false, true);
+                this.value = PhoneLib.format(this._value1, this.phoneCountry || 'us', PhoneLib.FORMAT.INTERNATIONAL);
                 this._updatePhone();
             }
             else
@@ -271,7 +277,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 val = val.toLowerCase();
             }
             else if (this._type == 'phone') {
-                val = PhoneLib.formatInput(val || '', this.phoneCountry || 'US')
+                val = PhoneLib.formatInput(val || '', this.phoneCountry || 'US', false, true)
                     .replace(/[\(\)\s\-]+$/, '');
             }
             return val;
@@ -281,10 +287,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 var info = PhoneLib.getNumberInfo(this._value1 || '', this.phoneCountry || 'US');
                 this.phoneCode = info.areaCode;
                 this.phoneNumber = isNaN(info.phone) ? '' : info.phone + '';
+                this.phoneExt = info.ext;
             }
             catch (e) {
                 this.phoneCode = '';
                 this.phoneNumber = '';
+                this.phoneExt = '';
             }
         };
         UIInput.prototype._buttonClick = function ($event) {
@@ -360,6 +368,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable({
                 name: 'phoneNumber',
                 attribute: 'phone-number',
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
+                defaultValue: ''
+            }),
+            aurelia_framework_1.bindable({
+                name: 'phoneExt',
+                attribute: 'phone-ext',
                 defaultBindingMode: aurelia_framework_1.bindingMode.twoWay,
                 defaultValue: ''
             }),
