@@ -29,7 +29,7 @@ export class App {
 			name: 'home'
 		}, {
 			route: 'badurl',
-			moduleId: './home/view',
+			moduleId: './home/grid',
 			settings: {},
 			title: 'Authenticated URL',
 			nav: true,
@@ -46,13 +46,18 @@ export class App {
 	}
 
 	constructor(public appState:UIApplicationState) {
-		appState.Copyright = "Company Name";
-		appState.StartYear = '2015';
-		appState.Version   = '1.0.0';
+		appState.Copyright            = "Company Name";
+		appState.StartYear            = '2015';
+		appState.Version              = '1.0.0';
+		this.appState.IsAuthenticated = true;
+		this.appState.UserGroup       = 'User';
+		this.appState.Username        = 'user@domain.com';
+		this.appState.IpAddress       = '192.168.0.1';
 	}
 
 	logout() {
 		this.appState.IsAuthenticated = false;
 		this.appState.Username        = null;
+		this.appState.navigateTo('login');
 	}
 }

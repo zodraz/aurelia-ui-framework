@@ -23,3 +23,6 @@ interface Window {
 	unescape(v?:any);
 }
 
+interface Element {
+	UIElement:any;
+}

@@ -105,6 +105,9 @@ declare module "aurelia-ui-framework" {
 		public AppSource:number;
 		public UserGroup:string;
 
+		_current;
+		router;
+
 		navigateTo(route:string, params?:any);
 
 		get(key:string):any;
