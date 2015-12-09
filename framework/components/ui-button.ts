@@ -15,9 +15,8 @@ export class UIButton {
 	private _iconEl;
 	private _temp;
 	private _button;
-	private _link;
 	private _menu;
-	private _dropdown;
+	private _label;
 
 	@bindable menu:boolean;
 	@bindable value:string;
@@ -37,7 +36,7 @@ export class UIButton {
 		if (element.hasAttribute('default'))this._default = true;
 		if (element.hasAttribute('disabled'))this.disabled = true;
 		if (element.hasAttribute('menu'))this.menu = true;
-		if (element.hasAttribute('menu-right'))this._menuRight = true;
+		if (element.hasAttribute('menu-right'))this.menu = this._menuRight = true;
 		// check size attributes
 		if (element.hasAttribute('large'))this._size = 'large';
 		if (element.hasAttribute('small'))this._size = 'small';
@@ -48,12 +47,13 @@ export class UIButton {
 		if (element.hasAttribute('danger'))this._theme = 'danger';
 		if (element.hasAttribute('success'))this._theme = 'success';
 		if (element.hasAttribute('warning'))this._theme = 'warning';
+
+		this.element.UIElement = this;
 	}
 
 	bind() {
-		if (this.label) {
+		if (this.label)
 			this.menu = true;
-		}
 		if (this._theme)
 			this._classes += `ui-button-${this._theme} `;
 		if (this._size)
@@ -63,7 +63,6 @@ export class UIButton {
 	}
 
 	attached() {
-		if (this.href) this._button = this._link;
 		if (this.icon) this._attachIcon();
 		if (this.menu && this._menuRight) {
 			$(this.element).addClass('ui-menu-right');
@@ -84,11 +83,11 @@ export class UIButton {
 					title: c.text()
 				});
 			});
+			this._label = this.label;
 		}
-		else this.label = $(this._temp).text();
+		else this._label = $(this._temp).text();
 		$(this._temp).remove();
 		$(this.element)
-			.data('UIButton', this)
 			.attr(this.disabled !== false ? 'disabled' : 'x', '');
 	}
 

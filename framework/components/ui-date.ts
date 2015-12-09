@@ -101,6 +101,7 @@ export class UIDate {
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 
 		this.dt = moment().format('DD');
+		this.element.UIElement = this;
 	}
 
 	attached() {

@@ -25,6 +25,10 @@ export class UILogin {
 		this.model = new LoginModel();
 	}
 
+	activate(params) {
+		if (params && params.message) this.error = params.message;
+	}
+
 	attached() {
 		$(this._form).find('.ui-login-content').append($(this._form).find('.ui-temp').children());
 		$(this._form).find('.ui-temp').remove();

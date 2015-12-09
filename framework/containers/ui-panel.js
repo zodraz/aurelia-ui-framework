@@ -25,7 +25,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UIPanel.prototype, "class");
         UIPanel = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-panel'), 
             __metadata('design:paramtypes', [Element])
         ], UIPanel);

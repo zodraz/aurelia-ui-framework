@@ -69,14 +69,14 @@ export class HomeForm {
 	}
 
 	attached() {
-		$(this._langSelect).data('UILangSelect')
+		this._langSelect.UIElement
 			.addLanguages(Object.keys(this.content))
 			.setLanguage('AR');
 	}
 
 	onSubmit() {
 		this.validation.validate();
-		$(this._langSelect).data('UILangSelect')
+		this._langSelect.UIElement
 			.errorLanguages('AR,EN');
 	}
 

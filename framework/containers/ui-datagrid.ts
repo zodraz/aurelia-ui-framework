@@ -30,7 +30,6 @@ import {Format, _} from "../utils/ui-utils";
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-data-grid')
 export class UIDataGrid {
 	private _grid;
@@ -50,7 +49,7 @@ export class UIDataGrid {
 	@bindable idColumn:string = 'id';
 
 	constructor(public element:Element) {
-		$(this.element).data('UIDataGrid', this);
+		this.element.UIElement = this;
 	}
 
 	bind() {

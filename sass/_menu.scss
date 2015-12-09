@@ -24,10 +24,18 @@
 	border: 1px solid $base-border-color;
   }
 
+  &:not(.ui-floating) {
+	.ui-menu-link {
+	  font-size: 1.1em;
+	  margin: 0.25rem 0;
+	  padding: 1rem 0.5rem;
+	}
+  }
+
   &.ui-app-menu {
 	hr {
-	  border-top-color: darken($menu-bg, 20%);
-	  border-bottom-color: lighten($menu-bg, 20%);
+	  border-top-color: darken($app-menu-bg, 20%);
+	  background: lighten($app-menu-bg, 20%);
 	}
 
 	.ui-app-logo {

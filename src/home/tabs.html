@@ -7,8 +7,10 @@
 					<li><strong>Markdown</strong>: a simple div with innerHTML binding using the MarkdownConverter<br/>
 						<code>&lt;div innerhtml.bind='markdownText | markdown'>&lt;/div></code>
 					</li>
-					<li><strong>Datagrid</strong>: a compose element of datagrid<br/><code>&lt;compose view-model='./datagrid'>&lt;/compose></code></li>
-					<li><strong>Form</strong>: a compose element of forms<br/><code>&lt;compose view-model='./form'>&lt;/compose></code></li>
+					<li><strong>Datagrid</strong>: a compose element of datagrid<br/><code>&lt;compose
+						view-model='./datagrid'>&lt;/compose></code></li>
+					<li><strong>Form</strong>: a compose element of forms<br/><code>&lt;compose view-model='./form'>&lt;/compose></code>
+					</li>
 				</ul>
 				<hr/>
 				<h5>Usage</h5>
@@ -25,7 +27,7 @@
 			</div>
 		</ui-tab>
 		<ui-tab label="Markdown">
-			<div innerhtml.bind="md | markdown"></div>
+			<div innerhtml.bind="md | markdown" class="ui-markdown"></div>
 		</ui-tab>
 		<ui-tab label="DataGrid">
 			<compose view-model="./datagrid"></compose>

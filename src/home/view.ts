@@ -95,7 +95,7 @@ export class Home {
 			route: 'styles',
 			moduleId: './styles',
 			settings: {
-				sectionStart:true,
+				sectionStart: true,
 				navIcon: 'fi-ext-programming-language2'
 			},
 			title: 'CSS Helper Classes',

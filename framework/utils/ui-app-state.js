@@ -67,6 +67,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
         };
         UIApplicationState.prototype.navigateTo = function (route, params) {
             if (params === void 0) { params = {}; }
+            this._current = null;
             this._logger.debug("navigateTo::" + route);
             this.router.navigateToRoute(route, params, {});
         };
@@ -125,18 +126,22 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this.logger.debug('Initialized');
         }
         AuthInterceptor.prototype.run = function (routingContext, next) {
-            if (routingContext.config.auth) {
+            if (routingContext.getAllInstructions().some(function (i) { return i.config.auth; })) {
                 if (!this.appState.IsAuthenticated) {
                     this.logger.debug('Not authenticated');
                     var url = routingContext.router.generate('login', { message: '401 Unauthorized' });
                     this.appState.IsAuthenticated = false;
-                    return next.cancel(new aurelia_router_1.Redirect(url));
+                    this.appState._current = routingContext;
+                    return next.complete(new aurelia_router_1.Redirect(url));
                 }
+            }
+            if (routingContext.config.isLogin && !this.appState._current) {
+                this.appState._current = routingContext.router.currentInstruction;
             }
             if (!routingContext.config.isLogin && !this.isAllowed(routingContext.config.group)) {
                 this.logger.debug("Access denied [" + routingContext.config.group + "]");
                 $.notify('Access Denied');
-                return next.cancel();
+                return next.reject();
             }
             return next();
         };

@@ -7,7 +7,6 @@
 import {autoinject, customElement, containerless, bindable, useView} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @useView('./ui-tab-panel.html')
 @customElement('ui-tab-panel')
 export class UITabPanel {

@@ -70,6 +70,7 @@ export class UIList {
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('multiple')) this._multiple = true;
+		this.element.UIElement = this;
 	}
 
 	bind() {
@@ -82,7 +83,6 @@ export class UIList {
 	}
 
 	attached() {
-		$(this.element).data('UIList', this)
 		$(this._select)
 			.html(this._getListItems())
 			.find(`li[value="${this.value}"]`).addClass('active');

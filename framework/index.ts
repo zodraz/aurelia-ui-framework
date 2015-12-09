@@ -33,6 +33,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./containers/ui-panel');
 	aurelia.globalResources('./containers/ui-scroll');
 	aurelia.globalResources('./containers/ui-tab');
+	aurelia.globalResources('./containers/ui-login');
 
 	aurelia.globalResources('./components/ui-button');
 	aurelia.globalResources('./components/ui-switch');
@@ -43,7 +44,6 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./components/ui-option');
 	aurelia.globalResources('./components/ui-chosen');
 	aurelia.globalResources('./components/ui-tree');
-	aurelia.globalResources('./components/ui-login');
 	aurelia.globalResources('./components/ui-divider');
 	aurelia.globalResources('./components/ui-markdown');
 	aurelia.globalResources('./components/ui-lang-select');

@@ -38,10 +38,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.theme = 'gender';
             if (element.hasAttribute('priority'))
                 this.theme = 'priority';
+            this.element.UIElement = this;
         }
         UISwitch.prototype.attached = function () {
             $(this._switch)
-                .data('UISwitch', this)
                 .find('input')
                 .attr(this.disabled !== false ? 'disabled' : 'D', '');
             $(this._switch).find('label').last()

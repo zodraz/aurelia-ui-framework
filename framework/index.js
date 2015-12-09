@@ -18,6 +18,7 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
         aurelia.globalResources('./containers/ui-panel');
         aurelia.globalResources('./containers/ui-scroll');
         aurelia.globalResources('./containers/ui-tab');
+        aurelia.globalResources('./containers/ui-login');
         aurelia.globalResources('./components/ui-button');
         aurelia.globalResources('./components/ui-switch');
         aurelia.globalResources('./components/ui-input');
@@ -27,7 +28,6 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
         aurelia.globalResources('./components/ui-option');
         aurelia.globalResources('./components/ui-chosen');
         aurelia.globalResources('./components/ui-tree');
-        aurelia.globalResources('./components/ui-login');
         aurelia.globalResources('./components/ui-divider');
         aurelia.globalResources('./components/ui-markdown');
         aurelia.globalResources('./components/ui-lang-select');

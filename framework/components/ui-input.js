@@ -88,7 +88,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._type = 'position';
             if (element.hasAttribute('phone'))
                 this._type = 'phone';
-            $(this.element).data('UIInput', this);
+            this.element.UIElement = this;
         }
         UIInput.prototype.bind = function () {
             if (this._type == 'position') {
@@ -255,7 +255,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this._type == 'phone') {
                 this._ignorechange = true;
                 this._value1 = PhoneLib.formatInput(this._value1, this.phoneCountry || 'us', false, true);
-                this.value = PhoneLib.format(this._value1, this.phoneCountry || 'us', PhoneLib.FORMAT.INTERNATIONAL);
+                this.value = PhoneLib.format(this._value1, this.phoneCountry || 'us', PhoneLib.FORMAT.FULL);
                 this._updatePhone();
             }
             else

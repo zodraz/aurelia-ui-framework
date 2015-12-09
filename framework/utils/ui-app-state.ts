@@ -37,6 +37,8 @@ export class UIApplicationState {
 	public AppSource:number = 0;
 	public UserGroup:string;
 
+	public _current;
+
 	private _keyObjects = {};
 
 	private _logger:Logger;
@@ -88,6 +90,7 @@ export class UIApplicationState {
 	}
 
 	navigateTo(route:string, params:any = {}) {
+		this._current = null;
 		this._logger.debug(`navigateTo::${route}`);
 		this.router.navigateToRoute(route, params, {});
 	}
@@ -163,19 +166,23 @@ export class AuthInterceptor {
 	run(routingContext, next) {
 		// Check if the route has an "auth" key
 		// The reason for using `nextInstructions` is because this includes child routes.
-		if (routingContext.config.auth) {
+		if (routingContext.getAllInstructions().some(i => i.config.auth)) {
 			if (!this.appState.IsAuthenticated) {
 				this.logger.debug('Not authenticated');
 				let url                       = routingContext.router.generate('login', {message: '401 Unauthorized'});
 				this.appState.IsAuthenticated = false;
-				return next.cancel(new Redirect(url));
+				this.appState._current        = routingContext;
+				return next.complete(new Redirect(url));
 			}
+		}
+		if (routingContext.config.isLogin && !this.appState._current) {
+			this.appState._current = routingContext.router.currentInstruction;
 		}
 		// Check if route is not login then check if the user group is allowed to access the route
 		if (!routingContext.config.isLogin && !this.isAllowed(routingContext.config.group)) {
 			this.logger.debug(`Access denied [${routingContext.config.group}]`);
 			$.notify('Access Denied');
-			return next.cancel();
+			return next.reject();
 		}
 
 		return next();

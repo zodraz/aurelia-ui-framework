@@ -22,6 +22,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-validation", "../uti
             this.busy = false;
             this.model = new LoginModel();
         }
+        UILogin.prototype.activate = function (params) {
+            if (params && params.message)
+                this.error = params.message;
+        };
         UILogin.prototype.attached = function () {
             $(this._form).find('.ui-login-content').append($(this._form).find('.ui-temp').children());
             $(this._form).find('.ui-temp').remove();

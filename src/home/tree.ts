@@ -33,6 +33,6 @@ export class HomeTree {
 	}
 
 	attached() {
-		$(this._tree).data('UITree').select('');
+		this._tree.UIElement.select('');
 	}
 }

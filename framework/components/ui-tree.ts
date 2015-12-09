@@ -60,7 +60,7 @@ export class UITree {
 		observer.propertyObserver(this, 'searchText')
 			.subscribe(v=>self._searchTextChanged(v));
 
-		$(this.element).data('UITree', this);
+		this.element.UIElement = this;
 	}
 
 	private attached() {

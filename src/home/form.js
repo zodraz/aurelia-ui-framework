@@ -65,13 +65,13 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             delete this.content[$event.detail];
         };
         HomeForm.prototype.attached = function () {
-            $(this._langSelect).data('UILangSelect')
+            this._langSelect.UIElement
                 .addLanguages(Object.keys(this.content))
                 .setLanguage('AR');
         };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
-            $(this._langSelect).data('UILangSelect')
+            this._langSelect.UIElement
                 .errorLanguages('AR,EN');
         };
         HomeForm = __decorate([

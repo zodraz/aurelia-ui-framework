@@ -7,7 +7,6 @@
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @customElement('ui-panel')
 export class UIPanel {
 	private _panel;

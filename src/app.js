@@ -14,11 +14,17 @@ define(["require", "exports", "aurelia-framework", "../framework/utils/ui-app-st
         function App(appState) {
             this.appState = appState;
             this.appTitle = "Aurelia UI Framework";
+            this.appState.IsAuthenticated = true;
+            this.appState.UserGroup = 'User';
+            this.appState.Username = 'user@domain.com';
+            this.appState.IpAddress = '192.168.0.1';
         }
         App.prototype.configureRouter = function (config, router) {
             this.router = router;
             config.title = this.appTitle;
             config.options.isAuthenticated = false;
+            config.options.showLogo = true;
+            config.addPipelineStep('authorize', ui_app_state_1.AuthInterceptor);
             config.map([{
                     route: 'login',
                     moduleId: './login/view',
@@ -35,7 +41,7 @@ define(["require", "exports", "aurelia-framework", "../framework/utils/ui-app-st
                     name: 'home'
                 }, {
                     route: 'badurl',
-                    moduleId: './home/view',
+                    moduleId: './home/grid',
                     settings: {},
                     title: 'Authenticated URL',
                     nav: true,
@@ -52,6 +58,7 @@ define(["require", "exports", "aurelia-framework", "../framework/utils/ui-app-st
         App.prototype.logout = function () {
             this.appState.IsAuthenticated = false;
             this.appState.Username = null;
+            this.appState.navigateTo('login');
         };
         App = __decorate([
             aurelia_framework_1.autoinject(), 

@@ -59,6 +59,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
             this.dt = ui_utils_1.moment().format('DD');
+            this.element.UIElement = this;
         }
         UIDate.prototype.attached = function () {
             if (this.inline && (this._inputStart = this._inputInline))

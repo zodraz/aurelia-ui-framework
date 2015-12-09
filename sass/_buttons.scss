@@ -179,7 +179,7 @@
 	border-radius: 0;
 
 	&.ui-checked {
-	  button {
+	  button, a {
 		color: $button-toggle-active-text;
 		text-shadow: 0 -1px 0 contrast($button-toggle-active-text, #787878, #fff);
 	  }

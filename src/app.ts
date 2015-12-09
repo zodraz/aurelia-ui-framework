@@ -1,6 +1,6 @@
 import {autoinject} from "aurelia-framework";
 import {Router} from "aurelia-router";
-import {UIApplicationState} from "../framework/utils/ui-app-state";
+import {UIApplicationState, AuthInterceptor} from "../framework/utils/ui-app-state";
 
 @autoinject()
 export class App {
@@ -12,7 +12,8 @@ export class App {
 		this.router                    = router;
 		config.title                   = this.appTitle;
 		config.options.isAuthenticated = false;
-		//.addPipelineStep('authorize', AuthInterceptor)
+		config.options.showLogo        = true;
+		config.addPipelineStep('authorize', AuthInterceptor);
 		config.map([{
 			route: 'login',
 			moduleId: './login/view',
@@ -29,7 +30,7 @@ export class App {
 			name: 'home'
 		}, {
 			route: 'badurl',
-			moduleId: './home/view',
+			moduleId: './home/grid',
 			settings: {},
 			title: 'Authenticated URL',
 			nav: true,
@@ -46,10 +47,15 @@ export class App {
 	}
 
 	constructor(public appState:UIApplicationState) {
+		this.appState.IsAuthenticated = true;
+		this.appState.UserGroup       = 'User';
+		this.appState.Username        = 'user@domain.com';
+		this.appState.IpAddress       = '192.168.0.1';
 	}
 
 	logout() {
 		this.appState.IsAuthenticated = false;
 		this.appState.Username        = null;
+		this.appState.navigateTo('login');
 	}
 }

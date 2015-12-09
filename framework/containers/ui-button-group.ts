@@ -16,7 +16,6 @@ import {UIEvent} from "../utils/ui-event";
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-button-group')
 export class UIButtonGroup {
 	private _buttonGroup;
@@ -45,6 +44,7 @@ export class UIButtonGroup {
 		if (element.hasAttribute('danger'))this._theme = 'danger';
 		if (element.hasAttribute('success'))this._theme = 'success';
 		if (element.hasAttribute('warning'))this._theme = 'warning';
+		this.element.UIElement = this;
 	}
 
 	bind() {
@@ -53,7 +53,6 @@ export class UIButtonGroup {
 	}
 
 	attached() {
-		$(this._buttonGroup).data('UIButtonGroup', this);
 		if (this._size) {
 			$(this._buttonGroup).children('.ui-button')
 				.removeClass('ui-button-normal')

@@ -50,7 +50,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._multiple = true;
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
-            $(this.element).data('UIChosen', this);
+            this.element.UIElement = this;
         }
         UIChosen.prototype.bind = function () {
             if (this.value) {

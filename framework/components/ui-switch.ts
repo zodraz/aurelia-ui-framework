@@ -43,11 +43,11 @@ export class UISwitch {
 		if (element.hasAttribute('ampm'))this.theme = 'ampm';
 		if (element.hasAttribute('gender'))this.theme = 'gender';
 		if (element.hasAttribute('priority'))this.theme = 'priority';
+		this.element.UIElement = this;
 	}
 
 	attached() {
 		$(this._switch)
-			.data('UISwitch', this)
 			.find('input')
 			.attr(this.disabled !== false ? 'disabled' : 'D', '');
 		$(this._switch).find('label').last()

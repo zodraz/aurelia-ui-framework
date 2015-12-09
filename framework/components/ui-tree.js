@@ -19,7 +19,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
             eventAggregator.subscribe('tree-select', function (v) { return self._itemSelect(v); });
             observer.propertyObserver(this, 'searchText')
                 .subscribe(function (v) { return self._searchTextChanged(v); });
-            $(this.element).data('UITree', this);
+            this.element.UIElement = this;
         }
         UITree.prototype.attached = function () {
             this.options = ui_utils_1._.merge({

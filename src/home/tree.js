@@ -27,7 +27,7 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
             this.countries = ct;
         }
         HomeTree.prototype.attached = function () {
-            $(this._tree).data('UITree').select('');
+            this._tree.UIElement.select('');
         };
         return HomeTree;
     })();

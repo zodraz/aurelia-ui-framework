@@ -41,7 +41,7 @@ export class UILangSelect {
 
 	constructor(public element:Element) {
 		this._languages = _.clone(UILangSelect.LANGUAGES);
-		$(this.element).data('UILangSelect', this);
+		this.element.UIElement = this;
 	}
 
 	addLanguages(newValue) {

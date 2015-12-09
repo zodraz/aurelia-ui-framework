@@ -18,7 +18,6 @@ import {autoinject, customElement, containerless, bindable, bindingMode} from "a
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-option-group')
 export class UIOptionGroup {
 	private _optionGroup;
@@ -30,10 +29,10 @@ export class UIOptionGroup {
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
+		element.UIElement = this;
 	}
 
 	attached() {
-		$(this._optionGroup).data('UIOptionGroup', this);
 		setTimeout(()=> {
 			$(this._optionGroup).find(`.ui-radio .ui-option-input[value="${this.value}"]`).prop('checked', true);
 		}, 200);

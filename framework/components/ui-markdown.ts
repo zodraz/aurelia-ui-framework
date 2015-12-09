@@ -50,7 +50,7 @@ export class UIMarkdown {
 	}
 
 	attached() {
-		$(this._markdown).data('UIMarkdown', this);
+		this._markdown.UIElement = this;
 		$(this._input)
 			.attr(this.readonly !== false ? 'readonly' : 'R', '')
 			.attr(this.disabled !== false ? 'disabled' : 'D', '')
