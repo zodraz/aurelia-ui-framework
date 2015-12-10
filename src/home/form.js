@@ -22,7 +22,7 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 phoneCode: '055',
                 phoneNumber: '6347342',
                 phoneCountry: 'ae',
-                phoneExt: '',
+                phoneExt: '123',
                 phone: '',
                 list: '4',
                 date: null,

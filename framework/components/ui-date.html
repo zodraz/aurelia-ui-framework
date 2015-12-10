@@ -5,8 +5,8 @@
 	</label>
 
 	<div class="ui-form-control ui-date ${focus?'ui-focus':''}" ref="_date">
-		<div class="ui-addon">
-			<span class="ui-icon fi-elegant-little4" data-date="${dt}"></span>
+		<div class="ui-addon" click.trigger="_inputStart.focus()">
+			<span class="ui-icon fi-elegant-little4" data-date="">${dt}</span>
 		</div>
 		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
 			<input class="ui-option-input" type="checkbox" checked.bind="checked"
@@ -17,7 +17,7 @@
 			   focus.trigger="focus=true" blur.trigger="focus=false"
 			   readonly placeholder="${placeholder}" value.bind="_valueStart" id.bind="_id"/>
 
-		<div if.bind="range" class="ui-addon ui-text-center"><span class="ui-small-caps">to</span></div>
+		<div if.bind="range" class="ui-addon ui-text-center" click.trigger="_inputEnd.focus()"><span class="ui-small-caps">to</span></div>
 		<input if.bind="range" ref="_inputEnd" class="ui-input ${_inputClasses} ui-secondary"
 			   focus.trigger="focus=true" blur.trigger="focus=false"
 			   readonly placeholder="${placeholder}" value.bind="_valueEnd"/>

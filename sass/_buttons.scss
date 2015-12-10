@@ -10,7 +10,7 @@
   &.ui-button-#{$prefix} {
 	background: linear-gradient(top, $bg, darken($bg, 2%));
 	border-color: $border;
-	button, a {
+	&, button, a {
 	  color: $color;
 	  text-shadow: 0 1px 0 rgba(contrast($color, #787878, #fff), 0.5);
 	}

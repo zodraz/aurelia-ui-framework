@@ -9,20 +9,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "../utils/ui-tree-models"], function (require, exports, aurelia_framework_1, aurelia_event_aggregator_1, ui_tree_models_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_tree_models_1, ui_event_1) {
     var TreeNode = (function () {
-        function TreeNode(eventAggregator) {
-            this.eventAggregator = eventAggregator;
+        function TreeNode() {
         }
         TreeNode.prototype.itemSelect = function () {
             if (this.node.root)
                 return;
             if (this.options.showCheckbox) {
-                if (this.node.level >= this.options.checkboxLevel)
+                if (this.node.level >= this.options.checkboxLevel) {
                     this.node.ischecked = !this.node.checked;
+                    ui_event_1.UIEvent.broadcast('tree-checked', this.node);
+                }
             }
             else if (this.node.level >= this.options.selectionLevel) {
-                this.eventAggregator.publish('tree-select', this.node);
+                ui_event_1.UIEvent.broadcast('tree-select', this.node);
             }
         };
         __decorate([
@@ -35,7 +36,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
         ], TreeNode.prototype, "options");
         TreeNode = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [aurelia_event_aggregator_1.EventAggregator])
+            __metadata('design:paramtypes', [])
         ], TreeNode);
         return TreeNode;
     })();

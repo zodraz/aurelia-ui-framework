@@ -9,7 +9,7 @@
 
 		<a class="ui-node-checkbox ${node.checked<1?'off':''} ${node.checked==1?'on':''} ${node.checked==2?'partial':''}"
 		   if.bind="options.showCheckbox && node.level>=options.checkboxLevel"
-		   click.trigger="node.ischecked=!node.checked">
+		   click.trigger="itemSelect()">
 			<span class="${node.checked<1?'fi-editor-square58':''} ${node.checked==1?'fi-editor-square57':''} ${node.checked==2?'fi-editor-square56':''}"></span>
 		</a>
 

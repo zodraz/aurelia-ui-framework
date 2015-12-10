@@ -39,6 +39,7 @@
 			</tr>
 			<tr height="100%" class="ui-blank-row">
 				<td repeat.for="col of columns"
+					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}"
 					class="${col.locked ? 'sticky':''} ${isLastLocked(col.locked, $index)?'last-of-type':''} ${col.cls}">
 					<div>&nbsp;</div>
 				</td>

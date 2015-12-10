@@ -45,7 +45,10 @@ export class HomeButtons {
 			if (data._theme == 'success')msg = 'HOUSTON! The eagle has landed';
 			if (data._theme == 'danger')msg = 'EXTERMINATE! EXTERMINATE!';
 			if (data._theme == 'warning')msg = 'HOUSTON! We have a problem';
-			if (data._theme != 'secondary') {
+			if (data._theme == 'default') {
+				this.confirm();
+			}
+			else if (data._theme != 'secondary') {
 				$.notify(msg, {
 					style: 'ui',
 					className: data._theme,

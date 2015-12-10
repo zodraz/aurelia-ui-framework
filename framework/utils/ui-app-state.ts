@@ -66,18 +66,6 @@ export class UIApplicationState {
 			style: 'ui',
 			className: 'danger'
 		});
-
-		$.notify.addStyle('confirm', {
-			html: "<div class='ui-notify-confirm'>" +
-			"<div class='ui-notify'>" +
-			"<div class='title' data-notify-html='title'/>" +
-			"<div class='buttons'>" +
-			"<button class='btn yes' data-notify-text='yes'></button>" +
-			"<button class='btn no' data-notify-text='no'></button>" +
-			"</div>" +
-			"</div>" +
-			"</div>"
-		});
 	}
 
 	get(key) {
@@ -116,13 +104,13 @@ export class UIApplicationState {
 				<div class='ui-notify'>
 					<div class='title'>${msg}</div>
 					<div class='buttons'>
-						<button class='btn yes'>Yes</button>
-						<button class='btn no'>No</button>
+						<button class='ui-button yes'>Yes</button>
+						<button class='ui-button no'>No</button>
 					</div>
 				</div>
 			</div>
 			`).children('.ui-notify-confirm');
-			_el.one('click', '.btn', function (e) {
+			_el.one('click', '.ui-button', function (e) {
 				($(e.target).hasClass('yes')) ? resolve() : reject();
 				_el.remove();
 			});

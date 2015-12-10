@@ -16,6 +16,7 @@ export class UIButton {
 	private _temp;
 	private _button;
 	private _menu;
+	private _link;
 	private _label;
 
 	@bindable menu:boolean;
@@ -63,6 +64,7 @@ export class UIButton {
 	}
 
 	attached() {
+		if (this.href) this._button = this._link;
 		if (this.icon) this._attachIcon();
 		if (this.menu && this._menuRight) {
 			$(this.element).addClass('ui-menu-right');

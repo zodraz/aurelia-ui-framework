@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "aurelia-framework", "./ui-input"], function (require, exports, aurelia_framework_1, ui_input_1) {
     var UIOption = (function () {
         function UIOption(element) {
             this.element = element;
@@ -21,6 +21,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.name = '';
             this.value = '';
             this.disabled = false;
+            this._id = "option-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('radio'))
                 this._checkbox = false;
             if (element.hasAttribute('disabled'))

@@ -55,7 +55,10 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
                     msg = 'EXTERMINATE! EXTERMINATE!';
                 if (data._theme == 'warning')
                     msg = 'HOUSTON! We have a problem';
-                if (data._theme != 'secondary') {
+                if (data._theme == 'default') {
+                    this.confirm();
+                }
+                else if (data._theme != 'secondary') {
                     $.notify(msg, {
                         style: 'ui',
                         className: data._theme,

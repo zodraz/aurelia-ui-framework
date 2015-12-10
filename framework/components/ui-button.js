@@ -59,6 +59,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         };
         UIButton.prototype.attached = function () {
             var _this = this;
+            if (this.href)
+                this._button = this._link;
             if (this.icon)
                 this._attachIcon();
             if (this.menu && this._menuRight) {

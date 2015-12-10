@@ -46,17 +46,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
                 style: 'ui',
                 className: 'danger'
             });
-            $.notify.addStyle('confirm', {
-                html: "<div class='ui-notify-confirm'>" +
-                    "<div class='ui-notify'>" +
-                    "<div class='title' data-notify-html='title'/>" +
-                    "<div class='buttons'>" +
-                    "<button class='btn yes' data-notify-text='yes'></button>" +
-                    "<button class='btn no' data-notify-text='no'></button>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>"
-            });
         }
         UIApplicationState.prototype.get = function (key) {
             return this._keyObjects[key];
@@ -84,8 +73,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
         };
         UIApplicationState.prototype.notifyConfirm = function (msg) {
             return new Promise(function (resolve, reject) {
-                var _el = $('body').append("\n\t\t\t<div class='ui-notify-confirm'>\n\t\t\t\t<div class='ui-notify'>\n\t\t\t\t\t<div class='title'>" + msg + "</div>\n\t\t\t\t\t<div class='buttons'>\n\t\t\t\t\t\t<button class='btn yes'>Yes</button>\n\t\t\t\t\t\t<button class='btn no'>No</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t").children('.ui-notify-confirm');
-                _el.one('click', '.btn', function (e) {
+                var _el = $('body').append("\n\t\t\t<div class='ui-notify-confirm'>\n\t\t\t\t<div class='ui-notify'>\n\t\t\t\t\t<div class='title'>" + msg + "</div>\n\t\t\t\t\t<div class='buttons'>\n\t\t\t\t\t\t<button class='ui-button yes'>Yes</button>\n\t\t\t\t\t\t<button class='ui-button no'>No</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t").children('.ui-notify-confirm');
+                _el.one('click', '.ui-button', function (e) {
                     ($(e.target).hasClass('yes')) ? resolve() : reject();
                     _el.remove();
                 });

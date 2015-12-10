@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
+import {UIInput} from "./ui-input";
 
 @bindable({
 	name: 'checked',
@@ -19,6 +20,7 @@ import {UIEvent} from "../utils/ui-event";
 export class UIOption {
 	private _option;
 	private _input;
+	private _id;
 	private _type:string      = '';
 	private _classes:string   = '';
 	private _checkbox:boolean = true;
@@ -30,6 +32,7 @@ export class UIOption {
 	@bindable disabled:boolean = false;
 
 	constructor(public element:Element) {
+		this._id = `option-${UIInput._id++}`;
 		if (element.hasAttribute('radio')) this._checkbox = false;
 		if (element.hasAttribute('disabled'))this.disabled = true;
 	}

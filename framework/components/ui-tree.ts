@@ -5,9 +5,9 @@
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
 import {autoinject, bindable, computedFrom, customElement, bindingMode, BindingEngine} from "aurelia-framework";
-import {EventAggregator} from "aurelia-event-aggregator";
 import {UITreeModel, UITreeOptionsModel} from "../utils/ui-tree-models";
 import {_} from "../utils/ui-utils";
+import {UIEvent} from "../utils/ui-event";
 
 /**
  * @bindable selected node value
@@ -17,7 +17,7 @@ import {_} from "../utils/ui-utils";
 	attribute: 'value',
 	changeHandler: '_valueChanged',
 	defaultValue: null,
-	defaultBindingMode: bindingMode.oneWay
+	defaultBindingMode: bindingMode.twoWay
 })
 @bindable({
 	name: 'model',
@@ -36,9 +36,9 @@ import {_} from "../utils/ui-utils";
 /**
  * TODO: value change functionality missing
  *
- * 	1. update value with node on single select mode
- * 	2. update value with grouped node ids for checked, partial and unchecked
- * 	3. update selection when the value changes from incoming binding
+ *    1. update value with node on single select mode
+ *    2. update value with grouped node ids for checked, partial and unchecked
+ *    3. update selection when the value changes from incoming binding
  */
 
 @autoinject()
@@ -54,16 +54,20 @@ export class UITree {
 
 	private selectedNode:any = {};
 
-	constructor(public element:Element, eventAggregator:EventAggregator, observer:BindingEngine) {
-		var self = this;
-		eventAggregator.subscribe('tree-select', v=>self._itemSelect(v));
+	_subscribeSelect;
+	_subscribeChecked;
+
+	constructor(public element:Element, observer:BindingEngine) {
+		var self               = this;
+		this._subscribeSelect  = UIEvent.subscribe('tree-select', v=>self._itemSelect(v));
+		this._subscribeChecked = UIEvent.subscribe('tree-checked', v=>self._itemChecked(v));
 		observer.propertyObserver(this, 'searchText')
 			.subscribe(v=>self._searchTextChanged(v));
 
 		this.element.UIElement = this;
 	}
 
-	private attached() {
+	private bind() {
 		this.options = _.merge({
 			showRoot: false,
 			rootLabel: 'Root',
@@ -80,6 +84,11 @@ export class UITree {
 		}, null);
 	}
 
+	private detached() {
+		this._subscribeSelect();
+		this._subscribeChecked();
+	}
+
 	@computedFrom('root')
 	private get rootNodes() {
 		return this.options.showRoot ? [this.root] : this.root.children;
@@ -90,6 +99,11 @@ export class UITree {
 			this.selectedNode.active = false;
 		(this.selectedNode = node).active = true;
 		this.value = this.selectedNode.id;
+		UIEvent.fireEvent('change', this.element, this.selectedNode);
+	}
+
+	private _itemChecked(node) {
+		UIEvent.fireEvent('checked', this.element, this.getChecked());
 	}
 
 	private _modelChanged(newValue) {
@@ -111,20 +125,20 @@ export class UITree {
 		var self = this, ret = false, rx = new RegExp(value, 'gi');
 
 		_.forEach(obj, (n:UITreeModel)=> {
-			n.name = n.name.replace(/<b>/gi, '').replace(/<\/b>/gi, '');
+			n.name     = n.name.replace(/<b>/gi, '').replace(/<\/b>/gi, '');
 			n.expanded = !_.isEmpty(value) && n.level <= 2 && parentVisible === false;
 
 			if (_.isEmpty(value) && self.selectedNode.id == n.id && self.selectedNode.level == n.level) {
 				var p = n.parent;
 				while (p) {
 					p.expanded = true;
-					p = p.parent;
+					p          = p.parent;
 				}
 			}
 			var match = rx.test(n.name);
 			if (!_.isEmpty(value) && match) {
 				n.parent.expanded = true;
-				n.name = n.name.replace(rx, b=> {
+				n.name            = n.name.replace(rx, b=> {
 					return `<b>${b}</b>`
 				});
 			}
@@ -142,22 +156,38 @@ export class UITree {
 		return _.find(obj, (n:UITreeModel)=> {
 			var found = n.id == id && n.level == level;
 			if (!found && _.isArray(n.children)) {
-				found = !_.isEmpty(self._find(n.children, id, level, field, value));
+				found      = !_.isEmpty(self._find(n.children, id, level, field, value));
 				n.expanded = found;
 			}
 			else if (found) {
-				if (field == 'active') (self.selectedNode = n).active = !self.options.showCheckbox;
+				if (field == 'active') self._itemSelect(n);
 				if (field == 'expanded') n.expanded = value;
 				if (field == 'checked') n.ischecked = value ? 1 : 0;
 
 				setTimeout(()=> {
-					var x = $(this.element).find('.active');
+					var x = $(this.element).find('.ui-active');
 					if (x.length > 0)x.get(0).scrollIntoView();
 				}, 200);
 			}
 
 			return found;
 		});
+	}
+
+	private _getChecked(nodes, retVal) {
+		var self = this;
+		return _.forEach(nodes, (n:UITreeModel)=> {
+			if (n.checked == 2) retVal.partial.push(n.id);
+			if (n.checked == 1) retVal.checked.push(n.id);
+			if (n.checked == 0) retVal.unchecked.push(n.id);
+			if (_.isArray(n.children)) self._getChecked(n.children, retVal);
+		});
+	}
+
+	getChecked() {
+		let nodes = {checked: [], partial: [], unchecked: []}
+		this._getChecked(this.root.children, nodes);
+		return nodes;
 	}
 
 	select(id:any, level:number) {

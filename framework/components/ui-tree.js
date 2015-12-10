@@ -9,19 +9,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "../utils/ui-tree-models", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, aurelia_event_aggregator_1, ui_tree_models_1, ui_utils_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", "../utils/ui-utils", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_tree_models_1, ui_utils_1, ui_event_1) {
     var UITree = (function () {
-        function UITree(element, eventAggregator, observer) {
+        function UITree(element, observer) {
             this.element = element;
             this.searchText = '';
             this.selectedNode = {};
             var self = this;
-            eventAggregator.subscribe('tree-select', function (v) { return self._itemSelect(v); });
+            this._subscribeSelect = ui_event_1.UIEvent.subscribe('tree-select', function (v) { return self._itemSelect(v); });
+            this._subscribeChecked = ui_event_1.UIEvent.subscribe('tree-checked', function (v) { return self._itemChecked(v); });
             observer.propertyObserver(this, 'searchText')
                 .subscribe(function (v) { return self._searchTextChanged(v); });
             this.element.UIElement = this;
         }
-        UITree.prototype.attached = function () {
+        UITree.prototype.bind = function () {
             this.options = ui_utils_1._.merge({
                 showRoot: false,
                 rootLabel: 'Root',
@@ -36,6 +37,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
                 children: this.model
             }, null);
         };
+        UITree.prototype.detached = function () {
+            this._subscribeSelect();
+            this._subscribeChecked();
+        };
         Object.defineProperty(UITree.prototype, "rootNodes", {
             get: function () {
                 return this.options.showRoot ? [this.root] : this.root.children;
@@ -48,6 +53,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
                 this.selectedNode.active = false;
             (this.selectedNode = node).active = true;
             this.value = this.selectedNode.id;
+            ui_event_1.UIEvent.fireEvent('change', this.element, this.selectedNode);
+        };
+        UITree.prototype._itemChecked = function (node) {
+            ui_event_1.UIEvent.fireEvent('checked', this.element, this.getChecked());
         };
         UITree.prototype._modelChanged = function (newValue) {
             this.root = new ui_tree_models_1.UITreeModel(-1, this.options.maxLevels, this.options.checkboxLevel, {
@@ -98,19 +107,37 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
                 }
                 else if (found) {
                     if (field == 'active')
-                        (self.selectedNode = n).active = !self.options.showCheckbox;
+                        self._itemSelect(n);
                     if (field == 'expanded')
                         n.expanded = value;
                     if (field == 'checked')
                         n.ischecked = value ? 1 : 0;
                     setTimeout(function () {
-                        var x = $(_this.element).find('.active');
+                        var x = $(_this.element).find('.ui-active');
                         if (x.length > 0)
                             x.get(0).scrollIntoView();
                     }, 200);
                 }
                 return found;
             });
+        };
+        UITree.prototype._getChecked = function (nodes, retVal) {
+            var self = this;
+            return ui_utils_1._.forEach(nodes, function (n) {
+                if (n.checked == 2)
+                    retVal.partial.push(n.id);
+                if (n.checked == 1)
+                    retVal.checked.push(n.id);
+                if (n.checked == 0)
+                    retVal.unchecked.push(n.id);
+                if (ui_utils_1._.isArray(n.children))
+                    self._getChecked(n.children, retVal);
+            });
+        };
+        UITree.prototype.getChecked = function () {
+            var nodes = { checked: [], partial: [], unchecked: [] };
+            this._getChecked(this.root.children, nodes);
+            return nodes;
         };
         UITree.prototype.select = function (id, level) {
             this._find(this.root.children, id, level, 'active');
@@ -132,7 +159,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
                 attribute: 'value',
                 changeHandler: '_valueChanged',
                 defaultValue: null,
-                defaultBindingMode: aurelia_framework_1.bindingMode.oneWay
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay
             }),
             aurelia_framework_1.bindable({
                 name: 'model',
@@ -149,7 +176,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "
             }),
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-tree'), 
-            __metadata('design:paramtypes', [Element, aurelia_event_aggregator_1.EventAggregator, aurelia_framework_1.BindingEngine])
+            __metadata('design:paramtypes', [Element, aurelia_framework_1.BindingEngine])
         ], UITree);
         return UITree;
     })();
