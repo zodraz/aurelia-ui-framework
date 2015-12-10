@@ -86,9 +86,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
                 var match = rx.test(ui_utils_1.Utils.getAscii(n.name));
                 if (!ui_utils_1._.isEmpty(value) && match) {
                     n.parent.expanded = true;
-                    n.name = n.name.replace(rx, function (b) {
-                        return "<b>" + b + "</b>";
-                    });
+                    var start = ui_utils_1.Utils.getAscii(n.name).search(rx);
+                    var name_1 = n.name.substr(0, start + value.length) + '</b>' + n.name.substr(start + value.length);
+                    n.name = name_1.substr(0, start) + '<b>' + name_1.substr(start);
                 }
                 n.isvisible = n.children.length > 0 ? self._filter(n.children, value, match || parentVisible) : (match || parentVisible);
                 ret = ret || n.isvisible;

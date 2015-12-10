@@ -138,9 +138,12 @@ export class UITree {
 			var match = rx.test(Utils.getAscii(n.name));
 			if (!_.isEmpty(value) && match) {
 				n.parent.expanded = true;
-				n.name            = n.name.replace(rx, b=> {
-					return `<b>${b}</b>`
-				});
+				/*n.name            = n.name.replace(rx, b=> {
+				 return `<b>${b}</b>`
+				 });*/
+				let start = Utils.getAscii(n.name).search(rx);
+				let name  = n.name.substr(0, start + value.length) + '</b>' + n.name.substr(start + value.length);
+				n.name    = name.substr(0, start) + '<b>' + name.substr(start);
 			}
 
 			n.isvisible = n.children.length > 0 ? self._filter(n.children, value, match || parentVisible) : (match || parentVisible);
