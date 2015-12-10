@@ -72,7 +72,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
         };
         UITree.prototype._filter = function (obj, value, parentVisible) {
             if (parentVisible === void 0) { parentVisible = false; }
-            var self = this, ret = false, rx = new RegExp(value, 'gi');
+            var self = this, ret = false, rx = new RegExp(ui_utils_1.Utils.getAscii(value), 'gi');
             ui_utils_1._.forEach(obj, function (n) {
                 n.name = n.name.replace(/<b>/gi, '').replace(/<\/b>/gi, '');
                 n.expanded = !ui_utils_1._.isEmpty(value) && n.level <= 2 && parentVisible === false;
@@ -83,7 +83,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
                         p = p.parent;
                     }
                 }
-                var match = rx.test(n.name);
+                var match = rx.test(ui_utils_1.Utils.getAscii(n.name));
                 if (!ui_utils_1._.isEmpty(value) && match) {
                     n.parent.expanded = true;
                     n.name = n.name.replace(rx, function (b) {

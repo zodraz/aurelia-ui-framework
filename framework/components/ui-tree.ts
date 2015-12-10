@@ -6,7 +6,7 @@
  **/
 import {autoinject, bindable, computedFrom, customElement, bindingMode, BindingEngine} from "aurelia-framework";
 import {UITreeModel, UITreeOptionsModel} from "../utils/ui-tree-models";
-import {_} from "../utils/ui-utils";
+import {_, Utils} from "../utils/ui-utils";
 import {UIEvent} from "../utils/ui-event";
 
 /**
@@ -122,7 +122,7 @@ export class UITree {
 	}
 
 	private _filter(obj, value, parentVisible:boolean = false):boolean {
-		var self = this, ret = false, rx = new RegExp(value, 'gi');
+		var self = this, ret = false, rx = new RegExp(Utils.getAscii(value), 'gi');
 
 		_.forEach(obj, (n:UITreeModel)=> {
 			n.name     = n.name.replace(/<b>/gi, '').replace(/<\/b>/gi, '');
@@ -135,7 +135,7 @@ export class UITree {
 					p          = p.parent;
 				}
 			}
-			var match = rx.test(n.name);
+			var match = rx.test(Utils.getAscii(n.name));
 			if (!_.isEmpty(value) && match) {
 				n.parent.expanded = true;
 				n.name            = n.name.replace(rx, b=> {
