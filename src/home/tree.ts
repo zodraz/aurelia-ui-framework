@@ -1,11 +1,18 @@
 import {_, UITreeOptionsModel} from "aurelia-ui-framework";
 
 export class HomeTree {
-	options:UITreeOptionsModel = {
+	options:UITreeOptionsModel  = {
 		showCheckbox: true
 	}
+	options2:UITreeOptionsModel = {}
 	countries:any;
 	_tree;
+	_tree2;
+
+	select2;
+
+	checked;
+	selectval;
 
 	constructor() {
 		var ct = [];
@@ -27,11 +34,19 @@ export class HomeTree {
 			});
 			ct.push(c);
 		});
-		console.log(ct);
 		this.countries = ct;
 	}
 
 	attached() {
-		this._tree.UIElement.select('');
+		this._tree2.UIElement.select('UAE', 1);
+		this.checked = this._tree.UIElement.getChecked();
+	}
+
+	selectChanged($event) {
+		this.select2 = $event.detail;
+	}
+
+	checkChanged($event) {
+		this.checked = $event.detail;
 	}
 }
