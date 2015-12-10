@@ -36,7 +36,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             this.value = this.value || '';
         };
         UIMarkdown.prototype.attached = function () {
-            $(this._markdown).data('UIMarkdown', this);
+            this._markdown.UIElement = this;
             $(this._input)
                 .attr(this.readonly !== false ? 'readonly' : 'R', '')
                 .attr(this.disabled !== false ? 'disabled' : 'D', '');

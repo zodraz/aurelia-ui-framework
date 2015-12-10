@@ -46,6 +46,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._checkbox = true;
             if (element.hasAttribute('multiple'))
                 this._multiple = true;
+            this.element.UIElement = this;
         }
         UIList.prototype.bind = function () {
             if (this.value) {
@@ -56,7 +57,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             }
         };
         UIList.prototype.attached = function () {
-            $(this.element).data('UIList', this);
             $(this._select)
                 .html(this._getListItems())
                 .find("li[value=\"" + this.value + "\"]").addClass('active');

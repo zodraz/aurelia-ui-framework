@@ -111,6 +111,7 @@
 		background-color: rgba($primary, 0.5);
 	  }
 	  &.ui-active {
+		color: $primary-text;
 		background-color: rgba($primary, 0.75);
 	  }
 	}

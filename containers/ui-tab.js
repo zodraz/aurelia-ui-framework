@@ -39,7 +39,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UITabPanel.prototype, "activeTab");
         UITabPanel = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.useView('./ui-tab-panel.html'),
             aurelia_framework_1.customElement('ui-tab-panel'), 
             __metadata('design:paramtypes', [Element])

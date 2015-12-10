@@ -46,17 +46,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
                 style: 'ui',
                 className: 'danger'
             });
-            $.notify.addStyle('confirm', {
-                html: "<div class='ui-notify-confirm'>" +
-                    "<div class='ui-notify'>" +
-                    "<div class='title' data-notify-html='title'/>" +
-                    "<div class='buttons'>" +
-                    "<button class='btn yes' data-notify-text='yes'></button>" +
-                    "<button class='btn no' data-notify-text='no'></button>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>"
-            });
         }
         UIApplicationState.prototype.get = function (key) {
             return this._keyObjects[key];
@@ -67,6 +56,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
         };
         UIApplicationState.prototype.navigateTo = function (route, params) {
             if (params === void 0) { params = {}; }
+            this._current = null;
             this._logger.debug("navigateTo::" + route);
             this.router.navigateToRoute(route, params, {});
         };
@@ -83,8 +73,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
         };
         UIApplicationState.prototype.notifyConfirm = function (msg) {
             return new Promise(function (resolve, reject) {
-                var _el = $('body').append("\n\t\t\t<div class='ui-notify-confirm'>\n\t\t\t\t<div class='ui-notify'>\n\t\t\t\t\t<div class='title'>" + msg + "</div>\n\t\t\t\t\t<div class='buttons'>\n\t\t\t\t\t\t<button class='btn yes'>Yes</button>\n\t\t\t\t\t\t<button class='btn no'>No</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t").children('.ui-notify-confirm');
-                _el.one('click', '.btn', function (e) {
+                var _el = $('body').append("\n\t\t\t<div class='ui-notify-confirm'>\n\t\t\t\t<div class='ui-notify'>\n\t\t\t\t\t<div class='title'>" + msg + "</div>\n\t\t\t\t\t<div class='buttons'>\n\t\t\t\t\t\t<button class='ui-button yes'>Yes</button>\n\t\t\t\t\t\t<button class='ui-button no'>No</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t").children('.ui-notify-confirm');
+                _el.one('click', '.ui-button', function (e) {
                     ($(e.target).hasClass('yes')) ? resolve() : reject();
                     _el.remove();
                 });
@@ -125,18 +115,22 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this.logger.debug('Initialized');
         }
         AuthInterceptor.prototype.run = function (routingContext, next) {
-            if (routingContext.config.auth) {
+            if (routingContext.getAllInstructions().some(function (i) { return i.config.auth; })) {
                 if (!this.appState.IsAuthenticated) {
                     this.logger.debug('Not authenticated');
                     var url = routingContext.router.generate('login', { message: '401 Unauthorized' });
                     this.appState.IsAuthenticated = false;
-                    return next.cancel(new aurelia_router_1.Redirect(url));
+                    this.appState._current = routingContext;
+                    return next.complete(new aurelia_router_1.Redirect(url));
                 }
+            }
+            if (routingContext.config.isLogin && !this.appState._current) {
+                this.appState._current = routingContext.router.currentInstruction;
             }
             if (!routingContext.config.isLogin && !this.isAllowed(routingContext.config.group)) {
                 this.logger.debug("Access denied [" + routingContext.config.group + "]");
                 $.notify('Access Denied');
-                return next.cancel();
+                return next.reject();
             }
             return next();
         };

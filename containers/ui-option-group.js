@@ -19,10 +19,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.value = '';
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
+            element.UIElement = this;
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;
-            $(this._optionGroup).data('UIOptionGroup', this);
             setTimeout(function () {
                 $(_this._optionGroup).find(".ui-radio .ui-option-input[value=\"" + _this.value + "\"]").prop('checked', true);
             }, 200);
@@ -50,7 +50,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 defaultValue: ''
             }),
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-option-group'), 
             __metadata('design:paramtypes', [Element])
         ], UIOptionGroup);

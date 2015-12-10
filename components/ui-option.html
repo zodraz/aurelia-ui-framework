@@ -1,6 +1,8 @@
 <template class="ui-option ${_classes}" ref="_option" ref-id="${id}">
 	<input class="ui-option-input" type="${_type}" checked.bind="checked" ref="_input"
-		   name="${name}" value="${value}" change.trigger="_checkChanged($event)"/>
+		   id.bind="_id" name="${name}" value="${value}" change.trigger="_checkChanged($event)"/>
 	<span class="ui-check-mark"></span>
-	<span class="ui-label"><content></content></span>
+	<label for.bind="_id" class="ui-label">
+		<content></content>
+	</label>
 </template>

@@ -28,7 +28,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (element.hasAttribute('menu'))
                 this.menu = true;
             if (element.hasAttribute('menu-right'))
-                this._menuRight = true;
+                this.menu = this._menuRight = true;
             if (element.hasAttribute('large'))
                 this._size = 'large';
             if (element.hasAttribute('small'))
@@ -45,11 +45,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._theme = 'success';
             if (element.hasAttribute('warning'))
                 this._theme = 'warning';
+            this.element.UIElement = this;
         }
         UIButton.prototype.bind = function () {
-            if (this.label) {
+            if (this.label)
                 this.menu = true;
-            }
             if (this._theme)
                 this._classes += "ui-button-" + this._theme + " ";
             if (this._size)
@@ -84,12 +84,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                             title: c.text()
                         });
                 });
+                this._label = this.label;
             }
             else
-                this.label = $(this._temp).text();
+                this._label = $(this._temp).text();
             $(this._temp).remove();
             $(this.element)
-                .data('UIButton', this)
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
         UIButton.prototype.disabledChanged = function (newValue) {

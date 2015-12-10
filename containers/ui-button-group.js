@@ -37,13 +37,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._theme = 'success';
             if (element.hasAttribute('warning'))
                 this._theme = 'warning';
+            this.element.UIElement = this;
         }
         UIButtonGroup.prototype.bind = function () {
             if (this._vertical !== false)
                 this._classes += "ui-vertical ";
         };
         UIButtonGroup.prototype.attached = function () {
-            $(this._buttonGroup).data('UIButtonGroup', this);
             if (this._size) {
                 $(this._buttonGroup).children('.ui-button')
                     .removeClass('ui-button-normal')
@@ -98,7 +98,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 defaultValue: ''
             }),
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-button-group'), 
             __metadata('design:paramtypes', [Element])
         ], UIButtonGroup);
