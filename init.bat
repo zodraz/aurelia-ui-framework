@@ -1,6 +1,8 @@
 npm init
 
-npm install jspm gulp gulp-compass gulp-plumber gulp-typescript aurelia-bundler merge2 browser-sync run-sequence --save-dev
+npm install jspm gulp gulp-plumber gulp-typescript aurelia-bundler merge2 browser-sync run-sequence --save-dev
+## uncomment to use sass
+## npm install gulp-compass
 
 jspm init
 

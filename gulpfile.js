@@ -8,17 +8,19 @@ var browserSync = require('browser-sync');
 
 // SASS/Compass compiler
 gulp.task('sass:compile', function (done) {
-	return gulp.src('./sass/**/*.scss')
-		.pipe(plumber({
-			errorHandler: function (error) {
-				console.log(error.message);
-				this.emit('end');
-			}
-		}))
-		.pipe(compass({
-			css: 'styles',
-			config_file: './sass/compass.rb'
-		}));
+	if(compass) {
+		return gulp.src('./sass/**/*.scss')
+			.pipe(plumber({
+				errorHandler: function (error) {
+					console.log(error.message);
+					this.emit('end');
+				}
+			}))
+			.pipe(compass({
+				css: 'styles',
+				config_file: './sass/compass.rb'
+			}));
+	}
 });
 
 
