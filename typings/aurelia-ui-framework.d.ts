@@ -173,6 +173,7 @@ declare module "aurelia-ui-framework" {
 		select(id:any, level:number);
 		expand(id:any, level:number, expand:boolean);
 		check(id:any, level:number, check:boolean);
+		getChecked():any;
 	}
 
 
