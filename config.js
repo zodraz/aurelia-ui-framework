@@ -679,6 +679,8 @@ System.config({
       "src/home/buttons.js",
       "src/home/datagrid.html!github:systemjs/plugin-text@0.0.3",
       "src/home/datagrid.js",
+      "src/home/dialogs.html!github:systemjs/plugin-text@0.0.3",
+      "src/home/dialogs.js",
       "src/home/form.html!github:systemjs/plugin-text@0.0.3",
       "src/home/form.js",
       "src/home/grid.html!github:systemjs/plugin-text@0.0.3",
