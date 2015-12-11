@@ -15,10 +15,10 @@
 			<span class="ui-check-mark"></span>
 		</div>
 		<input class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
-			   size="1" if.bind="!_area" id.bind="_id" dir.bind="dir"
+			   size="1" if.bind="!_area" id.bind="_id" dir.bind="dir" type.bind="_intype"
 			   focus.trigger="focus=true" blur.trigger="focus=false"/>
 		<input class="ui-input ${_inputClasses} ui-secondary" placeholder="${_placeholder2}" value.bind="_value2"
-			   size="1" if.bind="!_area && _double" id.bind="_id" dir.bind="dir"
+			   size="1" if.bind="!_area && _double" id.bind="_id" dir.bind="dir" type.bind="_intype"
 			   focus.trigger="focus=true" blur.trigger="focus=false"/>
 
 			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"

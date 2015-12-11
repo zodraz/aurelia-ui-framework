@@ -30,7 +30,7 @@
 		  display:flex,
 		  flex-direction:column,
 		  align-items:$align,
-		  justify-content: flex-start,
+		  justify-content: $justify,
 		  flex-wrap: if($wrap, wrap, nowrap)
   ));
 }

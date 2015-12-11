@@ -1,0 +1,12 @@
+<template class="${_modal?'ui-modal':''}" id.bind="id">
+
+	<div class="ui-dialog ${active?'ui-active':'ui-inactive'}" ref="_dialog"
+		 style.bind="{'z-index': _zindex, left:_current.left+'px', top:_current.top+'px', width:_current.width+'px', height:_current.height+'px'}">
+		<ui-header close collapse primary ref="_header">${dataTitle}
+		</ui-header>
+		<span class="ui-resizer"></span>
+		<content></content>
+
+	</div>
+
+</template>
