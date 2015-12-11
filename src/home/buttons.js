@@ -9,10 +9,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app-state"], function (require, exports, aurelia_framework_1, ui_app_state_1) {
+define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app-state", "../../framework/utils/ui-dialog-service", "./my-dialog"], function (require, exports, aurelia_framework_1, ui_app_state_1, ui_dialog_service_1, my_dialog_1) {
     var HomeButtons = (function () {
-        function HomeButtons(appState) {
+        function HomeButtons(appState, dialogService) {
             this.appState = appState;
+            this.dialogService = dialogService;
             this.t1 = 0;
             this.menu1 = [{
                     id: 0, title: 'Link 0'
@@ -37,12 +38,12 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
                 }];
         }
         HomeButtons.prototype.confirm = function () {
-            this.appState.notifyConfirm("Are you sure?")
-                .then(function () { return alert('yes'); })
-                .catch(function (e) { return alert('no'); });
+            this.dialogService.show(my_dialog_1.MyDialog);
         };
         HomeButtons.prototype.buttonclick = function ($event) {
             var data;
+            if ($($event.target).closest('ui-button').length == 0)
+                return;
             if (data = $event.detail) {
                 var msg = 'OOPS! You clicked the wrong button';
                 if (data._theme == 'primary')
@@ -55,10 +56,7 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
                     msg = 'EXTERMINATE! EXTERMINATE!';
                 if (data._theme == 'warning')
                     msg = 'HOUSTON! We have a problem';
-                if (data._theme == 'default') {
-                    this.confirm();
-                }
-                else if (data._theme != 'secondary') {
+                if (data._theme != 'secondary') {
                     $.notify(msg, {
                         style: 'ui',
                         className: data._theme,
@@ -84,7 +82,7 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
         };
         HomeButtons = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])
+            __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState, ui_dialog_service_1.UIDialogService])
         ], HomeButtons);
         return HomeButtons;
     })();

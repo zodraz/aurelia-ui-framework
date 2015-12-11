@@ -1,0 +1,10 @@
+<template>
+	<ui-dialog data-title="Hello">
+		<ui-content class="ui-pad-all ui-scroll">
+			<div innerhtml.bind="md | markdown"></div>
+		</ui-content>
+		<ui-toolbar>
+			<ui-button>Close</ui-button>
+		</ui-toolbar>
+	</ui-dialog>
+</template>

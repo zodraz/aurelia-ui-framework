@@ -1,5 +1,7 @@
-import {autoinject} from "aurelia-framework";
+import {autoinject, ViewSlot} from "aurelia-framework";
 import {UIApplicationState} from "../../framework/utils/ui-app-state";
+import {UIDialogService} from "../../framework/utils/ui-dialog-service";
+import {MyDialog} from "./my-dialog";
 
 @autoinject()
 export class HomeButtons {
@@ -27,17 +29,16 @@ export class HomeButtons {
 		id: 9, title: 'Link 9'
 	}];
 
-	constructor(public appState:UIApplicationState) {
+	constructor(public appState:UIApplicationState, public dialogService:UIDialogService) {
 	}
 
 	confirm() {
-		this.appState.notifyConfirm("Are you sure?")
-			.then(()=>alert('yes'))
-			.catch((e)=>alert('no'));
+		this.dialogService.show(MyDialog);
 	}
 
 	buttonclick($event) {
 		let data;
+		if ($($event.target).closest('ui-button').length == 0)return;
 		if (data = $event.detail) {
 			var msg = 'OOPS! You clicked the wrong button';
 			if (data._theme == 'primary')msg = 'YIPEE! Im the primary color';
@@ -45,10 +46,7 @@ export class HomeButtons {
 			if (data._theme == 'success')msg = 'HOUSTON! The eagle has landed';
 			if (data._theme == 'danger')msg = 'EXTERMINATE! EXTERMINATE!';
 			if (data._theme == 'warning')msg = 'HOUSTON! We have a problem';
-			if (data._theme == 'default') {
-				this.confirm();
-			}
-			else if (data._theme != 'secondary') {
+			if (data._theme != 'secondary') {
 				$.notify(msg, {
 					style: 'ui',
 					className: data._theme,

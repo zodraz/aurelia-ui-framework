@@ -34,6 +34,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./containers/ui-scroll');
 	aurelia.globalResources('./containers/ui-tab');
 	aurelia.globalResources('./containers/ui-login');
+	aurelia.globalResources('./containers/ui-dialog');
 
 	aurelia.globalResources('./components/ui-button');
 	aurelia.globalResources('./components/ui-switch');

@@ -18,6 +18,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this._placeholder1 = '';
             this._placeholder2 = '';
             this._type = 'text';
+            this._intype = 'text';
             this._area = false;
             this._focus = false;
             this._noLabel = false;
@@ -89,6 +90,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (element.hasAttribute('phone'))
                 this._type = 'phone';
             this.element.UIElement = this;
+            if (this._type == 'phone')
+                this._intype = 'tel';
+            if (this._type == 'email')
+                this._intype = 'email';
+            if (this._type == 'position' || this._type == 'number' || this._type == 'decimal')
+                this._intype = 'number';
         }
         UIInput.prototype.bind = function () {
             if (this._type == 'position') {

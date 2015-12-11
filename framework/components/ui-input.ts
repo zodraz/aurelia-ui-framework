@@ -83,6 +83,7 @@ export class UIInput {
 	private _placeholder1:string = '';
 	private _placeholder2:string = '';
 	private _type:string         = 'text';
+	private _intype:string       = 'text';
 	private _area:boolean        = false;
 	private _focus:boolean       = false;
 	private _noLabel:boolean     = false;
@@ -154,6 +155,10 @@ export class UIInput {
 		if (element.hasAttribute('position')) this._type = 'position';
 		if (element.hasAttribute('phone')) this._type = 'phone';
 		this.element.UIElement = this;
+
+		if (this._type == 'phone')this._intype = 'tel';
+		if (this._type == 'email')this._intype = 'email';
+		if (this._type == 'position' || this._type == 'number' || this._type == 'decimal')this._intype = 'number';
 	}
 
 	bind() {

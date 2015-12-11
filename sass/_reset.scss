@@ -48,13 +48,13 @@ button {
 
 hr {
   margin: 0.2rem 0;
-  height: 0.15rem;
+  height: 2px;
   background: if($dark-theme, $base-border-color, $white);
   color: transparent;
   border: {
 	style: solid;
 	radius: 0.5rem;
-	width: 0.06rem 0 0;
+	width: 1px 0 0;
 	color: if($dark-theme, $black, $base-border-color);
   }
 }

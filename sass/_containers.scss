@@ -210,3 +210,45 @@
 	text-shadow: 1px 1px 1px if($dark-theme, #000, #fff), 1px 1px 2px #333, -1px -1px 1px if($dark-theme, #ccc, #333);
   }
 }
+
+.ui-dialog-container {
+  @include position(absolute, 0);
+  pointer-events: none;
+
+  &.ui-dragging {
+	pointer-events: all;
+  }
+
+  .ui-modal {
+	@include position(absolute, 0);
+	@include flex-column(center, center, false);
+	pointer-events: all;
+	background: rgba($white, 0.5);
+	.ui-dialog {
+	  @include flex(0 0 auto);
+	}
+  }
+
+  .ui-dialog {
+	pointer-events: all;
+	@include position(absolute, 20% null null 20%);
+	@include flex-column($align: stretch, $justify: flex-start, $wrap: false);
+	border: 1px solid $primary;
+	background: $base-bg;
+	padding: 2px;
+	@include box-shadow(0 0 20px 5px rgba($black, 0.5), 0 0 5px 0 $primary inset);
+	@include transition(max-height 0.5s);
+	max-height: 600px;
+
+	&.ui-dragging {
+	  > div {
+		opacity: 0.5;
+	  }
+	}
+
+	&.ui-collapse {
+	  max-height: 35px;
+	  overflow: hidden !important;
+	}
+  }
+}
