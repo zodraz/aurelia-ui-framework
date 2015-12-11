@@ -25,6 +25,7 @@ export class HomeButtons {
 
 	buttonclick($event) {
 		let data;
+		if ($($event.target).closest('ui-button').length == 0)return;
 		if (data = $event.detail) {
 			var msg = 'OOPS! You clicked the wrong button';
 			if (data._theme == 'primary')msg = 'YIPEE! Im the primary color';

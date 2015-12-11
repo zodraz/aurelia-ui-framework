@@ -43,6 +43,10 @@ declare module "aurelia-ui-framework" {
 		delete(slug:string);
 	}
 
+	export class UIDialogService {
+		show(dialog:any, model?:any):Promise<any>;
+	}
+
 	export class UIDwrService {
 		execute(method:string, params:Array<any>, inject?:boolean):Promise<ResponseHandler>;
 	}
