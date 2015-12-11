@@ -1,4 +1,8 @@
 export class MyDialog {
+	static i=1;
+
+	title = `Dialog ${MyDialog.i++}`;
+
 	md = `
 # Hello World
 

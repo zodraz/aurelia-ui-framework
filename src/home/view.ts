@@ -55,6 +55,15 @@ export class Home {
 			nav: true,
 			name: 'grid'
 		}, {
+			route: 'dialogs',
+			moduleId: './dialogs',
+			settings: {
+				navIcon: 'fi-essential-square83'
+			},
+			title: 'Dialogs',
+			nav: true,
+			name: 'dialogs'
+		}, {
 			route: 'tabs',
 			moduleId: './tabs',
 			settings: {

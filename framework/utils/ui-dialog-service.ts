@@ -3,11 +3,16 @@ import {CompositionEngine} from "aurelia-templating";
 import {Container} from "aurelia-dependency-injection";
 import {ViewSlot, CompositionContext} from "aurelia-templating";
 import {Origin} from "aurelia-metadata";
+import {_} from "./ui-utils";
 
 @autoinject()
 export class UIDialogService {
 
 	public dialogContainer;
+	private _taskbar;
+
+	private _active:any;
+	private _windows:Array<any> = [];
 
 	constructor(private container:Container,
 				private compositionEngine:CompositionEngine) {
@@ -21,6 +26,10 @@ export class UIDialogService {
 				.on('mousedown', (e)=>this.moveStart(e.originalEvent))
 				.on('mousemove', (e)=>this.move(e.originalEvent))
 				.on('mouseup', (e)=>this.moveEnd(e.originalEvent));
+		}
+		if (!this._taskbar) {
+			this._taskbar = $('body .ui-app-taskbar');
+			this._taskbar.click((e)=>this.switchActive((<any>e.originalEvent.target).window));
 		}
 	}
 
@@ -77,9 +86,23 @@ export class UIDialogService {
 							let slot = new ViewSlot(this.dialogContainer, true);
 							slot.add(controller.view);
 
+							if (this._active) {
+								this._active.active = false;
+							}
+							this._active             = $(controller.view).children().get(0).UIElement;
+							this._active._taskButton = document.createElement('button');
+							this._active._taskButton.classList.add('ui-win-button');
+							this._active._taskButton.classList.add('ui-active');
+							this._active._taskButton.innerHTML = this._active.dataTitle;
+							this._active._taskButton.window    = this._active;
+
+							//$(this._active._dialog).offset({left: this._active._x, top: this._active._y});
+							this._windows.push(this._active);
+
 							setTimeout(() => {
 								slot.attached();
-							}, 150);
+								this._taskbar.append(this._active._taskButton);
+							}, 200);
 						});
 					}
 				});
@@ -89,13 +112,36 @@ export class UIDialogService {
 	closeDialog(e) {
 		//this._invokeLifecycle(viewModel, 'canActivate', model).then(canDeactivate => {
 		//	if (canDeactivate) {
-		$(e.target).closest('ui-dialog').remove();
+		let dialog = $(e.target).closest('ui-dialog').get(0).UIElement;
+		//delete this._windows[dialog.id];
+		_.remove(this._windows, 'id', dialog.id);
+		dialog.remove();
+
+		if (this._windows.length > 0) {
+			(this._active = _.last(this._windows)).active = true;
+		}
+
 		//	}
 		//});
 	}
 
+	switchActive(d) {
+		if (this._active) {
+			if (d.id === this._active.id) return;
+			this._active.active = false;
+		}
+		if (d) {
+			(this._active = d).minimized = false;
+			(this._active = d).active = true;
+		}
+	}
+
 	collapse(e) {
-		$(e.target).closest('.ui-dialog').toggleClass('ui-collapse');
+		$(e.target).closest('ui-dialog').get(0).UIElement.minimized = true;
+		if (this._windows.length > 0) {
+			this._active = _.findLast(this._windows, 'minimized', false);
+			if (this._active) this._active.active = true;
+		}
 	}
 
 
@@ -103,27 +149,32 @@ export class UIDialogService {
 	 * dialog move
 	 */
 	private _isDragging = false;
+	private _isResizing = false;
 	private _startX     = 0;
 	private _startY     = 0;
 	private _dialog;
 
 	private moveStart($event) {
-		if ($($event.target).closest('.ui-header').length == 0) return;
+		this._dialog = $($event.target).closest('ui-dialog').get(0).UIElement;
+		if ($($event.target).closest('.ui-header').length == 0 && !$($event.target).hasClass('ui-resizer')) {
+			this.switchActive(this._dialog);
+			return;
+		}
 		if ($($event.target).closest('button').length !== 0) return;
 
 		this._startX     = $event.x;
 		this._startY     = $event.y;
 		this._isDragging = true;
+		this._isResizing = $($event.target).hasClass('ui-resizer');
 
-		this._dialog = $($event.target).closest('.ui-dialog');
-		this._dialog.addClass('ui-dragging');
+		$(this._dialog._dialog).addClass('ui-dragging');
 		$(this.dialogContainer).addClass('ui-dragging');
 	}
 
 	private moveEnd($event) {
 		if (!this._isDragging) return;
 		$(this.dialogContainer).removeClass('ui-dragging');
-		this._dialog.removeClass('ui-dragging');
+		$(this._dialog._dialog).removeClass('ui-dragging');
 		this._isDragging = false;
 		this._dialog     = null;
 	}
@@ -134,17 +185,36 @@ export class UIDialogService {
 		let x = $event.x - this._startX;
 		let y = $event.y - this._startY;
 
-		let p  = this._dialog.offset();
-		let w  = this._dialog.outerWidth();
-		let h  = this._dialog.outerHeight();
-		let pw = $(this.dialogContainer).outerWidth();
-		let ph = $(this.dialogContainer).outerHeight();
+		if (!this._isResizing) {
+			let p  = $(this._dialog._dialog).offset();
+			let w  = $(this._dialog._dialog).outerWidth();
+			let h  = $(this._dialog._dialog).outerHeight();
+			let pw = $(this.dialogContainer).outerWidth();
+			let ph = $(this.dialogContainer).outerHeight();
 
-		if (p.left + x < 0) x = 0;
-		if (p.top + y < 0) y = 0;
-		if (p.left + x + w > pw) x = 0;
-		if (p.top + y + h > ph) y = 0;
-		this._dialog.offset({left: p.left + x, top: p.top + y});
+			if (p.left + x < 0) {
+				x      = 0;
+				p.left = 0;
+			}
+			if (p.top + y < 0) {
+				y     = 0;
+				p.top = 0;
+			}
+			if (p.left + x + w > pw) {
+				x      = 0;
+				p.left = pw - w;
+			}
+			if (p.top + y + h + 36 > ph) {
+				y     = 0;
+				p.top = ph - h - 36;
+			}
+			this._dialog._current.top  = p.top + y;
+			this._dialog._current.left = p.left + x;
+		}
+		else {
+			this._dialog._current.width += x;
+			this._dialog._current.height += y;
+		}
 
 		this._startX = x !== 0 ? $event.x : this._startX;
 		this._startY = y !== 0 ? $event.y : this._startY;

@@ -214,6 +214,7 @@
 .ui-dialog-container {
   @include position(absolute, 0);
   pointer-events: none;
+  z-index: $zindex-floating;
 
   &.ui-dragging {
 	pointer-events: all;
@@ -231,14 +232,29 @@
 
   .ui-dialog {
 	pointer-events: all;
-	@include position(absolute, 20% null null 20%);
+	position: relative;
+	@include position(absolute, null);
 	@include flex-column($align: stretch, $justify: flex-start, $wrap: false);
 	border: 1px solid $primary;
 	background: $base-bg;
 	padding: 2px;
 	@include box-shadow(0 0 20px 5px rgba($black, 0.5), 0 0 5px 0 $primary inset);
-	@include transition(max-height 0.5s);
 	max-height: 600px;
+
+	min-width: 300px;
+	min-height: 200px;
+
+	.ui-resizer {
+	  position: absolute;
+	  bottom: 0px;
+	  right: 0px;
+	  width: 6px;
+	  height: 6px;
+	  z-index: 10;
+	  cursor: nwse-resize;
+	  border: 6px solid transparent;
+	  border-color: transparent $slate-gray $slate-gray transparent;
+	}
 
 	&.ui-dragging {
 	  > div {
@@ -246,9 +262,18 @@
 	  }
 	}
 
-	&.ui-collapse {
-	  max-height: 35px;
+	&.ui-minimize {
+	  min-width: 0;
+	  min-height: 0;
+	  @include transition(all 0.5s);
 	  overflow: hidden !important;
+	}
+
+	&.ui-active > div {
+	  opacity: 1;
+	}
+	&.ui-inactive > div {
+	  opacity: .75;
 	}
   }
 }
