@@ -90,18 +90,10 @@ export class UIDialogService {
 								this._active.active = false;
 							}
 							this._active             = $(controller.view).children().get(0).UIElement;
-							this._active._taskButton = document.createElement('button');
-							this._active._taskButton.classList.add('ui-win-button');
-							this._active._taskButton.classList.add('ui-active');
-							this._active._taskButton.innerHTML = this._active.dataTitle;
-							this._active._taskButton.window    = this._active;
-
-							//$(this._active._dialog).offset({left: this._active._x, top: this._active._y});
 							this._windows.push(this._active);
 
 							setTimeout(() => {
 								slot.attached();
-								this._taskbar.append(this._active._taskButton);
 							}, 200);
 						});
 					}
@@ -109,11 +101,14 @@ export class UIDialogService {
 			});
 	}
 
+	addTaskButton(btn) {
+		this._taskbar.append(btn);
+	}
+
 	closeDialog(e) {
 		//this._invokeLifecycle(viewModel, 'canActivate', model).then(canDeactivate => {
 		//	if (canDeactivate) {
 		let dialog = $(e.target).closest('ui-dialog').get(0).UIElement;
-		//delete this._windows[dialog.id];
 		_.remove(this._windows, 'id', dialog.id);
 		dialog.remove();
 
@@ -139,8 +134,12 @@ export class UIDialogService {
 	collapse(e) {
 		$(e.target).closest('ui-dialog').get(0).UIElement.minimized = true;
 		if (this._windows.length > 0) {
-			this._active = _.findLast(this._windows, 'minimized', false);
-			if (this._active) this._active.active = true;
+			this._active = null;
+			let a        = _.findLast(this._windows, 'minimized', false);
+			if (a) {
+				a.active     = true;
+				this._active = a;
+			}
 		}
 	}
 

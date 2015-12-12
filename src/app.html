@@ -2,6 +2,8 @@
 	<ui-app title.bind="appTitle" router.bind="router">
 		<template replace-part="quick-links">
 			<p if.bind="appState.IsAuthenticated">Logged in as user@clubhotel.com</p>
+			<ui-button secondary
+					   click.trigger="switch($event)">Change DIR</ui-button>
 			<ui-button primary icon="fi-bigmug-line-right153"
 					   click.trigger="logout()" if.bind="appState.IsAuthenticated"></ui-button>
 			<ui-button primary icon="fi-bigmug-line-login12" href="#/login"

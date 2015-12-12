@@ -61,3 +61,4 @@ export {UIModel} from "./utils/ui-model";
 export {UITreeModel,UITreeOptionsModel,UITreePanel} from "./utils/ui-tree-models";
 export {_, moment, numeral, Format, Utils} from "./utils/ui-utils";
 export {UIValidation} from "./utils/ui-validations";
+export {UIDialogService} from "./utils/ui-dialog-service";

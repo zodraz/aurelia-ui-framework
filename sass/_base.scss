@@ -73,11 +73,11 @@ html, body {
 	));
 	@include flex(0 0 auto);
 	@include box-shadow(0 0 2px 0 #333);
+	@include padding(end, .3em);
 
 	background-color: $app-header-bg;
 	color: $app-header-text;
 	z-index: 5;
-	padding-right: .3rem;
 
 	.ui-app-logo {
 	  @include flex(0 0 auto);
@@ -102,8 +102,8 @@ html, body {
 	.ui-divider {
 	  @include flex(0 0 auto);
 	  height: 2rem;
-	  border-left: 1px solid darken($app-header-bg, 10%);
-	  border-right: 1px solid lighten($app-header-bg, 10%);
+	  @include border(start, 1px solid darken($app-header-bg, 10%));
+	  @include border(end, 1px solid lighten($app-header-bg, 10%));
 	}
 
 	.ui-button {
@@ -213,7 +213,7 @@ html, body {
 	color: $app-menu-text;
 	background-color: $app-menu-bg;
 	overflow: auto;
-	z-index: $zindex-notify;
+	z-index: $zindex-splash;
 	@if ($app-menu-bg-image) {
 	  background-image: image_url($app-menu-bg-image);
 	}
@@ -275,6 +275,29 @@ html, body {
 	  display: block;
 	  opacity: 1;
 	}
+  }
+}
+
+[dir="rtl"] {
+  .ui-app .ui-app-menu {
+	left: auto;
+	right: -305px;
+	@include transition-property(right);
+  }
+  .ui-app.show-menu {
+	.ui-app-menu {
+	  right: 0;
+	}
+  }
+
+  .chosen-container .chosen-drop {
+	left: auto;
+	right: -9999px;
+  }
+
+  .ui-input-group .ui-label:after {
+	left: 4px;
+	right: auto;
   }
 }
 

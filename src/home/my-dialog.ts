@@ -1,7 +1,13 @@
 export class MyDialog {
-	static i=1;
+	static i = 1;
 
+	modal = false;
 	title = `Dialog ${MyDialog.i++}`;
+
+	canActivate(model) {
+		this.modal = (model || {modal: false}).modal;
+		return true;
+	}
 
 	md = `
 # Hello World

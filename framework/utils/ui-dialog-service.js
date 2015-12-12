@@ -79,20 +79,17 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                                 _this._active.active = false;
                             }
                             _this._active = $(controller.view).children().get(0).UIElement;
-                            _this._active._taskButton = document.createElement('button');
-                            _this._active._taskButton.classList.add('ui-win-button');
-                            _this._active._taskButton.classList.add('ui-active');
-                            _this._active._taskButton.innerHTML = _this._active.dataTitle;
-                            _this._active._taskButton.window = _this._active;
                             _this._windows.push(_this._active);
                             setTimeout(function () {
                                 slot.attached();
-                                _this._taskbar.append(_this._active._taskButton);
                             }, 200);
                         });
                     }
                 });
             });
+        };
+        UIDialogService.prototype.addTaskButton = function (btn) {
+            this._taskbar.append(btn);
         };
         UIDialogService.prototype.closeDialog = function (e) {
             var dialog = $(e.target).closest('ui-dialog').get(0).UIElement;
@@ -116,9 +113,12 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
         UIDialogService.prototype.collapse = function (e) {
             $(e.target).closest('ui-dialog').get(0).UIElement.minimized = true;
             if (this._windows.length > 0) {
-                this._active = ui_utils_1._.findLast(this._windows, 'minimized', false);
-                if (this._active)
-                    this._active.active = true;
+                this._active = null;
+                var a = ui_utils_1._.findLast(this._windows, 'minimized', false);
+                if (a) {
+                    a.active = true;
+                    this._active = a;
+                }
             }
         };
         UIDialogService.prototype.moveStart = function ($event) {

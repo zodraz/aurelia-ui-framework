@@ -10,12 +10,11 @@ export class UIDialog {
 	static _y  = 10;
 
 	@bindable dataTitle;
-	@bindable active    = true;
-	@bindable minimized = false;
-	@bindable width     = 'auto';
-	@bindable height    = 'auto';
-
-	_modal:boolean = false;
+	@bindable active        = true;
+	@bindable minimized     = false;
+	@bindable width         = 'auto';
+	@bindable height        = 'auto';
+	@bindable modal:boolean = false;
 
 	_dialog;
 	_taskButton;
@@ -30,7 +29,7 @@ export class UIDialog {
 	};
 
 	constructor(public element:Element, public dialogService:UIDialogService) {
-		if (element.hasAttribute('modal'))this._modal = true;
+		if (element.hasAttribute('modal'))this.modal = true;
 		this.id                = `win-${UIDialog._id++}`;
 		this.element.UIElement = this;
 	}
@@ -44,6 +43,22 @@ export class UIDialog {
 		let d                = $(this._dialog);
 		this._current.width  = d.outerWidth();
 		this._current.height = d.outerHeight();
+
+		if (this.modal) {
+			let pw             = $(this.dialogService.dialogContainer).outerWidth();
+			let ph             = $(this.dialogService.dialogContainer).outerHeight();
+			this._current.top  = (ph - this._current.height) / 2;
+			this._current.left = (pw - this._current.width) / 2;
+		}
+		else {
+			this._taskButton = document.createElement('button');
+			this._taskButton.classList.add('ui-win-button');
+			this._taskButton.classList.add('ui-active');
+			this._taskButton.innerHTML = this.dataTitle;
+			this._taskButton.window    = this;
+			this.dialogService.addTaskButton(this._taskButton);
+		}
+		$(this.element).css('z-index', 49).removeClass('ui-hidden');
 		Object.assign(this._original, this._current);
 	}
 

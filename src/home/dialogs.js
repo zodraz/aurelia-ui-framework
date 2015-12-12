@@ -18,6 +18,9 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
         HomeDialogs.prototype.confirm = function () {
             this.dialogService.show(my_dialog_1.MyDialog);
         };
+        HomeDialogs.prototype.modal = function () {
+            this.dialogService.show(my_dialog_1.MyDialog, { modal: true });
+        };
         HomeDialogs = __decorate([
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState, ui_dialog_service_1.UIDialogService])

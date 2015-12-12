@@ -58,4 +58,9 @@ export class App {
 		this.appState.Username        = null;
 		this.appState.navigateTo('login');
 	}
+
+	switch($event) {
+		$event.preventDefault();
+		document.body.dir = document.body.dir == 'ltr' ? 'rtl' : 'ltr';
+	}
 }

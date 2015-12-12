@@ -103,7 +103,7 @@ export class UIInput {
 	private phoneCountry:string = 'us';
 
 	@bindable id:string          = '';
-	@bindable dir:string         = 'ltr';
+	@bindable dir:string         = 'inherit';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';
 	@bindable addonClass:string  = '';

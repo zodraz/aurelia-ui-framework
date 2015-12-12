@@ -60,6 +60,10 @@ define(["require", "exports", "aurelia-framework", "../framework/utils/ui-app-st
             this.appState.Username = null;
             this.appState.navigateTo('login');
         };
+        App.prototype.switch = function ($event) {
+            $event.preventDefault();
+            document.body.dir = document.body.dir == 'ltr' ? 'rtl' : 'ltr';
+        };
         App = __decorate([
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])

@@ -91,7 +91,7 @@ gulp.task('aurelia:pages', function () {
 });
 gulp.task('aurelia:skeleton', function () {
 	return gulp.src(['./index.html', './browserconfig.xml', './manifest.json',
-			'./typings/**/*', './fonts/**/*', './images/**/*'], {base: './'})
+			'./typings/**/*', './fonts/**/*', './images/**/*', './styles/**/*'], {base: './'})
 		.pipe(gulp.dest(skeleton));
 });
 gulp.task('aurelia:release', function () {

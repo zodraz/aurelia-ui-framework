@@ -11,4 +11,8 @@ export class HomeDialogs {
 	confirm() {
 		this.dialogService.show(MyDialog);
 	}
+
+	modal() {
+		this.dialogService.show(MyDialog, {modal: true});
+	}
 }

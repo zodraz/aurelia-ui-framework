@@ -1,5 +1,5 @@
 <template>
-	<ui-dialog data-title="${title}">
+	<ui-dialog data-title="${title}" modal.bind="modal">
 		<ui-content class="ui-pad-all ui-scroll">
 			<div innerhtml.bind="md | markdown"></div>
 		</ui-content>

@@ -4946,6 +4946,11 @@ declare module _ {
 			callback: ListIterator<T, boolean>,
 			thisArg?: any): T;
 
+		findLast<T>(
+			collection: Array<T>,
+			property: string,
+			thisArg?: any): T;
+
 		/**
 		 * @see _.find
 		 **/
