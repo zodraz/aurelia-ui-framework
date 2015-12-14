@@ -27,8 +27,8 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
             this.countries = ct;
         }
         HomeTree.prototype.attached = function () {
-            this._tree2.UIElement.select('UAE', 1);
-            this.checked = this._tree.UIElement.getChecked();
+            this._tree2.select('UAE', 1);
+            this.checked = this._tree.getChecked();
         };
         HomeTree.prototype.selectChanged = function ($event) {
             this.select2 = $event.detail;

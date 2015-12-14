@@ -1,3 +1,8 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -9,27 +14,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1) {
+define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-model"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_model_1) {
     var HomeForm = (function () {
         function HomeForm(_validation) {
-            this.model = {
-                opts: 3,
-                hasLoc: true,
-                fname: 'adarsh',
-                lname: 'pastakia',
-                email: 'adarshpastakia@outlook.com',
-                pos: '25.4,76.5',
-                phoneCode: '055',
-                phoneNumber: '6347342',
-                phoneCountry: 'ae',
-                phoneExt: '123',
-                phone: '',
-                list: '4',
-                date: null,
-                range: { start: null, end: null }
-            };
-            this.lang = 'null';
-            this.contentDir = 'ltr';
             this.content = {
                 'EN': { title: 'Hello World', md: this.md },
                 'AR': { title: 'مرحبا بالعالم', md: this.mdAr }
@@ -41,9 +28,9 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 .on(this, null)
                 .ensure('model.email')
                 .isNotEmpty()
-                .ensure('model.fname')
+                .ensure('model.firstName')
                 .isNotEmpty()
-                .ensure('model.lname')
+                .ensure('model.lastName')
                 .isNotEmpty()
                 .ensure('model.phoneCountry')
                 .isNotEmpty()
@@ -54,6 +41,7 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 'EN': { title: 'Hello World', md: this.md },
                 'AR': { title: 'مرحبا بالعالم', md: this.mdAr }
             };
+            this.model = new FormModel();
         }
         HomeForm.prototype.languageChanged = function ($event) {
             this.lang = $event.detail.id + '';
@@ -65,15 +53,24 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             delete this.content[$event.detail];
         };
         HomeForm.prototype.attached = function () {
-            this._langSelect.UIElement
+            this._langSelect
                 .addLanguages(Object.keys(this.content))
                 .setLanguage('AR');
+            this.model.isDirty = false;
         };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
-            this._langSelect.UIElement
+            this._langSelect
                 .errorLanguages('AR,EN');
         };
+        __decorate([
+            ui_model_1.watch('null'), 
+            __metadata('design:type', Object)
+        ], HomeForm.prototype, "lang");
+        __decorate([
+            ui_model_1.watch('ltr'), 
+            __metadata('design:type', Object)
+        ], HomeForm.prototype, "contentDir");
         HomeForm = __decorate([
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [aurelia_validation_1.Validation])
@@ -81,4 +78,42 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
         return HomeForm;
     })();
     exports.HomeForm = HomeForm;
+    var FormModel = (function (_super) {
+        __extends(FormModel, _super);
+        function FormModel() {
+            _super.apply(this, arguments);
+            this.firstName = 'Adarsh';
+            this.lastName = 'Pastakia';
+            this.email = 'adarshpastakia@outlook.com';
+            this.pos = '25.4,76.5';
+            this.phoneCode = '055';
+            this.phoneNumber = '6347342';
+            this.phoneCountry = 'ae';
+            this.phoneExt = '123';
+            this.phone = '';
+            this.list = '4';
+            this.opts = 3;
+            this.hasLoc = true;
+            this.date = null;
+            this.range = { start: null, end: null };
+        }
+        __decorate([
+            ui_model_1.observe(), 
+            __metadata('design:type', Object)
+        ], FormModel.prototype, "firstName");
+        __decorate([
+            ui_model_1.observe(), 
+            __metadata('design:type', Object)
+        ], FormModel.prototype, "lastName");
+        __decorate([
+            ui_model_1.observe(), 
+            __metadata('design:type', Object)
+        ], FormModel.prototype, "email");
+        FormModel = __decorate([
+            aurelia_framework_1.transient(), 
+            __metadata('design:paramtypes', [])
+        ], FormModel);
+        return FormModel;
+    })(ui_model_1.UIModel);
+    exports.FormModel = FormModel;
 });

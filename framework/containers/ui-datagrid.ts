@@ -49,7 +49,6 @@ export class UIDataGrid {
 	@bindable idColumn:string = 'id';
 
 	constructor(public element:Element) {
-		this.element.UIElement = this;
 	}
 
 	bind() {

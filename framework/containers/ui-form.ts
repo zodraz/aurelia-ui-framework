@@ -18,7 +18,6 @@ export class UIForm {
 	private _classes:string = '';
 
 	constructor(public element:Element) {
-		this.element.UIElement = this;
 	}
 
 	attached() {

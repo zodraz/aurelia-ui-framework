@@ -71,7 +71,6 @@ export class UIChosen {
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('multiple')) this._multiple = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
-		this.element.UIElement = this;
 	}
 
 	bind() {

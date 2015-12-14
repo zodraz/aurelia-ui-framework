@@ -39,8 +39,8 @@ export class HomeTree {
 	}
 
 	attached() {
-		this._tree2.UIElement.select('UAE', 1);
-		this.checked = this._tree.UIElement.getChecked();
+		this._tree2.select('UAE', 1);
+		this.checked = this._tree.getChecked();
 	}
 
 	selectChanged($event) {

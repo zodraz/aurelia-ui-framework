@@ -19,7 +19,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.value = '';
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
-            element.UIElement = this;
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;

@@ -29,7 +29,6 @@ export class UIOptionGroup {
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
-		element.UIElement = this;
 	}
 
 	attached() {

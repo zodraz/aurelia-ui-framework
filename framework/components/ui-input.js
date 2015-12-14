@@ -89,7 +89,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this._type = 'position';
             if (element.hasAttribute('phone'))
                 this._type = 'phone';
-            this.element.UIElement = this;
             if (this._type == 'phone')
                 this._intype = 'tel';
             if (this._type == 'email')

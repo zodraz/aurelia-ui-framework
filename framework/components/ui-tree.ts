@@ -64,7 +64,6 @@ export class UITree {
 		observer.propertyObserver(this, 'searchText')
 			.subscribe(v=>self._searchTextChanged(v));
 
-		this.element.UIElement = this;
 	}
 
 	private bind() {

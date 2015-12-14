@@ -43,7 +43,6 @@ export class UISwitch {
 		if (element.hasAttribute('ampm'))this.theme = 'ampm';
 		if (element.hasAttribute('gender'))this.theme = 'gender';
 		if (element.hasAttribute('priority'))this.theme = 'priority';
-		this.element.UIElement = this;
 	}
 
 	attached() {

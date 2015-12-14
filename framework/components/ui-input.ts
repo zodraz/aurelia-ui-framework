@@ -154,7 +154,6 @@ export class UIInput {
 		if (element.hasAttribute('address')) this._type = 'address';
 		if (element.hasAttribute('position')) this._type = 'position';
 		if (element.hasAttribute('phone')) this._type = 'phone';
-		this.element.UIElement = this;
 
 		if (this._type == 'phone')this._intype = 'tel';
 		if (this._type == 'email')this._intype = 'email';

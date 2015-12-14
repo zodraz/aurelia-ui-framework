@@ -4,10 +4,10 @@
 			<h4 class="ui-margin-v">Forms</h4>
 			<ui-form class="ui-border-all ui-pad-v" validate.bind="validation" submit.trigger="onSubmit()">
 				<ui-column>
-					<ui-input name required clear value.bind="model.fname">First Name</ui-input>
+					<ui-input name required clear value.bind="model.firstName">First Name</ui-input>
 				</ui-column>
 				<ui-column>
-					<ui-input name required clear value.bind="model.lname">Last Name</ui-input>
+					<ui-input name required clear value.bind="model.lastName">Last Name</ui-input>
 				</ui-column>
 				<ui-column>
 					<ui-input email addon-icon="fi-elegant-mail9" required clear value.bind="model.email">Email
@@ -48,9 +48,11 @@
 				<ui-column full row>
 					<ui-column width="120px"></ui-column>
 					<ui-column fill>
-						<p>First Name: ${model.fname}</p>
+						<p>isDirty: ${model.isDirty ? 'Yes':'No'}</p>
 
-						<p>Last Name: ${model.lname}</p>
+						<p>First Name: ${model.firstName}</p>
+
+						<p>Last Name: ${model.lastName}</p>
 
 						<p>Email: ${model.email}</p>
 
@@ -85,7 +87,9 @@
 							<option value="tag-8">Tag-8</option>
 							<option value="tag-9">Tag-9</option>
 						</ui-chosen>
-						<p class="ui-text-muted ui-font-small" style="-webkit-padding-start: 125px;-moz-padding-start: 125px;padding-start: 125px;">Tags: ${model.tags}</p>
+						<p class="ui-text-muted ui-font-small"
+						   style="-webkit-padding-start: 125px;-moz-padding-start: 125px;padding-start: 125px;">Tags:
+							${model.tags}</p>
 					</ui-column>
 					<ui-column>
 						<ui-date required value.bind="model.date">Date</ui-date>
@@ -119,7 +123,7 @@
 				<ui-column full row>
 					<ui-column size="md-6">
 						<ui-option-group label="Checkboxes">
-							<ui-option>Check 1</ui-option>
+							<ui-option checked.bind="model.isDirty">Dirty</ui-option>
 							<ui-option>Check 2</ui-option>
 							<ui-option disabled>Check 3</ui-option>
 							<ui-option>Check 4</ui-option>
@@ -139,7 +143,7 @@
 					</ui-column>
 				</ui-column>
 				<ui-column>
-					<ui-lang-select ref="_langSelect" languages.one-time="content | keys"
+					<ui-lang-select view-model.ref="_langSelect" languages.one-time="content | keys"
 									change.trigger="languageChanged($event)"
 									remove.trigger="languageRemoved($event)">Languages
 					</ui-lang-select>

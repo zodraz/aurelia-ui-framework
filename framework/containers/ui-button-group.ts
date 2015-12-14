@@ -44,7 +44,6 @@ export class UIButtonGroup {
 		if (element.hasAttribute('danger'))this._theme = 'danger';
 		if (element.hasAttribute('success'))this._theme = 'success';
 		if (element.hasAttribute('warning'))this._theme = 'warning';
-		this.element.UIElement = this;
 	}
 
 	bind() {

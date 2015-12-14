@@ -46,7 +46,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._checkbox = true;
             if (element.hasAttribute('multiple'))
                 this._multiple = true;
-            this.element.UIElement = this;
         }
         UIList.prototype.bind = function () {
             if (this.value) {

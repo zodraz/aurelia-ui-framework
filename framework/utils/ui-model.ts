@@ -4,7 +4,7 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject, transient, BindingEngine} from "aurelia-framework";
+import {autoinject, computedFrom, transient, BindingEngine} from "aurelia-framework";
 import {getLogger, Logger} from "aurelia-logging";
 import {UIHttpService} from "./ui-http-service";
 import {Validation,ValidationGroup} from "aurelia-validation";
@@ -19,8 +19,8 @@ export class UIModel {
 	public validation:ValidationGroup;
 
 	private _original:any;
-	private _isDirty       = false;
-	private _subscriptions = [];
+	private _subscriptions;
+	public isDirty = false;
 
 	constructor() {
 		let _v          = Utils.lazy(Validation);
@@ -29,6 +29,7 @@ export class UIModel {
 		this.validation = _v.on(this, null);
 		this.logger     = getLogger(this.constructor.name);
 		this.logger.debug("Model Initialized");
+		this.isDirty = false;
 	}
 
 	get(...rest) {
@@ -56,37 +57,38 @@ export class UIModel {
 		_.forEach(json, (v, k)=> {
 			this[k] = _.isString(v) ? _.trim(v) : v;
 		});
-		this.observe();
+		this.isDirty = false;
 	}
 
 	serialize() {
 		throw new Error('Not implemented [serialize]');
 	}
 
-	observe() {
-		for (var key of Object.keys(this)) {
-			if (key != 'logger' &&
-				key != 'observer' &&
-				key != 'httpClient' &&
-				key != 'validation' &&
-				key != '_original' &&
-				key != '_isDirty' &&
-				key != '_subscriptions') {
-				this._subscriptions.push(this.observer
-					.propertyObserver(this, key)
-					.subscribe(()=>this._isDirty=true));
-			}
-		}
+	//observe() {
+	//	for (var key of Object.keys(this)) {
+	//		if (key != 'logger' &&
+	//			key != 'observer' &&
+	//			key != 'httpClient' &&
+	//			key != 'validation' &&
+	//			key != '_original' &&
+	//			key != '_isDirty' &&
+	//			key != '_subscriptions') {
+	//			this._subscriptions.push(this.observer
+	//				.propertyObserver(this, key)
+	//				.subscribe(()=>this.isDirty = true));
+	//		}
+	//	}
+	//}
+
+	addSubscription(o) {
+		if (!this._subscriptions) this._subscriptions = [];
+		this._subscriptions.push(o);
 	}
 
 	dispose() {
 		while (this._subscriptions.length) {
 			this._subscriptions.pop().dispose();
 		}
-	}
-
-	isDirty() {
-		return this._isDirty;
 	}
 
 	saveChanges() {
@@ -98,6 +100,35 @@ export class UIModel {
 	discardChanges() {
 		_.forEach(this._original, (v, k)=> {
 			this[k] = _.isString(v) ? _.trim(v) : v;
+		});
+	}
+}
+
+export function observe() {
+	let observer:BindingEngine = Utils.lazy(BindingEngine);
+	return function (klass, key) {
+		klass.addSubscription(observer.propertyObserver(klass, key)
+			.subscribe(()=> {
+				klass.isDirty = true;
+			}));
+	}
+}
+
+
+export function watch(defaultValue?) {
+	let subscription;
+	let observer:BindingEngine = Utils.lazy(BindingEngine);
+	return function (viewModel, key) {
+		viewModel[key] = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
+		if (!viewModel[key])viewModel[key] = defaultValue;
+		subscription = observer.propertyObserver(viewModel, key)
+			.subscribe(()=> {
+				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
+			});
+
+		viewModel.deactivate = (()=> {
+			console.log('deactivated');
+			subscription.dispose();
 		});
 	}
 }

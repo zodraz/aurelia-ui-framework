@@ -19,6 +19,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             this.width = 'auto';
             this.height = 'auto';
             this.modal = false;
+            this.drag = true;
+            this.resize = true;
             this._zindex = 50;
             this._original = {};
             this._current = {
@@ -29,7 +31,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             if (element.hasAttribute('modal'))
                 this.modal = true;
             this.id = "win-" + UIDialog._id++;
-            this.element.UIElement = this;
         }
         UIDialog.prototype.bind = function () {
             this._current.width = this.width;
@@ -119,6 +120,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIDialog.prototype, "modal");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UIDialog.prototype, "drag");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UIDialog.prototype, "resize");
         UIDialog = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-dialog'), 

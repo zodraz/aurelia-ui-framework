@@ -10,11 +10,13 @@ export class UIDialog {
 	static _y  = 10;
 
 	@bindable dataTitle;
-	@bindable active        = true;
-	@bindable minimized     = false;
-	@bindable width         = 'auto';
-	@bindable height        = 'auto';
-	@bindable modal:boolean = false;
+	@bindable active         = true;
+	@bindable minimized      = false;
+	@bindable width          = 'auto';
+	@bindable height         = 'auto';
+	@bindable modal:boolean  = false;
+	@bindable drag:boolean   = true;
+	@bindable resize:boolean = true;
 
 	_dialog;
 	_taskButton;
@@ -30,8 +32,7 @@ export class UIDialog {
 
 	constructor(public element:Element, public dialogService:UIDialogService) {
 		if (element.hasAttribute('modal'))this.modal = true;
-		this.id                = `win-${UIDialog._id++}`;
-		this.element.UIElement = this;
+		this.id = `win-${UIDialog._id++}`;
 	}
 
 	bind() {

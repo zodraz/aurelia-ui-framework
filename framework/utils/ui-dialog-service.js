@@ -78,7 +78,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                             if (_this._active) {
                                 _this._active.active = false;
                             }
-                            _this._active = $(controller.view).children().get(0).UIElement;
+                            _this._active = $(controller.view).children().get(0).au.controller.viewModel;
                             _this._windows.push(_this._active);
                             setTimeout(function () {
                                 slot.attached();
@@ -92,12 +92,19 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             this._taskbar.append(btn);
         };
         UIDialogService.prototype.closeDialog = function (e) {
-            var dialog = $(e.target).closest('ui-dialog').get(0).UIElement;
-            ui_utils_1._.remove(this._windows, 'id', dialog.id);
-            dialog.remove();
-            if (this._windows.length > 0) {
-                (this._active = ui_utils_1._.last(this._windows)).active = true;
-            }
+            var _this = this;
+            var dialog = $(e.target).closest('ui-dialog').get(0).au.controller;
+            this._invokeLifecycle(dialog.bindingContext, 'canDeactivate', null).then(function (canDeactivate) {
+                if (canDeactivate) {
+                    ui_utils_1._.remove(_this._windows, 'id', dialog.viewModel.id);
+                    dialog.viewModel.remove();
+                    _this._invokeLifecycle(dialog.bindingContext, 'detached', null);
+                    if (_this._windows.length > 0) {
+                        (_this._active = ui_utils_1._.last(_this._windows)).active = true;
+                    }
+                    _this._invokeLifecycle(dialog.bindingContext, 'deactivate', null);
+                }
+            });
         };
         UIDialogService.prototype.switchActive = function (d) {
             if (this._active) {
@@ -111,7 +118,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             }
         };
         UIDialogService.prototype.collapse = function (e) {
-            $(e.target).closest('ui-dialog').get(0).UIElement.minimized = true;
+            $(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
             if (this._windows.length > 0) {
                 this._active = null;
                 var a = ui_utils_1._.findLast(this._windows, 'minimized', false);
@@ -122,17 +129,28 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             }
         };
         UIDialogService.prototype.moveStart = function ($event) {
-            this._dialog = $($event.target).closest('ui-dialog').get(0).UIElement;
-            if ($($event.target).closest('.ui-header').length == 0 && !$($event.target).hasClass('ui-resizer')) {
+            this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
+            if (!$($event.target).hasClass('ui-resizer')) {
                 this.switchActive(this._dialog);
-                return;
             }
             if ($($event.target).closest('button').length !== 0)
+                return;
+            if ($event.button != 0)
                 return;
             this._startX = $event.x;
             this._startY = $event.y;
             this._isDragging = true;
             this._isResizing = $($event.target).hasClass('ui-resizer');
+            if (this._isResizing && !this._dialog.resize) {
+                this._isDragging = false;
+                this._isResizing = false;
+                return;
+            }
+            else if (!this._dialog.drag) {
+                this._isDragging = false;
+                this._isResizing = false;
+                return;
+            }
             $(this._dialog._dialog).addClass('ui-dragging');
             $(this.dialogContainer).addClass('ui-dragging');
         };

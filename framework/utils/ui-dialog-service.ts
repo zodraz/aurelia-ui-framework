@@ -89,7 +89,7 @@ export class UIDialogService {
 							if (this._active) {
 								this._active.active = false;
 							}
-							this._active             = $(controller.view).children().get(0).UIElement;
+							this._active = $(controller.view).children().get(0).au.controller.viewModel;
 							this._windows.push(this._active);
 
 							setTimeout(() => {
@@ -106,18 +106,19 @@ export class UIDialogService {
 	}
 
 	closeDialog(e) {
-		//this._invokeLifecycle(viewModel, 'canActivate', model).then(canDeactivate => {
-		//	if (canDeactivate) {
-		let dialog = $(e.target).closest('ui-dialog').get(0).UIElement;
-		_.remove(this._windows, 'id', dialog.id);
-		dialog.remove();
+		let dialog = $(e.target).closest('ui-dialog').get(0).au.controller;
+		this._invokeLifecycle(dialog.bindingContext, 'canDeactivate', null).then(canDeactivate => {
+			if (canDeactivate) {
+				_.remove(this._windows, 'id', dialog.viewModel.id);
+				dialog.viewModel.remove();
+				this._invokeLifecycle(dialog.bindingContext, 'detached', null);
 
-		if (this._windows.length > 0) {
-			(this._active = _.last(this._windows)).active = true;
-		}
-
-		//	}
-		//});
+				if (this._windows.length > 0) {
+					(this._active = _.last(this._windows)).active = true;
+				}
+				this._invokeLifecycle(dialog.bindingContext, 'deactivate', null);
+			}
+		});
 	}
 
 	switchActive(d) {
@@ -132,7 +133,7 @@ export class UIDialogService {
 	}
 
 	collapse(e) {
-		$(e.target).closest('ui-dialog').get(0).UIElement.minimized = true;
+		$(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
 		if (this._windows.length > 0) {
 			this._active = null;
 			let a        = _.findLast(this._windows, 'minimized', false);
@@ -154,17 +155,28 @@ export class UIDialogService {
 	private _dialog;
 
 	private moveStart($event) {
-		this._dialog = $($event.target).closest('ui-dialog').get(0).UIElement;
-		if ($($event.target).closest('.ui-header').length == 0 && !$($event.target).hasClass('ui-resizer')) {
+		this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
+		if (!$($event.target).hasClass('ui-resizer')) {
 			this.switchActive(this._dialog);
-			return;
 		}
 		if ($($event.target).closest('button').length !== 0) return;
+		if ($event.button != 0) return;
 
 		this._startX     = $event.x;
 		this._startY     = $event.y;
 		this._isDragging = true;
 		this._isResizing = $($event.target).hasClass('ui-resizer');
+
+		if (this._isResizing && !this._dialog.resize) {
+			this._isDragging = false;
+			this._isResizing = false;
+			return;
+		}
+		else if (!this._dialog.drag) {
+			this._isDragging = false;
+			this._isResizing = false;
+			return;
+		}
 
 		$(this._dialog._dialog).addClass('ui-dragging');
 		$(this.dialogContainer).addClass('ui-dragging');

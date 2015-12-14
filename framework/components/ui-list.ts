@@ -70,7 +70,6 @@ export class UIList {
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('multiple')) this._multiple = true;
-		this.element.UIElement = this;
 	}
 
 	bind() {
