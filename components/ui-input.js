@@ -34,7 +34,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.phoneExt = '';
             this.phoneCountry = 'us';
             this.id = '';
-            this.dir = 'ltr';
+            this.dir = 'inherit';
             this.addonIcon = '';
             this.addonText = '';
             this.addonClass = '';

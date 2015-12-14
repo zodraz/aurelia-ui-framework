@@ -18,7 +18,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             this.minimized = false;
             this.width = 'auto';
             this.height = 'auto';
-            this._modal = false;
+            this.modal = false;
             this._zindex = 50;
             this._original = {};
             this._current = {
@@ -27,7 +27,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
                 height: '', width: ''
             };
             if (element.hasAttribute('modal'))
-                this._modal = true;
+                this.modal = true;
             this.id = "win-" + UIDialog._id++;
             this.element.UIElement = this;
         }
@@ -39,6 +39,21 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             var d = $(this._dialog);
             this._current.width = d.outerWidth();
             this._current.height = d.outerHeight();
+            if (this.modal) {
+                var pw = $(this.dialogService.dialogContainer).outerWidth();
+                var ph = $(this.dialogService.dialogContainer).outerHeight();
+                this._current.top = (ph - this._current.height) / 2;
+                this._current.left = (pw - this._current.width) / 2;
+            }
+            else {
+                this._taskButton = document.createElement('button');
+                this._taskButton.classList.add('ui-win-button');
+                this._taskButton.classList.add('ui-active');
+                this._taskButton.innerHTML = this.dataTitle;
+                this._taskButton.window = this;
+                this.dialogService.addTaskButton(this._taskButton);
+            }
+            $(this.element).css('z-index', 49).removeClass('ui-hidden');
             Object.assign(this._original, this._current);
         };
         UIDialog.prototype.remove = function () {
@@ -100,6 +115,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             aurelia_framework_1.bindable, 
             __metadata('design:type', Object)
         ], UIDialog.prototype, "height");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UIDialog.prototype, "modal");
         UIDialog = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-dialog'), 

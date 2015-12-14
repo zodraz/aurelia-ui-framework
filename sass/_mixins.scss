@@ -38,6 +38,38 @@
   white-space: nowrap;
 }
 
+@mixin padding($dir, $size) {
+  -webkit-padding-#{$dir}: $size;
+  -moz-padding-#{$dir}: $size;
+  -ms-padding-#{$dir}: $size;
+  -o-padding-#{$dir}: $size;
+  padding-#{$dir}: $size;
+}
+
+@mixin margin($dir, $size) {
+  -webkit-margin-#{$dir}: $size;
+  -moz-margin-#{$dir}: $size;
+  -ms-margin-#{$dir}: $size;
+  -o-margin-#{$dir}: $size;
+  margin-#{$dir}: $size;
+}
+
+@mixin border($dir, $val...) {
+  -webkit-border-#{$dir}: $val;
+  -moz-border-#{$dir}: $val;
+  -ms-border-#{$dir}: $val;
+  -o-border-#{$dir}: $val;
+  border-#{$dir}: $val;
+}
+
+@mixin borderEx($dir, $prop, $val) {
+  -webkit-border-#{$dir}-#{$prop}: $val;
+  -moz-border-#{$dir}-#{$prop}: $val;
+  -ms-border-#{$dir}-#{$prop}: $val;
+  -o-border-#{$dir}-#{$prop}: $val;
+  border-#{$dir}-#{$prop}: $val;
+}
+
 @function contrast($color, $dark: $black-olive, $light: $coconut) {
   @return contrast-color($color, $dark, $light);
 }
@@ -156,8 +188,8 @@
   // Property Names
   $top: $pre + "-top"    + if($suf, "-#{$suf}", "");
   $bottom: $pre + "-bottom" + if($suf, "-#{$suf}", "");
-  $left: $pre + "-left"   + if($suf, "-#{$suf}", "");
-  $right: $pre + "-right"  + if($suf, "-#{$suf}", "");
+  $left: $pre + "-start"   + if($suf, "-#{$suf}", "");
+  $right: $pre + "-end"  + if($suf, "-#{$suf}", "");
   $all: $pre +             if($suf, "-#{$suf}", "");
 
   $vals: collapse-directionals($vals);
@@ -228,7 +260,7 @@
   }
 }
 
-@mixin padding($vals...) {
+/*@mixin padding($vals...) {
   @include directional-property(padding, false, $vals...);
 }
 
@@ -246,5 +278,5 @@
 
 @mixin border-width($vals...) {
   @include directional-property(border, width, $vals...);
-}
+}*/
 

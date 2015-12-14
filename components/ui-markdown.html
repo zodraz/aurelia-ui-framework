@@ -5,7 +5,7 @@
 			<content></content>
 		</label>
 
-		<div class="ui-form-control ${focus?'ui-focus':''}" dir="ltr">
+		<div class="ui-form-control ${focus?'ui-focus':''}">
 			<div class="ui-markdown-editor ui-row ui-column ui-col-fill pad-0">
 				<div ref="_tools" class="ui-button-group ui-col-full" click.delegate="_toolClick($event)">
 					<button type="button" tabindex="-1" data-id="h1"
@@ -72,7 +72,7 @@
 			<div class="ui-markdown ui-markdown-preview ui-hide" dir.bind="dir">
 				<span innerhtml.bind="value | markdown"></span>
 			</div>
-			<div class="ui-markdown ui-markdown-help ui-hide">
+			<div class="ui-markdown ui-markdown-help ui-hide" dir="ltr">
 				<h2 class="ui-small-caps ui-text-primary ui-strong">Markdown Syntax</h2>
 				<hr/>
 				<p class="ui-text-primary">Headers</p>
