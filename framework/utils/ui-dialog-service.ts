@@ -29,7 +29,7 @@ export class UIDialogService {
 		}
 		if (!this._taskbar) {
 			this._taskbar = $('body .ui-app-taskbar');
-			this._taskbar.click((e)=>this.switchActive((<any>e.originalEvent.target).window));
+			this._taskbar.on('click', 'button', (e)=>this.switchActive((<any>e.originalEvent.target).window));
 		}
 	}
 
@@ -114,7 +114,11 @@ export class UIDialogService {
 				this._invokeLifecycle(dialog.bindingContext, 'detached', null);
 
 				if (this._windows.length > 0) {
-					(this._active = _.last(this._windows)).active = true;
+					let win = _.last(this._windows);
+					if (win.minimized === false)
+						(this._active = win).active = true;
+					else
+						this._active = null;
 				}
 				this._invokeLifecycle(dialog.bindingContext, 'deactivate', null);
 			}

@@ -32,7 +32,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             }
             if (!this._taskbar) {
                 this._taskbar = $('body .ui-app-taskbar');
-                this._taskbar.click(function (e) { return _this.switchActive(e.originalEvent.target.window); });
+                this._taskbar.on('click', 'button', function (e) { return _this.switchActive(e.originalEvent.target.window); });
             }
         }
         UIDialogService.prototype._invokeLifecycle = function (instance, name, model) {
@@ -100,7 +100,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                     dialog.viewModel.remove();
                     _this._invokeLifecycle(dialog.bindingContext, 'detached', null);
                     if (_this._windows.length > 0) {
-                        (_this._active = ui_utils_1._.last(_this._windows)).active = true;
+                        var win = ui_utils_1._.last(_this._windows);
+                        if (win.minimized === false)
+                            (_this._active = win).active = true;
+                        else
+                            _this._active = null;
                     }
                     _this._invokeLifecycle(dialog.bindingContext, 'deactivate', null);
                 }
