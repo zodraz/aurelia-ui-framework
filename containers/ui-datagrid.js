@@ -21,7 +21,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.idColumn = 'id';
             this._isResizing = false;
             this._startX = 0;
-            this.element.UIElement = this;
         }
         UIDataGrid.prototype.bind = function () {
             if (this.summaryRow === true || this.summaryRow === "true")

@@ -18,7 +18,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._languages = [];
             this._current = null;
             this._languages = ui_utils_1._.clone(UILangSelect.LANGUAGES);
-            this.element.UIElement = this;
         }
         UILangSelect.prototype.addLanguages = function (newValue) {
             this._selected = [];

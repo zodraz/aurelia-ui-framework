@@ -102,13 +102,13 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
         };
     }
     exports.observe = observe;
-    function watch(defaultValue) {
+    function watch() {
         var subscription;
         var observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
         return function (viewModel, key) {
-            viewModel[key] = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
-            if (!viewModel[key])
-                viewModel[key] = defaultValue;
+            var v = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
+            if (v)
+                viewModel[key] = v;
             subscription = observer.propertyObserver(viewModel, key)
                 .subscribe(function () {
                 sessionStorage.setItem(viewModel.constructor.name + ":" + key, viewModel[key]);

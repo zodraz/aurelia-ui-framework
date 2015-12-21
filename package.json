@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/adarshpastakia/aurelia-ui-framework.git"
   },
-  "keywords": "aurelia-ui-framework, aurelia, aurelia ui, ui framework",
+  "keywords": "aurelia-ui-framework",
   "author": "Adarsh Pastakia",
   "license": "MIT",
   "devDependencies": {

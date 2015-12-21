@@ -17,7 +17,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.class = '';
             this.busy = false;
             this._classes = '';
-            this.element.UIElement = this;
         }
         UIForm.prototype.attached = function () {
             var _this = this;

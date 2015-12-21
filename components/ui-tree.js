@@ -20,7 +20,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
             this._subscribeChecked = ui_event_1.UIEvent.subscribe('tree-checked', function (v) { return self._itemChecked(v); });
             observer.propertyObserver(this, 'searchText')
                 .subscribe(function (v) { return self._searchTextChanged(v); });
-            this.element.UIElement = this;
         }
         UITree.prototype.bind = function () {
             this.options = ui_utils_1._.merge({

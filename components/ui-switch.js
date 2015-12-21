@@ -38,7 +38,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.theme = 'gender';
             if (element.hasAttribute('priority'))
                 this.theme = 'priority';
-            this.element.UIElement = this;
         }
         UISwitch.prototype.attached = function () {
             $(this._switch)

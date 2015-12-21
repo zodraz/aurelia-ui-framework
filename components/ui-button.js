@@ -45,7 +45,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._theme = 'success';
             if (element.hasAttribute('warning'))
                 this._theme = 'warning';
-            this.element.UIElement = this;
         }
         UIButton.prototype.bind = function () {
             if (this.label)
