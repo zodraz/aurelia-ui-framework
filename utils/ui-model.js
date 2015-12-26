@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http-service", "aurelia-validation", "./ui-utils"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_http_service_1, aurelia_validation_1, ui_utils_1) {
     var UIModel = (function () {
         function UIModel() {
+            this._subscriptions = [];
             this.isDirty = false;
             var _v = ui_utils_1.Utils.lazy(aurelia_validation_1.Validation);
             this.observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
@@ -20,6 +21,14 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
             this.logger = aurelia_logging_1.getLogger(this.constructor.name);
             this.logger.debug("Model Initialized");
             this.isDirty = false;
+            var self = this;
+            for (var _i = 0, _a = this._observers; _i < _a.length; _i++) {
+                var prop = _a[_i];
+                this._subscriptions.push(this.observer.propertyObserver(this, prop)
+                    .subscribe(function () {
+                    self.isDirty = true;
+                }));
+            }
         }
         UIModel.prototype.get = function () {
             var rest = [];
@@ -63,13 +72,13 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
         UIModel.prototype.serialize = function () {
             throw new Error('Not implemented [serialize]');
         };
-        UIModel.prototype.addSubscription = function (o) {
-            if (!this._subscriptions)
-                this._subscriptions = [];
-            this._subscriptions.push(o);
+        UIModel.prototype.addObserver = function (o) {
+            if (!this._observers)
+                this._observers = [];
+            this._observers.push(o);
         };
         UIModel.prototype.dispose = function () {
-            while (this._subscriptions.length) {
+            while (this._subscriptions && this._subscriptions.length) {
                 this._subscriptions.pop().dispose();
             }
         };
@@ -93,29 +102,26 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
     })();
     exports.UIModel = UIModel;
     function observe() {
-        var observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
-        return function (klass, key) {
-            klass.addSubscription(observer.propertyObserver(klass, key)
-                .subscribe(function () {
-                klass.isDirty = true;
-            }));
+        return function (model, key) {
+            model.addObserver(key);
         };
     }
     exports.observe = observe;
-    function watch() {
-        var subscription;
+    function watch(defaultValue) {
         var observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
         return function (viewModel, key) {
+            if (!viewModel._subscriptions)
+                viewModel._subscriptions = [];
             var v = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
-            if (v)
-                viewModel[key] = v;
-            subscription = observer.propertyObserver(viewModel, key)
+            viewModel[key] = v || defaultValue;
+            viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
                 .subscribe(function () {
                 sessionStorage.setItem(viewModel.constructor.name + ":" + key, viewModel[key]);
-            });
-            viewModel.deactivate = (function () {
-                console.log('deactivated');
-                subscription.dispose();
+            }));
+            viewModel.unbind = (function () {
+                while (viewModel._subscriptions.length) {
+                    viewModel._subscriptions.pop().dispose();
+                }
             });
         };
     }

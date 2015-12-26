@@ -22,6 +22,9 @@
 			   focus.trigger="focus=true" blur.trigger="focus=false"
 			   readonly placeholder="${placeholder}" value.bind="_valueEnd"/>
 
+		<div class="ui-addon" if.bind="addonText">
+			<span if.bind="addonText">${addonText}</span>
+		</div>
 		<button type="button" if.bind="(buttonText || buttonIcon)" class="ui-button ui-button-default"
 				click.trigger="_buttonClick($event)">
 			<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}

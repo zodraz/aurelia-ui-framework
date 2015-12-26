@@ -38,6 +38,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
             }
             return true;
         };
+        UIMenu.prototype.isActive = function (route, ins) {
+            return route.isActive || route.href == location.hash || location.hash.indexOf(route.config.redirect || 'QWER') > -1;
+        };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', aurelia_router_1.Router)

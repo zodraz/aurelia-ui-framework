@@ -117,25 +117,25 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         Format.toHTML = toHTML;
         function dateDisplay(value, format) {
             if (format === void 0) { format = 'DD MMM YYYY hh:mm A'; }
-            if (!exports.moment(value).isValid())
+            if (!exports.moment(value || null).isValid())
                 return '';
             return exports.moment(value).format(format);
         }
         Format.dateDisplay = dateDisplay;
         function dateISO(value) {
-            if (!exports.moment(value).isValid())
+            if (!exports.moment(value || null).isValid())
                 return null;
             return exports.moment(value).utc().toISOString();
         }
         Format.dateISO = dateISO;
         function dateOracle(value) {
-            if (!exports.moment(value).isValid())
+            if (!exports.moment(value || null).isValid())
                 return null;
             return exports.moment(value).utc().format('DD-MMM-YYYY hh:mm:ss');
         }
         Format.dateOracle = dateOracle;
         function dateSql(value) {
-            if (!exports.moment(value).isValid())
+            if (!exports.moment(value || null).isValid())
                 return null;
             return exports.moment(value).utc().format('YYYY-MM-DD hh:mm:ss');
         }

@@ -185,3 +185,23 @@ input[type=number]::-webkit-outer-spin-button {
 .ui-push-right {
   float: right;
 }
+
+.ui-table {
+  width: 100%;
+  border: 1px solid $base-border-color;
+
+  td {
+	padding: 0.3rem 0.7rem;
+	border: {
+	  width: 1px 0;
+	  style: solid;
+	  color: $base-border-color;
+	}
+  }
+  thead > td {
+	font-weight: $font-weight-strong;
+  }
+  tbody > tr:nth-child(even) > td {
+	background: shade($base-bg, 3%);
+  }
+}

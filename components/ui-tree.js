@@ -37,8 +37,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
             }, null);
         };
         UITree.prototype.detached = function () {
-            this._subscribeSelect();
-            this._subscribeChecked();
+            this._subscribeSelect.dispose();
+            this._subscribeChecked.dispose();
         };
         Object.defineProperty(UITree.prototype, "rootNodes", {
             get: function () {

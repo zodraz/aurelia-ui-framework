@@ -91,6 +91,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             $(this.element)
                 .attr(this.disabled !== false ? 'disabled' : 'x', '');
         };
+        UIButton.prototype.labelChanged = function (newValue) {
+            this._label = newValue;
+        };
         UIButton.prototype.disabledChanged = function (newValue) {
             $(this.element)
                 .attr(newValue !== false ? 'disabled' : 'x', '');
