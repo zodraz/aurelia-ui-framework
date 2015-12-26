@@ -57,7 +57,8 @@ export {DateValueConverter,NumberValueConverter,CurrencyValueConverter,KeysValue
 export {UIEvent} from "./utils/ui-event";
 export {UIHttpService} from "./utils/ui-http-service";
 export {UIDwrService} from "./utils/ui-dwr-service";
-export {UIModel} from "./utils/ui-model";
+export {UILangSelect} from "./components/ui-lang-select";
+export {UIModel, watch, observe} from "./utils/ui-model";
 export {UITreeModel,UITreeOptionsModel,UITreePanel} from "./utils/ui-tree-models";
 export {_, moment, numeral, Format, Utils} from "./utils/ui-utils";
 export {UIValidation} from "./utils/ui-validations";

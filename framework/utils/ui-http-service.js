@@ -108,7 +108,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             return headers;
         };
         UIHttpService = __decorate([
-            aurelia_framework_1.transient(),
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [aurelia_fetch_client_1.HttpClient, ui_app_state_1.UIApplicationState, aurelia_event_aggregator_1.EventAggregator])
         ], UIHttpService);

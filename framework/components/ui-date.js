@@ -26,14 +26,15 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.checked = false;
             this.minDate = null;
             this.maxDate = null;
+            this.range = false;
+            this.inline = false;
             this.format = 'DD/MM/YYYY';
             this.id = '';
+            this.addonText = '';
             this.buttonIcon = '';
             this.buttonText = '';
             this.placeholder = '';
             this.options = {};
-            this.range = false;
-            this.inline = false;
             this.disabled = false;
             this._id = "date-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
@@ -60,6 +61,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                 this._classes = 'ui-label-top';
             this.dt = ui_utils_1.moment().format('DD');
         }
+        UIDate.prototype.bind = function () {
+            if (this._checkbox) {
+                this.disabled = this.checked !== true;
+            }
+        };
         UIDate.prototype.attached = function () {
             if (this.inline && (this._inputStart = this._inputInline))
                 $(this._date).remove();
@@ -117,7 +123,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                     if (primary) {
                         _this.value.start = e.date;
                         $(_this._inputEnd).data('DateTimePicker').minDate(e.date);
-                        $(_this._inputEnd).focus();
                     }
                     if (!primary) {
                         _this.value.end = e.date;
@@ -141,14 +146,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                     .attr(newValue !== false ? 'disabled' : 'D', '');
             }
         };
-        UIDate.prototype.rangeChanged = function (newValue) {
-            this.range = newValue !== false;
-        };
-        UIDate.prototype.inlineChanged = function (newValue) {
-            this.inline = newValue !== false;
-            if (this.inline)
-                this._labelClasses += ' ui-hide ';
-        };
         UIDate.prototype._valueChanged = function (newValue) {
             if ($(this._inputStart).data('DateTimePicker')) {
                 if (this.range && newValue && newValue.start && newValue.end) {
@@ -157,12 +154,15 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                     $(this._inputStart).data('DateTimePicker').date(newValue.start);
                     $(this._inputEnd).data('DateTimePicker').date(newValue.end);
                 }
-                else if (newValue) {
+                else if (!this.range && newValue) {
                     $(this._inputStart).data('DateTimePicker').date(newValue);
                 }
             }
         };
         UIDate.prototype._checkedChanged = function (newValue) {
+            if (this._checkbox) {
+                this.disabled = newValue !== true;
+            }
         };
         __decorate([
             aurelia_framework_1.bindable, 
@@ -172,6 +172,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIDate.prototype, "id");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIDate.prototype, "addonText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
@@ -190,15 +194,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         ], UIDate.prototype, "options");
         __decorate([
             aurelia_framework_1.bindable, 
-            __metadata('design:type', Boolean)
-        ], UIDate.prototype, "range");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', Boolean)
-        ], UIDate.prototype, "inline");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', Boolean)
+            __metadata('design:type', Object)
         ], UIDate.prototype, "disabled");
         UIDate = __decorate([
             aurelia_framework_1.bindable({

@@ -91,6 +91,10 @@ export class UIButton {
 			.attr(this.disabled !== false ? 'disabled' : 'x', '');
 	}
 
+	labelChanged(newValue) {
+		this._label = newValue;
+	}
+
 	disabledChanged(newValue) {
 		$(this.element)
 			.attr(newValue !== false ? 'disabled' : 'x', '');

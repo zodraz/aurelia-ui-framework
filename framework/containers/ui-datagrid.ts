@@ -75,7 +75,9 @@ export class UIDataGrid {
 	}
 
 	private dataChanged(newValue) {
-		this._data = newValue;
+		this._table.style.tableLayout = 'auto';
+		this._data                    = newValue;
+		this._table.style.tableLayout = 'fixed';
 	}
 
 	private isLastLocked(locked, index) {
@@ -88,7 +90,7 @@ export class UIDataGrid {
 		this.isProcessing      = true;
 		this.currentSortColumn = column.dataId;
 		this.currentSortOrder  = $($event.target).hasClass('asc') ? 'desc' : 'asc';
-		var sibling = column.dataSort || this.idColumn;
+		var sibling            = column.dataSort || this.idColumn;
 		setTimeout(()=> {
 			this.data         = _.sortByOrder(this.data,
 				[this.currentSortColumn, sibling],
@@ -137,7 +139,7 @@ export class UIDataGrid {
 			case 'number':
 				return Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
 			case 'date':
-				return Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
+				return Format.dateDisplay(newValue+'Z', column.dataFormat || 'DD MMM YYYY hh:mm A');
 			case 'fromnow':
 				return Format.fromNow(newValue);
 			case 'exrate':
@@ -238,6 +240,7 @@ export class UIDataColumn {
 	@bindable dataSummary:string;
 	@bindable dataLabels:any;
 
+	@bindable buttonTitle:string = '';
 	@bindable buttonGlyph:string = '';
 
 	@bindable width:number;
@@ -266,7 +269,7 @@ export class UIDataColumn {
 			this.width  = 30;
 			this.button = true;
 		}
-		else if (this.dataType == 'date') this.width = 150;
+		else if (this.dataType == 'date') this.width = 160;
 		else if (this.dataType == 'exrate') this.width = 100;
 		else if (this.dataType == 'fromnow') this.width = 120;
 		else if (this.dataType == 'number') this.width = 120;

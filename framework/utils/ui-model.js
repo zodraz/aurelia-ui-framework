@@ -92,30 +92,34 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
         return UIModel;
     })();
     exports.UIModel = UIModel;
-    function observe() {
+    function observe(callback) {
         var observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
         return function (klass, key) {
             klass.addSubscription(observer.propertyObserver(klass, key)
                 .subscribe(function () {
                 klass.isDirty = true;
+                if (callback)
+                    callback(klass);
             }));
         };
     }
     exports.observe = observe;
-    function watch(defaultValue) {
-        var subscription;
+    function watch() {
         var observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
         return function (viewModel, key) {
-            viewModel[key] = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
-            if (!viewModel[key])
-                viewModel[key] = defaultValue;
-            subscription = observer.propertyObserver(viewModel, key)
+            if (!viewModel._subscriptions)
+                viewModel._subscriptions = [];
+            var v = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
+            if (v)
+                viewModel[key] = v;
+            viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
                 .subscribe(function () {
                 sessionStorage.setItem(viewModel.constructor.name + ":" + key, viewModel[key]);
-            });
-            viewModel.deactivate = (function () {
-                console.log('deactivated');
-                subscription.dispose();
+            }));
+            viewModel.unbind = (function () {
+                while (viewModel._subscriptions.length) {
+                    viewModel._subscriptions.pop().dispose();
+                }
             });
         };
     }

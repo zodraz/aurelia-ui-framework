@@ -137,22 +137,22 @@ export module Format {
 
 	// Dates
 	export function dateDisplay(value:any, format:string = 'DD MMM YYYY hh:mm A') {
-		if (!moment(value).isValid()) return '';
+		if (!moment(value || null).isValid()) return '';
 		return moment(value).format(format);
 	}
 
 	export function dateISO(value:any) {
-		if (!moment(value).isValid()) return null;
+		if (!moment(value || null).isValid()) return null;
 		return moment(value).utc().toISOString();
 	}
 
 	export function dateOracle(value:any) {
-		if (!moment(value).isValid()) return null;
+		if (!moment(value || null).isValid()) return null;
 		return moment(value).utc().format('DD-MMM-YYYY hh:mm:ss');
 	}
 
 	export function dateSql(value:any) {
-		if (!moment(value).isValid()) return null;
+		if (!moment(value || null).isValid()) return null;
 		return moment(value).utc().format('YYYY-MM-DD hh:mm:ss');
 	}
 

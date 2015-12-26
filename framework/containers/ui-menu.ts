@@ -45,4 +45,8 @@ export class UIMenu {
 		}
 		return true;
 	}
+
+	isActive(route, ins) {
+		return route.isActive || route.href == location.hash || location.hash.indexOf(route.config.redirect || 'QWER')>-1;
+	}
 }

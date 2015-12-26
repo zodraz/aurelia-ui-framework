@@ -60,6 +60,7 @@ export class UIChosen {
 	@bindable placeholder:string = '';
 	@bindable readonly:boolean   = false;
 	@bindable disabled:boolean   = false;
+	@bindable options            = [];
 
 	constructor(public element:Element) {
 		this._id = `chosen-${UIInput._id++}`;
@@ -80,6 +81,9 @@ export class UIChosen {
 		if (this._checkbox) {
 			this.disabled = this.checked !== true;
 		}
+		else {
+			this.disabled = this.disabled !== true;
+		}
 	}
 
 	attached() {
@@ -99,11 +103,28 @@ export class UIChosen {
 				/**
 				 * convert value to string is multiple is true
 				 */
-				let v = $(this._select).val();
+				let v      = $(this._select).val();
 				this.value = (this._multiple ? (v || ['']).join(',') : v);
-				UIEvent.fireEvent('change', this.element, this._select.options[this._select.selectedIndex].model);
+				UIEvent.fireEvent('change', this.element,
+					this._select.options[this._select.selectedIndex].model || this.value);
 			});
 		$(this._options).remove();
+	}
+
+	optionsChanged(newValue) {
+		setTimeout(()=> {
+			$(this._select)
+				.val(this.value)
+				.chosen({
+					width: '100%',
+					search_contains: true,
+					disable_search_threshold: 10,
+					allow_single_deselect: this._clear,
+					placeholder_text_single: this.placeholder,
+					placeholder_text_multiple: this.placeholder
+				})
+				.trigger('chosen:updated');
+		}, 500);
 	}
 
 	disabledChanged(newValue) {

@@ -271,6 +271,7 @@ export class UIInput {
 	}
 
 	disabledChanged(newValue) {
+		if (!this._input) return;
 		this._input
 			.removeAttr('D')
 			.removeAttr('disabled')
@@ -278,6 +279,7 @@ export class UIInput {
 	}
 
 	readonlyChanged(newValue) {
+		if (!this._input) return;
 		this._input
 			.removeAttr('R')
 			.removeAttr('readonly')

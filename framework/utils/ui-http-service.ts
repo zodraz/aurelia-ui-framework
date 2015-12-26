@@ -13,7 +13,6 @@ import {UIApplicationState} from "./ui-app-state";
 import {Response} from "fetch";
 import "fetch";
 
-@transient()
 @autoinject()
 export class UIHttpService {
 	logger:Logger;

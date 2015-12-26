@@ -80,6 +80,7 @@ export class UILangSelect {
 	private _selectLanguage(lang) {
 		this._current = lang;
 		UIEvent.fireEvent('change', this.element, lang || {id: 'null'});
+		$(this._selector).removeClass('ui-dropdown');
 	}
 
 	private _addLanguage(lang) {

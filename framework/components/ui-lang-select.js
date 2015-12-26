@@ -56,6 +56,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         UILangSelect.prototype._selectLanguage = function (lang) {
             this._current = lang;
             ui_event_1.UIEvent.fireEvent('change', this.element, lang || { id: 'null' });
+            $(this._selector).removeClass('ui-dropdown');
         };
         UILangSelect.prototype._addLanguage = function (lang) {
             this._selected.push(lang);

@@ -21,13 +21,13 @@
 					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}">
 					<div if.bind="col.button" class="button-cell">
 						<button class="ui-button ui-button-secondary ui-button-small ${col.enabled(model)!==false?'':'noshow'}"
-								click.trigger="linkClicked($event, col.dataId, model)"><span
+								click.trigger="linkClicked($event, col.dataId, model)" title.bind="col.buttonTitle"><span
 								class="${col.buttonGlyph}"></span>
 						</button>
 					</div>
 
-					<div class="selectable" if.bind="!col.button && !col.link"
-						 innerHTML.bind="format(model[col.dataId], col, model)"></div>
+					<div class="selectable" if.bind="!col.button && !col.link">
+						 <span innerHTML.bind="format(model[col.dataId], col, model)"></span>&nbsp;</div>
 
 					<div if.bind="col.link"><a click.trigger="linkClicked($event, col.dataId, model)"
 											   innerHTML.bind="format(model[col.dataId], col, model)"></a></div>

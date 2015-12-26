@@ -8,9 +8,9 @@ import {UIModel, watch, observe} from "../../framework/utils/ui-model";
 export class HomeForm {
 	model;
 
-	@watch('null')
+	@watch()
 	lang;
-	@watch('ltr')
+	@watch()
 	contentDir;
 	content:any = {
 		'EN': {title: 'Hello World', md: this.md},

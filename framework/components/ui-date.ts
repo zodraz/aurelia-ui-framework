@@ -66,19 +66,20 @@ export class UIDate {
 	private checked   = false;
 	private minDate   = null;
 	private maxDate   = null;
+	private range     = false;
+	private inline    = false;
 
 	private _valueStart;
 	private _valueEnd;
 
 	@bindable format:string      = 'DD/MM/YYYY';
 	@bindable id:string          = '';
+	@bindable addonText:string   = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
 	@bindable placeholder:string = '';
 	@bindable options:DPOptions  = {};
-	@bindable range:boolean      = false;
-	@bindable inline:boolean     = false;
-	@bindable disabled:boolean   = false;
+	@bindable disabled           = false;
 
 
 	constructor(public element:Element) {
@@ -101,6 +102,12 @@ export class UIDate {
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 
 		this.dt = moment().format('DD');
+	}
+
+	bind() {
+		if (this._checkbox) {
+			this.disabled = this.checked !== true;
+		}
 	}
 
 	attached() {
@@ -153,7 +160,6 @@ export class UIDate {
 					if (primary) {
 						this.value.start = e.date;
 						$(this._inputEnd).data('DateTimePicker').minDate(e.date);
-						$(this._inputEnd).focus();
 					}
 					if (!primary) {
 						this.value.end = e.date;
@@ -179,29 +185,21 @@ export class UIDate {
 		}
 	}
 
-	rangeChanged(newValue) {
-		this.range = newValue !== false;
-	}
-
-	inlineChanged(newValue) {
-		this.inline = newValue !== false;
-		if (this.inline) this._labelClasses += ' ui-hide ';
-	}
-
-
 	private _valueChanged(newValue) {
 		if ($(this._inputStart).data('DateTimePicker')) {
 			if (this.range && newValue && newValue.start && newValue.end) {
 				if (!newValue) newValue = {start: moment(), end: moment()};
 				$(this._inputStart).data('DateTimePicker').date(newValue.start);
 				$(this._inputEnd).data('DateTimePicker').date(newValue.end);
-			} else if (newValue) {
+			} else if (!this.range && newValue) {
 				$(this._inputStart).data('DateTimePicker').date(newValue);
 			}
 		}
 	}
 
 	private _checkedChanged(newValue) {
-
+		if (this._checkbox) {
+			this.disabled = newValue !== true;
+		}
 	}
 }

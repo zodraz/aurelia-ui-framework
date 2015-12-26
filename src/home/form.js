@@ -64,11 +64,11 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 .errorLanguages('AR,EN');
         };
         __decorate([
-            ui_model_1.watch('null'), 
+            ui_model_1.watch(), 
             __metadata('design:type', Object)
         ], HomeForm.prototype, "lang");
         __decorate([
-            ui_model_1.watch('ltr'), 
+            ui_model_1.watch(), 
             __metadata('design:type', Object)
         ], HomeForm.prototype, "contentDir");
         HomeForm = __decorate([

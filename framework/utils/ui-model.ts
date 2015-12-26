@@ -104,31 +104,33 @@ export class UIModel {
 	}
 }
 
-export function observe() {
+export function observe(callback?:Function) {
 	let observer:BindingEngine = Utils.lazy(BindingEngine);
 	return function (klass, key) {
 		klass.addSubscription(observer.propertyObserver(klass, key)
 			.subscribe(()=> {
 				klass.isDirty = true;
+				if(callback) callback(klass);
 			}));
 	}
 }
 
 
-export function watch(defaultValue?) {
-	let subscription;
+export function watch() {
 	let observer:BindingEngine = Utils.lazy(BindingEngine);
 	return function (viewModel, key) {
-		viewModel[key] = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
-		if (!viewModel[key])viewModel[key] = defaultValue;
-		subscription = observer.propertyObserver(viewModel, key)
+		if (!viewModel._subscriptions) viewModel._subscriptions = [];
+		let v = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
+		if (v) viewModel[key] = v;
+		viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
 			.subscribe(()=> {
 				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
-			});
+			}));
 
-		viewModel.deactivate = (()=> {
-			console.log('deactivated');
-			subscription.dispose();
+		viewModel.unbind = (()=> {
+			while (viewModel._subscriptions.length) {
+				viewModel._subscriptions.pop().dispose();
+			}
 		});
 	}
 }

@@ -160,11 +160,11 @@ export class UIDialogService {
 
 	private moveStart($event) {
 		this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
-		if (!$($event.target).hasClass('ui-resizer')) {
-			this.switchActive(this._dialog);
-		}
 		if ($($event.target).closest('button').length !== 0) return;
 		if ($event.button != 0) return;
+		if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {
+			return this.switchActive(this._dialog);
+		}
 
 		this._startX     = $event.x;
 		this._startY     = $event.y;

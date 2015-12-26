@@ -19,7 +19,7 @@
 			if.bind="!route.config.auth || (route.config.auth && appState.IsAuthenticated)">
 			<hr if.bind="route.settings.sectionStart"/>
 			<p class="ui-menu-section" if.bind="route.settings.sectionTitle">${route.settings.sectionTitle}</p>
-			<a class="ui-menu-link ${route.isActive ? 'ui-active' : ''}"
+			<a class="ui-menu-link ${isActive(route, router.currentInstruction)?'ui-active':''}"
 			   data-disabled="${route.settings.disabled}" href.bind="route.href">
 				<i class="ui-icon ${route.settings.navIcon}"></i>&nbsp;${route.settings.menuTitle || route.title}</a>
 		</li>

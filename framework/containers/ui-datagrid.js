@@ -44,7 +44,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._data = this.data;
         };
         UIDataGrid.prototype.dataChanged = function (newValue) {
+            this._table.style.tableLayout = 'auto';
             this._data = newValue;
+            this._table.style.tableLayout = 'fixed';
         };
         UIDataGrid.prototype.isLastLocked = function (locked, index) {
             return (locked && !(this.columns[index + 1] || { locked: false }).locked);
@@ -104,7 +106,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 case 'number':
                     return ui_utils_1.Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
                 case 'date':
-                    return ui_utils_1.Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
+                    return ui_utils_1.Format.dateDisplay(newValue + 'Z', column.dataFormat || 'DD MMM YYYY hh:mm A');
                 case 'fromnow':
                     return ui_utils_1.Format.fromNow(newValue);
                 case 'exrate':
@@ -203,6 +205,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
     var UIDataColumn = (function () {
         function UIDataColumn(element) {
             this.element = element;
+            this.buttonTitle = '';
             this.buttonGlyph = '';
             this.title = '';
             this.link = false;
@@ -229,7 +232,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this.button = true;
             }
             else if (this.dataType == 'date')
-                this.width = 150;
+                this.width = 160;
             else if (this.dataType == 'exrate')
                 this.width = 100;
             else if (this.dataType == 'fromnow')
@@ -273,6 +276,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable, 
             __metadata('design:type', Object)
         ], UIDataColumn.prototype, "dataLabels");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIDataColumn.prototype, "buttonTitle");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

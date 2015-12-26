@@ -33,6 +33,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.placeholder = '';
             this.readonly = false;
             this.disabled = false;
+            this.options = [];
             this._id = "chosen-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
@@ -58,6 +59,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             if (this._checkbox) {
                 this.disabled = this.checked !== true;
             }
+            else {
+                this.disabled = this.disabled !== true;
+            }
         };
         UIChosen.prototype.attached = function () {
             var _this = this;
@@ -76,9 +80,25 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .change(function () {
                 var v = $(_this._select).val();
                 _this.value = (_this._multiple ? (v || ['']).join(',') : v);
-                ui_event_1.UIEvent.fireEvent('change', _this.element, _this._select.options[_this._select.selectedIndex].model);
+                ui_event_1.UIEvent.fireEvent('change', _this.element, _this._select.options[_this._select.selectedIndex].model || _this.value);
             });
             $(this._options).remove();
+        };
+        UIChosen.prototype.optionsChanged = function (newValue) {
+            var _this = this;
+            setTimeout(function () {
+                $(_this._select)
+                    .val(_this.value)
+                    .chosen({
+                    width: '100%',
+                    search_contains: true,
+                    disable_search_threshold: 10,
+                    allow_single_deselect: _this._clear,
+                    placeholder_text_single: _this.placeholder,
+                    placeholder_text_multiple: _this.placeholder
+                })
+                    .trigger('chosen:updated');
+            }, 500);
         };
         UIChosen.prototype.disabledChanged = function (newValue) {
             $(this._select)
@@ -161,6 +181,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIChosen.prototype, "disabled");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIChosen.prototype, "options");
         UIChosen = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',

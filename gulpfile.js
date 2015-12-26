@@ -54,10 +54,10 @@ var config = {
 	bundles: {
 		"dist/aurelia-ui-framework": {
 			includes: [
-				'main*',
-				'src/**/*',
-				'libs/**/*',
-				'framework/**/*',
+				'[main*]',
+				'[src/**/*]',
+				'[libs/**/*]',
+				'[framework/**/*]',
 				'src/**/*.html!text',
 				'framework/**/*.html!text'
 			],
