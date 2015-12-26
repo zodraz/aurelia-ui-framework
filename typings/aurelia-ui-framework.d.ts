@@ -9,8 +9,8 @@ declare module "aurelia-ui-framework" {
 	export var moment:moment.MomentStatic;
 	export var numeral:numeral.Numeral;
 
-	export function watch();
-	export function observe(callback?:Function);
+	export function watch(defaultValue?:any);
+	export function observe();
 
 	export class UIValidation {}
 	export class AuthInterceptor {}
