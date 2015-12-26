@@ -52,10 +52,18 @@ var config = {
 	bundles: {
 		"dist/app": {
 			includes: [
-				'main*',
-				'src/**/*',
-				'models/**/*',
-				'src/**/*.html!text',
+				'[main*]',
+				'[src/**/*]',
+				'[models/**/*]',
+				'src/**/*.html!text'
+			],
+			options: {
+				inject: true,
+				minify: true
+			}
+		},
+		"dist/aurelia": {
+			includes: [
 				'jspm_packages/**/aurelia-*',
 				'jspm_packages/**/aurelia-validation*/resources/*',
 				'jspm_packages/github/adarshpastakia/**/*',

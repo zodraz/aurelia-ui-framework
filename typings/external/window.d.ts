@@ -24,5 +24,5 @@ interface Window {
 }
 
 interface Element {
-	UIElement:any;
+	au:any;
 }
