@@ -71,23 +71,23 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             ui_event_1.UIEvent.fireEvent('remove', this.element, lang.id);
         };
         UILangSelect.LANGUAGES = [
-            { id: 'AR', name: 'العربية', rtl: true },
-            { id: 'DE', name: 'Deutsche' },
-            { id: 'EN', name: 'English' },
-            { id: 'ES', name: 'Español' },
-            { id: 'FR', name: 'Français' },
-            { id: 'HI', name: 'हिंदी' },
-            { id: 'IT', name: 'Italiano' },
-            { id: 'JA', name: '日本' },
-            { id: 'KO', name: '한국어' },
-            { id: 'MS', name: 'Malay' },
-            { id: 'NL', name: 'Nederlands' },
-            { id: 'PT', name: 'Português' },
-            { id: 'RU', name: 'Русский' },
-            { id: 'TL', name: 'Tagalog' },
-            { id: 'VI', name: 'Tiếng Việt' },
-            { id: 'CH', name: '中文' },
-            { id: 'ZH', name: '漢語' }
+            { id: 'ar', name: 'العربية', rtl: true },
+            { id: 'de', name: 'Deutsche' },
+            { id: 'en', name: 'English' },
+            { id: 'es', name: 'Español' },
+            { id: 'fr', name: 'Français' },
+            { id: 'hi', name: 'हिंदी' },
+            { id: 'it', name: 'Italiano' },
+            { id: 'ja', name: '日本' },
+            { id: 'ko', name: '한국어' },
+            { id: 'ms', name: 'Malay' },
+            { id: 'nl', name: 'Nederlands' },
+            { id: 'pt', name: 'Português' },
+            { id: 'ru', name: 'Русский' },
+            { id: 'tl', name: 'Tagalog' },
+            { id: 'vi', name: 'Tiếng Việt' },
+            { id: 'ch', name: '中文' },
+            { id: 'zh', name: '漢語' }
         ];
         UILangSelect = __decorate([
             aurelia_framework_1.autoinject(),

@@ -101,10 +101,19 @@ export class Home {
 			nav: true,
 			name: 'datagrid'
 		}, {
+			route: 'guide',
+			moduleId: './guide',
+			settings: {
+				sectionStart: true,
+				navIcon: 'fi-elegant-question3'
+			},
+			title: 'Cheat Sheet',
+			nav: true,
+			name: 'guide'
+		}, {
 			route: 'styles',
 			moduleId: './styles',
 			settings: {
-				sectionStart: true,
 				navIcon: 'fi-ext-programming-language2'
 			},
 			title: 'CSS Helper Classes',

@@ -60,7 +60,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this.disabled = this.checked !== true;
             }
             else {
-                this.disabled = this.disabled !== true;
+                this.disabled = this.disabled === true;
             }
         };
         UIChosen.prototype.attached = function () {

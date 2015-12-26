@@ -4,7 +4,7 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject, bindable, bindingMode} from 'aurelia-framework';
+import {autoinject, bindable, bindingMode, computedFrom} from 'aurelia-framework';
 import {_} from "./ui-utils";
 
 export class UITreeModel {
@@ -88,6 +88,7 @@ export class UITreeModel {
 		if (this.parent && this.level > this._checkLevel) this.parent.updatePartial();
 	}
 
+	@computedFrom('leaf', 'iconGlyph')
 	get isleaf() {
 		return this.leaf && !this.iconGlyph;
 	}

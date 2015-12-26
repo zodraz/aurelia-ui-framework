@@ -8,13 +8,14 @@ import {UIModel, watch, observe} from "../../framework/utils/ui-model";
 export class HomeForm {
 	model;
 
-	@watch()
+	@watch('ar')
 	lang;
-	@watch()
+	@watch('rtl')
 	contentDir;
+
 	content:any = {
-		'EN': {title: 'Hello World', md: this.md},
-		'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+		'en': {title: 'Hello World', md: this.md},
+		'ar': {title: 'مرحبا بالعالم', md: this.mdAr}
 	};
 
 	languageChanged($event) {
@@ -46,8 +47,8 @@ export class HomeForm {
 			.isPhone();
 
 		this.content = {
-			'EN': {title: 'Hello World', md: this.md},
-			'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+			'en': {title: 'Hello World', md: this.md},
+			'ar': {title: 'مرحبا بالعالم', md: this.mdAr}
 		};
 
 		this.model = new FormModel();
@@ -56,15 +57,18 @@ export class HomeForm {
 	attached() {
 		this._langSelect
 			.addLanguages(Object.keys(this.content))
-			.setLanguage('AR');
-
+			.setLanguage(this.lang);
 		this.model.isDirty = false;
+	}
+
+	deactivate() {
+		this.model.dispose();
 	}
 
 	onSubmit() {
 		this.validation.validate();
 		this._langSelect
-			.errorLanguages('AR,EN');
+			.errorLanguages('ar,en');
 	}
 
 
@@ -146,6 +150,6 @@ export class FormModel extends UIModel {
 	list   = '4';
 	opts   = 3;
 	hasLoc = true;
-	date   = null;
-	range  = {start: null, end: null};
+	date   = '2015-12-25T00:00:00.000Z';
+	range  = {start: '2015-12-25T00:00:00.000Z', end: '2015-12-25T00:00:00.000Z'};
 }

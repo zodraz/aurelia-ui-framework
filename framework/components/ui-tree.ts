@@ -84,8 +84,8 @@ export class UITree {
 	}
 
 	private detached() {
-		this._subscribeSelect();
-		this._subscribeChecked();
+		this._subscribeSelect.dispose();
+		this._subscribeChecked.dispose();
 	}
 
 	@computedFrom('root')

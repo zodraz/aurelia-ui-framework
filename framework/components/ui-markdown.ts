@@ -31,7 +31,7 @@ export class UIMarkdown {
 	private _inputClasses:string = '';
 
 	@bindable id:string          = '';
-	@bindable dir:string         = 'ltr';
+	@bindable dir:string         = 'inherit';
 	@bindable placeholder:string = '';
 	@bindable readonly:boolean   = false;
 	@bindable disabled:boolean   = false;

@@ -19,8 +19,10 @@ export class UIModel {
 	public validation:ValidationGroup;
 
 	private _original:any;
-	private _subscriptions;
-	public isDirty = false;
+	private _observers;
+	private _subscriptions = [];
+
+	isDirty = false;
 
 	constructor() {
 		let _v          = Utils.lazy(Validation);
@@ -30,6 +32,14 @@ export class UIModel {
 		this.logger     = getLogger(this.constructor.name);
 		this.logger.debug("Model Initialized");
 		this.isDirty = false;
+
+		let self = this;
+		for (let prop of this._observers) {
+			this._subscriptions.push(this.observer.propertyObserver(this, prop)
+				.subscribe(()=> {
+					self.isDirty = true;
+				}));
+		}
 	}
 
 	get(...rest) {
@@ -64,29 +74,13 @@ export class UIModel {
 		throw new Error('Not implemented [serialize]');
 	}
 
-	//observe() {
-	//	for (var key of Object.keys(this)) {
-	//		if (key != 'logger' &&
-	//			key != 'observer' &&
-	//			key != 'httpClient' &&
-	//			key != 'validation' &&
-	//			key != '_original' &&
-	//			key != '_isDirty' &&
-	//			key != '_subscriptions') {
-	//			this._subscriptions.push(this.observer
-	//				.propertyObserver(this, key)
-	//				.subscribe(()=>this.isDirty = true));
-	//		}
-	//	}
-	//}
-
-	addSubscription(o) {
-		if (!this._subscriptions) this._subscriptions = [];
-		this._subscriptions.push(o);
+	addObserver(o) {
+		if (!this._observers) this._observers = [];
+		this._observers.push(o);
 	}
 
 	dispose() {
-		while (this._subscriptions.length) {
+		while (this._subscriptions && this._subscriptions.length) {
 			this._subscriptions.pop().dispose();
 		}
 	}
@@ -104,24 +98,19 @@ export class UIModel {
 	}
 }
 
-export function observe(callback?:Function) {
-	let observer:BindingEngine = Utils.lazy(BindingEngine);
-	return function (klass, key) {
-		klass.addSubscription(observer.propertyObserver(klass, key)
-			.subscribe(()=> {
-				klass.isDirty = true;
-				if(callback) callback(klass);
-			}));
+export function observe() {
+	return function (model, key) {
+		model.addObserver(key);
 	}
 }
 
 
-export function watch() {
+export function watch(defaultValue?:any) {
 	let observer:BindingEngine = Utils.lazy(BindingEngine);
 	return function (viewModel, key) {
 		if (!viewModel._subscriptions) viewModel._subscriptions = [];
-		let v = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
-		if (v) viewModel[key] = v;
+		let v          = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
+		viewModel[key] = v || defaultValue;
 		viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
 			.subscribe(()=> {
 				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);

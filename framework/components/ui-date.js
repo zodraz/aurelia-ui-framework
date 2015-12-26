@@ -65,6 +65,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             if (this._checkbox) {
                 this.disabled = this.checked !== true;
             }
+            else {
+                this.disabled = this.disabled === true;
+            }
         };
         UIDate.prototype.attached = function () {
             if (this.inline && (this._inputStart = this._inputInline))
@@ -97,6 +100,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                     optEnd.minDate = ui_utils_1.moment(this.minDate);
                 if (this.maxDate)
                     optEnd.maxDate = ui_utils_1.moment(this.maxDate);
+                if (this.value && this.value.start && this.value.end) {
+                    optStart.date = ui_utils_1.moment(this.value.start);
+                    optEnd.date = ui_utils_1.moment(this.value.end);
+                }
                 this._initPicker(this._inputStart, optStart, true);
                 this._initPicker(this._inputEnd, optEnd, false);
             }
@@ -105,14 +112,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                     opts.minDate = ui_utils_1.moment(this.minDate);
                 if (this.maxDate)
                     opts.maxDate = ui_utils_1.moment(this.maxDate);
+                if (this.value)
+                    opts.date = ui_utils_1.moment(this.value);
                 this._initPicker(this._inputStart, opts);
-            }
-            if (this.range && this.value && this.value.start !== null && this.value.end !== null) {
-                $(this._inputStart).data('DateTimePicker').date(this.value.start);
-                $(this._inputEnd).data('DateTimePicker').date(this.value.end);
-            }
-            else if (!this.range && this.value) {
-                $(this._inputStart).data('DateTimePicker').date(this.value);
             }
         };
         UIDate.prototype._initPicker = function (el, options, primary) {

@@ -82,7 +82,7 @@ export class UIChosen {
 			this.disabled = this.checked !== true;
 		}
 		else {
-			this.disabled = this.disabled !== true;
+			this.disabled = this.disabled === true;
 		}
 	}
 

@@ -18,8 +18,8 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
     var HomeForm = (function () {
         function HomeForm(_validation) {
             this.content = {
-                'EN': { title: 'Hello World', md: this.md },
-                'AR': { title: 'مرحبا بالعالم', md: this.mdAr }
+                'en': { title: 'Hello World', md: this.md },
+                'ar': { title: 'مرحبا بالعالم', md: this.mdAr }
             };
             this.countries = ui_utils_1._.groupBy(window.countries, 'continent');
             this.md = "\n# Hello World\n\n##### I _Love_ ~~HTML~~ __Markdown__!\n\n---\n\nI can be __BOLD__, I can also be _ITALIC_, or you can ~~DELETE~~ me too!\n\nLook at me I'm a list\n\n* Item\n* Item\n* Item\n\nAnd I'm numbered\n\n1. Item\n2. Item\n3. Item\n\nI can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or show the whole url http://google.com\n\n![Image](images/heart.png) Dont you just love images!\n\n\n";
@@ -38,8 +38,8 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 .isNotEmpty()
                 .isPhone();
             this.content = {
-                'EN': { title: 'Hello World', md: this.md },
-                'AR': { title: 'مرحبا بالعالم', md: this.mdAr }
+                'en': { title: 'Hello World', md: this.md },
+                'ar': { title: 'مرحبا بالعالم', md: this.mdAr }
             };
             this.model = new FormModel();
         }
@@ -55,20 +55,23 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
         HomeForm.prototype.attached = function () {
             this._langSelect
                 .addLanguages(Object.keys(this.content))
-                .setLanguage('AR');
+                .setLanguage(this.lang);
             this.model.isDirty = false;
+        };
+        HomeForm.prototype.deactivate = function () {
+            this.model.dispose();
         };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
             this._langSelect
-                .errorLanguages('AR,EN');
+                .errorLanguages('ar,en');
         };
         __decorate([
-            ui_model_1.watch(), 
+            ui_model_1.watch('ar'), 
             __metadata('design:type', Object)
         ], HomeForm.prototype, "lang");
         __decorate([
-            ui_model_1.watch(), 
+            ui_model_1.watch('rtl'), 
             __metadata('design:type', Object)
         ], HomeForm.prototype, "contentDir");
         HomeForm = __decorate([
@@ -94,8 +97,8 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.list = '4';
             this.opts = 3;
             this.hasLoc = true;
-            this.date = null;
-            this.range = { start: null, end: null };
+            this.date = '2015-12-25T00:00:00.000Z';
+            this.range = { start: '2015-12-25T00:00:00.000Z', end: '2015-12-25T00:00:00.000Z' };
         }
         __decorate([
             ui_model_1.observe(), 

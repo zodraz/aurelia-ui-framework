@@ -108,6 +108,9 @@ export class UIDate {
 		if (this._checkbox) {
 			this.disabled = this.checked !== true;
 		}
+		else {
+			this.disabled = this.disabled === true;
+		}
 	}
 
 	attached() {
@@ -137,19 +140,18 @@ export class UIDate {
 			if (this.maxDate) optStart.maxDate = moment(this.maxDate);
 			if (this.minDate) optEnd.minDate = moment(this.minDate);
 			if (this.maxDate) optEnd.maxDate = moment(this.maxDate);
+			if (this.value && this.value.start && this.value.end) {
+				optStart.date = moment(this.value.start);
+				optEnd.date   = moment(this.value.end);
+			}
 			this._initPicker(this._inputStart, optStart, true);
 			this._initPicker(this._inputEnd, optEnd, false);
 		}
 		else {
 			if (this.minDate) opts.minDate = moment(this.minDate);
 			if (this.maxDate) opts.maxDate = moment(this.maxDate);
+			if (this.value) opts.date = moment(this.value);
 			this._initPicker(this._inputStart, opts);
-		}
-		if (this.range && this.value && this.value.start !== null && this.value.end !== null) {
-			$(this._inputStart).data('DateTimePicker').date(this.value.start);
-			$(this._inputEnd).data('DateTimePicker').date(this.value.end);
-		} else if (!this.range && this.value) {
-			$(this._inputStart).data('DateTimePicker').date(this.value);
 		}
 	}
 
