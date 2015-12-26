@@ -54,20 +54,11 @@ var config = {
 	bundles: {
 		"dist/aurelia-ui-framework": {
 			includes: [
-				'[main*]',
-				'[src/**/*]',
-				'[libs/**/*]',
-				'[framework/**/*]',
+				'main*',
+				'src/**/*',
+				'framework/**/*',
 				'src/**/*.html!text',
-				'framework/**/*.html!text'
-			],
-			options: {
-				inject: true,
-				minify: true
-			}
-		},
-		"dist/aurelia": {
-			includes: [
+				'framework/**/*.html!text',
 				'jspm_packages/**/aurelia-*',
 				'jspm_packages/**/aurelia-validation*/resources/*'
 			],
