@@ -21,13 +21,15 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
             this.logger = aurelia_logging_1.getLogger(this.constructor.name);
             this.logger.debug("Model Initialized");
             this.isDirty = false;
-            var self = this;
-            for (var _i = 0, _a = this._observers; _i < _a.length; _i++) {
-                var prop = _a[_i];
-                this._subscriptions.push(this.observer.propertyObserver(this, prop)
-                    .subscribe(function () {
-                    self.isDirty = true;
-                }));
+            if (this._observers) {
+                var self_1 = this;
+                for (var _i = 0, _a = this._observers; _i < _a.length; _i++) {
+                    var prop = _a[_i];
+                    this._subscriptions.push(this.observer.propertyObserver(this, prop)
+                        .subscribe(function () {
+                        self_1.isDirty = true;
+                    }));
+                }
             }
         }
         UIModel.prototype.get = function () {

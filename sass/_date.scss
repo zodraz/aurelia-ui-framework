@@ -36,6 +36,7 @@
   .bootstrap-datetimepicker-widget {
 	padding: 0;
 	background-color: $base-bg;
+	direction: ltr !important;
 
 	> ul, > ul > li {
 	  padding: 0;

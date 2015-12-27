@@ -189,11 +189,11 @@
   }
 
   &:not(.ui-vertical) .ui-button {
-	border-left-width: 0;
+	@include borderEx(start, width, 0);
 	margin: 2px 0;
 
 	&:first-child {
-	  border-left-width: 1px;
+	  @include borderEx(start, width, 1px);
 	  @include border-left-radius($base-border-radius);
 	}
 	&:last-child {

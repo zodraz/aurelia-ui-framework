@@ -54,7 +54,7 @@
 }
 
 .ui-sidebar {
-  @include flex(0 0 250px);
+  @include flex(0 0 220px);
   overflow: auto;
   position: relative;
   border: {

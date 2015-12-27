@@ -7,7 +7,7 @@
 	<div class="ui-form-control ${focus?'ui-focus':''}">
 		<div class="ui-addon" if.bind="addonIcon || addonText">
 			<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
-			<span if.bind="addonText">${addonText}</span>
+			<span if.bind="addonText" dir.bind="dir">${addonText}</span>
 		</div>
 		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
 			<input class="ui-option-input" type="checkbox" checked.bind="checked"
