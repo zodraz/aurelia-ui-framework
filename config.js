@@ -81,6 +81,7 @@ System.config({
       "framework/libs/marked.js",
       "framework/libs/notify.js",
       "framework/libs/phonelib.js",
+      "framework/libs/textcomplete.js",
       "framework/utils/ui-app-state.js",
       "framework/utils/ui-converters.js",
       "framework/utils/ui-dialog-service.js",
