@@ -4626,7 +4626,7 @@ declare module _ {
 		 */
 		filter<T>(
 			collection: List<T>|Dictionary<T>,
-			predicate: string,
+			predicate: any,
 			thisArg?: any
 		): T[];
 

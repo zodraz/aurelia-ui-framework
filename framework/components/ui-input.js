@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
     var UIInput = (function () {
         function UIInput(element) {
             this.element = element;
@@ -207,7 +207,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 return true;
             })
                 .change(function (e) {
-                var val = $(e.target).val().replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
+                var val = $(e.target).val();
+                if (!_this.autoComplete)
+                    val = val.replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
                 val = _this._format(val);
                 $(e.target).val(val);
                 if (_this._double && $(e.target).hasClass('ui-secondary'))
@@ -221,22 +223,31 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
         };
         UIInput.prototype.autoCompleteChanged = function (newValue) {
-            if (!newValue.push)
+            var _this = this;
+            if (ui_utils_1._.isString(newValue))
                 newValue = newValue.split(',');
             this._input.textcomplete([{
                     words: newValue,
                     match: /\b(\w{2,})$/,
                     search: function (term, callback) {
                         var rx = new RegExp(term, 'gi');
-                        callback($.map(this.words, function (word) {
-                            return rx.test(word) ? word : null;
+                        callback(ui_utils_1._.filter(_this.autoComplete, function (word) {
+                            return rx.test(word);
                         }));
                     },
                     index: 1,
                     replace: function (word) {
+                        if (/\-$/.test(word))
+                            return word;
+                        if (word == 'and')
+                            return '&& ';
+                        if (word == 'or')
+                            return '|| ';
+                        if (word == 'not')
+                            return '!';
                         return word + ' ';
                     }
-                }]);
+                }], { zIndex: 500000, maxCount: 20 });
         };
         UIInput.prototype.disabledChanged = function (newValue) {
             if (!this._input)

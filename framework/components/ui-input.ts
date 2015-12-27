@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
+import {_} from "../utils/ui-utils";
 
 /**
  * @bindable value
@@ -280,8 +281,10 @@ export class UIInput {
 				return true;
 			})
 			.change((e) => {
-				var val = $(e.target).val().replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
-				val     = this._format(val);
+				var val = $(e.target).val();
+				if (!this.autoComplete)
+					val = val.replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
+				val = this._format(val);
 				$(e.target).val(val);
 				if (this._double && $(e.target).hasClass('ui-secondary')) this._value2 = val;
 				else this._value1 = val;
@@ -294,21 +297,25 @@ export class UIInput {
 	}
 
 	autoCompleteChanged(newValue) {
-		if (!newValue.push) newValue = newValue.split(',');
+		if (_.isString(newValue)) newValue = newValue.split(',');
 		this._input.textcomplete([{
 			words: newValue,
 			match: /\b(\w{2,})$/,
-			search: function (term, callback) {
+			search: (term, callback)=> {
 				let rx = new RegExp(term, 'gi');
-				callback($.map(this.words, function (word) {
-					return rx.test(word) ? word : null;
+				callback(_.filter(this.autoComplete as Array<string>, (word)=> {
+					return rx.test(word);
 				}));
 			},
 			index: 1,
-			replace: function (word) {
+			replace: (word)=> {
+				if (/\-$/.test(word)) return word;
+				if (word == 'and') return '&& ';
+				if (word == 'or') return '|| ';
+				if (word == 'not') return '!';
 				return word + ' ';
 			}
-		}]);
+		}], {zIndex: 500000, maxCount: 20});
 	}
 
 	disabledChanged(newValue) {

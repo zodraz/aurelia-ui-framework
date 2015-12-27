@@ -18,6 +18,14 @@ export class HomeForm {
 		'ar': {title: 'مرحبا بالعالم', md: this.mdAr}
 	};
 
+	autoComplete = [
+		"Abarth", "Fiat", "Lancia", "Alfa Romeo", "Bugatti", "Pagani", "Lamborghini", "Ferrari", "Maseratti", "Aprilia",
+		"BMW", "Mercedes Benz", "Opel", "Audi", "Volkswagen", "Porsche", "Renault", "Peugeot", "Citroën", "Ford",
+		"Chevrolet", "Chrysler", "Cadillac", "Dodge", "Lincoln", "Buick", "Jeep", "Tesla", "Nisan", "Toyota", "Honda",
+		"Subaru", "Mitsubishi", "Daihatsu", "Mazda", "Suzuki", "Yamaha", "KIA", "Hyundai", "Aston Martin", "Jaguar", "MINI",
+		"Vauxhall", "Mclaren", "Bentley", "Rolls Royce", "Volvo", "SAAB", "SEAT", "Lotus"
+	];
+
 	languageChanged($event) {
 		this.lang = $event.detail.id + '';
 		if (this.lang != 'null' && !this.content[this.lang]) this.content[this.lang] = {title: '', md: ''};
