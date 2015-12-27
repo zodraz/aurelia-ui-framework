@@ -8,6 +8,7 @@
 .ui-switch-control {
   white-space: nowrap;
   display: inline-block;
+  direction: ltr !important;
 
   .ui-switch {
 	position: relative;

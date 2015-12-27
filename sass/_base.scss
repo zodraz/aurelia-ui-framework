@@ -299,6 +299,15 @@ html, body {
 	left: 4px;
 	right: auto;
   }
+
+  .ui-date .ui-addon .ui-icon:before {
+	left: auto;
+	right: 0.2rem;
+  }
+
+  input[type="tel"] {
+	text-align: end;
+  }
 }
 
 .ui-loading-shim {

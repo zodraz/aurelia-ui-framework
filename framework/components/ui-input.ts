@@ -172,6 +172,7 @@ export class UIInput {
 			this.disabled = this.checked !== true;
 		}
 		if (this._type == 'phone') {
+			this.dir = 'ltr';
 			if (this.value != null && this.value != '') {
 				if (!/^\+/.test(this.value)) this.value = '+' + this.value;
 				this.phoneCountry = PhoneLib.getIso2Code(this.value) || 'US';

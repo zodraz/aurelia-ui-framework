@@ -79,7 +79,7 @@
 	  text-align: start;
 	  font-weight: $font-weight-normal;
 	  padding: $base-padding;
-	  border-left: 3px solid transparent;
+	  @include border(start, 3px solid transparent);
 
 	  .ui-icon {
 		display: inline-block;

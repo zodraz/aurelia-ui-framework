@@ -107,6 +107,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.disabled = this.checked !== true;
             }
             if (this._type == 'phone') {
+                this.dir = 'ltr';
                 if (this.value != null && this.value != '') {
                     if (!/^\+/.test(this.value))
                         this.value = '+' + this.value;

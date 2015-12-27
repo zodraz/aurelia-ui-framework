@@ -15,11 +15,16 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
             this.appState = appState;
             this.dialogService = dialogService;
         }
-        HomeDialogs.prototype.confirm = function () {
+        HomeDialogs.prototype.open = function () {
             this.dialogService.show(my_dialog_1.MyDialog);
         };
         HomeDialogs.prototype.modal = function () {
             this.dialogService.show(my_dialog_1.MyDialog, { modal: true });
+        };
+        HomeDialogs.prototype.confirm = function () {
+            this.appState.notifyConfirm("Are you sure?")
+                .then(function () {
+            });
         };
         HomeDialogs = __decorate([
             aurelia_framework_1.autoinject(), 

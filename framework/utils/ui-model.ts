@@ -33,12 +33,14 @@ export class UIModel {
 		this.logger.debug("Model Initialized");
 		this.isDirty = false;
 
-		let self = this;
-		for (let prop of this._observers) {
-			this._subscriptions.push(this.observer.propertyObserver(this, prop)
-				.subscribe(()=> {
-					self.isDirty = true;
-				}));
+		if (this._observers) {
+			let self = this;
+			for (let prop of this._observers) {
+				this._subscriptions.push(this.observer.propertyObserver(this, prop)
+					.subscribe(()=> {
+						self.isDirty = true;
+					}));
+			}
 		}
 	}
 

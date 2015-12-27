@@ -8,11 +8,17 @@ export class HomeDialogs {
 	constructor(public appState:UIApplicationState, public dialogService:UIDialogService) {
 	}
 
-	confirm() {
+	open() {
 		this.dialogService.show(MyDialog);
 	}
 
 	modal() {
 		this.dialogService.show(MyDialog, {modal: true});
+	}
+
+	confirm() {
+		this.appState.notifyConfirm("Are you sure?")
+		.then(()=>{
+		});
 	}
 }
