@@ -145,7 +145,7 @@ export class FormModel extends UIModel {
 	phoneNumber  = '6347342';
 	phoneCountry = 'ae';
 	phoneExt     = '123';
-	phone        = '';
+	phone        = '+971556347342,123';
 
 	list   = '4';
 	opts   = 3;

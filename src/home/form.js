@@ -93,7 +93,7 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.phoneNumber = '6347342';
             this.phoneCountry = 'ae';
             this.phoneExt = '123';
-            this.phone = '';
+            this.phone = '+971556347342,123';
             this.list = '4';
             this.opts = 3;
             this.hasLoc = true;
