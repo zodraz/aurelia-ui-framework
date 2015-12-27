@@ -114,6 +114,7 @@ export class UIInput {
 	@bindable readonly:boolean   = false;
 	@bindable disabled:boolean   = false;
 	@bindable phoneType:number   = PhoneLib.TYPE.MOBILE;
+	@bindable autoComplete       = null;
 
 	//LATITUDE REGEX  /^-?(90|([0-8]?[0-9]{1,1}(\.[0-9]*)?))$/
 	//LONGITUDE REGEX /^-?(180|(1[0-7][0-9]|[0-9]{0,2})(\.[0-9]*)?)$/
@@ -197,7 +198,7 @@ export class UIInput {
 			this.addonIcon = 'US';
 			if (this.value != null && this.value != '') {
 				if (!/^\+/.test(this.value)) this.value = '+' + this.value;
-				this.addonIcon    = PhoneLib.getIso2Code(this.value) || 'US';
+				this.addonIcon = PhoneLib.getIso2Code(this.value) || 'US';
 			}
 			this._placeholder1 = PhoneLib.getExample('US', this.phoneType, true);
 			this._value1       = this.value;
@@ -286,6 +287,28 @@ export class UIInput {
 				else this._value1 = val;
 				this._processValue();
 			});
+
+		if (this.autoComplete) {
+			this.autoCompleteChanged(this.autoComplete);
+		}
+	}
+
+	autoCompleteChanged(newValue) {
+		if (!newValue.push) newValue = newValue.split(',');
+		this._input.textcomplete([{
+			words: newValue,
+			match: /\b(\w{2,})$/,
+			search: function (term, callback) {
+				let rx = new RegExp(term, 'gi');
+				callback($.map(this.words, function (word) {
+					return rx.test(word) ? word : null;
+				}));
+			},
+			index: 1,
+			replace: function (word) {
+				return word + ' ';
+			}
+		}]);
 	}
 
 	disabledChanged(newValue) {

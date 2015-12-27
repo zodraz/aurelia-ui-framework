@@ -45,6 +45,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.readonly = false;
             this.disabled = false;
             this.phoneType = PhoneLib.TYPE.MOBILE;
+            this.autoComplete = null;
             this.ALPHA = "\\u0041-\\u005a\\u0061-\\u007a\\u00aa\\u00c0-\\u02af\\u0370-\\u0481\\u048a-\\u05ea\\u0621-\\u065e\\u066e-\\u06ef\\u0710-\\u072f\\u074d-\\u07a5\\u07ca-\\u07ea\\u0800-\\u082c\\u0900-\\u0964"
                 + "\\u0981-\\u09e3\\u0a01-\\u0a5e\\u0a81-\\u0ae3\\u0b01-\\u0b63\\u0b82-\\u0bd7\\u0c01-\\u0c63\\u0c82-\\u0ce3\\u0d63\\u0d7a-\\u0e4f\\u0e5a-\\u0ecd\\u0f00-\\u0f1f\\u0f34-\\u103f\\u104c-\\u108f\\u109a-\\u1368"
                 + "\\u1380-\\u17dd\\u17f0-\\u180e\\u1820-\\u1940\\u1950-\\u19c9\\u19e0-\\u1a7f\\u1aa0-\\u1b4b\\u1b80-\\u1baf\\u1c00-\\u1c3f\\u1c5a-\\u1dbf\\u1dd3-\\u1ffe\\u2c00-\\u2dff\\u3041-\\u3243\\ua000-\\ua827"
@@ -215,6 +216,27 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                     _this._value1 = val;
                 _this._processValue();
             });
+            if (this.autoComplete) {
+                this.autoCompleteChanged(this.autoComplete);
+            }
+        };
+        UIInput.prototype.autoCompleteChanged = function (newValue) {
+            if (!newValue.push)
+                newValue = newValue.split(',');
+            this._input.textcomplete([{
+                    words: newValue,
+                    match: /\b(\w{2,})$/,
+                    search: function (term, callback) {
+                        var rx = new RegExp(term, 'gi');
+                        callback($.map(this.words, function (word) {
+                            return rx.test(word) ? word : null;
+                        }));
+                    },
+                    index: 1,
+                    replace: function (word) {
+                        return word + ' ';
+                    }
+                }]);
         };
         UIInput.prototype.disabledChanged = function (newValue) {
             if (!this._input)
@@ -385,6 +407,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', Number)
         ], UIInput.prototype, "phoneType");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIInput.prototype, "autoComplete");
         UIInput = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',

@@ -11,6 +11,7 @@ import './libs/phonelib';
 import './libs/countries';
 import './libs/currencies';
 import './libs/datepicker';
+import './libs/textcomplete';
 import {FrameworkConfiguration} from "aurelia-framework";
 
 export function configure(aurelia:FrameworkConfiguration) {

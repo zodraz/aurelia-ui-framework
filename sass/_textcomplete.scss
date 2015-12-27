@@ -1,0 +1,33 @@
+/* Sample */
+
+.textcomplete-dropdown {
+  background-color: $base-bg;
+  border: 1px solid $base-border-color;
+
+  li {
+	padding: 2px 5px;
+  }
+
+  li:first-child {
+	border-top: none;
+  }
+
+  li:hover, .active {
+	& > a {
+	  color: $primary-text;
+	}
+	background-color: rgba($primary, 0.75);
+  }
+
+  /* SHOULD not modify */
+
+  &.dropdown-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+
+  a:hover {
+	cursor: pointer;
+  }
+}
