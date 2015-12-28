@@ -22,8 +22,13 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
             this.dialogService.show(my_dialog_1.MyDialog, { modal: true });
         };
         HomeDialogs.prototype.confirm = function () {
+            var _this = this;
             this.appState.notifyConfirm("Are you sure?")
                 .then(function () {
+                _this.appState.notifyInfo("YES!!!");
+            })
+                .catch(function () {
+                _this.appState.notifyError("NO!!!");
             });
         };
         HomeDialogs = __decorate([

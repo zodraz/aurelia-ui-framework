@@ -40,7 +40,9 @@ export class UIHttpService {
 						if (response.status == 401) {
 							eventAggregator.publish('Unauthorized', null);
 						}
-						if (response.status != 200) throw Error(response.statusText);
+						if (response.status != 200) {
+							throw Error(response.statusText);
+						}
 						return response;
 					},
 					requestError(error) {

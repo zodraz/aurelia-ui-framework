@@ -10,6 +10,7 @@ import {UIHttpService} from "./ui-http-service";
 import {Validation,ValidationGroup} from "aurelia-validation";
 import {_, Utils} from "./ui-utils";
 import {UIApplicationState} from "./ui-app-state";
+import {UIEvent} from "./ui-event";
 
 @transient()
 export class UIModel {
@@ -35,12 +36,13 @@ export class UIModel {
 
 		if (this._observers) {
 			let self = this;
-			for (let prop of this._observers) {
+			_.forEach(this._observers, prop=> {
 				this._subscriptions.push(this.observer.propertyObserver(this, prop)
 					.subscribe(()=> {
 						self.isDirty = true;
+						UIEvent.broadcast(`${this.constructor.name}:${prop}`, this);
 					}));
-			}
+			});
 		}
 	}
 
@@ -100,12 +102,11 @@ export class UIModel {
 	}
 }
 
-export function observe() {
+export function dirtyCheck() {
 	return function (model, key) {
 		model.addObserver(key);
 	}
 }
-
 
 export function watch(defaultValue?:any) {
 	let observer:BindingEngine = Utils.lazy(BindingEngine);

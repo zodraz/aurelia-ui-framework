@@ -17,7 +17,7 @@
 			<p class="ui-menu-section ui-text-muted">Added</p>
 			<li repeat.for="lang of _selected | sort:'id'" class="ui-row">
 				<a class="ui-col-fill ui-menu-link" click.trigger="_selectLanguage(lang)">
-					<span if.bind="_errorLangs.indexOf(lang.id)>-1" class="ui-text-warning fi-elegant-error6"></span>
+					<span if.bind="_errors.indexOf(lang.id)>-1" class="ui-text-warning fi-elegant-error6"></span>
 					${lang.name}</a>
 				<a if.bind="_selected.length>1" class="ui-col-auto ui-menu-link"
 				   click.trigger="_removeLanguage(lang)"><span
@@ -31,7 +31,7 @@
 					${lang.name}<span style="float:right" class="fi-bigmug-line-add149 ui-text-info"></span></a>
 			</li>
 		</ul>
-		<p if.bind="_errorLangs.length>0" class="ui-text-muted"><span class="ui-text-warning fi-elegant-error6"></span>
-			Language(s) [${_errorLangs.join(', ')}] contains invalid content</p>
+		<p if.bind="_errors.length>0" class="ui-text-muted"><span class="ui-text-warning fi-elegant-error6"></span>
+			Language(s) [${_errors.join(', ')}] contains invalid content</p>
 	</div>
 </template>

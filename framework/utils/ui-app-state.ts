@@ -88,12 +88,28 @@ export class UIApplicationState {
 		this._logger.debug(`notify::${msg}`);
 		$.notify(msg);
 	}
+	notifyInfo(msg) {
+		this._logger.debug(`notifyInfo::${msg}`);
+		$.notify(msg, {
+			className:'info'
+		});
+	}
 
 	notifyPageError(msg) {
 		this._logger.debug(`notifyPage::${msg}`);
 		$('.ui-page-title').notify(msg, {
 			elementPosition: 'b c',
-			arrowShow: false
+			arrowShow: false,
+			autoHide: false
+		});
+	}
+
+	notifyDialogError(dlg, msg) {
+		this._logger.debug(`notifyDialog::${msg}`);
+		$(dlg).find('.ui-header').notify(msg, {
+			elementPosition: 'b c',
+			arrowShow: false,
+			autoHide: false
 		});
 	}
 

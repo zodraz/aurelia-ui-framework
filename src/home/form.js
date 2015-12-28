@@ -14,7 +14,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-model"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_model_1) {
+define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-model", "../../framework/utils/ui-model"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_model_1, ui_model_2) {
     var HomeForm = (function () {
         function HomeForm(_validation) {
             this.content = {
@@ -108,15 +108,15 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.range = { start: '2015-12-25T00:00:00.000Z', end: '2015-12-25T00:00:00.000Z' };
         }
         __decorate([
-            ui_model_1.observe(), 
+            ui_model_2.dirtyCheck(), 
             __metadata('design:type', Object)
         ], FormModel.prototype, "firstName");
         __decorate([
-            ui_model_1.observe(), 
+            ui_model_2.dirtyCheck(), 
             __metadata('design:type', Object)
         ], FormModel.prototype, "lastName");
         __decorate([
-            ui_model_1.observe(), 
+            ui_model_2.dirtyCheck(), 
             __metadata('design:type', Object)
         ], FormModel.prototype, "email");
         FormModel = __decorate([

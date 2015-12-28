@@ -64,11 +64,26 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this._logger.debug("notify::" + msg);
             $.notify(msg);
         };
+        UIApplicationState.prototype.notifyInfo = function (msg) {
+            this._logger.debug("notifyInfo::" + msg);
+            $.notify(msg, {
+                className: 'info'
+            });
+        };
         UIApplicationState.prototype.notifyPageError = function (msg) {
             this._logger.debug("notifyPage::" + msg);
             $('.ui-page-title').notify(msg, {
                 elementPosition: 'b c',
-                arrowShow: false
+                arrowShow: false,
+                autoHide: false
+            });
+        };
+        UIApplicationState.prototype.notifyDialogError = function (dlg, msg) {
+            this._logger.debug("notifyDialog::" + msg);
+            $(dlg).find('.ui-header').notify(msg, {
+                elementPosition: 'b c',
+                arrowShow: false,
+                autoHide: false
             });
         };
         UIApplicationState.prototype.notifyConfirm = function (msg) {

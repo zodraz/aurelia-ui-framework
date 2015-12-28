@@ -33,14 +33,25 @@ export class UILangSelect {
 
 	private _selector;
 	private _menu;
-	private _errorLangs = [];
-	private _selected   = [];
-	private _languages  = [];
+	private _errors;
+	private _selected  = [];
+	private _languages = [];
+
+	@bindable({
+		defaultBindingMode: bindingMode.twoWay
+	})
+	errors = [];
 
 	private _current:any = null;
 
 	constructor(public element:Element) {
 		this._languages = _.clone(UILangSelect.LANGUAGES);
+	}
+
+	errorsChanged(newValue) {
+		this._errors = [];
+		if (newValue || '' != '')
+			this._errors = (newValue.replace(/,$/, '') || '').split(',');
 	}
 
 	addLanguages(newValue) {
@@ -60,11 +71,6 @@ export class UILangSelect {
 		this._current = _.find(this._selected, 'id', newValue);
 		this._selectLanguage(this._current);
 		return this;
-	}
-
-	errorLanguages(langs) {
-		if (langs.push) this._errorLangs = langs;
-		else this._errorLangs = (langs || '').split(',');
 	}
 
 	private _openList() {

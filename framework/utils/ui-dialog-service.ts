@@ -17,7 +17,7 @@ export class UIDialogService {
 	constructor(private container:Container,
 				private compositionEngine:CompositionEngine) {
 		if (!this.dialogContainer) {
-			$('body').append('<div class="ui-dialog-container"></div>');
+			$('.ui-app').append('<div class="ui-dialog-container"></div>');
 			this.dialogContainer = $('body .ui-dialog-container').get(0);
 
 			$(this.dialogContainer)
@@ -160,6 +160,10 @@ export class UIDialogService {
 
 	private moveStart($event) {
 		this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
+		if ($($event.target).closest('.ui-lang-select').length == 0 && !$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
+			$('.ui-dropdown').removeClass('ui-dropdown');
+		}
+
 		if ($($event.target).closest('button').length !== 0) return;
 		if ($event.button != 0) return;
 		if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {

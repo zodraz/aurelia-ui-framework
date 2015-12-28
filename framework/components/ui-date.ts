@@ -189,12 +189,11 @@ export class UIDate {
 
 	private _valueChanged(newValue) {
 		if ($(this._inputStart).data('DateTimePicker')) {
-			if (this.range && newValue && newValue.start && newValue.end) {
-				if (!newValue) newValue = {start: moment(), end: moment()};
+			if (this.range) {
 				$(this._inputStart).data('DateTimePicker').date(newValue.start);
 				$(this._inputEnd).data('DateTimePicker').date(newValue.end);
-			} else if (!this.range && newValue) {
-				$(this._inputStart).data('DateTimePicker').date(newValue);
+			} else if (!this.range) {
+				$(this._inputStart).data('DateTimePicker').date(newValue || null);
 			}
 		}
 	}

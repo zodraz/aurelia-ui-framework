@@ -13,12 +13,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
     var UILangSelect = (function () {
         function UILangSelect(element) {
             this.element = element;
-            this._errorLangs = [];
             this._selected = [];
             this._languages = [];
+            this.errors = [];
             this._current = null;
             this._languages = ui_utils_1._.clone(UILangSelect.LANGUAGES);
         }
+        UILangSelect.prototype.errorsChanged = function (newValue) {
+            this._errors = [];
+            if (newValue || '' != '')
+                this._errors = (newValue.replace(/,$/, '') || '').split(',');
+        };
         UILangSelect.prototype.addLanguages = function (newValue) {
             this._selected = [];
             this._languages = ui_utils_1._.clone(UILangSelect.LANGUAGES);
@@ -37,12 +42,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._current = ui_utils_1._.find(this._selected, 'id', newValue);
             this._selectLanguage(this._current);
             return this;
-        };
-        UILangSelect.prototype.errorLanguages = function (langs) {
-            if (langs.push)
-                this._errorLangs = langs;
-            else
-                this._errorLangs = (langs || '').split(',');
         };
         UILangSelect.prototype._openList = function () {
             var pos = ui_utils_1.Utils.getFloatPosition(this._selector, this._menu);
@@ -89,6 +88,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             { id: 'ch', name: '中文' },
             { id: 'zh', name: '漢語' }
         ];
+        __decorate([
+            aurelia_framework_1.bindable({
+                defaultBindingMode: aurelia_framework_1.bindingMode.twoWay
+            }), 
+            __metadata('design:type', Object)
+        ], UILangSelect.prototype, "errors");
         UILangSelect = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-lang-select'), 

@@ -26,7 +26,6 @@ export class UITabPanel {
 	}
 
 	attached() {
-
 		this.activeTabChanged(this.activeTab);
 	}
 

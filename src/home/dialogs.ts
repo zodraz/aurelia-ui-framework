@@ -19,6 +19,10 @@ export class HomeDialogs {
 	confirm() {
 		this.appState.notifyConfirm("Are you sure?")
 		.then(()=>{
+			this.appState.notifyInfo("YES!!!");
+		})
+		.catch(()=>{
+			this.appState.notifyError("NO!!!");
 		});
 	}
 }

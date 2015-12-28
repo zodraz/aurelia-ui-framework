@@ -63,6 +63,10 @@ export class UIDialog {
 		Object.assign(this._original, this._current);
 	}
 
+	close() {
+		UIEvent.fireEvent('close', this._dialog);
+	}
+
 	remove() {
 		$(this._taskButton).remove();
 		$(this.element).remove();

@@ -302,9 +302,8 @@ export class UIInput {
 			words: newValue,
 			match: /\b(\w{2,})$/,
 			search: (term, callback)=> {
-				let rx = new RegExp(term, 'gi');
 				callback(_.filter(this.autoComplete as Array<string>, (word)=> {
-					return rx.test(word);
+					return eval(`/${term}/gi`).test(word);
 				}));
 			},
 			index: 1,
@@ -315,7 +314,7 @@ export class UIInput {
 				if (word == 'not') return '!';
 				return word + ' ';
 			}
-		}], {zIndex: 500000, maxCount: 20});
+		}], {zIndex: 500000, maxCount: 20, debounce: 200});
 	}
 
 	disabledChanged(newValue) {

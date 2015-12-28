@@ -230,9 +230,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                     words: newValue,
                     match: /\b(\w{2,})$/,
                     search: function (term, callback) {
-                        var rx = new RegExp(term, 'gi');
                         callback(ui_utils_1._.filter(_this.autoComplete, function (word) {
-                            return rx.test(word);
+                            return eval("/" + term + "/gi").test(word);
                         }));
                     },
                     index: 1,
@@ -247,7 +246,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                             return '!';
                         return word + ' ';
                     }
-                }], { zIndex: 500000, maxCount: 20 });
+                }], { zIndex: 500000, maxCount: 20, debounce: 200 });
         };
         UIInput.prototype.disabledChanged = function (newValue) {
             if (!this._input)
