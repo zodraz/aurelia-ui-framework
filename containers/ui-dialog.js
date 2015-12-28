@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"], function (require, exports, aurelia_framework_1, ui_dialog_service_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_dialog_service_1, ui_event_1) {
     var UIDialog = (function () {
         function UIDialog(element, dialogService) {
             this.element = element;
@@ -56,6 +56,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service"]
             }
             $(this.element).css('z-index', 49).removeClass('ui-hidden');
             Object.assign(this._original, this._current);
+        };
+        UIDialog.prototype.close = function () {
+            ui_event_1.UIEvent.fireEvent('close', this._dialog);
         };
         UIDialog.prototype.remove = function () {
             $(this._taskButton).remove();

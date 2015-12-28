@@ -35,8 +35,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                         if (response.status == 401) {
                             eventAggregator.publish('Unauthorized', null);
                         }
-                        if (response.status != 200)
+                        if (response.status != 200) {
                             throw Error(response.statusText);
+                        }
                         return response;
                     },
                     requestError: function (error) {

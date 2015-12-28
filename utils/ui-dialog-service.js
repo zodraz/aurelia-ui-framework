@@ -21,7 +21,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             this._startX = 0;
             this._startY = 0;
             if (!this.dialogContainer) {
-                $('body').append('<div class="ui-dialog-container"></div>');
+                $('.ui-app').append('<div class="ui-dialog-container"></div>');
                 this.dialogContainer = $('body .ui-dialog-container').get(0);
                 $(this.dialogContainer)
                     .on('close', function (e) { return _this.closeDialog(e.originalEvent); })
@@ -134,6 +134,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
         };
         UIDialogService.prototype.moveStart = function ($event) {
             this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
+            if ($($event.target).closest('.ui-lang-select').length == 0 && !$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
+                $('.ui-dropdown').removeClass('ui-dropdown');
+            }
             if ($($event.target).closest('button').length !== 0)
                 return;
             if ($event.button != 0)

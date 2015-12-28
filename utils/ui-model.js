@@ -9,9 +9,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http-service", "aurelia-validation", "./ui-utils"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_http_service_1, aurelia_validation_1, ui_utils_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http-service", "aurelia-validation", "./ui-utils", "./ui-event"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_http_service_1, aurelia_validation_1, ui_utils_1, ui_event_1) {
     var UIModel = (function () {
         function UIModel() {
+            var _this = this;
             this._subscriptions = [];
             this.isDirty = false;
             var _v = ui_utils_1.Utils.lazy(aurelia_validation_1.Validation);
@@ -23,13 +24,13 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
             this.isDirty = false;
             if (this._observers) {
                 var self_1 = this;
-                for (var _i = 0, _a = this._observers; _i < _a.length; _i++) {
-                    var prop = _a[_i];
-                    this._subscriptions.push(this.observer.propertyObserver(this, prop)
+                ui_utils_1._.forEach(this._observers, function (prop) {
+                    _this._subscriptions.push(_this.observer.propertyObserver(_this, prop)
                         .subscribe(function () {
                         self_1.isDirty = true;
+                        ui_event_1.UIEvent.broadcast(_this.constructor.name + ":" + prop, _this);
                     }));
-                }
+                });
             }
         }
         UIModel.prototype.get = function () {
@@ -103,12 +104,12 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-http
         return UIModel;
     })();
     exports.UIModel = UIModel;
-    function observe() {
+    function dirtyCheck() {
         return function (model, key) {
             model.addObserver(key);
         };
     }
-    exports.observe = observe;
+    exports.dirtyCheck = dirtyCheck;
     function watch(defaultValue) {
         var observer = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
         return function (viewModel, key) {

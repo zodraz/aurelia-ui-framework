@@ -150,14 +150,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         };
         UIDate.prototype._valueChanged = function (newValue) {
             if ($(this._inputStart).data('DateTimePicker')) {
-                if (this.range && newValue && newValue.start && newValue.end) {
-                    if (!newValue)
-                        newValue = { start: ui_utils_1.moment(), end: ui_utils_1.moment() };
+                if (this.range) {
                     $(this._inputStart).data('DateTimePicker').date(newValue.start);
                     $(this._inputEnd).data('DateTimePicker').date(newValue.end);
                 }
-                else if (!this.range && newValue) {
-                    $(this._inputStart).data('DateTimePicker').date(newValue);
+                else if (!this.range) {
+                    $(this._inputStart).data('DateTimePicker').date(newValue || null);
                 }
             }
         };
