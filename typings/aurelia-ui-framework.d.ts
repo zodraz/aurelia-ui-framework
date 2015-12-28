@@ -10,7 +10,8 @@ declare module "aurelia-ui-framework" {
 	export var numeral:numeral.Numeral;
 
 	export function watch(defaultValue?:any);
-	export function observe();
+
+	export function dirtyCheck();
 
 	export class UIValidation {}
 	export class AuthInterceptor {}
@@ -122,9 +123,13 @@ declare module "aurelia-ui-framework" {
 		set(key:string, value:any):any;
 
 		// Notifications
+		notifyInfo(msg);
+
 		notifyError(msg);
 
 		notifyPageError(msg);
+
+		notifyDialogError(dlg, msg);
 
 		notifyConfirm(msg):Promise<boolean>;
 
