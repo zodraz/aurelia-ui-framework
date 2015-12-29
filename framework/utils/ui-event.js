@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "aurelia-event-aggregator", "./ui-utils"], function (require, exports, aurelia_event_aggregator_1, ui_utils_1) {
+define(["require", "exports", "./ui-utils", "aurelia-framework", "aurelia-event-aggregator"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_event_aggregator_1) {
     var UIEvent = (function (_super) {
         __extends(UIEvent, _super);
         function UIEvent() {
@@ -33,6 +33,11 @@ define(["require", "exports", "aurelia-event-aggregator", "./ui-utils"], functio
                 element.dispatchEvent(evt);
                 return evt;
             }
+        };
+        UIEvent.observe = function (object, prop) {
+            if (!UIEvent.ob)
+                UIEvent.ob = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
+            return UIEvent.ob.propertyObserver(object, prop);
         };
         UIEvent.broadcast = function (evt, data) {
             if (!UIEvent.ea)

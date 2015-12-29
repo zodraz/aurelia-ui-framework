@@ -65,7 +65,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             $(this._select)
                 .removeAttr('D')
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
         };
         UIList.prototype.readonlyChanged = function (newValue) {
             $(this._select)

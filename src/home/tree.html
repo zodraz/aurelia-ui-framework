@@ -4,16 +4,20 @@
 			<ui-tree checked.trigger="checkChanged($event)" data-model.bind="countries" data-options.bind="options"
 					 view-model.ref="_tree"></ui-tree>
 		</ui-sidebar>
-		<ui-content class="ui-pad-all">
+		<ui-content class="ui-pad-all ui-selectable">
 			<h5>Tree Example</h5>
 			<ui-row>
 				<ui-column fill>
-					<h3>Checked</h3>
+					<div>
+						<h3>Checked</h3>
 
-					<p repeat.for="n of checked.checked">${n}</p>
-					<h3>Partial</h3>
+						<p repeat.for="n of checked.checked">${n}</p>
+					</div>
+					<div>
+						<h3>Partial</h3>
 
-					<p repeat.for="n of checked.partial">${n}</p>
+						<p repeat.for="n of checked.partial">${n}</p>
+					</div>
 				</ui-column>
 				<ui-column fill>
 					<h3>Selection Tree</h3>

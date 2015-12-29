@@ -7,6 +7,7 @@
 import {autoinject, customElement, containerless, bindable, bindingMode, inlineView} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
 import {Format, _} from "../utils/ui-utils";
+import {BindingSignaler} from "aurelia-templating-resources";
 /**
  * @bindable data array model for grid
  * @type {Array<T>}
@@ -48,7 +49,7 @@ export class UIDataGrid {
 
 	@bindable idColumn:string = 'id';
 
-	constructor(public element:Element) {
+	constructor(public element:Element, public signaler:BindingSignaler) {
 	}
 
 	bind() {
@@ -61,6 +62,10 @@ export class UIDataGrid {
 			cols.push(col);
 		});
 		this.columns = _.sortByOrder(cols, ['locked'], ['desc']);
+	}
+
+	reload() {
+		this.signaler.signal('UIDataGrid:Reload');
 	}
 
 	private attached() {
@@ -139,7 +144,7 @@ export class UIDataGrid {
 			case 'number':
 				return Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
 			case 'date':
-				return Format.dateDisplay(newValue+'Z', column.dataFormat || 'DD MMM YYYY hh:mm A');
+				return Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
 			case 'fromnow':
 				return Format.fromNow(newValue);
 			case 'exrate':

@@ -33,14 +33,6 @@ import {UIEvent} from "../utils/ui-event";
 	defaultBindingMode: bindingMode.oneWay
 })
 
-/**
- * TODO: value change functionality missing
- *
- *    1. update value with node on single select mode
- *    2. update value with grouped node ids for checked, partial and unchecked
- *    3. update selection when the value changes from incoming binding
- */
-
 @autoinject()
 @customElement('ui-tree')
 export class UITree {

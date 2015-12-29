@@ -15,35 +15,40 @@ import {UIEvent} from "./ui-event";
 @transient()
 export class UIModel {
 	public logger:Logger;
-	public observer:BindingEngine;
 	public httpClient:UIHttpService;
 	public validation:ValidationGroup;
 
 	private _original:any;
-	private _observers;
-	private _subscriptions = [];
-
-	isDirty = false;
+	private observers = [];
 
 	constructor() {
-		let _v          = Utils.lazy(Validation);
-		this.observer   = Utils.lazy(BindingEngine);
-		this.httpClient = Utils.lazy(UIHttpService);
-		this.validation = _v.on(this, null);
-		this.logger     = getLogger(this.constructor.name);
+		let _v = Utils.lazy(Validation);
+		Object.defineProperty(this, 'httpClient', {
+			value: Utils.lazy(UIHttpService),
+			writable: false,
+			enumerable: false
+		});
+		Object.defineProperty(this, 'validation', {
+			value: _v.on(this, null),
+			writable: false,
+			enumerable: false
+		});
+		Object.defineProperty(this, 'logger', {
+			value: getLogger(this.constructor.name),
+			writable: false,
+			enumerable: false
+		});
+		Object.defineProperty(this, 'observers', {
+			value: [],
+			writable: true,
+			enumerable: false
+		});
+		Object.defineProperty(this, '_original', {
+			value: {},
+			writable: true,
+			enumerable: false
+		});
 		this.logger.debug("Model Initialized");
-		this.isDirty = false;
-
-		if (this._observers) {
-			let self = this;
-			_.forEach(this._observers, prop=> {
-				this._subscriptions.push(this.observer.propertyObserver(this, prop)
-					.subscribe(()=> {
-						self.isDirty = true;
-						UIEvent.broadcast(`${this.constructor.name}:${prop}`, this);
-					}));
-			});
-		}
 	}
 
 	get(...rest) {
@@ -66,63 +71,61 @@ export class UIModel {
 		return this.validation.validate();
 	}
 
+	dispose() {
+		this.logger.debug("Model Disposing");
+		while (this.observers && this.observers.length)
+			this.observers.pop().dispose();
+	}
+
 	deserialize(json) {
-		this._original = _.clone(json, true);
-		_.forEach(json, (v, k)=> {
-			this[k] = _.isString(v) ? _.trim(v) : v;
-		});
-		this.isDirty = false;
+		this._original = json;
+		Object.keys(this._original)
+			.forEach((key) => {
+				this[key] = this._original[key];
+			});
 	}
 
 	serialize() {
-		throw new Error('Not implemented [serialize]');
-	}
-
-	addObserver(o) {
-		if (!this._observers) this._observers = [];
-		this._observers.push(o);
-	}
-
-	dispose() {
-		while (this._subscriptions && this._subscriptions.length) {
-			this._subscriptions.pop().dispose();
+		try {
+			return this._serializeObject(this);
+		}
+		catch (e) {
+			throw new Error(`Error serializing object [${this.constructor.name}]`);
 		}
 	}
 
+	_serializeObject(o) {
+		let _pojo = {};
+		Object.keys(o)
+			.forEach((key) => {
+				if (key !== 'undefined' && !/^__/.test(key)) {
+					if (_.isObject(o[key])) {
+						_pojo[key] = this._serializeObject(o[key])
+					}
+					else {
+						_pojo[key] = o[key] || null;
+					}
+				}
+			});
+		return _pojo;
+	}
+
+	isDirty() {
+		return Object.keys(this._original)
+			.every((key) => this.hasOwnProperty(key) && (this[key] === this._original[key]));
+	}
+
 	saveChanges() {
-		_.forEach(this._original, (v, k)=> {
-			this._original[k] = this[k];
-		});
+		Object.keys(this._original)
+			.forEach((key) => {
+				this._original[key] = this[key];
+			});
 	}
 
 	discardChanges() {
-		_.forEach(this._original, (v, k)=> {
-			this[k] = _.isString(v) ? _.trim(v) : v;
-		});
-	}
-}
-
-export function dirtyCheck() {
-	return function (model, key) {
-		model.addObserver(key);
-	}
-}
-
-export function watch(defaultValue?:any) {
-	let observer:BindingEngine = Utils.lazy(BindingEngine);
-	return function (viewModel, key) {
-		if (!viewModel._subscriptions) viewModel._subscriptions = [];
-		let v          = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
-		viewModel[key] = v || defaultValue;
-		viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
-			.subscribe(()=> {
-				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
-			}));
-
-		viewModel.unbind = (()=> {
-			while (viewModel._subscriptions.length) {
-				viewModel._subscriptions.pop().dispose();
-			}
-		});
+		Object.keys(this._original)
+			.forEach((key) => {
+				this[key] = this._original[key];
+			});
 	}
 }

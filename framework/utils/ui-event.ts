@@ -4,9 +4,9 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {EventAggregator} from "aurelia-event-aggregator";
 import {Utils} from "./ui-utils";
-import {Subscription} from "aurelia-event-aggregator";
+import {BindingEngine} from "aurelia-framework";
+import {EventAggregator, Subscription} from "aurelia-event-aggregator";
 
 export class UIEvent extends CustomEvent {
 	private _value:any;
@@ -36,6 +36,12 @@ export class UIEvent extends CustomEvent {
 
 
 	static ea;
+	static ob;
+
+	static observe(object, prop) {
+		if (!UIEvent.ob) UIEvent.ob = Utils.lazy(BindingEngine);
+		return UIEvent.ob.propertyObserver(object, prop);
+	}
 
 	static broadcast(evt, data) {
 		if (!UIEvent.ea) UIEvent.ea = Utils.lazy(EventAggregator);

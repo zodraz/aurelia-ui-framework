@@ -48,14 +48,13 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
     exports.UIDwrService = ui_dwr_service_1.UIDwrService;
     exports.UILangSelect = ui_lang_select_1.UILangSelect;
     exports.UIModel = ui_model_1.UIModel;
-    exports.watch = ui_model_1.watch;
-    exports.dirtyCheck = ui_model_1.dirtyCheck;
     exports.UITreeModel = ui_tree_models_1.UITreeModel;
     exports._ = ui_utils_1._;
     exports.moment = ui_utils_1.moment;
     exports.numeral = ui_utils_1.numeral;
     exports.Format = ui_utils_1.Format;
     exports.Utils = ui_utils_1.Utils;
+    exports.watch = ui_utils_1.watch;
     exports.UIValidation = ui_validations_1.UIValidation;
     exports.UIDialogService = ui_dialog_service_1.UIDialogService;
 });

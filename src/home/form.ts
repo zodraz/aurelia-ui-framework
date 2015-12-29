@@ -1,9 +1,8 @@
-import {_, moment} from "../../framework/utils/ui-utils";
+import {_, moment, watch} from "../../framework/utils/ui-utils";
 import {autoinject, transient} from "aurelia-framework";
 import {activationStrategy} from "aurelia-router";
 import {ensure, Validation} from "aurelia-validation";
-import {UIModel, watch} from "../../framework/utils/ui-model";
-import {dirtyCheck} from "../../framework/utils/ui-model";
+import {UIModel} from "../../framework/utils/ui-model";
 
 @autoinject()
 export class HomeForm {
@@ -141,11 +140,8 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 
 @transient()
 export class FormModel extends UIModel {
-	@dirtyCheck()
 	firstName = 'Adarsh';
-	@dirtyCheck()
 	lastName  = 'Pastakia';
-	@dirtyCheck()
 	email     = 'adarshpastakia@outlook.com';
 
 	pos = '25.4,76.5';

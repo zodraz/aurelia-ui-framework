@@ -178,12 +178,12 @@ export class UIDate {
 		$(this._inputStart)
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 		if (this._inputEnd) {
 			$(this._inputEnd)
 				.removeAttr('D')
 				.removeAttr('disabled')
-				.attr(newValue !== false ? 'disabled' : 'D', '');
+				.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 		}
 	}
 

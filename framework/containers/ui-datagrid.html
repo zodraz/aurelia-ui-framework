@@ -27,10 +27,10 @@
 					</div>
 
 					<div class="selectable" if.bind="!col.button && !col.link">
-						 <span innerHTML.bind="format(model[col.dataId], col, model)"></span>&nbsp;</div>
+						 <span innerHTML.bind="format(model[col.dataId], col, model) & signal:'UIDataGrid:Reload'"></span>&nbsp;</div>
 
 					<div if.bind="col.link"><a click.trigger="linkClicked($event, col.dataId, model)"
-											   innerHTML.bind="format(model[col.dataId], col, model)"></a></div>
+											   innerHTML.bind="format(model[col.dataId], col, model) & signal:'UIDataGrid:Reload'"></a></div>
 
 				</td>
 				<td style="min-width: 20px;">
@@ -74,7 +74,7 @@
 					class="${col.locked ? 'sticky':''} ${isLastLocked(col.locked, $index)?'last-of-type':''} ${col.cls}"
 					data-col="${$index}"
 					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}">
-					<div innerHTML.bind="summary(col)"></div>
+					<div innerHTML.bind="summary(col) & signal:'UIDataGrid:Reload'"></div>
 				</td>
 				<td style="min-width: 20px;">
 					<div>&nbsp;</div>

@@ -1,7 +1,7 @@
 <template>
 	<ui-tab-panel>
 		<ui-tab label="Usage" class="ui-pad-all">
-			<div class="ui-pad-all">
+			<div class="ui-pad-all ui-selectable">
 				This UITab has been composed using the following:
 				<ul>
 					<li><strong>Markdown</strong>: a simple div with innerHTML binding using the MarkdownConverter<br/>
@@ -27,7 +27,7 @@
 			</div>
 		</ui-tab>
 		<ui-tab label="Markdown">
-			<div innerhtml.bind="md | markdown" class="ui-markdown"></div>
+			<div innerhtml.bind="md | markdown" class="ui-markdown ui-selectable"></div>
 		</ui-tab>
 		<ui-tab label="DataGrid">
 			<compose view-model="./datagrid"></compose>

@@ -51,7 +51,7 @@ export class UILangSelect {
 	errorsChanged(newValue) {
 		this._errors = [];
 		if (newValue || '' != '')
-			this._errors = (newValue.replace(/,$/, '') || '').split(',');
+			this._errors = (newValue || '').replace(/,$/, '').split(',');
 	}
 
 	addLanguages(newValue) {

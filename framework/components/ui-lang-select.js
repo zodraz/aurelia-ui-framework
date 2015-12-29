@@ -22,7 +22,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         UILangSelect.prototype.errorsChanged = function (newValue) {
             this._errors = [];
             if (newValue || '' != '')
-                this._errors = (newValue.replace(/,$/, '') || '').split(',');
+                this._errors = (newValue || '').replace(/,$/, '').split(',');
         };
         UILangSelect.prototype.addLanguages = function (newValue) {
             this._selected = [];

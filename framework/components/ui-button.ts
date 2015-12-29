@@ -88,7 +88,7 @@ export class UIButton {
 		else this._label = $(this._temp).text();
 		$(this._temp).remove();
 		$(this.element)
-			.attr(this.disabled !== false ? 'disabled' : 'x', '');
+			.attr(this.disabled !== false ? 'disabled' : 'D', '');
 	}
 
 	labelChanged(newValue) {
@@ -97,7 +97,9 @@ export class UIButton {
 
 	disabledChanged(newValue) {
 		$(this.element)
-			.attr(newValue !== false ? 'disabled' : 'x', '');
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	private _attachIcon() {

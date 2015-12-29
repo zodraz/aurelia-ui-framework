@@ -9,10 +9,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils", "aurelia-templating-resources"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1, aurelia_templating_resources_1) {
     var UIDataGrid = (function () {
-        function UIDataGrid(element) {
+        function UIDataGrid(element, signaler) {
             this.element = element;
+            this.signaler = signaler;
             this.columns = [];
             this.summaryRow = false;
             this.isProcessing = false;
@@ -33,6 +34,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 cols.push(col);
             });
             this.columns = ui_utils_1._.sortByOrder(cols, ['locked'], ['desc']);
+        };
+        UIDataGrid.prototype.reload = function () {
+            this.signaler.signal('UIDataGrid:Reload');
         };
         UIDataGrid.prototype.attached = function () {
             var w = 0;
@@ -106,7 +110,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 case 'number':
                     return ui_utils_1.Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
                 case 'date':
-                    return ui_utils_1.Format.dateDisplay(newValue + 'Z', column.dataFormat || 'DD MMM YYYY hh:mm A');
+                    return ui_utils_1.Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
                 case 'fromnow':
                     return ui_utils_1.Format.fromNow(newValue);
                 case 'exrate':
@@ -197,7 +201,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             }),
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-data-grid'), 
-            __metadata('design:paramtypes', [Element])
+            __metadata('design:paramtypes', [Element, aurelia_templating_resources_1.BindingSignaler])
         ], UIDataGrid);
         return UIDataGrid;
     })();

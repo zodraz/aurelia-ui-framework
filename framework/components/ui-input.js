@@ -132,7 +132,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._value1 = this.value;
                 this._processValue();
             }
-            else if (this.value) {
+            else if (this.value !== null) {
                 this._valueChanged(this.value);
                 this._processValue();
             }
@@ -254,7 +254,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._input
                 .removeAttr('D')
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
         };
         UIInput.prototype.readonlyChanged = function (newValue) {
             if (!this._input)
@@ -292,7 +292,15 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._ignorechange = false;
             }
             else {
-                _a = (newValue + '' || '').split(','), this._value1 = _a[0], this._value2 = _a[1];
+                if (newValue === null || newValue === undefined)
+                    newValue = '';
+                try {
+                    _a = (newValue + '').split(','), this._value1 = _a[0], this._value2 = _a[1];
+                }
+                catch (e) {
+                    this._value1 = '';
+                    this._value2 = '';
+                }
                 this._value1 = this._format(this._value1 || '');
                 this._value2 = this._format(this._value2 || '');
             }

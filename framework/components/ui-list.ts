@@ -92,7 +92,7 @@ export class UIList {
 		$(this._select)
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {

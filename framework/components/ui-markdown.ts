@@ -18,7 +18,6 @@ import {UIInput} from "./ui-input";
 })
 
 @autoinject()
-@containerless()
 @customElement('ui-markdown')
 export class UIMarkdown {
 	private _id;

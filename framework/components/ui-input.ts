@@ -205,7 +205,7 @@ export class UIInput {
 			this._value1       = this.value;
 			this._processValue();
 		}
-		else if (this.value) {
+		else if (this.value !== null) {
 			this._valueChanged(this.value);
 			this._processValue();
 		}
@@ -322,7 +322,7 @@ export class UIInput {
 		this._input
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
@@ -363,9 +363,14 @@ export class UIInput {
 			this._ignorechange = false;
 		}
 		else {
-			[this._value1, this._value2] = (newValue + '' || '').split(',');
-			this._value1                 = this._format(this._value1 || '');
-			this._value2                 = this._format(this._value2 || '');
+			if (newValue === null || newValue === undefined) newValue = '';
+			try {[this._value1, this._value2] = (newValue + '').split(',');}
+			catch (e) {
+				this._value1 = '';
+				this._value2 = '';
+			}
+			this._value1 = this._format(this._value1 || '');
+			this._value2 = this._format(this._value2 || '');
 		}
 		$(this._inputGroup).find('input.ui-primary')[this._value1 !== '' ? 'addClass' : 'removeClass']('x');
 		$(this._inputGroup).find('input.ui-secondary')[this._value2 !== '' ? 'addClass' : 'removeClass']('x');

@@ -7,7 +7,7 @@
 import * as ld from "lodash";
 import * as mm from "moment";
 import * as nm from "numeral";
-import {Lazy, Optional} from "aurelia-framework";
+import {Lazy, Optional, BindingEngine} from "aurelia-framework";
 import {Container} from "aurelia-dependency-injection";
 
 
@@ -143,7 +143,12 @@ export module Format {
 
 	export function dateISO(value:any) {
 		if (!moment(value || null).isValid()) return null;
-		return moment(value).utc().toISOString();
+		return moment(value).toISOString();
+	}
+
+	export function dateGMT(value:any) {
+		if (!moment(value || null).isValid()) return null;
+		return moment(value).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
 	}
 
 	export function dateOracle(value:any) {
@@ -185,5 +190,25 @@ export module Format {
 		if (isNaN(parseFloat(value))) return ' ';
 		if (parseFloat(value || 0) <= 0) return ' ';
 		return numberDisplay(1 / parseFloat(value), '0.0000a') + '/$';
+	}
+}
+
+
+export function watch(defaultValue?:any) {
+	let observer:BindingEngine = Utils.lazy(BindingEngine);
+	return function (viewModel, key) {
+		if (!viewModel._subscriptions) viewModel._subscriptions = [];
+		let v          = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
+		viewModel[key] = v || defaultValue;
+		viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
+			.subscribe(()=> {
+				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
+			}));
+
+		viewModel.unbind = (()=> {
+			while (viewModel._subscriptions.length) {
+				viewModel._subscriptions.pop().dispose();
+			}
+		});
 	}
 }
