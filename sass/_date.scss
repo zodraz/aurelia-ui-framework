@@ -57,9 +57,9 @@
 		color: $primary-text;
 		border: 1px solid $primary;
 		border-radius: $base-border-radius;
-		background: linear-gradient(top, lighten($primary, 25%), lighten($primary, 20%));
+		background: linear-gradient(top, shade($primary, 25%), shade($primary, 20%));
 		&:hover {
-		  background: linear-gradient(top, lighten($primary, 15%), lighten($primary, 10%));
+		  background: linear-gradient(top, shade($primary, 15%), shade($primary, 10%));
 		}
 		&:active {
 		  @include box-shadow(0 0 2px 0 #000 inset);

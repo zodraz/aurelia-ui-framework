@@ -45,7 +45,7 @@
 
   &:focus {
 	border-color: $primary;
-	@include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 #eee inset);
+	@include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
   }
 }
 
@@ -60,7 +60,7 @@
 	}
 	.ui-list-input:focus ~ .ui-list-container {
 	  border-color: rgba($input-focus-color, 0.85);
-	  @include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 #eee inset);
+	  @include box-shadow(0 -3px 0 0 $input-focus-color inset, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
 	}
 	.ui-list-container {
 	  $item-height: 26px;
@@ -72,7 +72,7 @@
 
 	  &:hover {
 		border-color: rgba($input-focus-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 #eee inset);
+		@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
 	  }
 
 	  &:nth-child(2) {
@@ -118,12 +118,12 @@
 	&.ui-valid {
 	  .ui-list-input:focus ~ .ui-list-container {
 		border-color: $input-valid-color;
-		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 #eee inset);
+		@include box-shadow(0 -3px 0 0 $input-valid-color inset, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
 	  }
 	  .ui-list-container {
 		&:hover {
 		  border-color: $input-valid-color;
-		  @include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 #eee inset);
+		  @include box-shadow(0 0 4px 0 $input-valid-color, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
 		}
 	  }
 	}
@@ -132,12 +132,12 @@
   &.ui-invalid {
 	.ui-list-input:focus ~ .ui-list-container {
 	  border-color: $input-invalid-color;
-	  @include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 #eee inset);
+	  @include box-shadow(0 -3px 0 0 $input-invalid-color inset, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
 	}
 	.ui-list-container {
 	  &:hover {
 		border-color: $input-invalid-color;
-		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 #eee inset);
+		@include box-shadow(0 0 4px 0 $input-invalid-color, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
 	  }
 	}
   }
@@ -149,7 +149,7 @@
 	line-height: 1.4;
 
 	box-shadow: none !important;
-	background: white !important;
+	background: $input-bg !important;
 	border: 1px solid $input-border !important;
 
 	&.ui-dropdown {

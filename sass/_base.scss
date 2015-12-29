@@ -47,7 +47,7 @@ html, body {
   @include position(absolute, 0);
   @include transition(opacity 1s);
   @include box-shadow(0 0 5px 0 #333);
-  background: #fff image_url("page-loader.gif") no-repeat center center;
+  background: if($dark-theme, $black-olive, $white) image_url("page-loader.gif") no-repeat center center;
 
   &.animate {
 	background: #fff;
@@ -161,13 +161,15 @@ html, body {
 
 	.ui-win-button {
 	  height: 24px;
-	  line-height: 22px;
+	  line-height: 1.2rem;
 	  font-size: 1rem;
 	  width: 80px;
 	  @include text-truncate();
 	  border-radius: $base-border-radius;
 	  border: 1px solid shade($base-bg, 40%);
-	  background: linear-gradient(top, shade($base-bg, 4%), shade($base-bg, 8%));
+	  background: linear-gradient(top,
+			  if($dark-theme, tint($base-bg, 4%), shade($base-bg, 4%)),
+			  if($dark-theme, tint($base-bg, 8%), shade($base-bg, 8%)));
 
 	  &.ui-active {
 		background: shade($base-bg, 10%);

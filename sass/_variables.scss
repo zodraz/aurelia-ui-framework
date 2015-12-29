@@ -8,8 +8,8 @@
 
 $dark-theme: false !default;
 
-$primary: $amethyst !default;
-$secondary: $snow !default;
+$primary: shade($cerulean, 20%) !default;
+$secondary: if($dark-theme, $arsenic, $snow) !default;
 
 $primary-text: $coconut !default;
 $secondary-text: $primary !default;
@@ -19,15 +19,13 @@ $danger: $pastel-red !default;
 $success: $pastel-green !default;
 $warning: $pastel-orange !default;
 
-$toolbar-bg: $baby-powder !default;
-
 $base-bg: if($dark-theme, $outer-space, $coconut) !default;
 $base-text: if($dark-theme, $coconut, $black-olive) !default;
 $base-bg-image: if($dark-theme, 'back/black_linen_v1.png', 'back/white_linen.png') !default;
 
 $base-border-radius: 1px !default;
-$base-border-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
-$base-shadow-color: if($dark-theme, $leather-jacket, $ash-gray) !default;
+$base-border-color: if($dark-theme, $dark-slate-gray, $ash-gray) !default;
+$base-shadow-color: if($dark-theme, $charcoal, $ash-gray) !default;
 
 $base-font-size: 0.9rem !default;
 $base-line-height: 1.1 !default;
@@ -56,6 +54,8 @@ $app-menu-bg: $arsenic !default;
 $app-menu-text: $isabelline !default;
 $app-menu-active-bg: $black-coral !default;
 $app-menu-active-text: $coconut !default;
+
+$toolbar-bg: shade($base-bg, 2%) !default;
 
 // TYPOGRAPHY
 $font-weight-normal: 400 !default;
@@ -124,9 +124,9 @@ $input-disabled-bg: darken($input-bg, 10%) !default;
 
 $input-hilight-valid: false !default;
 
-$input-option-color: $charcoal-gray !default;
+$input-option-color: if($dark-theme, $ash-gray, $charcoal-gray) !default;
 $input-option-color-focus: $input-focus-color !default;
-$input-option-color-disabled: $ash-gray !default;
+$input-option-color-disabled: if($dark-theme, $charcoal-gray, $ash-gray) !default;
 
 // DATE
 $date-active-bg: $primary !default;
@@ -138,8 +138,8 @@ $date-next-text: if($dark-theme, $ash-gray, $smoke) !default;
 $table-bg: $base-bg !default;
 $table-text: $base-text !default;
 $table-alt-bg: shade($base-bg, 4%) !default;
-$table-hover-bg: rgba($primary, 0.15) !default;
-$table-active-bg: rgba($primary, 0.25) !default;
+$table-hover-bg: if($dark-theme, shade($primary, 50%), tint($primary, 75%)) !default;
+$table-active-bg: if($dark-theme, shade($primary, 75%), tint($primary, 50%)) !default;
 
 // NOTIFY
 $notify-info-bg: tint($info, 90%) !default;

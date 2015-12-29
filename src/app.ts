@@ -63,4 +63,10 @@ export class App {
 		$event.preventDefault();
 		document.body.dir = document.body.dir == 'ltr' ? 'rtl' : 'ltr';
 	}
+
+	theme($event) {
+		$event.preventDefault();
+		let el:any = document.getElementById('baseStyle');
+		el.href    = el.href.indexOf('app.css') > 0 ? 'styles/app-dark.css' : 'styles/app.css';
+	}
 }

@@ -15,7 +15,7 @@ import {UIValidation} from "./framework/utils/ui-validations";
 export function configure(aurelia:Aurelia) {
 	aurelia.use
 		.standardConfiguration()
-		.developmentLogging()
+		//.developmentLogging()
 		.feature('framework')
 		.plugin('aurelia-validation', (config) => {
 			config.useViewStrategy(new UIValidation());

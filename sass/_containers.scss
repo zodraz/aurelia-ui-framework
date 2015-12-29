@@ -93,8 +93,8 @@
 	line-height: 1;
 	opacity: 0.5;
 	padding: 3px;
-	color: $black-olive;
-	text-shadow: 1px 0 0 $white;
+	color: if($dark-theme, $spanish-gray, $black-olive);
+	text-shadow: 1px 0 0 if($dark-theme, $black, $white);
 	&:hover {
 	  opacity: 0.75;
 	}
@@ -149,7 +149,7 @@
 .ui-toolbar {
   @include flex-row($align: center, $justify: flex-end, $wrap: false);
   @include flex(0 0 auto);
-  background-color: shade($base-bg, 2%);
+  background-color: $toolbar-bg;
   border-bottom: 1px solid rgba($base-border-color, 0.5);
   .ui-button {
 	margin: 3px 5px;

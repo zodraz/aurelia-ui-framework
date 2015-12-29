@@ -18,6 +18,15 @@
 	  }
 	}
 
+	li {
+	  color: $input-text;
+	}
+
+	li.no-results {
+	  color: $placeholder-color;
+	  background-color: $input-bg;
+	}
+
 	li.highlighted {
 	  color: $primary-text;
 	  font-weight: $font-weight-strong;
@@ -40,6 +49,7 @@
 	  //}
 
 	  .chosen-drop {
+		color: $input-text;
 		background-color: $input-bg;
 
 		.group-result {
@@ -55,6 +65,7 @@
 			style: solid;
 			color: $input-border;
 		  }
+		  color: $input-text;
 		  border-radius: $base-border-radius;
 		  &:focus {
 			border-color: $input-focus-color;
@@ -129,7 +140,7 @@
 		  content: '\00D7';
 		  font-size: 1.2rem;
 		  color: $text-muted;
-		  text-shadow: 0 1px 0 #fff;
+		  text-shadow: 0 1px 0 if($dark-theme, #000, #fff);
 		}
 	  }
 	}
@@ -138,7 +149,7 @@
 	  .chosen-choices {
 		line-height: 1;
 		padding: 0;
-		background-color: $input-bg;
+		background: linear-gradient(top, $input-bg, shade($input-bg, 2%));
 		border: none;
 		border-radius: inherit;
 		box-shadow: none;
@@ -154,7 +165,7 @@
 		  @include flex(0 0 auto);
 		  border: 1px solid $input-border;
 		  border-radius: $base-border-radius;
-		  background: linear-gradient(top, $input-bg, shade($input-bg, 5%));
+		  background: linear-gradient(top, shade($input-bg, 5%), shade($input-bg, 15%));
 		  .search-choice-close {
 			top: 2px;
 			right: 2px;
@@ -165,7 +176,7 @@
 			content: '\00D7';
 			font-size: 1.2rem;
 			color: $text-muted;
-			text-shadow: 0 1px 0 #fff;
+			text-shadow: 0 1px 0 if($dark-theme, #000, #fff);
 		  }
 		}
 		li.search-field {
@@ -174,8 +185,12 @@
 			line-height: 1;
 			margin: 2px 0 2px 5px;
 			min-width: 60px;
-			color: $placeholder-color;
+			color: $input-text;
 			font-family: $input-font-family;
+
+			&.default {
+			  color: $placeholder-color;
+			}
 		  }
 		  float: none;
 		  @include flex(0 0 auto);

@@ -64,6 +64,11 @@ define(["require", "exports", "aurelia-framework", "../framework/utils/ui-app-st
             $event.preventDefault();
             document.body.dir = document.body.dir == 'ltr' ? 'rtl' : 'ltr';
         };
+        App.prototype.theme = function ($event) {
+            $event.preventDefault();
+            var el = document.getElementById('baseStyle');
+            el.href = el.href.indexOf('app.css') > 0 ? 'styles/app-dark.css' : 'styles/app.css';
+        };
         App = __decorate([
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])
