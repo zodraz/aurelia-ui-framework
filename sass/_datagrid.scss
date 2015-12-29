@@ -50,7 +50,7 @@
 	table-layout: auto;
 
 	colgroup > col {
-	  border-right: 1px solid $baby-powder;
+	  border-right: 1px solid if($dark-theme, $leather-jacket, $baby-powder);
 	}
 
 	td {

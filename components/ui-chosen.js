@@ -80,7 +80,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .change(function () {
                 var v = $(_this._select).val();
                 _this.value = (_this._multiple ? (v || ['']).join(',') : v);
-                ui_event_1.UIEvent.fireEvent('change', _this.element, _this._select.options[_this._select.selectedIndex].model || _this.value);
+                var model = _this.value;
+                if (!_this._multiple) {
+                    try {
+                        model = _this._select.options[_this._select.selectedIndex].model;
+                    }
+                    catch (e) { }
+                }
+                ui_event_1.UIEvent.fireEvent('change', _this.element, model);
             });
             $(this._options).remove();
         };
