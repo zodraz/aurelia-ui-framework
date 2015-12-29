@@ -11,8 +11,6 @@ declare module "aurelia-ui-framework" {
 
 	export function watch(defaultValue?:any);
 
-	export function dirtyCheck();
-
 	export class UIValidation {}
 	export class AuthInterceptor {}
 	export class KeysValueConverter {}
@@ -31,6 +29,8 @@ declare module "aurelia-ui-framework" {
 		value:any;
 
 		static fireEvent(event:string, element:EventTarget, data?:any, source?:Element);
+
+		static observe(object, prop);
 
 		static broadcast(evt:string, data?:any);
 
@@ -70,6 +70,7 @@ declare module "aurelia-ui-framework" {
 		logger:Logger;
 		httpClient:UIHttpService;
 		validation:ValidationGroup;
+		observers:any;
 
 		get();
 
@@ -82,6 +83,8 @@ declare module "aurelia-ui-framework" {
 		deserialize(json:any);
 
 		serialize():any;
+
+		saveChanges();
 
 		discardChanges();
 
@@ -201,6 +204,8 @@ declare module "aurelia-ui-framework" {
 		export function dateDisplay(value:any, format?:string);
 
 		export function dateISO(value:any);
+
+		export function dateGMT(value:any);
 
 		export function dateOracle(value:any);
 
