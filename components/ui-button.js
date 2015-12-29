@@ -89,14 +89,16 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._label = $(this._temp).text();
             $(this._temp).remove();
             $(this.element)
-                .attr(this.disabled !== false ? 'disabled' : 'x', '');
+                .attr(this.disabled !== false ? 'disabled' : 'D', '');
         };
         UIButton.prototype.labelChanged = function (newValue) {
             this._label = newValue;
         };
         UIButton.prototype.disabledChanged = function (newValue) {
             $(this.element)
-                .attr(newValue !== false ? 'disabled' : 'x', '');
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIButton.prototype._attachIcon = function () {
             if (!this._iconEl) {

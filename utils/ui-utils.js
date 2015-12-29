@@ -125,9 +125,15 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         function dateISO(value) {
             if (!exports.moment(value || null).isValid())
                 return null;
-            return exports.moment(value).utc().toISOString();
+            return exports.moment(value).toISOString();
         }
         Format.dateISO = dateISO;
+        function dateGMT(value) {
+            if (!exports.moment(value || null).isValid())
+                return null;
+            return exports.moment(value).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+        }
+        Format.dateGMT = dateGMT;
         function dateOracle(value) {
             if (!exports.moment(value || null).isValid())
                 return null;
@@ -177,4 +183,23 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         }
         Format.exRate = exRate;
     })(Format = exports.Format || (exports.Format = {}));
+    function watch(defaultValue) {
+        var observer = Utils.lazy(aurelia_framework_1.BindingEngine);
+        return function (viewModel, key) {
+            if (!viewModel._subscriptions)
+                viewModel._subscriptions = [];
+            var v = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
+            viewModel[key] = v || defaultValue;
+            viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
+                .subscribe(function () {
+                sessionStorage.setItem(viewModel.constructor.name + ":" + key, viewModel[key]);
+            }));
+            viewModel.unbind = (function () {
+                while (viewModel._subscriptions.length) {
+                    viewModel._subscriptions.pop().dispose();
+                }
+            });
+        };
+    }
+    exports.watch = watch;
 });

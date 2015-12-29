@@ -27,24 +27,23 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIForm.prototype.busyChanged = function (newValue) {
             try {
-                $(this.element).find('input, select, textarea, button')
-                    .removeAttr('disabled')
-                    .attr(newValue === true ? 'disabled' : '', '');
+                $(this.element).find('ui-input, ui-chosen, ui-markdown, ui-button, ui-date, ui-list, ui-option, ui-switch')
+                    .each(function (i, e) {
+                    if (newValue === true) {
+                        $(e).find('input,select,button,textarea').removeAttr('D')
+                            .removeAttr('disabled')
+                            .attr('disabled', '');
+                    }
+                    else if (!e.au.controller.viewModel.disabled) {
+                        $(e).find('input,select,button,textarea').removeAttr('D')
+                            .removeAttr('disabled');
+                    }
+                });
             }
             catch (e) {
             }
             try {
                 $(this.element).find('select').trigger('chosen:updated');
-            }
-            catch (e) {
-            }
-            try {
-                $(this.element).find('multiline').data('disabled', newValue === true);
-            }
-            catch (e) {
-            }
-            try {
-                $(this.element).find('date-field').children('div').data('DateTimePicker')[newValue === true ? 'disable' : 'enable']();
             }
             catch (e) {
             }
