@@ -1,5 +1,4 @@
 # Aurelia UI Framework for Business Apps
-----
 
 > A complete UI Framework for building business applications for the Web.
 
