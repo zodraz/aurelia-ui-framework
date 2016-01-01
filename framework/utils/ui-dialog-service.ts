@@ -126,6 +126,11 @@ export class UIDialogService {
 	}
 
 	switchActive(d) {
+		if (this._active && this._active.id == d.id) {
+			d.minimized = true;
+			this.__getNextActive();
+			return;
+		}
 		if (this._active) {
 			if (d.id === this._active.id) return;
 			this._active.active = false;
@@ -138,6 +143,10 @@ export class UIDialogService {
 
 	collapse(e) {
 		$(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
+		this.__getNextActive();
+	}
+
+	__getNextActive() {
 		if (this._windows.length > 0) {
 			this._active = null;
 			let a        = _.findLast(this._windows, 'minimized', false);

@@ -1,4 +1,7 @@
 <template>
+	<div class="ui-hide" ref="_temp">
+		<content></content>
+	</div>
 	<ul class="ui-menu ${_classes}" click.delegate="_linkClicked($event)" ref="_menu">
 		<div if.bind="router.isRoot && appState.IsAuthenticated" class="ui-auth-info">
 			<div class="ui-app-logo" if.bind="router.options.showLogo"></div>

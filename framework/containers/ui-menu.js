@@ -14,6 +14,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
         function UIMenu(element, appState) {
             this.element = element;
             this.appState = appState;
+            this.menu = [];
             this._classes = '';
             this._floating = false;
             this._floating = element.hasAttribute('dropdown');
@@ -23,6 +24,23 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
                 this._classes = 'ui-app-menu';
             if (this._floating !== false)
                 this._classes += ' ui-floating ';
+        };
+        UIMenu.prototype.attached = function () {
+            var _this = this;
+            $(this._temp).children().each(function (i, c) {
+                c = $(c);
+                if (c.is('divider'))
+                    _this.menu.push('-');
+                if (c.is('section'))
+                    _this.menu.push(c.text());
+                if (c.is('menu'))
+                    _this.menu.push({
+                        id: c.attr('data-id'),
+                        icon: c.attr('icon'),
+                        href: c.attr('href') || 'javascript:;',
+                        title: c.text()
+                    });
+            });
         };
         UIMenu.prototype._linkClicked = function ($event) {
             if ($($event.target).closest('a').data('disabled') === true) {
@@ -51,7 +69,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
         ], UIMenu.prototype, "title");
         __decorate([
             aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
+            __metadata('design:type', Object)
         ], UIMenu.prototype, "menu");
         UIMenu = __decorate([
             aurelia_framework_1.autoinject(),

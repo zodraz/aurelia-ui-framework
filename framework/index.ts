@@ -4,6 +4,10 @@
  *    @company    HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
+import 'jquery';
+import 'lodash';
+import 'moment';
+import 'numeral';
 import './libs/chosen';
 import './libs/notify';
 import './libs/marked';
@@ -62,5 +66,5 @@ export {UILangSelect} from "./components/ui-lang-select";
 export {UIModel} from "./utils/ui-model";
 export {UITreeModel,UITreeOptionsModel,UITreePanel} from "./utils/ui-tree-models";
 export {_, moment, numeral, Format, Utils, watch} from "./utils/ui-utils";
-export {UIValidation} from "./utils/ui-validations";
+export {UIValidationStrategy} from "./utils/ui-validations";
 export {UIDialogService} from "./utils/ui-dialog-service";

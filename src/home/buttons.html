@@ -33,25 +33,17 @@
 			<ui-button success icon="fi-elegant-mini6">Click</ui-button>
 			<ui-button warning icon="fi-elegant-error2">Click</ui-button>
 
-			<hr/>
-			<div class="ui-margin-v ui-selectable">
-				<h5>Usage</h5>
-
-				<p><code>&lt;ui-button [disabled] [default] [large|small|<em>normal</em>]
-					[primary|secondary|info|danger|success|warning]
-					[icon=?] [click.trigger]>{Label}&lt;/ui-button></code></p>
-			</div>
 		</div>
 
 		<div class="ui-pad-all ui-border-b">
 			<h4 class="ui-margin-v">Button Group</h4>
 			<ui-button-group secondary>
-				<ui-button icon="fi-elegant-check2">Click</ui-button>
-				<ui-button icon="fi-elegant-close11">Click</ui-button>
-				<ui-button icon="fi-elegant-info9">Click</ui-button>
-				<ui-button icon="fi-elegant-close9">Click</ui-button>
-				<ui-button icon="fi-elegant-mini6">Click</ui-button>
-				<ui-button icon="fi-elegant-error2">Click</ui-button>
+				<ui-button icon="fi-elegant-check2" click.trigger="disabled=!disabled">Toggle Disable</ui-button>
+				<ui-button icon="fi-elegant-close11" disabled.bind="disabled">Click</ui-button>
+				<ui-button icon="fi-elegant-info9" disabled.bind="disabled">Click</ui-button>
+				<ui-button icon="fi-elegant-close9" disabled.bind="disabled">Click</ui-button>
+				<ui-button icon="fi-elegant-mini6" disabled.bind="disabled">Click</ui-button>
+				<ui-button icon="fi-elegant-error2" disabled.bind="disabled">Click</ui-button>
 			</ui-button-group>
 
 			<ui-button-group primary vertical>
@@ -63,22 +55,6 @@
 				<ui-button icon="fi-elegant-error2">Click</ui-button>
 			</ui-button-group>
 
-			<hr/>
-			<div class="ui-margin-v ui-selectable">
-				<h5>Usage</h5>
-
-				<p>
-					<code>
-						&lt;ui-button-group [vertical] [large|small|<em>normal</em>]
-						[primary|secondary|info|danger|success|warning]>
-						<br/>
-						&nbsp;&nbsp;&lt;ui-button>...
-						<br/>
-						&lt;/ui-button-group>
-					</code>
-				</p>
-
-			</div>
 		</div>
 
 		<div class="ui-pad-all ui-border-b">
@@ -92,22 +68,6 @@
 				<ui-button value="5" icon="fi-elegant-error2">Click</ui-button>
 			</ui-button-group>
 
-			<hr/>
-			<div class="ui-margin-v ui-selectable">
-				<h5>Usage</h5>
-
-				<p>
-					<code>
-						&lt;ui-button-group toggle[=<em>single</em>|multiple] [vertical] [large|small|<em>normal</em>]
-						[primary|secondary|info|danger|success|warning] [value.bind] [change.trigger]>
-						<br/>
-						&nbsp;&nbsp;&lt;ui-button [value=?]>...
-						<br/>
-						&lt;/ui-button-group>
-					</code>
-				</p>
-
-			</div>
 		</div>
 
 		<div class="ui-pad-all ui-border-b" menuclick.delegate="menuclicked($event)">
@@ -143,17 +103,6 @@
 				<menu data-id="9">Link 9</menu>
 			</ui-button>
 
-			<hr/>
-			<div class="ui-margin-v ui-selectable">
-				<h5>Usage</h5>
-
-				<p><code>&lt;ui-button ... label=? [menuclick.trigger]><br/>
-					&nbsp;&nbsp;&lt;menu data-id=? [icon=?]>{Label}&lt;/menu><br/>
-					&nbsp;&nbsp;[&lt;divider>&lt;/divider>]<br/>
-					&nbsp;&nbsp;[&lt;section>{Title}&lt;/section>]<br/>
-					&nbsp;&nbsp;...<br/>
-					&lt;/ui-button></code></p>
-			</div>
 		</div>
 
 		<div class="ui-pad-all">
@@ -168,15 +117,6 @@
 			<ui-switch gender></ui-switch>
 			<ui-switch priority></ui-switch>
 
-
-			<hr/>
-			<div class="ui-margin-v ui-selectable">
-				<h5>Usage</h5>
-
-				<p><code>&lt;ui-switch [check] [checked.bind] [readonly|disabled]
-					[primary|info|danger|success|warning|ampm|gender|priority]>{Label}&lt;/ui-switch></code></p>
-
-			</div>
 		</div>
 	</ui-scroll>
 </template>

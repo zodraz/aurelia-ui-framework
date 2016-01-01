@@ -1,7 +1,6 @@
 @import "compass/css3";
 @import "colors";
 @import "mixins";
-@import "variables";
 //
 // IF THESE FONTS ARE CHANGED MAKE SURE TO UPDATE RELEVANT VARIABLES
 // $font-family-input
@@ -13,7 +12,12 @@
 // Comment next line to not include flags
 @import "flags";
 
+$dark-theme: false;
+
+@import "variables";
+
 // OVERRIDE APP VARIABLES HERE
 @import "framework";
 
 // INCLUDE APP SPECIFIC STYLES HERE
+

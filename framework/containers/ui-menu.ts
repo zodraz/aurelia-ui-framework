@@ -15,11 +15,13 @@ import {UIApplicationState} from "../utils/ui-app-state";
 export class UIMenu {
 	@bindable router:Router;
 	@bindable title:string;
-	@bindable menu:string;
+	@bindable menu:any = [];
 
 	private _menu;
 	private _classes:string   = '';
 	private _floating:boolean = false;
+
+	private _temp;
 
 	constructor(public element:Element, public appState:UIApplicationState) {
 		this._floating = element.hasAttribute('dropdown');
@@ -28,6 +30,20 @@ export class UIMenu {
 	bind() {
 		if (this.router && this.router.isRoot) this._classes = 'ui-app-menu';
 		if (this._floating !== false) this._classes += ' ui-floating ';
+	}
+
+	attached() {
+		$(this._temp).children().each((i, c:any)=> {
+			c = $(c);
+			if (c.is('divider'))this.menu.push('-');
+			if (c.is('section'))this.menu.push(c.text());
+			if (c.is('menu'))this.menu.push({
+				id: c.attr('data-id'),
+				icon: c.attr('icon'),
+				href: c.attr('href') || 'javascript:;',
+				title: c.text()
+			});
+		});
 	}
 
 	private _linkClicked($event) {

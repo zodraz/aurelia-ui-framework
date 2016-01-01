@@ -7,6 +7,8 @@ import {MyDialog} from "./my-dialog";
 export class HomeButtons {
 	t1 = 0;
 
+	disabled=false;
+
 	menu1 = [{
 		id: 0, title: 'Link 0'
 	}, {

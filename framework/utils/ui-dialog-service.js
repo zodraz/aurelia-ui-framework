@@ -111,6 +111,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             });
         };
         UIDialogService.prototype.switchActive = function (d) {
+            if (this._active && this._active.id == d.id) {
+                d.minimized = true;
+                this.__getNextActive();
+                return;
+            }
             if (this._active) {
                 if (d.id === this._active.id)
                     return;
@@ -123,6 +128,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
         };
         UIDialogService.prototype.collapse = function (e) {
             $(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
+            this.__getNextActive();
+        };
+        UIDialogService.prototype.__getNextActive = function () {
             if (this._windows.length > 0) {
                 this._active = null;
                 var a = ui_utils_1._.findLast(this._windows, 'minimized', false);

@@ -70,8 +70,6 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
         };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
-            this._langSelect
-                .errorLanguages('ar,en');
         };
         __decorate([
             ui_utils_1.watch('ar'), 

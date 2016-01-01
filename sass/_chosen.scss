@@ -93,6 +93,7 @@
 		  }
 		  //@include border-bottom-radius(0);
 		  background: linear-gradient(bottom, $input-bg, shade($input-bg, 2%));
+		  @include box-shadow(0 1px 1px 0 if($dark-theme, #111, #eee) inset);
 		}
 		.chosen-choices {
 		  //@include border-bottom-radius(0);
@@ -149,10 +150,10 @@
 	  .chosen-choices {
 		line-height: 1;
 		padding: 0;
-		background: linear-gradient(top, $input-bg, shade($input-bg, 2%));
+		background: $input-bg;
+		@include box-shadow(0 1px 1px 0 if($dark-theme, #111, #eee) inset);
 		border: none;
 		border-radius: inherit;
-		box-shadow: none;
 		@include flex-row(flex-start, flex-start, true);
 
 		li.search-choice {
@@ -188,7 +189,7 @@
 			color: $input-text;
 			font-family: $input-font-family;
 
-			&.default {
+			&.default:not(:focus) {
 			  color: $placeholder-color;
 			}
 		  }

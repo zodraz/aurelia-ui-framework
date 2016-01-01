@@ -1,4 +1,4 @@
-define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-dwr-service", "./components/ui-lang-select", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations", "./utils/ui-dialog-service", './libs/chosen', './libs/notify', './libs/marked', './libs/phonelib', './libs/countries', './libs/currencies', './libs/datepicker', './libs/textcomplete'], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_dwr_service_1, ui_lang_select_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1, ui_dialog_service_1) {
+define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "./utils/ui-event", "./utils/ui-http-service", "./utils/ui-dwr-service", "./components/ui-lang-select", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-utils", "./utils/ui-validations", "./utils/ui-dialog-service", 'jquery', 'lodash', 'moment', 'numeral', './libs/chosen', './libs/notify', './libs/marked', './libs/phonelib', './libs/countries', './libs/currencies', './libs/datepicker', './libs/textcomplete'], function (require, exports, ui_app_state_1, ui_converters_1, ui_event_1, ui_http_service_1, ui_dwr_service_1, ui_lang_select_1, ui_model_1, ui_tree_models_1, ui_utils_1, ui_validations_1, ui_dialog_service_1) {
     function configure(aurelia) {
         aurelia.globalResources('./core/ui-app');
         aurelia.globalResources('./core/ui-page');
@@ -55,6 +55,6 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
     exports.Format = ui_utils_1.Format;
     exports.Utils = ui_utils_1.Utils;
     exports.watch = ui_utils_1.watch;
-    exports.UIValidation = ui_validations_1.UIValidation;
+    exports.UIValidationStrategy = ui_validations_1.UIValidationStrategy;
     exports.UIDialogService = ui_dialog_service_1.UIDialogService;
 });

@@ -16,6 +16,13 @@
           </resourceRoots>
         </entryData>
       </entry>
+      <entry url="file://$PROJECT_DIR$/../auf-wiki">
+        <entryData>
+          <resourceRoots>
+            <path value="file://$PROJECT_DIR$/../auf-wiki" />
+          </resourceRoots>
+        </entryData>
+      </entry>
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>

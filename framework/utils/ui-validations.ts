@@ -1,7 +1,7 @@
 import {ValidationViewStrategy} from 'aurelia-validation';
 import {ValidationGroup} from "aurelia-validation";
 
-export class UIValidation extends ValidationViewStrategy {
+export class UIValidationStrategy extends ValidationViewStrategy {
 	constructor() {
 		super();
 
