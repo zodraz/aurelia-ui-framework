@@ -12,4 +12,4 @@ sudo jspm install aurelia-logging
 sudo jspm install aurelia-framework
 sudo jspm install aurelia-validation
 sudo jspm install aurelia-bootstrapper
-sudo jspm install aurelia-ui-framework=github:adarshpastakia/aurelia-ui-framework
+sudo jspm install aurelia-ui-framework
