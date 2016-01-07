@@ -60,6 +60,7 @@ export class UIList {
 	@bindable buttonText:string = '';
 	@bindable readonly:boolean  = false;
 	@bindable disabled:boolean  = false;
+	@bindable options           = [];
 
 	constructor(public element:Element) {
 		this._id = `list-${UIInput._id++}`;
@@ -86,6 +87,21 @@ export class UIList {
 			.html(this._getListItems())
 			.find(`li[value="${this.value}"]`).addClass('active');
 		$(this._options).remove();
+	}
+
+	optionsChanged(newValue) {
+		setTimeout(()=> {
+			$(this._input).find('option').addClass('ui-list-option');
+			$(this._input).find('optgroup').addClass('ui-list-group');
+			var html = $(this._input).html()
+				.replace(/<optgroup/gi, '<li')
+				.replace(/optgroup>/gi, 'li>')
+				.replace(/<option/gi, '<li')
+				.replace(/option>/gi, 'li>');
+			$(this._select)
+				.html(html)
+				.find(`li[value="${this.value}"]`).addClass('active');
+		}, 500);
 	}
 
 	disabledChanged(newValue) {

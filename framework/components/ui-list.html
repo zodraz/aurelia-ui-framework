@@ -17,7 +17,11 @@
 			</div>
 			<select id.bind="_id" ref="_input" value.bind="value" size="2" class="ui-list-input"
 					focus.trigger="focus=true" blur.trigger="focus=false"
-					maxlength="0" change.trigger="_changeSelection($event)"></select>
+					maxlength="0" change.trigger="_changeSelection($event)">
+				<option value="${opt.id!==null&&opt.id!==undefined?opt.id:opt}" model.bind="opt"
+						repeat.for="opt of options">${opt.name || opt.text || opt}
+				</option>
+			</select>
 			<ul size="5" ref="_select" class="ui-input ui-list-container ${_inputClasses}"
 				click.delegate="_changeSelection($event)">
 			</ul>
