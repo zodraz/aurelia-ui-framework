@@ -20,6 +20,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.currentSortColumn = '';
             this.currentSortOrder = '';
             this.idColumn = 'id';
+            this.emptyText = 'No records found';
             this._isResizing = false;
             this._startX = 0;
         }
@@ -185,6 +186,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIDataGrid.prototype, "idColumn");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIDataGrid.prototype, "emptyText");
         UIDataGrid = __decorate([
             aurelia_framework_1.bindable({
                 name: 'data',

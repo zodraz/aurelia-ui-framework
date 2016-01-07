@@ -111,6 +111,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             });
         };
         UIDialogService.prototype.switchActive = function (d) {
+            if (this._active && this._active.id == d.id) {
+                d.minimized = true;
+                this.__getNextActive();
+                return;
+            }
             if (this._active) {
                 if (d.id === this._active.id)
                     return;
@@ -123,6 +128,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
         };
         UIDialogService.prototype.collapse = function (e) {
             $(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
+            this.__getNextActive();
+        };
+        UIDialogService.prototype.__getNextActive = function () {
             if (this._windows.length > 0) {
                 this._active = null;
                 var a = ui_utils_1._.findLast(this._windows, 'minimized', false);
@@ -144,8 +152,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {
                 return this.switchActive(this._dialog);
             }
-            this._startX = $event.x;
-            this._startY = $event.y;
+            console.log($event.x, $event.clientX);
+            console.log($event.y, $event.clientY);
+            this._startX = ($event.x || $event.clientX);
+            this._startY = ($event.y || $event.clientY);
             this._isDragging = true;
             this._isResizing = $($event.target).hasClass('ui-resizer');
             if (this._isResizing && !this._dialog.resize) {
@@ -172,8 +182,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
         UIDialogService.prototype.move = function ($event) {
             if (!this._isDragging)
                 return;
-            var x = $event.x - this._startX;
-            var y = $event.y - this._startY;
+            var x = ($event.x || $event.clientX) - this._startX;
+            var y = ($event.y || $event.clientY) - this._startY;
             if (!this._isResizing) {
                 var p = $(this._dialog._dialog).offset();
                 var w = $(this._dialog._dialog).outerWidth();
@@ -203,8 +213,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                 this._dialog._current.width += x;
                 this._dialog._current.height += y;
             }
-            this._startX = x !== 0 ? $event.x : this._startX;
-            this._startY = y !== 0 ? $event.y : this._startY;
+            this._startX = x !== 0 ? ($event.x || $event.clientX) : this._startX;
+            this._startY = y !== 0 ? ($event.y || $event.clientY) : this._startY;
         };
         UIDialogService = __decorate([
             aurelia_framework_1.autoinject(), 

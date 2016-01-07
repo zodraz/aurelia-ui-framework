@@ -31,6 +31,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.buttonText = '';
             this.readonly = false;
             this.disabled = false;
+            this.options = [];
             this._id = "list-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
@@ -60,6 +61,21 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .html(this._getListItems())
                 .find("li[value=\"" + this.value + "\"]").addClass('active');
             $(this._options).remove();
+        };
+        UIList.prototype.optionsChanged = function (newValue) {
+            var _this = this;
+            setTimeout(function () {
+                $(_this._input).find('option').addClass('ui-list-option');
+                $(_this._input).find('optgroup').addClass('ui-list-group');
+                var html = $(_this._input).html()
+                    .replace(/<optgroup/gi, '<li')
+                    .replace(/optgroup>/gi, 'li>')
+                    .replace(/<option/gi, '<li')
+                    .replace(/option>/gi, 'li>');
+                $(_this._select)
+                    .html(html)
+                    .find("li[value=\"" + _this.value + "\"]").addClass('active');
+            }, 500);
         };
         UIList.prototype.disabledChanged = function (newValue) {
             $(this._select)
@@ -157,6 +173,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIList.prototype, "disabled");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIList.prototype, "options");
         UIList = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',

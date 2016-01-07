@@ -4,9 +4,9 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 define(["require", "exports", 'aurelia-validation', "aurelia-validation"], function (require, exports, aurelia_validation_1, aurelia_validation_2) {
-    var UIValidation = (function (_super) {
-        __extends(UIValidation, _super);
-        function UIValidation() {
+    var UIValidationStrategy = (function (_super) {
+        __extends(UIValidationStrategy, _super);
+        function UIValidationStrategy() {
             _super.call(this);
             aurelia_validation_2.ValidationGroup.prototype.isPhone = function () {
                 this.passes(function (newValue) {
@@ -17,7 +17,7 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
                 return this;
             };
         }
-        UIValidation.prototype.appendMessageToElement = function (formGroup, validationProperty) {
+        UIValidationStrategy.prototype.appendMessageToElement = function (formGroup, validationProperty) {
             var helpBlock = formGroup.lastChild;
             if (helpBlock) {
                 if (!helpBlock.classList) {
@@ -34,7 +34,7 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
             }
             helpBlock.textContent = validationProperty ? validationProperty.message : '';
         };
-        UIValidation.prototype.appendUIVisuals = function (validationProperty, formGroup) {
+        UIValidationStrategy.prototype.appendUIVisuals = function (validationProperty, formGroup) {
             if (validationProperty && validationProperty.isDirty) {
                 if (validationProperty.isValid) {
                     formGroup.classList.remove('ui-invalid');
@@ -51,13 +51,13 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
             }
             this.appendMessageToElement(formGroup, validationProperty);
         };
-        UIValidation.prototype.prepareElement = function (validationProperty, element) {
+        UIValidationStrategy.prototype.prepareElement = function (validationProperty, element) {
             this.appendUIVisuals(null, element);
         };
-        UIValidation.prototype.updateElement = function (validationProperty, element) {
+        UIValidationStrategy.prototype.updateElement = function (validationProperty, element) {
             this.appendUIVisuals(validationProperty, element);
         };
-        return UIValidation;
+        return UIValidationStrategy;
     })(aurelia_validation_1.ValidationViewStrategy);
-    exports.UIValidation = UIValidation;
+    exports.UIValidationStrategy = UIValidationStrategy;
 });

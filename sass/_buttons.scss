@@ -15,19 +15,22 @@
 	  text-shadow: 0 1px 0 rgba(contrast($color, #787878, if($dark-theme, #000, #fff)), 0.5);
 	}
 
-	&:hover, &.ui-dropdown {
-	  $hover-bg: shade($bg, 6%);
-	  border-color: shade($border, 10%);
-	  background: linear-gradient(top, $hover-bg, darken($hover-bg, 4%));
+	&:not([disabled]) {
+	  &:hover, &.ui-dropdown {
+		$hover-bg: shade($bg, 6%);
+		border-color: shade($border, 10%);
+		background: linear-gradient(top, $hover-bg, darken($hover-bg, 4%));
+	  }
+	  &:focus {
+		@include box-shadow(0 0 2px 1px $color inset);
+	  }
+	  &:active, &.ui-dropdown {
+		background: linear-gradient(top, darken($bg, 4%), $bg);
+		@include box-shadow(1px 1px 1px 0 rgba(#000, 0.5) inset,
+				-1px -1px 1px 0 rgba(#fff, 0.5) inset);
+	  }
 	}
-	button:focus {
-	  @include box-shadow(0 0 2px 1px $color inset);
-	}
-	button:active, &.ui-dropdown {
-	  background: linear-gradient(top, darken($bg, 4%), $bg);
-	  @include box-shadow(1px 1px 1px 0 rgba(#000, 0.5) inset,
-			  -1px -1px 1px 0 rgba(#fff, 0.5) inset);
-	}
+
 	i.ui-caret {
 	  color: rgba($color, 0.6);
 	}
@@ -52,7 +55,7 @@
   }
 
   &[disabled] {
-	opacity: 0.6;
+	opacity: 0.4;
 	&, & * {
 	  cursor: not-allowed;
 	}
