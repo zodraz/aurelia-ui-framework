@@ -14,6 +14,12 @@
   direction: ltr !important;
   //border: 1px solid $base-border-color;
 
+  .ui-empty-text {
+	padding: 2em 1.5em;
+	text-align: center;
+	background: rgba($base-bg, 0);
+  }
+
   .ui-button-small {
 	padding: 0;
 	width: 22px;

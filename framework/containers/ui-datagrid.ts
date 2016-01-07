@@ -47,7 +47,8 @@ export class UIDataGrid {
 	private currentSortColumn:string = '';
 	private currentSortOrder:string  = '';
 
-	@bindable idColumn:string = 'id';
+	@bindable idColumn:string  = 'id';
+	@bindable emptyText:string = 'No records found';
 
 	constructor(public element:Element, public signaler:BindingSignaler) {
 	}

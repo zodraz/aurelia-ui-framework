@@ -104,6 +104,10 @@ export class HomeDataGrid {
 		Currency: 'USD'
 	}];
 
+	constructor() {
+		//this.data = [];
+	}
+
 	getGender($event) {
 		$event.value = `<span class="ui-text-primary ui-font-big ${$event.detail.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23'}"></span>`;
 	}

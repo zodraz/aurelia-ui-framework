@@ -143,6 +143,9 @@ export class UIDate {
 			if (this.value && this.value.start && this.value.end) {
 				optStart.date = moment(this.value.start);
 				optEnd.date   = moment(this.value.end);
+
+				optStart.maxDate = optEnd.date;
+				optEnd.minDate   = optStart.date;
 			}
 			this._initPicker(this._inputStart, optStart, true);
 			this._initPicker(this._inputEnd, optEnd, false);

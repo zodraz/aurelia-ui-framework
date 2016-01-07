@@ -1,5 +1,6 @@
 <template>
-	<ui-data-grid data-list.bind="data" data-summary="true" linkclick.trigger="linkclicked($event)">
+	<ui-data-grid data-list.bind="data" data-summary="true" linkclick.trigger="linkclicked($event)"
+	empty-text="OOPS!!! We didn't find any matching records.">
 		<ui-data-column data-id="edit" button-glyph="fi-elegant-pencil9"></ui-data-column>
 		<ui-data-column data-id="delete" button-glyph="fi-elegant-mini2"></ui-data-column>
 		<ui-data-column data-id="id" data-align="center" width="80" locked>ID</ui-data-column>

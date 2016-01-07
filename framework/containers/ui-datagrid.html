@@ -13,6 +13,11 @@
 			</colgroup>
 
 			<tbody click.delegate="highlight($event)">
+			<tr if.bind="_data.length==0">
+				<td colspan="${columns.length+1}" class="ui-empty-text">
+					<h4 class="ui-text-muted">${emptyText}</h4>
+				</td>
+			</tr>
 			<tr repeat.for="model of _data">
 				<td repeat.for="col of columns"
 					class="selectable ${col.locked ? 'sticky':''} ${isLastLocked(col.locked, $index)?'last-of-type':''} ${col.cls}"
@@ -21,16 +26,19 @@
 					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}">
 					<div if.bind="col.button" class="button-cell">
 						<button class="ui-button ui-button-secondary ui-button-small ${col.enabled(model)!==false?'':'noshow'}"
-								click.trigger="linkClicked($event, col.dataId, model)" title.bind="col.buttonTitle"><span
+								click.trigger="linkClicked($event, col.dataId, model)"
+								title.bind="col.buttonTitle"><span
 								class="${col.buttonGlyph}"></span>
 						</button>
 					</div>
 
 					<div class="selectable" if.bind="!col.button && !col.link">
-						 <span innerHTML.bind="format(model[col.dataId], col, model) & signal:'UIDataGrid:Reload'"></span>&nbsp;</div>
+						<span innerHTML.bind="format(model[col.dataId], col, model) & signal:'UIDataGrid:Reload'"></span>&nbsp;
+					</div>
 
 					<div if.bind="col.link"><a click.trigger="linkClicked($event, col.dataId, model)"
-											   innerHTML.bind="format(model[col.dataId], col, model) & signal:'UIDataGrid:Reload'"></a></div>
+											   innerHTML.bind="format(model[col.dataId], col, model) & signal:'UIDataGrid:Reload'"></a>
+					</div>
 
 				</td>
 				<td style="min-width: 20px;">
