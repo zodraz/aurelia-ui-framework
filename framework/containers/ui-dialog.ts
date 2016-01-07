@@ -6,8 +6,8 @@ import {UIEvent} from "../utils/ui-event";
 @customElement('ui-dialog')
 export class UIDialog {
 	static _id = 0;
-	static _x  = 10;
-	static _y  = 10;
+	static _x  = 0;
+	static _y  = 0;
 
 	@bindable dataTitle;
 	@bindable active         = true;
@@ -25,8 +25,8 @@ export class UIDialog {
 
 	_original:any = {};
 	_current:any  = {
-		top: (UIDialog._x += 10),
-		left: (UIDialog._x += 10),
+		top: (UIDialog._y += 30),
+		left: (UIDialog._x += 30),
 		height: '', width: ''
 	};
 
@@ -44,6 +44,17 @@ export class UIDialog {
 		let d                = $(this._dialog);
 		this._current.width  = d.outerWidth();
 		this._current.height = d.outerHeight();
+
+		let pw = $(this.dialogService.dialogContainer).outerWidth();
+		let ph = $(this.dialogService.dialogContainer).outerHeight();
+		if (this._current.width + this._current.left > pw) {
+			UIDialog._x = this._current.left = 30;
+			UIDialog._y = this._current.top = 30;
+		}
+		if (this._current.height + this._current.top > ph - 36) {
+			UIDialog._x = this._current.left = 60;
+			UIDialog._y = this._current.top = 30;
+		}
 
 		if (this.modal) {
 			let pw             = $(this.dialogService.dialogContainer).outerWidth();

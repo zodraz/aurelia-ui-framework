@@ -179,8 +179,11 @@ export class UIDialogService {
 			return this.switchActive(this._dialog);
 		}
 
-		this._startX     = $event.x;
-		this._startY     = $event.y;
+		console.log($event.x, $event.clientX)
+		console.log($event.y, $event.clientY)
+
+		this._startX     = ($event.x || $event.clientX);
+		this._startY     = ($event.y || $event.clientY);
 		this._isDragging = true;
 		this._isResizing = $($event.target).hasClass('ui-resizer');
 
@@ -210,8 +213,8 @@ export class UIDialogService {
 	private move($event) {
 		if (!this._isDragging) return;
 
-		let x = $event.x - this._startX;
-		let y = $event.y - this._startY;
+		let x = ($event.x || $event.clientX) - this._startX;
+		let y = ($event.y || $event.clientY) - this._startY;
 
 		if (!this._isResizing) {
 			let p  = $(this._dialog._dialog).offset();
@@ -244,7 +247,7 @@ export class UIDialogService {
 			this._dialog._current.height += y;
 		}
 
-		this._startX = x !== 0 ? $event.x : this._startX;
-		this._startY = y !== 0 ? $event.y : this._startY;
+		this._startX = x !== 0 ? ($event.x || $event.clientX) : this._startX;
+		this._startY = y !== 0 ? ($event.y || $event.clientY) : this._startY;
 	}
 }

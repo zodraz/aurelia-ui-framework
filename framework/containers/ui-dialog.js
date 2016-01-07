@@ -24,8 +24,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service",
             this._zindex = 50;
             this._original = {};
             this._current = {
-                top: (UIDialog._x += 10),
-                left: (UIDialog._x += 10),
+                top: (UIDialog._y += 30),
+                left: (UIDialog._x += 30),
                 height: '', width: ''
             };
             if (element.hasAttribute('modal'))
@@ -40,11 +40,21 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service",
             var d = $(this._dialog);
             this._current.width = d.outerWidth();
             this._current.height = d.outerHeight();
+            var pw = $(this.dialogService.dialogContainer).outerWidth();
+            var ph = $(this.dialogService.dialogContainer).outerHeight();
+            if (this._current.width + this._current.left > pw) {
+                UIDialog._x = this._current.left = 30;
+                UIDialog._y = this._current.top = 30;
+            }
+            if (this._current.height + this._current.top > ph - 36) {
+                UIDialog._x = this._current.left = 60;
+                UIDialog._y = this._current.top = 30;
+            }
             if (this.modal) {
-                var pw = $(this.dialogService.dialogContainer).outerWidth();
-                var ph = $(this.dialogService.dialogContainer).outerHeight();
-                this._current.top = (ph - this._current.height) / 2;
-                this._current.left = (pw - this._current.width) / 2;
+                var pw_1 = $(this.dialogService.dialogContainer).outerWidth();
+                var ph_1 = $(this.dialogService.dialogContainer).outerHeight();
+                this._current.top = (ph_1 - this._current.height) / 2;
+                this._current.left = (pw_1 - this._current.width) / 2;
             }
             else {
                 this._taskButton = document.createElement('button');
@@ -97,8 +107,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service",
             }
         };
         UIDialog._id = 0;
-        UIDialog._x = 10;
-        UIDialog._y = 10;
+        UIDialog._x = 0;
+        UIDialog._y = 0;
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Object)
