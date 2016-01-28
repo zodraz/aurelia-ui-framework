@@ -58,7 +58,8 @@ export function configure(aurelia:FrameworkConfiguration) {
 }
 
 export {UIApplicationState, AuthInterceptor} from "./utils/ui-app-state";
-export {DateValueConverter,NumberValueConverter,CurrencyValueConverter,KeysValueConverter,MarkdownValueConverter,SortValueConverter} from "./utils/ui-converters";
+export {DateValueConverter,NumberValueConverter,CurrencyValueConverter,KeysValueConverter,MarkdownValueConverter,
+	SortValueConverter,GroupValueConverter, IsArrayValueConverter, IsObjectValueConverter, IsStringValueConverter} from "./utils/ui-converters";
 export {UIEvent} from "./utils/ui-event";
 export {UIHttpService} from "./utils/ui-http-service";
 export {UIDwrService} from "./utils/ui-dwr-service";

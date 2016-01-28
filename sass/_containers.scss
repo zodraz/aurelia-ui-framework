@@ -20,8 +20,15 @@
 }
 
 .ui-content {
-  @include flex(1 1 auto);
   position: relative;
+
+  &.ui-auto-height {
+	@include flex(0 0 auto);
+  }
+
+  &:not(.ui-auto-height) {
+	@include flex(1 1 auto);
+  }
 
   &:not(.ui-scroll) {
 	@include flex-column($align: stretch, $justify: stretch, $wrap: false);

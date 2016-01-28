@@ -24,6 +24,7 @@ export class UIMarkdown {
 	private _input;
 	private _tools;
 	private _markdown;
+	private _noLabel             = false;
 	private _focus:boolean       = false;
 	private _classes:string      = '';
 	private _labelClasses:string = '';
@@ -42,6 +43,10 @@ export class UIMarkdown {
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
+		if (element.hasAttribute('full-view')) {
+			this._noLabel = true;
+			this._classes += ' ui-full-view';
+		}
 	}
 
 	bind() {

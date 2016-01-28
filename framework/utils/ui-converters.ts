@@ -12,6 +12,12 @@ export class KeysValueConverter {
 	}
 }
 
+export class GroupValueConverter {
+	toView(object:any, property:any) {
+		return _.groupBy(object, property);
+	}
+}
+
 export class SortValueConverter {
 	toView(value:any, property:any) {
 		return _.sortBy(value, property);
@@ -39,5 +45,23 @@ export class NumberValueConverter {
 export class CurrencyValueConverter {
 	toView(value:any, format?:string, symbol?:string) {
 		return Format.currencyDisplay(value, format, symbol);
+	}
+}
+
+export class IsStringValueConverter {
+	toView(value:any) {
+		return _.isString(value);
+	}
+}
+
+export class IsArrayValueConverter {
+	toView(value:any) {
+		return _.isArray(value);
+	}
+}
+
+export class IsObjectValueConverter {
+	toView(value:any) {
+		return _.isObject(value);
 	}
 }

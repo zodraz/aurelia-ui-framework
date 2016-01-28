@@ -8,6 +8,15 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         return KeysValueConverter;
     })();
     exports.KeysValueConverter = KeysValueConverter;
+    var GroupValueConverter = (function () {
+        function GroupValueConverter() {
+        }
+        GroupValueConverter.prototype.toView = function (object, property) {
+            return ui_utils_1._.groupBy(object, property);
+        };
+        return GroupValueConverter;
+    })();
+    exports.GroupValueConverter = GroupValueConverter;
     var SortValueConverter = (function () {
         function SortValueConverter() {
         }
@@ -53,4 +62,31 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         return CurrencyValueConverter;
     })();
     exports.CurrencyValueConverter = CurrencyValueConverter;
+    var IsStringValueConverter = (function () {
+        function IsStringValueConverter() {
+        }
+        IsStringValueConverter.prototype.toView = function (value) {
+            return ui_utils_1._.isString(value);
+        };
+        return IsStringValueConverter;
+    })();
+    exports.IsStringValueConverter = IsStringValueConverter;
+    var IsArrayValueConverter = (function () {
+        function IsArrayValueConverter() {
+        }
+        IsArrayValueConverter.prototype.toView = function (value) {
+            return ui_utils_1._.isArray(value);
+        };
+        return IsArrayValueConverter;
+    })();
+    exports.IsArrayValueConverter = IsArrayValueConverter;
+    var IsObjectValueConverter = (function () {
+        function IsObjectValueConverter() {
+        }
+        IsObjectValueConverter.prototype.toView = function (value) {
+            return ui_utils_1._.isObject(value);
+        };
+        return IsObjectValueConverter;
+    })();
+    exports.IsObjectValueConverter = IsObjectValueConverter;
 });

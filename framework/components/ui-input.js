@@ -286,6 +286,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._ignorechange = false;
             }
             else if (this._type == 'phone' && this._phoneFull) {
+                this._value1 = this.value;
                 if (!this._ignorechange && newValue != null && newValue != '') {
                     this._processValue();
                 }
@@ -294,12 +295,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             else {
                 if (newValue === null || newValue === undefined)
                     newValue = '';
-                try {
-                    _a = (newValue + '').split(','), this._value1 = _a[0], this._value2 = _a[1];
+                if (this._double) {
+                    try {
+                        _a = (newValue + '').split(','), this._value1 = _a[0], this._value2 = _a[1];
+                    }
+                    catch (e) {
+                        this._value1 = '';
+                        this._value2 = '';
+                    }
                 }
-                catch (e) {
-                    this._value1 = '';
-                    this._value2 = '';
+                else {
+                    this._value1 = newValue;
                 }
                 this._value1 = this._format(this._value1 || '');
                 this._value2 = this._format(this._value2 || '');

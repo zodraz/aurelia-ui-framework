@@ -357,6 +357,7 @@ export class UIInput {
 			this._ignorechange = false;
 		}
 		else if (this._type == 'phone' && this._phoneFull) {
+			this._value1 = this.value;
 			if (!this._ignorechange && newValue != null && newValue != '') {
 				this._processValue();
 			}
@@ -364,10 +365,15 @@ export class UIInput {
 		}
 		else {
 			if (newValue === null || newValue === undefined) newValue = '';
-			try {[this._value1, this._value2] = (newValue + '').split(',');}
-			catch (e) {
-				this._value1 = '';
-				this._value2 = '';
+			if (this._double) {
+				try {[this._value1, this._value2] = (newValue + '').split(',');}
+				catch (e) {
+					this._value1 = '';
+					this._value2 = '';
+				}
+			}
+			else {
+				this._value1 = newValue;
 			}
 			this._value1 = this._format(this._value1 || '');
 			this._value2 = this._format(this._value2 || '');

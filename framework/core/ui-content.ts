@@ -11,4 +11,8 @@ import {autoinject, customElement, containerless, bindable} from "aurelia-framew
 @customElement("ui-content")
 export class UIContent {
 	@bindable class:string = '';
+
+	constructor(el:Element) {
+		if (el.hasAttribute('auto')) this.class += ' ui-auto-height';
+	}
 }
