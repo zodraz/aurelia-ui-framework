@@ -133,11 +133,11 @@ export class UIMarkdown {
 			}
 			else if (id == 'a') {
 				diff       = 1;
-				this.value = this.value.substr(0, start) + `[${sub}](${sub})` + this.value.substr(end);
+				this.value = this.value.substr(0, start) + `[${sub}](Place_Url_Here)` + this.value.substr(end);
 			}
 			else if (id == 'img') {
 				diff       = 2;
-				this.value = this.value.substr(0, start) + `![${sub}](${sub})` + this.value.substr(end);
+				this.value = this.value.substr(0, start) + `![${sub}](Place_Url_Here)` + this.value.substr(end);
 			}
 			else if (id == 'ul') {
 				diff       = 1;

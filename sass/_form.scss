@@ -170,6 +170,7 @@
 		background-color: $toolbar-bg;
 		border-bottom: 1px solid $input-border;
 		@include flex-wrap(wrap);
+		@include flex(0 0 auto);
 		> .ui-button {
 		  margin: 0;
 		  border: {
@@ -186,7 +187,16 @@
 		}
 	  }
 	  .ui-input {
+		@include flex(1 1 auto);
 		border-bottom: 1px solid $input-border;
+	  }
+	  .ui-text-muted {
+		@include flex(0 0 auto);
+	  }
+
+	  width: 100%;
+	  > textarea, .ui-button-group, .ui-text-muted {
+		width: 100%;
 	  }
 	}
 
@@ -215,6 +225,22 @@
 	  &[dir="rtl"]:not(.ui-hide) ~ .ui-close {
 		@include position(absolute, 0 auto auto 0);
 	  }
+	}
+  }
+
+  &.ui-full-view {
+	display: block;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	padding: 0;
+	border: none;
+	margin: 0;
+
+	.ui-form-control {
+	  height: 100%;
+	  border: none;
 	}
   }
 

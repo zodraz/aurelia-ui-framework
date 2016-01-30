@@ -26,8 +26,9 @@
 				</p>
 			</div>
 		</ui-tab>
-		<ui-tab label="Markdown">
-			<div innerhtml.bind="md | markdown" class="ui-markdown ui-selectable"></div>
+		<ui-tab label="Markdown" class="no-scroll">
+			<!--<div innerhtml.bind="md | markdown" class="ui-markdown ui-selectable"></div>-->
+			<ui-markdown full-view></ui-markdown>
 		</ui-tab>
 		<ui-tab label="DataGrid">
 			<compose view-model="./datagrid"></compose>
