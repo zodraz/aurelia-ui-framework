@@ -15,6 +15,7 @@ export class UIGridRow {
 	private _classes:string = '';
 
 	constructor(el:Element) {
+		if (el.hasAttribute('column')) this._classes += ' ui-row-column ';
 		if (el.hasAttribute('nowrap')) this._classes += ' ui-flex-nowrap ';
 		if (el.hasAttribute('stretch')) this._classes += ' ui-flex-stretch ';
 		if (el.hasAttribute('center')) this._classes += ' ui-flex-center ';

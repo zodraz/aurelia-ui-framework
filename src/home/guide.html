@@ -42,23 +42,16 @@
 
 		<p>Basic Input</p>
 		<p>
-			<small>Double input uses comma separated values and placeholders</small>
-			<br/>
 			<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
 		</p>
 		<p>
-			<code>&lt;ui-input [label-top] [readonly|disabled] [double] [required] [clear] [dir='<em>inherit</em>|ltr|rtl']<br/>
-				{<em>type</em> [<em>text</em> | email | number | decimal | area | phone | name | address |
-				position]}<br/>
-				[auto-complete.bind="Array of words"]<br/>
+			<code>&lt;ui-input [label-top] [readonly|disabled] [required] [clear] [dir='<em>inherit</em>|ltr|rtl']<br/>
+				{<em>type</em> [<em>text</em> | email | number | decimal | name | address]}<br/>
 				{<em>addon</em> [addon-icon=? | addon-text=?]}<br/>
 				{<em>button</em> [button-icon=? | button-text=?]}<br/>
 				[checkbox checked.bind="true|false"]<br/>
-				[value.bind=? | value.bind="v1,v2"]<br/>
-				[placeholder.bind=? | placeholder.bind="v1,v2"]<br/>
-				{<em>phone</em> [phone-code.bind=? phone-number.bind=? phone-ext.bind=?
-				phone-country.bind='{iso2-code}']}<br/>
-				{<em>phone-full</em> value.bind=?}<br/>
+				[value.bind=?]<br/>
+				[placeholder.bind=?]<br/>
 				[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
 
 		<p>Phone input will require a linked country selector, full phone input doesn't rely on country select</p>

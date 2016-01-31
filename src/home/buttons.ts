@@ -6,8 +6,9 @@ import {MyDialog} from "./my-dialog";
 @autoinject()
 export class HomeButtons {
 	t1 = 0;
+	t2 = '1,3';
 
-	disabled=false;
+	disabled = false;
 
 	menu1 = [{
 		id: 0, title: 'Link 0'

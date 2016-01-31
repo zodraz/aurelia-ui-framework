@@ -15,6 +15,7 @@ define(["require", "exports", "aurelia-framework", "../../framework/utils/ui-app
             this.appState = appState;
             this.dialogService = dialogService;
             this.t1 = 0;
+            this.t2 = '1,3';
             this.disabled = false;
             this.menu1 = [{
                     id: 0, title: 'Link 0'

@@ -16,7 +16,7 @@
 	}
 
 	&:not([disabled]) {
-	  &:hover, &.ui-dropdown {
+	  &:hover:not(.ui-checked), &.ui-dropdown {
 		$hover-bg: shade($bg, 6%);
 		border-color: shade($border, 10%);
 		background: linear-gradient(top, $hover-bg, darken($hover-bg, 4%));
@@ -24,7 +24,7 @@
 	  &:focus {
 		@include box-shadow(0 0 2px 1px $color inset);
 	  }
-	  &:active, &.ui-dropdown {
+	  &:active:not(.ui-checked), &.ui-dropdown {
 		background: linear-gradient(top, darken($bg, 4%), $bg);
 		@include box-shadow(1px 1px 1px 0 rgba(#000, 0.5) inset,
 				-1px -1px 1px 0 rgba(#fff, 0.5) inset);

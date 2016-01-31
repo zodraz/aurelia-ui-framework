@@ -6,6 +6,7 @@
  **/
 import {autoinject, customElement, containerless, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
+import {_} from "../utils/ui-utils";
 
 @bindable({
 	name: 'value',
@@ -80,7 +81,13 @@ export class UIButtonGroup {
 			$event.cancelBubble = true;
 
 			if (this._toggle === 'multiple') {
-				// TODO: add multiple check functionality
+				let a = (this.value + '').split(',')
+				let v = $event.detail.value;
+				if (a.indexOf(v) == -1)
+					a.push(v);
+				else
+					a.splice(a.indexOf(v), 1);
+				this.value = a.join(',');
 			}
 			else {
 				this.value = $event.detail.value;
@@ -90,13 +97,15 @@ export class UIButtonGroup {
 	}
 
 	private _checkChange() {
+		$(this._buttonGroup).children('.ui-checked').removeClass('ui-checked');
 		if (this._toggle === 'multiple') {
-			// TODO: add multiple check functionality
+			let a = (this.value + '').split(',')
+			_.forEach(a, v=> {
+				$(this._buttonGroup).children(`[value='${v}']`).addClass('ui-checked');
+			});
 		}
 		else {
-			$(this._buttonGroup).children('.ui-checked').removeClass('ui-checked');
-			var el = $(this._buttonGroup).children(`[value='${this.value}']`);
-			el.addClass('ui-checked');
+			$(this._buttonGroup).children(`[value='${this.value}']`).addClass('ui-checked');
 		}
 	}
 }

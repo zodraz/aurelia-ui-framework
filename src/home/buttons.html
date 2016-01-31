@@ -59,7 +59,17 @@
 
 		<div class="ui-pad-all ui-border-b">
 			<h4 class="ui-margin-v">Toggle Single (selected: ${t1})</h4>
-			<ui-button-group large secondary toggle value.bind="t1">
+			<ui-button-group large secondary toggle="single" value.bind="t1">
+				<ui-button value="0" icon="fi-elegant-check2">Click</ui-button>
+				<ui-button value="1" icon="fi-elegant-close11">Click</ui-button>
+				<ui-button value="2" icon="fi-elegant-info9">Click</ui-button>
+				<ui-button value="3" icon="fi-elegant-close9">Click</ui-button>
+				<ui-button value="4" icon="fi-elegant-mini6">Click</ui-button>
+				<ui-button value="5" icon="fi-elegant-error2">Click</ui-button>
+			</ui-button-group>
+
+			<h4 class="ui-margin-v">Toggle Multiple (selected: ${t2})</h4>
+			<ui-button-group large secondary toggle="multiple" value.bind="t2">
 				<ui-button value="0" icon="fi-elegant-check2">Click</ui-button>
 				<ui-button value="1" icon="fi-elegant-close11">Click</ui-button>
 				<ui-button value="2" icon="fi-elegant-info9">Click</ui-button>
