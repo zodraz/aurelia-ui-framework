@@ -25,19 +25,21 @@
 					</ui-chosen>
 				</ui-column>
 				<ui-column>
-					<ui-input position checkbox checked.bind="model.hasLoc" value.bind="model.pos"
-							  placeholder="Latitude,Longitude"
-							  addon-icon="fi-elegant-map5"
-							  required clear>Location
-					</ui-input>
+					<!--<ui-input position checkbox checked.bind="model.hasLoc" value.bind="model.pos"-->
+							  <!--placeholder="Latitude,Longitude"-->
+							  <!--addon-icon="fi-elegant-map5"-->
+							  <!--required clear>Location-->
+					<!--</ui-input>-->
+					<ui-phone full required clear value.bind="model.phone2">Phone
+					</ui-phone>
 				</ui-column>
 				<ui-column>
-					<ui-input phone required clear value.bind="model.phone"
+					<ui-phone required clear value.bind="model.phone"
 							  phone-ext.bind="model.phoneExt"
 							  phone-code.bind="model.phoneCode"
 							  phone-number.bind="model.phoneNumber"
 							  phone-country.bind="model.phoneCountry">Phone
-					</ui-input>
+					</ui-phone>
 				</ui-column>
 				<ui-column>
 					<ui-input addon-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>

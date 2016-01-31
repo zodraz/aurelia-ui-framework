@@ -28,47 +28,6 @@ import {_} from "../utils/ui-utils";
 	defaultBindingMode: bindingMode.twoWay,
 	defaultValue: false
 })
-/**
- * @bindable area code
- * @type {string}
- */
-@bindable({
-	name: 'phoneCode',
-	attribute: 'phone-code',
-	defaultBindingMode: bindingMode.twoWay,
-	defaultValue: ''
-})
-/**
- * @bindable phone number
- * @type {string}
- */
-@bindable({
-	name: 'phoneNumber',
-	attribute: 'phone-number',
-	defaultBindingMode: bindingMode.twoWay,
-	defaultValue: ''
-})
-/**
- * @bindable phone extension
- * @type {string}
- */
-@bindable({
-	name: 'phoneExt',
-	attribute: 'phone-ext',
-	defaultBindingMode: bindingMode.twoWay,
-	defaultValue: ''
-})
-/**
- * @bindable country code (iso2 code)
- * @type {string}
- */
-@bindable({
-	name: 'phoneCountry',
-	attribute: 'phone-country',
-	changeHandler: '_countryChanged',
-	defaultBindingMode: bindingMode.twoWay,
-	defaultValue: 'us'
-})
 
 
 @autoinject()
@@ -79,30 +38,19 @@ export class UIInput {
 	private _id;
 	private _input;
 	private _inputGroup;
-	private _value1:string       = '';
-	private _value2:string       = '';
-	private _placeholder1:string = '';
-	private _placeholder2:string = '';
 	private _type:string         = 'text';
 	private _intype:string       = 'text';
-	private _area:boolean        = false;
 	private _focus:boolean       = false;
 	private _noLabel:boolean     = false;
-	private _double:boolean      = false;
 	private _checkbox:boolean    = false;
-	private _phoneFull:boolean   = false;
 	private _classes:string      = '';
 	private _labelClasses:string = '';
 	private _inputClasses:string = '';
 
 	// binding privates
+	private _value:string   = '';
 	private value:string    = '';
 	private checked:boolean = false;
-	// For Phone Input Only
-	private phoneCode:string    = '';
-	private phoneNumber:string  = '';
-	private phoneExt:string     = '';
-	private phoneCountry:string = 'us';
 
 	@bindable id:string          = '';
 	@bindable dir:string         = 'inherit';
@@ -142,9 +90,7 @@ export class UIInput {
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('readonly')) this.readonly = true;
 		if (element.hasAttribute('disabled')) this.disabled = true;
-		if (element.hasAttribute('area')) this._area = true;
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
-		if (element.hasAttribute('double')) this._double = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 		// check types
@@ -155,59 +101,17 @@ export class UIInput {
 		if (element.hasAttribute('decimal')) this._type = 'decimal';
 		if (element.hasAttribute('name')) this._type = 'name';
 		if (element.hasAttribute('address')) this._type = 'address';
-		if (element.hasAttribute('position')) this._type = 'position';
-		if (element.hasAttribute('phone')) this._type = 'phone';
-		if (element.hasAttribute('phone-full')) {
-			this._type      = 'phone';
-			this._phoneFull = true;
-			this.addonClass = 'ui-flag';
-		}
 
-		if (this._type == 'phone')this._intype = 'tel';
 		if (this._type == 'email')this._intype = 'email';
 		if (this._type == 'position' || this._type == 'number' || this._type == 'decimal')this._intype = 'number';
 	}
 
 	bind() {
-		if (this._type == 'position') {
-			this._double = true;
-			//this._type   = 'decimal';
-		}
-		if (this.placeholder) {
-			[this._placeholder1, this._placeholder2] = this.placeholder.split(',');
-		}
 		if (this._checkbox) {
 			this.disabled = this.checked !== true;
 		}
-		if (this._type == 'phone' && !this._phoneFull) {
-			this.dir = 'ltr';
-			//if (this.value != null && this.value != '') {
-			//	if (!/^\+/.test(this.value)) this.value = '+' + this.value;
-			//	this.phoneCountry = (PhoneLib.getIso2Code(this.value) || 'US').toLowerCase();
-			//	let info          = PhoneLib.getNumberInfo(this.value, this.phoneCountry || 'US');
-			//	this.phoneCode    = info.areaCode;
-			//	this.phoneNumber  = info.phone;
-			//	this.phoneExt     = info.ext;
-			//}
-			this.addonText     = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
-			this._placeholder1 = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
-			this._value1       = `${this.phoneCode}${this.phoneNumber}${this.phoneExt}`;
-			this._processValue();
-		}
-		else if (this._type == 'phone' && this._phoneFull) {
-			this.dir       = 'ltr';
-			this.addonIcon = 'US';
-			if (this.value != null && this.value != '') {
-				if (!/^\+/.test(this.value)) this.value = '+' + this.value;
-				this.addonIcon = PhoneLib.getIso2Code(this.value) || 'US';
-			}
-			this._placeholder1 = PhoneLib.getExample('US', this.phoneType, true);
-			this._value1       = this.value;
-			this._processValue();
-		}
-		else if (this.value !== null) {
+		if (this.value !== null) {
 			this._valueChanged(this.value);
-			this._processValue();
 		}
 	}
 
@@ -237,7 +141,6 @@ export class UIInput {
 					var el = $(e.target);
 					el[el.val() !== '' ? 'addClass' : 'removeClass']('x');
 				}
-				this._processValue();
 			})
 			.on('mousemove', (e)=> {
 				if ($(e.target).hasClass('x'))
@@ -269,9 +172,6 @@ export class UIInput {
 				else if (this._type == 'email') {
 					return (/[A-Za-z0-9\-\.@_\+]/).test(String.fromCharCode(e.charCode));
 				}
-				else if (this._type == 'phone') {
-					return /[0-9]/.test(String.fromCharCode(e.charCode));
-				}
 
 				if ((e.which || e.keyCode) == 13) {
 					$(e.target).trigger('change', e);
@@ -282,40 +182,13 @@ export class UIInput {
 			})
 			.change((e) => {
 				var val = $(e.target).val();
-				if (!this.autoComplete)
-					val = val.replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
-				val = this._format(val);
+				val     = val.replace(/^[\s]+/, "").replace(/[\s]+$/, "").replace(/[\s]{2,}/gi, " ");
+				val     = this._format(val);
 				$(e.target).val(val);
-				if (this._double && $(e.target).hasClass('ui-secondary')) this._value2 = val;
-				else this._value1 = val;
-				this._processValue();
+				this.value = val;
 			});
-
-		if (this.autoComplete) {
-			this.autoCompleteChanged(this.autoComplete);
-		}
 	}
 
-	autoCompleteChanged(newValue) {
-		if (_.isString(newValue)) newValue = newValue.split(',');
-		this._input.textcomplete([{
-			words: newValue,
-			match: /\b(\w{2,})$/,
-			search: (term, callback)=> {
-				callback(_.filter(this.autoComplete as Array<string>, (word)=> {
-					return eval(`/${term}/gi`).test(word);
-				}));
-			},
-			index: 1,
-			replace: (word)=> {
-				if (/\-$/.test(word)) return word;
-				if (word == 'and') return '&& ';
-				if (word == 'or') return '|| ';
-				if (word == 'not') return '!';
-				return word + ' ';
-			}
-		}], {zIndex: 500000, maxCount: 20, debounce: 200});
-	}
 
 	disabledChanged(newValue) {
 		if (!this._input) return;
@@ -339,77 +212,9 @@ export class UIInput {
 		}
 	}
 
-	private _ignorechange = false;
-
 	private _valueChanged(newValue) {
-		if (this._type == 'phone' && !this._phoneFull) {
-			if (!this._ignorechange && newValue != null && newValue != '') {
-				if (!/^\+/.test(newValue)) newValue = '+' + newValue;
-				let ctry          = PhoneLib.getIso2Code(newValue) || 'US';
-				let info          = PhoneLib.getNumberInfo(newValue, ctry || 'US');
-				this.phoneCode    = info.areaCode;
-				this.phoneNumber  = isNaN(info.phone) ? '' : info.phone + '';
-				this.phoneExt     = info.ext;
-				this._value1      = `${this.phoneCode}${this.phoneNumber}${this.phoneExt}`;
-				this.phoneCountry = ctry;
-				this._processValue();
-			}
-			this._ignorechange = false;
-		}
-		else if (this._type == 'phone' && this._phoneFull) {
-			this._value1 = this.value;
-			if (!this._ignorechange && newValue != null && newValue != '') {
-				this._processValue();
-			}
-			this._ignorechange = false;
-		}
-		else {
-			if (newValue === null || newValue === undefined) newValue = '';
-			if (this._double) {
-				try {[this._value1, this._value2] = (newValue + '').split(',');}
-				catch (e) {
-					this._value1 = '';
-					this._value2 = '';
-				}
-			}
-			else {
-				this._value1 = newValue;
-			}
-			this._value1 = this._format(this._value1 || '');
-			this._value2 = this._format(this._value2 || '');
-		}
-		$(this._inputGroup).find('input.ui-primary')[this._value1 !== '' ? 'addClass' : 'removeClass']('x');
-		$(this._inputGroup).find('input.ui-secondary')[this._value2 !== '' ? 'addClass' : 'removeClass']('x');
-	}
-
-	private _countryChanged(newValue) {
-		if (newValue && !this._phoneFull) {
-			this.addonText     = '+' + PhoneLib.getDialingCode(newValue || 'US');
-			this._placeholder1 = PhoneLib.getExample(newValue || 'US', this.phoneType, true);
-
-			this._value1 = PhoneLib.formatInput(this._value1 || '', newValue || 'US')
-				.replace(/[\(\)\s\-]+$/, '');
-			this._processValue();
-		}
-	}
-
-	private _processValue() {
-		if (this._type == 'phone' && !this._phoneFull) {
-			this._ignorechange = true;
-			this._value1       = PhoneLib.formatInput(this._value1, this.phoneCountry || 'us', false, true);
-			this.value         = PhoneLib.format(this._value1, this.phoneCountry || 'us', PhoneLib.FORMAT.FULL);
-			this._updatePhone();
-		}
-		else if (this._type == 'phone' && this._phoneFull) {
-			if (!/^\+/.test(this._value1)) this._value1 = '+' + this._value1;
-			this._ignorechange = true;
-			this._value1       = PhoneLib.formatInput(this._value1, '', false, true);
-			this.value         = PhoneLib.format(this._value1, '', PhoneLib.FORMAT.FULL);
-			this.addonIcon     = PhoneLib.getIso2Code(this.value) || 'US';
-			this._updatePhone();
-		}
-		else
-			this.value = this._double ? `${this._value1},${this._value2}` : this._value1;
+		this.value = this._value = this._format(newValue);
+		$(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
 	}
 
 	private _format(val) {
@@ -427,30 +232,7 @@ export class UIInput {
 		else if (this._type == 'email') {
 			val = val.toLowerCase();
 		}
-		else if (this._type == 'phone' && !this._phoneFull) {
-			val = PhoneLib.formatInput(val || '', this.phoneCountry || 'US', false, true)
-				.replace(/[\(\)\s\-]+$/, '');
-		}
-		else if (this._type == 'phone' && this._phoneFull) {
-			val = PhoneLib.formatInput(val || '', '', false, true)
-				.replace(/[\(\)\s\-]+$/, '');
-		}
 		return val;
-	}
-
-	private _updatePhone() {
-		try {
-			if (!this._phoneFull) {
-				var info         = PhoneLib.getNumberInfo(this._value1 || '', this.phoneCountry || 'US');
-				this.phoneCode   = info.areaCode;
-				this.phoneNumber = isNaN(info.phone) ? '' : info.phone + '';
-				this.phoneExt    = info.ext;
-			}
-		} catch (e) {
-			this.phoneCode   = '';
-			this.phoneNumber = '';
-			this.phoneExt    = '';
-		}
 	}
 
 	private _buttonClick($event) {

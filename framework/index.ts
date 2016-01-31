@@ -43,6 +43,8 @@ export function configure(aurelia:FrameworkConfiguration) {
 
 	aurelia.globalResources('./components/ui-button');
 	aurelia.globalResources('./components/ui-switch');
+	aurelia.globalResources('./components/ui-textarea');
+	aurelia.globalResources('./components/ui-phone');
 	aurelia.globalResources('./components/ui-input');
 	aurelia.globalResources('./components/ui-date');
 	aurelia.globalResources('./components/ui-list');

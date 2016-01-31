@@ -22,6 +22,8 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
         aurelia.globalResources('./containers/ui-dialog');
         aurelia.globalResources('./components/ui-button');
         aurelia.globalResources('./components/ui-switch');
+        aurelia.globalResources('./components/ui-textarea');
+        aurelia.globalResources('./components/ui-phone');
         aurelia.globalResources('./components/ui-input');
         aurelia.globalResources('./components/ui-date');
         aurelia.globalResources('./components/ui-list');
