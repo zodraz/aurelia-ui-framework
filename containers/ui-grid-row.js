@@ -14,6 +14,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UIGridRow(el) {
             this.class = '';
             this._classes = '';
+            if (el.hasAttribute('column'))
+                this._classes += ' ui-row-column ';
             if (el.hasAttribute('nowrap'))
                 this._classes += ' ui-flex-nowrap ';
             if (el.hasAttribute('stretch'))

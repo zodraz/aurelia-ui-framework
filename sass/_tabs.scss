@@ -60,6 +60,10 @@
 	  bottom: 0;
 	  overflow: auto;
 
+	  &.no-scroll {
+		overflow: hidden;
+	  }
+
 	  &:not(.ui-active) {
 		display: none;
 	  }

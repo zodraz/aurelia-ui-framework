@@ -14,9 +14,10 @@
 				   focus.trigger="focus=true" blur.trigger="focus=false"/>
 			<span class="ui-check-mark"></span>
 		</div>
-		<input class="ui-input ${_inputClasses} ui-primary" placeholder="${placeholder}" value.bind="_value"
-			   size="1" id.bind="_id" dir.bind="dir" type.bind="_intype"
-			   focus.trigger="focus=true" blur.trigger="focus=false"/>
+
+			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${placeholder}" value.bind="value"
+					  cols="10" rows="5" id.bind="_id" dir.bind="dir"
+					  focus.trigger="focus=true" blur.trigger="focus=false"></textarea>
 
 		<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
 				click.trigger="_buttonClick($event)">

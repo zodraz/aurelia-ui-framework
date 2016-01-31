@@ -1,11 +1,11 @@
 <template class="ui-input-group ${_classes}" ref="_markdown" ref-id="${id}">
 
-	<label class="ui-label ${_labelClasses}" for.bind="_id">
+	<label class="ui-label ${_labelClasses}" for.bind="_id" show.bind="!_noLabel">
 		<content></content>
 	</label>
 
 	<div class="ui-form-control ${focus?'ui-focus':''}">
-		<div class="ui-markdown-editor ui-row ui-column ui-col-fill pad-0">
+		<div class="ui-markdown-editor ui-row ui-row-column ui-col-fill pad-0">
 			<div ref="_tools" class="ui-button-group ui-col-full" click.delegate="_toolClick($event)">
 				<button type="button" tabindex="-1" data-id="h1"
 						class="ui-button ui-button-small ui-button-secondary"><b>H1</b></button>

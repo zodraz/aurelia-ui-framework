@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
     var UIButtonGroup = (function () {
         function UIButtonGroup(element) {
             this.element = element;
@@ -68,6 +68,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this._toggle !== false) {
                 $event.cancelBubble = true;
                 if (this._toggle === 'multiple') {
+                    var a = (this.value + '').split(',');
+                    var v = $event.detail.value;
+                    if (a.indexOf(v) == -1)
+                        a.push(v);
+                    else
+                        a.splice(a.indexOf(v), 1);
+                    this.value = a.join(',');
                 }
                 else {
                     this.value = $event.detail.value;
@@ -76,12 +83,16 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
         };
         UIButtonGroup.prototype._checkChange = function () {
+            var _this = this;
+            $(this._buttonGroup).children('.ui-checked').removeClass('ui-checked');
             if (this._toggle === 'multiple') {
+                var a = (this.value + '').split(',');
+                ui_utils_1._.forEach(a, function (v) {
+                    $(_this._buttonGroup).children("[value='" + v + "']").addClass('ui-checked');
+                });
             }
             else {
-                $(this._buttonGroup).children('.ui-checked').removeClass('ui-checked');
-                var el = $(this._buttonGroup).children("[value='" + this.value + "']");
-                el.addClass('ui-checked');
+                $(this._buttonGroup).children("[value='" + this.value + "']").addClass('ui-checked');
             }
         };
         __decorate([

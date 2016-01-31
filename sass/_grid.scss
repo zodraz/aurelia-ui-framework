@@ -38,6 +38,10 @@
 .ui-row {
   @include flex-row(flex-start);
 
+  &.ui-row-column {
+	@include flex-direction(column);
+  }
+
   &.ui-flex-nowrap {
 	@include flex-wrap(nowrap);
   }

@@ -22,6 +22,8 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
         aurelia.globalResources('./containers/ui-dialog');
         aurelia.globalResources('./components/ui-button');
         aurelia.globalResources('./components/ui-switch');
+        aurelia.globalResources('./components/ui-textarea');
+        aurelia.globalResources('./components/ui-phone');
         aurelia.globalResources('./components/ui-input');
         aurelia.globalResources('./components/ui-date');
         aurelia.globalResources('./components/ui-list');
@@ -43,6 +45,10 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
     exports.KeysValueConverter = ui_converters_1.KeysValueConverter;
     exports.MarkdownValueConverter = ui_converters_1.MarkdownValueConverter;
     exports.SortValueConverter = ui_converters_1.SortValueConverter;
+    exports.GroupValueConverter = ui_converters_1.GroupValueConverter;
+    exports.IsArrayValueConverter = ui_converters_1.IsArrayValueConverter;
+    exports.IsObjectValueConverter = ui_converters_1.IsObjectValueConverter;
+    exports.IsStringValueConverter = ui_converters_1.IsStringValueConverter;
     exports.UIEvent = ui_event_1.UIEvent;
     exports.UIHttpService = ui_http_service_1.UIHttpService;
     exports.UIDwrService = ui_dwr_service_1.UIDwrService;
