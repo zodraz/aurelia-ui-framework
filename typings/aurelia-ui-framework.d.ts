@@ -14,11 +14,16 @@ declare module "aurelia-ui-framework" {
 	export class UIValidation {}
 	export class AuthInterceptor {}
 	export class KeysValueConverter {}
+	export class GroupValueConverter {}
 	export class SortValueConverter {}
 	export class DateValueConverter {}
 	export class NumberValueConverter {}
 	export class CurrencyValueConverter {}
 	export class MarkdownValueConverter {}
+
+	export class IsStringValueConverter {}
+	export class IsArrayValueConverter {}
+	export class IsObjectValueConverter {}
 
 	export class UILangSelect {
 		static LANGUAGES;
