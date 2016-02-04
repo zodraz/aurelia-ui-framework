@@ -64,6 +64,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-validation", "../uti
         __extends(LoginModel, _super);
         function LoginModel() {
             _super.call(this);
+            this.username = '';
+            this.password = '';
             this.appState = ui_utils_1.Utils.lazy(ui_app_state_1.UIApplicationState);
             var _u, _p;
             if ((_u = this.appState.getLocal('AppUsername')) !== null)

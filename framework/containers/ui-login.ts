@@ -50,10 +50,10 @@ export class UILogin {
 @transient()
 export class LoginModel extends UIModel {
 	@ensure(t=>t.isNotEmpty().isEmail())
-	username:string;
+	username:string = '';
 
 	@ensure(t=>t.isNotEmpty())
-	password:string;
+	password:string = '';
 
 	remember:boolean;
 	appState:UIApplicationState;

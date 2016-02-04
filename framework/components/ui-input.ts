@@ -111,7 +111,7 @@ export class UIInput {
 		if (this._checkbox) {
 			this.disabled = this.checked !== true;
 		}
-		if (this.value !== null) {
+		if (!_.isEmpty(this.value)) {
 			this._valueChanged(this.value);
 		}
 	}
@@ -214,7 +214,7 @@ export class UIInput {
 	}
 
 	private _valueChanged(newValue) {
-		this.value = this._value = this._format(newValue !== null ? newValue : '');
+		this.value = this._value = this._format(_.isEmpty(newValue) ? '' : newValue);
 		$(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
 	}
 
