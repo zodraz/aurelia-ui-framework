@@ -9,7 +9,7 @@ images_dir = "/images"
 javascripts_dir = "/src"
 fonts_dir = "/fonts"
 
-add_import_path "jspm_packages/github/adarshpastakia/aurelia-ui-framework@1.0.8/sass/"
+add_import_path "jspm_packages/github/adarshpastakia/aurelia-ui-framework@1.1.1/sass/"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
