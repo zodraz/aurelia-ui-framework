@@ -41,6 +41,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
                         title: c.text()
                     });
             });
+            $(this._temp).remove();
         };
         UIMenu.prototype._linkClicked = function ($event) {
             if ($($event.target).closest('a').data('disabled') === true) {

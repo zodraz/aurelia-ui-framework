@@ -2,30 +2,33 @@
 
 	<label class="ui-label ${_labelClasses}" innerhtml.bind="label" show.bind="!_noLabel" for.bind="_id"></label>
 
-	<div class="ui-form-control ${focus?'ui-focus':''}" keyup.delegate="_keyup($event)">
-		<div class="ui-addon" if.bind="addonClass || addonIcon || addonText">
-			<span class="${addonIcon} ${addonClass}" if.bind="addonClass || addonIcon"></span>
-			<span if.bind="addonText">${addonText}</span>
-		</div>
-		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
-			<input class="ui-option-input" type="checkbox" checked.bind="checked"
-				   focus.trigger="focus=true" blur.trigger="focus=false"/>
-			<span class="ui-check-mark"></span>
-		</div>
-		<div ref="_options">
-			<content></content>
-		</div>
-		<select ref="_select" class="ui-input ${_inputClasses} ui-primary" id.bind="_id"
-				placeholder="${placeholder}" value.bind="_value" style="width: 100%">
-			<option value="" if.bind="!_multiple"></option>
-			<option value="${opt.id!==null&&opt.id!==undefined?opt.id:opt}" model.bind="opt"
-					repeat.for="opt of options">${opt.name || opt.text || opt}
-			</option>
-		</select>
+	<div class="ui-control-wrapper">
+		<div class="ui-form-control ${focus?'ui-focus':''}" keyup.delegate="_keyup($event)">
+			<div class="ui-addon" if.bind="addonClass || addonIcon || addonText">
+				<span class="${addonIcon} ${addonClass}" if.bind="addonClass || addonIcon"></span>
+				<span if.bind="addonText">${addonText}</span>
+			</div>
+			<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
+				<input class="ui-option-input" type="checkbox" checked.bind="checked"
+					   focus.trigger="focus=true" blur.trigger="focus=false"/>
+				<span class="ui-check-mark"></span>
+			</div>
+			<div ref="_options">
+				<content></content>
+			</div>
+			<select ref="_select" class="ui-input ${_inputClasses} ui-primary" id.bind="_id"
+					placeholder="${placeholder}" value.bind="_value" style="width: 100%">
+				<option value="" if.bind="!_multiple"></option>
+				<option value="${opt.id!==null&&opt.id!==undefined?opt.id:opt}" model.bind="opt"
+						repeat.for="opt of options">${opt.name || opt.text || opt}
+				</option>
+			</select>
 
-		<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
-				click.trigger="_buttonClick($event)">
-			<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
-		</button>
+			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
+					click.trigger="_buttonClick($event)">
+				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
+			</button>
+		</div>
+		<div class="ui-control-help" if.bind="helpText" innerhtml.bind="helpText"></div>
 	</div>
 </template>

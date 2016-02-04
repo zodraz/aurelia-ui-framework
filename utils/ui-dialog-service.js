@@ -36,7 +36,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             }
         }
         UIDialogService.prototype._invokeLifecycle = function (instance, name, model) {
-            if (typeof instance[name] === 'function') {
+            if (instance && typeof instance[name] === 'function') {
                 var result = instance[name](model);
                 if (result instanceof Promise) {
                     return result;
@@ -94,25 +94,23 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
         UIDialogService.prototype.closeDialog = function (e) {
             var _this = this;
             var dialog = $(e.target).closest('ui-dialog').get(0).au.controller;
-            this._invokeLifecycle(dialog.bindingContext, 'canDeactivate', null).then(function (canDeactivate) {
+            this._invokeLifecycle(dialog.contentView.bindingContext, 'canDeactivate', null).then(function (canDeactivate) {
                 if (canDeactivate) {
                     ui_utils_1._.remove(_this._windows, 'id', dialog.viewModel.id);
                     dialog.viewModel.remove();
-                    _this._invokeLifecycle(dialog.bindingContext, 'detached', null);
-                    if (_this._windows.length > 0) {
-                        var win = ui_utils_1._.last(_this._windows);
-                        if (win.minimized === false)
-                            (_this._active = win).active = true;
-                        else
-                            _this._active = null;
-                    }
-                    _this._invokeLifecycle(dialog.bindingContext, 'deactivate', null);
+                    _this._invokeLifecycle(dialog.contentView.bindingContext, 'detached', null);
+                    if (_this._active)
+                        _this._active.active = false;
+                    _this.__getNextActive();
+                    _this._invokeLifecycle(dialog.contentView.bindingContext, 'deactivate', null);
                 }
             });
         };
-        UIDialogService.prototype.switchActive = function (d) {
-            if (this._active && this._active.id == d.id) {
+        UIDialogService.prototype.switchActive = function (d, ignore) {
+            if (ignore === void 0) { ignore = false; }
+            if (!ignore && this._active && this._active.id == d.id) {
                 d.minimized = true;
+                d.active = false;
                 this.__getNextActive();
                 return;
             }
@@ -121,19 +119,21 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                     return;
                 this._active.active = false;
             }
-            if (d) {
+            if (d && !d.modal) {
                 (this._active = d).minimized = false;
                 (this._active = d).active = true;
             }
         };
         UIDialogService.prototype.collapse = function (e) {
             $(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
+            if (this._active)
+                this._active.active = false;
             this.__getNextActive();
         };
         UIDialogService.prototype.__getNextActive = function () {
             if (this._windows.length > 0) {
                 this._active = null;
-                var a = ui_utils_1._.findLast(this._windows, 'minimized', false);
+                var a = ui_utils_1._.findLast(this._windows, function (e) { return e.minimized === false; });
                 if (a) {
                     a.active = true;
                     this._active = a;
@@ -150,10 +150,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             if ($event.button != 0)
                 return;
             if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {
-                return this.switchActive(this._dialog);
+                return this.switchActive(this._dialog, true);
             }
-            console.log($event.x, $event.clientX);
-            console.log($event.y, $event.clientY);
             this._startX = ($event.x || $event.clientX);
             this._startY = ($event.y || $event.clientY);
             this._isDragging = true;

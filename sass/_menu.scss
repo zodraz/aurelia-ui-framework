@@ -16,6 +16,7 @@
 	padding: 2px 0;
 	min-width: 120px;
 	max-width: 220px;
+	max-height: 0;
 	overflow: auto;
 	visibility: hidden;
 	z-index: $zindex-floating;

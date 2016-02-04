@@ -18,7 +18,7 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
             };
         }
         UIValidationStrategy.prototype.appendMessageToElement = function (formGroup, validationProperty) {
-            var helpBlock = formGroup.lastChild;
+            var helpBlock = formGroup.lastElementChild;
             if (helpBlock) {
                 if (!helpBlock.classList) {
                     helpBlock = null;
@@ -37,25 +37,25 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
         UIValidationStrategy.prototype.appendUIVisuals = function (validationProperty, formGroup) {
             if (validationProperty && validationProperty.isDirty) {
                 if (validationProperty.isValid) {
-                    formGroup.classList.remove('ui-invalid');
-                    formGroup.classList.add('ui-valid');
+                    formGroup.parentElement.classList.remove('ui-invalid');
+                    formGroup.parentElement.classList.add('ui-valid');
                 }
                 else {
-                    formGroup.classList.remove('ui-valid');
-                    formGroup.classList.add('ui-invalid');
+                    formGroup.parentElement.classList.remove('ui-valid');
+                    formGroup.parentElement.classList.add('ui-invalid');
                 }
             }
             else {
-                formGroup.classList.remove('ui-invalid');
-                formGroup.classList.remove('ui-valid');
+                formGroup.parentElement.classList.remove('ui-invalid');
+                formGroup.parentElement.classList.remove('ui-valid');
             }
             this.appendMessageToElement(formGroup, validationProperty);
         };
         UIValidationStrategy.prototype.prepareElement = function (validationProperty, element) {
-            this.appendUIVisuals(null, element);
+            this.appendUIVisuals(null, element.lastElementChild);
         };
         UIValidationStrategy.prototype.updateElement = function (validationProperty, element) {
-            this.appendUIVisuals(validationProperty, element);
+            this.appendUIVisuals(validationProperty, element.lastElementChild);
         };
         return UIValidationStrategy;
     })(aurelia_validation_1.ValidationViewStrategy);

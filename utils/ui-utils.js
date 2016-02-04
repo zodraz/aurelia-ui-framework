@@ -194,10 +194,13 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                 .subscribe(function () {
                 sessionStorage.setItem(viewModel.constructor.name + ":" + key, viewModel[key]);
             }));
+            var _unbindHook = viewModel.unbind;
             viewModel.unbind = (function () {
                 while (viewModel._subscriptions.length) {
                     viewModel._subscriptions.pop().dispose();
                 }
+                if (exports._.isFunction(_unbindHook))
+                    _unbindHook.call(viewModel);
             });
         };
     }

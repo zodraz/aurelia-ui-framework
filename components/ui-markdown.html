@@ -4,157 +4,160 @@
 		<content></content>
 	</label>
 
-	<div class="ui-form-control ${focus?'ui-focus':''}">
-		<div class="ui-markdown-editor ui-row ui-row-column ui-col-fill pad-0">
-			<div ref="_tools" class="ui-button-group ui-col-full" click.delegate="_toolClick($event)">
-				<button type="button" tabindex="-1" data-id="h1"
-						class="ui-button ui-button-small ui-button-secondary"><b>H1</b></button>
-				<button type="button" tabindex="-1" data-id="h2"
-						class="ui-button ui-button-small ui-button-secondary"><b>H2</b></button>
-				<button type="button" tabindex="-1" data-id="h3"
-						class="ui-button ui-button-small ui-button-secondary"><b>H3</b></button>
-				<button type="button" tabindex="-1" data-id="h4"
-						class="ui-button ui-button-small ui-button-secondary"><b>H4</b></button>
-				<button type="button" tabindex="-1" data-id="h5"
-						class="ui-button ui-button-small ui-button-secondary"><b>H5</b></button>
-				<button type="button" tabindex="-1" data-id="h6"
-						class="ui-button ui-button-small ui-button-secondary"><b>H6</b></button>
-				<div class="ui-divider"></div>
-				<button type="button" tabindex="-1" data-id="b"
-						class="ui-button ui-button-small ui-button-secondary" title="Bold"><span
-						class="fi-editor-bold14"></span></button>
-				<button type="button" tabindex="-1" data-id="i"
-						class="ui-button ui-button-small ui-button-secondary" title="Italic"><span
-						class="fi-editor-italicize"></span></button>
-				<button type="button" tabindex="-1" data-id="s"
-						class="ui-button ui-button-small ui-button-secondary"
-						title="Strikethrough"><span
-						class="fi-editor-strikethrough1"></span></button>
-				<div class="ui-divider"></div>
-				<button type="button" tabindex="-1" data-id="a"
-						class="ui-button ui-button-small ui-button-secondary" title="Link"><span
-						class="fi-editor-anchor16"></span></button>
-				<button type="button" tabindex="-1" data-id="img"
-						class="ui-button ui-button-small ui-button-secondary" title="Image"><span
-						class="fi-editor-picture13"></span></button>
-				<div class="ui-divider"></div>
-				<button type="button" tabindex="-1" data-id="ul"
-						class="ui-button ui-button-small ui-button-secondary" title="Bullet List"><span
-						class="fi-editor-list29"></span></button>
-				<button type="button" tabindex="-1" data-id="ol"
-						class="ui-button ui-button-small ui-button-secondary"
-						title="Numbered List"><span
-						class="fi-editor-numbered4"></span></button>
-				<!--<button type="button" tabindex="-1" data-id="table" class="ui-button ui-button-small ui-button-secondary" title="Table"><span-->
-				<!--class="fi-editor-list30"></span></button>-->
-				<div class="ui-divider"></div>
-				<button type="button" tabindex="-1" data-id="help"
-						class="ui-help ui-button ui-button-small ui-button-secondary"
-						title="Syntax Help"><span
-						class="fi-editor-question23"></span></button>
-				<button type="button" tabindex="-1" data-id="preview"
-						class="ui-help ui-button ui-button-small ui-button-secondary"
-						title="Preview"><span
-						class="fi-editor-search19"></span></button>
-			</div>
+	<div class="ui-control-wrapper">
+		<div class="ui-form-control ${focus?'ui-focus':''}">
+			<div class="ui-markdown-editor ui-row ui-row-column ui-col-fill pad-0">
+				<div ref="_tools" class="ui-button-group ui-col-full" click.delegate="_toolClick($event)">
+					<button type="button" tabindex="-1" data-id="h1"
+							class="ui-button ui-button-small ui-button-secondary"><b>H1</b></button>
+					<button type="button" tabindex="-1" data-id="h2"
+							class="ui-button ui-button-small ui-button-secondary"><b>H2</b></button>
+					<button type="button" tabindex="-1" data-id="h3"
+							class="ui-button ui-button-small ui-button-secondary"><b>H3</b></button>
+					<button type="button" tabindex="-1" data-id="h4"
+							class="ui-button ui-button-small ui-button-secondary"><b>H4</b></button>
+					<button type="button" tabindex="-1" data-id="h5"
+							class="ui-button ui-button-small ui-button-secondary"><b>H5</b></button>
+					<button type="button" tabindex="-1" data-id="h6"
+							class="ui-button ui-button-small ui-button-secondary"><b>H6</b></button>
+					<div class="ui-divider"></div>
+					<button type="button" tabindex="-1" data-id="b"
+							class="ui-button ui-button-small ui-button-secondary" title="Bold"><span
+							class="fi-editor-bold14"></span></button>
+					<button type="button" tabindex="-1" data-id="i"
+							class="ui-button ui-button-small ui-button-secondary" title="Italic"><span
+							class="fi-editor-italicize"></span></button>
+					<button type="button" tabindex="-1" data-id="s"
+							class="ui-button ui-button-small ui-button-secondary"
+							title="Strikethrough"><span
+							class="fi-editor-strikethrough1"></span></button>
+					<div class="ui-divider"></div>
+					<button type="button" tabindex="-1" data-id="a"
+							class="ui-button ui-button-small ui-button-secondary" title="Link"><span
+							class="fi-editor-anchor16"></span></button>
+					<button type="button" tabindex="-1" data-id="img"
+							class="ui-button ui-button-small ui-button-secondary" title="Image"><span
+							class="fi-editor-picture13"></span></button>
+					<div class="ui-divider"></div>
+					<button type="button" tabindex="-1" data-id="ul"
+							class="ui-button ui-button-small ui-button-secondary" title="Bullet List"><span
+							class="fi-editor-list29"></span></button>
+					<button type="button" tabindex="-1" data-id="ol"
+							class="ui-button ui-button-small ui-button-secondary"
+							title="Numbered List"><span
+							class="fi-editor-numbered4"></span></button>
+					<!--<button type="button" tabindex="-1" data-id="table" class="ui-button ui-button-small ui-button-secondary" title="Table"><span-->
+					<!--class="fi-editor-list30"></span></button>-->
+					<div class="ui-divider"></div>
+					<button type="button" tabindex="-1" data-id="help"
+							class="ui-help ui-button ui-button-small ui-button-secondary"
+							title="Syntax Help"><span
+							class="fi-editor-question23"></span></button>
+					<button type="button" tabindex="-1" data-id="preview"
+							class="ui-help ui-button ui-button-small ui-button-secondary"
+							title="Preview"><span
+							class="fi-editor-search19"></span></button>
+				</div>
 
 			<textarea class="ui-input ui-col-full ${_inputClasses} ui-primary"
 					  placeholder="${placeholder}" value.bind="value" id.bind="_id"
 					  focus.trigger="focus=true" blur.trigger="focus=false"
 					  cols="10" rows="8" ref="_input" dir.bind="dir"></textarea>
 
-			<small class="ui-text-muted">Styles can be applied by selecting the text and clicking on any of the
-				style
-				buttons
-			</small>
-		</div>
-		<div class="ui-markdown ui-markdown-preview ui-hide" dir.bind="dir">
-			<span innerhtml.bind="value | markdown"></span>
-		</div>
-		<div class="ui-markdown ui-markdown-help ui-hide" dir="ltr">
-			<h2 class="ui-small-caps ui-text-primary ui-strong">Markdown Syntax</h2>
-			<hr/>
-			<p class="ui-text-primary">Headers</p>
+				<small class="ui-text-muted">Styles can be applied by selecting the text and clicking on any of the
+					style
+					buttons
+				</small>
+			</div>
+			<div class="ui-markdown ui-markdown-preview ui-hide" dir.bind="dir">
+				<span innerhtml.bind="value | markdown"></span>
+			</div>
+			<div class="ui-markdown ui-markdown-help ui-hide" dir="ltr">
+				<h2 class="ui-small-caps ui-text-primary ui-strong">Markdown Syntax</h2>
+				<hr/>
+				<p class="ui-text-primary">Headers</p>
 
-			<p class="ui-font-big">
-				<span>H1 <code class="ui-selectable"># Header</code> <span class="ui-h1">Header</span></span><br/>
-				<span>H2 <code class="ui-selectable">## Header</code> <span class="ui-h2">Header</span></span><br/>
-				<span>H3 <code class="ui-selectable">### Header</code> <span class="ui-h3">Header</span></span><br/>
+				<p class="ui-font-big">
+					<span>H1 <code class="ui-selectable"># Header</code> <span class="ui-h1">Header</span></span><br/>
+					<span>H2 <code class="ui-selectable">## Header</code> <span class="ui-h2">Header</span></span><br/>
+					<span>H3 <code class="ui-selectable">### Header</code> <span class="ui-h3">Header</span></span><br/>
 					<span>H4 <code class="ui-selectable">#### Header</code> <span
 							class="ui-h4">Header</span></span><br/>
 					<span>H5 <code class="ui-selectable">##### Header</code> <span
 							class="ui-h5">Header</span></span><br/>
 					<span>H6 <code class="ui-selectable">###### Header</code> <span
 							class="ui-h6">Header</span></span><br/>
-			</p>
+				</p>
 
-			<p class="ui-text-primary">Styles</p>
+				<p class="ui-text-primary">Styles</p>
 
-			<p class="ui-font-big">
-				<span>Italic <code class="ui-selectable">_Italic Text_</code>: <i>Italic</i></span><br/>
-				<span>Bold <code class="ui-selectable">__Bold Text__</code>: <b>Bold</b></span><br/>
+				<p class="ui-font-big">
+					<span>Italic <code class="ui-selectable">_Italic Text_</code>: <i>Italic</i></span><br/>
+					<span>Bold <code class="ui-selectable">__Bold Text__</code>: <b>Bold</b></span><br/>
 					<span>Bold <code class="ui-selectable">~~Strikethrough~~</code>: <del>Strikethrough
 					</del></span><br/>
-			</p>
+				</p>
 
-			<p class="ui-text-primary">Links</p>
+				<p class="ui-text-primary">Links</p>
 
-			<p class="ui-font-big">
-				<code class="ui-selectable">[link text](link URL)</code><br/>
-				<em>any url will be converted to a link, use the above to display custom text instead of url in
-					the link.</em><br/>
-				<span>eg. <code>&lt;a href="url">Link Text&lt;/a></code></span><br/>
-			</p>
+				<p class="ui-font-big">
+					<code class="ui-selectable">[link text](link URL)</code><br/>
+					<em>any url will be converted to a link, use the above to display custom text instead of url in
+						the link.</em><br/>
+					<span>eg. <code>&lt;a href="url">Link Text&lt;/a></code></span><br/>
+				</p>
 
-			<p class="ui-text-primary">Images</p>
+				<p class="ui-text-primary">Images</p>
 
-			<p class="ui-font-big">
-				<code class="ui-selectable">![alt text](image URL)</code><br/>
-			</p>
+				<p class="ui-font-big">
+					<code class="ui-selectable">![alt text](image URL)</code><br/>
+				</p>
 
-			<p class="ui-text-primary">Lists</p>
+				<p class="ui-text-primary">Lists</p>
 
-			<p class="ui-font-big">
-				<span><code class="ui-selectable">* list item</code>: &#8226; list item</span><br/>
-				<span><code class="ui-selectable">* list item</code>: &#8226; list item</span><br/>
-				<span><code class="ui-selectable">* list item</code>: &#8226; list item</span><br/>
-				<br/>
-				<span><code class="ui-selectable">1. list item</code>: 1. list item</span><br/>
-				<span><code class="ui-selectable">2. list item</code>: 2. list item</span><br/>
-				<span><code class="ui-selectable">3. list item</code>: 3. list item</span><br/>
-			</p>
+				<p class="ui-font-big">
+					<span><code class="ui-selectable">* list item</code>: &#8226; list item</span><br/>
+					<span><code class="ui-selectable">* list item</code>: &#8226; list item</span><br/>
+					<span><code class="ui-selectable">* list item</code>: &#8226; list item</span><br/>
+					<br/>
+					<span><code class="ui-selectable">1. list item</code>: 1. list item</span><br/>
+					<span><code class="ui-selectable">2. list item</code>: 2. list item</span><br/>
+					<span><code class="ui-selectable">3. list item</code>: 3. list item</span><br/>
+				</p>
 
-			<p class="ui-text-primary">Tables</p>
+				<p class="ui-text-primary">Tables</p>
 
-			<p class="ui-font-big">
-				<span><code class="ui-selectable">|Head|Head |Head|</code></span><br/>
-				<span><code class="ui-selectable">|:---|:---:|---:|</code></span><br/>
-				<span><code class="ui-selectable">|Left Align|Center Align|Right Aligned|</code></span><br/>
-				<span><code class="ui-selectable">|Left Align|Center Align|Right Aligned|</code></span><br/>
-				<br/>
-			<table>
-				<thead>
-				<tr>
-					<th class="ui-text-start">Head</th>
-					<th class="ui-text-center">Head</th>
-					<th class="ui-text-end">Head</th>
-				</tr>
-				</thead>
-				<tr>
-					<td class="ui-text-start">Left Align</td>
-					<td class="ui-text-center">Center Align</td>
-					<td class="ui-text-end">Right Align</td>
-				</tr>
-				<tr>
-					<td class="ui-text-start">Left</td>
-					<td class="ui-text-center">Center</td>
-					<td class="ui-text-end">Right</td>
-				</tr>
-			</table>
-			</p>
-			<br/><br/>
+				<p class="ui-font-big">
+					<span><code class="ui-selectable">|Head|Head |Head|</code></span><br/>
+					<span><code class="ui-selectable">|:---|:---:|---:|</code></span><br/>
+					<span><code class="ui-selectable">|Left Align|Center Align|Right Aligned|</code></span><br/>
+					<span><code class="ui-selectable">|Left Align|Center Align|Right Aligned|</code></span><br/>
+					<br/>
+				<table>
+					<thead>
+					<tr>
+						<th class="ui-text-start">Head</th>
+						<th class="ui-text-center">Head</th>
+						<th class="ui-text-end">Head</th>
+					</tr>
+					</thead>
+					<tr>
+						<td class="ui-text-start">Left Align</td>
+						<td class="ui-text-center">Center Align</td>
+						<td class="ui-text-end">Right Align</td>
+					</tr>
+					<tr>
+						<td class="ui-text-start">Left</td>
+						<td class="ui-text-center">Center</td>
+						<td class="ui-text-end">Right</td>
+					</tr>
+				</table>
+				</p>
+				<br/><br/>
+			</div>
+			<button class="ui-close ui-hide" click.trigger="_toggle('close')"><span class="fi-elegant-close11"></span>
+			</button>
 		</div>
-		<button class="ui-close ui-hide" click.trigger="_toggle('close')"><span class="fi-elegant-close11"></span>
-		</button>
+		<div class="ui-control-help" if.bind="helpText" innerhtml.bind="helpText"></div>
 	</div>
 </template>

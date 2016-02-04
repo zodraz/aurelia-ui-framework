@@ -55,7 +55,7 @@
 	@include justify-content(flex-end);
   }
 
-  > .ui-scroll {
+  .ui-scroll {
 	@include flex(1 1 auto);
   }
 }

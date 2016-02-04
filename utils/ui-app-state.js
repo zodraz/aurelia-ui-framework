@@ -60,6 +60,15 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this._logger.debug("navigateTo::" + route);
             this.router.navigateToRoute(route, params, {});
         };
+        UIApplicationState.prototype.logDebug = function (category, message) {
+            aurelia_logging_1.getLogger(category).debug(message);
+        };
+        UIApplicationState.prototype.logInfo = function (category, message) {
+            aurelia_logging_1.getLogger(category).info(message);
+        };
+        UIApplicationState.prototype.logWarn = function (category, message) {
+            aurelia_logging_1.getLogger(category).warn(message);
+        };
         UIApplicationState.prototype.notifyError = function (msg) {
             this._logger.debug("notify::" + msg);
             $.notify(msg);
@@ -68,6 +77,12 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-lo
             this._logger.debug("notifyInfo::" + msg);
             $.notify(msg, {
                 className: 'info'
+            });
+        };
+        UIApplicationState.prototype.notifySuccess = function (msg) {
+            this._logger.debug("notifyInfo::" + msg);
+            $.notify(msg, {
+                className: 'success'
             });
         };
         UIApplicationState.prototype.notifyPageError = function (msg) {

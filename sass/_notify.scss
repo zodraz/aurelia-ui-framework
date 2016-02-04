@@ -100,7 +100,7 @@
 	border: 1px solid $outer-space !important;
 	text-shadow: 0 1px 0 rgba($base-bg, 0.5);
 	background: linear-gradient(tint($base-bg, 25%), $base-bg);
-	@include box-shadow(0 0 0 1px $primary, 0 0 25px 5px rgba($black, 0.75));
+	@include box-shadow(0 0 0 1px $primary, 0 0 25px 5px rgba($black, 0.5));
 
 	.title {
 	  min-width: 150px;
@@ -142,6 +142,14 @@
 
 		&.yes {
 		  font-weight: 600;
+		  background: linear-gradient(rgba($primary, 0.3), rgba($primary, 0.4));
+
+		  &:hover {
+			background: linear-gradient(rgba($primary, 0.4), rgba($primary, 0.6));
+		  }
+		  &:active {
+			background: linear-gradient(rgba($primary, 0.6), rgba($primary, 0.4));
+		  }
 		}
 	  }
 	}

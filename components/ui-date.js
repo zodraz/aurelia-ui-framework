@@ -30,6 +30,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.inline = false;
             this.format = 'DD/MM/YYYY';
             this.id = '';
+            this.helpText = '';
             this.addonText = '';
             this.buttonIcon = '';
             this.buttonText = '';
@@ -71,7 +72,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         };
         UIDate.prototype.attached = function () {
             if (this.inline && (this._inputStart = this._inputInline))
-                $(this._date).remove();
+                $(this._date).parent().remove();
             else
                 $(this._inputInline).remove();
             var opts = ui_utils_1._.merge(this.options, {
@@ -174,6 +175,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIDate.prototype, "id");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIDate.prototype, "helpText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

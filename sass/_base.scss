@@ -178,7 +178,7 @@ html, body {
 	}
   }
 
-  .ui-app-view {
+  router-view {
 	@include flexbox((
 			display:flex,
 			flex-direction:column,
@@ -187,6 +187,9 @@ html, body {
 	));
 	@include flex(1 1 0%);
 	overflow: hidden;
+  }
+
+  .ui-app-view {
 
 	.ui-page-title {
 	  @include flex(0 0 auto);
