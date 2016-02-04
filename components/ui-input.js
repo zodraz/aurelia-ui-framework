@@ -9,7 +9,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
     var UIInput = (function () {
         function UIInput(element) {
             this.element = element;
@@ -82,7 +82,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this._checkbox) {
                 this.disabled = this.checked !== true;
             }
-            if (this.value !== null) {
+            if (!ui_utils_1._.isEmpty(this.value)) {
                 this._valueChanged(this.value);
             }
         };
@@ -180,7 +180,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
         };
         UIInput.prototype._valueChanged = function (newValue) {
-            this.value = this._value = this._format(newValue !== null ? newValue : '');
+            this.value = this._value = this._format(ui_utils_1._.isEmpty(newValue) ? '' : newValue);
             $(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
         };
         UIInput.prototype._format = function (val) {
