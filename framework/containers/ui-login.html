@@ -17,9 +17,9 @@
 						  placeholder="password">Password
 				</ui-input>
 
-				<ui-option-group label="" label-top>
-					<ui-option checkbox value.bind="model.remember">Login Automatically</ui-option>
-				</ui-option-group>
+				<ui-column label="" label-top>
+					<ui-option checkbox class="ui-stretch" value.bind="model.remember">Remember Me</ui-option>
+				</ui-column>
 
 				<div class="ui-row ui-flex-end">
 					<ui-button primary click.trigger="doLogin()">Login</ui-button>

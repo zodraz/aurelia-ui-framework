@@ -98,7 +98,6 @@
   .ui-control-wrapper {
 	@include flex(1 0 280px);
 
-
 	.ui-control-help {
 	  @include padding(start, 20px);
 	  @include padding(end, 5px);
@@ -267,7 +266,11 @@
 	border: none;
 	margin: 0;
 
-	.ui-form-control {
+	.ui-button-group {
+	  border-top: 1px solid $input-border;
+	}
+
+	.ui-control-wrapper, .ui-form-control {
 	  height: 100%;
 	  border: none;
 	}
