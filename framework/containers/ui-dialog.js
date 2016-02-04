@@ -86,7 +86,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-dialog-service",
         };
         UIDialog.prototype.minimizedChanged = function (newValue) {
             var _this = this;
-            if (newValue !== false) {
+            if (newValue !== false && this._taskButton) {
                 var tp = $(this._taskButton).offset();
                 var tw = $(this._taskButton).outerWidth();
                 var th = $(this._taskButton).outerHeight();

@@ -102,6 +102,7 @@ export class UIPhone {
 	private placeholder:string  = '';
 
 	@bindable id:string         = '';
+	@bindable helpText:string   = '';
 	@bindable buttonIcon:string = '';
 	@bindable buttonText:string = '';
 	@bindable readonly:boolean  = false;
@@ -128,6 +129,11 @@ export class UIPhone {
 			this.addonText   = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
 			this.placeholder = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
 			this._value      = `${this.phoneCode}${this.phoneNumber}${this.phoneExt}`;
+			if (this.value && this.value != '')
+				this._value = PhoneLib.format(this.value, this.phoneCountry || 'US', PhoneLib.FORMAT.NATIONAL);
+		}
+		else {
+			this._value = this.value;
 		}
 		this.processValue();
 	}
@@ -194,12 +200,16 @@ export class UIPhone {
 	}
 
 	private _countryChanged(newValue) {
-		this.placeholder = PhoneLib.getExample(newValue, this.phoneType);
+		this.addonText   = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
+		this.placeholder = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
+		this.processValue();
 	}
 
 	private _valueChanged(newValue) {
-		this.processValue();
-		$(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
+		if (this._phoneFull) {
+			this._value = newValue;
+			this.processValue();
+		}
 	}
 
 	private processValue() {
@@ -209,11 +219,13 @@ export class UIPhone {
 			this.updatePhone();
 		}
 		else {
-			if (!/^\+/.test(this._value)) this._value = '+' + this._value;
-			this._value    = PhoneLib.formatInput(this._value, '', false, true);
-			this.value     = PhoneLib.format(this._value, '', PhoneLib.FORMAT.FULL);
-			this.addonIcon = PhoneLib.getIso2Code(this.value) || 'US';
+			if (this._value != '' && !/^\+/.test(this._value)) this._value = '+' + this._value;
+			this._value      = PhoneLib.formatInput(this._value, '', false, true);
+			this.value       = PhoneLib.format(this._value, '', PhoneLib.FORMAT.FULL);
+			this.addonIcon   = PhoneLib.getIso2Code(this.value) || 'US';
+			this.placeholder = PhoneLib.getExample(this.addonIcon, this.phoneType, !this._phoneFull);
 		}
+		$(this._inputGroup).find('input.ui-primary')[this._value !== '' ? 'addClass' : 'removeClass']('x');
 	}
 
 	private updatePhone() {

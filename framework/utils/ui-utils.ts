@@ -204,11 +204,12 @@ export function watch(defaultValue?:any) {
 			.subscribe(()=> {
 				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
 			}));
-
+		let _unbindHook  = viewModel.unbind;
 		viewModel.unbind = (()=> {
 			while (viewModel._subscriptions.length) {
 				viewModel._subscriptions.pop().dispose();
 			}
+			if (_.isFunction(_unbindHook)) _unbindHook.call(viewModel);
 		});
 	}
 }

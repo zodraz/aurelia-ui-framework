@@ -26,6 +26,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.checked = false;
             this.id = '';
             this.dir = 'inherit';
+            this.helpText = '';
             this.addonIcon = '';
             this.addonText = '';
             this.addonClass = '';
@@ -179,7 +180,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
         };
         UIInput.prototype._valueChanged = function (newValue) {
-            this.value = this._value = this._format(newValue);
+            this.value = this._value = this._format(newValue !== null ? newValue : '');
             $(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
         };
         UIInput.prototype._format = function (val) {
@@ -212,6 +213,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIInput.prototype, "dir");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "helpText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

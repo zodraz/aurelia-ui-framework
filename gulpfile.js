@@ -88,7 +88,7 @@ gulp.task('aurelia:skeleton', function () {
 gulp.task('aurelia:release', function () {
 	gulp.src(['./package.json', './sass/_*.scss', './libs/*'], {base: './'})
 		.pipe(gulp.dest(release));
-	gulp.src(['./framework/**/*.js', './framework/**/*.html'], {base: './framework'})
+	gulp.src(['./framework/**/*.js', './framework/**/*.html', './framework/*.d.ts'], {base: './framework'})
 		.pipe(gulp.dest(release));
 	return;
 });

@@ -16,7 +16,7 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 	}
 
 	appendMessageToElement(formGroup, validationProperty) {
-		let helpBlock:Element = formGroup.lastChild;
+		let helpBlock:Element = formGroup.lastElementChild;
 		if (helpBlock) {
 			if (!helpBlock.classList) {
 				helpBlock = null;
@@ -37,25 +37,25 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 	appendUIVisuals(validationProperty, formGroup) {
 		if (validationProperty && validationProperty.isDirty) {
 			if (validationProperty.isValid) {
-				formGroup.classList.remove('ui-invalid');
-				formGroup.classList.add('ui-valid');
+				formGroup.parentElement.classList.remove('ui-invalid');
+				formGroup.parentElement.classList.add('ui-valid');
 			} else {
-				formGroup.classList.remove('ui-valid');
-				formGroup.classList.add('ui-invalid');
+				formGroup.parentElement.classList.remove('ui-valid');
+				formGroup.parentElement.classList.add('ui-invalid');
 			}
 		} else {
-			formGroup.classList.remove('ui-invalid');
-			formGroup.classList.remove('ui-valid');
+			formGroup.parentElement.classList.remove('ui-invalid');
+			formGroup.parentElement.classList.remove('ui-valid');
 		}
 
 		this.appendMessageToElement(formGroup, validationProperty);
 	}
 
 	prepareElement(validationProperty, element) {
-		this.appendUIVisuals(null, element);
+		this.appendUIVisuals(null, element.lastElementChild);
 	}
 
 	updateElement(validationProperty, element) {
-		this.appendUIVisuals(validationProperty, element);
+		this.appendUIVisuals(validationProperty, element.lastElementChild);
 	}
 }

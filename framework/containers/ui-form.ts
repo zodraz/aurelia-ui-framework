@@ -50,7 +50,7 @@ export class UIForm {
 	}
 
 	private _keyup($event) {
-		if (!$($event.target).is('textarea') && $event.keyCode == 13) {
+		if (!$($event.target).is('textarea') && ($event.which || $event.keyCode) == 13) {
 			UIEvent.fireEvent('submit', this.element, this, this._form);
 		}
 

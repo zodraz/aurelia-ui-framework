@@ -34,6 +34,7 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.validation = _validation
                 .on(this, null)
                 .ensure('model.email')
+                .isEmail()
                 .isNotEmpty()
                 .ensure('model.firstName')
                 .isNotEmpty()
@@ -42,6 +43,9 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
                 .ensure('model.phoneCountry')
                 .isNotEmpty()
                 .ensure('model.phone')
+                .isNotEmpty()
+                .isPhone()
+                .ensure('model.phone2')
                 .isNotEmpty()
                 .isPhone();
             this.content = {
@@ -63,10 +67,11 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this._langSelect
                 .addLanguages(Object.keys(this.content))
                 .setLanguage(this.lang);
-            this.model.isDirty = false;
         };
         HomeForm.prototype.deactivate = function () {
             this.model.dispose();
+        };
+        HomeForm.prototype.unbind = function () {
         };
         HomeForm.prototype.onSubmit = function () {
             this.validation.validate();
@@ -94,11 +99,12 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.lastName = 'Pastakia';
             this.email = 'adarshpastakia@outlook.com';
             this.pos = '25.4,76.5';
-            this.phoneCode = '055';
-            this.phoneNumber = '6347342';
+            this.phoneCode = '';
+            this.phoneNumber = '';
             this.phoneCountry = 'ae';
-            this.phoneExt = '123';
-            this.phone = '+971556347342,123';
+            this.phoneExt = '';
+            this.phone = '+971506347342';
+            this.phone2 = '+97143901709,123';
             this.list = '4';
             this.opts = 3;
             this.hasLoc = true;

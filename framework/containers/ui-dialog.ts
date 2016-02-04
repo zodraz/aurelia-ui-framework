@@ -95,7 +95,7 @@ export class UIDialog {
 	}
 
 	minimizedChanged(newValue) {
-		if (newValue !== false) {
+		if (newValue !== false && this._taskButton) {
 			let tp = $(this._taskButton).offset();
 			let tw = $(this._taskButton).outerWidth();
 			let th = $(this._taskButton).outerHeight();

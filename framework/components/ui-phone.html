@@ -4,23 +4,26 @@
 		<content></content>
 	</label>
 
-	<div class="ui-form-control ${focus?'ui-focus':''}">
-		<div class="ui-addon" if.bind="addonIcon || addonText">
-			<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
-			<span if.bind="addonText" dir="ltr">${addonText}</span>
-		</div>
-		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
-			<input class="ui-option-input" type="checkbox" checked.bind="checked"
+	<div class="ui-control-wrapper">
+		<div class="ui-form-control ${focus?'ui-focus':''}">
+			<div class="ui-addon" if.bind="addonIcon || addonText">
+				<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
+				<span if.bind="addonText" dir="ltr">${addonText}</span>
+			</div>
+			<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
+				<input class="ui-option-input" type="checkbox" checked.bind="checked"
+					   focus.trigger="focus=true" blur.trigger="focus=false"/>
+				<span class="ui-check-mark"></span>
+			</div>
+			<input class="ui-input ${_inputClasses} ui-primary" placeholder="${placeholder}" value.bind="_value"
+				   size="1" id.bind="_id" dir="ltr" type="tel"
 				   focus.trigger="focus=true" blur.trigger="focus=false"/>
-			<span class="ui-check-mark"></span>
-		</div>
-		<input class="ui-input ${_inputClasses} ui-primary" placeholder="${placeholder}" value.bind="_value"
-			   size="1" id.bind="_id" dir="ltr" type="tel"
-			   focus.trigger="focus=true" blur.trigger="focus=false"/>
 
-		<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
-				click.trigger="_buttonClick($event)">
-			<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
-		</button>
+			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
+					click.trigger="_buttonClick($event)">
+				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
+			</button>
+		</div>
+		<div class="ui-control-help" if.bind="helpText" innerhtml.bind="helpText"></div>
 	</div>
 </template>

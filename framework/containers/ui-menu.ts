@@ -44,6 +44,7 @@ export class UIMenu {
 				title: c.text()
 			});
 		});
+		$(this._temp).remove();
 	}
 
 	private _linkClicked($event) {

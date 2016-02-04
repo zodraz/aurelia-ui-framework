@@ -43,6 +43,7 @@ export class HomeForm {
 		this.validation = _validation
 			.on(this, null)
 			.ensure('model.email')
+			.isEmail()
 			.isNotEmpty()
 			.ensure('model.firstName')
 			.isNotEmpty()
@@ -51,6 +52,9 @@ export class HomeForm {
 			.ensure('model.phoneCountry')
 			.isNotEmpty()
 			.ensure('model.phone')
+			.isNotEmpty()
+			.isPhone()
+			.ensure('model.phone2')
 			.isNotEmpty()
 			.isPhone();
 
@@ -66,11 +70,13 @@ export class HomeForm {
 		this._langSelect
 			.addLanguages(Object.keys(this.content))
 			.setLanguage(this.lang);
-		this.model.isDirty = false;
 	}
 
 	deactivate() {
 		this.model.dispose();
+	}
+
+	unbind() {
 	}
 
 	onSubmit() {
@@ -144,11 +150,12 @@ export class FormModel extends UIModel {
 
 	pos = '25.4,76.5';
 
-	phoneCode    = '055';
-	phoneNumber  = '6347342';
+	phoneCode    = '';
+	phoneNumber  = '';
 	phoneCountry = 'ae';
-	phoneExt     = '123';
-	phone        = '+971556347342,123';
+	phoneExt     = '';
+	phone        = '+971506347342';
+	phone2       = '+97143901709,123';
 
 	list   = '4';
 	opts   = 3;

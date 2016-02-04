@@ -4,6 +4,7 @@ import {Container} from "aurelia-dependency-injection";
 import {ViewSlot, CompositionContext} from "aurelia-templating";
 import {Origin} from "aurelia-metadata";
 import {_} from "./ui-utils";
+import {UIDialog} from "../containers/ui-dialog";
 
 @autoinject()
 export class UIDialogService {
@@ -34,7 +35,7 @@ export class UIDialogService {
 	}
 
 	_invokeLifecycle(instance, name, model) {
-		if (typeof instance[name] === 'function') {
+		if (instance && typeof instance[name] === 'function') {
 			let result = instance[name](model);
 
 			if (result instanceof Promise) {
@@ -107,27 +108,23 @@ export class UIDialogService {
 
 	closeDialog(e) {
 		let dialog = $(e.target).closest('ui-dialog').get(0).au.controller;
-		this._invokeLifecycle(dialog.bindingContext, 'canDeactivate', null).then(canDeactivate => {
+		this._invokeLifecycle(dialog.contentView.bindingContext, 'canDeactivate', null).then(canDeactivate => {
 			if (canDeactivate) {
 				_.remove(this._windows, 'id', dialog.viewModel.id);
 				dialog.viewModel.remove();
-				this._invokeLifecycle(dialog.bindingContext, 'detached', null);
+				this._invokeLifecycle(dialog.contentView.bindingContext, 'detached', null);
 
-				if (this._windows.length > 0) {
-					let win = _.last(this._windows);
-					if (win.minimized === false)
-						(this._active = win).active = true;
-					else
-						this._active = null;
-				}
-				this._invokeLifecycle(dialog.bindingContext, 'deactivate', null);
+				if (this._active)this._active.active = false;
+				this.__getNextActive();
+				this._invokeLifecycle(dialog.contentView.bindingContext, 'deactivate', null);
 			}
 		});
 	}
 
-	switchActive(d) {
-		if (this._active && this._active.id == d.id) {
+	switchActive(d, ignore = false) {
+		if (!ignore && this._active && this._active.id == d.id) {
 			d.minimized = true;
+			d.active    = false;
 			this.__getNextActive();
 			return;
 		}
@@ -135,7 +132,7 @@ export class UIDialogService {
 			if (d.id === this._active.id) return;
 			this._active.active = false;
 		}
-		if (d) {
+		if (d && !d.modal) {
 			(this._active = d).minimized = false;
 			(this._active = d).active = true;
 		}
@@ -143,13 +140,14 @@ export class UIDialogService {
 
 	collapse(e) {
 		$(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
+		if (this._active)this._active.active = false;
 		this.__getNextActive();
 	}
 
 	__getNextActive() {
 		if (this._windows.length > 0) {
 			this._active = null;
-			let a        = _.findLast(this._windows, 'minimized', false);
+			let a        = _.findLast(this._windows, e=>e.minimized === false);
 			if (a) {
 				a.active     = true;
 				this._active = a;
@@ -176,11 +174,8 @@ export class UIDialogService {
 		if ($($event.target).closest('button').length !== 0) return;
 		if ($event.button != 0) return;
 		if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {
-			return this.switchActive(this._dialog);
+			return this.switchActive(this._dialog, true);
 		}
-
-		console.log($event.x, $event.clientX)
-		console.log($event.y, $event.clientY)
 
 		this._startX     = ($event.x || $event.clientX);
 		this._startY     = ($event.y || $event.clientY);

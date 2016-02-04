@@ -49,7 +49,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
         };
         UIForm.prototype._keyup = function ($event) {
-            if (!$($event.target).is('textarea') && $event.keyCode == 13) {
+            if (!$($event.target).is('textarea') && ($event.which || $event.keyCode) == 13) {
                 ui_event_1.UIEvent.fireEvent('submit', this.element, this, this._form);
             }
             return true;

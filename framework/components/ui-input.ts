@@ -54,6 +54,7 @@ export class UIInput {
 
 	@bindable id:string          = '';
 	@bindable dir:string         = 'inherit';
+	@bindable helpText:string    = '';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';
 	@bindable addonClass:string  = '';
@@ -213,7 +214,7 @@ export class UIInput {
 	}
 
 	private _valueChanged(newValue) {
-		this.value = this._value = this._format(newValue);
+		this.value = this._value = this._format(newValue !== null ? newValue : '');
 		$(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
 	}
 

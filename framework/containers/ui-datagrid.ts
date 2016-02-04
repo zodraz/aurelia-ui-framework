@@ -62,7 +62,7 @@ export class UIDataGrid {
 			col.columnDef = c;
 			cols.push(col);
 		});
-		this.columns = _.sortByOrder(cols, ['locked'], ['desc']);
+		this.columns = _.orderBy(cols, ['locked'], ['desc']);
 	}
 
 	reload() {
@@ -98,7 +98,7 @@ export class UIDataGrid {
 		this.currentSortOrder  = $($event.target).hasClass('asc') ? 'desc' : 'asc';
 		var sibling            = column.dataSort || this.idColumn;
 		setTimeout(()=> {
-			this.data         = _.sortByOrder(this.data,
+			this.data         = _.orderBy(this.data,
 				[this.currentSortColumn, sibling],
 				[this.currentSortOrder, 'asc']);
 			this.isProcessing = false;
@@ -165,11 +165,11 @@ export class UIDataGrid {
 			var v = 0, prefix = '';
 			switch (column.dataSummary) {
 				case 'sum':
-					v = _.sum(this.data, column.dataId);
+					v = _.sumBy(this.data, column.dataId);
 					break;
 				case 'avg':
 					prefix = 'avg. ';
-					v      = _.sum(this.data, column.dataId) / this.data.length;
+					v      = _.sumBy(this.data, column.dataId) / this.data.length;
 					break;
 				default:
 					return column.dataSummary;

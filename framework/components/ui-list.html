@@ -1,7 +1,8 @@
 <template class="ui-input-group ui-list ${_classes}" ref="_list" ref-id="${id}">
 
-		<label class="ui-label ${_labelClasses}" innerhtml.bind="label" show.bind="!_noLabel" for.bind="_id"></label>
+	<label class="ui-label ${_labelClasses}" innerhtml.bind="label" show.bind="!_noLabel" for.bind="_id"></label>
 
+	<div class="ui-control-wrapper">
 		<div class="ui-form-control ${focus?'ui-focus':''}">
 			<div class="ui-addon" if.bind="addonClass || addonIcon || addonText">
 				<span class="${addonIcon} ${addonClass}" if.bind="addonClass || addonIcon"></span>
@@ -31,4 +32,6 @@
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>
 		</div>
+		<div class="ui-control-help" if.bind="helpText" innerhtml.bind="helpText"></div>
+	</div>
 </template>

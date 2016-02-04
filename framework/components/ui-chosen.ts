@@ -52,6 +52,7 @@ export class UIChosen {
 
 	@bindable id:string          = '';
 	@bindable label:string       = '';
+	@bindable helpText:string    = '';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';
 	@bindable addonClass:string  = '';

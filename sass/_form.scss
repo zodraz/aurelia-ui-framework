@@ -15,6 +15,7 @@
 	min-width: $grid-sm-max;
 	&.ui-col-auto {
 	  @include flex(1 1 420px);
+	  min-width: 420px !important;
 	  max-width: 100%;
 	}
   }
@@ -40,11 +41,10 @@
   }
 
   .ui-help-block {
-	@include flex(0 0 100%);
 	font-size: 0.85rem;
 	color: $danger;
 	display: inline-block;
-	padding: 0 0.2rem 0 120px;
+	padding: 0 0.2rem;
   }
 
   &.ui-label-top {
@@ -92,6 +92,35 @@
 		size: 0.8em;
 	  }
 	  color: $text-muted;
+	}
+  }
+
+  .ui-control-wrapper {
+	@include flex(1 0 280px);
+
+
+	.ui-control-help {
+	  @include padding(start, 20px);
+	  @include padding(end, 5px);
+	  padding-top: 2px;
+	  padding-bottom: 2px;
+	  font-size: 0.8rem;
+	  position: relative;
+	  color: $input-addon-text;
+	  background: $input-addon-bg;
+	  border: {
+		width: 0 1px 1px;
+		style: solid;
+		color: $input-border;
+	  }
+
+	  &:before {
+		content: '\e072';
+		position: absolute;
+		left: 5px;
+		top: 2px;
+		font-family: Elegant;
+	  }
 	}
   }
 

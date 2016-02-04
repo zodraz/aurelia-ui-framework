@@ -50,6 +50,7 @@ export class UITextArea {
 
 	@bindable id:string          = '';
 	@bindable dir:string         = 'inherit';
+	@bindable helpText:string    = '';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';
 	@bindable addonClass:string  = '';
@@ -99,6 +100,9 @@ export class UITextArea {
 					e.cancelBubble = true;
 					$(e.target).removeClass('x onX').val('').trigger('change');
 				}
+			})
+			.on('change', e=> {
+				this.value = this._input.val();
 			});
 
 		if (this.autoComplete) {
@@ -108,6 +112,7 @@ export class UITextArea {
 
 	autoCompleteChanged(newValue) {
 		if (_.isString(newValue)) newValue = newValue.split(',');
+		let self = this;
 		this._input.textcomplete([{
 			words: newValue,
 			match: /\b(\w{2,})$/,

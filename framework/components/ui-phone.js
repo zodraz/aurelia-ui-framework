@@ -32,6 +32,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.phoneCountry = 'us';
             this.placeholder = '';
             this.id = '';
+            this.helpText = '';
             this.buttonIcon = '';
             this.buttonText = '';
             this.readonly = false;
@@ -62,6 +63,11 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.addonText = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
                 this.placeholder = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
                 this._value = "" + this.phoneCode + this.phoneNumber + this.phoneExt;
+                if (this.value && this.value != '')
+                    this._value = PhoneLib.format(this.value, this.phoneCountry || 'US', PhoneLib.FORMAT.NATIONAL);
+            }
+            else {
+                this._value = this.value;
             }
             this.processValue();
         };
@@ -124,11 +130,15 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             }
         };
         UIPhone.prototype._countryChanged = function (newValue) {
-            this.placeholder = PhoneLib.getExample(newValue, this.phoneType);
+            this.addonText = '+' + PhoneLib.getDialingCode(this.phoneCountry || 'US');
+            this.placeholder = PhoneLib.getExample(this.phoneCountry || 'US', this.phoneType, true);
+            this.processValue();
         };
         UIPhone.prototype._valueChanged = function (newValue) {
-            this.processValue();
-            $(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
+            if (this._phoneFull) {
+                this._value = newValue;
+                this.processValue();
+            }
         };
         UIPhone.prototype.processValue = function () {
             if (!this._phoneFull) {
@@ -137,12 +147,14 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.updatePhone();
             }
             else {
-                if (!/^\+/.test(this._value))
+                if (this._value != '' && !/^\+/.test(this._value))
                     this._value = '+' + this._value;
                 this._value = PhoneLib.formatInput(this._value, '', false, true);
                 this.value = PhoneLib.format(this._value, '', PhoneLib.FORMAT.FULL);
                 this.addonIcon = PhoneLib.getIso2Code(this.value) || 'US';
+                this.placeholder = PhoneLib.getExample(this.addonIcon, this.phoneType, !this._phoneFull);
             }
+            $(this._inputGroup).find('input.ui-primary')[this._value !== '' ? 'addClass' : 'removeClass']('x');
         };
         UIPhone.prototype.updatePhone = function () {
             try {
@@ -164,6 +176,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIPhone.prototype, "id");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIPhone.prototype, "helpText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

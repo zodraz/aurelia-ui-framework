@@ -20,7 +20,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         UIScroll = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.containerless(),
-            aurelia_framework_1.inlineView('<template><div class="ui-scroll ui-col-auto ${class}"><content></content></div></template>'),
+            aurelia_framework_1.inlineView('<template><div class="ui-scroll ${class}"><content></content></div></template>'),
             aurelia_framework_1.customElement('ui-scroll'), 
             __metadata('design:paramtypes', [])
         ], UIScroll);

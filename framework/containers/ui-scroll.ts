@@ -8,7 +8,7 @@ import {autoinject, bindable, customElement, containerless, inlineView} from "au
 
 @autoinject()
 @containerless()
-@inlineView('<template><div class="ui-scroll ui-col-auto ${class}"><content></content></div></template>')
+@inlineView('<template><div class="ui-scroll ${class}"><content></content></div></template>')
 @customElement('ui-scroll')
 export class UIScroll {
 	@bindable class:string;

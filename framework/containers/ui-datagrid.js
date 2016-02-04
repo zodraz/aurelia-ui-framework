@@ -34,7 +34,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 col.columnDef = c;
                 cols.push(col);
             });
-            this.columns = ui_utils_1._.sortByOrder(cols, ['locked'], ['desc']);
+            this.columns = ui_utils_1._.orderBy(cols, ['locked'], ['desc']);
         };
         UIDataGrid.prototype.reload = function () {
             this.signaler.signal('UIDataGrid:Reload');
@@ -65,7 +65,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.currentSortOrder = $($event.target).hasClass('asc') ? 'desc' : 'asc';
             var sibling = column.dataSort || this.idColumn;
             setTimeout(function () {
-                _this.data = ui_utils_1._.sortByOrder(_this.data, [_this.currentSortColumn, sibling], [_this.currentSortOrder, 'asc']);
+                _this.data = ui_utils_1._.orderBy(_this.data, [_this.currentSortColumn, sibling], [_this.currentSortOrder, 'asc']);
                 _this.isProcessing = false;
             }, 100);
         };
@@ -130,11 +130,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 var v = 0, prefix = '';
                 switch (column.dataSummary) {
                     case 'sum':
-                        v = ui_utils_1._.sum(this.data, column.dataId);
+                        v = ui_utils_1._.sumBy(this.data, column.dataId);
                         break;
                     case 'avg':
                         prefix = 'avg. ';
-                        v = ui_utils_1._.sum(this.data, column.dataId) / this.data.length;
+                        v = ui_utils_1._.sumBy(this.data, column.dataId) / this.data.length;
                         break;
                     default:
                         return column.dataSummary;

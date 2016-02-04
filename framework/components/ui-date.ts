@@ -74,6 +74,7 @@ export class UIDate {
 
 	@bindable format:string      = 'DD/MM/YYYY';
 	@bindable id:string          = '';
+	@bindable helpText:string    = '';
 	@bindable addonText:string   = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
@@ -114,7 +115,7 @@ export class UIDate {
 	}
 
 	attached() {
-		if (this.inline && (this._inputStart = this._inputInline)) $(this._date).remove();
+		if (this.inline && (this._inputStart = this._inputInline)) $(this._date).parent().remove();
 		else $(this._inputInline).remove();
 
 		var opts:any = _.merge(this.options, {

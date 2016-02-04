@@ -25,6 +25,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.checked = false;
             this.id = '';
             this.label = '';
+            this.helpText = '';
             this.addonIcon = '';
             this.addonText = '';
             this.addonClass = '';
@@ -156,6 +157,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIChosen.prototype, "label");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIChosen.prototype, "helpText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

@@ -83,15 +83,36 @@ export class UIApplicationState {
 		this.router.navigateToRoute(route, params, {});
 	}
 
+	// Logging
+	logDebug(category:string, message:string) {
+		getLogger(category).debug(message);
+	}
+
+	logInfo(category:string, message:string) {
+		getLogger(category).info(message);
+	}
+
+	logWarn(category:string, message:string) {
+		getLogger(category).warn(message);
+	}
+
 	// Notifications
 	notifyError(msg) {
 		this._logger.debug(`notify::${msg}`);
 		$.notify(msg);
 	}
+
 	notifyInfo(msg) {
 		this._logger.debug(`notifyInfo::${msg}`);
 		$.notify(msg, {
-			className:'info'
+			className: 'info'
+		});
+	}
+
+	notifySuccess(msg) {
+		this._logger.debug(`notifyInfo::${msg}`);
+		$.notify(msg, {
+			className: 'success'
 		});
 	}
 

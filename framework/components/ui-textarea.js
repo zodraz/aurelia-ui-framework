@@ -23,6 +23,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.checked = false;
             this.id = '';
             this.dir = 'inherit';
+            this.helpText = '';
             this.addonIcon = '';
             this.addonText = '';
             this.addonClass = '';
@@ -75,6 +76,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                     e.cancelBubble = true;
                     $(e.target).removeClass('x onX').val('').trigger('change');
                 }
+            })
+                .on('change', function (e) {
+                _this.value = _this._input.val();
             });
             if (this.autoComplete) {
                 this.autoCompleteChanged(this.autoComplete);
@@ -84,6 +88,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             var _this = this;
             if (ui_utils_1._.isString(newValue))
                 newValue = newValue.split(',');
+            var self = this;
             this._input.textcomplete([{
                     words: newValue,
                     match: /\b(\w{2,})$/,
@@ -143,6 +148,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UITextArea.prototype, "dir");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UITextArea.prototype, "helpText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
