@@ -58,7 +58,7 @@ export class UILangSelect {
 		this._selected  = [];
 		this._languages = _.clone(UILangSelect.LANGUAGES);
 		for (var l of newValue) {
-			let _i = _.findIndex(this._languages, 'id', l);
+			let _i = _.findIndex(this._languages, ['id', l]);
 			if (_i >= 0) {
 				let _l = this._languages.splice(_i, 1);
 				if (_l.length == 1)this._selected.push(_l[0]);
@@ -91,13 +91,13 @@ export class UILangSelect {
 
 	private _addLanguage(lang) {
 		this._selected.push(lang);
-		this._languages.splice(_.findIndex(this._languages, 'id', lang.id), 1);
+		this._languages.splice(_.findIndex(this._languages, ['id', lang.id]), 1);
 		this._selectLanguage(lang);
 	}
 
 	private _removeLanguage(lang) {
 		this._languages.push(lang);
-		this._selected.splice(_.findIndex(this._selected, 'id', lang.id), 1);
+		this._selected.splice(_.findIndex(this._selected, ['id', lang.id]), 1);
 		if (this._current.id == lang.id) this._selectLanguage(this._selected[0] || null);
 		UIEvent.fireEvent('remove', this.element, lang.id);
 	}

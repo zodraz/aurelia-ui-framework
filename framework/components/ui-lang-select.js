@@ -29,7 +29,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._languages = ui_utils_1._.clone(UILangSelect.LANGUAGES);
             for (var _a = 0; _a < newValue.length; _a++) {
                 var l = newValue[_a];
-                var _i = ui_utils_1._.findIndex(this._languages, 'id', l);
+                var _i = ui_utils_1._.findIndex(this._languages, ['id', l]);
                 if (_i >= 0) {
                     var _l = this._languages.splice(_i, 1);
                     if (_l.length == 1)
@@ -59,12 +59,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         };
         UILangSelect.prototype._addLanguage = function (lang) {
             this._selected.push(lang);
-            this._languages.splice(ui_utils_1._.findIndex(this._languages, 'id', lang.id), 1);
+            this._languages.splice(ui_utils_1._.findIndex(this._languages, ['id', lang.id]), 1);
             this._selectLanguage(lang);
         };
         UILangSelect.prototype._removeLanguage = function (lang) {
             this._languages.push(lang);
-            this._selected.splice(ui_utils_1._.findIndex(this._selected, 'id', lang.id), 1);
+            this._selected.splice(ui_utils_1._.findIndex(this._selected, ['id', lang.id]), 1);
             if (this._current.id == lang.id)
                 this._selectLanguage(this._selected[0] || null);
             ui_event_1.UIEvent.fireEvent('remove', this.element, lang.id);

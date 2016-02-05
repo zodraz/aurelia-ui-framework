@@ -49,7 +49,7 @@ export class UITextArea {
 	private checked:boolean = false;
 
 	@bindable id:string          = '';
-	@bindable dir:string         = 'inherit';
+	@bindable dir:string         = '';
 	@bindable helpText:string    = '';
 	@bindable addonIcon:string   = '';
 	@bindable addonText:string   = '';

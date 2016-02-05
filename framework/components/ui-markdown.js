@@ -18,7 +18,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             this._labelClasses = '';
             this._inputClasses = '';
             this.id = '';
-            this.dir = 'inherit';
+            this.dir = '';
             this.helpText = '';
             this.placeholder = '';
             this.readonly = false;
