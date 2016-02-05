@@ -22,7 +22,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.value = '';
             this.checked = false;
             this.id = '';
-            this.dir = 'inherit';
+            this.dir = '';
             this.helpText = '';
             this.addonIcon = '';
             this.addonText = '';
