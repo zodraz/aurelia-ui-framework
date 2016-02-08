@@ -3,80 +3,100 @@
 		<div class="ui-pad-all">
 			<h4 class="ui-margin-v">Forms</h4>
 			<ui-form class="ui-border-all ui-pad-v" validate.bind="validation" submit.trigger="onSubmit()">
-				<ui-column>
-					<ui-input name required clear value.bind="model.firstName">First Name</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input name required clear value.bind="model.lastName">Last Name</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input email addon-icon="fi-elegant-mail9" required clear value.bind="model.email">Email
-					</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-chosen addon-icon.bind="model.phoneCountry" addon-class="ui-flag" required
-							   value.bind="model.phoneCountry" label="Country" placeholder="Select a country">
-						<optgroup repeat.for="region of countries | keys" label="${region}">
-							<option value="${ctry.iso2.toLowerCase()}" repeat.for="ctry of countries[region]"
-									class="ui-icon ui-flag ${ctry.iso2}" model.bind="ctry">
-								${ctry.name}
-							</option>
-						</optgroup>
-					</ui-chosen>
-				</ui-column>
-				<ui-column>
-					<ui-input position checkbox checked.bind="model.hasLoc" value.bind="model.pos"
-							  placeholder="Latitude,Longitude"
-							  addon-icon="fi-elegant-map5"
-							  required clear>Location
-					</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input phone required clear value.bind="model.phone"
-							  phone-ext.bind="model.phoneExt"
-							  phone-code.bind="model.phoneCode"
-							  phone-number.bind="model.phoneNumber"
-							  phone-country.bind="model.phoneCountry">Phone
-					</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input addon-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input addon-text="999 999 999" disabled>Disabled<span>Cant Select</span></ui-input>
-				</ui-column>
-				<ui-column full row>
-					<ui-column width="120px"></ui-column>
-					<ui-column fill>
-						<p>isDirty: ${model.isDirty ? 'Yes':'No'}</p>
-
-						<p>First Name: ${model.firstName}</p>
-
-						<p>Last Name: ${model.lastName}</p>
-
-						<p>Email: ${model.email}</p>
-
-						<p>Date: ${model.date | date}</p>
+				<ui-row>
+					<ui-column>
+						<ui-input name required clear value.bind="model.firstName">First Name</ui-input>
 					</ui-column>
-					<ui-column width="120px"></ui-column>
-					<ui-column fill>
-
-						<p>Phone: ${model.phone}</p>
-
-						<p>Code: ${model.phoneCode}, Number: ${model.phoneNumber}, Ext:
-							${model.phoneExt}</p>
-
-						<p>Has Location: ${model.hasLoc?'Yes':'No'}, Location: ${model.pos}</p>
-
-						<p>Radio: ${model.opts}, List: ${model.list}</p>
-
-						<p>Range: ${model.range.start | date} - ${model.range.end | date}</p>
-
+					<ui-column>
+						<ui-input name required clear value.bind="model.lastName">Last Name</ui-input>
 					</ui-column>
-				</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-chosen prefix-icon.bind="model.phoneCountry" prefix-class="ui-flag" required
+								   value.bind="model.phoneCountry" label="Country" placeholder="Select a country">
+							<optgroup repeat.for="region of countries | keys" label="${region}">
+								<option value="${ctry.iso2.toLowerCase()}" repeat.for="ctry of countries[region]"
+										class="ui-icon ui-flag ${ctry.iso2}" model.bind="ctry">
+									${ctry.name}
+								</option>
+							</optgroup>
+						</ui-chosen>
+					</ui-column>
+					<ui-column>
+						<ui-input email prefix-icon="fi-elegant-mail9" required clear value.bind="model.email">Email
+						</ui-input>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-phone required clear value.bind="model.phone"
+								  phone-ext.bind="model.phoneExt"
+								  phone-code.bind="model.phoneCode"
+								  phone-number.bind="model.phoneNumber"
+								  phone-country.bind="model.phoneCountry">
+							Phone<span>Input With Preset Dialing Code</span>
+						</ui-phone>
+					</ui-column>
+					<ui-column>
+						<ui-phone full required clear value.bind="model.phone2">
+							Phone<span>Input Without Dialing Code</span>
+						</ui-phone>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-input prefix-icon="fi-elegant-outlined4" address placeholder="Address...">Address</ui-input>
+					</ui-column>
+					<ui-column>
+						<ui-input-dual prefix-icon="fi-elegant-map5" location checkbox
+									   checked.bind="model.hasLoc"
+									   value-left.bind="model.lat" placeholder-left="Latitude"
+									   value-right.bind="model.lon" placeholder-right="Longitude">Location
+						</ui-input-dual>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-input prefix-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>
+					</ui-column>
+					<ui-column>
+						<ui-input prefix-text="999 999 999" disabled>Disabled<span>Cant Select</span></ui-input>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column fill>
+						<div style="padding-left: 120px;">
+							<p>isDirty: ${model.isDirty() ? 'Yes':'No'}</p>
+
+							<p>First Name: ${model.firstName}</p>
+
+							<p>Last Name: ${model.lastName}</p>
+
+							<p>Email: ${model.email}</p>
+
+							<p>Date: ${model.date | date}</p></div>
+					</ui-column>
+					<ui-column fill>
+						<div style="padding-left: 120px;">
+
+							<p>Phone: ${model.phone}</p>
+
+							<p>Code: ${model.phoneCode}, Number: ${model.phoneNumber}, Ext:
+								${model.phoneExt}</p>
+
+							<p>Has Location: ${model.hasLoc?'Yes':'No'}, Location: ${model.lat}, ${model.lon}</p>
+
+							<p>Radio: ${model.opts}, List: ${model.list}</p>
+
+							<p>Range: ${model.range.start | date} - ${model.range.end | date}</p>
+						</div>
+					</ui-column>
+				</ui-row>
 				<ui-column>
 					<ui-column>
-						<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="model.tags">
+						<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="model.tags"
+								   help-text="Tags: ${model.tags}">
 							<option value="tag-1">Tag-1</option>
 							<option value="tag-2">Tag-2</option>
 							<option value="tag-3">Tag-3</option>
@@ -87,9 +107,6 @@
 							<option value="tag-8">Tag-8</option>
 							<option value="tag-9">Tag-9</option>
 						</ui-chosen>
-						<p class="ui-text-muted ui-font-small"
-						   style="-webkit-padding-start: 125px;-moz-padding-start: 125px;padding-start: 125px;">Tags:
-							${model.tags}</p>
 					</ui-column>
 					<ui-column>
 						<ui-date required value.bind="model.date">Date</ui-date>
@@ -113,6 +130,12 @@
 								<option value="9" class="ui-icon ui-flag au">Oz</option>
 							</optgroup>
 						</ui-list>
+					</ui-column>
+					<ui-column>
+						<ui-textarea auto-complete.bind="autoComplete" value.bind="autoComp"
+									 help-text="Auto-Complete list of automobile manufacturers<br/>${autoComp}">Auto
+							Complete
+						</ui-textarea>
 					</ui-column>
 				</ui-column>
 				<ui-column>
@@ -145,6 +168,7 @@
 				<ui-column>
 					<ui-lang-select view-model.ref="_langSelect" languages.one-time="content | keys"
 									change.trigger="languageChanged($event)"
+									beforechange.trigger="beforeChange($event)"
 									remove.trigger="languageRemoved($event)">Languages
 					</ui-lang-select>
 				</ui-column>
@@ -161,75 +185,5 @@
 			</ui-form>
 
 		</div>
-		<hr/>
-		<ui-row class="ui-margin-v">
-			<ui-column size="lg-6" class="ui-pad-all">
-				<h5>Usage
-					<small>Double input uses comma separated values and placeholders</small>
-					<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
-				</h5>
-				<p>
-					<small>Input</small>
-					<br/>
-					<code>&lt;ui-input [readonly|disabled] [double] [required] [clear]<br/>
-						<em>type?</em>[<em>text</em>| email | number | decimal | area | phone | name | address |
-						position]<br/>
-						<em>addon?</em>[addon-icon=? | addon-text=?]<br/>
-						<em>button?</em>[button-icon=? | button-text=?]<br/>
-						[checkbox checked.bind="true|false"]<br/>
-						[value.bind=? | value.bind="v1,v2"]<br/>
-						[placeholder.bind=? | placeholder.bind="v1,v2"]<br/>
-						<em>phone?</em>[phone-code.bind=? phone-number.bind=? phone-country.bind='{iso2-code}']<br/>
-						[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
-				<hr/>
-				<p>
-					<small>Date</small>
-					<br/>
-					<small>For date range value must be object of {start?, end?}</small>
-					<br/>
-					<code>&lt;ui-date [range] [required] [inline] [disabled] [value.bind=?] [format.bind=?]<br/>
-						<em>button?</em>[button-icon=? | button-text=?]<br/>
-						[checkbox checked.bind="true|false"] [placeholder.bind=?]<br/>
-						[data-min.bind=?] [data-max.bind=?] [options.bind=?]>{Label}&lt;/ui-date></code></p>
-				<hr/>
-				<p>
-					<small>Markdown</small>
-					<br/>
-					<code>&lt;ui-markdown [required] [readonly|disabled] [value.bind=?]>{Label}&lt;/ui-markdown></code>
-				</p>
-			</ui-column>
-			<ui-column size="lg-6" class="ui-pad-all">
-				<h5>Usage
-					<small>Radio option group can have value.bind</small>
-				</h5>
-				<p>
-					<small>Checkbox/Radio</small>
-					<br/>
-					<code>&lt;ui-option-group label=? [value.bind=?]><br/>
-						&nbsp;&nbsp;&lt;ui-option [<em>checkbox</em>|radio] [name=?] [value=?]<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;[checked.bind=?]>{Label}&lt;ui-option><br/>
-						&lt;/ui-option-group></code></p>
-				<hr/>
-				<p>
-					<small>Chosen</small>
-					<br/>
-					<code>&lt;ui-chosen label=? [required] [multiple] [value.bind=?]><br/>
-						&nbsp;[&lt;optgroup label=?>]<br/>
-						&nbsp;&nbsp;&lt;option value=? [repeat.for=?] [class=?]>{Label}&lt;/option><br/>
-						&nbsp;&nbsp;...<br/>
-						&nbsp;[&lt;/optgroup>]<br/>
-						&lt;/ui-chosen></code></p>
-				<hr/>
-				<p>
-					<small>List</small>
-					<br/>
-					<code>&lt;ui-list label=? [required] [value.bind=?]><br/>
-						&nbsp;[&lt;optgroup label=?>]<br/>
-						&nbsp;&nbsp;&lt;option value=? [repeat.for=?] [class=?]>{Label}&lt;/option><br/>
-						&nbsp;&nbsp;...<br/>
-						&nbsp;[&lt;/optgroup>]<br/>
-						&lt;/ui-list></code></p>
-			</ui-column>
-		</ui-row>
 	</ui-scroll>
 </template>

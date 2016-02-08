@@ -1,4 +1,4 @@
-import {_, UITreeOptionsModel} from "aurelia-ui-framework";
+import {_,UITreeOptionsModel} from "aurelia-ui-framework";
 
 export class HomeTree {
 	options:UITreeOptionsModel  = {
@@ -38,8 +38,8 @@ export class HomeTree {
 	}
 
 	attached() {
-		this._tree2.UIElement.select('UAE', 1);
-		this.checked = this._tree.UIElement.getChecked();
+		this._tree2.select('UAE', 1);
+		this.checked = this._tree.getChecked();
 	}
 
 	selectChanged($event) {

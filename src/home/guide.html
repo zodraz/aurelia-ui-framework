@@ -1,5 +1,5 @@
 <template>
-	<ui-scroll>
+	<ui-scroll class="ui-selectable">
 
 		<h3>Buttons</h3>
 
@@ -29,24 +29,32 @@
 		<hr/>
 
 		<h3>Inputs</h3>
+		<p>Form</p>
+		<p>
+			<small>All form elements are laid out in two columns with a breakpoint at 420px, use column full to use entire row</small>
+		</p>
+		<p>
+			<code>&lt;ui-form validate.bind="model.validation" busy.bind="appState.IsHttpInUse"><br/>
+				&nbsp;&nbsp;&lt;ui-column><em>any input component</em>&lt;/ui-column><br/>
+				&nbsp;&nbsp;&lt;ui-column full><em>any input component</em>&lt;/ui-column><br/>
+				&lt;/ui-form></code>
+		</p>
+
 		<p>Basic Input</p>
 		<p>
-			<small>Double input uses comma separated values and placeholders</small>
-			<br/>
 			<small>Checkbox will add a checkbox addon that will enable/disable input field</small>
 		</p>
 		<p>
-			<code>&lt;ui-input [readonly|disabled] [double] [required] [clear] [dir='<em>inherit</em>|ltr|rtl']<br/>
-				{<em>type</em> [<em>text</em> | email | number | decimal | area | phone | name | address |
-				position]}<br/>
+			<code>&lt;ui-input [label-top] [readonly|disabled] [required] [clear] [dir='<em>inherit</em>|ltr|rtl']<br/>
+				{<em>type</em> [<em>text</em> | email | number | decimal | name | address]}<br/>
 				{<em>addon</em> [addon-icon=? | addon-text=?]}<br/>
 				{<em>button</em> [button-icon=? | button-text=?]}<br/>
 				[checkbox checked.bind="true|false"]<br/>
-				[value.bind=? | value.bind="v1,v2"]<br/>
-				[placeholder.bind=? | placeholder.bind="v1,v2"]<br/>
-				{<em>phone</em> [phone-code.bind=? phone-number.bind=? phone-ext.bind=?
-				phone-country.bind='{iso2-code}']}<br/>
+				[value.bind=?]<br/>
+				[placeholder.bind=?]<br/>
 				[change.trigger]>{Label}{&lt;span>Muted Extra Info&lt;/span>}&lt;/ui-input></code></p>
+
+		<p>Phone input will require a linked country selector, full phone input doesn't rely on country select</p>
 
 		<br/>
 		<p>Chosen</p>
@@ -105,15 +113,16 @@
 		<p>Language Selector</p>
 		<p>
 			<code>&lt;ui-lang-select view-model.ref="_ref"<br/>
+				errors.bind="[Array of language codes]"<br/>
 				change.trigger="languageChanged($event)"<br/>
 				remove.trigger="languageRemoved($event)">{Label}&lt;/ui-lang-select></code>
 		</p>
 		<p>LangSelect method: </p>
-		<p class="ui-font-small">&nbsp;addLanguages([array of language ids]) - add existing language content ids</p>
-		<p class="ui-font-small">&nbsp;setLanguage(language id) - set current language</p>
-		<p class="ui-font-small">&nbsp;errorLanguages([array of language ids]) - mark content languages as errored</p>
-		<p class="ui-font-small">&nbsp;change event: $event.detail contains language object {id, dir, name}</p>
-		<p class="ui-font-small">&nbsp;remove event: $event.detail contains language id</p>
+		<p class="ui-font-small">&nbsp;addLanguages([array of language codes]) - add existing language content ids</p>
+		<p class="ui-font-small">&nbsp;setLanguage(language code) - set current language</p>
+		<p class="ui-font-small">&nbsp;errors([array of language codes]) - mark content languages as errored</p>
+		<p class="ui-font-small">&nbsp;change event: $event.detail contains language object {code, dir, name}</p>
+		<p class="ui-font-small">&nbsp;remove event: $event.detail contains language code</p>
 
 	</ui-scroll>
 </template>

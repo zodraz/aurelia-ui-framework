@@ -1,47 +1,42 @@
-import {_, moment} from "aurelia-ui-framework";
-import {autoinject} from "aurelia-framework";
+import {autoinject, transient} from "aurelia-framework";
 import {activationStrategy} from "aurelia-router";
 import {ensure, Validation} from "aurelia-validation";
+import {_, moment, watch,UIModel} from "aurelia-ui-framework";
 
 @autoinject()
 export class HomeForm {
-	model = {
-		opts: 3,
-		hasLoc: true,
-		fname: 'adarsh',
-		lname: 'pastakia',
+	model;
 
-		email: 'adarshpastakia@outlook.com',
-		pos: '25.4,76.5',
+	@watch('en')
+	lang;
+	@watch('rtl')
+	contentDir;
 
-		phoneCode: '055',
-		phoneNumber: '6347342',
-		phoneCountry: 'ae',
-		phoneExt: '',
-		phone: '',
-
-		list: '4',
-
-		date: null,
-		range: {start: null, end: null}
-
-	}
-
-	lang        = 'null';
-	contentDir  = 'ltr';
 	content:any = {
-		'EN': {title: 'Hello World', md: this.md},
-		'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+		'en': {title: 'Hello World', md: this.md},
+		'ar': {title: 'مرحبا بالعالم', md: this.mdAr}
 	};
+
+	autoComplete = [
+		"Abarth", "Fiat", "Lancia", "Alfa Romeo", "Bugatti", "Pagani", "Lamborghini", "Ferrari", "Maseratti", "Aprilia",
+		"BMW", "Mercedes Benz", "Opel", "Audi", "Volkswagen", "Porsche", "Renault", "Peugeot", "Citroën", "Ford",
+		"Chevrolet", "Chrysler", "Cadillac", "Dodge", "Lincoln", "Buick", "Jeep", "Tesla", "Nisan", "Toyota", "Honda",
+		"Subaru", "Mitsubishi", "Daihatsu", "Mazda", "Suzuki", "Yamaha", "KIA", "Hyundai", "Aston Martin", "Jaguar", "MINI",
+		"Vauxhall", "Mclaren", "Bentley", "Rolls Royce", "Volvo", "SAAB", "SEAT", "Lotus"
+	];
 
 	languageChanged($event) {
 		this.lang = $event.detail.id + '';
-		if (this.lang != 'null' && !this.content[this.lang]) this.content[this.lang] = '';
+		if (this.lang != 'null' && !this.content[this.lang]) this.content[this.lang] = {title: '', md: ''};
 		this.contentDir = $event.detail.rtl ? 'rtl' : 'ltr';
 	}
 
 	languageRemoved($event) {
 		delete this.content[$event.detail];
+	}
+
+	beforeChange($event) {
+		return $event.detail.id == 'en';
 	}
 
 	validation;
@@ -51,27 +46,40 @@ export class HomeForm {
 		this.validation = _validation
 			.on(this, null)
 			.ensure('model.email')
+			.isEmail()
 			.isNotEmpty()
-			.ensure('model.fname')
+			.ensure('model.firstName')
 			.isNotEmpty()
-			.ensure('model.lname')
+			.ensure('model.lastName')
 			.isNotEmpty()
 			.ensure('model.phoneCountry')
 			.isNotEmpty()
 			.ensure('model.phone')
 			.isNotEmpty()
+			.isPhone()
+			.ensure('model.phone2')
+			.isNotEmpty()
 			.isPhone();
 
 		this.content = {
-			'EN': {title: 'Hello World', md: this.md},
-			'AR': {title: 'مرحبا بالعالم', md: this.mdAr}
+			'en': {title: 'Hello World', md: this.md},
+			'ar': {title: 'مرحبا بالعالم', md: this.mdAr}
 		};
+
+		this.model = new FormModel();
 	}
 
 	attached() {
-		this._langSelect.UIElement
+		this._langSelect
 			.addLanguages(Object.keys(this.content))
-			.setLanguage('AR');
+			.setLanguage(this.lang);
+	}
+
+	deactivate() {
+		this.model.dispose();
+	}
+
+	unbind() {
 	}
 
 	onSubmit() {
@@ -135,4 +143,27 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 ![صورة](images/heart.png) لا أميل تحب فقط الصور!
 
 	`;
+}
+
+@transient()
+export class FormModel extends UIModel {
+	firstName = 'Adarsh';
+	lastName  = 'Pastakia';
+	email     = 'adarshpastakia@outlook.com';
+
+	lat = '25.4';
+	lon = '76.5';
+
+	phoneCode    = '';
+	phoneNumber  = '';
+	phoneCountry = 'ae';
+	phoneExt     = '';
+	phone        = '+971506347342';
+	phone2       = '+97143901709,123';
+
+	list   = '4';
+	opts   = 3;
+	hasLoc = true;
+	date   = '2015-12-25T00:00:00.000Z';
+	range  = {start: '2015-12-25T00:00:00.000Z', end: '2015-12-25T00:00:00.000Z'};
 }

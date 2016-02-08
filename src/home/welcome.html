@@ -1,6 +1,6 @@
 <template>
 	<ui-ribbon primary>Framework</ui-ribbon>
-	<ui-scroll>
+	<ui-scroll class="ui-selectable">
 		<h4 class="ui-text-primary ui-small-caps">Welcome to</h4>
 
 		<h2 class="ui-text-primary ui-small-caps">Aurelia UI Framework</h2>
@@ -21,21 +21,26 @@
 					   href="https://github.com/adarshpastakia/aurelia-ui-framework/archive/skeleton.zip">
 				Starter Project
 			</ui-button>
-			&nbsp;&nbsp;Source Code:
+		</p>
+		<p>Source Code:
 			<ui-button success icon="ui-font-big fi-essential-github17"
 					   href="https://github.com/adarshpastakia/aurelia-ui-framework/archive/source.zip">
 				Download
 			</ui-button>
+			&nbsp;&nbsp;Wiki Help:
+			<ui-button warning icon="ui-font-big fi-elegant-question3" target="_blank"
+					   href="https://github.com/adarshpastakia/aurelia-ui-framework/wiki/Home">
+				View Wiki
+			</ui-button>
+		<h5 class="ui-text-danger">NOTE: This framework has not been tested on IE yet</h5>
 
 
 		<p>Also you can checkout my
-			<ui-button info icon="fi-elegant-wordpress2" href="http://adarshpastakia.wordpress.com" target="_blank">
-				Blog
-			</ui-button>
+			<a href="http://adarshpastakia.wordpress.com" target="_blank">
+				<span class="fi-elegant-wordpress2"></span> Blog
+			</a>
 			which i have only just started.
 		</p>
-		<h5 class="ui-text-danger">NOTE: This hasnt been tested on IE yet, and there are a few minor issues that need to
-			be addressed</h5>
 		</p>
 		<hr/>
 
@@ -76,6 +81,8 @@
 							class="ui-font-big fi-elegant-circle10"></span></a></li>
 					<li class="ui-text-muted">UIPanel <a href="#/home/panels"><span
 							class="ui-font-big fi-elegant-circle10"></span></a></li>
+					<li class="ui-text-muted">UIDialog <a href="#/home/dialogs"><span
+							class="ui-font-big fi-elegant-circle10"></span></a></li>
 					<li class="ui-text-muted">UILogin <a href="#/login"><span
 							class="ui-font-big fi-elegant-circle10"></span></a></li>
 					<li class="ui-text-muted">UIScroll</li>
@@ -88,6 +95,9 @@
 					<li class="ui-text-muted">UISwitch</li>
 					<li class="ui-text-muted">UIList</li>
 					<li class="ui-text-muted">UIRibbon</li>
+					<li class="ui-text-muted">UILangSelect:
+						<span>A content language selector that allows for adding/removing of languages</span>
+					</li>
 					<li class="ui-text-muted">UITree <a href="#/home/tree"><span
 							class="ui-font-big fi-elegant-circle10"></span></a></li>
 					<li class="ui-text-muted">UIChosen: A dropdown select box using <a
@@ -143,6 +153,9 @@
 					</li>
 					<li class="ui-text-muted"><a target="_blank" href="http://notifyjs.com">NotifyJS</a>
 						a jQuery notification plugin
+					</li>
+					<li class="ui-text-muted"><a target="_blank" href="http://yuku-t.com/jquery-textcomplete/">TextComplete</a>
+						a jQuery auto-complete plugin for text inputs
 					</li>
 					<li class="ui-text-muted"><a target="_blank" href="http://harvesthq.github.io/chosen">ChosenJS</a>
 						a jQuery plugin for creating user friendly select boxes

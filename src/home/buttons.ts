@@ -1,5 +1,13 @@
+import {autoinject, ViewSlot} from "aurelia-framework";
+import {UIApplicationState, UIDialogService} from "aurelia-ui-framework";
+import {MyDialog} from "./my-dialog";
+
+@autoinject()
 export class HomeButtons {
 	t1 = 0;
+	t2 = '1,3';
+
+	disabled = false;
 
 	menu1 = [{
 		id: 0, title: 'Link 0'
@@ -22,6 +30,13 @@ export class HomeButtons {
 	}, {
 		id: 9, title: 'Link 9'
 	}];
+
+	constructor(public appState:UIApplicationState, public dialogService:UIDialogService) {
+	}
+
+	confirm() {
+		this.dialogService.show(MyDialog);
+	}
 
 	buttonclick($event) {
 		let data;
