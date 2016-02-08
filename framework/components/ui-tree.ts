@@ -48,12 +48,13 @@ export class UITree {
 
 	_subscribeSelect;
 	_subscribeChecked;
+	_subscribeSearch;
 
 	constructor(public element:Element, observer:BindingEngine) {
 		var self               = this;
 		this._subscribeSelect  = UIEvent.subscribe('tree-select', v=>self._itemSelect(v));
 		this._subscribeChecked = UIEvent.subscribe('tree-checked', v=>self._itemChecked(v));
-		observer.propertyObserver(this, 'searchText')
+		this._subscribeSearch  = observer.propertyObserver(this, 'searchText')
 			.subscribe(v=>self._searchTextChanged(v));
 
 	}
@@ -78,6 +79,7 @@ export class UITree {
 	private detached() {
 		this._subscribeSelect.dispose();
 		this._subscribeChecked.dispose();
+		this._subscribeSearch.dispose();
 	}
 
 	@computedFrom('root')

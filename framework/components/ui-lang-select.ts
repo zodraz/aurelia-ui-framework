@@ -68,7 +68,7 @@ export class UILangSelect {
 	}
 
 	setLanguage(newValue) {
-		this._current = _.find(this._selected, 'id', newValue);
+		this._current = _.find(this._selected, ['id', newValue]);
 		this._selectLanguage(this._current);
 		return this;
 	}
@@ -84,15 +84,19 @@ export class UILangSelect {
 	}
 
 	private _selectLanguage(lang) {
-		this._current = lang;
-		UIEvent.fireEvent('change', this.element, lang || {id: 'null'});
-		$(this._selector).removeClass('ui-dropdown');
+		if (UIEvent.fireEvent('beforechange', this.element, lang || {id: 'null'}) !== false) {
+			this._current = lang;
+			UIEvent.fireEvent('change', this.element, lang || {id: 'null'});
+			$(this._selector).removeClass('ui-dropdown');
+		}
 	}
 
 	private _addLanguage(lang) {
-		this._selected.push(lang);
-		this._languages.splice(_.findIndex(this._languages, ['id', lang.id]), 1);
-		this._selectLanguage(lang);
+		if (UIEvent.fireEvent('beforechange', this.element, lang || {id: 'null'}) !== false) {
+			this._selected.push(lang);
+			this._languages.splice(_.findIndex(this._languages, ['id', lang.id]), 1);
+			this._selectLanguage(lang);
+		}
 	}
 
 	private _removeLanguage(lang) {

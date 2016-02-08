@@ -6,9 +6,9 @@
 
 	<div class="ui-control-wrapper">
 		<div class="ui-form-control ${focus?'ui-focus':''}">
-			<div class="ui-addon" if.bind="addonIcon || addonText">
-				<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
-				<span if.bind="addonText" dir.bind="dir">${addonText}</span>
+			<div class="ui-addon" if.bind="prefixIcon || prefixText">
+				<span class="ui-icon ${prefixIcon} ${prefixClass}" if.bind="prefixIcon"></span>
+				<span if.bind="prefixText" dir.bind="dir">${prefixText}</span>
 			</div>
 			<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
 				<input class="ui-option-input" type="checkbox" checked.bind="checked"
@@ -19,6 +19,10 @@
 				   size="1" id.bind="_id" dir.bind="dir" type.bind="_intype"
 				   focus.trigger="focus=true" blur.trigger="focus=false"/>
 
+			<div class="ui-addon" if.bind="suffixIcon || suffixText">
+				<span class="ui-icon ${suffixIcon} ${suffixClass}" if.bind="suffixIcon"></span>
+				<span if.bind="suffixText" dir.bind="dir">${suffixText}</span>
+			</div>
 			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
 					click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}

@@ -53,9 +53,12 @@ export class UIChosen {
 	@bindable id:string          = '';
 	@bindable label:string       = '';
 	@bindable helpText:string    = '';
-	@bindable addonIcon:string   = '';
-	@bindable addonText:string   = '';
-	@bindable addonClass:string  = '';
+	@bindable prefixIcon:string   = '';
+	@bindable prefixText:string   = '';
+	@bindable prefixClass:string  = '';
+	@bindable suffixIcon:string   = '';
+	@bindable suffixText:string   = '';
+	@bindable suffixClass:string  = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
 	@bindable placeholder:string = '';
@@ -108,7 +111,7 @@ export class UIChosen {
 				this.value = (this._multiple ? (v || ['']).join(',') : v);
 				let model  = this.value;
 				if (!this._multiple) {
-					try {model = this._select.options[this._select.selectedIndex].model;} catch (e) {}
+					try {model = this._select.options[this._select.selectedIndex].model || model;} catch (e) {}
 				}
 				UIEvent.fireEvent('change', this.element, model);
 			});
@@ -126,6 +129,18 @@ export class UIChosen {
 					allow_single_deselect: this._clear,
 					placeholder_text_single: this.placeholder,
 					placeholder_text_multiple: this.placeholder
+				})
+				.change(()=> {
+					/**
+					 * convert value to string is multiple is true
+					 */
+					let v      = $(this._select).val();
+					this.value = (this._multiple ? (v || ['']).join(',') : v);
+					let model  = this.value;
+					if (!this._multiple) {
+						try {model = this._select.options[this._select.selectedIndex].model;} catch (e) {}
+					}
+					UIEvent.fireEvent('change', this.element, model);
 				})
 				.trigger('chosen:updated');
 		}, 500);

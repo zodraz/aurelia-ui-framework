@@ -3,6 +3,8 @@ import {moment} from "../../framework/utils/ui-utils";
 export class HomeDataGrid {
 	title = 'DataGrid Example';
 
+	myPage = 1;
+
 	data = [{
 		id: 1,
 		FName: 'Leroy',
@@ -109,15 +111,15 @@ export class HomeDataGrid {
 	}
 
 	getGender($event) {
-		$event.value = `<span class="ui-text-primary ui-font-big ${$event.detail.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23'}"></span>`;
+		return `<span class="ui-text-primary ui-font-big ${$event.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23'}"></span>`;
 	}
 
 	getFullName($event) {
-		$event.value = `${$event.detail.model.FName} <strong>${$event.detail.model.LName}</strong>`;
+		return `${$event.model.FName} <strong>${$event.model.LName}</strong>`;
 	}
 
 	linkclicked($event) {
-		let g = this.getGender($event);
+		let g = this.getGender($event.detail);
 		let d = $event.detail.model;
 		if ($event.detail.link == 'edit') {
 			$.notify(`You want to edit ${d.FName} <strong>${d.LName}</strong>`, {
@@ -134,12 +136,16 @@ export class HomeDataGrid {
 			});
 		}
 		if ($event.detail.link == 'FName') {
-			$.notify(`Details for ${$event.value} ${d.FName} <strong>${d.LName}</strong>
+			$.notify(`Details for ${g} ${d.FName} <strong>${d.LName}</strong>
 			<br/>${d.Gender == 'MALE' ? 'He' : 'She'} is ${moment(d.SDate).fromNow(true)} old`, {
 				style: 'ui',
 				className: 'info',
 				autoHide: true
 			});
 		}
+	}
+
+	pageChanged($event) {
+		this.myPage = $event.detail;
 	}
 }

@@ -51,13 +51,17 @@ export class UIInput {
 	private _value:string   = '';
 	private value:string    = '';
 	private checked:boolean = false;
+	private addonRight      = false;
 
 	@bindable id:string          = '';
 	@bindable dir:string         = '';
 	@bindable helpText:string    = '';
-	@bindable addonIcon:string   = '';
-	@bindable addonText:string   = '';
-	@bindable addonClass:string  = '';
+	@bindable prefixIcon:string  = '';
+	@bindable prefixText:string  = '';
+	@bindable prefixClass:string = '';
+	@bindable suffixIcon:string  = '';
+	@bindable suffixText:string  = '';
+	@bindable suffixClass:string = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
 	@bindable placeholder:string = '';
@@ -94,6 +98,7 @@ export class UIInput {
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
+		if (element.hasAttribute('addon-end')) this._classes = 'ui-label-top';
 		// check types
 		if (element.hasAttribute('password')) this._type = 'password';
 		if (element.hasAttribute('email')) this._type = 'email';
@@ -111,9 +116,7 @@ export class UIInput {
 		if (this._checkbox) {
 			this.disabled = this.checked !== true;
 		}
-		if (!_.isEmpty(this.value)) {
-			this._valueChanged(this.value);
-		}
+		this._valueChanged(this.value);
 	}
 
 	attached() {
@@ -138,17 +141,18 @@ export class UIInput {
 			.attr(this.readonly !== false ? 'readonly' : 'R', '')
 			.attr(this.disabled !== false ? 'disabled' : 'D', '')
 			.on('input', (e)=> {
+				let el = $(e.target);
 				if (!this.readonly && !this.disabled) {
-					var el = $(e.target);
 					el[el.val() !== '' ? 'addClass' : 'removeClass']('x');
 				}
+				this.value = el.val();
 			})
 			.on('mousemove', (e)=> {
-				if ($(e.target).hasClass('x'))
+				if ($(e.target).hasClass('ui-clear') && $(e.target).hasClass('x'))
 					$(e.target)[(e.target.offsetWidth - 18 < e.clientX - e.target.getBoundingClientRect().left) ? 'addClass' : 'removeClass']('onX');
 			})
 			.on('touchstart mousedown', (e)=> {
-				if (e.button == 0 && $(e.target).hasClass('onX')) {
+				if (e.button == 0 && $(e.target).hasClass('ui-clear') && $(e.target).hasClass('onX')) {
 					e.preventDefault();
 					e.cancelBubble = true;
 					$(e.target).removeClass('x onX').val('').trigger('change');
@@ -156,6 +160,12 @@ export class UIInput {
 			})
 			.keypress((e) => {
 				if (e.ctrlKey || e.altKey || e.metaKey || e.charCode == 0) return true;
+
+				if ((e.which || e.keyCode) == 13) {
+					$(e.target).trigger('change', e);
+					return UIEvent.fireEvent('enterpressed', this.element, this, this._input);
+				}
+
 				if (this._type == 'name') {
 					return (new RegExp('[' + this.ALPHA + '\'\\.\\-&\\s]', 'g'))
 						.test(String.fromCharCode(e.charCode));
@@ -172,11 +182,6 @@ export class UIInput {
 				}
 				else if (this._type == 'email') {
 					return (/[A-Za-z0-9\-\.@_\+]/).test(String.fromCharCode(e.charCode));
-				}
-
-				if ((e.which || e.keyCode) == 13) {
-					$(e.target).trigger('change', e);
-					return false;
 				}
 
 				return true;
@@ -214,11 +219,12 @@ export class UIInput {
 	}
 
 	private _valueChanged(newValue) {
-		this.value = this._value = this._format(_.isEmpty(newValue) ? '' : newValue);
-		$(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
+		this._value = this._format(newValue);
+		if (this._input)this._input[this._value !== '' ? 'addClass' : 'removeClass']('x');
 	}
 
 	private _format(val) {
+		val = (_.isInteger(val) || !_.isEmpty(val)) ? val : '';
 		if (this._type == 'name') {
 			val = val.replace(new RegExp('[' + this.ALPHA + '\']+(?=[\\.\\-&\\s]*)', 'g'), (txt) => {
 				if (/^[ivxlcm]+$/.test(txt.toLowerCase()))

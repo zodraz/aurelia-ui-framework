@@ -39,7 +39,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             return this;
         };
         UILangSelect.prototype.setLanguage = function (newValue) {
-            this._current = ui_utils_1._.find(this._selected, 'id', newValue);
+            this._current = ui_utils_1._.find(this._selected, ['id', newValue]);
             this._selectLanguage(this._current);
             return this;
         };
@@ -53,14 +53,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 $(this._selector).addClass('ui-menu-reverse');
         };
         UILangSelect.prototype._selectLanguage = function (lang) {
-            this._current = lang;
-            ui_event_1.UIEvent.fireEvent('change', this.element, lang || { id: 'null' });
-            $(this._selector).removeClass('ui-dropdown');
+            if (ui_event_1.UIEvent.fireEvent('beforechange', this.element, lang || { id: 'null' }) !== false) {
+                this._current = lang;
+                ui_event_1.UIEvent.fireEvent('change', this.element, lang || { id: 'null' });
+                $(this._selector).removeClass('ui-dropdown');
+            }
         };
         UILangSelect.prototype._addLanguage = function (lang) {
-            this._selected.push(lang);
-            this._languages.splice(ui_utils_1._.findIndex(this._languages, ['id', lang.id]), 1);
-            this._selectLanguage(lang);
+            if (ui_event_1.UIEvent.fireEvent('beforechange', this.element, lang || { id: 'null' }) !== false) {
+                this._selected.push(lang);
+                this._languages.splice(ui_utils_1._.findIndex(this._languages, ['id', lang.id]), 1);
+                this._selectLanguage(lang);
+            }
         };
         UILangSelect.prototype._removeLanguage = function (lang) {
             this._languages.push(lang);

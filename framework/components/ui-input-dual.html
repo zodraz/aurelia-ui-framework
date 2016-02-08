@@ -5,26 +5,27 @@
 	</label>
 
 	<div class="ui-form-control ${focus?'ui-focus':''}">
-		<div class="ui-addon" if.bind="addonIcon || addonText">
-			<span class="ui-icon ${addonIcon} ${addonClass}" if.bind="addonIcon"></span>
-			<span if.bind="addonText" dir.bind="dir">${addonText}</span>
+		<div class="ui-addon" if.bind="prefixIcon || prefixText">
+			<span class="ui-icon ${prefixIcon} ${prefixClass}" if.bind="prefixIcon"></span>
+			<span if.bind="prefixText" dir.bind="dir">${prefixText}</span>
 		</div>
 		<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
 			<input class="ui-option-input" type="checkbox" checked.bind="checked"
 				   focus.trigger="focus=true" blur.trigger="focus=false"/>
 			<span class="ui-check-mark"></span>
 		</div>
-		<input class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
-			   size="1" if.bind="!_area" id.bind="_id" dir.bind="dir" type.bind="_intype"
+		<input class="ui-input ${_inputClasses} ui-primary" ref="_inputLeft"
+			   placeholder="${placeholderLeft}" value.bind="_valueLeft"
+			   size="1" id.bind="_id+'_left'" dir.bind="dir" type.bind="_intype"
 			   focus.trigger="focus=true" blur.trigger="focus=false"/>
-		<input class="ui-input ${_inputClasses} ui-secondary" placeholder="${_placeholder2}" value.bind="_value2"
-			   size="1" if.bind="!_area && _double" id.bind="_id" dir.bind="dir" type.bind="_intype"
+		<input class="ui-input ${_inputClasses} ui-secondary" ref="_inputRight"
+			   placeholder="${placeholderRight}" value.bind="_valueRight"
+			   size="1" id.bind="_id+'_right'" dir.bind="dir" type.bind="_intype"
 			   focus.trigger="focus=true" blur.trigger="focus=false"/>
-
-			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${_placeholder1}" value.bind="_value1"
-					  cols="10" rows="5" if.bind="_area" id.bind="_id" dir.bind="dir"
-					  focus.trigger="focus=true" blur.trigger="focus=false"></textarea>
-
+		<div class="ui-addon" if.bind="suffixIcon || suffixText">
+			<span class="ui-icon ${suffixIcon} ${suffixClass}" if.bind="suffixIcon"></span>
+			<span if.bind="suffixText" dir.bind="dir">${suffixText}</span>
+		</div>
 		<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
 				click.trigger="_buttonClick($event)">
 			<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}

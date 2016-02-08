@@ -2,6 +2,7 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
     var HomeDataGrid = (function () {
         function HomeDataGrid() {
             this.title = 'DataGrid Example';
+            this.myPage = 1;
             this.data = [{
                     id: 1,
                     FName: 'Leroy',
@@ -104,13 +105,13 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
                 }];
         }
         HomeDataGrid.prototype.getGender = function ($event) {
-            $event.value = "<span class=\"ui-text-primary ui-font-big " + ($event.detail.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23') + "\"></span>";
+            return "<span class=\"ui-text-primary ui-font-big " + ($event.model.Gender == 'MALE' ? 'fi-ext-men46' : 'fi-ext-women23') + "\"></span>";
         };
         HomeDataGrid.prototype.getFullName = function ($event) {
-            $event.value = $event.detail.model.FName + " <strong>" + $event.detail.model.LName + "</strong>";
+            return $event.model.FName + " <strong>" + $event.model.LName + "</strong>";
         };
         HomeDataGrid.prototype.linkclicked = function ($event) {
-            var g = this.getGender($event);
+            var g = this.getGender($event.detail);
             var d = $event.detail.model;
             if ($event.detail.link == 'edit') {
                 $.notify("You want to edit " + d.FName + " <strong>" + d.LName + "</strong>", {
@@ -127,12 +128,15 @@ define(["require", "exports", "../../framework/utils/ui-utils"], function (requi
                 });
             }
             if ($event.detail.link == 'FName') {
-                $.notify("Details for " + $event.value + " " + d.FName + " <strong>" + d.LName + "</strong>\n\t\t\t<br/>" + (d.Gender == 'MALE' ? 'He' : 'She') + " is " + ui_utils_1.moment(d.SDate).fromNow(true) + " old", {
+                $.notify("Details for " + g + " " + d.FName + " <strong>" + d.LName + "</strong>\n\t\t\t<br/>" + (d.Gender == 'MALE' ? 'He' : 'She') + " is " + ui_utils_1.moment(d.SDate).fromNow(true) + " old", {
                     style: 'ui',
                     className: 'info',
                     autoHide: true
                 });
             }
+        };
+        HomeDataGrid.prototype.pageChanged = function ($event) {
+            this.myPage = $event.detail;
         };
         return HomeDataGrid;
     })();

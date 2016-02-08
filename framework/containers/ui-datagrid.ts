@@ -137,23 +137,29 @@ export class UIDataGrid {
 		if (column.labels) {
 			newValue = column.labels[value];
 		}
-		let x = UIEvent.fireEvent('datavalue', column.columnDef, {value: value, column: column, model: model});
-		if (x.value) return x.value;
-		switch (column.dataType) {
-			case 'currency':
-				return Format.currencyDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
-			case 'number':
-				return Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
-			case 'date':
-				return Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
-			case 'fromnow':
-				return Format.fromNow(newValue);
-			case 'exrate':
-				return Format.exRate(newValue);
-			case 'color':
-				return `<span class="color-code color-${value}"></span> ${newValue}`;
-			default:
-				return newValue;
+		else if (column.dataValue) {
+			newValue = column.dataValue({value: value, column: column, model: model});
+		}
+
+		if (column.dataDisplay)
+			return column.dataDisplay({value: value, column: column, model: model});
+		else {
+			switch (column.dataType) {
+				case 'currency':
+					return Format.currencyDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
+				case 'number':
+					return Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
+				case 'date':
+					return Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
+				case 'fromnow':
+					return Format.fromNow(newValue);
+				case 'exrate':
+					return Format.exRate(newValue);
+				case 'color':
+					return `<span class="color-code color-${value}"></span> ${newValue}`;
+				default:
+					return newValue;
+			}
 		}
 	}
 
@@ -245,6 +251,8 @@ export class UIDataColumn {
 	@bindable dataSymbol:string;
 	@bindable dataSummary:string;
 	@bindable dataLabels:any;
+	@bindable dataValue:any;
+	@bindable dataDisplay:any;
 
 	@bindable buttonTitle:string = '';
 	@bindable buttonGlyph:string = '';

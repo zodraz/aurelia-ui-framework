@@ -1,20 +1,27 @@
 <template>
-	<ui-data-grid data-list.bind="data" data-summary="true" linkclick.trigger="linkclicked($event)"
-	empty-text="OOPS!!! We didn't find any matching records.">
-		<ui-data-column data-id="edit" button-glyph="fi-elegant-pencil9"></ui-data-column>
-		<ui-data-column data-id="delete" button-glyph="fi-elegant-mini2"></ui-data-column>
-		<ui-data-column data-id="id" data-align="center" width="80" locked>ID</ui-data-column>
-		<ui-data-column data-id="Gender" data-sort="FName" width="30" locked sortable
-						datavalue.trigger="getGender($event)"></ui-data-column>
-		<ui-data-column data-id="FName" locked resizeable sortable link
-						data-summary="Total" datavalue.trigger="getFullName($event)">Full Name
-		</ui-data-column>
-		<ui-data-column data-id="SDate" data-type="date" sortable data-format="DD MMM YYYY">Birth Date
-		</ui-data-column>
-		<ui-data-column data-id="SDate" data-type="fromnow" data-align="center"></ui-data-column>
-		<ui-data-column data-id="Amount" data-type="currency" data-symbol="$" data-summary="sum">Amount
-		</ui-data-column>
-		<ui-data-column data-id="Count" data-type="number" data-format="0.000a" data-summary="sum">Count
-		</ui-data-column>
-	</ui-data-grid>
+	<ui-toolbar>
+		<span>${myPage}</span>
+
+		<ui-pager total="3" pagechanged.trigger="pageChanged($event)"></ui-pager>
+	</ui-toolbar>
+	<ui-content>
+		<ui-data-grid data-list.bind="data" data-summary="true" linkclick.trigger="linkclicked($event)"
+					  empty-text="OOPS!!! We didn't find any matching records.">
+			<ui-data-column data-id="edit" button-glyph="fi-elegant-pencil9"></ui-data-column>
+			<ui-data-column data-id="delete" button-glyph="fi-elegant-mini2"></ui-data-column>
+			<ui-data-column data-id="id" data-align="center" width="80" locked>ID</ui-data-column>
+			<ui-data-column data-id="Gender" data-sort="FName" width="30" locked sortable
+							data-display.call="getGender($event)"></ui-data-column>
+			<ui-data-column data-id="FName" locked resizeable sortable link
+							data-summary="Total" data-value.call="getFullName($event)">Full Name
+			</ui-data-column>
+			<ui-data-column data-id="SDate" data-type="date" sortable data-format="DD MMM YYYY">Birth Date
+			</ui-data-column>
+			<ui-data-column data-id="SDate" data-type="fromnow" data-align="center"></ui-data-column>
+			<ui-data-column data-id="Amount" data-type="currency" data-symbol="$" data-summary="sum">Amount
+			</ui-data-column>
+			<ui-data-column data-id="Count" data-type="number" data-format="0.000a" data-summary="sum">Count
+			</ui-data-column>
+		</ui-data-grid>
+	</ui-content>
 </template>

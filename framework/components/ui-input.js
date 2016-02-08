@@ -24,12 +24,16 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._value = '';
             this.value = '';
             this.checked = false;
+            this.addonRight = false;
             this.id = '';
             this.dir = '';
             this.helpText = '';
-            this.addonIcon = '';
-            this.addonText = '';
-            this.addonClass = '';
+            this.prefixIcon = '';
+            this.prefixText = '';
+            this.prefixClass = '';
+            this.suffixIcon = '';
+            this.suffixText = '';
+            this.suffixClass = '';
             this.buttonIcon = '';
             this.buttonText = '';
             this.placeholder = '';
@@ -59,6 +63,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._checkbox = true;
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
+            if (element.hasAttribute('addon-end'))
+                this._classes = 'ui-label-top';
             if (element.hasAttribute('password'))
                 this._type = 'password';
             if (element.hasAttribute('email'))
@@ -82,9 +88,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (this._checkbox) {
                 this.disabled = this.checked !== true;
             }
-            if (!ui_utils_1._.isEmpty(this.value)) {
-                this._valueChanged(this.value);
-            }
+            this._valueChanged(this.value);
         };
         UIInput.prototype.attached = function () {
             var _this = this;
@@ -108,17 +112,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .attr(this.readonly !== false ? 'readonly' : 'R', '')
                 .attr(this.disabled !== false ? 'disabled' : 'D', '')
                 .on('input', function (e) {
+                var el = $(e.target);
                 if (!_this.readonly && !_this.disabled) {
-                    var el = $(e.target);
                     el[el.val() !== '' ? 'addClass' : 'removeClass']('x');
                 }
+                _this.value = el.val();
             })
                 .on('mousemove', function (e) {
-                if ($(e.target).hasClass('x'))
+                if ($(e.target).hasClass('ui-clear') && $(e.target).hasClass('x'))
                     $(e.target)[(e.target.offsetWidth - 18 < e.clientX - e.target.getBoundingClientRect().left) ? 'addClass' : 'removeClass']('onX');
             })
                 .on('touchstart mousedown', function (e) {
-                if (e.button == 0 && $(e.target).hasClass('onX')) {
+                if (e.button == 0 && $(e.target).hasClass('ui-clear') && $(e.target).hasClass('onX')) {
                     e.preventDefault();
                     e.cancelBubble = true;
                     $(e.target).removeClass('x onX').val('').trigger('change');
@@ -127,6 +132,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .keypress(function (e) {
                 if (e.ctrlKey || e.altKey || e.metaKey || e.charCode == 0)
                     return true;
+                if ((e.which || e.keyCode) == 13) {
+                    $(e.target).trigger('change', e);
+                    return ui_event_1.UIEvent.fireEvent('enterpressed', _this.element, _this, _this._input);
+                }
                 if (_this._type == 'name') {
                     return (new RegExp('[' + _this.ALPHA + '\'\\.\\-&\\s]', 'g'))
                         .test(String.fromCharCode(e.charCode));
@@ -143,10 +152,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 }
                 else if (_this._type == 'email') {
                     return (/[A-Za-z0-9\-\.@_\+]/).test(String.fromCharCode(e.charCode));
-                }
-                if ((e.which || e.keyCode) == 13) {
-                    $(e.target).trigger('change', e);
-                    return false;
                 }
                 return true;
             })
@@ -180,10 +185,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             }
         };
         UIInput.prototype._valueChanged = function (newValue) {
-            this.value = this._value = this._format(ui_utils_1._.isEmpty(newValue) ? '' : newValue);
-            $(this._inputGroup).find('input.ui-primary')[this.value !== '' ? 'addClass' : 'removeClass']('x');
+            this._value = this._format(newValue);
+            if (this._input)
+                this._input[this._value !== '' ? 'addClass' : 'removeClass']('x');
         };
         UIInput.prototype._format = function (val) {
+            val = (ui_utils_1._.isInteger(val) || !ui_utils_1._.isEmpty(val)) ? val : '';
             if (this._type == 'name') {
                 val = val.replace(new RegExp('[' + this.ALPHA + '\']+(?=[\\.\\-&\\s]*)', 'g'), function (txt) {
                     if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
@@ -220,15 +227,27 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIInput.prototype, "addonIcon");
+        ], UIInput.prototype, "prefixIcon");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIInput.prototype, "addonText");
+        ], UIInput.prototype, "prefixText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIInput.prototype, "addonClass");
+        ], UIInput.prototype, "prefixClass");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "suffixIcon");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "suffixText");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "suffixClass");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

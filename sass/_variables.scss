@@ -14,10 +14,10 @@ $secondary: if($dark-theme, $arsenic, $snow) !default;
 $primary-text: $coconut !default;
 $secondary-text: $primary !default;
 
-$info: $pastel-blue !default;
-$danger: $pastel-red !default;
-$success: $pastel-green !default;
-$warning: $pastel-orange !default;
+$info: #009ACD !default;
+$danger: #FB4D3D !default;
+$success: #03CEA4 !default;
+$warning: #F9A838 !default;
 
 $base-bg: if($dark-theme, $outer-space, $coconut) !default;
 $base-text: if($dark-theme, $coconut, $black-olive) !default;

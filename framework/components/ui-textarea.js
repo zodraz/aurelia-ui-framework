@@ -91,7 +91,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             var self = this;
             this._input.textcomplete([{
                     words: newValue,
-                    match: /\b(\w{2,})$/,
+                    match: /\b(\w{1,})$/,
                     search: function (term, callback) {
                         callback(ui_utils_1._.filter(_this.autoComplete, function (word) {
                             return eval("/" + term + "/gi").test(word);

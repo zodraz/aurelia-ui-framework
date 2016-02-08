@@ -2,11 +2,11 @@
 	<div class="ui-hide" ref="_temp">
 		<content></content>
 	</div>
-	<button if.bind="!href" type="button" value.bind="value"
+	<button if.bind="!href" type="button" value.bind="value" role="button"
 			ref="_button" click.trigger="_clicked($event)">${_label}
 	</button>
 	<a if.bind="href" value.bind="value" href.bind="href"
-	   ref="_link" role="button" click.trigger="_clicked($event)">${_label}</a>
+	   ref="_link" role="link" click.trigger="_clicked($event)">${_label}</a>
 	<ui-menu dropdown if.bind="menu" menu.bind="_menuItems"
 			 click.trigger="_menuClicked($event)">
 	</ui-menu>

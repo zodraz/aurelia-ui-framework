@@ -115,7 +115,7 @@ export class UITextArea {
 		let self = this;
 		this._input.textcomplete([{
 			words: newValue,
-			match: /\b(\w{2,})$/,
+			match: /\b(\w{1,})$/,
 			search: (term, callback)=> {
 				callback(_.filter(this.autoComplete as Array<string>, (word)=> {
 					return eval(`/${term}/gi`).test(word);

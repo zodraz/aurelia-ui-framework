@@ -3,74 +3,96 @@
 		<div class="ui-pad-all">
 			<h4 class="ui-margin-v">Forms</h4>
 			<ui-form class="ui-border-all ui-pad-v" validate.bind="validation" submit.trigger="onSubmit()">
-				<ui-column>
-					<ui-input name required clear value.bind="model.firstName">First Name</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input name required clear value.bind="model.lastName">Last Name</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-chosen addon-icon.bind="model.phoneCountry" addon-class="ui-flag" required
-							   value.bind="model.phoneCountry" label="Country" placeholder="Select a country">
-						<optgroup repeat.for="region of countries | keys" label="${region}">
-							<option value="${ctry.iso2.toLowerCase()}" repeat.for="ctry of countries[region]"
-									class="ui-icon ui-flag ${ctry.iso2}" model.bind="ctry">
-								${ctry.name}
-							</option>
-						</optgroup>
-					</ui-chosen>
-				</ui-column>
-				<ui-column>
-					<ui-phone required clear value.bind="model.phone"
-							  phone-ext.bind="model.phoneExt"
-							  phone-code.bind="model.phoneCode"
-							  phone-number.bind="model.phoneNumber"
-							  phone-country.bind="model.phoneCountry">Phone<span>Input With Preset Dialing Code</span>
-					</ui-phone>
-				</ui-column>
-				<ui-column>
-					<ui-input email addon-icon="fi-elegant-mail9" required clear value.bind="model.email">Email
-					</ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-phone full required clear value.bind="model.phone2">Phone<span>Input Without Dialing Code</span>
-					</ui-phone>
-				</ui-column>
-				<ui-column>
-					<ui-input addon-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>
-				</ui-column>
-				<ui-column>
-					<ui-input addon-text="999 999 999" disabled>Disabled<span>Cant Select</span></ui-input>
-				</ui-column>
-				<ui-column full row>
-					<ui-column width="120px"></ui-column>
-					<ui-column fill>
-						<p>isDirty: ${model.isDirty() ? 'Yes':'No'}</p>
-
-						<p>First Name: ${model.firstName}</p>
-
-						<p>Last Name: ${model.lastName}</p>
-
-						<p>Email: ${model.email}</p>
-
-						<p>Date: ${model.date | date}</p>
+				<ui-row>
+					<ui-column>
+						<ui-input name required clear value.bind="model.firstName">First Name</ui-input>
 					</ui-column>
-					<ui-column width="120px"></ui-column>
-					<ui-column fill>
-
-						<p>Phone: ${model.phone}</p>
-
-						<p>Code: ${model.phoneCode}, Number: ${model.phoneNumber}, Ext:
-							${model.phoneExt}</p>
-
-						<p>Has Location: ${model.hasLoc?'Yes':'No'}, Location: ${model.pos}</p>
-
-						<p>Radio: ${model.opts}, List: ${model.list}</p>
-
-						<p>Range: ${model.range.start | date} - ${model.range.end | date}</p>
-
+					<ui-column>
+						<ui-input name required clear value.bind="model.lastName">Last Name</ui-input>
 					</ui-column>
-				</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-chosen prefix-icon.bind="model.phoneCountry" prefix-class="ui-flag" required
+								   value.bind="model.phoneCountry" label="Country" placeholder="Select a country">
+							<optgroup repeat.for="region of countries | keys" label="${region}">
+								<option value="${ctry.iso2.toLowerCase()}" repeat.for="ctry of countries[region]"
+										class="ui-icon ui-flag ${ctry.iso2}" model.bind="ctry">
+									${ctry.name}
+								</option>
+							</optgroup>
+						</ui-chosen>
+					</ui-column>
+					<ui-column>
+						<ui-input email prefix-icon="fi-elegant-mail9" required clear value.bind="model.email">Email
+						</ui-input>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-phone required clear value.bind="model.phone"
+								  phone-ext.bind="model.phoneExt"
+								  phone-code.bind="model.phoneCode"
+								  phone-number.bind="model.phoneNumber"
+								  phone-country.bind="model.phoneCountry">
+							Phone<span>Input With Preset Dialing Code</span>
+						</ui-phone>
+					</ui-column>
+					<ui-column>
+						<ui-phone full required clear value.bind="model.phone2">
+							Phone<span>Input Without Dialing Code</span>
+						</ui-phone>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-input prefix-icon="fi-elegant-outlined4" address placeholder="Address...">Address</ui-input>
+					</ui-column>
+					<ui-column>
+						<ui-input-dual prefix-icon="fi-elegant-map5" location checkbox
+									   checked.bind="model.hasLoc"
+									   value-left.bind="model.lat" placeholder-left="Latitude"
+									   value-right.bind="model.lon" placeholder-right="Longitude">Location
+						</ui-input-dual>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column>
+						<ui-input prefix-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>
+					</ui-column>
+					<ui-column>
+						<ui-input prefix-text="999 999 999" disabled>Disabled<span>Cant Select</span></ui-input>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column fill>
+						<div style="padding-left: 120px;">
+							<p>isDirty: ${model.isDirty() ? 'Yes':'No'}</p>
+
+							<p>First Name: ${model.firstName}</p>
+
+							<p>Last Name: ${model.lastName}</p>
+
+							<p>Email: ${model.email}</p>
+
+							<p>Date: ${model.date | date}</p></div>
+					</ui-column>
+					<ui-column fill>
+						<div style="padding-left: 120px;">
+
+							<p>Phone: ${model.phone}</p>
+
+							<p>Code: ${model.phoneCode}, Number: ${model.phoneNumber}, Ext:
+								${model.phoneExt}</p>
+
+							<p>Has Location: ${model.hasLoc?'Yes':'No'}, Location: ${model.lat}, ${model.lon}</p>
+
+							<p>Radio: ${model.opts}, List: ${model.list}</p>
+
+							<p>Range: ${model.range.start | date} - ${model.range.end | date}</p>
+						</div>
+					</ui-column>
+				</ui-row>
 				<ui-column>
 					<ui-column>
 						<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="model.tags"
@@ -111,7 +133,9 @@
 					</ui-column>
 					<ui-column>
 						<ui-textarea auto-complete.bind="autoComplete" value.bind="autoComp"
-								  help-text="Auto-Complete list of automobile manufacturers<br/>${autoComp}">Auto Complete</ui-textarea>
+									 help-text="Auto-Complete list of automobile manufacturers<br/>${autoComp}">Auto
+							Complete
+						</ui-textarea>
 					</ui-column>
 				</ui-column>
 				<ui-column>
@@ -144,6 +168,7 @@
 				<ui-column>
 					<ui-lang-select view-model.ref="_langSelect" languages.one-time="content | keys"
 									change.trigger="languageChanged($event)"
+									beforechange.trigger="beforeChange($event)"
 									remove.trigger="languageRemoved($event)">Languages
 					</ui-lang-select>
 				</ui-column>

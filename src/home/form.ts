@@ -8,7 +8,7 @@ import {UIModel} from "../../framework/utils/ui-model";
 export class HomeForm {
 	model;
 
-	@watch('ar')
+	@watch('en')
 	lang;
 	@watch('rtl')
 	contentDir;
@@ -34,6 +34,10 @@ export class HomeForm {
 
 	languageRemoved($event) {
 		delete this.content[$event.detail];
+	}
+
+	beforeChange($event) {
+		return $event.detail.id == 'en';
 	}
 
 	validation;
@@ -148,7 +152,8 @@ export class FormModel extends UIModel {
 	lastName  = 'Pastakia';
 	email     = 'adarshpastakia@outlook.com';
 
-	pos = '25.4,76.5';
+	lat = '25.4';
+	lon = '76.5';
 
 	phoneCode    = '';
 	phoneNumber  = '';

@@ -9,7 +9,7 @@ import {BindingEngine} from "aurelia-framework";
 import {EventAggregator, Subscription} from "aurelia-event-aggregator";
 
 export class UIEvent extends CustomEvent {
-	private _value:any;
+	private _value:any = null;
 
 	get value() {
 		return this._value;
@@ -24,13 +24,11 @@ export class UIEvent extends CustomEvent {
 			let e        = new Event(event, {bubbles: true, cancelable: true}) as UIEvent;
 			e.detail     = data;
 			e.srcElement = source; // UNABLE TO SET SOURCE ELEMENT
-			element.dispatchEvent(e);
-			return e;
+			return element.dispatchEvent(e);
 		} catch (e) {
 			var evt = document.createEvent('CustomEvent') as UIEvent;
 			evt.initCustomEvent(event, true, true, data);
-			element.dispatchEvent(evt);
-			return evt;
+			return element.dispatchEvent(evt);
 		}
 	}
 

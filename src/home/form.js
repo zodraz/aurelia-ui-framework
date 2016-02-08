@@ -63,6 +63,9 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
         HomeForm.prototype.languageRemoved = function ($event) {
             delete this.content[$event.detail];
         };
+        HomeForm.prototype.beforeChange = function ($event) {
+            return $event.detail.id == 'en';
+        };
         HomeForm.prototype.attached = function () {
             this._langSelect
                 .addLanguages(Object.keys(this.content))
@@ -77,7 +80,7 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.validation.validate();
         };
         __decorate([
-            ui_utils_1.watch('ar'), 
+            ui_utils_1.watch('en'), 
             __metadata('design:type', Object)
         ], HomeForm.prototype, "lang");
         __decorate([
@@ -98,7 +101,8 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             this.firstName = 'Adarsh';
             this.lastName = 'Pastakia';
             this.email = 'adarshpastakia@outlook.com';
-            this.pos = '25.4,76.5';
+            this.lat = '25.4';
+            this.lon = '76.5';
             this.phoneCode = '';
             this.phoneNumber = '';
             this.phoneCountry = 'ae';
