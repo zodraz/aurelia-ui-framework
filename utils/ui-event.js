@@ -8,6 +8,7 @@ define(["require", "exports", "./ui-utils", "aurelia-framework", "aurelia-event-
         __extends(UIEvent, _super);
         function UIEvent() {
             _super.apply(this, arguments);
+            this._value = null;
         }
         Object.defineProperty(UIEvent.prototype, "value", {
             get: function () {
@@ -24,14 +25,12 @@ define(["require", "exports", "./ui-utils", "aurelia-framework", "aurelia-event-
                 var e = new Event(event, { bubbles: true, cancelable: true });
                 e.detail = data;
                 e.srcElement = source;
-                element.dispatchEvent(e);
-                return e;
+                return element.dispatchEvent(e);
             }
             catch (e) {
                 var evt = document.createEvent('CustomEvent');
                 evt.initCustomEvent(event, true, true, data);
-                element.dispatchEvent(evt);
-                return evt;
+                return element.dispatchEvent(evt);
             }
         };
         UIEvent.observe = function (object, prop) {

@@ -10,16 +10,16 @@
   border-radius: $base-border-radius;
   > form {
 	@include flex(1 1 auto);
-  }
-  > .ui-row > .ui-column {
-	min-width: $grid-sm-max;
-	&.ui-col-auto {
-	  @include flex(1 1 420px);
-	  min-width: 420px !important;
-	  max-width: 100%;
+
+	> .ui-row > .ui-column, > .ui-column {
+	  min-width: $grid-sm-max;
+	  &.ui-col-auto {
+		@include flex(1 1 420px);
+		min-width: 420px !important;
+		max-width: 100%;
+	  }
 	}
   }
-
   .ui-input-group > .ui-form-control {
   }
 }
@@ -276,6 +276,14 @@
 	}
   }
 
+  .ui-help-block {
+	display: none;
+  }
+
+  &.ui-auto .ui-control-wrapper {
+	@include flex(1 1 auto);
+  }
+
   &.ui-invalid {
 	.ui-label {
 	  color: $danger;
@@ -292,6 +300,9 @@
 	.ui-addon {
 	  color: $coconut;
 	  background-color: $input-invalid-color;
+	}
+	.ui-help-block {
+	  display: block;
 	}
   }
 

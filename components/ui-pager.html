@@ -1,0 +1,12 @@
+<template>
+	<div class="ui-pager" click.delegate="changePage($event)" ref="_pager">
+		<ui-button id="first" disabled.bind="currentPage == 1" icon="fi-essential-double54"></ui-button>
+		<ui-button id="prev" disabled.bind="currentPage == 1" icon="fi-essential-left46"></ui-button>
+		<div class="ui-pager-pages">
+			<ui-input nolabel number class="ui-auto" value.bind="currentPage" enterpressed.trigger="pageChanged($event)"></ui-input>
+			<div> of ${totalPages}</div>
+		</div>
+		<ui-button id="next" disabled.bind="currentPage == totalPages" icon="fi-essential-right65"></ui-button>
+		<ui-button id="last" disabled.bind="currentPage == totalPages" icon="fi-essential-double52"></ui-button>
+	</div>
+</template>

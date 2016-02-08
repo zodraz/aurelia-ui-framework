@@ -62,6 +62,7 @@
 
 	  &.no-scroll {
 		overflow: hidden;
+		@include flex-column($wrap: false);
 	  }
 
 	  &:not(.ui-active) {

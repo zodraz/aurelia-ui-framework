@@ -18,7 +18,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
             var self = this;
             this._subscribeSelect = ui_event_1.UIEvent.subscribe('tree-select', function (v) { return self._itemSelect(v); });
             this._subscribeChecked = ui_event_1.UIEvent.subscribe('tree-checked', function (v) { return self._itemChecked(v); });
-            observer.propertyObserver(this, 'searchText')
+            this._subscribeSearch = observer.propertyObserver(this, 'searchText')
                 .subscribe(function (v) { return self._searchTextChanged(v); });
         }
         UITree.prototype.bind = function () {
@@ -39,6 +39,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-tree-models", ".
         UITree.prototype.detached = function () {
             this._subscribeSelect.dispose();
             this._subscribeChecked.dispose();
+            this._subscribeSearch.dispose();
         };
         Object.defineProperty(UITree.prototype, "rootNodes", {
             get: function () {

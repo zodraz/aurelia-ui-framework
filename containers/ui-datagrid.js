@@ -102,24 +102,28 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (column.labels) {
                 newValue = column.labels[value];
             }
-            var x = ui_event_1.UIEvent.fireEvent('datavalue', column.columnDef, { value: value, column: column, model: model });
-            if (x.value)
-                return x.value;
-            switch (column.dataType) {
-                case 'currency':
-                    return ui_utils_1.Format.currencyDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
-                case 'number':
-                    return ui_utils_1.Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
-                case 'date':
-                    return ui_utils_1.Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
-                case 'fromnow':
-                    return ui_utils_1.Format.fromNow(newValue);
-                case 'exrate':
-                    return ui_utils_1.Format.exRate(newValue);
-                case 'color':
-                    return "<span class=\"color-code color-" + value + "\"></span> " + newValue;
-                default:
-                    return newValue;
+            else if (column.dataValue) {
+                newValue = column.dataValue({ value: value, column: column, model: model });
+            }
+            if (column.dataDisplay)
+                return column.dataDisplay({ value: value, column: column, model: model });
+            else {
+                switch (column.dataType) {
+                    case 'currency':
+                        return ui_utils_1.Format.currencyDisplay(newValue, column.dataFormat || '$ 0,0.00', model[column.dataSymbol] || column.dataSymbol || '$');
+                    case 'number':
+                        return ui_utils_1.Format.numberDisplay(newValue, column.dataFormat || '0,0.00');
+                    case 'date':
+                        return ui_utils_1.Format.dateDisplay(newValue, column.dataFormat || 'DD MMM YYYY hh:mm A');
+                    case 'fromnow':
+                        return ui_utils_1.Format.fromNow(newValue);
+                    case 'exrate':
+                        return ui_utils_1.Format.exRate(newValue);
+                    case 'color':
+                        return "<span class=\"color-code color-" + value + "\"></span> " + newValue;
+                    default:
+                        return newValue;
+                }
             }
         };
         UIDataGrid.prototype.summary = function (column) {
@@ -285,6 +289,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable, 
             __metadata('design:type', Object)
         ], UIDataColumn.prototype, "dataLabels");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIDataColumn.prototype, "dataValue");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIDataColumn.prototype, "dataDisplay");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

@@ -26,9 +26,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.id = '';
             this.label = '';
             this.helpText = '';
-            this.addonIcon = '';
-            this.addonText = '';
-            this.addonClass = '';
+            this.prefixIcon = '';
+            this.prefixText = '';
+            this.prefixClass = '';
+            this.suffixIcon = '';
+            this.suffixText = '';
+            this.suffixClass = '';
             this.buttonIcon = '';
             this.buttonText = '';
             this.placeholder = '';
@@ -84,7 +87,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 var model = _this.value;
                 if (!_this._multiple) {
                     try {
-                        model = _this._select.options[_this._select.selectedIndex].model;
+                        model = _this._select.options[_this._select.selectedIndex].model || model;
                     }
                     catch (e) { }
                 }
@@ -104,6 +107,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                     allow_single_deselect: _this._clear,
                     placeholder_text_single: _this.placeholder,
                     placeholder_text_multiple: _this.placeholder
+                })
+                    .change(function () {
+                    var v = $(_this._select).val();
+                    _this.value = (_this._multiple ? (v || ['']).join(',') : v);
+                    var model = _this.value;
+                    if (!_this._multiple) {
+                        try {
+                            model = _this._select.options[_this._select.selectedIndex].model;
+                        }
+                        catch (e) { }
+                    }
+                    ui_event_1.UIEvent.fireEvent('change', _this.element, model);
                 })
                     .trigger('chosen:updated');
             }, 500);
@@ -164,15 +179,27 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "addonIcon");
+        ], UIChosen.prototype, "prefixIcon");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "addonText");
+        ], UIChosen.prototype, "prefixText");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIChosen.prototype, "addonClass");
+        ], UIChosen.prototype, "prefixClass");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIChosen.prototype, "suffixIcon");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIChosen.prototype, "suffixText");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIChosen.prototype, "suffixClass");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

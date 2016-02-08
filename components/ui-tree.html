@@ -3,7 +3,8 @@
 	<require from="./ui-tree-node"></require>
 
 	<div class="ui-search">
-		<ui-input type="search" nolabel placeholder="Search..." clear value.bind="searchText & debounce"></ui-input>
+		<ui-input class="ui-auto" type="search" nolabel placeholder="Search..." clear
+				  value.bind="searchText & debounce:200"></ui-input>
 	</div>
 
 	<div class="ui-tree-level">
