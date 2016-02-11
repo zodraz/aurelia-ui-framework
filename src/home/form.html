@@ -1,8 +1,8 @@
 <template>
 	<ui-scroll>
 		<div class="ui-pad-all">
-			<h4 class="ui-margin-v">Forms</h4>
-			<ui-form class="ui-border-all ui-pad-v" validate.bind="validation" submit.trigger="onSubmit()">
+			<h4 class="ui-margin-v">Forms <ui-option checked.bind="formDisable">Mark as Busy</ui-option></h4>
+			<ui-form class="ui-border-all ui-pad-v" busy.bind="formDisable" validate.bind="validation" submit.trigger="onSubmit()">
 				<ui-row>
 					<ui-column>
 						<ui-input name required clear value.bind="model.firstName">First Name</ui-input>

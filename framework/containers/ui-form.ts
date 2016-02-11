@@ -12,7 +12,7 @@ import {UIEvent} from "../utils/ui-event";
 export class UIForm {
 	@bindable id:string    = '';
 	@bindable class:string = '';
-	@bindable busy:boolean = false;
+	@bindable busy:boolean;
 
 	private _form;
 	private _classes:string = '';
@@ -28,21 +28,13 @@ export class UIForm {
 	}
 
 	busyChanged(newValue:any) {
-		try {
-			$(this.element).find('ui-input, ui-chosen, ui-markdown, ui-button, ui-date, ui-list, ui-option, ui-switch')
-				.each((i, e)=> {
-					if (newValue === true) {
-						$(e).find('input,select,button,textarea').removeAttr('D')
-							.removeAttr('disabled')
-							.attr('disabled', '');
-					}
-					else if (!e.au.controller.viewModel.disabled) {
-						$(e).find('input,select,button,textarea').removeAttr('D')
-							.removeAttr('disabled');
-					}
-				});
-		} catch (e) {
-		}
+		$(this.element).find('ui-input,ui-phone,ui-textarea,ui-input-dual,ui-chosen,ui-markdown,ui-button,ui-date,ui-list,ui-option,ui-switch')
+			.each((i, e)=> {
+				try {
+					e.au.controller.viewModel.disabled = newValue;
+				} catch (e) {
+				}
+			});
 		try {
 			$(this.element).find('select').trigger('chosen:updated');
 		} catch (e) {

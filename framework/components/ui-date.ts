@@ -189,6 +189,10 @@ export class UIDate {
 				.removeAttr('disabled')
 				.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 		}
+		$(this._date).find('.ui-option-input')
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	private _valueChanged(newValue) {
@@ -204,7 +208,16 @@ export class UIDate {
 
 	private _checkedChanged(newValue) {
 		if (this._checkbox) {
-			this.disabled = newValue !== true;
+			$(this._inputStart)
+				.removeAttr('D')
+				.removeAttr('disabled')
+				.attr(newValue === false ? 'disabled' : 'D', '');
+			if (this._inputEnd) {
+				$(this._inputEnd)
+					.removeAttr('D')
+					.removeAttr('disabled')
+					.attr(newValue === false ? 'disabled' : 'D', '');
+			}
 		}
 	}
 }

@@ -19,7 +19,7 @@
 				   size="1" id.bind="_id" dir="ltr" type="tel"
 				   focus.trigger="focus=true" blur.trigger="focus=false"/>
 
-			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
+			<button type="button" if.bind="buttonText || buttonIcon" tabindex="-1" class="ui-button ui-button-default"
 					click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>

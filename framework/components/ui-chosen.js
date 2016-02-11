@@ -38,6 +38,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.readonly = false;
             this.disabled = false;
             this.options = [];
+            this.valueProperty = 'id';
+            this.displayProperty = 'name';
             this._id = "chosen-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
@@ -114,7 +116,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                     var model = _this.value;
                     if (!_this._multiple) {
                         try {
-                            model = _this._select.options[_this._select.selectedIndex].model;
+                            model = _this._select.options[_this._select.selectedIndex].model || model;
                         }
                         catch (e) { }
                     }
@@ -129,6 +131,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .removeAttr('disabled')
                 .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '')
                 .trigger('chosen:updated');
+            $(this._chosen).find('.ui-option-input')
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIChosen.prototype.readonlyChanged = function (newValue) {
             $(this._select)
@@ -136,10 +142,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '')
                 .trigger('chosen:updated');
+            $(this._chosen).find('.ui-option-input')
+                .removeAttr('R')
+                .removeAttr('readonly')
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
         UIChosen.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
-                this.disabled = newValue !== true;
+                $(this._select)
+                    .removeAttr('D')
+                    .removeAttr('disabled')
+                    .attr(newValue === false ? 'disabled' : 'D', '')
+                    .trigger('chosen:updated');
             }
         };
         UIChosen.prototype._valueChanged = function (newValue) {
@@ -224,6 +238,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             aurelia_framework_1.bindable, 
             __metadata('design:type', Object)
         ], UIChosen.prototype, "options");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIChosen.prototype, "valueProperty");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIChosen.prototype, "displayProperty");
         UIChosen = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',

@@ -36,6 +36,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.suffixClass = '';
             this.buttonIcon = '';
             this.buttonText = '';
+            this.buttonTheme = 'default';
             this.placeholder = '';
             this.readonly = false;
             this.disabled = false;
@@ -62,8 +63,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (element.hasAttribute('checkbox'))
                 this._checkbox = true;
             if (element.hasAttribute('label-top'))
-                this._classes = 'ui-label-top';
-            if (element.hasAttribute('addon-end'))
                 this._classes = 'ui-label-top';
             if (element.hasAttribute('password'))
                 this._type = 'password';
@@ -170,6 +169,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+            $(this._inputGroup).find('.ui-option-input')
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIInput.prototype.readonlyChanged = function (newValue) {
             if (!this._input)
@@ -178,10 +181,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .removeAttr('R')
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '');
+            $(this._inputGroup).find('.ui-option-input')
+                .removeAttr('R')
+                .removeAttr('readonly')
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
         UIInput.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
-                this.disabled = newValue !== true;
+                this._input
+                    .removeAttr('D')
+                    .removeAttr('disabled')
+                    .attr(newValue === false ? 'disabled' : 'D', '');
             }
         };
         UIInput.prototype._valueChanged = function (newValue) {
@@ -256,6 +266,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UIInput.prototype, "buttonText");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "buttonTheme");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

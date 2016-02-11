@@ -53,7 +53,7 @@ export class UIList {
 
 	@bindable id:string         = '';
 	@bindable label:string      = '';
-	@bindable helpText:string    = '';
+	@bindable helpText:string   = '';
 	@bindable addonIcon:string  = '';
 	@bindable addonText:string  = '';
 	@bindable addonClass:string = '';
@@ -110,6 +110,14 @@ export class UIList {
 			.removeAttr('D')
 			.removeAttr('disabled')
 			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+		$(this._input)
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+		$(this._list).find('.ui-option-input')
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
@@ -117,11 +125,26 @@ export class UIList {
 			.removeAttr('R')
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '');
+		$(this._input)
+			.removeAttr('R')
+			.removeAttr('readonly')
+			.attr(newValue !== false ? 'readonly' : 'R', '');
+		$(this._list).find('.ui-option-input')
+			.removeAttr('R')
+			.removeAttr('readonly')
+			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}
 
 	private _checkedChanged(newValue) {
 		if (this._checkbox) {
-			this.disabled = newValue !== true;
+			$(this._input)
+				.removeAttr('D')
+				.removeAttr('disabled')
+				.attr(newValue === false ? 'disabled' : 'D', '');
+			$(this._select)
+				.removeAttr('D')
+				.removeAttr('disabled')
+				.attr(newValue === false ? 'disabled' : 'D', '');
 		}
 	}
 
@@ -159,6 +182,7 @@ export class UIList {
 	}
 
 	_changeSelection($event) {
+		if (this.disabled !== false || (this._checkbox && !this.checked))return false;
 		if ($event.type == 'click') {
 			this._input.focus();
 			this.value = $($event.target).closest('li').attr('value');

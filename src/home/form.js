@@ -17,6 +17,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-model"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_model_1) {
     var HomeForm = (function () {
         function HomeForm(_validation) {
+            this.formDisable = false;
             this.content = {
                 'en': { title: 'Hello World', md: this.md },
                 'ar': { title: 'مرحبا بالعالم', md: this.mdAr }

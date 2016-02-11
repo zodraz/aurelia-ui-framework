@@ -53,18 +53,20 @@ export class UIChosen {
 	@bindable id:string          = '';
 	@bindable label:string       = '';
 	@bindable helpText:string    = '';
-	@bindable prefixIcon:string   = '';
-	@bindable prefixText:string   = '';
-	@bindable prefixClass:string  = '';
-	@bindable suffixIcon:string   = '';
-	@bindable suffixText:string   = '';
-	@bindable suffixClass:string  = '';
+	@bindable prefixIcon:string  = '';
+	@bindable prefixText:string  = '';
+	@bindable prefixClass:string = '';
+	@bindable suffixIcon:string  = '';
+	@bindable suffixText:string  = '';
+	@bindable suffixClass:string = '';
 	@bindable buttonIcon:string  = '';
 	@bindable buttonText:string  = '';
 	@bindable placeholder:string = '';
 	@bindable readonly:boolean   = false;
 	@bindable disabled:boolean   = false;
 	@bindable options            = [];
+	@bindable valueProperty      = 'id';
+	@bindable displayProperty    = 'name';
 
 	constructor(public element:Element) {
 		this._id = `chosen-${UIInput._id++}`;
@@ -138,7 +140,7 @@ export class UIChosen {
 					this.value = (this._multiple ? (v || ['']).join(',') : v);
 					let model  = this.value;
 					if (!this._multiple) {
-						try {model = this._select.options[this._select.selectedIndex].model;} catch (e) {}
+						try {model = this._select.options[this._select.selectedIndex].model || model;} catch (e) {}
 					}
 					UIEvent.fireEvent('change', this.element, model);
 				})
@@ -152,6 +154,10 @@ export class UIChosen {
 			.removeAttr('disabled')
 			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '')
 			.trigger('chosen:updated');
+		$(this._chosen).find('.ui-option-input')
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
@@ -160,11 +166,19 @@ export class UIChosen {
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '')
 			.trigger('chosen:updated');
+		$(this._chosen).find('.ui-option-input')
+			.removeAttr('R')
+			.removeAttr('readonly')
+			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}
 
 	private _checkedChanged(newValue) {
 		if (this._checkbox) {
-			this.disabled = newValue !== true;
+			$(this._select)
+				.removeAttr('D')
+				.removeAttr('disabled')
+				.attr(newValue === false ? 'disabled' : 'D', '')
+				.trigger('chosen:updated');
 		}
 	}
 

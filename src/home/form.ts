@@ -13,6 +13,8 @@ export class HomeForm {
 	@watch('rtl')
 	contentDir;
 
+	formDisable=false;
+
 	content:any = {
 		'en': {title: 'Hello World', md: this.md},
 		'ar': {title: 'مرحبا بالعالم', md: this.mdAr}

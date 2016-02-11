@@ -83,16 +83,39 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+            $(this._input)
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+            $(this._list).find('.ui-option-input')
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIList.prototype.readonlyChanged = function (newValue) {
             $(this._select)
                 .removeAttr('R')
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '');
+            $(this._input)
+                .removeAttr('R')
+                .removeAttr('readonly')
+                .attr(newValue !== false ? 'readonly' : 'R', '');
+            $(this._list).find('.ui-option-input')
+                .removeAttr('R')
+                .removeAttr('readonly')
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
         UIList.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
-                this.disabled = newValue !== true;
+                $(this._input)
+                    .removeAttr('D')
+                    .removeAttr('disabled')
+                    .attr(newValue === false ? 'disabled' : 'D', '');
+                $(this._select)
+                    .removeAttr('D')
+                    .removeAttr('disabled')
+                    .attr(newValue === false ? 'disabled' : 'D', '');
             }
         };
         UIList.prototype._valueChanged = function (newValue) {
@@ -130,6 +153,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 .replace(/option>/gi, 'li>');
         };
         UIList.prototype._changeSelection = function ($event) {
+            if (this.disabled !== false || (this._checkbox && !this.checked))
+                return false;
             if ($event.type == 'click') {
                 this._input.focus();
                 this.value = $($event.target).closest('li').attr('value');

@@ -62,6 +62,7 @@
 
 .ui-sidebar {
   @include flex(0 0 220px);
+  @include flex-column($wrap: false);
   overflow: auto;
   position: relative;
   border: {

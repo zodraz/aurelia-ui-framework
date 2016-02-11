@@ -183,6 +183,10 @@ export class UIPhone {
 			.removeAttr('D')
 			.removeAttr('disabled')
 			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+		$(this._inputGroup).find('.ui-option-input')
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(newValue !== false ? 'disabled' : 'D', '');
 	}
 
 	readonlyChanged(newValue) {
@@ -191,11 +195,18 @@ export class UIPhone {
 			.removeAttr('R')
 			.removeAttr('readonly')
 			.attr(newValue !== false ? 'readonly' : 'R', '');
+		$(this._inputGroup).find('.ui-option-input')
+			.removeAttr('R')
+			.removeAttr('readonly')
+			.attr(newValue !== false ? 'readonly' : 'R', '');
 	}
 
 	private _checkedChanged(newValue) {
 		if (this._checkbox) {
-			this.disabled = newValue !== true;
+			this._input
+				.removeAttr('D')
+				.removeAttr('disabled')
+				.attr(newValue === false ? 'disabled' : 'D', '');
 		}
 	}
 

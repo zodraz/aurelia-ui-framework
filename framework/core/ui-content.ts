@@ -14,5 +14,6 @@ export class UIContent {
 
 	constructor(el:Element) {
 		if (el.hasAttribute('auto')) this.class += ' ui-auto-height';
+		if (el.hasAttribute('scroll')) this.class += ' ui-scroll';
 	}
 }
