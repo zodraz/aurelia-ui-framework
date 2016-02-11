@@ -194,7 +194,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             $(this._inputGroup).find('.ui-option-input')
                 .removeAttr('D')
                 .removeAttr('disabled')
-                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIInputDual.prototype.readonlyChanged = function (newValue) {
             if (!this._input)
