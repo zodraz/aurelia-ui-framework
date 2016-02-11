@@ -27,7 +27,7 @@
 				click.delegate="_changeSelection($event)">
 			</ul>
 
-			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
+			<button type="button" if.bind="buttonText || buttonIcon" tabindex="-1" class="ui-button ui-button-default"
 					click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>

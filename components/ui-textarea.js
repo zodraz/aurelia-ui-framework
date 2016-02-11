@@ -118,6 +118,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .removeAttr('D')
                 .removeAttr('disabled')
                 .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+            $(this._inputGroup).find('.ui-option-input')
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UITextArea.prototype.readonlyChanged = function (newValue) {
             if (!this._input)
@@ -126,10 +130,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .removeAttr('R')
                 .removeAttr('readonly')
                 .attr(newValue !== false ? 'readonly' : 'R', '');
+            $(this._inputGroup).find('.ui-option-input')
+                .removeAttr('R')
+                .removeAttr('readonly')
+                .attr(newValue !== false ? 'readonly' : 'R', '');
         };
         UITextArea.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
-                this.disabled = newValue !== true;
+                this._input
+                    .removeAttr('D')
+                    .removeAttr('disabled')
+                    .attr(newValue === false ? 'disabled' : 'D', '');
             }
         };
         UITextArea.prototype._valueChanged = function (newValue) {

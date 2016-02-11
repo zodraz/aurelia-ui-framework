@@ -150,6 +150,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                     .removeAttr('disabled')
                     .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
             }
+            $(this._date).find('.ui-option-input')
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(newValue !== false ? 'disabled' : 'D', '');
         };
         UIDate.prototype._valueChanged = function (newValue) {
             if ($(this._inputStart).data('DateTimePicker')) {
@@ -164,7 +168,16 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         };
         UIDate.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {
-                this.disabled = newValue !== true;
+                $(this._inputStart)
+                    .removeAttr('D')
+                    .removeAttr('disabled')
+                    .attr(newValue === false ? 'disabled' : 'D', '');
+                if (this._inputEnd) {
+                    $(this._inputEnd)
+                        .removeAttr('D')
+                        .removeAttr('disabled')
+                        .attr(newValue === false ? 'disabled' : 'D', '');
+                }
             }
         };
         __decorate([

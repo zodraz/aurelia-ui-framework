@@ -19,15 +19,16 @@
 			<select ref="_select" class="ui-input ${_inputClasses} ui-primary" id.bind="_id"
 					placeholder="${placeholder}" value.bind="_value" style="width: 100%">
 				<option value="" if.bind="!_multiple"></option>
-				<option value="${opt.id!==null&&opt.id!==undefined?opt.id:opt}" model.bind="opt"
-						repeat.for="opt of options">${opt.name || opt.text || opt}
+				<option model.bind="opt" repeat.for="opt of options"
+						value="${opt[valueProperty]!==null&&opt[valueProperty]!==undefined?opt[valueProperty]:opt}">
+					${opt[displayProperty] || opt}
 				</option>
 			</select>
 			<div class="ui-addon" if.bind="suffixIcon || suffixText">
 				<span class="ui-icon ${suffixIcon} ${suffixClass}" if.bind="suffixIcon"></span>
 				<span if.bind="suffixText" dir.bind="dir">${suffixText}</span>
 			</div>
-			<button type="button" if.bind="buttonText || buttonIcon" class="ui-button ui-button-default"
+			<button type="button" if.bind="buttonText || buttonIcon" tabindex="-1" class="ui-button ui-button-default"
 					click.trigger="_buttonClick($event)">
 				<span class="${buttonIcon}" if.bind="buttonIcon"></span>${buttonText}
 			</button>

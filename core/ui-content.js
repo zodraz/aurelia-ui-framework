@@ -15,6 +15,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.class = '';
             if (el.hasAttribute('auto'))
                 this.class += ' ui-auto-height';
+            if (el.hasAttribute('scroll'))
+                this.class += ' ui-scroll';
         }
         __decorate([
             aurelia_framework_1.bindable, 

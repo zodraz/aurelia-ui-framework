@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UISidebar = (function () {
         function UISidebar() {
+            this.width = '220px';
         }
         UISidebar.prototype.bind = function (context) {
             this.$parent = context;
@@ -20,6 +21,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
         ], UISidebar.prototype, "class");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UISidebar.prototype, "width");
         UISidebar = __decorate([
             aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-sidebar"), 

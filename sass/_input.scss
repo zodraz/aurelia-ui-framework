@@ -70,11 +70,6 @@
 	  padding: 0.35rem 0.25rem;
 	  height: ($item-height*5)+7;
 
-	  &:hover {
-		border-color: rgba($input-focus-color, 0.85);
-		@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
-	  }
-
 	  &:nth-child(2) {
 		border-top-left-radius: $base-border-radius !important;
 		border-bottom-left-radius: $base-border-radius !important;
@@ -94,10 +89,6 @@
 		padding: 0.35rem 0.5rem;
 		display: list-item;
 		cursor: pointer;
-		&:hover {
-		  color: $primary-text;
-		  background-color: rgba($primary, 0.5);
-		}
 		&.ui-active {
 		  color: $primary-text;
 		  background-color: rgba($primary, 0.75);
@@ -109,6 +100,20 @@
 
 		&.ui-flag {
 		  background-size: 18px 18px;
+		}
+	  }
+	}
+
+	.ui-list-container:not([disabled]):not([readonly]) {
+	  &:hover {
+		border-color: rgba($input-focus-color, 0.85);
+		@include box-shadow(0 0 4px 0 $input-focus-color, 0 1px 1px 0 if($dark-theme, #333, #eee) inset);
+	  }
+
+	  > li.ui-list-option {
+		&:hover {
+		  color: $primary-text;
+		  background-color: rgba($primary, 0.5);
 		}
 	  }
 	}

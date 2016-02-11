@@ -26,7 +26,7 @@
 
 .ui-input-group {
   @include flex(1 1 auto);
-  @include flex-row($align: flex-start, $wrap: true);
+  @include flex-row($align: flex-start, $wrap: false);
   margin-bottom: 0.5rem;
   padding: 0 0.3rem;
 
@@ -48,9 +48,16 @@
   }
 
   &.ui-label-top {
-	width: 290px;
+	width: 100%;
+	@include flex-wrap(wrap);
+
 	.ui-label {
+	  @include flex(1 1 100%);
 	  text-align: start;
+	}
+
+	.ui-control-wrapper {
+	  @include flex(1 1 100%);
 	}
 
 	.ui-help-block {
@@ -96,7 +103,7 @@
   }
 
   .ui-control-wrapper {
-	@include flex(1 0 280px);
+	@include flex(1 1 auto);
 
 	.ui-control-help {
 	  @include padding(start, 20px);
@@ -180,7 +187,8 @@
 	.ui-button {
 	  @include flex(0 0 auto);
 	  padding: 0.2rem 0.5rem;
-	  border-width: 0;
+	  border-width: 0 0 0 1px;
+	  margin: 0;
 	  &:not(:active):not(:focus) {
 		box-shadow: none;
 	  }
@@ -280,7 +288,7 @@
 	display: none;
   }
 
-  &.ui-auto .ui-control-wrapper {
+  &.ui-auto .ui-form-control {
 	@include flex(1 1 auto);
   }
 
