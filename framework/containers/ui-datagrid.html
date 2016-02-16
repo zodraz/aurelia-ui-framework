@@ -64,7 +64,7 @@
 					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}">
 					<div class="${col.sortable===true?'sortable':''}">
 						<p click.trigger="sort($event, col)"
-						   class="${col.dataId==currentSortColumn?currentSortOrder:''}">
+						   class="${col.dataId==currentSortColumn.dataId?currentSortOrder:''}">
 							${col.title}</p>
 					<span class="resizer ${col.resizeable===true && col.button!==true?'enable':'disable'}"
 						  data-resizeable="${col.resizeable}" data-index="${$index}"><i></i></span>

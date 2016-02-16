@@ -19,7 +19,6 @@ export class UIButton {
 	private _link;
 	private _label;
 
-	@bindable menu:boolean;
 	@bindable value:string;
 	@bindable label:string;
 	@bindable icon:string;
@@ -27,6 +26,7 @@ export class UIButton {
 	@bindable id:string        = '';
 	@bindable disabled:boolean = false;
 
+	private menu:boolean       = false;
 	private _menuItems         = [];
 	private _size:string       = "normal";
 	private _theme:string      = "default";
@@ -35,7 +35,6 @@ export class UIButton {
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('default'))this._default = true;
-		if (element.hasAttribute('disabled'))this.disabled = true;
 		if (element.hasAttribute('menu'))this.menu = true;
 		if (element.hasAttribute('menu-right'))this.menu = this._menuRight = true;
 		// check size attributes
@@ -51,8 +50,8 @@ export class UIButton {
 	}
 
 	bind() {
-		if (this.label)
-			this.menu = true;
+		//if (this.label)
+		//	this.menu = true;
 		if (this._theme)
 			this._classes += `ui-button-${this._theme} `;
 		if (this._size)
@@ -86,9 +85,14 @@ export class UIButton {
 			this._label = this.label;
 		}
 		else this._label = $(this._temp).text();
+
+		if (this.label && !this.menu)
+			this._label = this.label;
+
+
 		$(this._temp).remove();
 		$(this.element)
-			.attr(this.disabled !== false ? 'disabled' : 'D', '');
+			.attr(this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	labelChanged(newValue) {
@@ -96,10 +100,15 @@ export class UIButton {
 	}
 
 	disabledChanged(newValue) {
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
+	}
+
+	makeBusy(isBusy) {
 		$(this.element)
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _attachIcon() {

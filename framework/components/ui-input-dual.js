@@ -53,10 +53,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._inputClasses += ' ui-clear ';
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
-            if (element.hasAttribute('readonly'))
-                this.readonly = true;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
             if (element.hasAttribute('nolabel'))
                 this._noLabel = true;
             if (element.hasAttribute('checkbox'))
@@ -85,9 +81,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._intype = 'number';
         }
         UIInputDual.prototype.bind = function () {
-            if (this._checkbox) {
-                this.disabled = this.checked !== true;
-            }
             if (!ui_utils_1._.isEmpty(this.valueLeft)) {
                 this._valueLeftChanged(this.valueLeft);
             }
@@ -114,8 +107,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._input.attr('type', 'number');
             }
             this._input
-                .attr(this.readonly !== false ? 'readonly' : 'R', '')
-                .attr(this.disabled !== false ? 'disabled' : 'D', '')
+                .attr(this.readonly === true ? 'readonly' : 'R', '')
+                .attr(this.disabled === true ? 'disabled' : 'D', '')
                 .on('mousemove', function (e) {
                 if ($(e.target).hasClass('x'))
                     $(e.target)[(e.target.offsetWidth - 18 < e.clientX - e.target.getBoundingClientRect().left) ? 'addClass' : 'removeClass']('onX');
@@ -183,18 +176,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 $(e.target).val(val);
                 _this.valueRight = val;
             });
+            if (this._checkbox) {
+                this._checkedChanged(this.checked === true);
+            }
         };
         UIInputDual.prototype.disabledChanged = function (newValue) {
-            if (!this._input)
-                return;
-            this._input
-                .removeAttr('D')
-                .removeAttr('disabled')
-                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
-            $(this._inputGroup).find('.ui-option-input')
-                .removeAttr('D')
-                .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
         };
         UIInputDual.prototype.readonlyChanged = function (newValue) {
             if (!this._input)
@@ -202,11 +190,23 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._input
                 .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
-            $(this._inputGroup).find('.ui-option-input')
+                .attr(newValue === true ? 'readonly' : 'R', '');
+            $(this._optionInput)
                 .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
+                .attr(newValue === true ? 'readonly' : 'R', '');
+        };
+        UIInputDual.prototype.makeBusy = function (isBusy) {
+            if (!this._input)
+                return;
+            this._input
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+            $(this._optionInput)
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UIInputDual.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {

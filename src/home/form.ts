@@ -3,17 +3,20 @@ import {autoinject, transient} from "aurelia-framework";
 import {activationStrategy} from "aurelia-router";
 import {ensure, Validation} from "aurelia-validation";
 import {UIModel} from "../../framework/utils/ui-model";
+import {UIEvent} from "../../framework/utils/ui-event";
 
 @autoinject()
 export class HomeForm {
 	model;
+
+	_sub;
 
 	@watch('en')
 	lang;
 	@watch('rtl')
 	contentDir;
 
-	formDisable=false;
+	formDisable = false;
 
 	content:any = {
 		'en': {title: 'Hello World', md: this.md},
@@ -76,10 +79,17 @@ export class HomeForm {
 		this._langSelect
 			.addLanguages(Object.keys(this.content))
 			.setLanguage(this.lang);
+		console.log('attached', this.formDisable);
+		this._sub = UIEvent.observe(this, 'formDisable')
+			.subscribe(()=> {
+				console.log('FormDisabled', this.formDisable);
+			});
 	}
 
 	deactivate() {
+		console.log('dettached', this.formDisable);
 		this.model.dispose();
+		this._sub.dispose();
 	}
 
 	unbind() {

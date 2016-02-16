@@ -23,14 +23,11 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             this.placeholder = '';
             this.readonly = false;
             this.disabled = false;
+            this.rows = 10;
             this.value = '';
             this._id = "markdown-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
-            if (element.hasAttribute('readonly'))
-                this.readonly = true;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
             if (element.hasAttribute('full-view')) {
@@ -44,26 +41,30 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
         UIMarkdown.prototype.attached = function () {
             this._markdown.UIElement = this;
             $(this._input)
-                .attr(this.readonly !== false ? 'readonly' : 'R', '')
-                .attr(this.disabled !== false ? 'disabled' : 'D', '');
+                .attr(this.readonly === true ? 'readonly' : 'R', '')
+                .attr(this.disabled === true ? 'disabled' : 'D', '');
             $(this._tools).children('button:not(.ui-help)')
-                .attr(this.disabled !== false || this.readonly !== false ? 'disabled' : 'D', '');
+                .attr(this.disabled === true || this.readonly === true ? 'disabled' : 'D', '');
         };
         UIMarkdown.prototype.disabledChanged = function (newValue) {
-            $(this._input)
-                .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
-            $(this._tools).children('button:not(.ui-help)')
-                .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
         };
         UIMarkdown.prototype.readonlyChanged = function (newValue) {
             $(this._input)
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
+                .attr(newValue === true ? 'readonly' : 'R', '');
             $(this._tools).children('button:not(.ui-help)')
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+                .attr(newValue === true ? 'disabled' : 'D', '');
+        };
+        UIMarkdown.prototype.makeBusy = function (newValue) {
+            $(this._input)
+                .removeAttr('disabled')
+                .attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
+            $(this._tools).children('button:not(.ui-help)')
+                .removeAttr('disabled')
+                .attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UIMarkdown.prototype._toolClick = function ($event) {
             var id = $($event.target).closest('button').data('id');
@@ -171,6 +172,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIMarkdown.prototype, "disabled");
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Number)
+        ], UIMarkdown.prototype, "rows");
         UIMarkdown = __decorate([
             aurelia_framework_1.bindable({
                 name: 'value',

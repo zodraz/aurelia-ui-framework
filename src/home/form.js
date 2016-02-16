@@ -14,7 +14,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-model"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_model_1) {
+define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framework", "aurelia-validation", "../../framework/utils/ui-model", "../../framework/utils/ui-event"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_validation_1, ui_model_1, ui_event_1) {
     var HomeForm = (function () {
         function HomeForm(_validation) {
             this.formDisable = false;
@@ -68,12 +68,20 @@ define(["require", "exports", "../../framework/utils/ui-utils", "aurelia-framewo
             return $event.detail.id == 'en';
         };
         HomeForm.prototype.attached = function () {
+            var _this = this;
             this._langSelect
                 .addLanguages(Object.keys(this.content))
                 .setLanguage(this.lang);
+            console.log('attached', this.formDisable);
+            this._sub = ui_event_1.UIEvent.observe(this, 'formDisable')
+                .subscribe(function () {
+                console.log('FormDisabled', _this.formDisable);
+            });
         };
         HomeForm.prototype.deactivate = function () {
+            console.log('dettached', this.formDisable);
             this.model.dispose();
+            this._sub.dispose();
         };
         HomeForm.prototype.unbind = function () {
         };

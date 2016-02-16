@@ -52,6 +52,7 @@ export class UIDate {
 	private _inputStart;
 	private _inputEnd;
 	private _inputInline;
+	private _optionInput;
 	private _clear:boolean       = false;
 	private _focus:boolean       = false;
 	private _noLabel:boolean     = false;
@@ -98,7 +99,6 @@ export class UIDate {
 			this._noLabel = true;
 			this.range    = false;
 		}
-		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 
@@ -106,12 +106,6 @@ export class UIDate {
 	}
 
 	bind() {
-		if (this._checkbox) {
-			this.disabled = this.checked !== true;
-		}
-		else {
-			this.disabled = this.disabled === true;
-		}
 	}
 
 	attached() {
@@ -157,6 +151,9 @@ export class UIDate {
 			if (this.value) opts.date = moment(this.value);
 			this._initPicker(this._inputStart, opts);
 		}
+		if (this._checkbox) {
+			this._checkedChanged(this.checked === true);
+		}
 	}
 
 	private _initPicker(el, options, primary?) {
@@ -179,20 +176,25 @@ export class UIDate {
 	}
 
 	disabledChanged(newValue) {
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
+	}
+
+	makeBusy(isBusy) {
 		$(this._inputStart)
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+			.attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 		if (this._inputEnd) {
 			$(this._inputEnd)
 				.removeAttr('D')
 				.removeAttr('disabled')
-				.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+				.attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
 		}
-		$(this._date).find('.ui-option-input')
+		$(this._optionInput)
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _valueChanged(newValue) {

@@ -36,13 +36,12 @@ export class UIMarkdown {
 	@bindable placeholder:string = '';
 	@bindable readonly:boolean   = false;
 	@bindable disabled:boolean   = false;
+	@bindable rows:number        = 10;
 	private value:string         = '';
 
 	constructor(element:Element) {
 		this._id = `markdown-${UIInput._id++}`;
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
-		if (element.hasAttribute('readonly')) this.readonly = true;
-		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 		if (element.hasAttribute('full-view')) {
 			this._noLabel = true;
@@ -57,28 +56,33 @@ export class UIMarkdown {
 	attached() {
 		this._markdown.UIElement = this;
 		$(this._input)
-			.attr(this.readonly !== false ? 'readonly' : 'R', '')
-			.attr(this.disabled !== false ? 'disabled' : 'D', '')
+			.attr(this.readonly === true ? 'readonly' : 'R', '')
+			.attr(this.disabled === true ? 'disabled' : 'D', '')
 		$(this._tools).children('button:not(.ui-help)')
-			.attr(this.disabled !== false || this.readonly !== false ? 'disabled' : 'D', '');
+			.attr(this.disabled === true || this.readonly === true ? 'disabled' : 'D', '');
 	}
 
 	disabledChanged(newValue) {
-		$(this._input)
-			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
-		$(this._tools).children('button:not(.ui-help)')
-			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
 	}
 
 	readonlyChanged(newValue) {
 		$(this._input)
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'R', '');
+			.attr(newValue === true ? 'readonly' : 'R', '');
 		$(this._tools).children('button:not(.ui-help)')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(newValue === true ? 'disabled' : 'D', '');
+	}
+
+	makeBusy(newValue) {
+		$(this._input)
+			.removeAttr('disabled')
+			.attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
+		$(this._tools).children('button:not(.ui-help)')
+			.removeAttr('disabled')
+			.attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _toolClick($event) {

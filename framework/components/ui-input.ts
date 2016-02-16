@@ -37,6 +37,7 @@ export class UIInput {
 
 	private _id;
 	private _input;
+	private _optionInput;
 	private _inputGroup;
 	private _type:string         = 'text';
 	private _intype:string       = 'text';
@@ -91,8 +92,6 @@ export class UIInput {
 		this._id = `input-${UIInput._id++}`;
 		if (element.hasAttribute('clear')) this._inputClasses += ' ui-clear ';
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
-		if (element.hasAttribute('readonly')) this.readonly = true;
-		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
@@ -110,9 +109,6 @@ export class UIInput {
 	}
 
 	bind() {
-		if (this._checkbox) {
-			this.disabled = this.checked !== true;
-		}
 		this._valueChanged(this.value);
 	}
 
@@ -135,8 +131,8 @@ export class UIInput {
 		}
 		this._input
 			[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
-			.attr(this.readonly !== false ? 'readonly' : 'R', '')
-			.attr(this.disabled !== false ? 'disabled' : 'D', '')
+			.attr(this.readonly === true ? 'readonly' : 'R', '')
+			.attr(this.disabled === true ? 'disabled' : 'D', '')
 			.on('input', (e)=> {
 				let el = $(e.target);
 				if (!this.readonly && !this.disabled) {
@@ -190,19 +186,15 @@ export class UIInput {
 				$(e.target).val(val);
 				this.value = val;
 			});
+		if (this._checkbox) {
+			this._checkedChanged(this.checked === true);
+		}
 	}
 
 
 	disabledChanged(newValue) {
-		if (!this._input) return;
-		this._input
-			.removeAttr('D')
-			.removeAttr('disabled')
-			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
-		$(this._inputGroup).find('.ui-option-input')
-			.removeAttr('D')
-			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
 	}
 
 	readonlyChanged(newValue) {
@@ -210,11 +202,23 @@ export class UIInput {
 		this._input
 			.removeAttr('R')
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'R', '');
-		$(this._inputGroup).find('.ui-option-input')
+			.attr(newValue === true ? 'readonly' : 'R', '');
+		$(this._optionInput)
 			.removeAttr('R')
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'R', '');
+			.attr(newValue === true ? 'readonly' : 'R', '');
+	}
+
+	makeBusy(isBusy) {
+		if (!this._input) return;
+		this._input
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+		$(this._optionInput)
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _checkedChanged(newValue) {

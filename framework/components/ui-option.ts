@@ -34,7 +34,6 @@ export class UIOption {
 	constructor(public element:Element) {
 		this._id = `option-${UIInput._id++}`;
 		if (element.hasAttribute('radio')) this._checkbox = false;
-		if (element.hasAttribute('disabled'))this.disabled = true;
 	}
 
 	bind() {
@@ -44,14 +43,19 @@ export class UIOption {
 
 	attached() {
 		$(this._option).data('UIOption', this);
-		$(this._input).attr(this.disabled !== false ? 'disabled' : 'D', '');
+		$(this._input).attr(this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	disabledChanged(newValue) {
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
+	}
+
+	makeBusy(newValue) {
 		$(this._input)
 			.removeAttr('D')
 			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+			.attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _checkChanged($event:UIEvent) {

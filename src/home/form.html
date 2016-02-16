@@ -1,8 +1,11 @@
 <template>
 	<ui-scroll>
 		<div class="ui-pad-all">
-			<h4 class="ui-margin-v">Forms <ui-option checked.bind="formDisable">Mark as Busy</ui-option></h4>
-			<ui-form class="ui-border-all ui-pad-v" busy.bind="formDisable" validate.bind="validation" submit.trigger="onSubmit()">
+			<h4 class="ui-margin-v">Forms
+				<ui-option checked.bind="formDisable">Mark as Busy</ui-option>
+			</h4>
+			<ui-form class="ui-border-all ui-pad-v" busy.bind="formDisable" validate.bind="validation"
+					 submit.trigger="onSubmit()">
 				<ui-row>
 					<ui-column>
 						<ui-input name required clear value.bind="model.firstName">First Name</ui-input>
@@ -58,10 +61,12 @@
 				</ui-row>
 				<ui-row>
 					<ui-column>
-						<ui-input prefix-text="999 999 999" readonly>Readonly<span>Cant Edit</span></ui-input>
+						<ui-input prefix-text="999 999 999" readonly.bind="true">Readonly<span>Cant Edit</span>
+						</ui-input>
 					</ui-column>
 					<ui-column>
-						<ui-input prefix-text="999 999 999" disabled>Disabled<span>Cant Select</span></ui-input>
+						<ui-input prefix-text="999 999 999" disabled.bind="true">Disabled<span>Cant Select</span>
+						</ui-input>
 					</ui-column>
 				</ui-row>
 				<ui-row>
@@ -148,7 +153,7 @@
 						<ui-option-group label="Checkboxes">
 							<ui-option checked.bind="model.isDirty">Dirty</ui-option>
 							<ui-option>Check 2</ui-option>
-							<ui-option disabled>Check 3</ui-option>
+							<ui-option disabled.bind="true">Check 3</ui-option>
 							<ui-option>Check 4</ui-option>
 							<ui-option>Check 5</ui-option>
 							<ui-option>Check 6</ui-option>

@@ -28,12 +28,13 @@ export class UISwitch {
 	@bindable theme:string     = 'default';
 	@bindable disabled:boolean = false;
 
+	private _input;
+	private _label;
 	private _switch;
 	private checked:boolean;
 
 	constructor(public element:Element) {
 		if (element.hasAttribute('check'))this.checked = true;
-		if (element.hasAttribute('disabled'))this.disabled = true;
 		// check theme attributes
 		if (element.hasAttribute('primary'))this.theme = 'primary';
 		if (element.hasAttribute('info'))this.theme = 'info';
@@ -46,20 +47,26 @@ export class UISwitch {
 	}
 
 	attached() {
-		$(this._switch)
-			.find('input')
-			.attr(this.disabled !== false ? 'disabled' : 'D', '');
-		$(this._switch).find('label').last()
-			.attr(this.disabled !== false ? 'disabled' : 'D', '');
+		$(this._input)
+			.attr(this.disabled === true ? 'disabled' : 'D', '');
+		$(this._label)
+			.attr(this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	disabledChanged(newValue) {
-		$(this._switch).find('input')
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
+	}
+
+	makeBusy(newValue) {
+		$(this._input)
 			.removeAttr('D')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
-		$(this._switch).find('label').last()
+			.removeAttr('disabled')
+			.attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
+		$(this._label)
 			.removeAttr('D')
-			.attr(this.disabled !== false ? 'disabled' : 'D', '');
+			.removeAttr('disabled')
+			.attr(this.disabled === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _valueChanged(newValue) {

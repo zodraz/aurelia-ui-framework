@@ -28,16 +28,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             $(this.element).find('ui-input,ui-phone,ui-textarea,ui-input-dual,ui-chosen,ui-markdown,ui-button,ui-date,ui-list,ui-option,ui-switch')
                 .each(function (i, e) {
                 try {
-                    e.au.controller.viewModel.disabled = newValue;
+                    e.au.controller.viewModel.makeBusy(newValue);
                 }
                 catch (e) {
                 }
             });
-            try {
-                $(this.element).find('select').trigger('chosen:updated');
-            }
-            catch (e) {
-            }
         };
         UIForm.prototype._keyup = function ($event) {
             if (!$($event.target).is('textarea') && ($event.which || $event.keyCode) == 13) {

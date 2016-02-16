@@ -43,9 +43,9 @@ export class UIDataGrid {
 	private data:any;
 	private summaryRow:any = false;
 
-	private isProcessing:boolean     = false;
-	private currentSortColumn:string = '';
-	private currentSortOrder:string  = '';
+	private isProcessing:boolean    = false;
+	private currentSortColumn:any   = {};
+	private currentSortOrder:string = 'asc';
 
 	@bindable idColumn:string  = 'id';
 	@bindable emptyText:string = 'No records found';
@@ -83,6 +83,7 @@ export class UIDataGrid {
 	private dataChanged(newValue) {
 		this._table.style.tableLayout = 'auto';
 		this._data                    = newValue;
+		this._doSort();
 		this._table.style.tableLayout = 'fixed';
 	}
 
@@ -94,15 +95,20 @@ export class UIDataGrid {
 		if (column.sortable !== true) return;
 
 		this.isProcessing      = true;
-		this.currentSortColumn = column.dataId;
+		this.currentSortColumn = column;
 		this.currentSortOrder  = $($event.target).hasClass('asc') ? 'desc' : 'asc';
-		var sibling            = column.dataSort || this.idColumn;
 		setTimeout(()=> {
-			this.data         = _.orderBy(this.data,
-				[this.currentSortColumn, sibling],
-				[this.currentSortOrder, 'asc']);
+			this._doSort();
 			this.isProcessing = false;
 		}, 100);
+	}
+
+	private _doSort() {
+		let column  = this.currentSortColumn.dataId || this.idColumn;
+		let sibling = this.currentSortColumn.dataSort || this.idColumn;
+		this._data   = _.orderBy(this._data,
+			[column, sibling],
+			[this.currentSortOrder, 'asc']);
 	}
 
 	private highlight($event) {

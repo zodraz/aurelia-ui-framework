@@ -11,13 +11,13 @@
 				<span if.bind="addonText" dir.bind="dir">${addonText}</span>
 			</div>
 			<div class="ui-addon ui-option ui-checkbox" if.bind="_checkbox">
-				<input class="ui-option-input" type="checkbox" checked.bind="checked"
+				<input class="ui-option-input" type="checkbox" checked.bind="checked" ref="_optionInput"
 					   focus.trigger="focus=true" blur.trigger="focus=false"/>
 				<span class="ui-check-mark"></span>
 			</div>
 
 			<textarea class="ui-input ${_inputClasses} ui-primary" placeholder="${placeholder}" value.bind="value"
-					  cols="10" rows="5" id.bind="_id" dir.bind="dir"
+					  cols="10" rows="${rows}" id.bind="_id" dir.bind="dir"
 					  focus.trigger="focus=true" blur.trigger="focus=false"></textarea>
 
 			<button type="button" if.bind="buttonText || buttonIcon" tabindex="-1" class="ui-button ui-button-default"

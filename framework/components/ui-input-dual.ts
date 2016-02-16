@@ -50,6 +50,7 @@ export class UIInputDual {
 	private _inputLeft;
 	private _inputRight;
 	private _inputGroup;
+	private _optionInput;
 	private _type:string         = 'text';
 	private _intype:string       = 'text';
 	private _focus:boolean       = false;
@@ -105,8 +106,6 @@ export class UIInputDual {
 		this._id = `input-${UIInputDual._id++}`;
 		if (element.hasAttribute('clear')) this._inputClasses += ' ui-clear ';
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
-		if (element.hasAttribute('readonly')) this.readonly = true;
-		if (element.hasAttribute('disabled')) this.disabled = true;
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
@@ -125,9 +124,6 @@ export class UIInputDual {
 	}
 
 	bind() {
-		if (this._checkbox) {
-			this.disabled = this.checked !== true;
-		}
 		if (!_.isEmpty(this.valueLeft)) {
 			this._valueLeftChanged(this.valueLeft);
 		}
@@ -154,8 +150,8 @@ export class UIInputDual {
 			this._input.attr('type', 'number');
 		}
 		this._input
-			.attr(this.readonly !== false ? 'readonly' : 'R', '')
-			.attr(this.disabled !== false ? 'disabled' : 'D', '')
+			.attr(this.readonly === true ? 'readonly' : 'R', '')
+			.attr(this.disabled === true ? 'disabled' : 'D', '')
 			.on('mousemove', (e)=> {
 				if ($(e.target).hasClass('x'))
 					$(e.target)[(e.target.offsetWidth - 18 < e.clientX - e.target.getBoundingClientRect().left) ? 'addClass' : 'removeClass']('onX');
@@ -227,19 +223,15 @@ export class UIInputDual {
 				$(e.target).val(val);
 				this.valueRight = val;
 			});
+		if (this._checkbox) {
+			this._checkedChanged(this.checked === true);
+		}
 	}
 
 
 	disabledChanged(newValue) {
-		if (!this._input) return;
-		this._input
-			.removeAttr('D')
-			.removeAttr('disabled')
-			.attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
-		$(this._inputGroup).find('.ui-option-input')
-			.removeAttr('D')
-			.removeAttr('disabled')
-			.attr(newValue !== false ? 'disabled' : 'D', '');
+		this.disabled = newValue === 'true' || newValue === true;
+		this.makeBusy(newValue);
 	}
 
 	readonlyChanged(newValue) {
@@ -247,11 +239,23 @@ export class UIInputDual {
 		this._input
 			.removeAttr('R')
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'R', '');
-		$(this._inputGroup).find('.ui-option-input')
+			.attr(newValue === true ? 'readonly' : 'R', '');
+		$(this._optionInput)
 			.removeAttr('R')
 			.removeAttr('readonly')
-			.attr(newValue !== false ? 'readonly' : 'R', '');
+			.attr(newValue === true ? 'readonly' : 'R', '');
+	}
+
+	makeBusy(isBusy) {
+		if (!this._input) return;
+		this._input
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+		$(this._optionInput)
+			.removeAttr('D')
+			.removeAttr('disabled')
+			.attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
 	}
 
 	private _checkedChanged(newValue) {
