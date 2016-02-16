@@ -47,10 +47,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._clear = true;
             if (element.hasAttribute('nolabel'))
                 this._noLabel = true;
-            if (element.hasAttribute('readonly'))
-                this.readonly = true;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
             if (element.hasAttribute('checkbox'))
                 this._checkbox = true;
             if (element.hasAttribute('multiple'))
@@ -62,18 +58,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             if (this.value) {
                 this._valueChanged(this.value);
             }
-            if (this._checkbox) {
-                this.disabled = this.checked !== true;
-            }
-            else {
-                this.disabled = this.disabled === true;
-            }
         };
         UIChosen.prototype.attached = function () {
             var _this = this;
             $(this._select)
                 .append($(this._options).children())
                 .val(this.value)
+                .attr(this.readonly === true ? 'readonly' : 'R', '')
+                .attr(this.disabled === true ? 'disabled' : 'D', '')
                 .attr(this._multiple ? 'multiple' : 'single', '')
                 .chosen({
                 width: '100%',
@@ -96,6 +88,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 ui_event_1.UIEvent.fireEvent('change', _this.element, model);
             });
             $(this._options).remove();
+            if (this._checkbox) {
+                this._checkedChanged(this.checked === true);
+            }
         };
         UIChosen.prototype.optionsChanged = function (newValue) {
             var _this = this;
@@ -126,26 +121,32 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             }, 500);
         };
         UIChosen.prototype.disabledChanged = function (newValue) {
-            $(this._select)
-                .removeAttr('D')
-                .removeAttr('disabled')
-                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '')
-                .trigger('chosen:updated');
-            $(this._chosen).find('.ui-option-input')
-                .removeAttr('D')
-                .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
         };
         UIChosen.prototype.readonlyChanged = function (newValue) {
             $(this._select)
                 .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '')
+                .attr(newValue === true ? 'readonly' : 'R', '')
                 .trigger('chosen:updated');
-            $(this._chosen).find('.ui-option-input')
+            $(this._optionInput)
                 .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
+                .attr(newValue === true ? 'readonly' : 'R', '');
+        };
+        UIChosen.prototype.makeBusy = function (isBusy) {
+            if (!this._select)
+                return;
+            $(this._select)
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '')
+                .trigger('chosen:updated');
+            $(this._optionInput)
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UIChosen.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {

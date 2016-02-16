@@ -17,8 +17,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.columns = [];
             this.summaryRow = false;
             this.isProcessing = false;
-            this.currentSortColumn = '';
-            this.currentSortOrder = '';
+            this.currentSortColumn = {};
+            this.currentSortOrder = 'asc';
             this.idColumn = 'id';
             this.emptyText = 'No records found';
             this._isResizing = false;
@@ -51,6 +51,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         UIDataGrid.prototype.dataChanged = function (newValue) {
             this._table.style.tableLayout = 'auto';
             this._data = newValue;
+            this._doSort();
             this._table.style.tableLayout = 'fixed';
         };
         UIDataGrid.prototype.isLastLocked = function (locked, index) {
@@ -61,13 +62,17 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (column.sortable !== true)
                 return;
             this.isProcessing = true;
-            this.currentSortColumn = column.dataId;
+            this.currentSortColumn = column;
             this.currentSortOrder = $($event.target).hasClass('asc') ? 'desc' : 'asc';
-            var sibling = column.dataSort || this.idColumn;
             setTimeout(function () {
-                _this.data = ui_utils_1._.orderBy(_this.data, [_this.currentSortColumn, sibling], [_this.currentSortOrder, 'asc']);
+                _this._doSort();
                 _this.isProcessing = false;
             }, 100);
+        };
+        UIDataGrid.prototype._doSort = function () {
+            var column = this.currentSortColumn.dataId || this.idColumn;
+            var sibling = this.currentSortColumn.dataSort || this.idColumn;
+            this._data = ui_utils_1._.orderBy(this._data, [column, sibling], [this.currentSortOrder, 'asc']);
         };
         UIDataGrid.prototype.highlight = function ($event) {
             if ($($event.target).closest('a,button').length > 0)

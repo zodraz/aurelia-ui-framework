@@ -16,6 +16,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._classes = '';
             this.id = '';
             this.disabled = false;
+            this.menu = false;
             this._menuItems = [];
             this._size = "normal";
             this._theme = "default";
@@ -23,8 +24,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this._menuRight = false;
             if (element.hasAttribute('default'))
                 this._default = true;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
             if (element.hasAttribute('menu'))
                 this.menu = true;
             if (element.hasAttribute('menu-right'))
@@ -47,8 +46,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._theme = 'warning';
         }
         UIButton.prototype.bind = function () {
-            if (this.label)
-                this.menu = true;
             if (this._theme)
                 this._classes += "ui-button-" + this._theme + " ";
             if (this._size)
@@ -87,18 +84,24 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             }
             else
                 this._label = $(this._temp).text();
+            if (this.label && !this.menu)
+                this._label = this.label;
             $(this._temp).remove();
             $(this.element)
-                .attr(this.disabled !== false ? 'disabled' : 'D', '');
+                .attr(this.disabled === true ? 'disabled' : 'D', '');
         };
         UIButton.prototype.labelChanged = function (newValue) {
             this._label = newValue;
         };
         UIButton.prototype.disabledChanged = function (newValue) {
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
+        };
+        UIButton.prototype.makeBusy = function (isBusy) {
             $(this.element)
                 .removeAttr('D')
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+                .attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UIButton.prototype._attachIcon = function () {
             if (!this._iconEl) {
@@ -140,10 +143,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             ui_event_1.UIEvent.fireEvent('menuclick', this.element, $event.detail, this._button);
             return true;
         };
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', Boolean)
-        ], UIButton.prototype, "menu");
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

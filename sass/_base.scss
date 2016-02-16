@@ -79,6 +79,7 @@ html, body {
 	color: $app-header-text;
 	z-index: 5;
 
+
 	.ui-app-logo {
 	  @include flex(0 0 auto);
 	  @if ($app-logo) {
@@ -90,6 +91,9 @@ html, body {
 	  }
 	}
 	h1 {
+	  a {
+		color: $app-header-text !important;
+	  }
 	  @include flex(1 1 auto);
 	  font-variant: small-caps;
 	  padding: 0.35rem 0.3rem;

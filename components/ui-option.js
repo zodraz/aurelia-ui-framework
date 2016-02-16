@@ -24,8 +24,6 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             this._id = "option-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('radio'))
                 this._checkbox = false;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
         }
         UIOption.prototype.bind = function () {
             this._type = this._checkbox ? 'checkbox' : 'radio';
@@ -33,13 +31,17 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
         };
         UIOption.prototype.attached = function () {
             $(this._option).data('UIOption', this);
-            $(this._input).attr(this.disabled !== false ? 'disabled' : 'D', '');
+            $(this._input).attr(this.disabled === true ? 'disabled' : 'D', '');
         };
         UIOption.prototype.disabledChanged = function (newValue) {
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
+        };
+        UIOption.prototype.makeBusy = function (newValue) {
             $(this._input)
                 .removeAttr('D')
                 .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+                .attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UIOption.prototype._checkChanged = function ($event) {
             $event.detail = this.checked;

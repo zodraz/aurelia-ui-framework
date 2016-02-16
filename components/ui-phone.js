@@ -43,10 +43,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this._inputClasses += ' ui-clear ';
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
-            if (element.hasAttribute('readonly'))
-                this.readonly = true;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
             if (element.hasAttribute('nolabel'))
                 this._noLabel = true;
             if (element.hasAttribute('checkbox'))
@@ -75,8 +71,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             var _this = this;
             this._input = $(this._inputGroup).find('.ui-input');
             this._input[(this.value || '') !== '' ? 'addClass' : 'removeClass']('x')
-                .attr(this.readonly !== false ? 'readonly' : 'R', '')
-                .attr(this.disabled !== false ? 'disabled' : 'D', '')
+                .attr(this.readonly === true ? 'readonly' : 'R', '')
+                .attr(this.disabled === true ? 'disabled' : 'D', '')
                 .on('input', function (e) {
                 if (!_this.readonly && !_this.disabled) {
                     var el = $(e.target);
@@ -107,18 +103,13 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 .change(function (e) {
                 _this.processValue();
             });
+            if (this._checkbox) {
+                this._checkedChanged(this.checked === true);
+            }
         };
         UIPhone.prototype.disabledChanged = function (newValue) {
-            if (!this._input)
-                return;
-            this._input
-                .removeAttr('D')
-                .removeAttr('disabled')
-                .attr(newValue !== false || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
-            $(this._inputGroup).find('.ui-option-input')
-                .removeAttr('D')
-                .removeAttr('disabled')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
         };
         UIPhone.prototype.readonlyChanged = function (newValue) {
             if (!this._input)
@@ -126,11 +117,23 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this._input
                 .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
-            $(this._inputGroup).find('.ui-option-input')
+                .attr(newValue === true ? 'readonly' : 'R', '');
+            $(this._optionInput)
                 .removeAttr('R')
                 .removeAttr('readonly')
-                .attr(newValue !== false ? 'readonly' : 'R', '');
+                .attr(newValue === true ? 'readonly' : 'R', '');
+        };
+        UIPhone.prototype.makeBusy = function (isBusy) {
+            if (!this._input)
+                return;
+            this._input
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(isBusy === true || this.disabled === true || (this._checkbox && !this.checked) ? 'disabled' : 'D', '');
+            $(this._optionInput)
+                .removeAttr('D')
+                .removeAttr('disabled')
+                .attr(isBusy === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UIPhone.prototype._checkedChanged = function (newValue) {
             if (this._checkbox) {

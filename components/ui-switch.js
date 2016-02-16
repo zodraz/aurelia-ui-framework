@@ -20,8 +20,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.disabled = false;
             if (element.hasAttribute('check'))
                 this.checked = true;
-            if (element.hasAttribute('disabled'))
-                this.disabled = true;
             if (element.hasAttribute('primary'))
                 this.theme = 'primary';
             if (element.hasAttribute('info'))
@@ -40,19 +38,24 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.theme = 'priority';
         }
         UISwitch.prototype.attached = function () {
-            $(this._switch)
-                .find('input')
-                .attr(this.disabled !== false ? 'disabled' : 'D', '');
-            $(this._switch).find('label').last()
-                .attr(this.disabled !== false ? 'disabled' : 'D', '');
+            $(this._input)
+                .attr(this.disabled === true ? 'disabled' : 'D', '');
+            $(this._label)
+                .attr(this.disabled === true ? 'disabled' : 'D', '');
         };
         UISwitch.prototype.disabledChanged = function (newValue) {
-            $(this._switch).find('input')
+            this.disabled = newValue === 'true' || newValue === true;
+            this.makeBusy(newValue);
+        };
+        UISwitch.prototype.makeBusy = function (newValue) {
+            $(this._input)
                 .removeAttr('D')
-                .attr(newValue !== false ? 'disabled' : 'D', '');
-            $(this._switch).find('label').last()
+                .removeAttr('disabled')
+                .attr(newValue === true || this.disabled === true ? 'disabled' : 'D', '');
+            $(this._label)
                 .removeAttr('D')
-                .attr(this.disabled !== false ? 'disabled' : 'D', '');
+                .removeAttr('disabled')
+                .attr(this.disabled === true || this.disabled === true ? 'disabled' : 'D', '');
         };
         UISwitch.prototype._valueChanged = function (newValue) {
             ui_event_1.UIEvent.fireEvent('change', this.element, newValue, this._switch);
