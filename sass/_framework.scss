@@ -9,7 +9,7 @@
 @import "compass/utilities";
 @import "colors";
 @import "mixins";
-@import "variables";
+@import "animations";
 // fonts
 @import url(font_url("bigmug-line/flaticon.css", true));
 @import url(font_url("bigmug-solid/flaticon.css", true));
@@ -18,25 +18,9 @@
 @import url(font_url("essentials/flaticon.css", true));
 @import url(font_url("editor/flaticon.css", true));
 @import url(font_url("ecomm/flaticon.css", true));
+
 @import "reset";
+@import "helpers";
 @import "base";
-@import "grid";
-@import "menu";
-@import "form";
-@import "input";
-@import "date";
-@import "input-option";
-@import "switch";
-@import "buttons";
-@import "chosen";
-@import "notify";
-@import "ribbon";
-@import "tabs";
-@import "tree";
-@import "pager";
-@import "animations";
-@import "datagrid";
+@import "core";
 @import "typography";
-@import "containers";
-@import "markdown";
-@import "textcomplete";

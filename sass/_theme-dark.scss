@@ -1,0 +1,35 @@
+/**
+ *	UI Framework - Dark Theme
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@import "colors";
+@import "variables";
+
+$primary: $cerulean !default;
+$secondary: $snow !default;
+
+$primary-text: $coconut !default;
+$secondary-text: $primary !default;
+
+$info: #009ACD !default;
+$danger: #FB4D3D !default;
+$success: #169376 !default;
+$warning: #F9A838 !default;
+
+// BASE
+$base-bg: #150E06 !default;
+$base-text: $coconut !default;
+$base-bg-image: 'back/bg-dark.png' !default;
+
+$base-border-color: $arsenic !default;
+$base-shadow-color: $charcoal !default;
+
+$text-link: $primary !default;
+$text-muted: $gray !default;
+
+$hr-highlight: $black-olive !default;
+$hr-shadow: $dark-slate-gray !default;
+
+@import "framework!";

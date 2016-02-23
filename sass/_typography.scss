@@ -1,5 +1,5 @@
 /**
- *	UI Typography
+ *	UI Framework Typography
  *	@author 	Adarsh Pastakia
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
@@ -143,5 +143,10 @@ code {
 .ui-bg-warning {
   background-color: $warning;
   color: $coconut;
+}
+
+.ui-bg-muted {
+  background-color: $ash-gray;
+  color: $black-olive;
 }
 

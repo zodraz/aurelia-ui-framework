@@ -1,5 +1,5 @@
 /**
- *	UI Resets
+ *	UI Framework Resets
  *	@author 	Adarsh Pastakia
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
@@ -21,44 +21,6 @@ p {
   line-height: 1.5;
 }
 
-a, button {
-  margin: 0;
-  color: $link-text;
-  font-weight: $font-weight-strong;
-  text-decoration: none;
-  &, * {
-	cursor: pointer;
-	outline: none !important;
-  }
-
-  &[target='_blank']:after {
-	font-size: 7px;
-	content: '\e0c1';
-	opacity: 0.75;
-	font-family: BigMugLine;
-	vertical-align: super;
-	margin-left: 2px;
-  }
-}
-
-button {
-  border: none;
-  background: none;
-}
-
-hr {
-  margin: 0.2rem 0;
-  height: 2px;
-  background: if($dark-theme, $base-border-color, $white);
-  color: transparent;
-  border: {
-	style: solid;
-	radius: 0.5rem;
-	width: 1px 0 0;
-	color: if($dark-theme, $black, $base-border-color);
-  }
-}
-
 textarea {
   resize: vertical;
 }
@@ -69,139 +31,6 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.ui-hide {
-  display: none !important;
-}
-
-.ui-hidden {
-  visibility: hidden !important;
-}
-
-.ui-inline {
-  display: inline !important;
-}
-
-.ui-scroll {
-  position: relative;
-  overflow: auto !important;
-}
-
-// TEXT ALIGN
-.ui-text-start {
-  text-align: start;
-}
-
-.ui-text-center {
-  text-align: center;
-}
-
-.ui-text-end {
-  text-align: end;
-}
-
-// PADDING
-.ui-pad-0 {
-  padding: 0 !important;
-}
-
-.ui-pad-all {
-  padding: 0.5rem;
-}
-
-.ui-pad-h {
-  padding: {
-	left: 0.5rem;
-	right: 0.5rem;
-  }
-}
-
-.ui-pad-v {
-  padding: {
-	top: 0.5rem;
-	bottom: 0.5rem;
-  }
-}
-
-// MARGIN
-.ui-margin-0 {
-  margin: 0 !important;
-}
-
-.ui-margin-all {
-  margin: 0.5rem;
-}
-
-.ui-margin-h {
-  margin: {
-	left: 0.5rem;
-	right: 0.5rem;
-  }
-}
-
-.ui-margin-v {
-  margin: {
-	top: 0.5rem;
-	bottom: 0.5rem;
-  }
-}
-
-// BORDERS
-.ui-border-all {
-  border: 1px solid $base-border-color;
-}
-
-.ui-border-h {
-  border: {
-	style: solid;
-	width: 1px 0;
-	color: $base-border-color;
-  }
-}
-
-.ui-border-v {
-  border: {
-	style: solid;
-	width: 0 1px;
-	color: $base-border-color;
-  }
-}
-
-.ui-border-t {
-  border-top: 1px solid $base-border-color;
-}
-
-.ui-border-b {
-  border-bottom: 1px solid $base-border-color;
-}
-
-.ui-border-l {
-  @include border(start, 1px solid $base-border-color);
-}
-
-.ui-border-r {
-  @include border(end, 1px solid $base-border-color);
-}
-
-.ui-push-right {
-  float: right;
-}
-
-.ui-table {
-  width: 100%;
-  border: 1px solid $base-border-color;
-
-  td {
-	padding: 0.3rem 0.7rem;
-	border: {
-	  width: 1px 0;
-	  style: solid;
-	  color: $base-border-color;
-	}
-  }
-  thead > td {
-	font-weight: $font-weight-strong;
-  }
-  tbody > tr:nth-child(even) > td {
-	background: shade($base-bg, 3%);
-  }
+img {
+  border: none !important;
 }

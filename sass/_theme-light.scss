@@ -1,0 +1,35 @@
+/**
+ *	UI Framework - Light Theme
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+@import "colors";
+@import "variables";
+
+$primary: $cerulean !default;
+$secondary: $snow !default;
+
+$primary-text: $coconut !default;
+$secondary-text: $primary !default;
+
+$info: #009ACD !default;
+$danger: #FB4D3D !default;
+$success: #169376 !default;
+$warning: #F9A838 !default;
+
+// BASE
+$base-bg: $coconut !default;
+$base-text: $black-olive !default;
+$base-bg-image: 'back/bg-light.png' !default;
+
+$base-border-color: $ash-gray !default;
+$base-shadow-color: $ash-gray !default;
+
+$text-link: $primary !default;
+$text-muted: $gray !default;
+
+$hr-highlight: $white !default;
+$hr-shadow: $ash-gray !default;
+
+@import "framework!";

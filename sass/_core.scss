@@ -1,0 +1,62 @@
+/**
+ *	UI Framework App Scaffold
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-viewport {
+  @include position(fixed, 0);
+  @include flex-column($wrap: false);
+
+  .ui-app-header {
+	@include flex(0 0 auto);
+	@include flex-row($wrap: false);
+	@include box-shadow(0 0 3px 1px $black-olive);
+
+	z-index: 2;
+	min-height: 3.5em;
+	padding: 0.4em 1em;
+	background: linear-gradient(top, shade($primary, 22%), shade($primary, 25%));
+
+	.ui-app-logo {
+	  @include flex(0 0 auto);
+	  @include size(auto, 3em);
+	  @include margin(end, 0.5em);
+	}
+
+	.ui-app-title {
+	  @include flex(1 1 0%);
+	  line-height: 1.1em;
+	  font-variant: small-caps;
+	  > a {
+		font-size: 2em;
+		color: $primary-text !important;
+		text-decoration: none !important;
+		font-weight: $font-weight-strong;
+		span {
+		  font-size: 0.5em;
+		  color: shade($primary-text, 15%) !important;
+		}
+	  }
+	}
+  }
+
+  .ui-app-view {
+	display: block;
+	@include flex(1 1 0%);
+  }
+
+  .ui-app-footer {
+	@include flex(0 0 auto);
+	@include flex-row($wrap: false);
+	padding: 0.1em 1em;
+	font-size: 0.75em;
+	color: $cadet-gray;
+	background: linear-gradient(top, $black-olive, $outer-space);
+
+	span.heart {
+	  color: $geranium-lake;
+	}
+  }
+}

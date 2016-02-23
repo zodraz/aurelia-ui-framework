@@ -1,0 +1,39 @@
+<template class="ui-viewport">
+	<div class="ui-app-header">
+		<!-- Menu handle -->
+		<button><span class="fi-essential-menu24"></span></button>
+		<!-- App Logo -->
+		<img class="ui-app-logo" if.bind="appLogo" src.bind="appLogo"/>
+		<!-- App Title -->
+		<div class="ui-app-title">
+			<a href="#/">${appTitle}<span if.bind="appSubtitle"><br/>${appSubtitle}</span></a>
+		</div>
+		<!-- Extra content -->
+		<content></content>
+		<!-- Logout link -->
+		<button><span class="fi-ext-right-arrow61"></span></button>
+	</div>
+
+	<router-view class="ui-app-view"></router-view>
+
+	<div class="ui-app-taskbar">
+		<template replaceable part="task-links"></template>
+	</div>
+	<div class="ui-app-footer">
+		<span>&copy; ${appState.StartYear}-${__thisYear} ${appState.Copyright}</span>
+
+		<span>With <span class="heart fi-essential-heart217"></span> for HMC</span>
+	</div>
+
+	<div class="ui-app-menu-shim"></div>
+	<ui-menu router.bind="router"></ui-menu>
+
+
+	<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">
+		<div class="ui-loader">
+			<span class="ui-spin fi-elegant-wheel1"></span>
+			<span class="ui-spin-opp fi-elegant-wheel1 second"></span>
+		</div>
+	</div>
+
+</template>
