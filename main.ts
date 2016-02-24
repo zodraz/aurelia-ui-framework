@@ -1,6 +1,6 @@
 import 'jquery';
 import {Aurelia} from "aurelia-framework";
-import {UIValidation} from "aurelia-ui-framework";
+import {UIValidationStrategy} from "aurelia-ui-framework";
 
 export function configure(aurelia:Aurelia) {
 	aurelia.use
@@ -8,7 +8,7 @@ export function configure(aurelia:Aurelia) {
 		.developmentLogging()
 		.plugin('aurelia-ui-framework')
 		.plugin('aurelia-validation', (config) => {
-			config.useViewStrategy(new UIValidation());
+			config.useViewStrategy(new UIValidationStrategy());
 		});
 
 	aurelia.start().then(a => a.setRoot('src/app.js'));
