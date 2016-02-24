@@ -14,4 +14,4 @@ jspm install aurelia-logging
 jspm install aurelia-framework
 jspm install aurelia-validation
 jspm install aurelia-bootstrapper
-jspm install aurelia-ui-framework=github:adarshpastakia/aurelia-ui-framework
+jspm install aurelia-ui-framework
