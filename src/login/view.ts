@@ -13,8 +13,8 @@ export class AppLogin {
 		this.appState.UserGroup       = 'User';
 		this.appState.Username        = 'user@domain.com';
 		this.appState.IpAddress       = '192.168.0.1';
-		if (this.appState._current) {
-			this.appState.router.navigate(this.appState._current.fragment);
+		if (this.appState.currentRoute) {
+			this.appState.router.navigate(this.appState.currentRoute.fragment);
 		}
 		else
 			this.appState.navigateTo('home');
