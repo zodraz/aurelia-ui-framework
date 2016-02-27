@@ -1,0 +1,68 @@
+/**
+ *	UI Form
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-form {
+  display: block;
+  > form {
+	@include flex-row($align: flex-start, $justify: flex-start, $wrap: true);
+
+	$min-width: $grid-xs-max - 2em;
+	> .ui-row > .ui-column, > .ui-column {
+	  min-width: $grid-xs-max;
+	  &.ui-col-auto {
+		@include flex(1 1 $min-width);
+		min-width: $min-width !important;
+		max-width: 100%;
+	  }
+	}
+  }
+}
+
+.ui-input-group {
+  @include flex-row($align: flex-start, $wrap: false);
+  margin-bottom: 0.5rem;
+
+  .ui-label {
+	@include flex(0 0 120px);
+	width: 120px;
+	text-align: right;
+	text-align: end;
+	font-weight: 600;
+	position: relative;
+	color: $input-label-text;
+	padding: 0.4rem 0 0.2rem 0;
+	@include padding(end, 0.2rem);
+
+	&:after {
+	  content: ' ';
+	  width: 1em;
+	  color: $primary;
+	  font: {
+		size: 0.65rem;
+		weight: 600;
+	  }
+	  padding: 0 0.2rem;
+	  display: inline-block;
+	  vertical-align: super;
+	}
+	&.ui-required:after {
+	  content: '\273B';
+	}
+	span {
+	  display: block;
+	  font: {
+		weight: 500;
+		size: 0.8em;
+	  }
+	  color: $text-muted;
+	}
+  }
+
+  .ui-control-wrapper {
+	@include flex(1 1 auto);
+  }
+}

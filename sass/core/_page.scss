@@ -1,0 +1,67 @@
+/**
+ *	UI Framework Route View Components
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-page {
+  position: relative;
+  @include flex-column();
+  @include position(absolute, 0);
+
+  > .ui-page-title {
+	color: $page-title-text;
+	font: {
+	  size: 1rem;
+	  variant: small-caps;
+	  weight: $font-weight-strong;
+	}
+	text-align: center;
+	padding: 0.3rem 1rem;
+	background-color: $page-title-bg;
+  }
+}
+
+.ui-section {
+  position: relative;
+  @include flex(1 1 0%);
+
+  &.ui-section-row {
+	@include flex-row($align: stretch, $wrap: false);
+  }
+
+  &.ui-section-column {
+	@include flex-column($align: stretch);
+  }
+}
+
+.ui-content {
+  position: relative;
+
+  &.ui-auto-fit {
+	@include flex(0 0 auto);
+  }
+
+  &:not(.ui-auto-fit) {
+	@include flex(1 1 auto);
+  }
+
+  &:not(.ui-scroll) {
+	@include flex-row($align: stretch, $wrap: false);
+  }
+}
+
+.ui-sidebar {
+  overflow: auto;
+  position: relative;
+  @include flex(0 0 auto);
+  background-color: $sidebar-bg;
+
+  &:first-child {
+	@include border(end, 1px solid $base-border-color);
+  }
+  &:last-child {
+	@include border(start, 1px solid $base-border-color);
+  }
+}

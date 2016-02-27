@@ -4,16 +4,15 @@
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
-@import "colors";
-@import "variables";
+@import "utility/colors";
 
 $primary: $cerulean !default;
-$secondary: $snow !default;
+$secondary: $black-coral !default;
 
 $primary-text: $coconut !default;
 $secondary-text: $primary !default;
 
-$info: #009ACD !default;
+$info: #5FBED7 !default;
 $danger: #FB4D3D !default;
 $success: #169376 !default;
 $warning: #F9A838 !default;
@@ -23,13 +22,66 @@ $base-bg: #150E06 !default;
 $base-text: $coconut !default;
 $base-bg-image: 'back/bg-dark.png' !default;
 
-$base-border-color: $arsenic !default;
-$base-shadow-color: $charcoal !default;
+$base-border-color: $outer-space !default;
+$base-shadow-color: $black-olive !default;
 
 $text-link: $primary !default;
 $text-muted: $gray !default;
 
-$hr-highlight: $black-olive !default;
-$hr-shadow: $dark-slate-gray !default;
+$hr-highlight: $dark-slate-gray !default;
+$hr-shadow: $licorice !default;
+
+// APP
+$app-header-bg: shade($primary, 20%) !default;
+$app-header-text: $primary-text !default;
+$app-footer-bg: $outer-space !default;
+$app-footer-text: $cadet-gray !default;
+
+// PAGE
+$page-title-bg: shade($primary, 10%) !default;
+$page-title-text: $primary-text !default;
+
+$sidebar-bg: rgba($charcoal, .25) !default;
+
+// BUTTONS
+$button-default-bg: $black-olive !default;
+$button-primary-bg: $primary !default;
+$button-secondary-bg: $secondary !default;
+$button-info-bg: $info !default;
+$button-danger-bg: $danger !default;
+$button-success-bg: $success !default;
+$button-warning-bg: $warning !default;
+
+$button-primary-text: $primary-text !default;
+$button-secondary-text: $secondary-text !default;
+$button-info-text: $coconut !default;
+$button-danger-text: $coconut !default;
+$button-success-text: $coconut !default;
+$button-warning-text: $coconut !default;
+
+$button-primary-border: darken($primary, 20%) !default;
+$button-secondary-border: darken($secondary, 20%) !default;
+$button-info-border: darken($info, 20%) !default;
+$button-danger-border: darken($danger, 20%) !default;
+$button-success-border: darken($success, 20%) !default;
+$button-warning-border: darken($warning, 20%) !default;
+
+// INPUT
+$placeholder-color: $slate-gray !default;
+$input-bg: $black-olive !default;
+$input-text: $base-text !default;
+$input-label-text: $cadet-gray !default;
+$input-border: $base-border-color !default;
+$input-focus-color: $primary !default;
+$input-valid-color: $pine !default;
+$input-invalid-color: $madder-lake !default;
+$input-addon-text: $primary !default;
+$input-addon-bg: $arsenic !default;
+$input-readonly-bg: shade($input-bg, 2%) !default;
+$input-disabled-bg: darken($input-bg, 10%) !default;
+
+$input-option-color: $ash-gray !default;
+$input-option-color-focus: $input-focus-color !default;
+$input-option-color-disabled: $charcoal-gray !default;
 
 @import "framework!";

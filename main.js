@@ -5,12 +5,13 @@ define(["require", "exports"], function (require,
 			   .standardConfiguration()
 			   .developmentLogging()
 			   .feature('framework')
+			   //.plugin('aurelia-ui-framework')
 			   .plugin('aurelia-validation', function (config) {
 			   });
 
 		aurelia.start()
 			   .then(function (a) {
-				   return a.setRoot('./app/app.js');
+				   return a.setRoot('./src/app.js');
 			   })
 			   .then(function () {
 				   var splash = window.document.querySelector('.ui-splash');

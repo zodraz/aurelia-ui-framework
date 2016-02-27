@@ -1,0 +1,81 @@
+/**
+ *	UI Framework App Scaffold
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-viewport {
+  @include position(fixed, 0);
+  @include flex-column();
+
+  .ui-app-header {
+	@include flex(0 0 auto);
+	@include flex-row($wrap: false);
+	@include box-shadow(0 0 3px 1px $black-olive);
+
+	z-index: 2;
+	min-height: 3em;
+	padding: 0.4em;
+	color: $app-header-text;
+	background: linear-gradient(top, $app-header-bg, shade($app-header-bg, 5%));
+
+	.ui-app-logo {
+	  @include flex(0 0 auto);
+	  @include size(auto, 3em);
+	  @include margin(end, 0.5em);
+	  pointer-events: none;
+	}
+
+	.ui-app-title {
+	  @include flex(1 1 0%);
+	  line-height: 1em;
+	  font-variant: small-caps;
+	  > a {
+		font: {
+		  size: 2em;
+		  weight: $font-weight-strong;
+		}
+		color: $app-header-text !important;
+		span {
+		  font-size: 0.5em;
+		  color: shade($app-header-text, 15%) !important;
+		}
+	  }
+	}
+
+	.ui-app-menu-handle {
+	  @include size(1.2em, 1.2em);
+	  @include margin(end, 0.5em);
+	  padding: 0;
+	  font-size: 2em;
+	  color: shade($app-header-text, 10%);
+	  &:hover {
+		color: $app-header-text;
+	  }
+	  &:active {
+		//@include box-shadow(0 0 3px 1px shade($app-header-bg, 30%) inset);
+		color: shade($app-header-bg, 25%);
+	  }
+	}
+  }
+
+  .ui-app-view {
+	display: block;
+	position: relative;
+	@include flex(1 1 0%);
+  }
+
+  .ui-app-footer {
+	@include flex(0 0 auto);
+	@include flex-row($wrap: false);
+	padding: 0.1em 1em;
+	font-size: 0.75em;
+	color: $app-footer-text;
+	background: linear-gradient(top, $app-footer-bg, shade($app-footer-bg, 10%));
+
+	span.heart {
+	  color: $geranium-lake;
+	}
+  }
+}

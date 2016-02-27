@@ -6,9 +6,9 @@ var ts = require('gulp-typescript');
 var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
-var pages = '../auf-pages';
-var release = '../auf-release';
-var skeleton = '../auf-skeleton';
+var pages = '../auf-pages2';
+var release = '../auf-release2';
+var skeleton = '../auf-skeleton2';
 
 // SASS/Compass compiler
 gulp.task('sass:compile', function (done) {
@@ -40,10 +40,9 @@ var tsProject = ts.createProject({
 								 });
 gulp.task('scripts:compile', function () {
 	var tsRoot = gulp.src([
-							  '!node_modules/**/*.ts',
 							  './jspm_packages/npm/aurelia-*/*.d.ts',
 							  './framework/**/*.ts',
-							  './app/**/*.ts'], {base: './'})
+							  './src/**/*.ts'], {base: './'})
 					 .pipe(ts(tsProject));
 
 	return tsRoot.js.pipe(gulp.dest('.'));
@@ -55,12 +54,28 @@ var config = {
 	force: true,
 	packagePath: '.',
 	bundles: {
+		"dist/demo": {
+			includes: [
+				'./src/**/*',
+				'./src/**/*.html!text'
+			],
+			options: {
+				inject: true,
+				minify: true
+			}
+		},
 		"dist/aurelia-ui-framework": {
 			includes: [
-				'./app/**/*',
 				'./framework/**/*',
-				'./app/**/*.html!text',
-				'./framework/**/*.html!text',
+				'./framework/**/*.html!text'
+			],
+			options: {
+				inject: true,
+				minify: true
+			}
+		},
+		"dist/aurelia": {
+			includes: [
 				'./jspm_packages/**/aurelia-*',
 				'./jspm_packages/**/aurelia-validation*/resources/*'
 			],
@@ -93,7 +108,7 @@ gulp.task('aurelia:skeleton', function () {
 						'./index.html',
 						'./browserconfig.xml',
 						'./manifest.json',
-						'./app/**/*',
+						'./src/**/*',
 						'./fonts/**/*',
 						'./images/**/*',
 						'./styles/**/*'], {base: './'})
@@ -103,16 +118,16 @@ gulp.task('aurelia:release', function () {
 	gulp.src(['./package.json', './sass/_*.scss'], {base: './'})
 		.pipe(gulp.dest(release));
 	gulp.src([
-				 './framework/**/*.js',
-				 './framework/**/*.html',
-				 './framework/*.d.ts'], {base: './framework'})
+				 './dist/aurelia-ui-framework.js',
+				 './framework/aurelia-ui-framework.d.ts'])
 		.pipe(gulp.dest(release));
 	return;
 });
 
 gulp.task('watch', function () {
 	gulp.watch('./sass/**/*.scss', ['sass:compile']);
-	gulp.watch('./app/**/*.ts', ['scripts:compile']);
+	gulp.watch('./src/**/*.ts', ['scripts:compile']);
+	gulp.watch('./framework/**/*.ts', ['scripts:compile']);
 });
 
 gulp.task('build', function () {

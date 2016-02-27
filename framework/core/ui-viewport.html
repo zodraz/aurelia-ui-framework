@@ -1,28 +1,26 @@
 <template class="ui-viewport">
 	<div class="ui-app-header">
 		<!-- Menu handle -->
-		<button><span class="fi-essential-menu24"></span></button>
+		<button class="ui-app-menu-handle" if.bind="options.showMenu"><span class="fi-material-menu-button"></span></button>
 		<!-- App Logo -->
-		<img class="ui-app-logo" if.bind="appLogo" src.bind="appLogo"/>
+		<img class="ui-app-logo" if.bind="options.logo" src.bind="options.logo"/>
 		<!-- App Title -->
 		<div class="ui-app-title">
-			<a href="#/">${appTitle}<span if.bind="appSubtitle"><br/>${appSubtitle}</span></a>
+			<a href="#/">${options.title}<span if.bind="options.subtitle"><br/>${options.subtitle}</span></a>
 		</div>
 		<!-- Extra content -->
 		<content></content>
-		<!-- Logout link -->
-		<button><span class="fi-ext-right-arrow61"></span></button>
 	</div>
 
 	<router-view class="ui-app-view"></router-view>
 
-	<div class="ui-app-taskbar">
+	<div class="ui-app-taskbar" if.bind="options.showTaskbar">
 		<template replaceable part="task-links"></template>
 	</div>
 	<div class="ui-app-footer">
-		<span>&copy; ${appState.StartYear}-${__thisYear} ${appState.Copyright}</span>
+		<span class="ui-col-fill" if.bind="options.copyright">&copy; ${options.copyright}</span>
 
-		<span>With <span class="heart fi-essential-heart217"></span> for HMC</span>
+		<span class="ui-col-fill ui-text-end">With <span class="heart fi-material-favorite-heart-button"></span> for HMC</span>
 	</div>
 
 	<div class="ui-app-menu-shim"></div>
@@ -31,8 +29,8 @@
 
 	<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">
 		<div class="ui-loader">
-			<span class="ui-spin fi-elegant-wheel1"></span>
-			<span class="ui-spin-opp fi-elegant-wheel1 second"></span>
+			<span class="ui-spin fi-material-settings-cogwheel-button"></span>
+			<span class="ui-spin-opp fi-material-settings-cogwheel-button second"></span>
 		</div>
 	</div>
 

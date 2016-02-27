@@ -7,20 +7,29 @@
 @import "compass/css3";
 @import "compass/css3/selection";
 @import "compass/utilities";
-@import "colors";
-@import "mixins";
-@import "animations";
-// fonts
-@import url(font_url("bigmug-line/flaticon.css", true));
-@import url(font_url("bigmug-solid/flaticon.css", true));
-@import url(font_url("elegant-font/flaticon.css", true));
-@import url(font_url("extended-ui/flaticon.css", true));
-@import url(font_url("essentials/flaticon.css", true));
-@import url(font_url("editor/flaticon.css", true));
-@import url(font_url("ecomm/flaticon.css", true));
+@import "utility/colors";
+@import "utility/mixins";
+@import "utility/animations";
+@import "core/variables";
 
-@import "reset";
-@import "helpers";
-@import "base";
-@import "core";
-@import "typography";
+// fonts
+@import url(font_url("material/flaticon.css", true));
+@import url(font_url("metrize/flaticon.css", true));
+@import url(font_url("vaadin/flaticon.css", true));
+@import url(font_url("filetypes/flaticon.css", true));
+@import url(font_url("editor/flaticon.css", true));
+
+@import "utility/reset";
+@import "utility/helpers";
+@import "utility/typography";
+@import "utility/markdown";
+
+@import "core/base";
+@import "core/viewport";
+@import "core/grid";
+@import "core/page";
+
+@import "inputs/form";
+@import "inputs/button";
+@import "inputs/switch";
+@import "inputs/option";

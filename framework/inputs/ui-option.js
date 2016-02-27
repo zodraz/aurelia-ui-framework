@@ -1,0 +1,167 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+    var UIOption = (function () {
+        function UIOption(element) {
+            this.element = element;
+            this.__id = "auf-" + seed++;
+            this.checked = false;
+            this.disabled = false;
+        }
+        UIOption.prototype.bind = function () {
+            this.disabled = isTrue(this.disabled);
+        };
+        UIOption.prototype.attached = function () {
+            this.disable();
+        };
+        UIOption.prototype.disable = function (disabled) {
+            if (this.__input.attributes.getNamedItem('disabled') !== null) {
+                this.__input.attributes.removeNamedItem('disabled');
+            }
+            if (disabled === true || this.disabled === true) {
+                this.__input.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+        };
+        UIOption.prototype.disabledChanged = function (newValue) {
+            this.disabled = isTrue(newValue);
+            this.disable();
+        };
+        UIOption.prototype.valueChanged = function ($event) {
+            $event.detail = this.checked;
+        };
+        UIOption = __decorate([
+            aurelia_framework_1.autoinject(), 
+            __metadata('design:paramtypes', [Element])
+        ], UIOption);
+        return UIOption;
+    })();
+    exports.UIOption = UIOption;
+    var UICheckbox = (function (_super) {
+        __extends(UICheckbox, _super);
+        function UICheckbox() {
+            _super.apply(this, arguments);
+            this.__type = 'checkbox';
+            this.name = '';
+            this.disabled = false;
+            this.checked = false;
+        }
+        UICheckbox.prototype.bind = function () {
+            _super.prototype.bind.call(this);
+            this.checked = isTrue(this.checked);
+        };
+        UICheckbox.prototype.attached = function () {
+            _super.prototype.attached.call(this);
+            this.element.classList.add('ui-checkbox');
+        };
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UICheckbox.prototype, "name", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', Boolean)
+        ], UICheckbox.prototype, "disabled", void 0);
+        __decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
+            __metadata('design:type', Object)
+        ], UICheckbox.prototype, "checked", void 0);
+        UICheckbox = __decorate([
+            aurelia_framework_1.useView('./ui-option.html'),
+            aurelia_framework_1.customElement('ui-checkbox'), 
+            __metadata('design:paramtypes', [])
+        ], UICheckbox);
+        return UICheckbox;
+    })(UIOption);
+    exports.UICheckbox = UICheckbox;
+    var UIRadio = (function (_super) {
+        __extends(UIRadio, _super);
+        function UIRadio() {
+            _super.apply(this, arguments);
+            this.__type = 'radio';
+            this.name = '';
+            this.value = '';
+            this.disabled = false;
+            this.checked = '';
+        }
+        UIRadio.prototype.attached = function () {
+            _super.prototype.attached.call(this);
+            this.element.classList.add('ui-radio');
+        };
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIRadio.prototype, "name", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIRadio.prototype, "value", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', Boolean)
+        ], UIRadio.prototype, "disabled", void 0);
+        __decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
+            __metadata('design:type', Object)
+        ], UIRadio.prototype, "checked", void 0);
+        UIRadio = __decorate([
+            aurelia_framework_1.useView('./ui-option.html'),
+            aurelia_framework_1.customElement('ui-radio'), 
+            __metadata('design:paramtypes', [])
+        ], UIRadio);
+        return UIRadio;
+    })(UIOption);
+    exports.UIRadio = UIRadio;
+    var UIOptionGroup = (function () {
+        function UIOptionGroup(element) {
+            this.element = element;
+            this.label = '';
+        }
+        UIOptionGroup.prototype.attached = function () {
+            var _this = this;
+            if (this.element.hasAttribute('required'))
+                this.__label.classList.add('ui-required');
+            if (this.value) {
+                setTimeout(function () {
+                    var opt = _this.element.querySelector(".ui-option-input[value=\"" + _this.value + "\"]");
+                    if (opt)
+                        opt.setAttribute('checked', 'true');
+                }, 200);
+            }
+        };
+        UIOptionGroup.prototype.valueChanged = function (newValue) {
+            var opt = this.element.querySelector(".ui-option-input[value=\"" + newValue + "\"]");
+            if (opt)
+                opt.setAttribute('checked', 'true');
+        };
+        UIOptionGroup.prototype.checkChanged = function ($event) {
+            this.value = $event.detail;
+        };
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIOptionGroup.prototype, "label", void 0);
+        __decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
+            __metadata('design:type', String)
+        ], UIOptionGroup.prototype, "value", void 0);
+        UIOptionGroup = __decorate([
+            aurelia_framework_1.useView('./ui-option-group.html'),
+            aurelia_framework_1.customElement('ui-option-group'), 
+            __metadata('design:paramtypes', [Element])
+        ], UIOptionGroup);
+        return UIOptionGroup;
+    })();
+    exports.UIOptionGroup = UIOptionGroup;
+});

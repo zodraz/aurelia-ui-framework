@@ -1,0 +1,206 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 19/02/2016 14:44
+  	*/
+
+@font-face {
+  font-family: "Files";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Files";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="fi-file-"]:before, [class*=" fi-file-"]:before,
+[class^="fi-file-"]:after, [class*=" fi-file-"]:after {   
+  font-family: Files;
+  font-size: 1em;
+}
+
+.fi-file-3dm-file-format-extension:before { content: "\f100"; }
+.fi-file-3ds-open-file-format-extension:before { content: "\f101"; }
+.fi-file-3g2-open-file-format:before { content: "\f102"; }
+.fi-file-3gp-file-format-symbol:before { content: "\f103"; }
+.fi-file-7z-file-format-symbol:before { content: "\f104"; }
+.fi-file-acc-file-format-symbol:before { content: "\f105"; }
+.fi-file-ai-file-format-symbol:before { content: "\f106"; }
+.fi-file-aif-file-format-symbol:before { content: "\f107"; }
+.fi-file-apk-open-file-format:before { content: "\f108"; }
+.fi-file-app-file-format-symbol:before { content: "\f109"; }
+.fi-file-asf-file-format-symbol:before { content: "\f10a"; }
+.fi-file-asp-file-format-symbol:before { content: "\f10b"; }
+.fi-file-aspx-file-format-symbol:before { content: "\f10c"; }
+.fi-file-asx-file-format-symbol:before { content: "\f10d"; }
+.fi-file-avi-video-file-format-symbol:before { content: "\f10e"; }
+.fi-file-bak-file-format-symbol:before { content: "\f10f"; }
+.fi-file-bat-file-format-symbol:before { content: "\f110"; }
+.fi-file-bin-open-file-format:before { content: "\f111"; }
+.fi-file-bmp-open-file-format:before { content: "\f112"; }
+.fi-file-cab-file-format-symbol:before { content: "\f113"; }
+.fi-file-cad-file-format-symbol:before { content: "\f114"; }
+.fi-file-cdr-file-format-symbol:before { content: "\f115"; }
+.fi-file-certificate-file-variant:before { content: "\f116"; }
+.fi-file-cfg-open-file-format:before { content: "\f117"; }
+.fi-file-cfm-file-format-extension-with-close-and-open-brackets:before { content: "\f118"; }
+.fi-file-cgi-file-format-symbol:before { content: "\f119"; }
+.fi-file-class-open-file-format:before { content: "\f11a"; }
+.fi-file-com-file-format-symbol:before { content: "\f11b"; }
+.fi-file-cpl-file-format-with-cogwheels:before { content: "\f11c"; }
+.fi-file-cpp-file-format-symbol:before { content: "\f11d"; }
+.fi-file-crx-file-format-symbol:before { content: "\f11e"; }
+.fi-file-csr-open-file-format:before { content: "\f11f"; }
+.fi-file-css-file-format-with-brackets:before { content: "\f120"; }
+.fi-file-csv-file-variant-with-graphs:before { content: "\f121"; }
+.fi-file-cue-open-file-format:before { content: "\f122"; }
+.fi-file-cur-file-format-symbol:before { content: "\f123"; }
+.fi-file-dat-file-format-symbol:before { content: "\f124"; }
+.fi-file-db-file-format-symbol:before { content: "\f125"; }
+.fi-file-dbf-open-file-format:before { content: "\f126"; }
+.fi-file-dds-file-format-variant:before { content: "\f127"; }
+.fi-file-dem-file-format-symbol:before { content: "\f128"; }
+.fi-file-dll-system-file-interface-symbol:before { content: "\f129"; }
+.fi-file-dmg-open-file-format:before { content: "\f12a"; }
+.fi-file-dmp-file-format-variant:before { content: "\f12b"; }
+.fi-file-doc-file-format-symbol:before { content: "\f12c"; }
+.fi-file-docx-file-variant:before { content: "\f12d"; }
+.fi-file-drv-file-format-symbol:before { content: "\f12e"; }
+.fi-file-dtd-file-format-with-codes:before { content: "\f12f"; }
+.fi-file-dwg-open-file-format:before { content: "\f130"; }
+.fi-file-dxf-file-format-symbol:before { content: "\f131"; }
+.fi-file-elf-file-format-symbol:before { content: "\f132"; }
+.fi-file-eps-file-format-symbol:before { content: "\f133"; }
+.fi-file-eps-file-format-symbol-1:before { content: "\f134"; }
+.fi-file-exe-executable-file-format-interface-symbol:before { content: "\f135"; }
+.fi-file-fla-open-file-format:before { content: "\f136"; }
+.fi-file-flash-open-file-format:before { content: "\f137"; }
+.fi-file-flv-flash-file-extension-interface-symbol:before { content: "\f138"; }
+.fi-file-fnt-open-file-format:before { content: "\f139"; }
+.fi-file-fon-open-file-format:before { content: "\f13a"; }
+.fi-file-gam-open-file-format:before { content: "\f13b"; }
+.fi-file-gbr-open-file-format:before { content: "\f13c"; }
+.fi-file-ged-open-file-format:before { content: "\f13d"; }
+.fi-file-gif-image-extension:before { content: "\f13e"; }
+.fi-file-gpx-open-file-format:before { content: "\f13f"; }
+.fi-file-gz-file-format-symbol:before { content: "\f140"; }
+.fi-file-gzip-open-file-format-with-box:before { content: "\f141"; }
+.fi-file-hqz-open-file-format:before { content: "\f142"; }
+.fi-file-html-open-file-format:before { content: "\f143"; }
+.fi-file-ibooks-symbol:before { content: "\f144"; }
+.fi-file-icns-file-format-symbol:before { content: "\f145"; }
+.fi-file-ico-websites-icon-file-extension:before { content: "\f146"; }
+.fi-file-ics-file-format-symbol:before { content: "\f147"; }
+.fi-file-iff-file-open-file-format:before { content: "\f148"; }
+.fi-file-indd-file-format-symbol:before { content: "\f149"; }
+.fi-file-iso-open-file-format:before { content: "\f14a"; }
+.fi-file-iso-open-file-variant:before { content: "\f14b"; }
+.fi-file-jar-open-file-format:before { content: "\f14c"; }
+.fi-file-jpg-compressed-image-file-extension:before { content: "\f14d"; }
+.fi-file-js-file-format-symbol:before { content: "\f14e"; }
+.fi-file-jsp-open-file-format-with-java-logo:before { content: "\f14f"; }
+.fi-file-key-open-file-format:before { content: "\f150"; }
+.fi-file-kml-open-file-format:before { content: "\f151"; }
+.fi-file-kmz-file-format-symbol:before { content: "\f152"; }
+.fi-file-lnk-file-variant:before { content: "\f153"; }
+.fi-file-log-file-format-symbol:before { content: "\f154"; }
+.fi-file-lua-file-format-symbol:before { content: "\f155"; }
+.fi-file-m3u-open-file-format:before { content: "\f156"; }
+.fi-file-m4a-open-file-format:before { content: "\f157"; }
+.fi-file-m4v-file-format-symbol:before { content: "\f158"; }
+.fi-file-mach-o-executable-file-symbol:before { content: "\f159"; }
+.fi-file-max-file-format-symbol:before { content: "\f15a"; }
+.fi-file-mdb-file-format-symbol:before { content: "\f15b"; }
+.fi-file-mdf-file-format-symbol:before { content: "\f15c"; }
+.fi-file-mid-file-format-symbol:before { content: "\f15d"; }
+.fi-file-mim-open-file-format:before { content: "\f15e"; }
+.fi-file-mov-file-format-symbol:before { content: "\f15f"; }
+.fi-file-mp3-symbol-with-disc-and-musical-note:before { content: "\f160"; }
+.fi-file-mp4-file-format-symbol:before { content: "\f161"; }
+.fi-file-mpa-open-file-format:before { content: "\f162"; }
+.fi-file-mpg-open-file-format:before { content: "\f163"; }
+.fi-file-msg-symbol-with-envelope:before { content: "\f164"; }
+.fi-file-msi-file-format-symbol:before { content: "\f165"; }
+.fi-file-nes-open-file-format:before { content: "\f166"; }
+.fi-file-obj-open-file-format:before { content: "\f167"; }
+.fi-file-odb-file-format-symbol:before { content: "\f168"; }
+.fi-file-odc-open-file-format:before { content: "\f169"; }
+.fi-file-odf-file-format-symbol:before { content: "\f16a"; }
+.fi-file-odg-open-file-format:before { content: "\f16b"; }
+.fi-file-odi-open-file-format:before { content: "\f16c"; }
+.fi-file-odp-file-format-symbol:before { content: "\f16d"; }
+.fi-file-ods-file-format-symbol:before { content: "\f16e"; }
+.fi-file-odt-file-format-symbol:before { content: "\f16f"; }
+.fi-file-odt-open-file-variant:before { content: "\f170"; }
+.fi-file-odx-open-file-format:before { content: "\f171"; }
+.fi-file-ogg-audio-file-format-symbol:before { content: "\f172"; }
+.fi-file-otf-file-format:before { content: "\f173"; }
+.fi-file-otf-open-file-format:before { content: "\f174"; }
+.fi-file-pages-symbol:before { content: "\f175"; }
+.fi-file-pct-open-file-format:before { content: "\f176"; }
+.fi-file-pdb-file-format-symbol:before { content: "\f177"; }
+.fi-file-pdf-file-format-symbol:before { content: "\f178"; }
+.fi-file-php:before { content: "\f179"; }
+.fi-file-pif-open-file-format:before { content: "\f17a"; }
+.fi-file-pkg-open-file-format:before { content: "\f17b"; }
+.fi-file-pl-file-format-symbol:before { content: "\f17c"; }
+.fi-file-png-file-format-symbol-variant:before { content: "\f17d"; }
+.fi-file-pps-file-format-variant:before { content: "\f17e"; }
+.fi-file-ppt-open-file-format-with-pie-chart:before { content: "\f17f"; }
+.fi-file-pptx-presentation-file-extension:before { content: "\f180"; }
+.fi-file-ps-file-format-variant:before { content: "\f181"; }
+.fi-file-psd-open-file-format:before { content: "\f182"; }
+.fi-file-pub-file-format-symbol:before { content: "\f183"; }
+.fi-file-py-file-format-symbol:before { content: "\f184"; }
+.fi-file-ra-file-format-symbol:before { content: "\f185"; }
+.fi-file-rar-file-format-symbol:before { content: "\f186"; }
+.fi-file-raw-open-file-format:before { content: "\f187"; }
+.fi-file-rm-open-file-format:before { content: "\f188"; }
+.fi-file-rom-file-format-symbol:before { content: "\f189"; }
+.fi-file-rpm-file-format-symbol:before { content: "\f18a"; }
+.fi-file-rss-feed-symbol-variant:before { content: "\f18b"; }
+.fi-file-rtf-open-file-format:before { content: "\f18c"; }
+.fi-file-sav-open-file-variant:before { content: "\f18d"; }
+.fi-file-sdf-file-format-symbol:before { content: "\f18e"; }
+.fi-file-sitx-open-file-format:before { content: "\f18f"; }
+.fi-file-sql-file-format-symbol:before { content: "\f190"; }
+.fi-file-sql-open-file-format:before { content: "\f191"; }
+.fi-file-srt-file-format-variant:before { content: "\f192"; }
+.fi-file-svg-open-file-format:before { content: "\f193"; }
+.fi-file-swf-open-file-format:before { content: "\f194"; }
+.fi-file-sys-file-format-variant:before { content: "\f195"; }
+.fi-file-tar-open-file-format:before { content: "\f196"; }
+.fi-file-tex-open-file-format:before { content: "\f197"; }
+.fi-file-tga-file-format:before { content: "\f198"; }
+.fi-file-thm-file-format-symbol:before { content: "\f199"; }
+.fi-file-tiff-image-extension-interface-symbol:before { content: "\f19a"; }
+.fi-file-tmp-file-format-symbol:before { content: "\f19b"; }
+.fi-file-torrent-file-format-symbol:before { content: "\f19c"; }
+.fi-file-ttf-open-file-format:before { content: "\f19d"; }
+.fi-file-txt-open-file-format:before { content: "\f19e"; }
+.fi-file-uue-open-file-format:before { content: "\f19f"; }
+.fi-file-vb-open-file-symbol:before { content: "\f1a0"; }
+.fi-file-vcd-file-format-symbol:before { content: "\f1a1"; }
+.fi-file-vcf-open-file-format:before { content: "\f1a2"; }
+.fi-file-vob-file-format-symbol:before { content: "\f1a3"; }
+.fi-file-wav-file-format-variant:before { content: "\f1a4"; }
+.fi-file-wma-open-file-format:before { content: "\f1a5"; }
+.fi-file-wmv-file-format-symbol:before { content: "\f1a6"; }
+.fi-file-wpd-open-file-format:before { content: "\f1a7"; }
+.fi-file-wps-open-file-format:before { content: "\f1a8"; }
+.fi-file-wsf-open-file-format:before { content: "\f1a9"; }
+.fi-file-xhtml-open-file-format:before { content: "\f1aa"; }
+.fi-file-xlr-file-format-symbol:before { content: "\f1ab"; }
+.fi-file-xls-open-file-format:before { content: "\f1ac"; }
+.fi-file-xlsx-file-format-symbol:before { content: "\f1ad"; }
+.fi-file-xml-file-format-symbol:before { content: "\f1ae"; }
+.fi-file-yuv-open-file-format:before { content: "\f1af"; }
+.fi-file-zip-compressed-file-format-interface-symbol:before { content: "\f1b0"; }

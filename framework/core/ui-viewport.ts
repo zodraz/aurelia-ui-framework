@@ -1,35 +1,50 @@
 /**
- *    UI Core    Viewport
- *    @author    Adarsh Pastakia
- *    @company   HMC
- *    @copyright 2015-2016, Adarsh Pastakia
+ *    UI Core		Viewport
+ *    @author		Adarsh Pastakia
+ *    @company   	HMC
+ *    @copyright 	2015-2016, Adarsh Pastakia
  *    @description
  *    This plugin provides an application viewport with header, footer and side drawer menu
  **/
 
 import {autoinject, customElement, bindable} from "aurelia-framework";
+import {Router} from "aurelia-router";
 
 @autoinject()
 @customElement('ui-viewport')
 export class UIViewport {
 
 	/**
-	 * @property 	app-title
-	 * @type		string
+	 * @property    router
+	 * @type        Aurelia Router
 	 */
-	@bindable() appTitle;
+	@bindable() router:Router;
+
 	/**
-	 * @property 	app-subtitle
-	 * @type 		string
+	 * @property    options
+	 * @type        UIViewportOptions
 	 */
-	@bindable() appSubtitle;
-	/**
-	 * @property 	app-logo
-	 * @type		string
-	 * @value		relative path | url
-	 */
-	@bindable() appLogo;
+	@bindable() options:UIViewportOptions;
 
 	constructor(public element:Element) {
+	}
+}
+export class UIViewportOptions {
+	// App Logo - Relative Path | URL
+	logo:string;
+	// App Title
+	title:string;
+	// App Subtitle
+	subtitle:string;
+	// Footer Copyright
+	copyright:string;
+
+	// Show app side menu
+	showMenu:boolean = true;
+	// Show Taskbar multiple dialogs
+	showTaskbar:boolean = true;
+
+	constructor(obj) {
+		Object.assign(this, obj);
 	}
 }

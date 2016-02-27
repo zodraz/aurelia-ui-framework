@@ -1,0 +1,152 @@
+/**
+ *	UI Framework Typography
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+// Headers
+h1, .ui-h1 {
+  font-size: 2rem;
+}
+
+h2, .ui-h2 {
+  font-size: 1.8rem;
+}
+
+h3, .ui-h3 {
+  font-size: 1.5rem;
+}
+
+h4, .ui-h4 {
+  font-size: 1.25rem;
+}
+
+h5, .ui-h5 {
+  font-size: 1.1rem;
+}
+
+h6, .ui-h6 {
+  font-size: 0.9rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  small {
+	display: block;
+	font-size: 0.85em;
+	color: $text-muted;
+	line-height: 1.5;
+  }
+}
+
+code {
+  padding: 0 0.1rem;
+  border-radius: 2px;
+  color: $maroon;
+  background-color: lighten($tulip, 20%);
+  word-break: keep-all;
+  font-weight: $font-weight-strong;
+  font-family: $base-font-family-serif;
+}
+
+// Styles
+.ui-strong, strong {
+  font-weight: $font-weight-strong;
+}
+
+.ui-bold, b {
+  font-weight: $font-weight-bold;
+}
+
+.ui-italic, i, cite, em, var, address, dfn {
+  font-style: italic;
+}
+
+.ui-small-caps {
+  font-variant: small-caps;
+}
+
+.ui-uppercase {
+  text-transform: uppercase;
+}
+
+.ui-lowercase {
+  text-transform: lowercase;
+}
+
+.ui-titlecase {
+  text-transform: capitalize;
+}
+
+.ui-flip {
+  transform: scale(-1, 1);
+}
+
+// Sizes
+.ui-font-small, small {
+  font-size: 0.75em;
+}
+
+.ui-font-big {
+  font-size: 1.15em;
+}
+
+.ui-font-large, big {
+  font-size: 1.5em;
+}
+
+// Colors
+.ui-text-muted {
+  color: $text-muted;
+}
+
+.ui-text-primary {
+  color: $primary;
+}
+
+.ui-text-info {
+  color: $info;
+}
+
+.ui-text-danger {
+  color: $danger;
+}
+
+.ui-text-success {
+  color: $success;
+}
+
+.ui-text-warning {
+  color: $warning;
+}
+
+.ui-bg-primary {
+  background-color: $primary;
+  color: $primary-text;
+}
+
+.ui-bg-info {
+  background-color: $info;
+  color: $coconut;
+}
+
+.ui-bg-danger {
+  background-color: $danger;
+  color: $coconut;
+}
+
+.ui-bg-success {
+  background-color: $success;
+  color: $coconut;
+}
+
+.ui-bg-warning {
+  background-color: $warning;
+  color: $coconut;
+}
+
+.ui-bg-muted {
+  background-color: $ash-gray;
+  color: $black-olive;
+}
+

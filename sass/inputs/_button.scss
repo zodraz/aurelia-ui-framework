@@ -1,0 +1,128 @@
+/**
+ *	UI Framework Button
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+@mixin button-style($prefix, $bg, $color, $border) {
+  &.ui-button-#{$prefix} {
+	color: $color;
+	border-color: $border;
+	background: linear-gradient(top, shade($bg, 3%), shade($bg, 5%));
+	@include box-shadow(0 1px 2px 0 $snow inset);
+	text-shadow: 0px 1px 0 shade($bg, 15%);
+
+	&:hover {
+	  @include box-shadow(0 1px 2px 0 $snow inset, 0 0 9px 3px tint($bg, 15%) inset);
+	  background: linear-gradient(top, $bg, shade($bg, 3%), $bg);
+	}
+	&:active, &.ui-checked {
+	  border-color: shade($border, 15%);
+	  text-shadow: 0px -1px 0 shade($bg, 15%);
+	  @include box-shadow(0 0 6px 3px rgba($charcoal, 0.5) inset);
+	  background: linear-gradient(bottom, shade($bg, 3%), shade($bg, 6%));
+	}
+  }
+}
+
+.ui-button {
+  @include flexbox((
+		  display: inline-flex,
+		  flex-direction:row,
+		  flex-wrap:wrap,
+		  align-items: center,
+		  justify-content:center
+  ));
+  @include transition(background 0.5s);
+  margin: 0.2rem;
+  padding: 0.35rem 0.8rem;
+  border: {
+	width: 1px;
+	style: solid;
+	radius: $base-border-radius;
+  }
+
+  > span {
+	margin: 0.2rem;
+
+	&[class^="fi-"], &[class*="fi-"] {
+	  font-size: 1.2em;
+	}
+  }
+
+  &.ui-icon-top {
+	@include flex-direction(column);
+  }
+
+  &.ui-default {
+	font-weight: $font-weight-strong;
+  }
+  &.ui-button-small {
+	padding: 0.1rem 0.3rem;
+	font-size: 0.85rem;
+  }
+  &.ui-button-large {
+	padding: 0.6rem 1.4rem;
+	font-size: 1.2rem;
+  }
+
+  &[disabled] {
+	opacity: 0.4;
+	box-shadow: none;
+	cursor: not-allowed;
+	pointer-events: none;
+  }
+
+  @include button-style(default, $button-default-bg, $primary, $base-border-color);
+  @include button-style(primary, $button-primary-bg, $button-primary-text, $button-primary-border);
+  @include button-style(secondary, $button-secondary-bg, $button-secondary-text, $button-secondary-border);
+  @include button-style(info, $button-info-bg, $button-info-text, $button-info-border);
+  @include button-style(danger, $button-danger-bg, $button-danger-text, $button-danger-border);
+  @include button-style(success, $button-success-bg, $button-success-text, $button-success-border);
+  @include button-style(warning, $button-warning-bg, $button-warning-text, $button-warning-border);
+}
+
+.ui-button-group {
+  @include flexbox((
+		  display: inline-flex,
+		  flex-direction:row,
+		  flex-wrap:nowrap,
+		  align-items:stretch
+  ));
+
+  .ui-button {
+	@include flex(0 0 auto);
+	border-radius: 0;
+	margin: 0;
+  }
+
+  &:not(.ui-vertical) {
+	.ui-button {
+	  //@include borderEx(start, width, 0);
+	  margin: 2px 0;
+	}
+	> :first-child .ui-button {
+	  //@include borderEx(start, width, 1px);
+	  @include border-left-radius($base-border-radius);
+	}
+	> :last-child .ui-button {
+	  @include border-right-radius($base-border-radius);
+	}
+  }
+
+  &.ui-vertical {
+	@include flex-direction(column);
+	.ui-button {
+	  //border-top-width: 0;
+	  margin: 0 2px;
+	}
+	> :first-child .ui-button {
+	  //border-top-width: 1px;
+	  @include border-top-radius($base-border-radius);
+	}
+	> :last-child .ui-button {
+	  @include border-bottom-radius($base-border-radius);
+	}
+  }
+}
