@@ -18,7 +18,7 @@
 
 ### ReadMe's
 
-* [Core](framework/src)
+* [Core](framework/core)
 * [Inputs](framework/inputs)
 * [Utils](framework/utils)
 
