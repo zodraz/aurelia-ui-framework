@@ -12,10 +12,15 @@
 
 ------
 
-
 # Version 2
 
 > Rethought and Reworked Framework
+
+### ReadMe's
+
+* [Core](framework/src)
+* [Inputs](framework/inputs)
+* [Utils](framework/utils)
 
 ### UI Elements
 
