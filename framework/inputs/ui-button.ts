@@ -97,6 +97,7 @@ export class UIButton {
 export class UIButtonGroup {
 	private __size       = 'normal';
 	private __theme      = 'default';
+	private __align      = 'left';
 	private __toggle:any = false;
 
 	/**
@@ -126,6 +127,8 @@ export class UIButtonGroup {
 		if (this.element.hasAttribute('small')) this.__size = 'small';
 		if (this.element.hasAttribute('large')) this.__size = 'large';
 
+		if (this.element.hasAttribute('top')) this.__align = 'top';
+
 		if (this.element.hasAttribute('toggle')) {
 			this.__toggle = this.element.attributes.getNamedItem('toggle').value || 'single';
 			this.__theme  = 'secondary';
@@ -144,6 +147,7 @@ export class UIButtonGroup {
 			b.classList.remove('ui-button-small');
 			b.classList.add(`ui-button-${this.__theme}`);
 			b.classList.add(`ui-button-${this.__size}`);
+			b.classList.add(`ui-icon-${this.__align}`);
 		});
 
 		if (this.__toggle && !isEmpty(this.value)) {
@@ -189,7 +193,7 @@ export class UIButtonGroup {
 		if (this.__toggle) {
 			$event.cancelBubble = true;
 			if (this.__toggle === 'multiple') {
-				let v       = $event.detail.value;
+				let v          = $event.detail.value;
 				let a:string[] = isEmpty(this.value) ? [] : (this.value + '').split(',');
 				if (a.indexOf(v) == -1) {
 					a.push(v);

@@ -118,10 +118,10 @@
 								<ui-checkbox disabled.bind="!allEnabled">Checkbox</ui-checkbox>
 								<ui-checkbox disabled.bind="!allEnabled" checked="true">Checkbox</ui-checkbox>
 							</ui-option-group>
-							<ui-option-group label="Radios<span>Value ${radioValue}</span>" value.bind="radioValue" required>
-								<ui-radio disabled.bind="!allEnabled" name="radio" value="1">Option 1</ui-radio>
-								<ui-radio disabled.bind="!allEnabled" name="radio" value="2">Option 2</ui-radio>
-								<ui-radio disabled.bind="!allEnabled" name="radio" value="3">Option 3</ui-radio>
+							<ui-option-group label="Radios<span>Value ${radioValue}</span>" value.bind="radioValue" name="radio" required>
+								<ui-radio disabled.bind="!allEnabled" value="1">Option 1</ui-radio>
+								<ui-radio disabled.bind="!allEnabled" value="2">Option 2</ui-radio>
+								<ui-radio disabled.bind="!allEnabled" value="3">Option 3</ui-radio>
 							</ui-option-group>
 							<ui-option-group label="Switches" required>
 								<ui-switch checked="true" disabled.bind="!allEnabled" info>Info</ui-switch>

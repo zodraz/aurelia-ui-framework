@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_router_1) {
     var UIPage = (function () {
         function UIPage() {
         }
@@ -71,6 +71,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         UISidebar.prototype.bind = function () {
             this.collapsible = this.element.hasAttribute('collapsible');
         };
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', aurelia_router_1.Router)
+        ], UISidebar.prototype, "router", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)

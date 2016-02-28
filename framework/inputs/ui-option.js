@@ -53,7 +53,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UICheckbox() {
             _super.apply(this, arguments);
             this.__type = 'checkbox';
-            this.name = '';
             this.disabled = false;
             this.checked = false;
         }
@@ -65,10 +64,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             _super.prototype.attached.call(this);
             this.element.classList.add('ui-checkbox');
         };
-        __decorate([
-            aurelia_framework_1.bindable(), 
-            __metadata('design:type', String)
-        ], UICheckbox.prototype, "name", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
@@ -127,16 +122,17 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UIOptionGroup(element) {
             this.element = element;
             this.label = '';
+            this.name = '';
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;
-            if (!isEmpty(this.value)) {
-                setTimeout(function () {
-                    var opt = _this.element.querySelector(".ui-option-input[value=\"" + _this.value + "\"]");
-                    if (opt)
-                        opt.setAttribute('checked', 'true');
-                }, 200);
-            }
+            setTimeout(function () {
+                var radios = _this.element.getElementsByClassName('ui-radio');
+                _.forEach(radios, function (b) {
+                    b.setAttribute('name', _this.name);
+                    b.setAttribute('checked', (_this.value === b.value).toString());
+                });
+            }, 200);
             if (this.element.hasAttribute('required'))
                 this.__label.classList.add('ui-required');
         };
@@ -152,6 +148,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
         ], UIOptionGroup.prototype, "label", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIOptionGroup.prototype, "name", void 0);
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)

@@ -97,6 +97,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             this.element = element;
             this.__size = 'normal';
             this.__theme = 'default';
+            this.__align = 'left';
             this.__toggle = false;
             this.disabled = false;
         }
@@ -117,6 +118,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
                 this.__size = 'small';
             if (this.element.hasAttribute('large'))
                 this.__size = 'large';
+            if (this.element.hasAttribute('top'))
+                this.__align = 'top';
             if (this.element.hasAttribute('toggle')) {
                 this.__toggle = this.element.attributes.getNamedItem('toggle').value || 'single';
                 this.__theme = 'secondary';
@@ -135,6 +138,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
                 b.classList.remove('ui-button-small');
                 b.classList.add("ui-button-" + _this.__theme);
                 b.classList.add("ui-button-" + _this.__size);
+                b.classList.add("ui-icon-" + _this.__align);
             });
             if (this.__toggle && !isEmpty(this.value)) {
                 setTimeout(function () {

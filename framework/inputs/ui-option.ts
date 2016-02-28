@@ -51,11 +51,6 @@ export class UICheckbox extends UIOption {
 	__type = 'checkbox';
 
 	/**
-	 * @property    name
-	 * @type        string
-	 */
-	@bindable() name:string      = '';
-	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
@@ -84,11 +79,6 @@ export class UIRadio extends UIOption {
 	__type = 'radio';
 
 	/**
-	 * @property    name
-	 * @type        string
-	 */
-	@bindable() name:string      = '';
-	/**
 	 * @property    value
 	 * @type        string
 	 */
@@ -106,6 +96,9 @@ export class UIRadio extends UIOption {
 	checked:any                  = '';
 
 	attached() {
+		if(!this.element.parentElement.classList.contains('ui-option-group'))
+			throw new Error('UIRadio must bew a child of UIOptionGroup');
+
 		super.attached();
 		this.element.classList.add('ui-radio');
 	}
@@ -122,6 +115,11 @@ export class UIOptionGroup {
 	 */
 	@bindable() label:string = '';
 	/**
+	 * @property    name
+	 * @type        string
+	 */
+	@bindable() name:string  = '';
+	/**
 	 * @property    value
 	 * @type        string
 	 */
@@ -132,12 +130,13 @@ export class UIOptionGroup {
 	}
 
 	attached() {
-		if (!isEmpty(this.value)) {
-			setTimeout(()=> {
-				let opt = this.element.querySelector(`.ui-option-input[value="${this.value}"]`);
-				if (opt)opt.setAttribute('checked', 'true');
-			}, 200);
-		}
+		setTimeout(()=> {
+			let radios = this.element.getElementsByClassName('ui-radio');
+			_.forEach(radios, (b:HTMLInputElement)=> {
+				b.setAttribute('name', this.name);
+				b.setAttribute('checked', (this.value === b.value).toString());
+			});
+		}, 200);
 		if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
 	}
 
