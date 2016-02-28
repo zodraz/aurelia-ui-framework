@@ -85,19 +85,17 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         function UIRadio() {
             _super.apply(this, arguments);
             this.__type = 'radio';
-            this.name = '';
             this.value = '';
             this.disabled = false;
             this.checked = '';
         }
         UIRadio.prototype.attached = function () {
+            if (!this.element.parentElement.classList.contains('ui-option-group')) {
+                throw new Error('UIRadio must be a child of UIOptionGroup');
+            }
             _super.prototype.attached.call(this);
             this.element.classList.add('ui-radio');
         };
-        __decorate([
-            aurelia_framework_1.bindable(), 
-            __metadata('design:type', String)
-        ], UIRadio.prototype, "name", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
@@ -127,10 +125,11 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         UIOptionGroup.prototype.attached = function () {
             var _this = this;
             setTimeout(function () {
-                var radios = _this.element.getElementsByClassName('ui-radio');
+                var radios = _this.element.querySelectorAll('.ui-radio .ui-option-input');
                 _.forEach(radios, function (b) {
                     b.setAttribute('name', _this.name);
-                    b.setAttribute('checked', (_this.value === b.value).toString());
+                    if (_this.value + '' === b.value + '')
+                        b.setAttribute('checked', "true");
                 });
             }, 200);
             if (this.element.hasAttribute('required'))

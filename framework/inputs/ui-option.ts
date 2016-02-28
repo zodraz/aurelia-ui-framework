@@ -96,8 +96,9 @@ export class UIRadio extends UIOption {
 	checked:any                  = '';
 
 	attached() {
-		if(!this.element.parentElement.classList.contains('ui-option-group'))
-			throw new Error('UIRadio must bew a child of UIOptionGroup');
+		if (!this.element.parentElement.classList.contains('ui-option-group')) {
+			throw new Error('UIRadio must be a child of UIOptionGroup');
+		}
 
 		super.attached();
 		this.element.classList.add('ui-radio');
@@ -131,10 +132,10 @@ export class UIOptionGroup {
 
 	attached() {
 		setTimeout(()=> {
-			let radios = this.element.getElementsByClassName('ui-radio');
+			let radios = this.element.querySelectorAll('.ui-radio .ui-option-input');
 			_.forEach(radios, (b:HTMLInputElement)=> {
 				b.setAttribute('name', this.name);
-				b.setAttribute('checked', (this.value === b.value).toString());
+				if (this.value + '' === b.value + '')b.setAttribute('checked', "true");
 			});
 		}, 200);
 		if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');

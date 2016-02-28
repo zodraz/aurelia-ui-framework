@@ -14,7 +14,6 @@ export module UIEvent {
 							  data?:any):any {
 		try {
 			let e = new CustomEvent(event, {bubbles: true, cancelable: true, detail: data});
-			console.log(event, e.detail);
 			return element.dispatchEvent(e);
 		} catch (e) {
 			var evt = document.createEvent('CustomEvent');

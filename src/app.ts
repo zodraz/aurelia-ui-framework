@@ -1,5 +1,7 @@
-import {UIViewportOptions} from "aurelia-ui-framework";
+import {UIViewportOptions, UIUtils} from "aurelia-ui-framework";
 import {Router} from "aurelia-router";
+import {Container} from "aurelia-dependency-injection";
+
 export class App {
 	private appOptions = new UIViewportOptions({
 		title    : 'Aurelia UI Framework',
@@ -10,7 +12,7 @@ export class App {
 
 	private router:Router;
 
-	private configureRouter(config, router:Router) {
+	configureRouter(config, router:Router) {
 		this.router                    = router;
 		config.title                   = this.appOptions.title;
 		config.options.isAuthenticated = false;
@@ -35,11 +37,15 @@ export class App {
 		}]);
 	}
 
-	private toggleDir() {
+	constructor(container:Container) {
+		UIUtils.container(container);
+	}
+
+	toggleDir() {
 		document.body.dir = document.body.dir == 'rtl' ? 'ltr' : 'rtl';
 	}
 
-	private toggleTheme() {
+	toggleTheme() {
 		let css  = document.getElementById('baseStyle') as HTMLLinkElement;
 		css.href = css.href.indexOf('light') == -1 ? 'styles/app-light.css' : 'styles/app-dark.css';
 	}

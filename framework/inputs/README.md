@@ -62,7 +62,7 @@ UIOptionGroup as parent container is optional
 
 UIOptionGroup as parent container is mandatory
 
-    <ui-radio value.bind=? disabled.bind=? change.trigger=?>
+    <ui-radio value.bind=? disabled.bind=?>
         <!-- Label text -->
     </ui-radio>
 

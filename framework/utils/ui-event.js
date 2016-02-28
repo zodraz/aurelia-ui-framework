@@ -4,7 +4,6 @@ define(["require", "exports", "aurelia-ui-framework", "aurelia-framework", "aure
         function fireEvent(event, element, data) {
             try {
                 var e = new CustomEvent(event, { bubbles: true, cancelable: true, detail: data });
-                console.log(event, e.detail);
                 return element.dispatchEvent(e);
             }
             catch (e) {

@@ -1,12 +1,13 @@
 define(["require", "exports", "aurelia-ui-framework"], function (require, exports, aurelia_ui_framework_1) {
     var App = (function () {
-        function App() {
+        function App(container) {
             this.appOptions = new aurelia_ui_framework_1.UIViewportOptions({
                 title: 'Aurelia UI Framework',
                 subtitle: 'Version 2',
                 logo: 'images/logo.png',
                 copyright: "Adarsh Pastakia 2015-" + new Date().getFullYear()
             });
+            aurelia_ui_framework_1.UIUtils.container(container);
         }
         App.prototype.configureRouter = function (config, router) {
             this.router = router;

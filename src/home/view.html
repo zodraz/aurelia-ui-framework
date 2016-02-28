@@ -61,6 +61,8 @@
 				<ui-row>
 					<ui-column padded fill>
 						<div>
+							<ui-button label="Click Me" disabled.bind="!allEnabled"
+									   small icon="fi-vaadin-compress-square"></ui-button>
 							<ui-button label="Click Me" disabled.bind="!allEnabled" primary
 									   icon="fi-vaadin-heart"></ui-button>
 							<ui-button label="Click Me" disabled.bind="!allEnabled" secondary
@@ -73,6 +75,8 @@
 									   icon="fi-vaadin-checked-3"></ui-button>
 							<ui-button label="Click Me" disabled.bind="!allEnabled" warning
 									   icon="fi-vaadin-exclamation-circle"></ui-button>
+							<ui-button label="Click Me" disabled.bind="!allEnabled"
+									   large icon="fi-vaadin-expand-square"></ui-button>
 						</div>
 						<div>
 							<ui-button-group large>
@@ -146,13 +150,13 @@
 							<ui-column auto padded>
 								<h4 class="ui-border-b">Numbers</h4>
 								<p innerhtml.bind="1284 | number"></p>
-								<p innerhtml.bind="1284.99 | currency"></p>
+								<p innerhtml.bind="1284.99 | currency:'AED'"></p>
 								<p innerhtml.bind="81.24 | percent"></p>
 								<p innerhtml.bind="12849736 | number:'0.000a'"></p>
 							</ui-column>
 							<ui-column auto padded>
 								<h4 class="ui-border-b">JSON</h4>
-								<p innerhtml.bind="{title:'Hello World', amount:29, isActive:true} | json"></p>
+								<p innerhtml.bind="{question:'Meaning of Life', answer:42, isActive:true} | json"></p>
 							</ui-column>
 						</ui-row>
 					</ui-column>
