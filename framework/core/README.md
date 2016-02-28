@@ -1,5 +1,14 @@
 ## CORE
 
+* [UIViewport](#uiviewport)
+* [UIPage](#uipage)
+* [UISection](#uicontent)
+* [UIContent](#uicontent)
+* [UISidebar](#uisidebar)
+* [UIToolbar](#uitoolbar)
+* [UIStatsbar](#uistatsbar)
+
+---
 
 ### UIViewport
 
@@ -7,7 +16,7 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 
 ##### Usage
 
-    <ui-viewport options.bind="appOptions">
+    <ui-viewport router.bind="Main Router" options.bind="appOptions">
         <!-- Header extras -->
     </ui-viewport>
 
@@ -56,3 +65,34 @@ Container for actual page content. Default layout `fill` and `no-scroll`.
     <ui-content fill|auto scroll|no-scroll>
         <!-- content -->
     </ui-content>
+
+---
+	    
+### UISidebar 
+
+Sidebar to for content / child router. Default width `220px`, not `collapsible`.
+
+    <ui-sidebar router.bind="Child Router" width="?px" collapsible>
+        <!-- content -->
+    </ui-sidebar>
+
+---
+	    
+### UIToolbar
+
+A Toolbar to display buttons, can add custom elements within `ui-column`. Default alignment `flex-end`.
+
+    <ui-toolbar>
+        <!-- ui-button | ui-column | ui-divider -->
+    </ui-toolbar>
+
+---
+	    
+### UIStatsbar
+
+A simple bar container to metrical statistics for the view
+
+    <ui-statsbar>
+        <!-- ui-metric | ui-divider -->
+    </ui-statsbar>
+

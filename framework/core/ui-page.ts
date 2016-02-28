@@ -8,6 +8,7 @@
  **/
 
 import {customElement, bindable, inlineView} from "aurelia-framework";
+import {Router} from "aurelia-router";
 
 @customElement('ui-page')
 export class UIPage {
@@ -57,6 +58,11 @@ export class UIContent {
 export class UISidebar {
 	private collapsible:boolean = false;
 
+	/**
+	 * @property    router
+	 * @type        Aurelia Router
+	 */
+	@bindable() router:Router;
 	/**
 	 * @property    width
 	 * @type        string
