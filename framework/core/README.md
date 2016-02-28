@@ -121,7 +121,7 @@ Flexed element, default basis `auto`.
 
 * `auto`: auto fit to content size
 * `fill`: fill available space
-* `full`: wrap and take 100% space
+* `full`: wrap if necessary and take 100% space
 
 Applicable sizes `xs`,`sm`,`md`,`lg`,`xl` `1-12`.
 
