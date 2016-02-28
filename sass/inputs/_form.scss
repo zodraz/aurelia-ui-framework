@@ -35,7 +35,7 @@
 	position: relative;
 	color: $input-label-text;
 	padding: 0.4rem 0 0.2rem 0;
-	@include padding(end, 0.2rem);
+	@include padding(end, 1rem);
 
 	&:after {
 	  content: ' ';
@@ -48,6 +48,7 @@
 	  padding: 0 0.2rem;
 	  display: inline-block;
 	  vertical-align: super;
+	  @include position(absolute, 5px 5px null null);
 	}
 	&.ui-required:after {
 	  content: '\273B';

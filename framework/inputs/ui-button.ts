@@ -5,7 +5,8 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 
-import {autoinject, customElement, bindable, inlineView} from "aurelia-framework";
+import {autoinject, customElement, bindable, inlineView, bindingMode} from "aurelia-framework";
+import {_, UIEvent} from "aurelia-ui-framework";
 import {Router} from "aurelia-router";
 
 @autoinject()
@@ -19,17 +20,22 @@ export class UIButton {
 	 * @property    href
 	 * @type        string
 	 */
-	@bindable() href           = null;
+	@bindable() href:string      = null;
 	/**
 	 * @property    label
 	 * @type        string
 	 */
-	@bindable() label;
+	@bindable() label:string     = '';
+	/**
+	 * @property    value
+	 * @type        string
+	 */
+	@bindable() value:string     = '';
 	/**
 	 * @property    icon
 	 * @type        string
 	 */
-	@bindable() icon;
+	@bindable() icon:string      = '';
 	/**
 	 * @property    disabled
 	 * @type        string
@@ -78,16 +84,32 @@ export class UIButton {
 	}
 
 	onClick($event) {
-		console.log('i got clicked');
+		if (this.disabled === true) return false;
+		$event.cancelBubble = true;
+		UIEvent.fireEvent('click', this.element, this);
+		return true;
 	}
 }
 
 
 @customElement('ui-button-group')
-@inlineView(`<template class="ui-button-group"><content></content></template>`)
+@inlineView(`<template class="ui-button-group" click.delegate="onClick($event)"><content></content></template>`)
 export class UIButtonGroup {
-	private __size    = 'normal';
-	private __theme   = 'default';
+	private __size       = 'normal';
+	private __theme      = 'default';
+	private __toggle:any = false;
+
+	/**
+	 * @property    disabled
+	 * @type        string
+	 */
+	@bindable() disabled:boolean = false;
+	/**
+	 * @property    value
+	 * @type        string
+	 */
+	@bindable({defaultBindingMode: bindingMode.twoWay})
+	value:string;
 
 	constructor(public element:Element) {
 	}
@@ -103,19 +125,84 @@ export class UIButtonGroup {
 		// Set Size
 		if (this.element.hasAttribute('small')) this.__size = 'small';
 		if (this.element.hasAttribute('large')) this.__size = 'large';
+
+		if (this.element.hasAttribute('toggle')) {
+			this.__toggle = this.element.attributes.getNamedItem('toggle').value || 'single';
+			this.__theme  = 'secondary';
+		}
+		this.disabled = isTrue(this.disabled);
 	}
 
 	attached() {
 		if (this.element.hasAttribute('vertical')) this.element.classList.add('ui-vertical');
 
-		let children = this.element.getElementsByClassName('ui-button');
-		for (let e = 0; e < children.length; e++) {
-			children[e].classList.remove('ui-button-default');
-			children[e].classList.remove('ui-button-normal');
-			children[e].classList.remove('ui-button-large');
-			children[e].classList.remove('ui-button-small');
-			children[e].classList.add(`ui-button-${this.__theme}`);
-			children[e].classList.add(`ui-button-${this.__size}`);
+		let buttons = this.element.getElementsByClassName('ui-button');
+		_.forEach(buttons, b=> {
+			b.classList.remove('ui-button-default');
+			b.classList.remove('ui-button-normal');
+			b.classList.remove('ui-button-large');
+			b.classList.remove('ui-button-small');
+			b.classList.add(`ui-button-${this.__theme}`);
+			b.classList.add(`ui-button-${this.__size}`);
+		});
+
+		if (this.__toggle && !isEmpty(this.value)) {
+			setTimeout(()=> {
+				_.forEach((this.value + '').split(','), v=> {
+					let opt = this.element.querySelector(`.ui-button[data-value="${v}"]`);
+					if (opt)opt.classList.add('ui-checked');
+				});
+			}, 200);
+		}
+	}
+
+	disable(disabled?) {
+		let buttons = this.element.getElementsByClassName('ui-button');
+		_.forEach(buttons, b=> {
+			if (b.attributes.getNamedItem('disabled') !== null) {
+				b.attributes.removeNamedItem('disabled');
+			}
+			if (disabled === true || this.disabled === true) {
+				b.attributes.setNamedItem(document.createAttribute('disabled'));
+			}
+		});
+	}
+
+	disabledChanged(newValue) {
+		this.disabled = isTrue(newValue);
+		this.disable();
+	}
+
+	valueChanged(newValue) {
+		if (this.__toggle) {
+			_.forEach(this.element.querySelectorAll(`.ui-button.ui-checked`),
+					  b=>b.classList.remove('ui-checked'));
+			_.forEach((newValue + '').split(','), v=> {
+				let opt = this.element.querySelector(`.ui-button[data-value="${v}"]`);
+				if (opt)opt.classList.add('ui-checked');
+			});
+		}
+	}
+
+	onClick($event) {
+		if (this.disabled === true) return false;
+		if (this.__toggle) {
+			$event.cancelBubble = true;
+			if (this.__toggle === 'multiple') {
+				let v       = $event.detail.value;
+				let a:string[] = isEmpty(this.value) ? [] : (this.value + '').split(',');
+				if (a.indexOf(v) == -1) {
+					a.push(v);
+				}
+				else {
+					a.splice(a.indexOf(v), 1);
+				}
+				this.value = a.join(',');
+			}
+			else {
+				this.value = $event.detail.value;
+			}
+			UIEvent.fireEvent('change', this.element, this.value);
 		}
 	}
 }

@@ -75,7 +75,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UICheckbox.prototype, "disabled", void 0);
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
-            __metadata('design:type', Object)
+            __metadata('design:type', Boolean)
         ], UICheckbox.prototype, "checked", void 0);
         UICheckbox = __decorate([
             aurelia_framework_1.useView('./ui-option.html'),
@@ -130,15 +130,15 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         }
         UIOptionGroup.prototype.attached = function () {
             var _this = this;
-            if (this.element.hasAttribute('required'))
-                this.__label.classList.add('ui-required');
-            if (this.value) {
+            if (!isEmpty(this.value)) {
                 setTimeout(function () {
                     var opt = _this.element.querySelector(".ui-option-input[value=\"" + _this.value + "\"]");
                     if (opt)
                         opt.setAttribute('checked', 'true');
                 }, 200);
             }
+            if (this.element.hasAttribute('required'))
+                this.__label.classList.add('ui-required');
         };
         UIOptionGroup.prototype.valueChanged = function (newValue) {
             var opt = this.element.querySelector(".ui-option-input[value=\"" + newValue + "\"]");

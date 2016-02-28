@@ -1,11 +1,10 @@
 define(["require", "exports", "aurelia-ui-framework", "aurelia-framework", "aurelia-event-aggregator"], function (require, exports, aurelia_ui_framework_1, aurelia_framework_1, aurelia_event_aggregator_1) {
     var UIEvent;
     (function (UIEvent) {
-        function fireEvent(event, element, data, source) {
+        function fireEvent(event, element, data) {
             try {
-                var e = new CustomEvent(event, { bubbles: true, cancelable: true });
-                e.detail = data;
-                e.srcElement = source;
+                var e = new CustomEvent(event, { bubbles: true, cancelable: true, detail: data });
+                console.log(event, e.detail);
                 return element.dispatchEvent(e);
             }
             catch (e) {

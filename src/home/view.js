@@ -3,6 +3,8 @@ define(["require", "exports"], function (require, exports) {
         function Home() {
             this.allEnabled = true;
             this.radioValue = 2;
+            this.btnToggle = 3;
+            this.tmp = 'no click yet';
         }
         return Home;
     })();

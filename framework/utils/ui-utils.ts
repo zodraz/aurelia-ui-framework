@@ -13,8 +13,12 @@ export var _       = ld;
 export var moment  = mm;
 export var numeral = nm;
 
-window.isTrue = function (b:any):boolean {
+window.isTrue  = function (b:any):boolean {
 	return (/^(true|yes|1|y|on)$/i).test(b);
+};
+window.isEmpty = function (a:any):boolean {
+	if (typeof a === 'number') return false;
+	return a === undefined || a === null || a === '' || Object.keys(a).length == 0 || a.length === 0;
 };
 
 window.seed = 1;
@@ -35,14 +39,15 @@ export module UIUtils {
 
 	export function lazy(T):any {
 		if (!__container) {
-			return;
+			throw new Error('UIUtils.Lazy::Container not set');
 		}
 		return Lazy.of(T)
 				   .get(__container)();
 	}
 
 	export function getAscii(str):string {
-		var conversions   = new Object();
+		if(isEmpty(str)) return '';
+		var conversions   = {};
 		conversions['ae'] = 'ä|æ|ǽ';
 		conversions['oe'] = 'ö|œ';
 		conversions['ue'] = 'ü';

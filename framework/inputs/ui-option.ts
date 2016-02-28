@@ -4,7 +4,6 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {UIEvent} from "aurelia-ui-framework";
 import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
 
 @autoinject()
@@ -66,7 +65,7 @@ export class UICheckbox extends UIOption {
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked                      = false;
+	checked:boolean              = false;
 
 	bind() {
 		super.bind();
@@ -133,13 +132,13 @@ export class UIOptionGroup {
 	}
 
 	attached() {
-		if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
-		if (this.value) {
+		if (!isEmpty(this.value)) {
 			setTimeout(()=> {
 				let opt = this.element.querySelector(`.ui-option-input[value="${this.value}"]`);
 				if (opt)opt.setAttribute('checked', 'true');
 			}, 200);
 		}
+		if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
 	}
 
 	valueChanged(newValue) {

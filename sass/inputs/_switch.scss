@@ -8,9 +8,9 @@
 .ui-switch-control {
   white-space: nowrap;
   display: inline-block;
-  direction: ltr !important;
 
   .ui-switch {
+	direction: ltr !important;
 	position: relative;
 	display: inline-block;
 	vertical-align: top;

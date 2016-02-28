@@ -34,12 +34,3 @@ input[type=number]::-webkit-outer-spin-button {
 img {
   border: none !important;
 }
-
-body[dir='rtl'] {
-  [class^="fi-"], [class*="fi-"] {
-	transform: scale(-1, 1);
-  }
-  .ui-flip {
-	transform: scale(1, 1);
-  }
-}

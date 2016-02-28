@@ -11,12 +11,10 @@ import {EventAggregator, Subscription} from "aurelia-event-aggregator";
 export module UIEvent {
 	export function fireEvent(event:string,
 							  element:EventTarget,
-							  data?:any,
-							  source?:Element):any {
+							  data?:any):any {
 		try {
-			let e        = new CustomEvent(event, {bubbles: true, cancelable: true});
-			e.detail     = data;
-			e.srcElement = source; // UNABLE TO SET SOURCE ELEMENT
+			let e = new CustomEvent(event, {bubbles: true, cancelable: true, detail: data});
+			console.log(event, e.detail);
 			return element.dispatchEvent(e);
 		} catch (e) {
 			var evt = document.createEvent('CustomEvent');

@@ -4,7 +4,6 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {UIEvent} from "aurelia-ui-framework";
 import {autoinject, customElement, bindable, bindingMode, useShadowDOM} from "aurelia-framework";
 
 @autoinject()

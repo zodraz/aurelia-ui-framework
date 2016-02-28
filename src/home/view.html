@@ -61,8 +61,6 @@
 				<ui-row>
 					<ui-column padded fill>
 						<div>
-							<ui-button label="Click Me" disabled.bind="!allEnabled"
-									   small icon="fi-vaadin-compress-square"></ui-button>
 							<ui-button label="Click Me" disabled.bind="!allEnabled" primary
 									   icon="fi-vaadin-heart"></ui-button>
 							<ui-button label="Click Me" disabled.bind="!allEnabled" secondary
@@ -75,8 +73,6 @@
 									   icon="fi-vaadin-checked-3"></ui-button>
 							<ui-button label="Click Me" disabled.bind="!allEnabled" warning
 									   icon="fi-vaadin-exclamation-circle"></ui-button>
-							<ui-button label="Click Me" disabled.bind="!allEnabled"
-									   large icon="fi-vaadin-expand-square"></ui-button>
 						</div>
 						<div>
 							<ui-button-group large>
@@ -94,10 +90,21 @@
 										   icon="fi-vaadin-exclamation-circle"></ui-button>
 							</ui-button-group>
 						</div>
+						<div>
+							<ui-button-group toggle="multiple" disabled.bind="!allEnabled" value.bind="btnToggle">
+								<ui-button label="Click Me" value="1" icon="fi-vaadin-heart"></ui-button>
+								<ui-button label="Click Me" value="2" icon="fi-vaadin-light-bulb"></ui-button>
+								<ui-button label="Click Me" value="3" icon="fi-vaadin-info-1"></ui-button>
+								<ui-button label="Click Me" value="4" icon="fi-vaadin-close-button"></ui-button>
+								<ui-button label="Click Me" value="5" icon="fi-vaadin-checked-3"></ui-button>
+								<ui-button label="Click Me" value="6" icon="fi-vaadin-exclamation-circle"></ui-button>
+							</ui-button-group>
+							Value: ${btnToggle}
+						</div>
 						<hr/>
 						<div>
-							<ui-switch checked.bind="allEnabled" label-on="All Enabled" label-off="All Disabled"
-									   width="108"></ui-switch>
+							<ui-switch checked.bind="allEnabled" width="108"
+									   label-on="All Enabled" label-off="All Disabled"></ui-switch>
 							<ui-switch checked="true" disabled.bind="!allEnabled" primary>Primary</ui-switch>
 							<ui-switch checked="true" disabled.bind="!allEnabled" info>Info</ui-switch>
 							<ui-switch checked="true" disabled.bind="!allEnabled" danger>Danger</ui-switch>
@@ -111,7 +118,7 @@
 								<ui-checkbox disabled.bind="!allEnabled">Checkbox</ui-checkbox>
 								<ui-checkbox disabled.bind="!allEnabled" checked="true">Checkbox</ui-checkbox>
 							</ui-option-group>
-							<ui-option-group label="Radios" value.bind="radioValue" required>
+							<ui-option-group label="Radios<span>Value ${radioValue}</span>" value.bind="radioValue" required>
 								<ui-radio disabled.bind="!allEnabled" name="radio" value="1">Option 1</ui-radio>
 								<ui-radio disabled.bind="!allEnabled" name="radio" value="2">Option 2</ui-radio>
 								<ui-radio disabled.bind="!allEnabled" name="radio" value="3">Option 3</ui-radio>

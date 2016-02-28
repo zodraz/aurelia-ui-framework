@@ -5,6 +5,11 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
     window.isTrue = function (b) {
         return (/^(true|yes|1|y|on)$/i).test(b);
     };
+    window.isEmpty = function (a) {
+        if (typeof a === 'number')
+            return false;
+        return a === undefined || a === null || a === '' || Object.keys(a).length == 0 || a.length === 0;
+    };
     window.seed = 1;
     Object.defineProperties(window, {
         'seed': {
@@ -21,14 +26,16 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         UIUtils.container = container;
         function lazy(T) {
             if (!__container) {
-                return;
+                throw new Error('UIUtils.Lazy::Container not set');
             }
             return aurelia_framework_1.Lazy.of(T)
                 .get(__container)();
         }
         UIUtils.lazy = lazy;
         function getAscii(str) {
-            var conversions = new Object();
+            if (isEmpty(str))
+                return '';
+            var conversions = {};
             conversions['ae'] = 'ä|æ|ǽ';
             conversions['oe'] = 'ö|œ';
             conversions['ue'] = 'ü';

@@ -13,11 +13,11 @@
 	@include box-shadow(0 1px 2px 0 $snow inset);
 	text-shadow: 0px 1px 0 shade($bg, 15%);
 
-	&:hover {
+	&:hover:not(.ui-checked) {
 	  @include box-shadow(0 1px 2px 0 $snow inset, 0 0 9px 3px tint($bg, 15%) inset);
 	  background: linear-gradient(top, $bg, shade($bg, 3%), $bg);
 	}
-	&:active, &.ui-checked {
+	&:active:not(.ui-checked) {
 	  border-color: shade($border, 15%);
 	  text-shadow: 0px -1px 0 shade($bg, 15%);
 	  @include box-shadow(0 0 6px 3px rgba($charcoal, 0.5) inset);
@@ -81,6 +81,14 @@
   @include button-style(danger, $button-danger-bg, $button-danger-text, $button-danger-border);
   @include button-style(success, $button-success-bg, $button-success-text, $button-success-border);
   @include button-style(warning, $button-warning-bg, $button-warning-text, $button-warning-border);
+
+  &.ui-checked {
+	color: $button-primary-text;
+	border-color: shade($button-primary-border, 15%);
+	text-shadow: 0px -1px 0 shade($button-primary-bg, 15%);
+	@include box-shadow(0 0 6px 3px rgba($charcoal, 0.5) inset);
+	background: linear-gradient(bottom, shade($button-primary-bg, 3%), shade($button-primary-bg, 6%));
+  }
 }
 
 .ui-button-group {

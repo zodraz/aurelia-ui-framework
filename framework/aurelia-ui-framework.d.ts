@@ -46,8 +46,7 @@ declare module "aurelia-ui-framework" {
 	export module UIEvent {
 		export function fireEvent(event:string,
 								  element:EventTarget,
-								  data?:any,
-								  source?:Element):any;
+								  data?:any):any;
 
 		export function observe(object, property);
 
@@ -82,9 +81,11 @@ declare module "aurelia-ui-framework" {
 declare var seed;
 
 declare function isTrue(b:any):boolean;
+declare function isEmpty(a:any):boolean;
 
 interface Window {
 	isTrue;
+	isEmpty;
 	seed:number;
 }
 
