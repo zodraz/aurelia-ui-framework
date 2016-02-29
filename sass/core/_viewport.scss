@@ -9,6 +9,13 @@
   @include position(fixed, 0);
   @include flex-column();
 
+  .ui-app-logo {
+	height: 3em;
+	pointer-events: none;
+	background: image_url($app-logo) no-repeat center center;
+	background-size: $app-logo-width 3em;
+  }
+
   .ui-app-header {
 	@include flex(0 0 auto);
 	@include flex-row($wrap: false);
@@ -22,9 +29,8 @@
 
 	.ui-app-logo {
 	  @include flex(0 0 auto);
-	  @include size(auto, 3em);
 	  @include margin(end, 0.5em);
-	  pointer-events: none;
+	  width: $app-logo-width;
 	}
 
 	.ui-app-title {
@@ -76,6 +82,52 @@
 
 	span.heart {
 	  color: $geranium-lake;
+	}
+  }
+
+  .ui-app-menu {
+	@include position(fixed, 0 null 0 -305px);
+	@include transition(left 0.6s ease-out);
+	@include box-shadow(0 0 5px 1px #000);
+
+	min-width: 220px;
+	max-width: 300px;
+	z-index: $z-index-splash+1;
+	color: contrast($app-menu-bg);
+	background-color: $app-menu-bg;
+	@if ($app-menu-bg-image) {
+	  background-image: image_url($app-menu-bg-image);
+	}
+	.ui-menu-link {
+	  font-size: 1.2rem;
+	  color: contrast($app-menu-bg);
+	}
+	.ui-menu-link.ui-active {
+	  color: $app-menu-active-text;
+	  background: $app-menu-active-bg;
+	  border-color: $app-menu-active-border;
+	  @include box-shadow(0 0 4px 0 #333 inset);
+	}
+  }
+
+  .ui-app-menu-shim {
+	@include position(fixed, 0);
+	@include backdrop-blur(1px);
+	@include transition(opacity 0.3s);
+
+	opacity: 0;
+	display: none;
+	background-color: rgba($app-menu-shim, 0.5);
+	z-index: $z-index-splash;
+  }
+
+  &.show-menu {
+	.ui-app-menu {
+	  left: 0;
+	}
+	.ui-app-menu-shim {
+	  display: block;
+	  opacity: 1;
 	}
   }
 }

@@ -41,7 +41,7 @@ export class UIColumn {
 		else if (this.element.hasAttribute('full')) {
 			this.element.classList.add('ui-col-full');
 		}
-		else {
+		else if(isEmpty(this.size)) {
 			this.element.classList.add('ui-col-auto');
 		}
 

@@ -7,11 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_router_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_ui_framework_1) {
     var UIViewport = (function () {
-        function UIViewport(element) {
+        function UIViewport(element, container) {
             this.element = element;
+            aurelia_ui_framework_1.UIUtils.container(container);
         }
+        UIViewport.prototype.showMenu = function ($event) {
+            $event.stopPropagation();
+            this.element.classList.add('show-menu');
+        };
+        UIViewport.prototype.hideMenu = function ($event) {
+            this.element.classList.remove('show-menu');
+            return true;
+        };
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', aurelia_router_1.Router)
@@ -23,7 +32,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router"], function (
         UIViewport = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-viewport'), 
-            __metadata('design:paramtypes', [Element])
+            __metadata('design:paramtypes', [Element, aurelia_framework_1.Container])
         ], UIViewport);
         return UIViewport;
     })();

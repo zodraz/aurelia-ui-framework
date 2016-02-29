@@ -15,7 +15,6 @@ export class UIOption {
 	protected disabled = false;
 
 	constructor(public element:Element) {
-
 	}
 
 	bind() {
@@ -110,6 +109,8 @@ export class UIRadio extends UIOption {
 export class UIOptionGroup {
 	private __label:Element;
 
+	private __name = `auf-${seed++}`;
+
 	/**
 	 * @property    label
 	 * @type        string
@@ -134,7 +135,7 @@ export class UIOptionGroup {
 		setTimeout(()=> {
 			let radios = this.element.querySelectorAll('.ui-radio .ui-option-input');
 			_.forEach(radios, (b:HTMLInputElement)=> {
-				b.setAttribute('name', this.name);
+				b.setAttribute('name', this.name || this.__name);
 				if (this.value + '' === b.value + '')b.setAttribute('checked', "true");
 			});
 		}, 200);

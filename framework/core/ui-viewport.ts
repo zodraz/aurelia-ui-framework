@@ -7,8 +7,9 @@
  *    This plugin provides an application viewport with header, footer and side drawer menu
  **/
 
-import {autoinject, customElement, bindable} from "aurelia-framework";
+import {autoinject, customElement, bindable, Container} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIUtils} from "aurelia-ui-framework";
 
 @autoinject()
 @customElement('ui-viewport')
@@ -26,12 +27,21 @@ export class UIViewport {
 	 */
 	@bindable() options:UIViewportOptions;
 
-	constructor(public element:Element) {
+	constructor(public element:Element, container:Container) {
+		UIUtils.container(container);
+	}
+
+	showMenu($event) {
+		$event.stopPropagation();
+		this.element.classList.add('show-menu');
+	}
+
+	hideMenu($event) {
+		this.element.classList.remove('show-menu');
+		return true;
 	}
 }
 export class UIViewportOptions {
-	// App Logo - Relative Path | URL
-	logo:string;
 	// App Title
 	title:string;
 	// App Subtitle

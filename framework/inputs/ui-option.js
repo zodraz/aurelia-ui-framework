@@ -119,6 +119,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
     var UIOptionGroup = (function () {
         function UIOptionGroup(element) {
             this.element = element;
+            this.__name = "auf-" + seed++;
             this.label = '';
             this.name = '';
         }
@@ -127,7 +128,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             setTimeout(function () {
                 var radios = _this.element.querySelectorAll('.ui-radio .ui-option-input');
                 _.forEach(radios, function (b) {
-                    b.setAttribute('name', _this.name);
+                    b.setAttribute('name', _this.name || _this.__name);
                     if (_this.value + '' === b.value + '')
                         b.setAttribute('checked', "true");
                 });

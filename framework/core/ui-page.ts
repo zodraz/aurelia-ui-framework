@@ -8,7 +8,6 @@
  **/
 
 import {customElement, bindable, inlineView} from "aurelia-framework";
-import {Router} from "aurelia-router";
 
 @customElement('ui-page')
 export class UIPage {
@@ -59,11 +58,6 @@ export class UISidebar {
 	private collapsible:boolean = false;
 
 	/**
-	 * @property    router
-	 * @type        Aurelia Router
-	 */
-	@bindable() router:Router;
-	/**
 	 * @property    width
 	 * @type        string
 	 */
@@ -77,3 +71,27 @@ export class UISidebar {
 		this.collapsible = this.element.hasAttribute('collapsible');
 	}
 }
+
+@customElement('ui-divider')
+@inlineView('<template class="ui-divider"></template>')
+export class UIDivider {
+}
+
+@customElement('ui-toolbar')
+@inlineView(`<template class="ui-toolbar"><content></content></template>`)
+export class UIToolbar {
+}
+
+@customElement('ui-statsbar')
+@inlineView(`<template class="ui-statsbar"><content></content></template>`)
+export class UIStatsbar {
+}
+
+@customElement('ui-stat')
+@inlineView('<template class="ui-stat"><span class="${icon}" if.bind="icon"></span><div><h1>${value}</h1><h6>${label}</h6></div></template>')
+export class UIStat {
+	@bindable() value;
+	@bindable() label;
+	@bindable() icon;
+}
+

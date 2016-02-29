@@ -17,4 +17,15 @@ body[dir='rtl'] {
 	left: 5px;
 	right: auto;
   }
+
+  .ui-viewport .ui-app-menu {
+	left: auto;
+	right: -305px;
+	@include transition-property(right);
+  }
+  .ui-viewport.show-menu {
+	.ui-app-menu {
+	  right: 0;
+	}
+  }
 }

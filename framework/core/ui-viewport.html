@@ -1,9 +1,10 @@
-<template class="ui-viewport">
+<template class="ui-viewport" click.delegate="hideMenu($event)">
 	<div class="ui-app-header">
 		<!-- Menu handle -->
-		<button class="ui-app-menu-handle" if.bind="options.showMenu"><span class="fi-material-menu-button"></span></button>
+		<button class="ui-app-menu-handle" if.bind="options.showMenu" click.trigger="showMenu($event)">
+			<span class="fi-material-menu-button"></span></button>
 		<!-- App Logo -->
-		<img class="ui-app-logo" if.bind="options.logo" src.bind="options.logo"/>
+		<div class="ui-app-logo"></div>
 		<!-- App Title -->
 		<div class="ui-app-title">
 			<a href="#/">${options.title}<span if.bind="options.subtitle"><br/>${options.subtitle}</span></a>
@@ -15,7 +16,7 @@
 	<router-view class="ui-app-view"></router-view>
 
 	<div class="ui-app-taskbar" if.bind="options.showTaskbar">
-		<template replaceable part="task-links"></template>
+		<template replaceable part="quick-links"></template>
 	</div>
 	<div class="ui-app-footer">
 		<span class="ui-col-fill" if.bind="options.copyright">&copy; ${options.copyright}</span>
@@ -24,7 +25,7 @@
 	</div>
 
 	<div class="ui-app-menu-shim"></div>
-	<ui-menu router.bind="router"></ui-menu>
+	<ui-menu class="ui-app-menu ui-scroll" router.bind="router"></ui-menu>
 
 
 	<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">

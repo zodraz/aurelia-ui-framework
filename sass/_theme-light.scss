@@ -37,11 +37,36 @@ $app-header-text: $primary-text !default;
 $app-footer-bg: $outer-space !default;
 $app-footer-text: $cadet-gray !default;
 
+$app-menu-bg: $licorice !default;
+$app-menu-text: $primary !default;
+$app-menu-bg-image: 'back/bg-menu.png' !default;
+$app-menu-shim: $gray !default;
+
+$app-menu-active-bg: $primary !default;
+$app-menu-active-text: $primary-text !default;
+$app-menu-active-border: $primary-text !default;
+
+// MENU
+$menu-hover-bg: rgba($primary, 0.6) !default;
+$menu-hover-text: $primary-text !default;
+$menu-click-bg: rgba($primary, 0.3) !default;
+$menu-click-text: $primary-text !default;
+$menu-active-bg: rgba($primary, 0.1) !default;
+$menu-active-text: $primary !default;
+$menu-active-border: $primary !default;
+
 // PAGE
 $page-title-bg: shade($primary, 10%) !default;
 $page-title-text: $primary-text !default;
 
 $sidebar-bg: rgba($isabelline, .25) !default;
+$sidebar-text: $base-text !default;
+
+$toolbar-bg: rgba($timberwolf, .35) !default;
+$toolbar-text: $base-text !default;
+
+$statsbar-bg: rgba($isabelline, .75) !default;
+$statsbar-text: $primary !default;
 
 // BUTTONS
 $button-default-bg: $snow !default;

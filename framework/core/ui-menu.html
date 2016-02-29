@@ -1,0 +1,43 @@
+<template class="ui-menu" click.trigger="onClick($event)">
+	<div if.bind="router.isRoot && router.options.isAuthenticated" class="ui-auth-info">
+		<div class="ui-text-center ui-pad-all">
+			<div class="ui-app-logo" if.bind="router.options.showLogo"></div>
+		</div>
+		<p>Logged in as ${appState.Username}</p>
+
+		<p class="ui-font-small">
+			<span if.bind="appState.UserGroup">${appState.UserGroup}&nbsp;&nbsp;</span>
+			<span if.bind="appState.IpAddress">(${appState.IpAddress})</span>
+		</p>
+	</div>
+
+	<p class="ui-menu-title" if.bind="!router.isRoot && router.title">${router.title}</p>
+	<div repeat.for="route of router.navigation"
+		 if.bind="!route.config.auth || (route.config.auth && router.options.isAuthenticated)">
+		<hr if.bind="route.settings.sectionStart"/>
+		<p class="ui-menu-section" if.bind="route.settings.sectionTitle">${route.settings.sectionTitle}</p>
+
+		<a class="ui-menu-link ${route.isActive?'ui-active':''}"
+		   data-disabled="${route.settings.disabled}" href.bind="route.href">
+			<span class="ui-icon ${route.settings.icon}"></span>&nbsp;${route.settings.menuTitle || route.title}</a>
+	</div>
+
+	<div if.bind="router.isRoot && !router.options.isAuthenticated">
+		<a class="ui-menu-link ui-strong" href="#/login">
+			<span class="fi-metrize-key-circular-button"></span> Sign In</a>
+		<hr/>
+	</div>
+	<div if.bind="router.isRoot && router.options.isAuthenticated">
+		<hr/>
+		<a class="ui-menu-link ui-strong" click.trigger="logout()">
+			<span class="fi-metrize-right-arrow-in-circular-button"></span> Sign Out</a>
+	</div>
+
+	<div repeat.for="link of menu">
+		<hr if.bind="link==='-'"/>
+		<p class="ui-menu-section" if.bind="isString(link) && link!=='-'">${link}</p>
+		<a if.bind="link.title" class="ui-menu-link ${link.isActive ? 'ui-active' : ''}"
+		   data-id="${link.id}" href.bind="link.href || 'javascript:;'">
+			<i class="ui-icon ${link.icon}"></i>&nbsp;${link.title}</a>
+	</div>
+</template>

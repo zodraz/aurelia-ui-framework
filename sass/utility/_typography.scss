@@ -97,27 +97,27 @@ code {
 
 // Colors
 .ui-text-muted {
-  color: $text-muted;
+  color: $text-muted !important;
 }
 
 .ui-text-primary {
-  color: $primary;
+  color: $primary !important;
 }
 
 .ui-text-info {
-  color: $info;
+  color: $info !important;
 }
 
 .ui-text-danger {
-  color: $danger;
+  color: $danger !important;
 }
 
 .ui-text-success {
-  color: $success;
+  color: $success !important;
 }
 
 .ui-text-warning {
-  color: $warning;
+  color: $warning !important;
 }
 
 .ui-bg-primary {

@@ -56,6 +56,7 @@
   overflow: auto;
   position: relative;
   @include flex(0 0 auto);
+  color: $sidebar-text;
   background-color: $sidebar-bg;
 
   &:first-child {
@@ -63,5 +64,83 @@
   }
   &:last-child {
 	@include border(start, 1px solid $base-border-color);
+  }
+}
+
+.ui-divider {
+  display: block;
+  @include flex(0 0 1px);
+  min-height: 1px;
+  min-width: 1px;
+  margin: 0.15rem;
+  background-color: rgba($black, 0.3);
+  border: {
+	width: 0 1px 1px 0;
+	color: rgba($white, 0.3);
+	style: solid;
+  }
+}
+
+.ui-toolbar {
+  @include flex-row(center, flex-end, true);
+  padding: 0.1rem 0.5rem;
+  border: {
+	width: 1px 0;
+	style: solid;
+	color: $base-border-color;
+  }
+  z-index: 2;
+  color: $toolbar-text;
+  background: $toolbar-bg;
+  @include box-shadow(0 0 3px 0 $base-shadow-color);
+
+  .ui-divider {
+	height: 1.8rem;
+  }
+}
+
+.ui-statsbar {
+  z-index: 1;
+  border: {
+	width: 1px 0;
+	style: solid;
+	color: $base-border-color;
+  }
+  color: $statsbar-text;
+  background: $statsbar-bg;
+  @include flex-row(stretch, flex-end, true);
+  @include box-shadow(0 0 3px 0 $base-shadow-color);
+
+  .ui-stat {
+	@include flex(1 1 auto);
+	text-align: center;
+	padding: 0.5rem 1.2rem;
+	@include border(start, 1px solid rgba($white, 0.3));
+	@include border(end, 1px solid rgba($black, 0.3));
+	&:last-child {
+	  @include border(end, none);
+	}
+	&:first-child {
+	  @include border(start, none);
+	}
+
+	@include flex-row(center, center, false);
+
+	span, div {
+	  @include flex(0 0 auto);
+	  margin: 0 0.2rem;
+	}
+
+	span {
+	  font-size: 2.5rem;
+	}
+
+	h1 {
+	  font-weight: bold;
+	}
+	h6 {
+	  color: $text-muted;
+	  text-transform: uppercase;
+	}
   }
 }

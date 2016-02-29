@@ -23,12 +23,20 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 
     <ui-viewport router.bind="Main Router" options.bind="appOptions">
         <!-- Header extras -->
+        
+        <template replace-part="quick-links">
+            <!-- to add buttons to the taskbar -->
+        </template>
     </ui-viewport>
+    
+Main router must contain `options.isAuthenticated` and `options.showLogo`
+
+Route extra options
+    
+    route.settings { sectionStart, sectionTitle, icon }
 
 ##### UIViewportOptions
 
-    // App Logo - Relative Path | URL
-	logo:string;
 	// App Title
 	title:string;
 	// App Subtitle
@@ -75,9 +83,9 @@ Container for actual page content. Default layout `fill` and `no-scroll`.
 	    
 ### UISidebar 
 
-Sidebar to for content / child router. Default width `220px`, not `collapsible`.
+Sidebar to for content / child router menu. Default width `220px`, not `collapsible`.
 
-    <ui-sidebar router.bind="Child Router" width="?px" collapsible>
+    <ui-sidebar width="?px" collapsible>
         <!-- content -->
     </ui-sidebar>
 
@@ -98,8 +106,10 @@ A Toolbar to display buttons, can add custom elements within `ui-column`. Defaul
 A simple bar container to metrical statistics for the view
 
     <ui-statsbar>
-        <!-- ui-metric | ui-divider -->
+        <!-- ui-stat | ui-divider -->
     </ui-statsbar>
+    
+    <ui-stat label.bind=? value.bind=? icon.bind=?></ui-stat>
 
 ---
 

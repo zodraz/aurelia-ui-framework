@@ -41,7 +41,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             else if (this.element.hasAttribute('full')) {
                 this.element.classList.add('ui-col-full');
             }
-            else {
+            else if (isEmpty(this.size)) {
                 this.element.classList.add('ui-col-auto');
             }
             if (this.element.hasAttribute('padded'))
