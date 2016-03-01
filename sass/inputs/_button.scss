@@ -19,8 +19,8 @@
 	}
 	&:active:not(.ui-checked) {
 	  border-color: shade($border, 15%);
-	  text-shadow: 0px -1px 0 shade($bg, 10%);
-	  @include box-shadow(0 0 6px 3px rgba($charcoal, 0.5) inset);
+	  text-shadow: 0px -2px 1px shade($bg, 15%);
+	  @include box-shadow(0 1px 2px 0 $smoke inset, 0 0 9px 3px shade($bg, 15%) inset);
 	  background: linear-gradient(bottom, shade($bg, 3%), shade($bg, 6%));
 	}
   }

@@ -17,6 +17,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui
                 location.hash.indexOf(route.config.redirect || 'QWER') > -1;
         };
         UIMenu.prototype.onClick = function ($event) {
+            if (this.router)
+                return true;
         };
         UIMenu.prototype.logout = function () {
             aurelia_ui_framework_1.UIEvent.broadcast('logout', null);

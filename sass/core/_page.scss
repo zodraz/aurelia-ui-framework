@@ -21,6 +21,11 @@
 	padding: 0.3rem 1rem;
 	background-color: $page-title-bg;
   }
+
+  router-view {
+	@include flex-column();
+	@include flex(1 1 0%);
+  }
 }
 
 .ui-section {

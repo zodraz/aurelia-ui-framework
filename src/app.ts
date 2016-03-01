@@ -32,6 +32,30 @@ export class App {
 			auth    : false,
 			name    : 'home'
 		}, {
+			route   : 'core',
+			moduleId: './core/view',
+			settings: {icon: 'fi-metrize-atom-in-circular-button'},
+			title   : 'Core Elements',
+			nav     : true,
+			auth    : false,
+			name    : 'core'
+		},{
+			route   : 'components',
+			moduleId: './components/view',
+			settings: {icon: 'fi-metrize-layers-in-circular-button'},
+			title   : 'Components',
+			nav     : true,
+			auth    : false,
+			name    : 'core'
+		},{
+			route   : 'inputs',
+			moduleId: './inputs/view',
+			settings: {icon: 'fi-metrize-marker-with-three-dots-circular-button'},
+			title   : 'Input Elements',
+			nav     : true,
+			auth    : false,
+			name    : 'inputs'
+		}, {
 			route: '', redirect: 'home'
 		}]);
 	}

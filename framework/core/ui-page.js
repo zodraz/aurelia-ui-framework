@@ -53,6 +53,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             else if (this.element.hasAttribute('scroll')) {
                 this.element.classList.add('ui-scroll');
             }
+            if (this.element.hasAttribute('padded'))
+                this.element.classList.add('ui-pad-all');
         };
         UIContent = __decorate([
             aurelia_framework_1.customElement('ui-content'),
@@ -70,6 +72,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         }
         UISidebar.prototype.bind = function () {
             this.collapsible = this.element.hasAttribute('collapsible');
+            if (this.element.hasAttribute('padded'))
+                this.element.classList.add('ui-pad-all');
         };
         __decorate([
             aurelia_framework_1.bindable(), 

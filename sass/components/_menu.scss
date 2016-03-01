@@ -17,19 +17,15 @@
 
   .ui-menu-title {
 	color: $primary;
-	font-size: 1.1rem;
-	font-variant: small-caps;
+	font-size: 1.3rem;
+	margin-bottom: 0.5rem;
+	font-weight: $font-weight-strong;
 	border-bottom: 2px solid $primary;
   }
 
   .ui-menu-section {
 	font-size: 0.8rem;
 	color: $text-muted;
-  }
-
-  hr {
-	background-color: $outer-space;
-	border-color: $black-coral;
   }
 
   .ui-menu-link {
@@ -39,7 +35,7 @@
 	text-align: start;
 	font-weight: $font-weight-normal;
 	padding: 1rem 0.5rem;
-	@include border(start, 3px solid transparent);
+	@include border(start, 4px solid transparent);
 
 	.ui-icon {
 	  display: inline-block;

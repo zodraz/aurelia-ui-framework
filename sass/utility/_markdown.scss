@@ -75,4 +75,48 @@
 	  box-shadow: 0 0 3px 1px rgba($primary, 0.8);
 	}
   }
+
+  li > a {
+	margin: 0.3rem 0;
+	display: inline-block;
+  }
+
+  pre > code {
+	background: #f0f0f0;
+	border: 1px solid #e5e5e5;
+	padding: 0.7rem 1.2rem;
+	display: block;
+	max-height: 270px;
+	overflow: auto;
+	margin: 1rem;
+	border-radius: $base-border-radius;
+	@include user-select(text);
+	cursor: text;
+	position: relative;
+
+	&:after {
+	  color: #f0f0f0;
+	  background: #6a6a6a;
+	  position: absolute;
+	  padding: 0.2rem 0.7rem;
+	  font-size: 0.7rem;
+	  top: 0;
+	  right: 0;
+	  font-family: $base-font-family;
+	  @include border-top-right-radius($base-border-radius);
+	  @include border-bottom-left-radius($base-border-radius);
+	}
+	&.lang-html:after {
+	  content: 'HTML';
+	  background: #01786F;
+	}
+	&.lang-javascript:after {
+	  content: 'JavaScript';
+	  background: #E6735C;
+	}
+	&.lang-scss:after {
+	  content: 'SCSS';
+	  background: #008080;
+	}
+  }
 }

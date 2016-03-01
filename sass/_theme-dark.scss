@@ -7,10 +7,10 @@
 @import "utility/colors";
 
 $primary: $cerulean !default;
-$secondary: $black-olive !default;
+$secondary: $charcoal !default;
 
 $primary-text: $coconut !default;
-$secondary-text: $primary !default;
+$secondary-text: $cerulean-blue !default;
 
 $info: #5FBED7 !default;
 $danger: #FB4D3D !default;
@@ -66,7 +66,7 @@ $toolbar-bg: rgba($charcoal, .25) !default;
 $toolbar-text: $base-text !default;
 
 $statsbar-bg: rgba($charcoal, .75) !default;
-$statsbar-text: $primary !default;
+$statsbar-text: $silver !default;
 
 // BUTTONS
 $button-default-bg: $outer-space !default;

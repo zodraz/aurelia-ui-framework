@@ -6,11 +6,11 @@
  **/
 @import "utility/colors";
 
-$primary: $cerulean !default;
-$secondary: $isabelline !default;
+$primary: $amethyst !default;
+$secondary: $white-smoke !default;
 
 $primary-text: $coconut !default;
-$secondary-text: $primary !default;
+$secondary-text: $amethyst !default;
 
 $info: #5FBED7 !default;
 $danger: #FB4D3D !default;
@@ -65,8 +65,8 @@ $sidebar-text: $base-text !default;
 $toolbar-bg: rgba($timberwolf, .35) !default;
 $toolbar-text: $base-text !default;
 
-$statsbar-bg: rgba($isabelline, .75) !default;
-$statsbar-text: $primary !default;
+$statsbar-bg: rgba($secondary, .35) !default;
+$statsbar-text: $secondary-text !default;
 
 // BUTTONS
 $button-default-bg: $snow !default;

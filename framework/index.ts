@@ -4,6 +4,7 @@
  *    @company    HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
+import 'fetch';
 import 'lodash';
 import 'moment';
 import 'numeral';
@@ -18,7 +19,9 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./core/ui-viewport');
 	aurelia.globalResources('./core/ui-page');
 	aurelia.globalResources('./core/ui-grid');
-	aurelia.globalResources('./core/ui-menu');
+
+	/** Components **/
+	aurelia.globalResources('./components/ui-menu');
 
 	/** Inputs **/
 	aurelia.globalResources('./inputs/ui-button');

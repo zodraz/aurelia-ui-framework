@@ -21,22 +21,32 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 
 ##### Usage
 
-    <ui-viewport router.bind="Main Router" options.bind="appOptions">
-        <!-- Header extras -->
-        
-        <template replace-part="quick-links">
-            <!-- to add buttons to the taskbar -->
-        </template>
-    </ui-viewport>
+```html
+<ui-viewport router.bind="Main Router" options.bind="appOptions">
+    <!-- Header extras -->
     
-Main router must contain `options.isAuthenticated` and `options.showLogo`
+    <template replace-part="quick-links">
+        <!-- to add buttons to the taskbar -->
+    </template>
+</ui-viewport>
+```
+
+Router extra options
+
+```javascript
+router.options = { isAuthenticated:boolean, showLogo:boolean }
+```
 
 Route extra options
-    
-    route.settings { sectionStart, sectionTitle, icon }
+
+```javascript
+route.settings = { sectionStart:boolean, sectionTitle:string, icon:string }
+```
 
 ##### UIViewportOptions
 
+```javascript
+options = {
 	// App Title
 	title:string;
 	// App Subtitle
@@ -48,26 +58,32 @@ Route extra options
 	showMenu:boolean = true;
 	// Show Taskbar multiple dialogs
 	showTaskbar:boolean = true;
-	
+}
+```
+
 ---
 	
 ### UIPage
 
 Router view container
 
-    <ui-page page-title="?">
-        <!-- page content -->
-    </ui-page>
-    
+```html
+<ui-page page-title="?">
+    <!-- page content -->
+</ui-page>
+```
+
 ---
 	    
 ### UISection
 
 Define page section, can contain UISidebar, UIContent, UIToolbar, UIStatsbar. Default layout `row`.
 
-    <ui-section row|column>
-        <!-- content -->
-    </ui-section>
+```html
+<ui-section row|column>
+    <!-- content -->
+</ui-section>
+```
     
 ---
 	    
@@ -75,9 +91,11 @@ Define page section, can contain UISidebar, UIContent, UIToolbar, UIStatsbar. De
 
 Container for actual page content. Default layout `fill` and `no-scroll`.
 
-    <ui-content fill|auto scroll|no-scroll>
-        <!-- content -->
-    </ui-content>
+```html
+<ui-content fill|auto scroll|no-scroll>
+    <!-- content -->
+</ui-content>
+```
 
 ---
 	    
@@ -85,9 +103,11 @@ Container for actual page content. Default layout `fill` and `no-scroll`.
 
 Sidebar to for content / child router menu. Default width `220px`, not `collapsible`.
 
-    <ui-sidebar width="?px" collapsible>
-        <!-- content -->
-    </ui-sidebar>
+```html
+<ui-sidebar width="?px" collapsible>
+    <!-- content -->
+</ui-sidebar>
+```
 
 ---
 	    
@@ -95,9 +115,11 @@ Sidebar to for content / child router menu. Default width `220px`, not `collapsi
 
 A Toolbar to display buttons, can add custom elements within `ui-column`. Default alignment `flex-end`.
 
-    <ui-toolbar>
-        <!-- ui-button | ui-column | ui-divider -->
-    </ui-toolbar>
+```html
+<ui-toolbar>
+    <!-- ui-button | ui-column | ui-divider -->
+</ui-toolbar>
+```
 
 ---
 	    
@@ -105,21 +127,23 @@ A Toolbar to display buttons, can add custom elements within `ui-column`. Defaul
 
 A simple bar container to metrical statistics for the view
 
-    <ui-statsbar>
-        <!-- ui-stat | ui-divider -->
-    </ui-statsbar>
-    
+```html
+<ui-statsbar>
     <ui-stat label.bind=? value.bind=? icon.bind=?></ui-stat>
-
+</ui-statsbar>
+```
+    
 ---
 
 ### UIRow
 
 Flexbox display wrapper, default layout direction `row`
 
-    <ui-row row|column>
-        <!-- ui-column -->
-    </ui-row>
+```html
+<ui-row row|column>
+    <!-- ui-column -->
+</ui-row>
+```
 
 --- 
 
@@ -127,9 +151,11 @@ Flexbox display wrapper, default layout direction `row`
 
 Flexed element, default basis `auto`. 
 
-    <ui-column auto|fill|fit size=? width='?px'>
-        <!-- content -->
-    </ui-column>
+```html
+<ui-column auto|fill|fit size=? width='?px'>
+    <!-- content -->
+</ui-column>
+```
 
 * `auto`: auto fit to content size
 * `fill`: fill available space

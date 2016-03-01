@@ -108,6 +108,11 @@
 	  border-color: $app-menu-active-border;
 	  @include box-shadow(0 0 4px 0 #333 inset);
 	}
+
+	hr {
+	  background-color: $outer-space;
+	  border-color: $black-coral;
+	}
   }
 
   .ui-app-menu-shim {

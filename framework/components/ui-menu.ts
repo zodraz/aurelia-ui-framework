@@ -31,7 +31,7 @@ export class UIMenu {
 	}
 
 	onClick($event) {
-		//if (this.router) return true;
+		if (this.router) return true;
 	}
 
 	logout() {

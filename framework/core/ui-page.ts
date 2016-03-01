@@ -8,9 +8,11 @@
  **/
 
 import {customElement, bindable, inlineView} from "aurelia-framework";
+import {Router} from "aurelia-router";
 
 @customElement('ui-page')
 export class UIPage {
+
 	/**
 	 * @property    page-title
 	 * @type        string
@@ -49,6 +51,7 @@ export class UIContent {
 		else if (this.element.hasAttribute('scroll')) {
 			this.element.classList.add('ui-scroll');
 		}
+		if (this.element.hasAttribute('padded')) this.element.classList.add('ui-pad-all');
 	}
 }
 
@@ -69,6 +72,7 @@ export class UISidebar {
 	bind() {
 		// TODO: Add collapse functionality
 		this.collapsible = this.element.hasAttribute('collapsible');
+		if (this.element.hasAttribute('padded')) this.element.classList.add('ui-pad-all');
 	}
 }
 

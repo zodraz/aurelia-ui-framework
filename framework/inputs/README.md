@@ -11,40 +11,46 @@
 
 ### UIButton
 
-    <ui-button icon.bind=? label.bind=? href.bind=? disabled.bind=? click.trigger=?
-        (theme) primary|secondary|info|danger|success|warning 
-        (size) normal|small|large
-        (icon-align) left|top>
-        
-        <!-- menu options for dropdown buttons -->
-    </ui-button>
+```html
+<ui-button icon.bind=? label.bind=? href.bind=? disabled.bind=? click.trigger=?
+    (theme) primary|secondary|info|danger|success|warning 
+    (size) normal|small|large
+    (icon-align) left|top>
     
+    <!-- menu options for dropdown buttons -->
+</ui-button>
+```
+
 ---
 
 ### UIButtonGroup
 
 If `disabled | theme` set on button group, it will override the properties of individual buttons
 
-    <ui-button-group value.bind=? disabled.bind=? change.trigger=?
-        
-        toggle="single|multiple" // Enable toggle
-        
-        (theme) primary|secondary|info|danger|success|warning 
-        (size) normal|small|large
-        (icon-align) left|top>
-        
-        <!-- ui-button value.bind=? -->
-    </ui-button>
+```html
+<ui-button-group value.bind=? disabled.bind=? change.trigger=?
+    
+    toggle="single|multiple" // Enable toggle
+    
+    (theme) primary|secondary|info|danger|success|warning 
+    (size) normal|small|large
+    (icon-align) left|top>
+    
+    <!-- ui-button value.bind=? -->
+</ui-button>
+```
 
 ---
 
 ### UISwitch
 
-    <ui-switch checked.bind=? disabled.bind=? change.trigger=?
-        (theme) primary|secondary|info|danger|success|warning 
-        label-on=? label-off=? width='?px'>
-        <!-- Label text -->
-    </ui-switch>
+```html
+<ui-switch checked.bind=? disabled.bind=? change.trigger=?
+    (theme) primary|secondary|info|danger|success|warning 
+    label-on=? label-off=? width='?px'>
+    <!-- Label text -->
+</ui-switch>
+```
 
 ---
 
@@ -52,9 +58,11 @@ If `disabled | theme` set on button group, it will override the properties of in
 
 UIOptionGroup as parent container is optional
 
-    <ui-checkbox checked.bind=? disabled.bind=? change.trigger=?>
-        <!-- Label text -->
-    </ui-checkbox>
+```html
+<ui-checkbox checked.bind=? disabled.bind=? change.trigger=?>
+    <!-- Label text -->
+</ui-checkbox>
+```
 
 ---
 
@@ -62,9 +70,11 @@ UIOptionGroup as parent container is optional
 
 UIOptionGroup as parent container is mandatory
 
-    <ui-radio value.bind=? disabled.bind=?>
-        <!-- Label text -->
-    </ui-radio>
+```html
+<ui-radio value.bind=? disabled.bind=?>
+    <!-- Label text -->
+</ui-radio>
+```
 
 ----
 
@@ -72,6 +82,8 @@ UIOptionGroup as parent container is mandatory
 
 `name` and `value` properties only applicable for radio button groups
 
-    <ui-option-group label.bind=? name.bind=? value.bind=? change.trigger=?>
-        <!-- ui-radio | ui-checkbox -->
-    </ui-option-group>
+```html
+<ui-option-group label.bind=? name.bind=? value.bind=? change.trigger=?>
+    <!-- ui-radio | ui-checkbox -->
+</ui-option-group>
+```
