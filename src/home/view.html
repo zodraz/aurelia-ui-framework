@@ -169,7 +169,7 @@
 									               placeholder="Latitude.." placeholder-second="Longitude..">
 										Input
 									</ui-dual-input>
-									<ui-input required help-text="A sample single line readonly field"
+									<ui-input help-text="A sample single line readonly field"
 									          class="ui-invalid"
 									          prefix-icon="ui-flag uae" readonly checkbox>
 										Readonly
@@ -181,6 +181,22 @@
 									</ui-input>
 								</ui-column>
 								<ui-column fill>
+									<ui-phone required
+									          help-text="Value:${pi} IsdCode:${piIsd} AreaCode:${piArea} Phone:${piPhone} Extension:${piExt}"
+									          international prefix-icon="fi-vaadin-phone"
+									          value.bind="pi" isd-code.bind="piIsd"
+									          area-code.bind="piArea" phone.bind="piPhone"
+									          extension.bind="piExt">
+										International Phone
+									</ui-phone>
+									<ui-phone required
+									          help-text="Value:${pn} IsdCode:${pnIsd} AreaCode:${pnArea} Phone:${pnPhone} Extension:${pnExt}"
+									          prefix-icon="fi-vaadin-smartphone" country="ae"
+									          value.bind="pn" isd-code.bind="pnIsd"
+									          area-code.bind="pnArea" phone.bind="pnPhone"
+									          extension.bind="pnExt">
+										National Phone
+									</ui-phone>
 									<ui-textarea required help-text="A sample multiline input field"
 									             placeholder="Enter something.."
 									             prefix-icon="fi-vaadin-add-square" button-text="Validate?">

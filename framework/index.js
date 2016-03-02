@@ -8,6 +8,7 @@ define(["require", "exports", "./core/ui-viewport", "./utils/ui-event", "./utils
         aurelia.globalResources('./inputs/ui-switch');
         aurelia.globalResources('./inputs/ui-option');
         aurelia.globalResources('./inputs/ui-input');
+        aurelia.globalResources('./inputs/ui-phone');
         aurelia.globalResources('./inputs/ui-textarea');
         aurelia.globalResources('./inputs/ui-dual-input');
         aurelia.globalResources('./utils/ui-converters');

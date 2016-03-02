@@ -1,5 +1,5 @@
 /**
- *    UI Component: Input
+ *    UI Component: Dual Input
  *    @author    Adarsh Pastakia
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
@@ -9,26 +9,27 @@ import {UIInputGroup} from "./ui-input";
 
 @useView('./ui-input.html')
 @customElement('ui-dual-input')
-export class UIInput extends UIInputGroup {
+export class UIDualInput extends UIInputGroup {
 	private __dual = true;
+
 	/**
 	 * @property    value
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	value:string     = '';
+	value:string                 = '';
 	/**
 	 * @property    value-second
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	valueSecond:string     = '';
+	valueSecond:string           = '';
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean  = false;
+	checked:boolean              = false;
 	/**
 	 * @property    disabled
 	 * @type        boolean
@@ -83,7 +84,7 @@ export class UIInput extends UIInputGroup {
 	 * @property    placeholder
 	 * @type        string
 	 */
-	@bindable() placeholder:string = '';
+	@bindable() placeholder:string       = '';
 	/**
 	 * @property    placeholder-second
 	 * @type        string

@@ -59,6 +59,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             else if (this.element.hasAttribute('search')) {
                 this.__type = 'search';
             }
+            if (this.element.hasAttribute('label-top'))
+                this.element.classList.add('ui-label-top');
+            if (this.element.hasAttribute('label-hide'))
+                this.element.classList.add('ui-label-hide');
         }
         UIInputGroup.prototype.bind = function () {
             this.__checkbox = this.element.hasAttribute('checkbox');
@@ -180,19 +184,18 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
                 this.format(evt);
                 return aurelia_ui_framework_1.UIEvent.fireEvent('enterpressed', this.element, this);
             }
-            if (this.__type === 'number') {
-                return (/[0-9\-]/).test(String.fromCharCode(evt.charCode));
-            }
-            else if (this.__type === 'decimal') {
-                return (/[0-9\-\.]/).test(String.fromCharCode(evt.charCode));
-            }
-            else if (this.__type === 'email') {
-                return (/[A-Za-z0-9\-\.@_\+$/]/).test(String.fromCharCode(evt.charCode));
-            }
-            else if (this.__type === 'url') {
-                return (/[A-Za-z0-9\-\.?:\{\}\[\]=&#%!()^_\+$/]/).test(String.fromCharCode(evt.charCode));
-            }
-            return true;
+            var rx = '.';
+            if (this.__type === 'tel')
+                rx = '[0-9]';
+            if (this.__format === 'number')
+                rx = '[0-9\\-]';
+            if (this.__format === 'decimal')
+                rx = '[0-9\\-\\.]';
+            if (this.__type === 'email')
+                rx = '[A-Za-z0-9\\-\\.@_\\+$/]';
+            if (this.__type === 'url')
+                rx = '[A-Za-z0-9\\-\\.?:\\{\\}\\[\\]=&#%!()^_\\+$/]';
+            return new RegExp(rx).test(String.fromCharCode(evt.charCode));
         };
         UIInputGroup.prototype.format = function (evt) {
             var val = isEmpty(evt.target.value) ? '' : evt.target.value;
@@ -228,7 +231,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             else if (this.__format === 'email' || this.__format === 'url') {
                 val = val.toLowerCase();
             }
-            evt.target.value = val;
+            this.__value = val;
             setTimeout(function () { return evt.target.selectionStart = evt.target.selectionEnd = start; }, 10);
             return val;
         };

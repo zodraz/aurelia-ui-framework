@@ -34,7 +34,7 @@
 	font-weight: 600;
 	position: relative;
 	color: $input-label-text;
-	padding: 0.4rem 0 0.2rem 0;
+	padding: 0.4rem 0.2rem 0.2rem;
 	@include padding(end, 1rem);
 
 	&:after {
@@ -60,6 +60,22 @@
 		size: 0.8em;
 	  }
 	  color: $text-muted;
+	}
+  }
+
+  &.ui-label-hide .ui-label {
+	display: none;
+  }
+  &.ui-label-top {
+	@include flex-direction(column);
+	.ui-label {
+	  @include flex-basis(auto);
+	  width: auto;
+	  text-align: left;
+	  text-align: start;
+	}
+	.ui-control-wrapper {
+	  @include align-self(stretch);
 	}
   }
 

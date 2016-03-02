@@ -7,6 +7,13 @@ export class Home {
 
 	tmp = 'no click yet';
 
-	v1=22;
-	v2=75;
+	v1 = 22;
+	v2 = 75;
+
+	pi = '+914027731562,018';
+	pn      = '+971506347342,002';
+	pnIsd   = '971';
+	pnArea  = '050';
+	pnPhone = '6347342';
+	pnExt   = '002';
 }

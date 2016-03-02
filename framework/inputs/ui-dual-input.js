@@ -13,9 +13,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "./ui-input"], function (require, exports, aurelia_framework_1, ui_input_1) {
-    var UIInput = (function (_super) {
-        __extends(UIInput, _super);
-        function UIInput() {
+    var UIDualInput = (function (_super) {
+        __extends(UIDualInput, _super);
+        function UIDualInput() {
             _super.apply(this, arguments);
             this.__dual = true;
             this.value = '';
@@ -29,65 +29,65 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "value", void 0);
+        ], UIDualInput.prototype, "value", void 0);
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "valueSecond", void 0);
+        ], UIDualInput.prototype, "valueSecond", void 0);
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', Boolean)
-        ], UIInput.prototype, "checked", void 0);
+        ], UIDualInput.prototype, "checked", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
-        ], UIInput.prototype, "disabled", void 0);
+        ], UIDualInput.prototype, "disabled", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
-        ], UIInput.prototype, "readonly", void 0);
+        ], UIDualInput.prototype, "readonly", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "prefixIcon", void 0);
+        ], UIDualInput.prototype, "prefixIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "prefixText", void 0);
+        ], UIDualInput.prototype, "prefixText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "suffixIcon", void 0);
+        ], UIDualInput.prototype, "suffixIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "suffixText", void 0);
+        ], UIDualInput.prototype, "suffixText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "buttonIcon", void 0);
+        ], UIDualInput.prototype, "buttonIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "buttonText", void 0);
+        ], UIDualInput.prototype, "buttonText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "helpText", void 0);
+        ], UIDualInput.prototype, "helpText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "placeholder", void 0);
+        ], UIDualInput.prototype, "placeholder", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIInput.prototype, "placeholderSecond", void 0);
-        UIInput = __decorate([
+        ], UIDualInput.prototype, "placeholderSecond", void 0);
+        UIDualInput = __decorate([
             aurelia_framework_1.useView('./ui-input.html'),
             aurelia_framework_1.customElement('ui-dual-input'), 
             __metadata('design:paramtypes', [])
-        ], UIInput);
-        return UIInput;
+        ], UIDualInput);
+        return UIDualInput;
     })(ui_input_1.UIInputGroup);
-    exports.UIInput = UIInput;
+    exports.UIDualInput = UIDualInput;
 });
