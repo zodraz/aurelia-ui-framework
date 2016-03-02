@@ -8,7 +8,7 @@
 // $font-family-serif
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 // Comment next line to not include flags
-//@import "utility/flags";
+@import "utility/flags";
 
 // OVERRIDE APP VARIABLES HERE
 @import "theme-dark";

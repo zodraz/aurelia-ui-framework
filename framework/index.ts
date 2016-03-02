@@ -27,6 +27,9 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./inputs/ui-button');
 	aurelia.globalResources('./inputs/ui-switch');
 	aurelia.globalResources('./inputs/ui-option');
+	aurelia.globalResources('./inputs/ui-input');
+	aurelia.globalResources('./inputs/ui-textarea');
+	aurelia.globalResources('./inputs/ui-dual-input');
 
 	/** Utils **/
 	aurelia.globalResources('./utils/ui-converters');

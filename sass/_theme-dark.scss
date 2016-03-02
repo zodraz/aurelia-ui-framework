@@ -93,7 +93,7 @@ $button-warning-border: darken($warning, 20%) !default;
 
 // INPUT
 $placeholder-color: $slate-gray !default;
-$input-bg: $black-olive !default;
+$input-bg: $arsenic !default;
 $input-text: $base-text !default;
 $input-label-text: $cadet-gray !default;
 $input-border: $base-border-color !default;
@@ -101,7 +101,7 @@ $input-focus-color: $primary !default;
 $input-valid-color: $pine !default;
 $input-invalid-color: $madder-lake !default;
 $input-addon-text: $primary !default;
-$input-addon-bg: $arsenic !default;
+$input-addon-bg: $black-olive !default;
 $input-readonly-bg: shade($input-bg, 2%) !default;
 $input-disabled-bg: darken($input-bg, 10%) !default;
 

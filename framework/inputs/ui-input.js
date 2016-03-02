@@ -1,0 +1,307 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_ui_framework_1) {
+    var UIInputGroup = (function () {
+        function UIInputGroup(element) {
+            this.element = element;
+            this.__id = "auf-" + seed++;
+            this.__type = 'text';
+            this.__format = 'text';
+            this.__checkbox = false;
+            this.__value = '';
+            this.__value2 = '';
+            this.value = '';
+            this.valueSecond = '';
+            this.checked = false;
+            this.readonly = false;
+            this.disabled = false;
+            this.ALPHA = "\\u0041-\\u005a\\u0061-\\u007a\\u00aa\\u00c0-\\u02af\\u0370-\\u0481\\u048a-\\u05ea\\u0621-\\u065e\\u066e-\\u06ef\\u0710-\\u072f\\u074d-\\u07a5\\u07ca-\\u07ea\\u0800-\\u082c\\u0900-\\u0964"
+                + "\\u0981-\\u09e3\\u0a01-\\u0a5e\\u0a81-\\u0ae3\\u0b01-\\u0b63\\u0b82-\\u0bd7\\u0c01-\\u0c63\\u0c82-\\u0ce3\\u0d63\\u0d7a-\\u0e4f\\u0e5a-\\u0ecd\\u0f00-\\u0f1f\\u0f34-\\u103f\\u104c-\\u108f\\u109a-\\u1368"
+                + "\\u1380-\\u17dd\\u17f0-\\u180e\\u1820-\\u1940\\u1950-\\u19c9\\u19e0-\\u1a7f\\u1aa0-\\u1b4b\\u1b80-\\u1baf\\u1c00-\\u1c3f\\u1c5a-\\u1dbf\\u1dd3-\\u1ffe\\u2c00-\\u2dff\\u3041-\\u3243\\ua000-\\ua827"
+                + "\\ua840-\\ua8cf\\ua90a-\\ua9cf\\uaa00-\\uaa4d\\uaa60-\\ufdfb\\ufe70-\\ufefc\\u3400-\\u4db5\\u4e00-\\u9fa5";
+            this.DIGIT = "\\u0030-\\u0039\\u0660-\\u0669\\u06f0-\\u06f9\\u07c0-\\u07c9\\u0966-\\u096f\\u09e6-\\u09ef\\u0a66-\\u0a6f\\u0ae6-\\u0aef\\u0b66-\\u0b6f\\u0be6-\\u0bef\\u0c66-\\u0c6f\\u0ce6-\\u0cef\\u0d66-\\u0d6f"
+                + "\\u0e50-\\u0e59\\u0ed0-\\u0ed9\\u0f20-\\u0f33\\u1040-\\u1049\\u1090-\\u1099\\u1369-\\u137c\\u17e0-\\u17e9\\u1810-\\u1819\\u1946-\\u194f\\u19d0-\\u19d9\\u1a80-\\u1a99\\u1b50-\\u1b59\\u1bb0-\\u1bb9\\u1c40-\\u1c49"
+                + "\\u1c50-\\u1c59\\ua620-\\ua629\\ua8d0-\\ua8d9\\ua900-\\ua909\\ua9d0-\\ua9d9\\uaa50-\\uaa59\\uabf0-\\uabf9";
+            if (this.element.hasAttribute('number')) {
+                this.__type = 'number';
+                this.__format = 'number';
+            }
+            else if (this.element.hasAttribute('decimal')) {
+                this.__type = 'number';
+                this.__format = 'decimal';
+            }
+            else if (this.element.hasAttribute('capitalize')) {
+                this.__format = 'title';
+            }
+            else if (this.element.hasAttribute('email')) {
+                this.__type = 'email';
+                this.__format = 'email';
+            }
+            else if (this.element.hasAttribute('url')) {
+                this.__type = 'url';
+                this.__format = 'url';
+            }
+            else if (this.element.hasAttribute('password')) {
+                this.__type = 'password';
+            }
+            else if (this.element.hasAttribute('search')) {
+                this.__type = 'search';
+            }
+        }
+        UIInputGroup.prototype.bind = function () {
+            this.__checkbox = this.element.hasAttribute('checkbox');
+            if (!this.__checkbox)
+                this.checked = true;
+            if (this.__checkbox)
+                this.checked = isTrue(this.checked);
+            this.disabled = this.element.hasAttribute('disabled');
+            this.readonly = this.element.hasAttribute('readonly');
+            if (!isEmpty(this.value))
+                this.__value = this.value;
+            if (!isEmpty(this.valueSecond))
+                this.__value2 = this.valueSecond;
+        };
+        UIInputGroup.prototype.attached = function () {
+            var _this = this;
+            if (this.element.hasAttribute('required'))
+                this.__label.classList.add('ui-required');
+            var clr = this.element.querySelector('.ui-clear');
+            if (clr)
+                clr.style.left = (this.__input.offsetWidth + this.__input.offsetLeft - 24) + 'px';
+            if (this.readonly === true) {
+                this.__input.attributes.setNamedItem(document.createAttribute('readonly'));
+                if (this.__input2)
+                    this.__input2.attributes.setNamedItem(document.createAttribute('readonly'));
+            }
+            if (this.disabled === true || this.checked === false) {
+                this.__input.attributes.setNamedItem(document.createAttribute('disabled'));
+                if (this.__input2)
+                    this.__input2.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+            if (this.__chkbox && this.disabled === true) {
+                this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+            this.__input.oninput = function (evt) { return _this.value = _this.format(evt); };
+            this.__input.onkeypress = function (evt) { return _this.keyPress(evt); };
+            if (this.__input2) {
+                var clr_1 = this.element.querySelector('.ui-clear2');
+                if (clr_1)
+                    clr_1.style.left = (this.__input2.offsetWidth + this.__input2.offsetLeft - 24) + 'px';
+                this.__input2.oninput = function (evt) { return _this.valueSecond = _this.format(evt); };
+                this.__input2.onkeypress = function (evt) { return _this.keyPress(evt); };
+            }
+        };
+        UIInputGroup.prototype.clearInput = function (isSecond) {
+            if (isSecond === true)
+                this.valueSecond = '';
+            if (isSecond !== true)
+                this.value = '';
+        };
+        UIInputGroup.prototype.checkedChanged = function () {
+            if (!this.__chkbox)
+                return;
+            if (this.__input.attributes.getNamedItem('disabled') !== null) {
+                this.__input.attributes.removeNamedItem('disabled');
+                if (this.__input2)
+                    this.__input2.attributes.removeNamedItem('disabled');
+            }
+            if (this.checked === false) {
+                this.__input.attributes.setNamedItem(document.createAttribute('disabled'));
+                if (this.__input2)
+                    this.__input2.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+            aurelia_ui_framework_1.UIEvent.fireEvent('checked', this.element, this.checked);
+        };
+        UIInputGroup.prototype.readonlyChanged = function () {
+            if (this.__input.attributes.getNamedItem('readonly') !== null) {
+                this.__input.attributes.removeNamedItem('readonly');
+                if (this.__input2)
+                    this.__input2.attributes.removeNamedItem('readonly');
+            }
+            if (this.readonly === true) {
+                this.__input.attributes.setNamedItem(document.createAttribute('readonly'));
+                if (this.__input2)
+                    this.__input2.attributes.setNamedItem(document.createAttribute('readonly'));
+            }
+            if (this.__chkbox && this.__chkbox.attributes.getNamedItem('disabled') !== null) {
+                this.__chkbox.attributes.removeNamedItem('disabled');
+            }
+            if (this.__chkbox && this.readonly === true) {
+                this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+        };
+        UIInputGroup.prototype.valueChanged = function (newValue) {
+            this.__value = newValue;
+        };
+        UIInputGroup.prototype.valueSecondChanged = function (newValue) {
+            this.__value2 = newValue;
+        };
+        UIInputGroup.prototype.disabledChanged = function () {
+            this.disable();
+        };
+        UIInputGroup.prototype.disable = function (disabled) {
+            if (this.__input.attributes.getNamedItem('disabled') !== null) {
+                this.__input.attributes.removeNamedItem('disabled');
+                if (this.__input2)
+                    this.__input2.attributes.removeNamedItem('disabled');
+            }
+            if (disabled === true || this.disabled === true || this.checked === false) {
+                this.__input.attributes.setNamedItem(document.createAttribute('disabled'));
+                if (this.__input2)
+                    this.__input2.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+            if (this.__chkbox && this.__chkbox.attributes.getNamedItem('disabled') !== null) {
+                this.__chkbox.attributes.removeNamedItem('disabled');
+            }
+            if (this.__chkbox && (disabled === true || this.disabled === true)) {
+                this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
+            }
+        };
+        UIInputGroup.prototype.onAddonClick = function ($event) {
+            $event.preventDefault();
+            aurelia_ui_framework_1.UIEvent.fireEvent('addon', this.element, this);
+        };
+        UIInputGroup.prototype.keyPress = function (evt) {
+            if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0)
+                return true;
+            if (evt.target.type !== 'textarea' && (evt.which || evt.keyCode) === 13) {
+                this.format(evt);
+                return aurelia_ui_framework_1.UIEvent.fireEvent('enterpressed', this.element, this);
+            }
+            if (this.__type === 'number') {
+                return (/[0-9\-]/).test(String.fromCharCode(evt.charCode));
+            }
+            else if (this.__type === 'decimal') {
+                return (/[0-9\-\.]/).test(String.fromCharCode(evt.charCode));
+            }
+            else if (this.__type === 'email') {
+                return (/[A-Za-z0-9\-\.@_\+$/]/).test(String.fromCharCode(evt.charCode));
+            }
+            else if (this.__type === 'url') {
+                return (/[A-Za-z0-9\-\.?:\{\}\[\]=&#%!()^_\+$/]/).test(String.fromCharCode(evt.charCode));
+            }
+            return true;
+        };
+        UIInputGroup.prototype.format = function (evt) {
+            var val = isEmpty(evt.target.value) ? '' : evt.target.value;
+            var start = evt.target.selectionStart;
+            if (this.__format === 'title') {
+                val = val.replace(new RegExp('[' + this.ALPHA + '\']+(?=[\\.\\-&\\s]*)', 'g'), function (txt) {
+                    if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
+                        return txt.toUpperCase();
+                    if (txt.toLowerCase()
+                        .indexOf("mc") == 0) {
+                        return txt.substr(0, 1)
+                            .toUpperCase() +
+                            txt.substr(1, 1)
+                                .toLowerCase() +
+                            txt.substr(2, 1)
+                                .toUpperCase() +
+                            txt.substr(3);
+                    }
+                    if (txt.toLowerCase()
+                        .indexOf("mac") == 0) {
+                        return txt.substr(0, 1)
+                            .toUpperCase() +
+                            txt.substr(1, 2)
+                                .toLowerCase() +
+                            txt.substr(3, 1)
+                                .toUpperCase() +
+                            txt.substr(4);
+                    }
+                    return txt.charAt(0)
+                        .toUpperCase() + txt.substr(1);
+                });
+            }
+            else if (this.__format === 'email' || this.__format === 'url') {
+                val = val.toLowerCase();
+            }
+            evt.target.value = val;
+            setTimeout(function () { return evt.target.selectionStart = evt.target.selectionEnd = start; }, 10);
+            return val;
+        };
+        UIInputGroup = __decorate([
+            aurelia_framework_1.autoinject(), 
+            __metadata('design:paramtypes', [Element])
+        ], UIInputGroup);
+        return UIInputGroup;
+    })();
+    exports.UIInputGroup = UIInputGroup;
+    var UIInput = (function (_super) {
+        __extends(UIInput, _super);
+        function UIInput() {
+            _super.apply(this, arguments);
+            this.value = '';
+            this.checked = false;
+            this.disabled = false;
+            this.readonly = false;
+            this.placeholder = '';
+        }
+        __decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "value", void 0);
+        __decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
+            __metadata('design:type', Boolean)
+        ], UIInput.prototype, "checked", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', Boolean)
+        ], UIInput.prototype, "disabled", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', Boolean)
+        ], UIInput.prototype, "readonly", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "prefixIcon", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "prefixText", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "suffixIcon", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "suffixText", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "buttonIcon", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "buttonText", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "helpText", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "placeholder", void 0);
+        UIInput = __decorate([
+            aurelia_framework_1.customElement('ui-input'), 
+            __metadata('design:paramtypes', [])
+        ], UIInput);
+        return UIInput;
+    })(UIInputGroup);
+    exports.UIInput = UIInput;
+});

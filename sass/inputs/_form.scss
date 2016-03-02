@@ -23,7 +23,7 @@
 }
 
 .ui-input-group {
-  @include flex-row($align: flex-start, $wrap: false);
+  @include flex-row($align: flex-start, $wrap: true);
   margin-bottom: 0.5rem;
 
   .ui-label {
@@ -65,5 +65,144 @@
 
   .ui-control-wrapper {
 	@include flex(1 1 auto);
+
+	.ui-input-help {
+	  text-align: center;
+	  padding: 0.1rem 0.5rem;
+	  font-size: 0.8rem;
+	}
+
+	.ui-input-control {
+	  @include flex-row($align: stretch, $wrap: false);
+	  border: 1px solid $input-border;
+	  border-radius: $base-border-radius;
+	  background: $input-addon-bg;
+	  overflow: hidden;
+	  position: relative;
+
+	  .ui-clear {
+		z-index: 2;
+		opacity: 0.4;
+		display: none;
+		cursor: pointer;
+		width: 24px;
+		@include transition(opacity 0.1s);
+		@include position(absolute, 0 null 0 null);
+		&.show-clear {
+		  display: inline-block;
+		}
+		&.show-clear:hover {
+		  opacity: 1;
+		}
+		span {
+		  height: 24px;
+		  width: 24px;
+		  padding-top: 0.6rem;
+		  font-size: 0.5rem;
+		}
+	  }
+
+	  .ui-addon {
+		@include flex(0 0 auto);
+		color: $input-addon-text;
+		padding: 0.3rem;
+		z-index: 3;
+		border: {
+		  width: 0 1px;
+		  style: solid;
+		  color: $input-border;
+		}
+		&:last-child {
+		  border-right: none;
+		}
+		&:first-child {
+		  border-left: none;
+		}
+
+		span {
+		  vertical-align: middle;
+		  line-height: 1;
+		  font-size: 1rem;
+		  font-weight: $font-weight-strong;
+		}
+		span.ui-icon {
+		  font-size: 1.1rem;
+		}
+
+		&.ui-option {
+		  @include align-items(flex-start);
+		  .ui-check-mark {
+			margin-top: 2px;
+		  }
+
+		  &:first-child {
+			@include padding(start, 0.5rem);
+		  }
+		}
+	  }
+
+	  .ui-addon-button {
+		z-index: 3;
+		@include flex(0 0 auto);
+		@include box-shadow(0 1px 2px 0 $snow inset);
+		background: $button-secondary-bg;
+		color: $button-secondary-text;
+		font-size: 1rem;
+		border-left: 1px solid $input-border;
+
+		&:active {
+		  @include box-shadow(0 1px 2px 0 $smoke inset, 0 0 9px 3px shade($button-secondary-bg, 15%) inset);
+		}
+	  }
+
+	  .ui-input {
+		z-index: 1;
+		margin: 0;
+		outline: none;
+		font-size: 1rem;
+		padding: 0.3rem 0.7rem 0.35rem;
+		color: $input-text;
+		border: none;
+		background: $input-bg;
+		@include box-shadow(0 0 3px 0 $base-shadow-color inset);
+		@include flex(1 1 auto);
+
+		&:focus {
+		  padding-bottom: .1rem;
+		  border-bottom: .25rem solid $input-focus-color;
+		}
+
+		&[disabled] {
+		  cursor: not-allowed;
+		  background: $input-disabled-bg;
+		}
+		&[readonly] {
+		  background: $input-readonly-bg;
+		}
+	  }
+	}
+  }
+
+  &.fixed {
+	.ui-control-wrapper {
+	  @include flex(1 0 240px);
+	}
+  }
+  &.ui-invalid:not(.ui-disabled) {
+	.ui-control-wrapper {
+	  .ui-input-control {
+		border-color: $input-invalid-color;
+		.ui-addon:not(.ui-option) {
+		  background: $input-invalid-color;
+		  color: contrast($input-invalid-color);
+		}
+		.ui-input:focus {
+		  border-color: $input-invalid-color;
+		}
+	  }
+	}
+  }
+  &.ui-disabled .ui-clear {
+	display: none !important;
   }
 }

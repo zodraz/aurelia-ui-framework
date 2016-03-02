@@ -5,6 +5,8 @@ define(["require", "exports"], function (require, exports) {
             this.radioValue = 2;
             this.btnToggle = 3;
             this.tmp = 'no click yet';
+            this.v1 = 22;
+            this.v2 = 75;
         }
         return Home;
     })();

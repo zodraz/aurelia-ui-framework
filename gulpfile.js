@@ -56,6 +56,7 @@ var config = {
 	bundles: {
 		"dist/demo": {
 			includes: [
+				'main',
 				'./src/**/*',
 				'./src/**/*.html!text'
 			],

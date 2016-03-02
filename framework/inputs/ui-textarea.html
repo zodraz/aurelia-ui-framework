@@ -1,0 +1,32 @@
+<template class="ui-input-group ${!checked || disabled || readonly?'ui-disabled':''}">
+	<label class="ui-label" ref="__label" for="${__id}">
+		<content></content>
+	</label>
+	<div class="ui-control-wrapper">
+		<div class="ui-input-control">
+			<div class="ui-addon" if.bind="prefixText || prefixIcon">
+				<span if.bind="prefixIcon" class="ui-icon ${prefixIcon}"></span>
+				<span if.bind="prefixText" innerhtml.bind="prefixText"></span>
+			</div>
+			<div class="ui-addon ui-option ui-checkbox" if.bind="__checkbox">
+				<input class="ui-option-input" type="checkbox" checked.bind="checked"
+				       id="${__id+'-chk'}" ref="__chkbox"/>
+				<span class="ui-check-mark"></span>
+			</div>
+			<textarea ref="__input" class="ui-input" id="${__id}" autocomplete="off" value.bind="__value"
+			          rows.bind="rows" placeholder.bind="placeholder"></textarea>
+			<div class="ui-addon" if.bind="suffixIcon || suffixText">
+				<span if.bind="suffixIcon" class="ui-icon ${suffixIcon}"></span>
+				<span if.bind="suffixText" innerhtml.bind="suffixText"></span>
+			</div>
+			<button if.bind="buttonText || buttonIcon" click.trigger="onAddonClick($event)"
+			        class="ui-addon-button ${buttonIcon}" innerhtml.bind="buttonText"></button>
+
+			<span class="ui-clear ${__value?'show-clear':''}" click.trigger="clearInput()">
+					<span class="fi-vaadin-close"></span>
+			</span>
+		</div>
+		<div if.bind="helpText" innerhtml.bind="helpText"
+		     class="ui-input-help ui-text-muted"></div>
+	</div>
+</template>

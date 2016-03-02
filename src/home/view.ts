@@ -7,4 +7,6 @@ export class Home {
 
 	tmp = 'no click yet';
 
+	v1=22;
+	v2=75;
 }
