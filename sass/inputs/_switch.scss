@@ -41,7 +41,7 @@
 	  font-size: 10px;
 	  text-transform: uppercase;
 	  cursor: pointer;
-	  background-color: #f9f9f9;
+	  background-color: $input-bg;
 	  border-radius: inherit;
 	  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.32), inset 0 0 2px rgba(0, 0, 0, 0.35);
 	  @include transition(opacity .25s ease-out, background .25s ease-out)
@@ -58,7 +58,7 @@
 	.ui-switch-label:before {
 	  content: attr(data-off);
 	  right: 11px;
-	  color: #aaa;
+	  color: $input-text;
 	  text-shadow: 0 1px rgba(255, 255, 255, 0.5)
 	}
 
@@ -117,25 +117,25 @@
 	  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2)
 	}
 
-	&.ui-switch-primary > .ui-switch-input ~ .ui-switch-label {
-	  background-color: rgba($primary, 0.2);
-	}
-
-	&.ui-switch-success > .ui-switch-input ~ .ui-switch-label {
-	  background-color: rgba($success, 0.2);
-	}
-
-	&.ui-switch-warning > .ui-switch-input ~ .ui-switch-label {
-	  background-color: rgba($warning, 0.2);
-	}
-
-	&.ui-switch-info > .ui-switch-input ~ .ui-switch-label {
-	  background-color: rgba($info, 0.2);
-	}
-
-	&.ui-switch-danger > .ui-switch-input ~ .ui-switch-label {
-	  background-color: rgba($danger, 0.2);
-	}
+	//&.ui-switch-primary > .ui-switch-input ~ .ui-switch-label {
+	//  background-color: rgba($primary, 0.1);
+	//}
+	//
+	//&.ui-switch-success > .ui-switch-input ~ .ui-switch-label {
+	//  background-color: rgba($success, 0.1);
+	//}
+	//
+	//&.ui-switch-warning > .ui-switch-input ~ .ui-switch-label {
+	//  background-color: rgba($warning, 0.1);
+	//}
+	//
+	//&.ui-switch-info > .ui-switch-input ~ .ui-switch-label {
+	//  background-color: rgba($info, 0.1);
+	//}
+	//
+	//&.ui-switch-danger > .ui-switch-input ~ .ui-switch-label {
+	//  background-color: rgba($danger, 0.1);
+	//}
 
 	&.ui-switch-primary > .ui-switch-input:checked ~ .ui-switch-label {
 	  background-color: $primary;

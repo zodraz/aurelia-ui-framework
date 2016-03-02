@@ -7,7 +7,7 @@
 
 import {customElement, bindable, inlineView} from "aurelia-framework";
 import {Router} from "aurelia-router";
-import {UIEvent} from "aurelia-ui-framework";
+import {UIEvent, UIApplication} from "aurelia-ui-framework";
 
 @customElement('ui-menu')
 export class UIMenu {
@@ -22,7 +22,7 @@ export class UIMenu {
 	 */
 	@bindable() menu:Array<any>;
 
-	constructor(public element:Element) {
+	constructor(public element:Element, public appState:UIApplication) {
 	}
 
 	isActive(route) {

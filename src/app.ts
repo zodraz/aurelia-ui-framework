@@ -1,6 +1,9 @@
 import {UIViewportOptions, UIUtils, UIEvent} from "aurelia-ui-framework";
+import {autoinject} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIApplication} from "../framework/utils/ui-application";
 
+@autoinject()
 export class App {
 	private appOptions = new UIViewportOptions({
 		title    : 'Aurelia UI Framework',
@@ -12,10 +15,10 @@ export class App {
 	private evtLogout;
 
 	configureRouter(config, router:Router) {
-		this.router                    = router;
-		config.title                   = this.appOptions.title;
-		config.options.showLogo        = true;
-		config.options.isAuthenticated = true;
+		this.router                       = router;
+		config.title                      = this.appOptions.title;
+		config.options.showLogo           = true;
+		config.options.showAuthentication = true;
 		//config.addPipelineStep('authorize', AuthInterceptor);
 		config.map([{
 			route   : 'login',
@@ -39,7 +42,7 @@ export class App {
 			nav     : true,
 			auth    : false,
 			name    : 'core'
-		},{
+		}, {
 			route   : 'components',
 			moduleId: './components/view',
 			settings: {icon: 'fi-metrize-layers-in-circular-button'},
@@ -47,7 +50,7 @@ export class App {
 			nav     : true,
 			auth    : false,
 			name    : 'core'
-		},{
+		}, {
 			route   : 'inputs',
 			moduleId: './inputs/view',
 			settings: {icon: 'fi-metrize-marker-with-three-dots-circular-button'},
@@ -60,7 +63,9 @@ export class App {
 		}]);
 	}
 
-	constructor() {
+	constructor(public appState:UIApplication) {
+		this.appState.IsAuthenticated = true;
+		this.appState.Username        = 'user@clubhotel.com';
 	}
 
 	attached() {

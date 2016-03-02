@@ -34,8 +34,11 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 Router extra options
 
 ```javascript
-router.options = { isAuthenticated:boolean, showLogo:boolean }
+router.options = { showAuthentication:boolean, showLogo:boolean }
 ```
+
+`showAuthentication`: Controls whether to show login/logout links in the menu
+
 
 Route extra options
 

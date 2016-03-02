@@ -9,8 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_ui_framework_1) {
     var UIMenu = (function () {
-        function UIMenu(element) {
+        function UIMenu(element, appState) {
             this.element = element;
+            this.appState = appState;
         }
         UIMenu.prototype.isActive = function (route) {
             return route.isActive || route.href == location.hash ||
@@ -33,7 +34,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui
         ], UIMenu.prototype, "menu", void 0);
         UIMenu = __decorate([
             aurelia_framework_1.customElement('ui-menu'), 
-            __metadata('design:paramtypes', [Element])
+            __metadata('design:paramtypes', [Element, aurelia_ui_framework_1.UIApplication])
         ], UIMenu);
         return UIMenu;
     })();

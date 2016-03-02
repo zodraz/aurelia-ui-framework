@@ -1,5 +1,5 @@
 <template class="ui-menu" click.trigger="onClick($event)">
-	<div if.bind="router.isRoot && router.options.isAuthenticated" class="ui-auth-info">
+	<div if.bind="router.isRoot && appState.IsAuthenticated" class="ui-auth-info">
 		<div class="ui-text-center ui-pad-all">
 			<div class="ui-app-logo" if.bind="router.options.showLogo"></div>
 		</div>
@@ -13,7 +13,7 @@
 
 	<p class="ui-menu-title" if.bind="!router.isRoot && router.title">${router.title}</p>
 	<div repeat.for="route of router.navigation"
-		 if.bind="!route.config.auth || (route.config.auth && router.options.isAuthenticated)">
+		 if.bind="!route.config.auth || (route.config.auth && appState.IsAuthenticated)">
 		<hr if.bind="route.settings.sectionStart"/>
 		<p class="ui-menu-section" if.bind="route.settings.sectionTitle">${route.settings.sectionTitle}</p>
 
@@ -22,12 +22,12 @@
 			<span class="ui-icon ${route.settings.icon}"></span>&nbsp;${route.settings.menuTitle || route.title}</a>
 	</div>
 
-	<div if.bind="router.isRoot && !router.options.isAuthenticated">
+	<div if.bind="router.isRoot && router.options.showAuthentication && !appState.IsAuthenticated">
+		<hr/>
 		<a class="ui-menu-link ui-strong" href="#/login">
 			<span class="fi-metrize-key-circular-button"></span> Sign In</a>
-		<hr/>
 	</div>
-	<div if.bind="router.isRoot && router.options.isAuthenticated">
+	<div if.bind="router.isRoot && router.options.showAuthentication && appState.IsAuthenticated">
 		<hr/>
 		<a class="ui-menu-link ui-strong" click.trigger="logout()">
 			<span class="fi-metrize-right-arrow-in-circular-button"></span> Sign Out</a>

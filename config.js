@@ -13,6 +13,7 @@ System.config({
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.1.2",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.1.1",
     "aurelia-validation": "npm:aurelia-validation@0.6.2",
+	"aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.1.1",
     "fetch": "github:github/fetch@0.11.0",
     "lodash": "npm:lodash@4.5.1",
     "moment": "npm:moment@2.11.2",

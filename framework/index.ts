@@ -36,4 +36,5 @@ export {UIViewportOptions} from "./core/ui-viewport";
 
 export {UIEvent} from "./utils/ui-event";
 export {UIFormat} from "./utils/ui-formatters";
+export {UIApplication} from "./utils/ui-application";
 export {UIUtils, _, moment, numeral} from "./utils/ui-utils";

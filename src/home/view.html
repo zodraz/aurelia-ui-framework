@@ -1,5 +1,5 @@
 <template>
-	<ui-page data-title="Aurelia UI Framework 2">
+	<ui-page page-title="Aurelia UI Framework 2">
 		<style>
 			.home-info-box {
 				border: 1px solid #e5e5e5;
@@ -126,11 +126,11 @@
 							<div>
 								<ui-switch checked.bind="allEnabled" width="108"
 										   label-on="All Enabled" label-off="All Disabled"></ui-switch>
-								<ui-switch checked="true" disabled.bind="!allEnabled" primary>Primary</ui-switch>
-								<ui-switch checked="true" disabled.bind="!allEnabled" info>Info</ui-switch>
-								<ui-switch checked="true" disabled.bind="!allEnabled" danger>Danger</ui-switch>
-								<ui-switch checked="true" disabled.bind="!allEnabled" success>Success</ui-switch>
-								<ui-switch checked="true" disabled.bind="!allEnabled" warning>Warning</ui-switch>
+								<ui-switch disabled.bind="!allEnabled" primary>Primary</ui-switch>
+								<ui-switch disabled.bind="!allEnabled" info>Info</ui-switch>
+								<ui-switch disabled.bind="!allEnabled" danger>Danger</ui-switch>
+								<ui-switch disabled.bind="!allEnabled" success>Success</ui-switch>
+								<ui-switch disabled.bind="!allEnabled" warning>Warning</ui-switch>
 							</div>
 							<hr/>
 							<div>

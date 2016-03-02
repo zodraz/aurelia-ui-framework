@@ -82,17 +82,18 @@
   }
 
   pre > code {
-	background: #f0f0f0;
-	border: 1px solid #e5e5e5;
-	padding: 0.7rem 1.2rem;
-	display: block;
-	max-height: 270px;
-	overflow: auto;
 	margin: 1rem;
+	display: block;
+	overflow: auto;
+	max-height: 270px;
+	color: $pre-code-text;
+	padding: 0.7rem 1.2rem;
+	background: $pre-code-bg;
+	border: 1px solid $pre-code-border;
 	border-radius: $base-border-radius;
-	@include user-select(text);
 	cursor: text;
 	position: relative;
+	@include user-select(text);
 
 	&:after {
 	  color: #f0f0f0;

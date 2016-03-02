@@ -95,6 +95,21 @@ code {
   font-size: 1.5em;
 }
 
+// TEXT ALIGN
+.ui-text-start {
+  text-align: left;
+  text-align: start;
+}
+
+.ui-text-center {
+  text-align: center;
+}
+
+.ui-text-end {
+  text-align: right;
+  text-align: end;
+}
+
 // Colors
 .ui-text-muted {
   color: $text-muted !important;
@@ -121,28 +136,23 @@ code {
 }
 
 .ui-bg-primary {
-  background-color: $primary;
-  color: $primary-text;
+  background-color: $bg-primary;
 }
 
 .ui-bg-info {
-  background-color: $info;
-  color: $coconut;
+  background-color: $bg-info;
 }
 
 .ui-bg-danger {
-  background-color: $danger;
-  color: $coconut;
+  background-color: $bg-danger;
 }
 
 .ui-bg-success {
-  background-color: $success;
-  color: $coconut;
+  background-color: $bg-success;
 }
 
 .ui-bg-warning {
-  background-color: $warning;
-  color: $coconut;
+  background-color: $bg-warning;
 }
 
 .ui-bg-muted {

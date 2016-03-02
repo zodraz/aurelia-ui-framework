@@ -35,6 +35,16 @@ declare module "aurelia-ui-framework" {
 	import {Container, PropertyObserver} from "aurelia-framework";
 	import {Subscription} from "aurelia-event-aggregator";
 
+	// Application State Class
+	export class UIApplication {
+		IsHttpInUse:boolean;
+		IsAuthenticated:boolean;
+		AllowAuthHeader:boolean;
+
+		Username:string;
+	}
+
+	// Utilities
 	export module UIUtils {
 		export function container(container:Container);
 

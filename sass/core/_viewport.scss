@@ -93,7 +93,7 @@
 	min-width: 220px;
 	max-width: 300px;
 	z-index: $z-index-splash+1;
-	color: contrast($app-menu-bg);
+	color: $app-menu-text;
 	background-color: $app-menu-bg;
 	@if ($app-menu-bg-image) {
 	  background-image: image_url($app-menu-bg-image);

@@ -6,16 +6,16 @@
  **/
 @import "utility/colors";
 
-$primary: $amethyst !default;
-$secondary: $white-smoke !default;
+$primary: #5D968E !default;
+$secondary: #BEDCCF !default;
 
-$primary-text: $coconut !default;
-$secondary-text: $amethyst !default;
+$primary-text: #FFFFFF !default;
+$secondary-text: #48544E !default;
 
-$info: #5FBED7 !default;
-$danger: #FB4D3D !default;
-$success: #169376 !default;
-$warning: #F9A838 !default;
+$info: #019DC9 !default;
+$danger: #EE5359 !default;
+$success: #38BD85 !default;
+$warning: #FEB500 !default;
 
 // BASE
 $base-bg: $coconut !default;
@@ -32,8 +32,8 @@ $hr-highlight: $white !default;
 $hr-shadow: $ash-gray !default;
 
 // APP
-$app-header-bg: shade($primary, 20%) !default;
-$app-header-text: $primary-text !default;
+$app-header-bg: #28616E !default;
+$app-header-text: #FFFFFF !default;
 $app-footer-bg: $outer-space !default;
 $app-footer-text: $cadet-gray !default;
 
@@ -46,18 +46,9 @@ $app-menu-active-bg: $primary !default;
 $app-menu-active-text: $primary-text !default;
 $app-menu-active-border: $primary-text !default;
 
-// MENU
-$menu-hover-bg: rgba($primary, 0.6) !default;
-$menu-hover-text: $primary-text !default;
-$menu-click-bg: rgba($primary, 0.3) !default;
-$menu-click-text: $primary-text !default;
-$menu-active-bg: rgba($primary, 0.1) !default;
-$menu-active-text: $primary !default;
-$menu-active-border: $primary !default;
-
 // PAGE
-$page-title-bg: shade($primary, 10%) !default;
-$page-title-text: $primary-text !default;
+$page-title-bg: #B1DBD5 !default;
+$page-title-text: #28616E !default;
 
 $sidebar-bg: rgba($isabelline, .25) !default;
 $sidebar-text: $base-text !default;
@@ -67,6 +58,15 @@ $toolbar-text: $base-text !default;
 
 $statsbar-bg: rgba($secondary, .35) !default;
 $statsbar-text: $secondary-text !default;
+
+// MENU
+$menu-hover-bg: rgba($primary, 0.6) !default;
+$menu-hover-text: $primary-text !default;
+$menu-click-bg: rgba($primary, 0.3) !default;
+$menu-click-text: $primary-text !default;
+$menu-active-bg: rgba($primary, 0.1) !default;
+$menu-active-text: $primary !default;
+$menu-active-border: $primary !default;
 
 // BUTTONS
 $button-default-bg: $snow !default;
@@ -108,5 +108,16 @@ $input-disabled-bg: darken($input-bg, 10%) !default;
 $input-option-color: $charcoal-gray !default;
 $input-option-color-focus: $input-focus-color !default;
 $input-option-color-disabled: $ash-gray !default;
+
+// TYPOGRAPHY
+$bg-primary: #B1DBD5;
+$bg-info: #C6E4EE;
+$bg-danger: #FFDAD3;
+$bg-success: #CBEEDD;
+$bg-warning: #FCDEC3;
+
+$pre-code-bg: #f0f0f0;
+$pre-code-text: #696969;
+$pre-code-border: #e5e5e5;
 
 @import "framework!";
