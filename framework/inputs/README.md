@@ -102,21 +102,66 @@ UIOptionGroup as parent container is mandatory
 
 Attributes common to all input elements except checkbox/radio
 
-###### Singular attributes
-* `checkbox`: add a checkbox to enable/disable input
 
-###### Bindable attributes
-* `disabled`
-* `readonly`
-* `placeholder`
-* `checked`: available only if checkbox is enabled
-* `help-text`: text to be displayed below the input field
+* Singular attributes
 
-* `prefix-icon`: Add-On prefix icon 
-* `prefix-text`: Add-On prefix text
+    * `checkbox`: add a checkbox to enable/disable input
 
-* `suffix-icon`: Add-On suffix icon 
-* `suffix-icon`: Add-On suffix text
+* Bindable attributes
 
-* `button-icon`: Add-On button icon 
-* `button-icon`: Add-On button text
+    * `disabled`
+    
+    * `readonly`
+    
+    * `placeholder`
+    
+    * `checked`: available only if checkbox is enabled
+    
+    * `help-text`: text to be displayed below the input field
+    
+    * `prefix-icon`: Add-On prefix icon 
+    
+    * `prefix-text`: Add-On prefix text
+    
+    * `suffix-icon`: Add-On suffix icon 
+    
+    * `suffix-text`: Add-On suffix text
+    
+    * `button-icon`: Add-On button icon 
+    
+    * `button-text`: Add-On button text
+
+----
+
+### UIPhone
+
+```html
+<ui-phone international|national country.bind=?
+    value.bind=? isd-code.bind=? area-code.bind=? phone.bind=? extension.bind=?>Label</ui-phone>
+```
+
+* All input attributes are applicable except input type
+
+* `international`: accept full phone input, including ISD code
+
+* `national`: requires the country to be set else defaults to US phone format and validation
+
+* `country`: ISO-2 standard country code
+
+* `value`: Full unformatted phone number. eg. +15551234567,123
+
+----
+
+### UIDualInput
+
+```html
+<ui-dual-input value-second.bind=? placeholder-second.bind=?>Label</ui-dual-input>
+```
+
+----
+
+### UITextArea
+
+```html
+<ui-textarea rows.bind=?>Label</ui-textarea>
+```

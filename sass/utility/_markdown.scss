@@ -32,6 +32,15 @@
 	  type: disc;
 	  position: inside;
 	}
+
+	li > ul {
+	  list-style: circle;
+	  @include margin(start, 2rem);
+
+	  li > ul {
+		list-style: square;
+	  }
+	}
   }
 
   ol {
@@ -39,6 +48,16 @@
 	  type: decimal;
 	  position: inside;
 	}
+  }
+
+  li > a {
+	margin: 0.3rem 0;
+	display: inline-block;
+  }
+
+  li > p {
+	padding: 0;
+	margin: 0.3rem 0;
   }
 
   td, th {
@@ -74,11 +93,6 @@
 	&:hover {
 	  box-shadow: 0 0 3px 1px rgba($primary, 0.8);
 	}
-  }
-
-  li > a {
-	margin: 0.3rem 0;
-	display: inline-block;
   }
 
   pre > code {
