@@ -9,18 +9,20 @@ import {UIInputGroup} from "./ui-input";
 
 @customElement('ui-textarea')
 export class UITextarea extends UIInputGroup {
+	protected __type = 'textarea';
+
 	/**
 	 * @property    value
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	value:string     = '';
+	value:string                 = '';
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean  = false;
+	checked:boolean              = false;
 	/**
 	 * @property    disabled
 	 * @type        boolean

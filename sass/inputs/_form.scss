@@ -80,12 +80,34 @@
   }
 
   .ui-control-wrapper {
-	@include flex(1 1 auto);
+	@include flex(1 1 280px);
 
+	&:not(.ui-option-group) {
+	  @include display-flex();
+	  @include flex-direction(column-reverse);
+	  @include align-items(stretch);
+	}
 	.ui-input-help {
-	  text-align: center;
 	  padding: 0.1rem 0.5rem;
 	  font-size: 0.8rem;
+	  color: $input-addon-text;
+	  background: $input-addon-bg;
+	  border: {
+		width: 0 1px 1px;
+		style: solid;
+		color: $input-border;
+	  }
+	  @include border-bottom-radius($base-border-radius);
+
+	  & ~ .ui-input-control {
+		@include border-bottom-radius(0);
+	  }
+
+	  &:before {
+		font-family: Vaadin;
+		content: '\e162';
+		padding: 0 0.2rem;
+	  }
 	}
 
 	.ui-input-control {
@@ -176,12 +198,13 @@
 		margin: 0;
 		outline: none;
 		font-size: 1rem;
+		font-family: $input-font-family;
 		padding: 0.3rem 0.7rem 0.35rem;
 		color: $input-text;
 		border: none;
 		background: $input-bg;
 		@include box-shadow(0 0 3px 0 $base-shadow-color inset);
-		@include flex(1 1 auto);
+		@include flex(1 1 0%);
 
 		&:focus {
 		  padding-bottom: .1rem;
@@ -189,6 +212,7 @@
 		}
 
 		&[disabled] {
+		  color: rgba($input-text, 0.6);
 		  cursor: not-allowed;
 		  background: $input-disabled-bg;
 		}

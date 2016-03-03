@@ -45,11 +45,11 @@ export class UIInputGroup {
 
 	constructor(public element:Element) {
 		if (this.element.hasAttribute('number')) {
-			this.__type   = 'number';
+			//this.__type   = 'number';
 			this.__format = 'number';
 		}
 		else if (this.element.hasAttribute('decimal')) {
-			this.__type   = 'number';
+			//this.__type   = 'number';
 			this.__format = 'decimal';
 		}
 		else if (this.element.hasAttribute('capitalize')) {
@@ -89,9 +89,6 @@ export class UIInputGroup {
 	attached() {
 		if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
 
-		let clr = this.element.querySelector('.ui-clear') as HTMLElement;
-		if (clr) clr.style.left = (this.__input.offsetWidth + this.__input.offsetLeft - 24) + 'px';
-
 		if (this.readonly === true) {
 			this.__input.attributes.setNamedItem(document.createAttribute('readonly'));
 			if (this.__input2)this.__input2.attributes.setNamedItem(document.createAttribute('readonly'));
@@ -108,9 +105,6 @@ export class UIInputGroup {
 		this.__input.onkeypress = (evt)=>this.keyPress(evt);
 
 		if (this.__input2) {
-			let clr = this.element.querySelector('.ui-clear2') as HTMLElement;
-			if (clr) clr.style.left = (this.__input2.offsetWidth + this.__input2.offsetLeft - 24) + 'px';
-
 			this.__input2.oninput = (evt)=>this.valueSecond = this.format(evt);
 			this.__input2.onkeypress = (evt)=>this.keyPress(evt);
 		}
@@ -146,7 +140,7 @@ export class UIInputGroup {
 		if (this.__chkbox && this.__chkbox.attributes.getNamedItem('disabled') !== null) {
 			this.__chkbox.attributes.removeNamedItem('disabled');
 		}
-		if (this.__chkbox && this.readonly === true) {
+		if (this.__chkbox && (this.readonly === true || this.disabled === true)) {
 			this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
 		}
 	}
@@ -175,7 +169,7 @@ export class UIInputGroup {
 		if (this.__chkbox && this.__chkbox.attributes.getNamedItem('disabled') !== null) {
 			this.__chkbox.attributes.removeNamedItem('disabled');
 		}
-		if (this.__chkbox && (disabled === true || this.disabled === true)) {
+		if (this.__chkbox && (disabled === true || this.disabled === true || this.readonly === true)) {
 			this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
 		}
 	}
@@ -205,7 +199,7 @@ export class UIInputGroup {
 	protected format(evt) {
 		let val   = isEmpty(evt.target.value) ? '' : evt.target.value;
 		let start = evt.target.selectionStart;
-		if (this.__format === 'title') {
+		if (this.__format === 'title' && this.__type !== 'textarea') {
 			val = val.replace(new RegExp('[' + this.ALPHA + '\']+(?=[\\.\\-&\\s]*)', 'g'), (txt) => {
 				if (/^[ivxlcm]+$/.test(txt.toLowerCase())) return txt.toUpperCase();
 				if (txt.toLowerCase()
@@ -231,6 +225,9 @@ export class UIInputGroup {
 				return txt.charAt(0)
 						  .toUpperCase() + txt.substr(1);
 			});
+		}
+		else if (this.__format === 'title' && this.__type === 'textarea') {
+
 		}
 		else if (this.__format === 'email' || this.__format === 'url') {
 			val = val.toLowerCase();

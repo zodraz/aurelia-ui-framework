@@ -17,6 +17,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
         __extends(UITextarea, _super);
         function UITextarea() {
             _super.apply(this, arguments);
+            this.__type = 'textarea';
             this.value = '';
             this.checked = false;
             this.disabled = false;

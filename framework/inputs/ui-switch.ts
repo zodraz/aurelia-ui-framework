@@ -7,7 +7,6 @@
 import {autoinject, customElement, bindable, bindingMode, useShadowDOM} from "aurelia-framework";
 
 @autoinject()
-@useShadowDOM()
 @customElement('ui-switch')
 export class UISwitch {
 	private __id = `auf-${seed++}`;

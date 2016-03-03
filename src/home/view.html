@@ -28,11 +28,11 @@
 
 			<ui-section>
 				<ui-content scroll class="ui-pad-all">
-					<ui-row>
+					<ui-row class="ui-border-all">
 						<ui-column padded width="180px" class="ui-bg-danger">Fixed Width Column</ui-column>
 						<ui-column auto padded class="ui-bg-info">Auto Width Column</ui-column>
 						<ui-column fill padded class="ui-bg-success">Stretched Column</ui-column>
-						<ui-column full padded class="ui-bg-warning">Full Width Column</ui-column>
+						<ui-column full padded class="ui-bg-warning ui-border-t">Full Width Column</ui-column>
 					</ui-row>
 					<br/>
 					<ui-row class="ui-border-all">
@@ -157,13 +157,13 @@
 							<ui-row>
 								<ui-column fill>
 									<ui-input required help-text="A sample single line input field" capitalize
-									          value.bind="name"
+									          value.bind="name" disabled.bind="!allEnabled"
 									          prefix-icon="fi-vaadin-add-square" button-text="GO!"
 									          placeholder="Enter a name..">
 										Input
 									</ui-input>
 									<ui-dual-input required help-text.bind="'A sample dual input field '+v1+':'+v2"
-									               decimal
+									               decimal disabled.bind="!allEnabled"
 									               prefix-icon="fi-vaadin-add-square" button-text="Show!"
 									               value.bind="v1" value-second.bind="v2" checkbox checked="true"
 									               placeholder="Latitude.." placeholder-second="Longitude..">
@@ -181,7 +181,7 @@
 									</ui-input>
 								</ui-column>
 								<ui-column fill>
-									<ui-phone required
+									<ui-phone required disabled.bind="!allEnabled"
 									          help-text="Value:${pi} IsdCode:${piIsd} AreaCode:${piArea} Phone:${piPhone} Extension:${piExt}"
 									          international prefix-icon="fi-vaadin-phone"
 									          value.bind="pi" isd-code.bind="piIsd"
@@ -189,7 +189,7 @@
 									          extension.bind="piExt">
 										International Phone
 									</ui-phone>
-									<ui-phone required
+									<ui-phone required disabled.bind="!allEnabled"
 									          help-text="Value:${pn} IsdCode:${pnIsd} AreaCode:${pnArea} Phone:${pnPhone} Extension:${pnExt}"
 									          prefix-icon="fi-vaadin-smartphone" country="ae"
 									          value.bind="pn" isd-code.bind="pnIsd"
@@ -198,7 +198,7 @@
 										National Phone
 									</ui-phone>
 									<ui-textarea required help-text="A sample multiline input field"
-									             placeholder="Enter something.."
+									             placeholder="Enter something.." disabled.bind="!allEnabled"
 									             prefix-icon="fi-vaadin-add-square" button-text="Validate?">
 										Textarea
 									</ui-textarea>

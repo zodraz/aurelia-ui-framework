@@ -88,7 +88,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UISwitch.prototype, "checked", void 0);
         UISwitch = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.useShadowDOM(),
             aurelia_framework_1.customElement('ui-switch'), 
             __metadata('design:paramtypes', [Element])
         ], UISwitch);

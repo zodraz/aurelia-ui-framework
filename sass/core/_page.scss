@@ -29,6 +29,7 @@
 }
 
 .ui-section {
+  overflow: hidden;
   position: relative;
   @include flex(1 1 0%);
 
@@ -87,6 +88,7 @@
 }
 
 .ui-toolbar {
+  @include flex(0 0 auto);
   @include flex-row(center, flex-end, true);
   padding: 0.1rem 0.5rem;
   border: {
@@ -105,6 +107,7 @@
 }
 
 .ui-statsbar {
+  @include flex(0 0 auto);
   z-index: 1;
   border: {
 	width: 1px 0;

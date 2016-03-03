@@ -3,6 +3,8 @@
 		<content></content>
 	</label>
 	<div class="ui-control-wrapper">
+		<div if.bind="helpText" innerhtml.bind="helpText"
+		     class="ui-input-help ui-text-muted"></div>
 		<div class="ui-input-control">
 			<div class="ui-addon" if.bind="prefixText || prefixIcon">
 				<span if.bind="prefixIcon" class="ui-icon ${prefixIcon}"></span>
@@ -22,11 +24,10 @@
 			<button if.bind="buttonText || buttonIcon" click.trigger="onAddonClick($event)"
 			        class="ui-addon-button ${buttonIcon}" innerhtml.bind="buttonText"></button>
 
-			<span class="ui-clear ${__value?'show-clear':''}" click.trigger="clearInput()">
+			<span class="ui-clear ${__value?'show-clear':''}" click.trigger="clearInput()"
+			      css.bind="{right:(__input.parentElement.offsetWidth - (__input.offsetWidth + __input.offsetLeft)) + 'px'}">
 					<span class="fi-vaadin-close"></span>
 			</span>
 		</div>
-		<div if.bind="helpText" innerhtml.bind="helpText"
-		     class="ui-input-help ui-text-muted"></div>
 	</div>
 </template>

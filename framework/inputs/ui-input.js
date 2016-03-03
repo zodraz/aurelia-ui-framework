@@ -35,11 +35,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
                 + "\\u0e50-\\u0e59\\u0ed0-\\u0ed9\\u0f20-\\u0f33\\u1040-\\u1049\\u1090-\\u1099\\u1369-\\u137c\\u17e0-\\u17e9\\u1810-\\u1819\\u1946-\\u194f\\u19d0-\\u19d9\\u1a80-\\u1a99\\u1b50-\\u1b59\\u1bb0-\\u1bb9\\u1c40-\\u1c49"
                 + "\\u1c50-\\u1c59\\ua620-\\ua629\\ua8d0-\\ua8d9\\ua900-\\ua909\\ua9d0-\\ua9d9\\uaa50-\\uaa59\\uabf0-\\uabf9";
             if (this.element.hasAttribute('number')) {
-                this.__type = 'number';
                 this.__format = 'number';
             }
             else if (this.element.hasAttribute('decimal')) {
-                this.__type = 'number';
                 this.__format = 'decimal';
             }
             else if (this.element.hasAttribute('capitalize')) {
@@ -81,9 +79,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             var _this = this;
             if (this.element.hasAttribute('required'))
                 this.__label.classList.add('ui-required');
-            var clr = this.element.querySelector('.ui-clear');
-            if (clr)
-                clr.style.left = (this.__input.offsetWidth + this.__input.offsetLeft - 24) + 'px';
             if (this.readonly === true) {
                 this.__input.attributes.setNamedItem(document.createAttribute('readonly'));
                 if (this.__input2)
@@ -100,9 +95,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             this.__input.oninput = function (evt) { return _this.value = _this.format(evt); };
             this.__input.onkeypress = function (evt) { return _this.keyPress(evt); };
             if (this.__input2) {
-                var clr_1 = this.element.querySelector('.ui-clear2');
-                if (clr_1)
-                    clr_1.style.left = (this.__input2.offsetWidth + this.__input2.offsetLeft - 24) + 'px';
                 this.__input2.oninput = function (evt) { return _this.valueSecond = _this.format(evt); };
                 this.__input2.onkeypress = function (evt) { return _this.keyPress(evt); };
             }
@@ -142,7 +134,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             if (this.__chkbox && this.__chkbox.attributes.getNamedItem('disabled') !== null) {
                 this.__chkbox.attributes.removeNamedItem('disabled');
             }
-            if (this.__chkbox && this.readonly === true) {
+            if (this.__chkbox && (this.readonly === true || this.disabled === true)) {
                 this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
             }
         };
@@ -169,7 +161,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             if (this.__chkbox && this.__chkbox.attributes.getNamedItem('disabled') !== null) {
                 this.__chkbox.attributes.removeNamedItem('disabled');
             }
-            if (this.__chkbox && (disabled === true || this.disabled === true)) {
+            if (this.__chkbox && (disabled === true || this.disabled === true || this.readonly === true)) {
                 this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
             }
         };
@@ -200,7 +192,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
         UIInputGroup.prototype.format = function (evt) {
             var val = isEmpty(evt.target.value) ? '' : evt.target.value;
             var start = evt.target.selectionStart;
-            if (this.__format === 'title') {
+            if (this.__format === 'title' && this.__type !== 'textarea') {
                 val = val.replace(new RegExp('[' + this.ALPHA + '\']+(?=[\\.\\-&\\s]*)', 'g'), function (txt) {
                     if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
                         return txt.toUpperCase();
@@ -227,6 +219,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
                     return txt.charAt(0)
                         .toUpperCase() + txt.substr(1);
                 });
+            }
+            else if (this.__format === 'title' && this.__type === 'textarea') {
             }
             else if (this.__format === 'email' || this.__format === 'url') {
                 val = val.toLowerCase();
