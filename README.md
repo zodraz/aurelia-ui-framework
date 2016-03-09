@@ -9,3 +9,12 @@
 
 ## [Help Wiki](https://github.com/adarshpastakia/aurelia-ui-framework/wiki/Home)
 
+----
+
+### Version 2
+
+* Removed dependency on jQuery
+* Flat look & feel
+ 
+## [Demo Pages](http://adarshpastakia.github.io/aurelia-ui-framework/v2)
+
