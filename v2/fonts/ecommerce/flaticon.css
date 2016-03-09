@@ -1,0 +1,127 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 19/02/2016 14:45
+  	*/
+
+@font-face {
+  font-family: "Ecommerce";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Ecommerce";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="fi-ecommerce-"]:before, [class*=" fi-ecommerce-"]:before,
+[class^="fi-ecommerce-"]:after, [class*=" fi-ecommerce-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.fi-ecommerce-bag-black-fashion-model:before { content: "\f100"; }
+.fi-ecommerce-bag-for-shopping:before { content: "\f101"; }
+.fi-ecommerce-bag-for-shopping-1:before { content: "\f102"; }
+.fi-ecommerce-bag-for-shopping-in-black-shape:before { content: "\f103"; }
+.fi-ecommerce-bag-of-black-female-design:before { content: "\f104"; }
+.fi-ecommerce-bag-outline:before { content: "\f105"; }
+.fi-ecommerce-bag-outline-1:before { content: "\f106"; }
+.fi-ecommerce-basket:before { content: "\f107"; }
+.fi-ecommerce-basket-for-shopping:before { content: "\f108"; }
+.fi-ecommerce-basket-for-shopping-of-two-handles:before { content: "\f109"; }
+.fi-ecommerce-basket-of-rounded-circular-base-shape:before { content: "\f10a"; }
+.fi-ecommerce-basket-with-one-handle:before { content: "\f10b"; }
+.fi-ecommerce-bill-of-1-dollar:before { content: "\f10c"; }
+.fi-ecommerce-black-shopping-cart:before { content: "\f10d"; }
+.fi-ecommerce-coin-money-in-stack:before { content: "\f10e"; }
+.fi-ecommerce-coin-of-dollar:before { content: "\f10f"; }
+.fi-ecommerce-coin-of-dollar-1:before { content: "\f110"; }
+.fi-ecommerce-coins-money-stack:before { content: "\f111"; }
+.fi-ecommerce-coins-money-stack-1:before { content: "\f112"; }
+.fi-ecommerce-coins-of-dollars-stack:before { content: "\f113"; }
+.fi-ecommerce-coins-stacks-money:before { content: "\f114"; }
+.fi-ecommerce-credit-card-back:before { content: "\f115"; }
+.fi-ecommerce-credit-card-back-1:before { content: "\f116"; }
+.fi-ecommerce-credit-card-back-2:before { content: "\f117"; }
+.fi-ecommerce-credit-card-back-symbol:before { content: "\f118"; }
+.fi-ecommerce-credit-card-front:before { content: "\f119"; }
+.fi-ecommerce-credit-card-lock-symbol:before { content: "\f11a"; }
+.fi-ecommerce-credit-card-remove-symbol-with-a-cross-for-interface:before { content: "\f11b"; }
+.fi-ecommerce-credit-card-with-a-flag:before { content: "\f11c"; }
+.fi-ecommerce-credit-card-with-check-symbol:before { content: "\f11d"; }
+.fi-ecommerce-credit-card-with-minus-sign:before { content: "\f11e"; }
+.fi-ecommerce-credit-card-with-plus-sign:before { content: "\f11f"; }
+.fi-ecommerce-credit-cards-couple:before { content: "\f120"; }
+.fi-ecommerce-credit-or-debit-card-front:before { content: "\f121"; }
+.fi-ecommerce-dollar-coin-money:before { content: "\f122"; }
+.fi-ecommerce-money-bag-and-coins:before { content: "\f123"; }
+.fi-ecommerce-money-bag-black-shape:before { content: "\f124"; }
+.fi-ecommerce-money-bag-black-variant-symbol:before { content: "\f125"; }
+.fi-ecommerce-money-bag-outline:before { content: "\f126"; }
+.fi-ecommerce-money-bag-protection:before { content: "\f127"; }
+.fi-ecommerce-money-bag-with-dollar-sign:before { content: "\f128"; }
+.fi-ecommerce-money-bags:before { content: "\f129"; }
+.fi-ecommerce-money-bill:before { content: "\f12a"; }
+.fi-ecommerce-money-bills-and-coins-stack:before { content: "\f12b"; }
+.fi-ecommerce-money-bills-stack:before { content: "\f12c"; }
+.fi-ecommerce-money-bills-stack-1:before { content: "\f12d"; }
+.fi-ecommerce-money-black-bag-with-dollar-sign:before { content: "\f12e"; }
+.fi-ecommerce-money-coin-of-dollar:before { content: "\f12f"; }
+.fi-ecommerce-money-coins-and-bill:before { content: "\f130"; }
+.fi-ecommerce-money-paper-bills:before { content: "\f131"; }
+.fi-ecommerce-money-paper-of-dollars:before { content: "\f132"; }
+.fi-ecommerce-money-stacked-coins:before { content: "\f133"; }
+.fi-ecommerce-printed-paper:before { content: "\f134"; }
+.fi-ecommerce-receipt:before { content: "\f135"; }
+.fi-ecommerce-receipt-1:before { content: "\f136"; }
+.fi-ecommerce-receipt-2:before { content: "\f137"; }
+.fi-ecommerce-receipt-black-variant:before { content: "\f138"; }
+.fi-ecommerce-receipt-paper:before { content: "\f139"; }
+.fi-ecommerce-receipt-paper-1:before { content: "\f13a"; }
+.fi-ecommerce-receipt-paper-2:before { content: "\f13b"; }
+.fi-ecommerce-receipt-paper-outline-shape-variant:before { content: "\f13c"; }
+.fi-ecommerce-shop:before { content: "\f13d"; }
+.fi-ecommerce-shop-1:before { content: "\f13e"; }
+.fi-ecommerce-shop-building:before { content: "\f13f"; }
+.fi-ecommerce-shop-store-frontal-building:before { content: "\f140"; }
+.fi-ecommerce-shopping-bag-check-symbol:before { content: "\f141"; }
+.fi-ecommerce-shopping-bag-outline:before { content: "\f142"; }
+.fi-ecommerce-shopping-bag-outline-with-plus-symbol:before { content: "\f143"; }
+.fi-ecommerce-shopping-bag-remove-interface-symbol:before { content: "\f144"; }
+.fi-ecommerce-shopping-bag-side-view:before { content: "\f145"; }
+.fi-ecommerce-shopping-bag-with-a-flag:before { content: "\f146"; }
+.fi-ecommerce-shopping-bag-with-minus-sign:before { content: "\f147"; }
+.fi-ecommerce-shopping-bag-with-security:before { content: "\f148"; }
+.fi-ecommerce-shopping-basket:before { content: "\f149"; }
+.fi-ecommerce-shopping-basket-1:before { content: "\f14a"; }
+.fi-ecommerce-shopping-basket-of-one-handle:before { content: "\f14b"; }
+.fi-ecommerce-shopping-basket-with-two-handles:before { content: "\f14c"; }
+.fi-ecommerce-shopping-basket-with-two-handles-from-side-view:before { content: "\f14d"; }
+.fi-ecommerce-shopping-black-bag:before { content: "\f14e"; }
+.fi-ecommerce-shopping-cart:before { content: "\f14f"; }
+.fi-ecommerce-shopping-cart-1:before { content: "\f150"; }
+.fi-ecommerce-shopping-cart-2:before { content: "\f151"; }
+.fi-ecommerce-shopping-cart-add-button:before { content: "\f152"; }
+.fi-ecommerce-shopping-cart-black-variant:before { content: "\f153"; }
+.fi-ecommerce-shopping-cart-cancel-button:before { content: "\f154"; }
+.fi-ecommerce-shopping-cart-empty-symbol:before { content: "\f155"; }
+.fi-ecommerce-shopping-cart-empty-tool:before { content: "\f156"; }
+.fi-ecommerce-shopping-cart-of-gross-outline:before { content: "\f157"; }
+.fi-ecommerce-shopping-cart-outline:before { content: "\f158"; }
+.fi-ecommerce-shopping-cart-symbol-for-e-commerce:before { content: "\f159"; }
+.fi-ecommerce-shopping-cart-verified-symbol:before { content: "\f15a"; }
+.fi-ecommerce-shopping-cart-with-an-arrow:before { content: "\f15b"; }
+.fi-ecommerce-shopping-cart-with-an-up-arrow:before { content: "\f15c"; }
+.fi-ecommerce-shopping-cart-with-horizontal-lines-design:before { content: "\f15d"; }
+.fi-ecommerce-shopping-cart-with-minus-sign:before { content: "\f15e"; }
+.fi-ecommerce-store:before { content: "\f15f"; }
