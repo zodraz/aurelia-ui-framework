@@ -6,44 +6,45 @@
  **/
 
 .ui-page {
-  position: relative;
+  position : relative;
   @include flex-column();
-  @include position(absolute, 0);
+  @include position(absolute, 0, 0, 0, 0);
 
   > .ui-page-title {
-	color: $page-title-text;
-	font: {
-	  size: 1rem;
-	  variant: small-caps;
-	  weight: $font-weight-strong;
+	font      : {
+	  size    : 1.1rem;
+	  variant : small-caps;
+	  weight  : $font-weight-normal;
 	}
-	text-align: center;
-	padding: 0.3rem 1rem;
-	background-color: $page-title-bg;
+	color            : $page-title-text;
+	text-align       : center;
+	padding          : 0.2em 1em;
+	background-color : $page-title-bg;
+	@include flex(0 0 auto);
   }
 
-  router-view {
+  .ui-page-body {
 	@include flex-column();
 	@include flex(1 1 0%);
   }
 }
 
 .ui-section {
-  overflow: hidden;
-  position: relative;
+  overflow : hidden;
+  position : relative;
   @include flex(1 1 0%);
 
   &.ui-section-row {
-	@include flex-row($align: stretch, $wrap: false);
+	@include flex-row($align : stretch, $wrap : false);
   }
 
   &.ui-section-column {
-	@include flex-column($align: stretch);
+	@include flex-column($align : stretch);
   }
 }
 
 .ui-content {
-  position: relative;
+  position : relative;
 
   &.ui-auto-fit {
 	@include flex(0 0 auto);
@@ -54,10 +55,11 @@
   }
 
   &:not(.ui-scroll) {
-	@include flex-row($align: stretch, $wrap: false);
+	@include flex-row($align : stretch, $wrap : false);
   }
 }
 
+/*
 .ui-sidebar {
   overflow: auto;
   position: relative;
@@ -151,4 +153,4 @@
 	  text-transform: uppercase;
 	}
   }
-}
+}*/

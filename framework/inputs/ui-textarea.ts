@@ -1,16 +1,15 @@
 /**
- *    UI Component: TextArea
- *    @author    Adarsh Pastakia
- *    @company   HMC
- *    @copyright 2015-2016, Adarsh Pastakia
+ *    UI Input      Multiline Input
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
-import {UIInputGroup} from "./ui-input";
+import {autoinject, customElement, bindable, bindingMode} from "aurelia-framework";
+import {UIEvent} from "aurelia-ui-framework";
+import {UIInputGroup} from "./ui-input-group";
 
 @customElement('ui-textarea')
-export class UITextarea extends UIInputGroup {
-	protected __type = 'textarea';
-
+export class UITextArea extends UIInputGroup {
 	/**
 	 * @property    value
 	 * @type        string
@@ -81,8 +80,8 @@ export class UITextarea extends UIInputGroup {
 
 	/**
 	 * @property    rows
-	 * @type        number
+	 * @type        string
 	 */
-	@bindable() rows:number = 5;
+	@bindable() rows:string = '5';
 
 }

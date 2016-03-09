@@ -1,10 +1,11 @@
 /**
- *    UI Component: Checkbox/Radio
- *    @author    Adarsh Pastakia
- *    @company   HMC
- *    @copyright 2015-2016, Adarsh Pastakia
+ *    UI Input      Checkbox/Radio
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
+import {UIEvent} from "aurelia-ui-framework";
 
 @autoinject()
 export class UIOption {
@@ -40,7 +41,8 @@ export class UIOption {
 	}
 
 	valueChanged($event) {
-		$event.detail = this.checked;
+		$event.cancelBubble = true;
+		UIEvent.fireEvent('change', this.element, this.checked);
 	}
 }
 
@@ -132,6 +134,7 @@ export class UIOptionGroup {
 	}
 
 	attached() {
+		// Need to iterate to all inputs to set the name
 		setTimeout(()=> {
 			let radios = this.element.querySelectorAll('.ui-radio .ui-option-input');
 			_.forEach(radios, (b:HTMLInputElement)=> {
@@ -148,6 +151,8 @@ export class UIOptionGroup {
 	}
 
 	checkChanged($event) {
-		this.value = $event.detail;
+		this.value          = $event.detail;
+		$event.cancelBubble = true;
+		UIEvent.fireEvent('change', this.element, this.value);
 	}
 }

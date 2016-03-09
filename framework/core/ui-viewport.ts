@@ -1,20 +1,18 @@
 /**
- *    UI Core		Viewport
- *    @author		Adarsh Pastakia
- *    @company   	HMC
- *    @copyright 	2015-2016, Adarsh Pastakia
- *    @description
- *    This plugin provides an application viewport with header, footer and side drawer menu
+ *    UI Core       Viewport
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
+ *    @description  Application Viewport
  **/
 
-import {autoinject, customElement, bindable, Container} from "aurelia-framework";
+import {customElement, bindable, Container} from "aurelia-framework";
 import {Router} from "aurelia-router";
 import {UIUtils} from "aurelia-ui-framework";
+import {UIApplication} from "../utils/ui-application";
 
-@autoinject()
 @customElement('ui-viewport')
 export class UIViewport {
-
 	/**
 	 * @property    router
 	 * @type        Aurelia Router
@@ -27,7 +25,7 @@ export class UIViewport {
 	 */
 	@bindable() options:UIViewportOptions;
 
-	constructor(public element:Element, container:Container) {
+	constructor(public element:Element, container:Container, appState:UIApplication) {
 		UIUtils.container(container);
 	}
 
@@ -41,20 +39,18 @@ export class UIViewport {
 		return true;
 	}
 }
+
 export class UIViewportOptions {
-	// App Title
-	title:string;
-	// App Subtitle
-	subtitle:string;
-	// Footer Copyright
-	copyright:string;
+	logo          = "images/logo.png";
+	title         = 'Aurelia UI Framework';
+	subtitle      = 'Version 2';
+	copyright     = "Copyright &copy; 2016, Adarsh Pastakia";
+	footerMessage = "Made With <span class='heart'>&hearts;</span> For HMC";
 
-	// Show app side menu
-	showMenu:boolean = true;
-	// Show Taskbar multiple dialogs
-	showTaskbar:boolean = true;
+	showMenu    = true;
+	showTaskbar = true;
 
-	constructor(obj) {
+	constructor(obj:any = {}) {
 		Object.assign(this, obj);
 	}
 }

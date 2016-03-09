@@ -46,7 +46,7 @@ export module UIUtils {
 	}
 
 	export function getAscii(str):string {
-		if(isEmpty(str)) return '';
+		if (isEmpty(str)) return '';
 		var conversions   = {};
 		conversions['ae'] = 'ä|æ|ǽ';
 		conversions['oe'] = 'ö|œ';

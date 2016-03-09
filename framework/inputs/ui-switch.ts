@@ -1,17 +1,18 @@
 /**
- *    UI Component: Switch
- *    @author    Adarsh Pastakia
- *    @company   HMC
- *    @copyright 2015-2016, Adarsh Pastakia
+ *    UI Input      Switch
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable, bindingMode, useShadowDOM} from "aurelia-framework";
+import {UIEvent} from "aurelia-ui-framework";
 
 @autoinject()
 @customElement('ui-switch')
 export class UISwitch {
 	private __id = `auf-${seed++}`;
 	private __input:Element;
-	private __switch:Element;
+	private __switch:HTMLElement;
 	private __label:Element;
 	private __theme:string;
 
@@ -34,7 +35,7 @@ export class UISwitch {
 	 * @property    width
 	 * @type        number
 	 */
-	@bindable() width:any        = 56;
+	@bindable() width:any;
 	/**
 	 * @property    checked
 	 * @type        boolean
@@ -58,10 +59,10 @@ export class UISwitch {
 
 		this.checked  = isTrue(this.checked);
 		this.disabled = isTrue(this.disabled);
-		this.width    = isNaN(this.width) ? 56 : parseInt(this.width);
 	}
 
 	attached() {
+		if (!isNaN(this.width)) this.__switch.style.width = parseInt(this.width) + 'px';
 		this.__switch.classList.add(`ui-switch-${this.__theme}`);
 		this.disable();
 	}
@@ -85,7 +86,8 @@ export class UISwitch {
 	}
 
 	valueChanged($event) {
-		$event.detail = this.checked;
+		$event.cancelBubble = true;
+		UIEvent.fireEvent('change', this.element, this.checked);
 	}
 
 	onFocus() {

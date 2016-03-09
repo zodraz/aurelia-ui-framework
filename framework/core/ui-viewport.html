@@ -1,32 +1,33 @@
-<template class="ui-viewport" click.delegate="hideMenu($event)">
-	<div class="ui-app-header">
+<template role="main" class="ui-viewport" click.delegate="hideMenu($event)">
+	<header class="ui-header">
 		<!-- Menu handle -->
 		<button class="ui-app-menu-handle" if.bind="options.showMenu" click.trigger="showMenu($event)">
-			<span class="fi-material-menu-button"></span></button>
+			<span></span><span></span><span></span>
+		</button>
 		<!-- App Logo -->
-		<div class="ui-app-logo"></div>
+		<img class="ui-app-logo" if.bind="options.logo" src.bind="options.logo"/>
 		<!-- App Title -->
-		<div class="ui-app-title">
-			<a href="#/">${options.title}<span if.bind="options.subtitle"><br/>${options.subtitle}</span></a>
-		</div>
-		<!-- Extra content -->
+		<h1 class="ui-app-title">
+			<a href="#/">
+				<span innerhtml.bind="options.title"></span>
+				<small if.bind="options.subtitle" innerhtml.bind="options.subtitle"></small>
+			</a>
+		</h1>
 		<content></content>
-	</div>
-
-	<router-view class="ui-app-view"></router-view>
-
-	<div class="ui-app-taskbar" if.bind="options.showTaskbar">
+	</header>
+	<router-view role="region" class="ui-viewport-body"></router-view>
+	<div class="ui-app-taskbar" if.bind="options.showTaskbar" role="toolbar">
 		<template replaceable part="quick-links"></template>
 	</div>
-	<div class="ui-app-footer">
-		<span class="ui-col-fill" if.bind="options.copyright">&copy; ${options.copyright}</span>
-
-		<span class="ui-col-fill ui-text-end">With <span class="heart fi-material-favorite-heart-button"></span> for HMC</span>
-	</div>
+	<footer class="ui-footer">
+		<small innerhtml.bind="options.copyright"></small>
+		<small innerhtml.bind="options.footerMessage"></small>
+	</footer>
 
 	<div class="ui-app-menu-shim"></div>
-	<ui-menu class="ui-app-menu ui-scroll" router.bind="router"></ui-menu>
+	<compose view="./ui-app-menu.html" class="ui-app-menu ui-menu ui-scroll"></compose>
 
+	<div class="ui-overlay-container"></div>
 
 	<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">
 		<div class="ui-loader">
@@ -34,5 +35,4 @@
 			<span class="ui-spin-opp fi-material-settings-cogwheel-button second"></span>
 		</div>
 	</div>
-
 </template>

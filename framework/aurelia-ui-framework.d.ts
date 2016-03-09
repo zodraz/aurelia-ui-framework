@@ -20,13 +20,15 @@ declare module "aurelia-ui-framework" {
 		subtitle:string;
 		// Footer Copyright
 		copyright:string;
+		// Footer Message
+		footerMessage:string;
 
 		// Show app side menu
 		showMenu:boolean;
 		// Show Taskbar multiple dialogs
 		showTaskbar:boolean;
 
-		constructor(obj);
+		constructor(obj?);
 	}
 }
 
@@ -39,7 +41,7 @@ declare module "aurelia-ui-framework" {
 	export class UIApplication {
 		IsHttpInUse:boolean;
 		IsAuthenticated:boolean;
-		AllowAuthHeader:boolean;
+		SendAuthHeader:boolean;
 
 		Username:string;
 	}

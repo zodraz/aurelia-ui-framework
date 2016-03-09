@@ -1,4 +1,5 @@
-<template class="ui-page">
-	<div class="ui-page-title" if.bind="pageTitle" innerhtml.bind="pageTitle"></div>
+<template class="ui-page" role="page">
+	<div class="ui-page-title" if.bind="pageTitle" innerhtml.bind="pageTitle" role="heading"></div>
+	<route-view class="ui-page-body" if.bind="__childRoutes"></route-view>
 	<content></content>
 </template>

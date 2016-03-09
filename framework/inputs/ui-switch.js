@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_ui_framework_1) {
     var UISwitch = (function () {
         function UISwitch(element) {
             this.element = element;
@@ -15,7 +15,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.labelOn = 'On';
             this.labelOff = 'Off';
             this.disabled = false;
-            this.width = 56;
             this.checked = false;
         }
         UISwitch.prototype.bind = function () {
@@ -35,9 +34,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                 this.__theme = 'gender';
             this.checked = isTrue(this.checked);
             this.disabled = isTrue(this.disabled);
-            this.width = isNaN(this.width) ? 56 : parseInt(this.width);
         };
         UISwitch.prototype.attached = function () {
+            if (!isNaN(this.width))
+                this.__switch.style.width = parseInt(this.width) + 'px';
             this.__switch.classList.add("ui-switch-" + this.__theme);
             this.disable();
         };
@@ -58,7 +58,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.disable();
         };
         UISwitch.prototype.valueChanged = function ($event) {
-            $event.detail = this.checked;
+            $event.cancelBubble = true;
+            aurelia_ui_framework_1.UIEvent.fireEvent('change', this.element, this.checked);
         };
         UISwitch.prototype.onFocus = function () {
             this.__switch.classList.add('ui-focus');

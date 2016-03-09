@@ -1,138 +1,157 @@
 /**
- *	UI Framework App Scaffold
+ *	UI Viewport
  *	@author 	Adarsh Pastakia
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
 .ui-viewport {
-  @include position(fixed, 0);
   @include flex-column();
+  @include position(absolute, 0, 0, 0, 0);
 
-  .ui-app-logo {
-	height: 3em;
-	pointer-events: none;
-	background: image_url($app-logo) no-repeat center center;
-	background-size: $app-logo-width 3em;
-  }
+  .ui-header {
+	color      : $app-header-text;
+	background : $app-header-bg;
+	padding    : $base-padding;
+	z-index    : 2;
 
-  .ui-app-header {
+	@include flex-row();
 	@include flex(0 0 auto);
-	@include flex-row($wrap: false);
-	@include box-shadow(0 0 3px 1px $black-olive);
-
-	z-index: 2;
-	min-height: 3em;
-	padding: 0.4em;
-	color: $app-header-text;
-	background: linear-gradient(top, $app-header-bg, shade($app-header-bg, 5%));
-
-	.ui-app-logo {
-	  @include flex(0 0 auto);
-	  @include margin(end, 0.5em);
-	  width: $app-logo-width;
-	}
+	@include box-shadow(0 0 5px 0 $base-shadow-color);
 
 	.ui-app-title {
 	  @include flex(1 1 0%);
-	  line-height: 1em;
-	  font-variant: small-caps;
-	  > a {
-		font: {
-		  size: 2em;
-		  weight: $font-weight-strong;
-		}
-		color: $app-header-text !important;
-		span {
-		  font-size: 0.5em;
-		  color: shade($app-header-text, 15%) !important;
-		}
+	  font-size    : $app-header-font-size;
+	  font-variant : small-caps;
+	  a {
+		color : $app-header-text;
 	  }
+	  small {
+		display : block;
+		color   : $text-muted;
+	  }
+	}
+
+	.ui-app-logo {
+	  @include flex(0 0 auto);
+	  height : 42px;
 	}
 
 	.ui-app-menu-handle {
-	  @include size(1.2em, 1.2em);
 	  @include margin(end, 0.5em);
-	  padding: 0;
-	  font-size: 2em;
-	  color: shade($app-header-text, 10%);
-	  &:hover {
-		color: $app-header-text;
+	  padding     : 0;
+	  line-height : 0;
+	  width       : 30px;
+	  span {
+		height     : 3px;
+		margin-top : 5px;
+		display    : block;
+		background : rgba($app-header-text, 0.8);
+		&:first-child {
+		  margin-top : 0;
+		}
 	  }
-	  &:active {
-		//@include box-shadow(0 0 3px 1px shade($app-header-bg, 30%) inset);
-		color: shade($app-header-bg, 25%);
+	  &:hover span {
+		background : $app-header-text;
+	  }
+	  &:active span {
+		background : tint($app-header-bg, 25%);
 	  }
 	}
   }
 
-  .ui-app-view {
-	display: block;
-	position: relative;
+  .ui-footer {
+	@include flex(0 0 auto);
+	color      : $app-footer-text;
+	background : $app-footer-bg;
+	padding    : $base-padding;
+	.heart {
+	  color : $cadmium-red;
+	}
+	@include flex-row($justify : space-between);
+	small {
+	  @include flex(0 0 auto);
+	  font-size : $app-footer-font-size;
+	}
+  }
+
+  .ui-viewport-body {
+	z-index  : 1;
+	position : relative;
 	@include flex(1 1 0%);
   }
 
-  .ui-app-footer {
-	@include flex(0 0 auto);
-	@include flex-row($wrap: false);
-	padding: 0.1em 1em;
-	font-size: 0.75em;
-	color: $app-footer-text;
-	background: linear-gradient(top, $app-footer-bg, shade($app-footer-bg, 10%));
-
-	span.heart {
-	  color: $geranium-lake;
-	}
-  }
-
   .ui-app-menu {
-	@include position(fixed, 0 null 0 -305px);
+	@include position(fixed, $l : -305px, $t : 0, $b : 0);
 	@include transition(left 0.6s ease-out);
 	@include box-shadow(0 0 5px 1px #000);
 
-	min-width: 220px;
-	max-width: 300px;
-	z-index: $z-index-splash+1;
-	color: $app-menu-text;
-	background-color: $app-menu-bg;
+	min-width        : 220px;
+	max-width        : 300px;
+	z-index          : $z-index-splash+1;
+	color            : $app-menu-text;
+	background-color : $app-menu-bg;
 	@if ($app-menu-bg-image) {
-	  background-image: image_url($app-menu-bg-image);
+	  background-image : image_url($app-menu-bg-image);
 	}
+
+	.ui-auth-info {
+	  top           : 0;
+	  margin-bottom : 0.5rem;
+	  @include sticky();
+	  @include box-shadow(-3px 0 3px 1px #111);
+	  background    : rgba(#333, 0.95);
+	  @include backdrop-blur(9px);
+	}
+
 	.ui-menu-link {
-	  font-size: 1.2rem;
-	  color: contrast($app-menu-bg);
-	}
-	.ui-menu-link.ui-active {
-	  color: $app-menu-active-text;
-	  background: $app-menu-active-bg;
-	  border-color: $app-menu-active-border;
-	  @include box-shadow(0 0 4px 0 #333 inset);
+	  font-size : $app-menu-font-size;
+	  color     : $app-menu-text;
+	  @include border(start, 3px solid transparent);
+
+	  &:hover {
+		color      : $app-menu-hover-text;
+		background : $app-menu-hover-bg;
+	  }
+	  &.ui-active {
+		color        : $app-menu-active-text;
+		background   : $app-menu-active-bg;
+		border-color : $app-menu-active-border;
+		@include box-shadow(0 0 4px 0 #333 inset);
+	  }
 	}
 
 	hr {
-	  background-color: $outer-space;
-	  border-color: $black-coral;
+	  background-color : $wg-7;
+	  border-color     : $black-sp;
 	}
   }
 
   .ui-app-menu-shim {
-	@include position(fixed, 0);
+	@include position(fixed, 0, 0, 0, 0);
 	@include backdrop-blur(1px);
 	@include transition(opacity 0.3s);
 
-	opacity: 0;
-	display: none;
-	background-color: rgba($app-menu-shim, 0.5);
-	z-index: $z-index-splash;
+	opacity          : 0;
+	display          : none;
+	background-color : rgba($app-menu-shim, 0.5);
+	z-index          : $z-index-splash;
   }
 
   &.show-menu {
 	.ui-app-menu {
-	  left: 0;
+	  left : 0;
 	}
 	.ui-app-menu-shim {
-	  display: block;
-	  opacity: 1;
+	  display : block;
+	  opacity : 1;
 	}
+  }
+
+  .ui-overlay-container {
+	@include position(absolute, 0, 0, 0, 0);
+	@include flex-column(flex-end);
+	z-index        : $z-index-floating;
+	pointer-events : none;
   }
 }

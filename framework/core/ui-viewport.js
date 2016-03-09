@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_ui_framework_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui-framework", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_ui_framework_1, ui_application_1) {
     var UIViewport = (function () {
-        function UIViewport(element, container) {
+        function UIViewport(element, container, appState) {
             this.element = element;
             aurelia_ui_framework_1.UIUtils.container(container);
         }
@@ -30,15 +30,20 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui
             __metadata('design:type', UIViewportOptions)
         ], UIViewport.prototype, "options", void 0);
         UIViewport = __decorate([
-            aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-viewport'), 
-            __metadata('design:paramtypes', [Element, aurelia_framework_1.Container])
+            __metadata('design:paramtypes', [Element, aurelia_framework_1.Container, ui_application_1.UIApplication])
         ], UIViewport);
         return UIViewport;
     })();
     exports.UIViewport = UIViewport;
     var UIViewportOptions = (function () {
         function UIViewportOptions(obj) {
+            if (obj === void 0) { obj = {}; }
+            this.logo = "images/logo.png";
+            this.title = 'Aurelia UI Framework';
+            this.subtitle = 'Version 2';
+            this.copyright = "Copyright &copy; 2016, Adarsh Pastakia";
+            this.footerMessage = "Made With <span class='heart'>&hearts;</span> For HMC";
             this.showMenu = true;
             this.showTaskbar = true;
             Object.assign(this, obj);

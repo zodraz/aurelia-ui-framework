@@ -1,11 +1,11 @@
 /**
- *    UI Component: Phone Input
- *    @author    Adarsh Pastakia
- *    @company   HMC
- *    @copyright 2015-2016, Adarsh Pastakia
+ *    UI Input      Phone Input
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
-import {UIInputGroup} from "./ui-input";
+import {UIInputGroup} from "./ui-input-group";
 
 @useView('./ui-input.html')
 @customElement('ui-phone')
@@ -92,7 +92,7 @@ export class UIPhone extends UIInputGroup {
 
 		if (this.element.hasAttribute('international')) {
 			this.__phoneFormat = PhoneLib.FORMAT.INTERNATIONAL;
-			this.prefixIcon    = `ui-flag`;
+			this.prefixIcon    = `ui-icon ui-flag`;
 		}
 		else {
 			this.prefixText = '+' + PhoneLib.getDialingCode(this.country);
@@ -125,7 +125,7 @@ export class UIPhone extends UIInputGroup {
 		if (this.ignoreUpdate)return;
 		this.ignoreUpdate = true;
 		if (this.__phoneFormat === PhoneLib.FORMAT.INTERNATIONAL) {
-			if (isEmpty(newValue))this.prefixIcon = 'ui-flag';
+			if (isEmpty(newValue))this.prefixIcon = 'ui-icon ui-flag';
 			if (!isEmpty(newValue) && !/^\+/.test(newValue)) newValue = '+' + newValue;
 		}
 		if (!isEmpty(newValue)) {
@@ -146,14 +146,10 @@ export class UIPhone extends UIInputGroup {
 		setTimeout(()=>this.ignoreUpdate = false, 10);
 	}
 
-	protected format(evt) {
-		return isEmpty(evt.target.value) ? '' : evt.target.value;
-	}
-
 	protected processValue() {
 		if (this.__phoneFormat === PhoneLib.FORMAT.INTERNATIONAL) {
-			if (isEmpty(this.__value))this.prefixIcon = 'ui-flag';
-			if (!isEmpty(this.__value))this.prefixIcon = 'ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
+			if (isEmpty(this.__value))this.prefixIcon = 'ui-icon ui-flag';
+			if (!isEmpty(this.__value))this.prefixIcon = 'ui-icon ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
 		}
 		try {
 			var info = PhoneLib.getNumberInfo(this.value,

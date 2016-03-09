@@ -7,84 +7,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-ui-framework", "aurelia-framework", "../framework/utils/ui-application"], function (require, exports, aurelia_ui_framework_1, aurelia_framework_1, ui_application_1) {
+define(["require", "exports", "aurelia-ui-framework", "aurelia-framework"], function (require, exports, aurelia_ui_framework_1, aurelia_framework_1) {
     var App = (function () {
-        function App(appState) {
-            this.appState = appState;
-            this.appOptions = new aurelia_ui_framework_1.UIViewportOptions({
-                title: 'Aurelia UI Framework',
-                subtitle: 'Version 2',
-                copyright: "Adarsh Pastakia 2015-" + new Date().getFullYear()
-            });
-            this.appState.IsAuthenticated = true;
-            this.appState.Username = 'user@clubhotel.com';
+        function App() {
+            this.appOptions = new aurelia_ui_framework_1.UIViewportOptions({});
         }
         App.prototype.configureRouter = function (config, router) {
             this.router = router;
-            config.title = this.appOptions.title;
             config.options.showLogo = true;
             config.options.showAuthentication = true;
             config.map([{
-                    route: 'login',
-                    moduleId: './login/view',
-                    title: 'Login',
-                    name: 'login',
-                    isLogin: true
-                }, {
                     route: 'home',
                     moduleId: './home/view',
-                    settings: { sectionTitle: 'Aurelia UI Framework', icon: 'fi-metrize-video-viewport-in-a-circle' },
+                    settings: { sectionTitle: 'Aurelia UI Framework', icon: 'fi-material-window-with-different-sections' },
                     title: 'Framework Elements',
                     nav: true,
                     auth: false,
                     name: 'home'
                 }, {
-                    route: 'core',
-                    moduleId: './core/view',
-                    settings: { icon: 'fi-metrize-atom-in-circular-button' },
-                    title: 'Core Elements',
+                    route: 'colors',
+                    moduleId: './home/colors',
+                    settings: { icon: 'fi-material-painter-palette' },
+                    title: 'Copic Colors',
                     nav: true,
                     auth: false,
-                    name: 'core'
-                }, {
-                    route: 'components',
-                    moduleId: './components/view',
-                    settings: { icon: 'fi-metrize-layers-in-circular-button' },
-                    title: 'Components',
-                    nav: true,
-                    auth: false,
-                    name: 'core'
-                }, {
-                    route: 'inputs',
-                    moduleId: './inputs/view',
-                    settings: { icon: 'fi-metrize-marker-with-three-dots-circular-button' },
-                    title: 'Input Elements',
-                    nav: true,
-                    auth: false,
-                    name: 'inputs'
+                    name: 'colors'
                 }, {
                     route: '', redirect: 'home'
                 }]);
         };
-        App.prototype.attached = function () {
-            this.evtLogout = aurelia_ui_framework_1.UIEvent.subscribe('logout', this.logout);
-        };
-        App.prototype.detached = function () {
-            this.evtLogout.dispose();
-        };
         App.prototype.toggleDir = function () {
             document.body.dir = document.body.dir == 'rtl' ? 'ltr' : 'rtl';
         };
-        App.prototype.toggleTheme = function () {
-            var css = document.getElementById('baseStyle');
-            css.href = css.href.indexOf('light') == -1 ? 'styles/app-light.css' : 'styles/app-dark.css';
-        };
-        App.prototype.logout = function () {
-            console.log('Logout');
-        };
         App = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [ui_application_1.UIApplication])
+            __metadata('design:paramtypes', [])
         ], App);
         return App;
     })();

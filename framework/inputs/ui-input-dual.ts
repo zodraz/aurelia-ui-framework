@@ -1,15 +1,16 @@
 /**
- *    UI Component: Dual Input
- *    @author    Adarsh Pastakia
- *    @company   HMC
- *    @copyright 2015-2016, Adarsh Pastakia
+ *    UI Input      Singleline Input
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
-import {UIInputGroup} from "./ui-input";
+import {autoinject, customElement, useView, bindable, bindingMode} from "aurelia-framework";
+import {UIEvent} from "aurelia-ui-framework";
+import {UIInput} from "./ui-input";
 
-@useView('./ui-input.html')
-@customElement('ui-dual-input')
-export class UIDualInput extends UIInputGroup {
+@useView("./ui-input.html")
+@customElement('ui-input-dual')
+export class UIInputDual extends UIInput {
 	private __dual = true;
 
 	/**
@@ -64,6 +65,17 @@ export class UIDualInput extends UIInputGroup {
 	@bindable() suffixText:string;
 
 	/**
+	 * @property    center-icon
+	 * @type        string
+	 */
+	@bindable() centerIcon:string;
+	/**
+	 * @property    center-text
+	 * @type        string
+	 */
+	@bindable() centerText:string;
+
+	/**
 	 * @property    button-icon
 	 * @type        string
 	 */
@@ -90,5 +102,4 @@ export class UIDualInput extends UIInputGroup {
 	 * @type        string
 	 */
 	@bindable() placeholderSecond:string = '';
-
 }

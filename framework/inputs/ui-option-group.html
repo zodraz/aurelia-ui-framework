@@ -1,6 +1,6 @@
-<template class="ui-input-group" ref="__inputGroup">
+<template class="ui-input-group">
 	<label class="ui-label" innerhtml.bind="label" ref="__label"></label>
-	<div class="ui-control-wrapper ui-option-group" change.delegate="checkChanged($event)">
+	<div class="ui-control-wrapper ui-option-group" change.trigger="checkChanged($event)">
 		<content></content>
 	</div>
 </template>

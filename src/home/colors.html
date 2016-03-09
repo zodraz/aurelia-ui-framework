@@ -1,0 +1,39 @@
+<template>
+	<style>
+		.color-group {
+			background : #F0F0F0;
+			padding    : 12px 0 6px;
+		}
+
+		.color-card {
+			display : inline-block;
+			margin  : 10px;;
+		}
+
+		.color-swatch {
+			box-shadow    : 0 0 4px 1px #888;
+			width         : 90px;
+			height        : 90px;
+			border-radius : 45px;
+			margin        : 8px auto 0;
+		}
+	</style>
+	<ui-page page-title="Colors">
+		<ui-content scroll>
+			<div class="ui-pad-all ui-text-center">
+				<a href="//www.copicmarker.com" target="_blank">
+					<img src="images/copic-banner.png" height="128px"/>
+				</a>
+				<h2 class="ui-text-primary">Copic Markers 358 Color Chart</h2>
+			</div>
+			<div class="ui-text-center" repeat.for="k of colors | keys">
+				<h2 class="color-group">${k}</h2>
+				<div repeat.for="c of colors[k] | keys" class="color-card">
+					<div class="color-swatch" css.bind="{background:colors[k][c]}">
+					</div>
+					<p class="ui-selectable">${c}</p>
+				</div>
+			</div>
+		</ui-content>
+	</ui-page>
+</template>

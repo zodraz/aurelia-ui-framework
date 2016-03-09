@@ -12,7 +12,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging"], function 
         function UIApplication() {
             this.IsHttpInUse = false;
             this.IsAuthenticated = false;
-            this.AllowAuthHeader = false;
+            this.SendAuthHeader = false;
             this.__logger = aurelia_logging_1.getLogger('UIApp');
         }
         Object.defineProperty(UIApplication.prototype, "Username", {

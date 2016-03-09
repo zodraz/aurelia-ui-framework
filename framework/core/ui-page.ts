@@ -1,10 +1,9 @@
 /**
- *    UI Core        Page
- *    @author        Adarsh Pastakia
- *    @company        HMC
+ *    UI Core       Page
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
- *    @description
- *    This plugin provides an router view page
+ *    @description  Router view
  **/
 
 import {customElement, bindable, inlineView} from "aurelia-framework";
@@ -12,12 +11,17 @@ import {Router} from "aurelia-router";
 
 @customElement('ui-page')
 export class UIPage {
+	private __childRoutes = false;
 
 	/**
 	 * @property    page-title
 	 * @type        string
 	 */
 	@bindable() pageTitle:string;
+
+	constructor(public element:Element) {
+		this.__childRoutes = this.element.hasAttribute('child-routes');
+	}
 }
 
 @customElement('ui-section')
@@ -56,7 +60,7 @@ export class UIContent {
 }
 
 @customElement('ui-sidebar')
-@inlineView(`<template class="ui-sidebar" css.bind="{'flex-basis':width}"><content></content></template>`)
+@inlineView(`<template class="ui-sidebar" role="sidebar" css.bind="{'flex-basis':width}"><content></content></template>`)
 export class UISidebar {
 	private collapsible:boolean = false;
 
@@ -77,12 +81,12 @@ export class UISidebar {
 }
 
 @customElement('ui-divider')
-@inlineView('<template class="ui-divider"></template>')
+@inlineView('<template class="ui-divider" role="separator"></template>')
 export class UIDivider {
 }
 
 @customElement('ui-toolbar')
-@inlineView(`<template class="ui-toolbar"><content></content></template>`)
+@inlineView(`<template class="ui-toolbar" role="toolbar"><content></content></template>`)
 export class UIToolbar {
 }
 

@@ -1,3 +1,10 @@
+/**
+ *    UI Utils      Application
+ *    @author       Adarsh Pastakia
+ *    @company      HMC
+ *    @copyright    2015-2016, Adarsh Pastakia
+ *    @description  Application class
+ **/
 import {singleton, autoinject} from "aurelia-framework";
 import {getLogger} from "aurelia-logging";
 
@@ -10,7 +17,7 @@ export class UIApplication {
 
 	public IsHttpInUse:boolean     = false;
 	public IsAuthenticated:boolean = false;
-	public AllowAuthHeader:boolean = false;
+	public SendAuthHeader:boolean  = false;
 
 	constructor() {
 		this.__logger = getLogger('UIApp');

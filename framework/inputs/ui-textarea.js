@@ -12,76 +12,75 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "./ui-input"], function (require, exports, aurelia_framework_1, ui_input_1) {
-    var UITextarea = (function (_super) {
-        __extends(UITextarea, _super);
-        function UITextarea() {
+define(["require", "exports", "aurelia-framework", "./ui-input-group"], function (require, exports, aurelia_framework_1, ui_input_group_1) {
+    var UITextArea = (function (_super) {
+        __extends(UITextArea, _super);
+        function UITextArea() {
             _super.apply(this, arguments);
-            this.__type = 'textarea';
             this.value = '';
             this.checked = false;
             this.disabled = false;
             this.readonly = false;
             this.placeholder = '';
-            this.rows = 5;
+            this.rows = '5';
         }
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "value", void 0);
+        ], UITextArea.prototype, "value", void 0);
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', Boolean)
-        ], UITextarea.prototype, "checked", void 0);
+        ], UITextArea.prototype, "checked", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
-        ], UITextarea.prototype, "disabled", void 0);
+        ], UITextArea.prototype, "disabled", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
-        ], UITextarea.prototype, "readonly", void 0);
+        ], UITextArea.prototype, "readonly", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "prefixIcon", void 0);
+        ], UITextArea.prototype, "prefixIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "prefixText", void 0);
+        ], UITextArea.prototype, "prefixText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "suffixIcon", void 0);
+        ], UITextArea.prototype, "suffixIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "suffixText", void 0);
+        ], UITextArea.prototype, "suffixText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "buttonIcon", void 0);
+        ], UITextArea.prototype, "buttonIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "buttonText", void 0);
+        ], UITextArea.prototype, "buttonText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "helpText", void 0);
+        ], UITextArea.prototype, "helpText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UITextarea.prototype, "placeholder", void 0);
+        ], UITextArea.prototype, "placeholder", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
-            __metadata('design:type', Number)
-        ], UITextarea.prototype, "rows", void 0);
-        UITextarea = __decorate([
+            __metadata('design:type', String)
+        ], UITextArea.prototype, "rows", void 0);
+        UITextArea = __decorate([
             aurelia_framework_1.customElement('ui-textarea'), 
             __metadata('design:paramtypes', [])
-        ], UITextarea);
-        return UITextarea;
-    })(ui_input_1.UIInputGroup);
-    exports.UITextarea = UITextarea;
+        ], UITextArea);
+        return UITextArea;
+    })(ui_input_group_1.UIInputGroup);
+    exports.UITextArea = UITextArea;
 });

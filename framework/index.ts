@@ -15,13 +15,13 @@ import './data/currencies';
 import {FrameworkConfiguration} from "aurelia-framework";
 
 export function configure(aurelia:FrameworkConfiguration) {
-	/** Core **/
+	///** Core **/
 	aurelia.globalResources('./core/ui-viewport');
 	aurelia.globalResources('./core/ui-page');
 	aurelia.globalResources('./core/ui-grid');
 
-	/** Components **/
-	aurelia.globalResources('./components/ui-menu');
+	///** Components **/
+	//aurelia.globalResources('./components/ui-menu');
 
 	/** Inputs **/
 	aurelia.globalResources('./inputs/ui-button');
@@ -29,8 +29,9 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./inputs/ui-option');
 	aurelia.globalResources('./inputs/ui-input');
 	aurelia.globalResources('./inputs/ui-phone');
+	//aurelia.globalResources('./inputs/ui-combobox');
 	aurelia.globalResources('./inputs/ui-textarea');
-	aurelia.globalResources('./inputs/ui-dual-input');
+	aurelia.globalResources('./inputs/ui-input-dual');
 
 	/** Utils **/
 	aurelia.globalResources('./utils/ui-converters');

@@ -6,62 +6,53 @@
  **/
 
 .ui-menu {
-  .ui-auth-info {
-	top: 0;
-	margin-bottom: 0.5rem;
-	@include sticky();
-	@include box-shadow(-3px 0 3px 1px #111);
-	background: rgba(#333, 0.95);
-	@include backdrop-blur(9px);
-  }
-
   .ui-menu-title {
-	color: $primary;
-	font-size: 1.3rem;
-	margin-bottom: 0.5rem;
-	font-weight: $font-weight-strong;
-	border-bottom: 2px solid $primary;
+	color         : $primary;
+	font-size     : 1.3em;
+	margin-bottom : 0.5em;
+	font-weight   : $font-weight-strong;
+	border-bottom : 2px solid $primary;
   }
 
   .ui-menu-section {
-	font-size: 0.8rem;
-	color: $text-muted;
+	font-size : 0.8em;
+	color     : $text-muted;
   }
 
   .ui-menu-link {
-	display: block;
-	font-size: 1rem;
-	margin: 1px 0;
-	text-align: start;
-	font-weight: $font-weight-normal;
-	padding: 1rem 0.5rem;
+	display     : block;
+	font-size   : 1em;
+	margin      : 1px 0;
+	text-align  : start;
+	font-weight : $font-weight-normal;
+	padding     : 1em 0.5em;
 	@include border(start, 4px solid transparent);
 
 	.ui-icon {
-	  display: inline-block;
-	  width: 1.2rem;
+	  display : inline-block;
+	  width   : 1.2em;
 	}
 
-	&[data-disabled="true"] {
-	  color: $black-olive;
-	  background: rgba(#333, 0.01);
-	  cursor: not-allowed;
-	  pointer-events: none;
-	}
-
-	&:hover {
-	  color: $menu-hover-text;
-	  background-color: $menu-hover-bg;
-	}
-	&:active {
-	  color: $menu-click-text;
-	  background-color: $menu-click-bg;
-	}
-	&.ui-active {
-	  color: $menu-active-text;
-	  background-color: $menu-active-bg;
-	  border-color: $menu-active-border;
-	  font-weight: $font-weight-strong;
-	}
+	//&[data-disabled="true"] {
+	//  color: $black-olive;
+	//  background: rgba(#333, 0.01);
+	//  cursor: not-allowed;
+	//  pointer-events: none;
+	//}
+	//
+	//&:hover {
+	//  color: $menu-hover-text;
+	//  background-color: $menu-hover-bg;
+	//}
+	//&:active {
+	//  color: $menu-click-text;
+	//  background-color: $menu-click-bg;
+	//}
+	//&.ui-active {
+	//  color: $menu-active-text;
+	//  background-color: $menu-active-bg;
+	//  border-color: $menu-active-border;
+	//  font-weight: $font-weight-strong;
+	//}
   }
 }

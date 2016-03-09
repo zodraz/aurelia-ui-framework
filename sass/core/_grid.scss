@@ -5,7 +5,7 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 @mixin grid-columns($prefix, $size) {
-  @media (min-width: $size) {
+  @media only screen and (min-width : $size) {
 	@for $i from 1 through 12 {
 	  > .ui-col-#{$prefix}-#{$i} {
 		@include flex(0 0 (($i/12)*100%));
@@ -17,11 +17,11 @@
 .ui-row {
   @include flex-row(flex-start);
 
-  @include grid-columns(xs, 0);
-  @include grid-columns(sm, $grid-xs-max);
-  @include grid-columns(md, $grid-sm-max);
-  @include grid-columns(lg, $grid-md-max);
-  @include grid-columns(xl, $grid-lg-max);
+  @include grid-columns(xs, $grid-xs-min);
+  @include grid-columns(sm, $grid-sm-min);
+  @include grid-columns(md, $grid-md-min);
+  @include grid-columns(lg, $grid-lg-min);
+  @include grid-columns(xl, $grid-xl-min);
 }
 
 .ui-column-row {

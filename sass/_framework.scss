@@ -7,10 +7,8 @@
 @import "compass/css3";
 @import "compass/css3/selection";
 @import "compass/utilities";
-@import "utility/colors";
 @import "utility/mixins";
 @import "utility/animations";
-@import "core/variables";
 
 // fonts
 @import url(font_url("material/flaticon.css", true));
@@ -22,17 +20,19 @@
 @import "utility/reset";
 @import "utility/helpers";
 @import "utility/typography";
-@import "utility/markdown";
 @import "utility/rtl";
+@import "utility/markdown";
 
 @import "core/base";
 @import "core/viewport";
-@import "core/grid";
 @import "core/page";
+@import "core/grid";
 
 @import "components/menu";
 
 @import "inputs/form";
+@import "inputs/input";
 @import "inputs/button";
 @import "inputs/switch";
 @import "inputs/option";
+

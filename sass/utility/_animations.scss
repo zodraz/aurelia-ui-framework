@@ -45,11 +45,11 @@
 }
 
 [class^="fi-"], [class*="fi-"] {
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  text-align: center;
-  line-height: 1em;
+  width       : 1em;
+  height      : 1em;
+  display     : inline-block;
+  text-align  : center;
+  line-height : 1em;
   @include transform-origin(50% 50%);
 
   &.ui-spin {

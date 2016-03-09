@@ -9,7 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIPage = (function () {
-        function UIPage() {
+        function UIPage(element) {
+            this.element = element;
+            this.__childRoutes = false;
+            this.__childRoutes = this.element.hasAttribute('child-routes');
         }
         __decorate([
             aurelia_framework_1.bindable(), 
@@ -17,7 +20,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UIPage.prototype, "pageTitle", void 0);
         UIPage = __decorate([
             aurelia_framework_1.customElement('ui-page'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIPage);
         return UIPage;
     })();
@@ -81,7 +84,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UISidebar.prototype, "width", void 0);
         UISidebar = __decorate([
             aurelia_framework_1.customElement('ui-sidebar'),
-            aurelia_framework_1.inlineView("<template class=\"ui-sidebar\" css.bind=\"{'flex-basis':width}\"><content></content></template>"), 
+            aurelia_framework_1.inlineView("<template class=\"ui-sidebar\" role=\"sidebar\" css.bind=\"{'flex-basis':width}\"><content></content></template>"), 
             __metadata('design:paramtypes', [Element])
         ], UISidebar);
         return UISidebar;
@@ -92,7 +95,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         }
         UIDivider = __decorate([
             aurelia_framework_1.customElement('ui-divider'),
-            aurelia_framework_1.inlineView('<template class="ui-divider"></template>'), 
+            aurelia_framework_1.inlineView('<template class="ui-divider" role="separator"></template>'), 
             __metadata('design:paramtypes', [])
         ], UIDivider);
         return UIDivider;
@@ -103,7 +106,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         }
         UIToolbar = __decorate([
             aurelia_framework_1.customElement('ui-toolbar'),
-            aurelia_framework_1.inlineView("<template class=\"ui-toolbar\"><content></content></template>"), 
+            aurelia_framework_1.inlineView("<template class=\"ui-toolbar\" role=\"toolbar\"><content></content></template>"), 
             __metadata('design:paramtypes', [])
         ], UIToolbar);
         return UIToolbar;

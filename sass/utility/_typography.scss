@@ -5,158 +5,150 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-// Headers
-h1, .ui-h1 {
-  font-size: 2rem;
-}
-
-h2, .ui-h2 {
-  font-size: 1.8rem;
-}
-
-h3, .ui-h3 {
-  font-size: 1.5rem;
-}
-
-h4, .ui-h4 {
-  font-size: 1.25rem;
-}
-
-h5, .ui-h5 {
-  font-size: 1.1rem;
-}
-
-h6, .ui-h6 {
-  font-size: 0.9rem;
-}
-
 h1, h2, h3, h4, h5, h6 {
-  small {
-	display: block;
-	font-size: 0.85em;
-	color: $text-muted;
-	line-height: 1.5;
+  > small {
+	font-size   : 0.75em;
+	display     : block;
+	color       : $text-muted;
+	line-height : 1.5;
   }
 }
 
-code {
-  padding: 0 0.1rem;
-  border-radius: 2px;
-  color: $maroon;
-  background-color: lighten($tulip, 20%);
-  word-break: keep-all;
-  font-weight: $font-weight-strong;
-  font-family: $base-font-family-serif;
+h6 {
+  font-size : 0.8em;
+}
+
+h5 {
+  font-size : 1.1em;
+}
+
+h4 {
+  font-size : 1.3em;
+}
+
+h3 {
+  font-size : 1.5em;
+}
+
+h2 {
+  font-size : 1.8em;
+}
+
+h1 {
+  font-size : 2em;
+}
+
+small {
+  font-size : 0.75em;
 }
 
 // Styles
 .ui-strong, strong {
-  font-weight: $font-weight-strong;
+  font-weight : $font-weight-strong;
 }
 
 .ui-bold, b {
-  font-weight: $font-weight-bold;
+  font-weight : $font-weight-bold;
 }
 
 .ui-italic, i, cite, em, var, address, dfn {
-  font-style: italic;
+  font-style : italic;
 }
 
 .ui-small-caps {
-  font-variant: small-caps;
+  font-variant : small-caps;
 }
 
 .ui-uppercase {
-  text-transform: uppercase;
+  text-transform : uppercase;
 }
 
 .ui-lowercase {
-  text-transform: lowercase;
+  text-transform : lowercase;
 }
 
 .ui-titlecase {
-  text-transform: capitalize;
+  text-transform : capitalize;
 }
 
 .ui-flip {
-  transform: scale(-1, 1);
+  transform : scale(-1, 1);
 }
 
 // Sizes
 .ui-font-small, small {
-  font-size: 0.75em;
+  font-size : 0.75em;
 }
 
 .ui-font-big {
-  font-size: 1.15em;
+  font-size : 1.15em;
 }
 
 .ui-font-large, big {
-  font-size: 1.5em;
-}
-
-// TEXT ALIGN
-.ui-text-start {
-  text-align: left;
-  text-align: start;
-}
-
-.ui-text-center {
-  text-align: center;
-}
-
-.ui-text-end {
-  text-align: right;
-  text-align: end;
+  font-size : 1.5em;
 }
 
 // Colors
 .ui-text-muted {
-  color: $text-muted !important;
+  color : $text-muted !important;
 }
 
 .ui-text-primary {
-  color: $primary !important;
+  color : $primary !important;
 }
 
 .ui-text-info {
-  color: $info !important;
+  color : $info !important;
 }
 
 .ui-text-danger {
-  color: $danger !important;
+  color : $danger !important;
 }
 
 .ui-text-success {
-  color: $success !important;
+  color : $success !important;
 }
 
 .ui-text-warning {
-  color: $warning !important;
+  color : $warning !important;
 }
 
 .ui-bg-primary {
-  background-color: $bg-primary;
+  background-color : $bg-primary;
 }
 
 .ui-bg-info {
-  background-color: $bg-info;
+  background-color : $bg-info;
 }
 
 .ui-bg-danger {
-  background-color: $bg-danger;
+  background-color : $bg-danger;
 }
 
 .ui-bg-success {
-  background-color: $bg-success;
+  background-color : $bg-success;
 }
 
 .ui-bg-warning {
-  background-color: $bg-warning;
+  background-color : $bg-warning;
 }
 
 .ui-bg-muted {
-  background-color: $ash-gray;
-  color: $black-olive;
+  background-color : $wg-2;
+  color            : $black;
 }
 
+// Alignments
+.ui-text-start {
+  text-align : left;
+  text-align : start;
+}
+
+.ui-text-center {
+  text-align : center;
+}
+
+.ui-text-end {
+  text-align : right;
+  text-align : end;
+}

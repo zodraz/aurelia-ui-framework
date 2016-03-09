@@ -6,11 +6,11 @@
  **/
 
 .ui-option {
-  min-height: 26px;
-  text-align: center;
-  position: relative;
-  padding: 3px !important;
-  border: 1px solid transparent;
+  min-height : 1.2rem;
+  text-align : center;
+  margin-top : 0.2rem;
+  position   : relative;
+  border     : 1px solid transparent;
   @include flexbox((
 		  display: inline-flex,
 		  flex-direction:row,
@@ -18,60 +18,55 @@
 		  align-items:center
   ));
 
-  &.ui-addon {
-	width: 26px;
-  }
-
   > .ui-option-input {
 	@include position(absolute, null);
-	@include size(18px, 18px);
-	cursor: pointer;
-	opacity: 0;
-	margin: 0;
-	z-index: 2;
+	@include size(1.2rem, 1.2rem);
+	cursor  : pointer;
+	opacity : 0;
+	margin  : 0;
+	z-index : 2;
   }
   > .ui-check-mark {
 	@include flex(0 0 auto);
-	@include size(18px, 18px);
-	z-index: 1;
-	cursor: pointer;
-	border-radius: 3px;
-	color: $input-option-color;
-	background-color: $input-bg;
-	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-option-color));
+	z-index          : 1;
+	line-height      : 1;
+	cursor           : pointer;
+	border-radius    : 0.25rem;
+	color            : $input-text;
+	background-color : $input-bg;
+	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-text));
 
 	&:after {
-	  line-height: 18px;
-	  text-align: left;
-	  position: relative;
-	  font: {
-		weight: 100;
-		size: 18px;
-		family: Material;
+	  text-align : left;
+	  position   : relative;
+	  font     : {
+		size   : 1.2rem;
+		weight : 100;
+		family : Material;
 	  }
 	}
   }
 
   &.ui-checkbox .ui-check-mark {
 	&:after {
-	  content: '\f11b';
+	  content : '\f11b';
 	}
   }
   &.ui-radio .ui-check-mark {
 	&:after {
-	  content: '\f145';
+	  content : '\f145';
 	}
-	border-radius: 9px;
+	border-radius : 50%;
   }
   &.ui-checkbox .ui-option-input:checked ~ .ui-check-mark:after {
-	content: '\f117';
+	content : '\f117';
   }
   &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
-	content: '\f20d';
+	content : '\f20d';
   }
 
   .ui-option-label {
-	padding: 0.15rem 0;
+	padding : 0.15rem 0;
 	@include flex(0 0 auto);
 	@include padding(end, 0.5rem);
 	@include padding(start, 0.2rem);
@@ -79,29 +74,30 @@
 
   .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
   .ui-option-input:hover:not(:disabled) ~ .ui-check-mark {
-	color: $input-option-color-focus;
-	border-color: $input-option-color-focus;
-	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 3px 1px $input-focus-color);
+	color        : $input-focus-border;
+	border-color : $input-focus-border;
+	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 3px 1px $input-focus-border);
   }
   .ui-option-input:disabled {
-	cursor: not-allowed;
+	cursor : not-allowed;
 	~ .ui-check-mark {
-	  color: $input-option-color-disabled;
-	  border-color: $input-border;
+	  opacity : 0.5;
+	  cursor  : not-allowed;
 	}
 	~ .ui-option-label {
-	  cursor: not-allowed;
-	  color: $input-option-color-disabled;
+	  opacity : 0.5;
+	  cursor  : not-allowed;
 	}
   }
 }
 
 .ui-option-group {
+  padding : 0 0.2rem;
   @include flex-row(flex-start);
   .ui-option {
 	@include flex(0 0 150px);
 	.ui-label {
-	  display: block;
+	  display : block;
 	  @include ellipsis();
 	}
   }

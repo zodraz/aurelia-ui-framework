@@ -1,0 +1,179 @@
+/**
+ *	UI Input
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-input-group {
+  @include flex-row(flex-start);
+  margin-bottom : 0.5rem;
+
+  .ui-label {
+	@include flex(0 0 10em);
+	padding    : 0.5em 0 0.35em;
+	position   : relative;
+	text-align : right;
+	text-align : end;
+	@include padding(end, 0.8em);
+
+	&:after {
+	  content   : ' ';
+	  color     : $primary;
+	  font-size : 0.8em;
+	  width     : 0.8em;
+	  display   : inline-block;
+	  position  : absolute;
+	  top       : 0.2em;
+	}
+	&.ui-required:after {
+	  content : '*';
+	}
+
+	small {
+	  color     : $text-muted;
+	  font-size : 0.9em;
+	  display   : block;
+	}
+  }
+
+  &.ui-label-top .ui-label {
+	@include flex-basis(100%);
+	text-align : inherit;
+  }
+
+  .ui-control-wrapper {
+	@include flex(1 0 20em);
+	position : relative;
+
+	> .ui-input-control {
+	  @include flex-row(stretch);
+
+	  > .ui-input-wrapper {
+		@include flex(1 1 0%);
+		position : relative;
+
+		> .ui-input {
+		  margin     : 0;
+		  width      : 100%;
+		  height     : 100%;
+		  font-size  : 1em;
+		  color      : $input-text;
+		  background : $input-bg;
+		  padding    : 5px 8px;
+		  border     : 1px solid $input-border;
+		  @include box-shadow(0 2px 2px 0 $wg-2 inset);
+
+		  &:focus {
+			border-color : $input-focus-border;
+			@include box-shadow(0 -3px 0 0 $input-focus-border inset, 0 2px 2px 0 $wg-2 inset);
+		  }
+
+		  &[disabled] {
+			cursor     : not-allowed;
+			color      : rgba($input-text, 0.5);
+			background : $input-disabled-bg;
+		  }
+		  &[readonly] {
+			background : $input-readonly-bg;
+		  }
+		}
+		> .ui-clear {
+		  z-index    : 2;
+		  display    : none;
+		  cursor     : pointer;
+		  font-size  : 0.5rem;
+		  margin     : 5px 0;
+		  padding    : 0.35rem;
+		  background : $input-bg;
+		  color      : rgba($input-text, 0.5);
+		  @include size(auto, auto);
+		  @include transition(opacity 0.1s);
+		  @include position(absolute, $t : 0, $b : 0, $r : 2px);
+		  &.show-clear {
+			display : inline-block;
+		  }
+		  &.show-clear:hover {
+			color : rgba($input-text, 0.9);
+		  }
+		}
+	  }
+
+	  > .ui-addon {
+		padding    : 0.3rem;
+		color      : $input-addon-text;
+		background : $input-addon-bg;
+		border     : 1px solid $input-border;
+		span {
+		  vertical-align : middle;
+		}
+
+		.ui-icon {
+		  min-height : 18px;
+		}
+	  }
+
+	  > .ui-addon-button {
+		font-size   : 1em;
+		padding     : 0 0.3rem;
+		font-weight : $font-weight-normal;
+		color       : $input-button-text;
+		background  : $input-button-bg;
+		@include box-shadow(1px 0 1px 0 $base-shadow-color);
+
+		&:not([disabled]):hover, &:not([disabled]):focus {
+		  @include box-shadow(0 2px 2px 0 rgba($white, 0.6) inset,
+				  0 -2px 2px 0 rgba($white, 0.6) inset,
+				  1px 0 1px 0 $base-shadow-color);
+		}
+		&:not([disabled]):active {
+		  @include box-shadow(0 2px 2px 0 rgba($black, 0.4) inset,
+				  0 -2px 2px 0 rgba($black, 0.4) inset,
+				  1px 0 1px 0 $base-shadow-color);
+		}
+		span {
+		  vertical-align : top;
+		}
+	  }
+
+	  > .ui-input-wrapper:first-child > .ui-input, .ui-addon:first-child {
+		@include border-left-radius($base-border-radius);
+	  }
+	  > .ui-input-wrapper:last-child > .ui-input, .ui-addon:last-child {
+		@include border-right-radius($base-border-radius);
+	  }
+	}
+
+	> .ui-input-help {
+	  background : shade($input-bg, 2%);
+	  color      : rgba($input-text, 0.7);
+	  font-size  : 0.8em;
+	  text-align : center;
+	  padding    : 1px 2px;
+	  border  : {
+		width : 0 1px 1px;
+		style : solid;
+		color : $input-border;
+	  }
+
+	  &:last-child {
+		@include border-bottom-radius($base-border-radius);
+	  }
+	  &.ui-input-error {
+		text-align : inherit;
+		color      : $danger;
+		&:before {
+		  content     : '\e09e';
+		  margin      : 0 4px;
+		  font-family : Vaadin;
+		}
+	  }
+	}
+
+	> .ui-input-control:not(:last-child) .ui-input-wrapper {
+	  .ui-addon, .ui-input {
+		@include border-bottom-radius(0);
+	  }
+	}
+  }
+}

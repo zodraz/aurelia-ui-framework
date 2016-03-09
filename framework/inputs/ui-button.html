@@ -1,5 +1,6 @@
-<template>
-	<a role="button" href.bind="href" ref="__button" data-value="${value}"
-	   click.trigger="onClick($event)" class="ui-button">
-		<span if.bind="icon" class.bind="icon"></span><span if.bind="label">${label}</span></a>
+<template class="ui-button-control">
+	<button class="ui-button" href.bind="href" ref="__button">
+		<span class.bind="icon" if.bind="icon"></span>
+		<span innerhtml.bind="label" if.bind="label"></span>
+	</button>
 </template>

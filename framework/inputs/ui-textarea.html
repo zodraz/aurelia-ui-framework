@@ -1,10 +1,8 @@
-<template class="ui-input-group ${!checked || disabled || readonly?'ui-disabled':''}">
+<template class="ui-input-group">
 	<label class="ui-label" ref="__label" for="${__id}">
 		<content></content>
 	</label>
 	<div class="ui-control-wrapper">
-		<div if.bind="helpText" innerhtml.bind="helpText"
-		     class="ui-input-help ui-text-muted"></div>
 		<div class="ui-input-control">
 			<div class="ui-addon" if.bind="prefixText || prefixIcon">
 				<span if.bind="prefixIcon" class="ui-icon ${prefixIcon}"></span>
@@ -12,22 +10,26 @@
 			</div>
 			<div class="ui-addon ui-option ui-checkbox" if.bind="__checkbox">
 				<input class="ui-option-input" type="checkbox" checked.bind="checked"
-				       id="${__id+'-chk'}" ref="__chkbox"/>
+					   id="${__id+'-chk'}" ref="__chkbox"/>
 				<span class="ui-check-mark"></span>
 			</div>
-			<textarea ref="__input" class="ui-input" id="${__id}" autocomplete="off" value.bind="__value"
-			          rows.bind="rows" placeholder.bind="placeholder"></textarea>
+			<div class="ui-input-wrapper">
+				<textarea class="ui-input" id="${__id}" autocomplete="off" rows.bind="rows"
+					   value.bind="__value" placeholder.bind="placeholder" ref="__input"></textarea>
+				<span class="ui-clear fi-vaadin-close ${__value?'show-clear':''}"
+					  click.trigger="clearInput()" if.bind="__clear"></span>
+			</div>
 			<div class="ui-addon" if.bind="suffixIcon || suffixText">
 				<span if.bind="suffixIcon" class="ui-icon ${suffixIcon}"></span>
 				<span if.bind="suffixText" innerhtml.bind="suffixText"></span>
 			</div>
 			<button if.bind="buttonText || buttonIcon" click.trigger="onAddonClick($event)"
-			        class="ui-addon-button ${buttonIcon}" innerhtml.bind="buttonText"></button>
-
-			<span class="ui-clear ${__value?'show-clear':''}" click.trigger="clearInput()"
-			      css.bind="{right:(__input.parentElement.offsetWidth - (__input.offsetWidth + __input.offsetLeft)) + 'px'}">
-					<span class="fi-vaadin-close"></span>
-			</span>
+					class="ui-addon ui-addon-button">
+				<span if.bind="buttonIcon" class="${buttonIcon}"></span>
+				<span if.bind="buttonText" innerhtml.bind="buttonText"></span>
+			</button>
 		</div>
+		<div if.bind="helpText" innerhtml.bind="helpText"
+			 class="ui-input-help"></div>
 	</div>
 </template>

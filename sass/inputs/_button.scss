@@ -1,136 +1,79 @@
 /**
- *	UI Framework Button
+ *	UI Button
  *	@author 	Adarsh Pastakia
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-@mixin button-style($prefix, $bg, $color, $border) {
-  &.ui-button-#{$prefix} {
-	color: $color;
-	border-color: $border;
-	background: linear-gradient(top, shade($bg, 3%), shade($bg, 5%));
-	@include box-shadow(0 1px 2px 0 $snow inset);
-	text-shadow: 0px 1px 0 shade($bg, 10%);
-
-	&:hover:not(.ui-checked), &:focus:not(.ui-checked) {
-	  @include box-shadow(0 1px 2px 0 $snow inset, 0 0 9px 3px tint($bg, 15%) inset);
-	  background: linear-gradient(top, $bg, shade($bg, 3%), $bg);
-	}
-	&:active:not(.ui-checked) {
-	  border-color: shade($border, 15%);
-	  text-shadow: 0px -2px 1px shade($bg, 15%);
-	  @include box-shadow(0 1px 2px 0 $smoke inset, 0 0 9px 3px shade($bg, 15%) inset);
-	  background: linear-gradient(bottom, shade($bg, 3%), shade($bg, 6%));
-	}
+@mixin button-style($pre, $bg, $text) {
+  &.ui-button-#{$pre} {
+	background   : $bg;
+	color        : $text;
+	border-color : darken($bg, 5%);
   }
+}
+
+.ui-button-control {
+  display : inline-block;
 }
 
 .ui-button {
-  @include flexbox((
-		  display: inline-flex,
-		  flex-direction:row,
-		  flex-wrap:wrap,
-		  align-items: center,
-		  justify-content:center
-  ));
-  @include transition(background 0.5s);
-  margin: 0.2rem;
-  padding: 0.35rem 0.8rem;
-  border: {
-	width: 1px;
-	style: solid;
-	radius: $base-border-radius;
-  }
+  text-align    : center;
+  display       : inline-block;
+  margin        : 0.2rem;
+  font-size     : 1.1rem;
+  font-weight   : $font-weight-normal;
+  padding       : $base-padding;
+  border-radius : $base-border-radius;
+  border        : 1px solid darken($secondary, 5%);
+  @include box-shadow(2px 2px 4px 0 $base-shadow-color);
 
-  > span {
-	margin: 0.2rem;
-
-	&[class^="fi-"], &[class*="fi-"] {
-	  font-size: 1.2em;
-	}
-  }
-
-  &.ui-icon-top {
-	@include flex-direction(column);
-  }
-
-  &.ui-default {
-	font-weight: $font-weight-strong;
+  &.ui-button-large {
+	font-size : 1.4rem;
   }
   &.ui-button-small {
-	padding: 0.1rem 0.3rem;
-	font-size: 0.85rem;
+	font-size : 0.9rem;
+	padding   : 0.2rem;
   }
-  &.ui-button-large {
-	padding: 0.6rem 1.4rem;
-	font-size: 1.2rem;
+
+  &.ui-button-round {
+	border-radius : 1em;
+  }
+
+  &.ui-icon-top > span {
+	display    : block;
+	text-align : center;
+	width      : 100%;
+	margin     : 0.2rem 0;
+  }
+
+  &:not([disabled]):hover, &:not([disabled]):focus {
+	@include box-shadow(0 2px 2px 0 rgba($white, 0.6) inset,
+			0 -2px 2px 0 rgba($white, 0.6) inset,
+			2px 2px 4px 0 $base-shadow-color);
+  }
+  &:not([disabled]):active {
+	@include box-shadow(0 2px 2px 0 rgba($black, 0.4) inset,
+			0 -2px 2px 0 rgba($black, 0.4) inset,
+			2px 2px 4px 0 $base-shadow-color);
   }
 
   &[disabled] {
-	opacity: 0.4;
-	box-shadow: none;
-	cursor: not-allowed;
-	pointer-events: none;
-  }
-
-  @include button-style(default, $button-default-bg, $primary, $base-border-color);
-  @include button-style(primary, $button-primary-bg, $button-primary-text, $button-primary-border);
-  @include button-style(secondary, $button-secondary-bg, $button-secondary-text, $button-secondary-border);
-  @include button-style(info, $button-info-bg, $button-info-text, $button-info-border);
-  @include button-style(danger, $button-danger-bg, $button-danger-text, $button-danger-border);
-  @include button-style(success, $button-success-bg, $button-success-text, $button-success-border);
-  @include button-style(warning, $button-warning-bg, $button-warning-text, $button-warning-border);
-
-  &.ui-checked {
-	color: $button-primary-text;
-	border-color: shade($button-primary-border, 15%);
-	text-shadow: 0px -1px 0 shade($button-primary-bg, 15%);
-	@include box-shadow(0 0 6px 3px rgba($charcoal, 0.5) inset);
-	background: linear-gradient(bottom, shade($button-primary-bg, 3%), shade($button-primary-bg, 6%));
-  }
-}
-
-.ui-button-group {
-  @include flexbox((
-		  display: inline-flex,
-		  flex-direction:row,
-		  flex-wrap:nowrap,
-		  align-items:stretch
-  ));
-
-  .ui-button {
-	@include flex(0 0 auto);
-	border-radius: 0;
-	margin: 0;
-  }
-
-  &:not(.ui-vertical) {
-	.ui-button {
-	  //@include borderEx(start, width, 0);
-	  margin: 2px 0;
-	}
-	> :first-child .ui-button {
-	  //@include borderEx(start, width, 1px);
-	  @include border-left-radius($base-border-radius);
-	}
-	> :last-child .ui-button {
-	  @include border-right-radius($base-border-radius);
+	opacity : 0.5;
+	&, > span {
+	  cursor : not-allowed;
 	}
   }
 
-  &.ui-vertical {
-	@include flex-direction(column);
-	.ui-button {
-	  //border-top-width: 0;
-	  margin: 0 2px;
-	}
-	> :first-child .ui-button {
-	  //border-top-width: 1px;
-	  @include border-top-radius($base-border-radius);
-	}
-	> :last-child .ui-button {
-	  @include border-bottom-radius($base-border-radius);
-	}
+  span {
+	vertical-align : baseline;
+	margin         : 0 0.2em;
   }
+
+  @include button-style(default, $button-default-bg, $button-default-text);
+  @include button-style(primary, $button-primary-bg, $button-primary-text);
+  @include button-style(info, $button-info-bg, $button-info-text);
+  @include button-style(danger, $button-danger-bg, $button-danger-text);
+  @include button-style(success, $button-success-bg, $button-success-text);
+  @include button-style(warning, $button-warning-bg, $button-warning-text);
 }

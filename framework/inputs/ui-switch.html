@@ -1,11 +1,5 @@
 <template class="ui-switch-control">
-	<style if.bind="width>56">
-		#${__id}.ui-switch-input:checked ~ .ui-switch-handle {
-			left: ${(width-20)+'px'};
-		}
-	</style>
-	<label class="ui-switch" ref="__switch"
-		   css.bind="{width:width+'px'}">
+	<label class="ui-switch" ref="__switch">
 		<input ref="__input" id.bind="__id" type="checkbox"
 			   class="ui-switch-input" checked.bind="checked"
 			   focus.trigger="onFocus()" blur.trigger="onBlur()" change.trigger="valueChanged($event)"/>

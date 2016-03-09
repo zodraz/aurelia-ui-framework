@@ -7,32 +7,44 @@
 @import "compass/reset";
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dt, dd, dl {
-  margin: 0;
-  padding: 0.3rem 0.7rem;
-  position: initial;
+  margin   : 0;
+  padding  : 0.3rem 0.7rem;
+  position : initial;
 }
 
 div, template {
-  position: initial;
-  display: block;
+  position : initial;
+  display  : block;
 }
 
 p {
-  line-height: 1.5;
+  line-height : 1.5;
 }
 
 textarea {
-  resize: vertical;
+  resize : vertical;
+}
+
+input, textarea {
+  outline : none !important;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  -webkit-appearance : none;
+  margin             : 0;
 }
+
 input[type=number] {
-  -moz-appearance:textfield;
+  -moz-appearance : textfield;
 }
+
 img {
-  border: none !important;
+  pointer-events : none;
+  border         : none !important;
+}
+
+button {
+  border     : none;
+  background : none;
 }

@@ -1,123 +1,136 @@
 /**
- *	UI Framework - Light Theme
+ *	UI Theme Light
  *	@author 	Adarsh Pastakia
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
-@import "utility/colors";
+@import "utility/copic";
 
-$primary: #5D968E !default;
-$secondary: #BEDCCF !default;
+$primary : $lapis-lazuli !default;
+$primary-text : $white !default;
 
-$primary-text: #FFFFFF !default;
-$secondary-text: #48544E !default;
+$secondary : $crockery-blue !default;
+$secondary-text : $black !default;
 
-$info: #019DC9 !default;
-$danger: #EE5359 !default;
-$success: #38BD85 !default;
-$warning: #FEB500 !default;
+$info : $blue-green !default;
+$danger : $cadmium-red !default;
+$success : $mistletoe !default;
+$warning : $cadmium-orange !default;
 
-// BASE
-$base-bg: $coconut !default;
-$base-text: $black-olive !default;
-$base-bg-image: 'back/bg-light.png' !default;
+$bg-primary : $greenish-blue !default;
+$bg-info : $new-blue !default;
+$bg-danger : $peach !default;
+$bg-success : $lime-green !default;
+$bg-warning : $reddish-yellow !default;
 
-$base-border-color: $ash-gray !default;
-$base-shadow-color: $ash-gray !default;
+/** BASE **/
+// fonts
+$base-font-size : 0.95rem !default;
+$base-line-height : 1.1 !default;
+$base-font-family-input : 'Lato', 'Trebuchet MS', Tahoma, san-serif !default;
+$base-font-family-serif : 'Source Code Pro', 'Georgia', 'Times New Roman', serif !default;
+$base-font-family-sans-serif : 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
+$base-font-family : $base-font-family-sans-serif !default;
+// colors
+$base-bg : $white !default;
+$base-text : $black !default;
+$base-bg-image : 'back/bg-light.png' !default;
+$base-splash-image : 'loader-spinner.gif' !default;
+// borders
+$base-border-color : $wg-5 !default;
+$base-border-radius : 0.2rem !default;
+$base-shadow-color : $wg-8 !default;
+// padding
+$base-padding : 0.3em .8em !default;
+// z-order
+$z-index-splash : 50000 !default;
+$z-index-notify : 10000 !default;
+$z-index-floating : 500 !default;
+$z-index-ribbon : 200 !default;
+// font weights
+$font-weight-normal : 400 !default;
+$font-weight-strong : 600 !default;
+$font-weight-bold : 800 !default;
 
-$text-link: $primary !default;
-$text-muted: $gray !default;
+/** GRID SYSTEM **/
+$grid-xs-min : 320px !default; // 320 - 480
+$grid-sm-min : 480px !default; // 480 - 768
+$grid-md-min : 768px !default; // 768 - 1024
+$grid-lg-min : 1024px !default; // 1024 - 1536
+$grid-xl-min : 1536px !default; // 1536 - ∞
 
-$hr-highlight: $white !default;
-$hr-shadow: $ash-gray !default;
+/** TYPOGRAPHY **/
+$text-link : $primary !default;
+$text-muted : $wg-5 !default;
+$text-primary : $primary !default;
+$text-info : $info !default;
+$text-danger : $danger !default;
+$text-success : $success !default;
+$text-warning : $warning !default;
 
-// APP
-$app-header-bg: #28616E !default;
-$app-header-text: #FFFFFF !default;
-$app-footer-bg: $outer-space !default;
-$app-footer-text: $cadet-gray !default;
+$pre-code-bg : #F0F0F0;
+$pre-code-text : #696969;
+$pre-code-border : #E5E5E5;
 
-$app-menu-bg: $licorice !default;
-$app-menu-text: $primary !default;
-$app-menu-bg-image: 'back/bg-menu.png' !default;
-$app-menu-shim: $gray !default;
+$hr-highlight : $white !default;
+$hr-shadow : $ng-3 !default;
 
-$app-menu-active-bg: $primary !default;
-$app-menu-active-text: $primary-text !default;
-$app-menu-active-border: $primary-text !default;
+/** APP VIEWPORT **/
+$app-header-bg : $agate !default;
+$app-header-text : $white !default;
+$app-header-font-size : 1.5rem !default;
 
-// PAGE
-$page-title-bg: #B1DBD5 !default;
-$page-title-text: #28616E !default;
+$app-footer-bg : $ng-9 !default;
+$app-footer-text : $ng-1 !default;
+$app-footer-font-size : 0.5rem !default;
 
-$sidebar-bg: rgba($isabelline, .25) !default;
-$sidebar-text: $base-text !default;
+$app-menu-bg : $black !default;
+$app-menu-text : $white !default;
+$app-menu-link : $primary !default;
+$app-menu-font-size : 1.2rem !default;
+$app-menu-bg-image : 'back/bg-menu.png' !default;
+$app-menu-shim : $cg-00 !default;
 
-$toolbar-bg: rgba($timberwolf, .35) !default;
-$toolbar-text: $base-text !default;
+$app-menu-hover-bg : rgba($primary, 0.5) !default;
+$app-menu-hover-text : $primary-text !default;
 
-$statsbar-bg: rgba($secondary, .35) !default;
-$statsbar-text: $secondary-text !default;
+$app-menu-active-bg : $primary !default;
+$app-menu-active-text : $primary-text !default;
+$app-menu-active-border : $primary-text !default;
 
-// MENU
-$menu-hover-bg: rgba($primary, 0.6) !default;
-$menu-hover-text: $primary-text !default;
-$menu-click-bg: rgba($primary, 0.3) !default;
-$menu-click-text: $primary-text !default;
-$menu-active-bg: rgba($primary, 0.1) !default;
-$menu-active-text: $primary !default;
-$menu-active-border: $primary !default;
+/** PAGE **/
+$page-title-bg : $night-blue !default;
+$page-title-text : $white !default;
 
-// BUTTONS
-$button-default-bg: $snow !default;
-$button-primary-bg: $primary !default;
-$button-secondary-bg: $secondary !default;
-$button-info-bg: $info !default;
-$button-danger-bg: $danger !default;
-$button-success-bg: $success !default;
-$button-warning-bg: $warning !default;
+/** BUTTONS **/
+$button-default-bg : $tg-0 !default;
+$button-default-text : $tg-8 !default;
+$button-primary-bg : $primary !default;
+$button-primary-text : $primary-text !default;
+$button-info-bg : $info !default;
+$button-info-text : $white !default;
+$button-danger-bg : $danger !default;
+$button-danger-text : $white !default;
+$button-success-bg : $success !default;
+$button-success-text : $white !default;
+$button-warning-bg : $warning !default;
+$button-warning-text : $white !default;
 
-$button-primary-text: $primary-text !default;
-$button-secondary-text: $secondary-text !default;
-$button-info-text: $coconut !default;
-$button-danger-text: $coconut !default;
-$button-success-text: $coconut !default;
-$button-warning-text: $coconut !default;
+/** INPUTS **/
+$input-bg : $white-sp !default;
+$input-text : $cg-8 !default;
+$input-border : $wg-4 !default;
+$input-focus-border : $antwerp-blue !default;
+$input-placeholder-text : $wg-3 !default;
 
-$button-primary-border: darken($primary, 20%) !default;
-$button-secondary-border: darken($secondary, 20%) !default;
-$button-info-border: darken($info, 20%) !default;
-$button-danger-border: darken($danger, 20%) !default;
-$button-success-border: darken($success, 20%) !default;
-$button-warning-border: darken($warning, 20%) !default;
+$input-readonly-bg : $ng-0 !default;
+$input-disabled-bg : $wg-0 !default;
 
-// INPUT
-$placeholder-color: $timberwolf !default;
-$input-bg: $snow !default;
-$input-text: $base-text !default;
-$input-label-text: $smoke !default;
-$input-border: $base-border-color !default;
-$input-focus-color: $primary !default;
-$input-valid-color: $pine !default;
-$input-invalid-color: $madder-lake !default;
-$input-addon-text: $primary !default;
-$input-addon-bg: $white-smoke !default;
-$input-readonly-bg: shade($input-bg, 2%) !default;
-$input-disabled-bg: darken($input-bg, 10%) !default;
+$input-addon-bg : $cg-00 !default;
+$input-addon-text : $cg-7 !default;
 
-$input-option-color: $charcoal-gray !default;
-$input-option-color-focus: $input-focus-color !default;
-$input-option-color-disabled: $ash-gray !default;
-
-// TYPOGRAPHY
-$bg-primary: #B1DBD5;
-$bg-info: #C6E4EE;
-$bg-danger: #FFDAD3;
-$bg-success: #CBEEDD;
-$bg-warning: #FCDEC3;
-
-$pre-code-bg: #f0f0f0;
-$pre-code-text: #696969;
-$pre-code-border: #e5e5e5;
+$input-button-bg : $secondary !default;
+$input-button-text : $secondary-text !default;
 
 @import "framework!";
+

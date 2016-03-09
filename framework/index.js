@@ -3,14 +3,13 @@ define(["require", "exports", "./core/ui-viewport", "./utils/ui-event", "./utils
         aurelia.globalResources('./core/ui-viewport');
         aurelia.globalResources('./core/ui-page');
         aurelia.globalResources('./core/ui-grid');
-        aurelia.globalResources('./components/ui-menu');
         aurelia.globalResources('./inputs/ui-button');
         aurelia.globalResources('./inputs/ui-switch');
         aurelia.globalResources('./inputs/ui-option');
         aurelia.globalResources('./inputs/ui-input');
         aurelia.globalResources('./inputs/ui-phone');
         aurelia.globalResources('./inputs/ui-textarea');
-        aurelia.globalResources('./inputs/ui-dual-input');
+        aurelia.globalResources('./inputs/ui-input-dual');
         aurelia.globalResources('./utils/ui-converters');
     }
     exports.configure = configure;
