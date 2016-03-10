@@ -5,7 +5,6 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable, bindingMode} from "aurelia-framework";
-import {UIEvent} from "aurelia-ui-framework";
 import {UIInputGroup} from "./ui-input-group";
 
 @customElement('ui-textarea')
@@ -83,5 +82,11 @@ export class UITextArea extends UIInputGroup {
 	 * @type        string
 	 */
 	@bindable() rows:string = '5';
+
+	/**
+	 * @property    dir
+	 * @type        string
+	 */
+	@bindable() dir:string = '';
 
 }

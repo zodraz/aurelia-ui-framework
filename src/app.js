@@ -7,13 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-ui-framework", "aurelia-framework"], function (require, exports, aurelia_ui_framework_1, aurelia_framework_1) {
+define(["require", "exports", "../framework/index", "aurelia-framework"], function (require, exports, index_1, aurelia_framework_1) {
     var App = (function () {
         function App() {
-            this.appOptions = new aurelia_ui_framework_1.UIViewportOptions({});
+            this.appOptions = new index_1.UIViewportOptions({});
         }
         App.prototype.configureRouter = function (config, router) {
             this.router = router;
+            config.title = 'Aurelia UI Framework';
             config.options.showLogo = true;
             config.options.showAuthentication = true;
             config.map([{
@@ -32,6 +33,38 @@ define(["require", "exports", "aurelia-ui-framework", "aurelia-framework"], func
                     nav: true,
                     auth: false,
                     name: 'colors'
+                }, {
+                    route: 'core',
+                    moduleId: './core/view',
+                    settings: { icon: 'fi-vaadin-viewpoint', sectionStart: true },
+                    title: 'Core Elements',
+                    nav: true,
+                    auth: false,
+                    name: 'core'
+                }, {
+                    route: 'components',
+                    moduleId: './components/view',
+                    settings: { icon: 'fi-vaadin-modal-list' },
+                    title: 'Components',
+                    nav: true,
+                    auth: false,
+                    name: 'components'
+                }, {
+                    route: 'inputs',
+                    moduleId: './inputs/view',
+                    settings: { icon: 'fi-vaadin-input' },
+                    title: 'Input Elements',
+                    nav: true,
+                    auth: false,
+                    name: 'inputs'
+                }, {
+                    route: 'utils',
+                    moduleId: './utils/view',
+                    settings: { icon: 'fi-vaadin-tools' },
+                    title: 'Utility Classes',
+                    nav: true,
+                    auth: false,
+                    name: 'utils'
                 }, {
                     route: '', redirect: 'home'
                 }]);

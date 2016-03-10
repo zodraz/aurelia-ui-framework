@@ -26,6 +26,8 @@
 	text-align  : start;
 	font-weight : $font-weight-normal;
 	padding     : 1em 0.5em;
+	color       : $menu-link-text;
+	background  : $menu-link-bg;
 	@include border(start, 4px solid transparent);
 
 	.ui-icon {
@@ -33,26 +35,25 @@
 	  width   : 1.2em;
 	}
 
-	//&[data-disabled="true"] {
-	//  color: $black-olive;
-	//  background: rgba(#333, 0.01);
-	//  cursor: not-allowed;
-	//  pointer-events: none;
-	//}
-	//
-	//&:hover {
-	//  color: $menu-hover-text;
-	//  background-color: $menu-hover-bg;
-	//}
-	//&:active {
-	//  color: $menu-click-text;
-	//  background-color: $menu-click-bg;
-	//}
-	//&.ui-active {
-	//  color: $menu-active-text;
-	//  background-color: $menu-active-bg;
-	//  border-color: $menu-active-border;
-	//  font-weight: $font-weight-strong;
-	//}
+	&[data-disabled="true"] {
+	  color          : $wg-5;
+	  pointer-events : none;
+	  cursor         : not-allowed;
+	}
+
+	&:hover {
+	  color            : $menu-hover-text;
+	  background-color : $menu-hover-bg;
+	}
+	&:active {
+	  color            : $menu-click-text;
+	  background-color : $menu-click-bg;
+	}
+	&.ui-active {
+	  color            : $menu-active-text;
+	  border-color     : $menu-active-border;
+	  background-color : $menu-active-bg;
+	  font-weight      : $font-weight-strong;
+	}
   }
 }

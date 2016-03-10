@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {_, moment, numeral} from "aurelia-ui-framework";
+import {_, moment, numeral} from "./ui-utils";
 
 export module UIFormat {
 	export function toHTML(md) {

@@ -13,7 +13,9 @@
 				<small if.bind="options.subtitle" innerhtml.bind="options.subtitle"></small>
 			</a>
 		</h1>
-		<content></content>
+		<div class="ui-header-options">
+			<content></content>
+		</div>
 	</header>
 	<router-view role="region" class="ui-viewport-body"></router-view>
 	<div class="ui-app-taskbar" if.bind="options.showTaskbar" role="toolbar">

@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {UIFormat} from "aurelia-ui-framework";
+import {UIFormat} from "./ui-formatters";
 
 export class MarkdownValueConverter {
 	toView(value:string) {

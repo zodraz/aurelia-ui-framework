@@ -21,7 +21,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./core/ui-grid');
 
 	///** Components **/
-	//aurelia.globalResources('./components/ui-menu');
+	aurelia.globalResources('./components/ui-menu');
 
 	/** Inputs **/
 	aurelia.globalResources('./inputs/ui-button');

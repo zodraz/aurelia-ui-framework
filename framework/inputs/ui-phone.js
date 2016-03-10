@@ -35,6 +35,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
         }
         UIPhone.prototype.bind = function () {
             _super.prototype.bind.call(this);
+            this.dir = 'ltr';
             if (this.element.hasAttribute('international')) {
                 this.__phoneFormat = PhoneLib.FORMAT.INTERNATIONAL;
                 this.prefixIcon = "ui-icon ui-flag";

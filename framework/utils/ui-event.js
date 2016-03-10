@@ -1,4 +1,4 @@
-define(["require", "exports", "aurelia-ui-framework", "aurelia-framework", "aurelia-event-aggregator"], function (require, exports, aurelia_ui_framework_1, aurelia_framework_1, aurelia_event_aggregator_1) {
+define(["require", "exports", "./ui-utils", "aurelia-framework", "aurelia-event-aggregator"], function (require, exports, ui_utils_1, aurelia_framework_1, aurelia_event_aggregator_1) {
     var UIEvent;
     (function (UIEvent) {
         function fireEvent(event, element, data) {
@@ -17,21 +17,21 @@ define(["require", "exports", "aurelia-ui-framework", "aurelia-framework", "aure
         var __ob;
         function broadcast(event, data) {
             if (!__ea) {
-                __ea = aurelia_ui_framework_1.UIUtils.lazy(aurelia_event_aggregator_1.EventAggregator);
+                __ea = ui_utils_1.UIUtils.lazy(aurelia_event_aggregator_1.EventAggregator);
             }
             __ea.publish(event, data);
         }
         UIEvent.broadcast = broadcast;
         function observe(object, property) {
             if (!__ob) {
-                __ob = aurelia_ui_framework_1.UIUtils.lazy(aurelia_framework_1.BindingEngine);
+                __ob = ui_utils_1.UIUtils.lazy(aurelia_framework_1.BindingEngine);
             }
             return __ob.propertyObserver(object, property);
         }
         UIEvent.observe = observe;
         function subscribe(event, callback) {
             if (!__ea) {
-                __ea = aurelia_ui_framework_1.UIUtils.lazy(aurelia_event_aggregator_1.EventAggregator);
+                __ea = ui_utils_1.UIUtils.lazy(aurelia_event_aggregator_1.EventAggregator);
             }
             return __ea.subscribe(event, callback);
         }

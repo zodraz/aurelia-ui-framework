@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {UIUtils} from "aurelia-ui-framework";
+import {UIUtils} from "./ui-utils";
 import {BindingEngine, PropertyObserver} from "aurelia-framework";
 import {EventAggregator, Subscription} from "aurelia-event-aggregator";
 

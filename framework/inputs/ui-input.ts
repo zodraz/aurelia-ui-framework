@@ -5,7 +5,6 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable, bindingMode} from "aurelia-framework";
-import {UIEvent} from "aurelia-ui-framework";
 import {UIInputGroup} from "./ui-input-group";
 
 @customElement('ui-input')
@@ -78,6 +77,12 @@ export class UIInput extends UIInputGroup {
 	 */
 	@bindable() placeholder:string = '';
 
+	/**
+	 * @property    dir
+	 * @type        string
+	 */
+	@bindable() dir:string = '';
+
 	bind() {
 		super.bind();
 
@@ -113,7 +118,6 @@ export class UIInput extends UIInputGroup {
 		let start = evt.target.selectionStart;
 		if (this.__format === 'title') {
 			val = val.replace(new RegExp(`[${this.ALPHA}'\\-']+(?=[\\.&\\s]*)`, 'g'), (txt) => {
-				if (/^[ivxlcm]+$/.test(txt.toLowerCase())) return txt.toUpperCase();
 				if (txt.toLowerCase()
 					   .indexOf("mc") == 0) {
 					return txt.substr(0, 1)

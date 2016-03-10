@@ -42,6 +42,18 @@ small {
   font-size : 0.75em;
 }
 
+code {
+  padding          : 0 0.1rem;
+  border-radius    : 2px;
+  color            : $coral;
+  background-color : rgba($pink-beryl, 0.8);
+  word-break       : keep-all;
+  font-weight      : $font-weight-normal;
+  font-family      : $base-font-family-serif;
+  cursor           : text;
+  @include user-select(text);
+}
+
 // Styles
 .ui-strong, strong {
   font-weight : $font-weight-strong;

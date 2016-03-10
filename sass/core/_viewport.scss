@@ -15,12 +15,12 @@
 	padding    : $base-padding;
 	z-index    : 2;
 
-	@include flex-row();
+	@include flex-row($justify : flex-end);
 	@include flex(0 0 auto);
 	@include box-shadow(0 0 5px 0 $base-shadow-color);
 
 	.ui-app-title {
-	  @include flex(1 1 0%);
+	  @include flex(1 0 auto);
 	  font-size    : $app-header-font-size;
 	  font-variant : small-caps;
 	  a {
@@ -34,17 +34,17 @@
 
 	.ui-app-logo {
 	  @include flex(0 0 auto);
-	  height : 42px;
+	  height : 32px;
 	}
 
 	.ui-app-menu-handle {
 	  @include margin(end, 0.5em);
 	  padding     : 0;
 	  line-height : 0;
-	  width       : 30px;
+	  width       : 20px;
 	  span {
-		height     : 3px;
-		margin-top : 5px;
+		height     : 2px;
+		margin-top : 4px;
 		display    : block;
 		background : rgba($app-header-text, 0.8);
 		&:first-child {
@@ -57,6 +57,10 @@
 	  &:active span {
 		background : tint($app-header-bg, 25%);
 	  }
+	}
+
+	.ui-app-header-options {
+	  @include flex(0 0 auto);
 	}
   }
 
@@ -153,5 +157,19 @@
 	@include flex-column(flex-end);
 	z-index        : $z-index-floating;
 	pointer-events : none;
+  }
+}
+
+body[dir='rtl'] {
+  .ui-viewport .ui-app-menu {
+	left  : auto;
+	right : -305px;
+	@include transition-property(right);
+  }
+
+  .ui-viewport.show-menu {
+	.ui-app-menu {
+	  right : 0;
+	}
   }
 }

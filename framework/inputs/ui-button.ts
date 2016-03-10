@@ -5,7 +5,7 @@
  *    @copyright     2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable} from "aurelia-framework";
-import {_, UIEvent} from "aurelia-ui-framework";
+import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
 @customElement('ui-button')

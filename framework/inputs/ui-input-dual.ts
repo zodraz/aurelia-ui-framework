@@ -5,7 +5,6 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, useView, bindable, bindingMode} from "aurelia-framework";
-import {UIEvent} from "aurelia-ui-framework";
 import {UIInput} from "./ui-input";
 
 @useView("./ui-input.html")
@@ -102,4 +101,10 @@ export class UIInputDual extends UIInput {
 	 * @type        string
 	 */
 	@bindable() placeholderSecond:string = '';
+
+	/**
+	 * @property    dir
+	 * @type        string
+	 */
+	@bindable() dir:string = '';
 }

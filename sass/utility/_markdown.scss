@@ -66,11 +66,11 @@
 
   th {
 	font-weight   : bold;
-	border-bottom : 1px solid #e5e5e5;
+	border-bottom : 1px solid #E5E5E5;
   }
 
   tr:nth-of-type(even) td {
-	background-color : #f0f0f0;
+	background-color : #F0F0F0;
   }
 
   hr {
@@ -103,15 +103,13 @@
 	color         : $black;
 	padding       : 0.7rem 1.2rem;
 	background    : $pre-code-bg;
-	border        : 1px solid #e5e5e5;
+	border        : 1px solid #E5E5E5;
 	border-radius : $base-border-radius;
-	cursor        : text;
 	position      : relative;
-	@include user-select(text);
 
 	&:after {
-	  color       : #f0f0f0;
-	  background  : #6a6a6a;
+	  color       : #F0F0F0;
+	  background  : #6A6A6A;
 	  position    : absolute;
 	  padding     : 0.2rem 0.7rem;
 	  font-size   : 0.7rem;

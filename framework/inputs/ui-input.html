@@ -1,6 +1,6 @@
 <template class="ui-input-group">
 	<label class="ui-label" ref="__label" for="${__id}">
-		<content></content>
+		<span><content></content></span>
 	</label>
 	<div class="ui-control-wrapper">
 		<div class="ui-input-control">
@@ -15,7 +15,7 @@
 			</div>
 			<div class="ui-input-wrapper">
 				<input class="ui-input" id="${__id}" type.bind="__type" autocomplete="off" size="1"
-					   value.bind="__value" placeholder.bind="placeholder" ref="__input"/>
+					   value.bind="__value" placeholder.bind="placeholder" ref="__input" dir="${dir}"/>
 				<span class="ui-clear fi-vaadin-close ${__value?'show-clear':''}"
 					  click.trigger="clearInput()" if.bind="__clear"></span>
 			</div>
@@ -24,7 +24,7 @@
 				<span if.bind="centerText" innerhtml.bind="centerText"></span>
 			</div>
 			<div class="ui-input-wrapper" if.bind="__dual">
-				<input class="ui-input" id="${__id+'-second'}" type.bind="__type" size="1"
+				<input class="ui-input" id="${__id+'-second'}" type.bind="__type" size="1" dir="${dir}"
 					   autocomplete="off" value.bind="__value2" placeholder.bind="placeholderSecond" ref="__input2"/>
 				<span class="ui-clear fi-vaadin-close ui-clear2 ${__value2?'show-clear':''}"
 					  click.trigger="clearInput(true)" if.bind="__clear"></span>

@@ -89,7 +89,7 @@ export class UIPhone extends UIInputGroup {
 
 	bind() {
 		super.bind();
-
+		this.dir = 'ltr';
 		if (this.element.hasAttribute('international')) {
 			this.__phoneFormat = PhoneLib.FORMAT.INTERNATIONAL;
 			this.prefixIcon    = `ui-icon ui-flag`;

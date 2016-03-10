@@ -1,9 +1,9 @@
-define(["require", "exports", "aurelia-ui-framework"], function (require, exports, aurelia_ui_framework_1) {
+define(["require", "exports", "./ui-formatters"], function (require, exports, ui_formatters_1) {
     var MarkdownValueConverter = (function () {
         function MarkdownValueConverter() {
         }
         MarkdownValueConverter.prototype.toView = function (value) {
-            return aurelia_ui_framework_1.UIFormat.toHTML(value || '');
+            return ui_formatters_1.UIFormat.toHTML(value || '');
         };
         return MarkdownValueConverter;
     })();
@@ -12,7 +12,7 @@ define(["require", "exports", "aurelia-ui-framework"], function (require, export
         function DateValueConverter() {
         }
         DateValueConverter.prototype.toView = function (value, format) {
-            return aurelia_ui_framework_1.UIFormat.date(value, format);
+            return ui_formatters_1.UIFormat.date(value, format);
         };
         return DateValueConverter;
     })();
@@ -21,7 +21,7 @@ define(["require", "exports", "aurelia-ui-framework"], function (require, export
         function FromNowValueConverter() {
         }
         FromNowValueConverter.prototype.toView = function (value) {
-            return aurelia_ui_framework_1.UIFormat.fromNow(value);
+            return ui_formatters_1.UIFormat.fromNow(value);
         };
         return FromNowValueConverter;
     })();
@@ -30,7 +30,7 @@ define(["require", "exports", "aurelia-ui-framework"], function (require, export
         function NumberValueConverter() {
         }
         NumberValueConverter.prototype.toView = function (value, format) {
-            return aurelia_ui_framework_1.UIFormat.number(value, format);
+            return ui_formatters_1.UIFormat.number(value, format);
         };
         return NumberValueConverter;
     })();
@@ -39,7 +39,7 @@ define(["require", "exports", "aurelia-ui-framework"], function (require, export
         function CurrencyValueConverter() {
         }
         CurrencyValueConverter.prototype.toView = function (value, symbol, format) {
-            return aurelia_ui_framework_1.UIFormat.currency(value, symbol, format);
+            return ui_formatters_1.UIFormat.currency(value, symbol, format);
         };
         return CurrencyValueConverter;
     })();
@@ -48,7 +48,7 @@ define(["require", "exports", "aurelia-ui-framework"], function (require, export
         function PercentValueConverter() {
         }
         PercentValueConverter.prototype.toView = function (value) {
-            return aurelia_ui_framework_1.UIFormat.percent(value);
+            return ui_formatters_1.UIFormat.percent(value);
         };
         return PercentValueConverter;
     })();

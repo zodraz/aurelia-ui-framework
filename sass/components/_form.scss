@@ -6,13 +6,7 @@
  **/
 
 .ui-form {
-  @include flex-row(flex-start);
-
-  .ui-row {
-	@include flex(0 0 100%);
-  }
-
-  .ui-column {
-	@include flex(1 0 30em);
+  > .ui-row > .ui-column {
+	@include flex(1 0 20em);
   }
 }

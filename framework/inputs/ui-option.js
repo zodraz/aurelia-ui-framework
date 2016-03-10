@@ -12,7 +12,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_ui_framework_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
     var UIOption = (function () {
         function UIOption(element) {
             this.element = element;
@@ -40,7 +40,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
         };
         UIOption.prototype.valueChanged = function ($event) {
             $event.cancelBubble = true;
-            aurelia_ui_framework_1.UIEvent.fireEvent('change', this.element, this.checked);
+            ui_event_1.UIEvent.fireEvent('change', this.element, this.checked);
         };
         UIOption = __decorate([
             aurelia_framework_1.autoinject(), 
@@ -145,7 +145,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
         UIOptionGroup.prototype.checkChanged = function ($event) {
             this.value = $event.detail;
             $event.cancelBubble = true;
-            aurelia_ui_framework_1.UIEvent.fireEvent('change', this.element, this.value);
+            ui_event_1.UIEvent.fireEvent('change', this.element, this.value);
         };
         __decorate([
             aurelia_framework_1.bindable(), 

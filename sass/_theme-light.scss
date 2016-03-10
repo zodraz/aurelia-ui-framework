@@ -102,6 +102,23 @@ $app-menu-active-border : $primary-text !default;
 $page-title-bg : $night-blue !default;
 $page-title-text : $white !default;
 
+$sidebar-bg : rgba($wg-0, 0.5) !default;
+$sidebar-text : $base-text !default;
+
+/** MENUS **/
+$menu-link-bg : transparent !default;
+$menu-link-text : $primary !default;
+
+$menu-hover-bg : rgba($primary, 0.5) !default;
+$menu-hover-text : $primary-text !default;
+
+$menu-click-bg : rgba($primary, 0.7) !default;
+$menu-click-text : $primary-text !default;
+
+$menu-active-bg : rgba($primary, 0.1) !default;
+$menu-active-border : $primary !default;
+$menu-active-text : $primary !default;
+
 /** BUTTONS **/
 $button-default-bg : $tg-0 !default;
 $button-default-text : $tg-8 !default;
@@ -120,8 +137,10 @@ $button-warning-text : $white !default;
 $input-bg : $white-sp !default;
 $input-text : $cg-8 !default;
 $input-border : $wg-4 !default;
-$input-focus-border : $antwerp-blue !default;
 $input-placeholder-text : $wg-3 !default;
+
+$input-invalid-border : $danger !default;
+$input-focus-border : $antwerp-blue !default;
 
 $input-readonly-bg : $ng-0 !default;
 $input-disabled-bg : $wg-0 !default;

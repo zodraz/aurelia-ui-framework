@@ -23,6 +23,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             this.readonly = false;
             this.placeholder = '';
             this.rows = '5';
+            this.dir = '';
         }
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
@@ -76,6 +77,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
         ], UITextArea.prototype, "rows", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UITextArea.prototype, "dir", void 0);
         UITextArea = __decorate([
             aurelia_framework_1.customElement('ui-textarea'), 
             __metadata('design:paramtypes', [])

@@ -7,11 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router", "aurelia-ui-framework", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, aurelia_ui_framework_1, ui_application_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-utils", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_utils_1, ui_application_1) {
     var UIViewport = (function () {
         function UIViewport(element, container, appState) {
             this.element = element;
-            aurelia_ui_framework_1.UIUtils.container(container);
+            ui_utils_1.UIUtils.container(container);
         }
         UIViewport.prototype.showMenu = function ($event) {
             $event.stopPropagation();

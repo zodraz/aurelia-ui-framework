@@ -18,23 +18,59 @@
 	
 ### UIConverters ###
 
-* MarkdownValueConverter: usage `${markdownText | markdown}`
-* DateValueConverter: usage `${value | date:'[format?]'}`
-* FromNowValueConverter: usage `${value | formNow}`
-* NumberValueConverter: usage `${value | number:'[format?]'}`
-* CurrencyValueConverter: usage `${value | currency:'[symbol?]':'[format?]'}`
-* PercentValueConverter: usage `${value | percent}`
+* MarkdownValueConverter: 
+
+    usage `${markdownText | markdown}`
+
+* DateValueConverter: 
+
+    usage `${value | date:'[format?]'}`
+
+* FromNowValueConverter: 
+
+    usage `${value | formNow}`
+
+* NumberValueConverter: 
+
+    usage `${value | number:'[format?]'}`
+
+* CurrencyValueConverter: 
+
+    usage `${value | currency:'[symbol?]':'[format?]'}`
+
+* PercentValueConverter: 
+
+    usage `${value | percent}`
 
 
-* KeysValueConverter: usage `${object | keys}`, get objects property keys
-* GroupValueConverter: usage `${array | group:'[property]'}`, uses LoDash.groupBy
-* SortValueConverter: usage `${array | sort:'[property]'}`, uses LoDash.sortBy
-* JsonValueConverter: usage `${object : json}`, convert JSON into readable text
+* KeysValueConverter: 
+
+    usage `${object | keys}`, get objects property keys
+
+* GroupValueConverter: 
+
+    usage `${array | group:'[property]'}`, uses LoDash.groupBy
+
+* SortValueConverter: 
+
+    usage `${array | sort:'[property]'}`, uses LoDash.sortBy
+
+* JsonValueConverter: 
+
+    usage `${object : json}`, convert JSON into readable text
 
 
-* IsStringValueConverter: usage `${object : isString}`
-* IsObjectValueConverter: usage `${object : isObject}`
-* IsArrayValueConverter: usage `${object : isArray}`
+* IsStringValueConverter: 
+
+    usage `${object : isString}`
+    
+* IsObjectValueConverter: 
+
+    usage `${object : isObject}`
+
+* IsArrayValueConverter: 
+
+    usage `${object : isArray}`
 
 ---
 	

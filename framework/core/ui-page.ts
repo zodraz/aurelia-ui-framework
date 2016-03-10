@@ -11,7 +11,6 @@ import {Router} from "aurelia-router";
 
 @customElement('ui-page')
 export class UIPage {
-	private __childRoutes = false;
 
 	/**
 	 * @property    page-title
@@ -20,7 +19,6 @@ export class UIPage {
 	@bindable() pageTitle:string;
 
 	constructor(public element:Element) {
-		this.__childRoutes = this.element.hasAttribute('child-routes');
 	}
 }
 
@@ -76,6 +74,7 @@ export class UISidebar {
 	bind() {
 		// TODO: Add collapse functionality
 		this.collapsible = this.element.hasAttribute('collapsible');
+		if (this.element.hasAttribute('scroll')) this.element.classList.add('ui-scroll');
 		if (this.element.hasAttribute('padded')) this.element.classList.add('ui-pad-all');
 	}
 }

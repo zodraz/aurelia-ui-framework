@@ -5,7 +5,7 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
-import {UIEvent} from "aurelia-ui-framework";
+import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
 export class UIOption {

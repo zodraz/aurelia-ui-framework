@@ -131,18 +131,20 @@
 				<hr/>
 				<h2>Inputs</h2>
 				<div class="ui-form">
-					<ui-column padded>
-						<ui-input value="Hello" required clear placeholder="Enter an email..." capitalize
-								  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
-						</ui-input>
-						<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
-						<ui-input-dual value="Hello" required disabled prefix-icon="fi-vaadin-compass-1"
-									   prefix-text="Lat." center-text="Long.">Disabled
-						</ui-input-dual>
-					</ui-column>
-					<ui-column padded>
-						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
-					</ui-column>
+					<ui-row>
+						<ui-column padded>
+							<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..." capitalize
+									  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
+							</ui-input>
+							<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
+							<ui-input-dual value="Hello" required disabled prefix-icon="fi-vaadin-compass-1"
+										   prefix-text="Lat." center-text="Long.">Disabled
+							</ui-input-dual>
+						</ui-column>
+						<ui-column padded>
+							<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
+						</ui-column>
+					</ui-row>
 					<ui-row>
 						<ui-column padded>
 							<ui-phone country="ae">National Phone</ui-phone>

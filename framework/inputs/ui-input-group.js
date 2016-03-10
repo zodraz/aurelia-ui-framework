@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], function (require, exports, aurelia_framework_1, aurelia_ui_framework_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
     var UIInputGroup = (function () {
         function UIInputGroup(element) {
             this.element = element;
@@ -18,6 +18,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             this.__value2 = '';
             this.__clear = false;
             this.__checkbox = false;
+            this.dir = '';
             this.value = '';
             this.valueSecond = '';
             this.checked = false;
@@ -92,7 +93,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
                 if (this.__input2)
                     this.__input2.attributes.setNamedItem(document.createAttribute('disabled'));
             }
-            aurelia_ui_framework_1.UIEvent.fireEvent('checked', this.element, this.checked);
+            ui_event_1.UIEvent.fireEvent('checked', this.element, this.checked);
         };
         UIInputGroup.prototype.readonlyChanged = function () {
             if (this.__input.attributes.getNamedItem('readonly') !== null) {
@@ -141,7 +142,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
         };
         UIInputGroup.prototype.onAddonClick = function ($event) {
             $event.preventDefault();
-            aurelia_ui_framework_1.UIEvent.fireEvent('addon', this.element, this);
+            ui_event_1.UIEvent.fireEvent('addon', this.element, this);
         };
         UIInputGroup.prototype.keyPress = function (evt) {
             if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0)
@@ -149,7 +150,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-ui-framework"], func
             if (evt.target.type !== 'textarea') {
                 if (evt.which || evt.keyCode === 13) {
                     this.format(evt);
-                    return aurelia_ui_framework_1.UIEvent.fireEvent('enterpressed', this.element, this);
+                    return ui_event_1.UIEvent.fireEvent('enterpressed', this.element, this);
                 }
                 var rx = '.';
                 if (this.__type === 'tel')

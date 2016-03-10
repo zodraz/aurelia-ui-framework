@@ -5,8 +5,7 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 import {autoinject, noView, bindable, bindingMode} from "aurelia-framework";
-import {UIEvent} from "aurelia-ui-framework";
-
+import {UIEvent} from "../utils/ui-event";
 
 @noView()
 @autoinject()
@@ -24,6 +23,7 @@ export class UIInputGroup {
 	protected __clear    = false;
 	protected __checkbox = false;
 
+	protected dir         = '';
 	protected value       = '';
 	protected valueSecond = '';
 	protected checked     = false;

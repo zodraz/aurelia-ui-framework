@@ -22,6 +22,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             this.disabled = false;
             this.readonly = false;
             this.placeholder = '';
+            this.dir = '';
         }
         UIInput.prototype.bind = function () {
             _super.prototype.bind.call(this);
@@ -54,8 +55,6 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             var start = evt.target.selectionStart;
             if (this.__format === 'title') {
                 val = val.replace(new RegExp("[" + this.ALPHA + "'\\-']+(?=[\\.&\\s]*)", 'g'), function (txt) {
-                    if (/^[ivxlcm]+$/.test(txt.toLowerCase()))
-                        return txt.toUpperCase();
                     if (txt.toLowerCase()
                         .indexOf("mc") == 0) {
                         return txt.substr(0, 1)
@@ -135,6 +134,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
         ], UIInput.prototype, "placeholder", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInput.prototype, "dir", void 0);
         UIInput = __decorate([
             aurelia_framework_1.customElement('ui-input'), 
             __metadata('design:paramtypes', [])

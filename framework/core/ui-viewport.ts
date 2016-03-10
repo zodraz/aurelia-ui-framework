@@ -8,7 +8,7 @@
 
 import {customElement, bindable, Container} from "aurelia-framework";
 import {Router} from "aurelia-router";
-import {UIUtils} from "aurelia-ui-framework";
+import {UIUtils} from "../utils/ui-utils";
 import {UIApplication} from "../utils/ui-application";
 
 @customElement('ui-viewport')

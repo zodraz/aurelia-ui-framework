@@ -107,7 +107,7 @@ Container for actual page content. Default layout `fill` and `no-scroll`.
 Sidebar to for content / child router menu. Default width `220px`, not `collapsible`.
 
 ```html
-<ui-sidebar width="?px" collapsible>
+<ui-sidebar width="?px" collapsible scroll|no-scroll>
     <!-- content -->
 </ui-sidebar>
 ```

@@ -25,6 +25,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             this.readonly = false;
             this.placeholder = '';
             this.placeholderSecond = '';
+            this.dir = '';
         }
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
@@ -90,6 +91,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
         ], UIInputDual.prototype, "placeholderSecond", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIInputDual.prototype, "dir", void 0);
         UIInputDual = __decorate([
             aurelia_framework_1.useView("./ui-input.html"),
             aurelia_framework_1.customElement('ui-input-dual'), 
