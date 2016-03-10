@@ -82,7 +82,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             else if (this.__format === 'email' || this.__format === 'url') {
                 val = val.toLowerCase();
             }
-            this.__value = val;
+            evt.target.value = val;
             setTimeout(function () { return evt.target.selectionStart = evt.target.selectionEnd = start; }, 10);
             return val;
         };

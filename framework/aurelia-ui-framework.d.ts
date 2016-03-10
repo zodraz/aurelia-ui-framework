@@ -44,6 +44,19 @@ declare module "aurelia-ui-framework" {
 		SendAuthHeader:boolean;
 
 		Username:string;
+		AuthToken:string;
+
+		session(key, value?):any;
+
+		persist(key, value?):any;
+
+		info(tag:string, msg:string, ...rest);
+
+		warn(tag:string, msg:string, ...rest);
+
+		debug(tag:string, msg:string, ...rest);
+
+		error(tag:string, msg:string, ...rest);
 	}
 
 	// Utilities

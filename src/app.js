@@ -72,6 +72,10 @@ define(["require", "exports", "../framework/index", "aurelia-framework"], functi
         App.prototype.toggleDir = function () {
             document.body.dir = document.body.dir == 'rtl' ? 'ltr' : 'rtl';
         };
+        App.prototype.toggleTheme = function () {
+            var css = document.getElementById('baseStyle');
+            css.href = css.href.indexOf('light') == -1 ? 'styles/app-light.css' : 'styles/app-dark.css';
+        };
         App = __decorate([
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [])

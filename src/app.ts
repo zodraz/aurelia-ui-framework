@@ -69,4 +69,9 @@ export class App {
 	toggleDir() {
 		document.body.dir = document.body.dir == 'rtl' ? 'ltr' : 'rtl';
 	}
+
+	toggleTheme() {
+		let css  = document.getElementById('baseStyle') as HTMLLinkElement;
+		css.href = css.href.indexOf('light') == -1 ? 'styles/app-light.css' : 'styles/app-dark.css';
+	}
 }

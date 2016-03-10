@@ -160,7 +160,7 @@ export class UIInputGroup {
 		if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0) return true;
 
 		if (evt.target.type !== 'textarea') {
-			if (evt.which || evt.keyCode === 13) {
+			if ((evt.which || evt.keyCode) === 13) {
 				this.format(evt);
 				return UIEvent.fireEvent('enterpressed', this.element, this);
 			}

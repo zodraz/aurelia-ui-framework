@@ -20,7 +20,7 @@
 	padding            : 0.1rem;
 	background-color   : $base-bg;
 	border-radius      : 1rem;
-	box-shadow         : 0 0 1px 1px contrast($base-bg, $ng-2, $ng-4), inset 0 1px 5px rgba($black, 0.05);
+	box-shadow         : 0 0 1px 1px if(brightness($base-bg)>50, $ng-2, $ng-8), inset 0 1px 5px rgba($black, 0.05);
 	cursor             : pointer;
 	-webkit-box-sizing : content-box;
 	-moz-box-sizing    : content-box;
@@ -49,9 +49,9 @@
 	}
 
 	.ui-switch-label:before, .ui-switch-label:after {
-	  position    : absolute;
-	  top         : 50%;
-	  margin-top  : -0.5em;
+	  position   : absolute;
+	  top        : 50%;
+	  margin-top : -0.5em;
 	  @include transition(inherit);
 	}
 

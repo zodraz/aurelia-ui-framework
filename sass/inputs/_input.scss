@@ -6,6 +6,12 @@
  **/
 
 .ui-input-group {
+  $shadow : $wg-2;
+
+  @if brightness($input-bg)<50 {
+	$shadow : $wg-10;
+  }
+
   @include flex-row(flex-start);
   margin-bottom : 0.5rem;
 
@@ -72,11 +78,11 @@
 		  background : $input-bg;
 		  padding    : 5px 8px;
 		  border     : 1px solid $input-border;
-		  @include box-shadow(0 2px 2px 0 $wg-2 inset);
+		  @include box-shadow(0 2px 2px 0 $shadow inset);
 
 		  &:focus {
 			border-color : $input-focus-border;
-			@include box-shadow(0 -3px 0 0 $input-focus-border inset, 0 2px 2px 0 $wg-2 inset);
+			@include box-shadow(0 -3px 0 0 $input-focus-border inset, 0 2px 2px 0 $shadow inset);
 		  }
 
 		  &[disabled] {
@@ -110,6 +116,7 @@
 	  }
 
 	  > .ui-addon {
+		margin     : 0;
 		padding    : 0.3rem;
 		color      : $input-addon-text;
 		background : $input-addon-bg;
@@ -191,7 +198,7 @@
 	> .ui-control-wrapper > .ui-input-control > .ui-input-wrapper > .ui-input {
 	  border-color : $input-invalid-border !important;
 	  &:focus {
-		@include box-shadow(0 -3px 0 0 $input-invalid-border inset, 0 2px 2px 0 $wg-2 inset);
+		@include box-shadow(0 -3px 0 0 $input-invalid-border inset, 0 2px 2px 0 $shadow inset);
 	  }
 	}
 	> .ui-control-wrapper > .ui-input-control > .ui-addon:not(.ui-addon-button) {

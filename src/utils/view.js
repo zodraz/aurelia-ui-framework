@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
         }
         Utils.prototype.configureRouter = function (config, router) {
             this.router = router;
-            config.title = 'Core Elements';
+            config.title = 'Utility Classes';
             config.map([{
                     route: 'readme',
                     moduleId: './readme',

@@ -22,7 +22,7 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 ##### Usage
 
 ```html
-<ui-viewport router.bind="Main Router" options.bind="appOptions">
+<ui-viewport router.bind="Main Router" options.bind="appOptions" logout.trigger=?>
     <!-- Header extras -->
     
     <template replace-part="quick-links">

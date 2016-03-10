@@ -148,7 +148,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0)
                 return true;
             if (evt.target.type !== 'textarea') {
-                if (evt.which || evt.keyCode === 13) {
+                if ((evt.which || evt.keyCode) === 13) {
                     this.format(evt);
                     return ui_event_1.UIEvent.fireEvent('enterpressed', this.element, this);
                 }

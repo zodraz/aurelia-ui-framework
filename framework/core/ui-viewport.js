@@ -7,19 +7,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-utils", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_utils_1, ui_application_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-event", "../utils/ui-utils", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_event_1, ui_utils_1, ui_application_1) {
     var UIViewport = (function () {
-        function UIViewport(element, container, appState) {
+        function UIViewport(element, appState, container) {
             this.element = element;
+            this.appState = appState;
             ui_utils_1.UIUtils.container(container);
+            this.appState.info(this.constructor.name, "UIViewport Created");
         }
         UIViewport.prototype.showMenu = function ($event) {
             $event.stopPropagation();
             this.element.classList.add('show-menu');
+            this.appState.info(this.constructor.name, "showMenu");
         };
         UIViewport.prototype.hideMenu = function ($event) {
-            this.element.classList.remove('show-menu');
+            if (this.element.classList.contains('show-menu')) {
+                this.appState.info(this.constructor.name, "hideMenu");
+                this.element.classList.remove('show-menu');
+            }
             return true;
+        };
+        UIViewport.prototype.logout = function () {
+            this.appState.info(this.constructor.name, "fire logout event");
+            ui_event_1.UIEvent.fireEvent('logout', this.element);
         };
         __decorate([
             aurelia_framework_1.bindable(), 
@@ -31,7 +41,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
         ], UIViewport.prototype, "options", void 0);
         UIViewport = __decorate([
             aurelia_framework_1.customElement('ui-viewport'), 
-            __metadata('design:paramtypes', [Element, aurelia_framework_1.Container, ui_application_1.UIApplication])
+            __metadata('design:paramtypes', [Element, ui_application_1.UIApplication, aurelia_framework_1.Container])
         ], UIViewport);
         return UIViewport;
     })();

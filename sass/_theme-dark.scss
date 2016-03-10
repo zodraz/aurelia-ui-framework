@@ -1,5 +1,5 @@
 /**
- *	UI Theme Light
+ *	UI Theme Dark
  *	@author 	Adarsh Pastakia
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
@@ -17,11 +17,11 @@ $danger : $cadmium-red !default;
 $success : $mistletoe !default;
 $warning : $cadmium-orange !default;
 
-$bg-primary : $greenish-blue !default;
-$bg-info : $new-blue !default;
-$bg-danger : $peach !default;
-$bg-success : $lime-green !default;
-$bg-warning : $reddish-yellow !default;
+$bg-primary : $cobalt-blue !default;
+$bg-info : $process-blue !default;
+$bg-danger : $carmine !default;
+$bg-success : $mistletoe !default;
+$bg-warning : $atoll !default;
 
 /** BASE **/
 // fonts
@@ -32,14 +32,14 @@ $base-font-family-serif : 'Source Code Pro', 'Georgia', 'Times New Roman', serif
 $base-font-family-sans-serif : 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 $base-font-family : $base-font-family-sans-serif !default;
 // colors
-$base-bg : $white !default;
-$base-text : $black !default;
-$base-bg-image : 'back/bg-light.png' !default;
+$base-bg : $black !default;
+$base-text : $white !default;
+$base-bg-image : 'back/bg-dark.png' !default;
 $base-splash-image : 'loader-spinner.gif' !default;
 // borders
 $base-border-color : $wg-5 !default;
 $base-border-radius : 0.2rem !default;
-$base-shadow-color : $wg-8 !default;
+$base-shadow-color : $wg-6 !default;
 // padding
 $base-padding : 0.3em .8em !default;
 // z-order
@@ -68,12 +68,12 @@ $text-danger : $danger !default;
 $text-success : $success !default;
 $text-warning : $warning !default;
 
-$pre-code-bg : $wg-2 !default;
-$pre-code-text : $wg-9 !default;
-$pre-code-border : $wg-4 !default;
+$pre-code-bg : $ng-10 !default;
+$pre-code-text : $ng-0 !default;
+$pre-code-border : $ng-8 !default;
 
-$hr-highlight : $white !default;
-$hr-shadow : $ng-3 !default;
+$hr-highlight : $ng-9 !default;
+$hr-shadow : $black-sp !default;
 
 /** APP VIEWPORT **/
 $app-header-bg : $agate !default;
@@ -102,7 +102,7 @@ $app-menu-active-border : $primary-text !default;
 $page-title-bg : $night-blue !default;
 $page-title-text : $white !default;
 
-$sidebar-bg : rgba($wg-0, 0.5) !default;
+$sidebar-bg : rgba($wg-9, 0.5) !default;
 $sidebar-text : $base-text !default;
 
 /** MENUS **/
@@ -115,7 +115,7 @@ $menu-hover-text : $primary-text !default;
 $menu-click-bg : rgba($primary, 0.7) !default;
 $menu-click-text : $primary-text !default;
 
-$menu-active-bg : $ng-1 !default;
+$menu-active-bg : $black !default;
 $menu-active-border : $primary !default;
 $menu-active-text : $primary !default;
 
@@ -134,19 +134,19 @@ $button-warning-bg : $warning !default;
 $button-warning-text : $white !default;
 
 /** INPUTS **/
-$input-bg : $white-sp !default;
-$input-text : $cg-8 !default;
-$input-border : $wg-4 !default;
-$input-placeholder-text : $wg-3 !default;
+$input-bg : $ng-9 !default;
+$input-text : $cg-0 !default;
+$input-border : $wg-8 !default;
+$input-placeholder-text : $wg-6 !default;
 
 $input-invalid-border : $danger !default;
 $input-focus-border : $antwerp-blue !default;
 
-$input-readonly-bg : $ng-0 !default;
-$input-disabled-bg : $wg-0 !default;
+$input-readonly-bg : $wg-10 !default;
+$input-disabled-bg : $cg-10 !default;
 
-$input-addon-bg : $cg-00 !default;
-$input-addon-text : $cg-7 !default;
+$input-addon-bg : $cg-8 !default;
+$input-addon-text : $cg-1 !default;
 
 $input-button-bg : $secondary !default;
 $input-button-text : $secondary-text !default;

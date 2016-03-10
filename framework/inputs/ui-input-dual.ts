@@ -107,4 +107,5 @@ export class UIInputDual extends UIInput {
 	 * @type        string
 	 */
 	@bindable() dir:string = '';
+
 }
