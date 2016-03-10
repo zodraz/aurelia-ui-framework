@@ -1,5 +1,5 @@
 /**
- *    UI Core       Menu
+ *    UI Component  Menu
  *    @author       Adarsh Pastakia
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia

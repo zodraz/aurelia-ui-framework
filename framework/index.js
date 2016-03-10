@@ -4,6 +4,10 @@ define(["require", "exports", "./core/ui-viewport", "./utils/ui-event", "./utils
         aurelia.globalResources('./core/ui-page');
         aurelia.globalResources('./core/ui-grid');
         aurelia.globalResources('./components/ui-menu');
+        aurelia.globalResources('./components/ui-form');
+        aurelia.globalResources('./components/ui-ribbon');
+        aurelia.globalResources('./components/ui-panel');
+        aurelia.globalResources('./components/ui-tab-panel');
         aurelia.globalResources('./inputs/ui-button');
         aurelia.globalResources('./inputs/ui-switch');
         aurelia.globalResources('./inputs/ui-option');

@@ -32,7 +32,7 @@ $base-font-family-serif : 'Source Code Pro', 'Georgia', 'Times New Roman', serif
 $base-font-family-sans-serif : 'Open Sans', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !default;
 $base-font-family : $base-font-family-sans-serif !default;
 // colors
-$base-bg : $black !default;
+$base-bg : $black-sp !default;
 $base-text : $white !default;
 $base-bg-image : 'back/bg-dark.png' !default;
 $base-splash-image : 'loader-spinner.gif' !default;
@@ -105,6 +105,12 @@ $page-title-text : $white !default;
 $sidebar-bg : rgba($wg-9, 0.5) !default;
 $sidebar-text : $base-text !default;
 
+$toolbar-bg : $ng-10 !default;
+$toolbar-text : $ng-2 !default;
+
+$statsbar-bg: $cg-8 !default;
+$statsbar-text: $process-blue !default;
+
 /** MENUS **/
 $menu-link-bg : transparent !default;
 $menu-link-text : $primary !default;
@@ -134,13 +140,13 @@ $button-warning-bg : $warning !default;
 $button-warning-text : $white !default;
 
 /** INPUTS **/
-$input-bg : $ng-9 !default;
+$input-bg : $cg-9 !default;
 $input-text : $cg-0 !default;
-$input-border : $wg-8 !default;
-$input-placeholder-text : $wg-6 !default;
+$input-border : $cg-8 !default;
+$input-placeholder-text : $cg-7 !default;
 
 $input-invalid-border : $danger !default;
-$input-focus-border : $antwerp-blue !default;
+$input-focus-border : $peacock-blue !default;
 
 $input-readonly-bg : $wg-10 !default;
 $input-disabled-bg : $cg-10 !default;
@@ -150,6 +156,15 @@ $input-addon-text : $cg-1 !default;
 
 $input-button-bg : $secondary !default;
 $input-button-text : $secondary-text !default;
+
+/** TABS **/
+$tab-bg : $wg-9 !default;
+$tab-text : $wg-1 !default;
+$tab-border : $wg-8 !default;
+
+$tab-active-bg : $wg-10 !default;
+$tab-active-text : $wg-0 !default;
+$tab-active-border : $primary !default;
 
 @import "framework!";
 

@@ -1,6 +1,7 @@
 <template>
 	<ui-page page-title="Framework Elements">
-		<ui-content scroll padded>
+		<ui-ribbon danger>Version 2</ui-ribbon>
+		<ui-content scroll padded style="padding-bottom: 30px;" ref="__content">
 			<div class="ui-pad-all">
 				<h1 class="ui-text-primary">Aurelia UI Framework v2
 					<small class="ui-text-warning">Re-thought, Re-designed, and Re-worked</small>
@@ -19,143 +20,199 @@
 					<p class="color-map warning"></p>
 					</p>
 				</div>
+			</div>
+			<hr/>
+			<h2>Grid Layout</h2>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" width="120px">Fixed Width</ui-column>
+				<ui-column padded class="ui-bg-success" auto>Auto Filled Column</ui-column>
+				<ui-column padded class="ui-bg-danger" fill>Stretched Column</ui-column>
+				<ui-column padded class="ui-bg-warning" full>Full Width Column Wrapped</ui-column>
+			</ui-row>
 
-				<hr/>
-				<h2>Grid Layout</h2>
-				<ui-row class="ui-border-b">
-					<ui-column padded class="ui-bg-info" width="120px">Fixed Width</ui-column>
-					<ui-column padded class="ui-bg-success" auto>Auto Filled Column</ui-column>
-					<ui-column padded class="ui-bg-danger" fill>Stretched Column</ui-column>
-					<ui-column padded class="ui-bg-warning" full>Full Width Column Wrapped</ui-column>
-				</ui-row>
+			<h4>Xtra Large Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="xl-3">xl-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="xl-3">xl-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="xl-3">xl-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="xl-3">xl-3</ui-column>
+			</ui-row>
 
-				<h4>Xtra Large Views</h4>
-				<ui-row class="ui-border-b">
-					<ui-column padded class="ui-bg-info" size="xl-3">xl-3</ui-column>
-					<ui-column padded class="ui-bg-success" size="xl-3">xl-3</ui-column>
-					<ui-column padded class="ui-bg-danger" size="xl-3">xl-3</ui-column>
-					<ui-column padded class="ui-bg-warning" size="xl-3">xl-3</ui-column>
-				</ui-row>
+			<h4>Large Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="lg-3">lg-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="lg-3">lg-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="lg-3">lg-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="lg-3">lg-3</ui-column>
+			</ui-row>
 
-				<h4>Large Views</h4>
-				<ui-row class="ui-border-b">
-					<ui-column padded class="ui-bg-info" size="lg-3">lg-3</ui-column>
-					<ui-column padded class="ui-bg-success" size="lg-3">lg-3</ui-column>
-					<ui-column padded class="ui-bg-danger" size="lg-3">lg-3</ui-column>
-					<ui-column padded class="ui-bg-warning" size="lg-3">lg-3</ui-column>
-				</ui-row>
+			<h4>Medium Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="md-3">md-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="md-3">md-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="md-3">md-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="md-3">md-3</ui-column>
+			</ui-row>
 
-				<h4>Medium Views</h4>
-				<ui-row class="ui-border-b">
-					<ui-column padded class="ui-bg-info" size="md-3">md-3</ui-column>
-					<ui-column padded class="ui-bg-success" size="md-3">md-3</ui-column>
-					<ui-column padded class="ui-bg-danger" size="md-3">md-3</ui-column>
-					<ui-column padded class="ui-bg-warning" size="md-3">md-3</ui-column>
-				</ui-row>
+			<h4>Small Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="sm-3">sm-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="sm-3">sm-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="sm-3">sm-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="sm-3">sm-3</ui-column>
+			</ui-row>
 
-				<h4>Small Views</h4>
-				<ui-row class="ui-border-b">
-					<ui-column padded class="ui-bg-info" size="sm-3">sm-3</ui-column>
-					<ui-column padded class="ui-bg-success" size="sm-3">sm-3</ui-column>
-					<ui-column padded class="ui-bg-danger" size="sm-3">sm-3</ui-column>
-					<ui-column padded class="ui-bg-warning" size="sm-3">sm-3</ui-column>
-				</ui-row>
-
-				<h4>Xtra Small Views</h4>
-				<ui-row class="ui-border-b">
-					<ui-column padded class="ui-bg-info" size="xs-3">xs-3</ui-column>
-					<ui-column padded class="ui-bg-success" size="xs-3">xs-3</ui-column>
-					<ui-column padded class="ui-bg-danger" size="xs-3">xs-3</ui-column>
-					<ui-column padded class="ui-bg-warning" size="xs-3">xs-3</ui-column>
-				</ui-row>
-				<hr/>
+			<h4>Xtra Small Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="xs-3">xs-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="xs-3">xs-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="xs-3">xs-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="xs-3">xs-3</ui-column>
+			</ui-row>
+			<hr/>
+			<h2>Toolbar</h2>
+			<div>
+				<ui-toolbar>
+					<ui-column fill>Toolbar text</ui-column>
+					<ui-button success label="Tool"></ui-button>
+					<ui-divider></ui-divider>
+					<ui-button danger label="Tool"></ui-button>
+				</ui-toolbar>
+			</div>
+			<hr/>
+			<h2>StatsBar</h2>
+			<div>
+				<ui-statsbar>
+					<ui-stat value="24" icon="fi-vaadin-clock">Hours</ui-stat>
+					<ui-stat value="365" icon="fi-vaadin-calendar-and-clock">Days</ui-stat>
+					<ui-stat value="42" icon="fi-vaadin-chat">Answer</ui-stat>
+				</ui-statsbar>
+			</div>
+			<hr/>
+			<div>
+				<ui-switch primary checked.bind="enabled" label-on="All Enabled" label-off="All Disabled"
+						   width="120">
+					Disable Elements
+				</ui-switch>
+			</div>
+			<h2>Buttons</h2>
+			<div class="ui-pad-all">
+				<h4>Themes</h4>
 				<div>
-					<ui-switch primary checked.bind="enabled" label-on="All Enabled" label-off="All Disabled"
-							   width="120">
-						Disable Elements
-					</ui-switch>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Normal"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
+							   primary></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info" info></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger" danger></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
+							   success></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
+							   warning></ui-button>
 				</div>
-				<h2>Buttons</h2>
-				<div class="ui-pad-all">
-					<h4>Themes</h4>
-					<div>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Normal"></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
-								   primary></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info" info></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger" danger></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
-								   success></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
-								   warning></ui-button>
-					</div>
-					<h4>Styles</h4>
-					<div>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Small" small></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Large" large></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Round" round></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Icon Top" top></ui-button>
-						<ui-button icon="fi-vaadin-circle-1" label="Disabled" disabled="true"></ui-button>
-					</div>
+				<h4>Styles</h4>
+				<div>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Small" small></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Large" large></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Round" round></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Icon Top" top></ui-button>
+					<ui-button icon="fi-vaadin-circle-1" label="Disabled" disabled="true"></ui-button>
 				</div>
-				<hr/>
-				<h2>Switches</h2>
-				<div class="ui-pad-all">
-					<ui-switch disabled.bind="!enabled" checked="true" primary></ui-switch>
-					<ui-switch disabled.bind="!enabled" checked="true" info></ui-switch>
-					<ui-switch disabled.bind="!enabled" checked="true" danger></ui-switch>
-					<ui-switch disabled.bind="!enabled" checked="true" success></ui-switch>
-					<ui-switch disabled.bind="!enabled" checked="true" warning></ui-switch>
-					<ui-switch disabled.bind="!enabled" ampm></ui-switch>
-					<ui-switch disabled.bind="!enabled" gender></ui-switch>
-					<ui-switch checked="true" primary disabled="true">Disabled</ui-switch>
-				</div>
-				<hr/>
-				<h2>Checkbox/Radio</h2>
-				<div class="ui-pad-all">
-					<ui-option-group label="Checkboxes">
-						<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)">Check 1</ui-checkbox>
-						<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)">Check 2</ui-checkbox>
-						<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)" checked="true">Check 3
-						</ui-checkbox>
-						<ui-checkbox disabled="true">Disabled</ui-checkbox>
-					</ui-option-group>
-					<ui-option-group label.bind="'Radios<small>Value:'+optVal+'</small>'"
-									 name="radio" value.bind="optVal" required change.trigger="change($event)">
-						<ui-radio disabled.bind="!enabled" value="1">Check 1</ui-radio>
-						<ui-radio disabled.bind="!enabled" value="2">Check 2</ui-radio>
-						<ui-radio disabled.bind="!enabled" value="3">Check 3</ui-radio>
-						<ui-radio value="4" disabled="true">Disabled</ui-radio>
-					</ui-option-group>
-				</div>
-				<hr/>
-				<h2>Inputs</h2>
-				<div class="ui-form">
-					<ui-row>
-						<ui-column padded>
-							<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
-									  capitalize
-									  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
-							</ui-input>
-							<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
-							<ui-input-dual required decimal checkbox prefix-icon="fi-vaadin-compass-1"
-										   prefix-text="Lat." center-text="Long."
-										   placeholder="-90 to 90" placeholder-second="-180 to 180">Location
-							</ui-input-dual>
-						</ui-column>
-						<ui-column padded>
-							<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
-						</ui-column>
-					</ui-row>
-					<ui-row>
-						<ui-column padded>
-							<ui-phone country="ae">National Phone</ui-phone>
-						</ui-column>
-						<ui-column padded>
-							<ui-phone international>International Phone</ui-phone>
-						</ui-column>
-					</ui-row>
-				</div>
+			</div>
+			<hr/>
+			<h2>Switches</h2>
+			<div class="ui-pad-all">
+				<ui-switch disabled.bind="!enabled" checked="true" primary></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" info></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" danger></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" success></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" warning></ui-switch>
+				<ui-switch disabled.bind="!enabled" ampm></ui-switch>
+				<ui-switch disabled.bind="!enabled" gender></ui-switch>
+				<ui-switch checked="true" primary disabled="true">Disabled</ui-switch>
+			</div>
+			<hr/>
+			<h2>Checkbox/Radio</h2>
+			<div class="ui-pad-all">
+				<ui-option-group label="Checkboxes">
+					<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)">Check 1</ui-checkbox>
+					<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)">Check 2</ui-checkbox>
+					<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)" checked="true">Check 3
+					</ui-checkbox>
+					<ui-checkbox disabled="true">Disabled</ui-checkbox>
+				</ui-option-group>
+				<ui-option-group label.bind="'Radios<small>Value:'+optVal+'</small>'"
+								 name="radio" value.bind="optVal" required change.trigger="change($event)">
+					<ui-radio disabled.bind="!enabled" value="1">Check 1</ui-radio>
+					<ui-radio disabled.bind="!enabled" value="2">Check 2</ui-radio>
+					<ui-radio disabled.bind="!enabled" value="3">Check 3</ui-radio>
+					<ui-radio value="4" disabled="true">Disabled</ui-radio>
+				</ui-option-group>
+			</div>
+			<hr/>
+			<h2>Inputs</h2>
+			<ui-form>
+				<ui-row>
+					<ui-column padded>
+						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
+								  capitalize
+								  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
+						</ui-input>
+						<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
+						<ui-input-dual required decimal checkbox prefix-icon="fi-vaadin-placeholder"
+									   prefix-text="Lat." center-text="Long."
+									   placeholder="-90 to 90" placeholder-second="-180 to 180">Location
+						</ui-input-dual>
+					</ui-column>
+					<ui-column padded>
+						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
+					</ui-column>
+				</ui-row>
+				<ui-row>
+					<ui-column padded>
+						<ui-phone country="ae">National Phone</ui-phone>
+					</ui-column>
+					<ui-column padded>
+						<ui-phone international>International Phone</ui-phone>
+					</ui-column>
+				</ui-row>
+			</ui-form>
+			<hr/>
+			<h2>Panel</h2>
+			<ui-row>
+				<ui-column fill>
+					<ui-panel>
+						<ui-body>
+							<h3>A Simple Panel</h3>
+						</ui-body>
+					</ui-panel>
+					<ui-panel>
+						<ui-header close="true" secondary>My Panel</ui-header>
+						<ui-body>
+							<h3>A Closable Panel</h3>
+						</ui-body>
+					</ui-panel>
+				</ui-column>
+				<ui-column fill>
+					<ui-panel>
+						<ui-header collapse="true" primary>My Panel</ui-header>
+						<ui-body>
+							<h3>A Panel with Header</h3>
+						</ui-body>
+					</ui-panel>
+				</ui-column>
+			</ui-row>
+			<hr/>
+			<h2>Tab Panel</h2>
+			<div style="height: 600px;position: relative;" class="ui-border-all">
+				<ui-tab-panel>
+					<ui-tab label="Markdown" scroll>
+						<div innerhtml.bind="md | markdown"></div>
+					</ui-tab>
+					<ui-tab icon="fi-vaadin-palette" label="Copic Colors" scroll>
+						<compose view-model="./colors"></compose>
+					</ui-tab>
+				</ui-tab-panel>
+			</div>
 		</ui-content>
 	</ui-page>
 </template>

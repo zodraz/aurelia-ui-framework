@@ -1,0 +1,10 @@
+<template class="ui-header">
+	<h5>
+		<content></content>
+	</h5>
+	<button class="ui-collapse" if.bind="collapse" click.trigger="fireCollapse()">
+		<span class="fi-vaadin-up-arrow-5"></span></button>
+	<button class="ui-close" if.bind="close" click.trigger="fireClose()">
+		<span class="fi-vaadin-cancel-button"></span>
+	</button>
+</template>

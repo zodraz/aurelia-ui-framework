@@ -133,14 +133,10 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
-        ], UIStat.prototype, "label", void 0);
-        __decorate([
-            aurelia_framework_1.bindable(), 
-            __metadata('design:type', Object)
         ], UIStat.prototype, "icon", void 0);
         UIStat = __decorate([
             aurelia_framework_1.customElement('ui-stat'),
-            aurelia_framework_1.inlineView('<template class="ui-stat"><span class="${icon}" if.bind="icon"></span><div><h1>${value}</h1><h6>${label}</h6></div></template>'), 
+            aurelia_framework_1.inlineView('<template class="ui-stat"><span class="${icon}" if.bind="icon"></span><div><h1>${value}</h1><h6><content></content></h6></div></template>'), 
             __metadata('design:paramtypes', [])
         ], UIStat);
         return UIStat;

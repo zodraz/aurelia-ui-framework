@@ -1,0 +1,143 @@
+/**
+ *	UI Ribbon
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-ribbon-wrapper {
+  @include position(absolute, null);
+  @include size(100px, 100px);
+  z-index  : $z-index-ribbon;
+  overflow : hidden;
+
+  &.ui-tr {
+	top   : -1px;
+	right : -1px;
+	.ui-ribbon {
+	  @include transform(rotate(45deg));
+	  top : 25%;
+	}
+  }
+  &.ui-tl {
+	top  : -1px;
+	left : -1px;
+	.ui-ribbon {
+	  @include transform(rotate(-45deg));
+	  top  : 25%;
+	  left : -25%;
+	}
+  }
+  &.ui-br {
+	bottom : -1px;
+	right  : -1px;
+	.ui-ribbon {
+	  @include transform(rotate(-45deg));
+	  top  : 55%;
+	  left : 5%;
+	}
+  }
+  &.ui-bl {
+	bottom : -1px;
+	left   : -1px;
+	.ui-ribbon {
+	  @include transform(rotate(45deg));
+	  left : -25%;
+	  top  : 55%;
+	}
+  }
+
+  .ui-ribbon {
+	background-color : $base-bg;
+	color            : $base-text;
+	text-align       : center;
+	width            : 125%;
+	padding          : 0.2rem 0.5rem;
+	position         : relative;
+	font-size        : 0.85rem;
+	text-transform   : uppercase;
+	text-shadow      : 0 1px 0 rgba($wg-8, 0.5);
+	border  : {
+	  width : 1px 0;
+	  style : solid;
+	  color : $base-border-color
+	}
+	@include transform-origin(center center 0);
+	@include box-shadow(0 0 8px 2px $base-shadow-color);
+
+	&.ui-ribbon-primary {
+	  background-color : $primary;
+	  color            : $primary-text;
+	  border-color     : darken($primary, 20%);
+	}
+
+	&.ui-ribbon-success {
+	  background-color : $success;
+	  color            : $button-success-text;
+	  border-color     : darken($success, 20%);
+	}
+
+	&.ui-ribbon-warning {
+	  background-color : $warning;
+	  color            : $button-warning-text;
+	  border-color     : darken($warning, 20%);
+	}
+
+	&.ui-ribbon-info {
+	  background-color : $info;
+	  color            : $button-info-text;
+	  border-color     : darken($info, 20%);
+	}
+
+	&.ui-ribbon-danger {
+	  background-color : $danger;
+	  color            : $button-danger-text;
+	  border-color     : darken($danger, 20%);
+	}
+  }
+}
+
+[dir="rtl"] {
+  .ui-ribbon-wrapper {
+	top    : auto;
+	bottom : auto;
+	left   : auto;
+	right  : auto;
+
+	&.ui-tl {
+	  top   : -1px;
+	  right : -1px;
+	  .ui-ribbon {
+		@include transform(rotate(45deg));
+		top   : 25%;
+		right : -25%;
+	  }
+	}
+	&.ui-tr {
+	  top  : -1px;
+	  left : -1px;
+	  .ui-ribbon {
+		@include transform(rotate(-45deg));
+		top : 25%;
+	  }
+	}
+	&.ui-bl {
+	  bottom : -1px;
+	  right  : -1px;
+	  .ui-ribbon {
+		@include transform(rotate(-45deg));
+		top   : 55%;
+		right : -25%;
+	  }
+	}
+	&.ui-br {
+	  bottom : -1px;
+	  left   : -1px;
+	  .ui-ribbon {
+		@include transform(rotate(45deg));
+		top   : 55%;
+		right : 5%;
+	  }
+	}
+  }
+}

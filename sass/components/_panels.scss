@@ -1,0 +1,81 @@
+/**
+ *	UI Framework Panels
+ *	@author 	 Adarsh Pastakia
+ *	@company	 HMC
+ *  @copyright 	 2015-2016, Adarsh Pastakia
+ **/
+
+.ui-header {
+  @include flex-row($wrap : false);
+  @include border-top-radius($base-border-radius);
+  min-height    : 2em;
+  border-bottom : 1px solid $base-border-color;
+  background    : shade($base-bg, 2%);
+
+  h5 {
+	@include flex(1 1 0%);
+	margin       : 0;
+	font-weight  : $font-weight-strong;
+	padding      : $base-padding;
+	font-variant : small-caps;
+  }
+
+  button {
+	@include flex(0 0 auto);
+	margin      : 0 2px;
+	font-size   : 1.5em;
+	line-height : 1;
+	opacity     : 0.75;
+	padding     : 3px;
+	&:hover {
+	  opacity : 1;
+	}
+	@include transition(all 0.25s);
+  }
+
+  &.ui-primary {
+	color      : $primary-text;
+	background : $primary;
+	button {
+	  color : $primary-text;
+	}
+  }
+
+  &.ui-secondary {
+	background : $secondary;
+	color      : $secondary-text;
+	button {
+	  color : $secondary-text;
+	}
+  }
+}
+
+.ui-panel {
+  display          : block;
+  margin           : 5px;
+  color            : $base-text;
+  position         : relative;
+  border-radius    : $base-border-radius;
+  border           : 1px solid $base-border-color;
+  background-color : $base-bg;
+  overflow         : hidden;
+
+  > .ui-panel-body {
+	@include transition(all 0.5s);
+	@include flex(0 0 auto);
+	max-height : 600px;
+	display    : block;
+	padding    : 0 !important;
+  }
+
+  &.ui-collapse {
+	> .ui-panel-body {
+	  max-height : 0;
+	}
+
+	button.ui-collapse {
+	  @include transform-origin(center center 0);
+	  @include transform(rotate(180deg));
+	}
+  }
+}

@@ -9,7 +9,7 @@
   @include flex-column();
   @include position(absolute, 0, 0, 0, 0);
 
-  .ui-header {
+  .ui-app-header {
 	color      : $app-header-text;
 	background : $app-header-bg;
 	padding    : $base-padding;
@@ -64,7 +64,7 @@
 	}
   }
 
-  .ui-footer {
+  .ui-app-footer {
 	@include flex(0 0 auto);
 	color      : $app-footer-text;
 	background : $app-footer-bg;
@@ -160,7 +160,7 @@
   }
 }
 
-body[dir='rtl'] {
+[dir='rtl'] {
   .ui-viewport .ui-app-menu {
 	left  : auto;
 	right : -305px;

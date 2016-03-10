@@ -5,7 +5,7 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-body[dir='rtl'] {
+[dir='rtl'] {
   [class^="fi-"], [class*="fi-"] {
 	transform : scale(-1, 1);
   }

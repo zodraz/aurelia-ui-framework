@@ -1,5 +1,5 @@
 <template role="main" class="ui-viewport" click.delegate="hideMenu($event)">
-	<header class="ui-header">
+	<header class="ui-app-header">
 		<!-- Menu handle -->
 		<button class="ui-app-menu-handle" if.bind="options.showMenu" click.trigger="showMenu($event)">
 			<span></span><span></span><span></span>
@@ -22,7 +22,7 @@
 	<div class="ui-app-taskbar" if.bind="options.showTaskbar" role="toolbar">
 		<template replaceable part="quick-links"></template>
 	</div>
-	<footer class="ui-footer">
+	<footer class="ui-app-footer">
 		<small innerhtml.bind="options.copyright"></small>
 		<small innerhtml.bind="options.footerMessage"></small>
 	</footer>

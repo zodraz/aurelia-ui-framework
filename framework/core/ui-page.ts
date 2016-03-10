@@ -95,10 +95,9 @@ export class UIStatsbar {
 }
 
 @customElement('ui-stat')
-@inlineView('<template class="ui-stat"><span class="${icon}" if.bind="icon"></span><div><h1>${value}</h1><h6>${label}</h6></div></template>')
+@inlineView('<template class="ui-stat"><span class="${icon}" if.bind="icon"></span><div><h1>${value}</h1><h6><content></content></h6></div></template>')
 export class UIStat {
 	@bindable() value;
-	@bindable() label;
 	@bindable() icon;
 }
 

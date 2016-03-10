@@ -6,7 +6,7 @@
  **/
 
 .ui-input-group {
-  $shadow : $wg-2;
+  $shadow : $tg-2;
 
   @if brightness($input-bg)<50 {
 	$shadow : $wg-10;
@@ -209,7 +209,7 @@
   }
 }
 
-body[dir='rtl'] {
+[dir='rtl'] {
   .ui-input-group {
 	.ui-label > span:after {
 	  left  : 3px;

@@ -22,6 +22,10 @@ export function configure(aurelia:FrameworkConfiguration) {
 
 	///** Components **/
 	aurelia.globalResources('./components/ui-menu');
+	aurelia.globalResources('./components/ui-form');
+	aurelia.globalResources('./components/ui-ribbon');
+	aurelia.globalResources('./components/ui-panel');
+	aurelia.globalResources('./components/ui-tab-panel');
 
 	/** Inputs **/
 	aurelia.globalResources('./inputs/ui-button');
