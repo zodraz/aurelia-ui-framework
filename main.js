@@ -1,5 +1,5 @@
-define(["require", "exports"], function (require,
-										 exports) {
+define(["require", "exports", "./framework/utils/ui-validation"], function (require,
+										 exports, ui_validations_1) {
 	function configure(aurelia) {
 		aurelia.use
 			   .standardConfiguration()
@@ -7,6 +7,7 @@ define(["require", "exports"], function (require,
 			   .feature('framework')
 			   //.plugin('aurelia-ui-framework')
 			   .plugin('aurelia-validation', function (config) {
+				   config.useViewStrategy(new ui_validations_1.UIValidationStrategy());
 			   });
 
 		aurelia.start()

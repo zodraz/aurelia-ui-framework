@@ -25,7 +25,7 @@ $bg-warning : $atoll !default;
 
 /** BASE **/
 // fonts
-$base-font-size : 0.95rem !default;
+$base-font-size : 0.95em !default;
 $base-line-height : 1.1 !default;
 $base-font-family-input : 'Lato', 'Trebuchet MS', Tahoma, san-serif !default;
 $base-font-family-serif : 'Source Code Pro', 'Georgia', 'Times New Roman', serif !default;
@@ -37,8 +37,8 @@ $base-text : $white !default;
 $base-bg-image : 'back/bg-dark.png' !default;
 $base-splash-image : 'loader-spinner.gif' !default;
 // borders
-$base-border-color : $wg-5 !default;
-$base-border-radius : 0.2rem !default;
+$base-border-color : $wg-8 !default;
+$base-border-radius : 0.2em !default;
 $base-shadow-color : $wg-6 !default;
 // padding
 $base-padding : 0.3em .8em !default;
@@ -78,16 +78,16 @@ $hr-shadow : $black-sp !default;
 /** APP VIEWPORT **/
 $app-header-bg : $agate !default;
 $app-header-text : $white !default;
-$app-header-font-size : 1.5rem !default;
+$app-header-font-size : 1.5em !default;
 
 $app-footer-bg : $ng-9 !default;
 $app-footer-text : $ng-1 !default;
-$app-footer-font-size : 0.5rem !default;
+$app-footer-font-size : 0.5em !default;
 
 $app-menu-bg : $black !default;
 $app-menu-text : $white !default;
 $app-menu-link : $primary !default;
-$app-menu-font-size : 1.2rem !default;
+$app-menu-font-size : 1.2em !default;
 $app-menu-bg-image : 'back/bg-menu.png' !default;
 $app-menu-shim : $cg-00 !default;
 
@@ -108,8 +108,8 @@ $sidebar-text : $base-text !default;
 $toolbar-bg : $ng-10 !default;
 $toolbar-text : $ng-2 !default;
 
-$statsbar-bg: $cg-8 !default;
-$statsbar-text: $process-blue !default;
+$statsbar-bg : $cg-8 !default;
+$statsbar-text : $process-blue !default;
 
 /** MENUS **/
 $menu-link-bg : transparent !default;
@@ -165,6 +165,14 @@ $tab-border : $wg-8 !default;
 $tab-active-bg : $wg-10 !default;
 $tab-active-text : $wg-0 !default;
 $tab-active-border : $primary !default;
+
+/** TOASTS **/
+$toast-default : $wg-9 !default;
+$toast-info : $process-blue !default;
+$toast-danger : $carmine !default;
+$toast-success : $mistletoe !default;
+$toast-warning : $atoll !default;
+$toast-text : $white !default;
 
 @import "framework!";
 

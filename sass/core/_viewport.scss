@@ -101,10 +101,10 @@
 
 	.ui-auth-info {
 	  top           : 0;
-	  margin-bottom : 0.5rem;
+	  margin-bottom : 0.5em;
+	  background    : rgba(#333, 0.95);
 	  @include sticky();
 	  @include box-shadow(-3px 0 3px 1px #111);
-	  background    : rgba(#333, 0.95);
 	  @include backdrop-blur(9px);
 	}
 
@@ -154,9 +154,11 @@
 
   .ui-overlay-container {
 	@include position(absolute, 0, 0, 0, 0);
-	@include flex-column(flex-end);
+	@include flex-column(flex-end, flex-start);
+	overflow       : hidden;
 	z-index        : $z-index-floating;
 	pointer-events : none;
+	padding        : 5em 0 1.5em;
   }
 }
 

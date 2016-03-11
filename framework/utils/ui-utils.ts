@@ -45,6 +45,33 @@ export module UIUtils {
 				   .get(__container)();
 	}
 
+	export function showToast(container, config) {
+		let tmr;
+		let opt   = Object.assign({theme: 'default', autoHide: true, extraClass: ''}, config);
+		let toast = document.createElement('div');
+		toast.classList.add('ui-toast');
+		toast.classList.add(opt.theme);
+		if (!isEmpty(opt.extraClass))toast.classList.add(opt.extraClass);
+		toast.innerHTML = `<div class="ui-toast-wrapper">
+			<span class="ui-icon ${opt.icon}"></span>
+			<p class="ui-message">${opt.message}</p>
+			<span class="ui-close">&times;</span>
+		</div>`;
+
+		container.appendChild(toast);
+		if (opt.autoHide)tmr = setTimeout(()=>__removeToast(toast), 5000);
+		toast.onclick = ()=> {
+			clearTimeout(tmr);
+			__removeToast(toast);
+		};
+		setTimeout(()=>toast.classList.add('ui-toast-show'), 10);
+	}
+
+	function __removeToast(toast) {
+		setTimeout(()=>toast.remove(), 1000);
+		toast.classList.remove('ui-toast-show');
+	}
+
 	export function getAscii(str):string {
 		if (isEmpty(str)) return '';
 		var conversions   = {};

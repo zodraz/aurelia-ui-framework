@@ -15,11 +15,6 @@ export class UIButton {
 	private __theme = 'default';
 
 	/**
-	 * @property    href
-	 * @type        string
-	 */
-	@bindable() href:string      = null;
-	/**
 	 * @property    label
 	 * @type        string
 	 */
@@ -82,10 +77,9 @@ export class UIButton {
 		this.disable();
 	}
 
-	onClick($event) {
+	fireClick($event) {
 		if (this.disabled === true) return false;
 		$event.cancelBubble = true;
 		UIEvent.fireEvent('click', this.element, this);
-		return true;
 	}
 }

@@ -47,4 +47,5 @@ export {UIEvent} from "./utils/ui-event";
 export {UIFormat} from "./utils/ui-formatters";
 export {UIApplication} from "./utils/ui-application";
 export {UIHttpService} from "./utils/ui-http-service";
+export {UIValidationStrategy} from "./utils/ui-validation";
 export {UIUtils, _, moment, numeral} from "./utils/ui-utils";

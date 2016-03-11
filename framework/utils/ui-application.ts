@@ -7,6 +7,7 @@
  **/
 import {singleton, autoinject} from "aurelia-framework";
 import {getLogger} from "aurelia-logging";
+import {UIUtils} from "./ui-utils";
 
 @singleton()
 @autoinject()
@@ -99,5 +100,13 @@ export class UIApplication {
 
 	error(tag, msg, ...rest) {
 		this.__logger.error(`${tag}::${msg}`, rest);
+	}
+
+	/** Toast **/
+	private __overlayContainer;
+
+	toast(config) {
+		if (!this.__overlayContainer) this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
+		UIUtils.showToast(this.__overlayContainer, config);
 	}
 }

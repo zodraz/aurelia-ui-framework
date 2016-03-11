@@ -119,13 +119,13 @@ a, button {
 }
 
 hr {
-  margin     : 0.2rem 0;
+  margin     : 0.2em 0;
   height     : 2px;
   background : $hr-highlight;
   color      : transparent;
   border   : {
 	style  : solid;
-	radius : 0.5rem;
+	radius : 0.5em;
 	width  : 1px 0 0;
 	color  : $hr-shadow;
   }

@@ -20,8 +20,8 @@
 .ui-button {
   text-align    : center;
   display       : inline-block;
-  margin        : 0.2rem;
-  font-size     : 1.1rem;
+  margin        : 0.2em;
+  font-size     : 1.1em;
   font-weight   : $font-weight-normal;
   padding       : $base-padding;
   border-radius : $base-border-radius;
@@ -29,11 +29,11 @@
   @include box-shadow(2px 2px 4px 0 $base-shadow-color);
 
   &.ui-button-large {
-	font-size : 1.4rem;
+	font-size : 1.4em;
   }
   &.ui-button-small {
-	font-size : 0.9rem;
-	padding   : 0.2rem;
+	font-size : 0.9em;
+	padding   : 0.2em;
   }
 
   &.ui-button-round {
@@ -44,7 +44,7 @@
 	display    : block;
 	text-align : center;
 	width      : 100%;
-	margin     : 0.2rem 0;
+	margin     : 0.2em 0;
   }
 
   &:not([disabled]):hover, &:not([disabled]):focus {

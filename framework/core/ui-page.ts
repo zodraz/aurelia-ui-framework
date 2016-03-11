@@ -8,9 +8,11 @@
 
 import {customElement, bindable, inlineView} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {UIUtils} from "../utils/ui-utils";
 
 @customElement('ui-page')
 export class UIPage {
+	private __body;
 
 	/**
 	 * @property    page-title
@@ -19,6 +21,11 @@ export class UIPage {
 	@bindable() pageTitle:string;
 
 	constructor(public element:Element) {
+	}
+
+	toast(config) {
+		config.extraClass = 'ui-page-toast';
+		UIUtils.showToast(this.__body, config);
 	}
 }
 

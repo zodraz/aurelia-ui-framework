@@ -1,7 +1,17 @@
+import {Validation} from "aurelia-validation";
+import {autoinject} from "aurelia-framework";
+import {UIApplication} from "../../framework/utils/ui-application";
+
+@autoinject()
 export class Home {
 	optVal  = 2;
 	enabled = true;
 
+	model = {
+		email: '', lat: null, long: null
+	};
+
+	__page;
 	__content;
 
 	md = `
@@ -32,11 +42,50 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 
 `;
 
+	validation;
+
+	constructor(_validation:Validation, public appState:UIApplication) {
+		this.validation = _validation
+			.on(this, null)
+			.ensure('model.email')
+			.isNotEmpty()
+			.ensure('model.lat')
+			.isNumber()
+			.isBetween(-90, 90)
+			.ensure('model.long')
+			.isNumber()
+			.isBetween(-180, 180);
+
+	}
+
+	onSubmit() {
+		this.validation.validate()
+			.then(()=> {
+
+			})
+			.catch(()=> {
+
+			});
+	}
+
 	attached() {
 		setTimeout(()=>this.__content.scrollTop = 0, 20);
 	}
 
 	change($event) {
 		console.log($event.target, $event.detail);
+	}
+
+	toastMe(pos, theme) {
+		if (pos == 'page') {
+			this.__page.toast({icon       : 'fi-vaadin-bell',
+								  autoHide: false,
+								  theme   : 'danger',
+								  message : 'Toasted message for the page'
+							  });
+		}
+		else {
+			this.appState.toast({theme: theme, icon: 'fi-vaadin-bell', message: 'Toasted message'});
+		}
 	}
 }

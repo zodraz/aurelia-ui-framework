@@ -13,7 +13,7 @@
   }
 
   @include flex-row(flex-start);
-  margin-bottom : 0.5rem;
+  margin-bottom : 0.5em;
 
   .ui-label {
 	@include flex(0 0 10em);
@@ -94,13 +94,16 @@
 			background : $input-readonly-bg;
 		  }
 		}
+		> textarea.ui-input {
+		  margin-bottom : -2px;
+		}
 		> .ui-clear {
 		  z-index    : 2;
 		  display    : none;
 		  cursor     : pointer;
-		  font-size  : 0.5rem;
+		  font-size  : 0.5em;
 		  margin     : 5px 0;
-		  padding    : 0.35rem;
+		  padding    : 0.35em;
 		  background : $input-bg;
 		  color      : rgba($input-text, 0.5);
 		  @include size(auto, auto);
@@ -117,7 +120,7 @@
 
 	  > .ui-addon {
 		margin     : 0;
-		padding    : 0.3rem;
+		padding    : 0.3em;
 		color      : $input-addon-text;
 		background : $input-addon-bg;
 		border     : 1px solid $input-border;
@@ -132,7 +135,7 @@
 
 	  > .ui-addon-button {
 		font-size   : 1em;
-		padding     : 0 0.3rem;
+		padding     : 0 0.3em;
 		font-weight : $font-weight-normal;
 		color       : $input-button-text;
 		background  : $input-button-bg;
@@ -166,32 +169,34 @@
 	  color      : rgba($input-text, 0.7);
 	  font-size  : 0.8em;
 	  text-align : center;
-	  padding    : 1px 2px;
+	  margin-top : -8px;
+	  padding    : 10px 2px 1px;
 	  border  : {
 		width : 0 1px 1px;
 		style : solid;
 		color : $input-border;
 	  }
-
-	  &:last-child {
-		@include border-bottom-radius($base-border-radius);
-	  }
 	  &.ui-input-error {
-		text-align : inherit;
+		display    : none;
 		color      : $danger;
+		text-align : inherit;
 		&:before {
 		  content     : '\e09e';
 		  margin      : 0 4px;
 		  font-family : Vaadin;
 		}
 	  }
-	}
 
-	> .ui-input-control:not(:last-child) .ui-input-wrapper {
-	  .ui-addon, .ui-input {
-		@include border-bottom-radius(0);
+	  &:last-child {
+		@include border-bottom-radius($base-border-radius);
 	  }
 	}
+
+	//> .ui-input-control:not(:last-child) .ui-input-wrapper {
+	//  .ui-addon, .ui-input {
+	//	@include border-bottom-radius(0);
+	//  }
+	//}
   }
 
   &.ui-invalid {
@@ -205,6 +210,9 @@
 	  border-color : $input-invalid-border;
 	  background   : $input-invalid-border;
 	  color        : contrast($input-invalid-border);
+	}
+	.ui-input-error {
+	  display : block !important;
 	}
   }
 }

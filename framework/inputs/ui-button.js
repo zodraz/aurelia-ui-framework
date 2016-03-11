@@ -13,7 +13,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.element = element;
             this.__size = 'normal';
             this.__theme = 'default';
-            this.href = null;
             this.label = '';
             this.value = '';
             this.icon = '';
@@ -59,17 +58,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.disabled = isTrue(newValue);
             this.disable();
         };
-        UIButton.prototype.onClick = function ($event) {
+        UIButton.prototype.fireClick = function ($event) {
             if (this.disabled === true)
                 return false;
             $event.cancelBubble = true;
             ui_event_1.UIEvent.fireEvent('click', this.element, this);
-            return true;
         };
-        __decorate([
-            aurelia_framework_1.bindable(), 
-            __metadata('design:type', String)
-        ], UIButton.prototype, "href", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)

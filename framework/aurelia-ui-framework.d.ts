@@ -57,6 +57,8 @@ declare module "aurelia-ui-framework" {
 		debug(tag:string, msg:string, ...rest);
 
 		error(tag:string, msg:string, ...rest);
+
+		toast(config:any);
 	}
 
 	// Utilities
@@ -64,6 +66,8 @@ declare module "aurelia-ui-framework" {
 		export function container(container:Container);
 
 		export function lazy(T:any):any;
+
+		export function showToast(container, config);
 
 		export function getAscii(str):string;
 	}
@@ -101,7 +105,6 @@ declare module "aurelia-ui-framework" {
 	}
 }
 
-
 // Global methods
 declare var seed;
 
@@ -113,4 +116,8 @@ interface Window {
 	isEmpty;
 	seed:number;
 }
-
+declare module 'aurelia-validation' {
+	export interface ValidationGroup {
+		isPhone():any;
+	}
+}

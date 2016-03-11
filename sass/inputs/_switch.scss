@@ -7,7 +7,7 @@
 
 .ui-switch-control {
   white-space : nowrap;
-  margin      : 0.2rem;
+  margin      : 0.2em;
   display     : inline-block;
 
   .ui-switch {
@@ -15,11 +15,11 @@
 	position           : relative;
 	display            : inline-block;
 	vertical-align     : top;
-	width              : 4rem;
-	height             : 1.6rem;
-	padding            : 0.1rem;
+	width              : 4em;
+	height             : 1.6em;
+	padding            : 0.1em;
 	background-color   : $base-bg;
-	border-radius      : 1rem;
+	border-radius      : 1em;
 	box-shadow         : 0 0 1px 1px if(brightness($base-bg)>50, $ng-2, $ng-8), inset 0 1px 5px rgba($black, 0.05);
 	cursor             : pointer;
 	-webkit-box-sizing : content-box;
@@ -39,7 +39,7 @@
 	  position         : relative;
 	  display          : block;
 	  height           : inherit;
-	  font-size        : 0.8rem;
+	  font-size        : 0.8em;
 	  text-transform   : uppercase;
 	  cursor           : pointer;
 	  background-color : $input-bg;
@@ -57,14 +57,14 @@
 
 	.ui-switch-label:before {
 	  content     : attr(data-off);
-	  right       : 0.6rem;
+	  right       : 0.6em;
 	  color       : $input-text;
 	  text-shadow : 0 1px rgba($white, 0.5)
 	}
 
 	.ui-switch-label:after {
 	  content     : attr(data-on);
-	  left        : 0.6rem;
+	  left        : 0.6em;
 	  color       : white;
 	  text-shadow : 0 1px rgba($black, 0.2);
 	  opacity     : 0
@@ -91,19 +91,19 @@
 
 	.ui-switch-handle {
 	  cursor        : pointer;
-	  width         : 1.5rem;
-	  height        : 1.5rem;
+	  width         : 1.5em;
+	  height        : 1.5em;
 	  background    : white linear-gradient(top, $white-sp, $white);
-	  border-radius : 1rem;
-	  margin-top    : -0.75rem;
+	  border-radius : 1em;
+	  margin-top    : -0.75em;
 	  box-shadow    : 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
 	  @include transition(all .25s ease-out);
-	  @include position(absolute, $t : 50%, $l : 0.2rem);
+	  @include position(absolute, $t : 50%, $l : 0.2em);
 	}
 
 	.ui-switch-input:checked ~ .ui-switch-handle {
 	  left        : 100%;
-	  margin-left : -1.7rem;
+	  margin-left : -1.7em;
 	  box-shadow  : -1px 1px 2px 1px rgba($black, 0.4)
 	}
 
@@ -128,7 +128,7 @@
 	}
 
 	&.ui-switch.ui-switch-gender {
-	  width : 5.5rem;
+	  width : 5.5em;
 
 	  > .ui-switch-input {
 		~ .ui-switch-label {
@@ -180,8 +180,8 @@
 	display        : inline !important;
 	vertical-align : middle;
 	cursor         : pointer;
-	top            : 0.4rem;
-	margin         : 0 0.2rem;
+	top            : 0.4em;
+	margin         : 0 0.2em;
 
 	&[disabled] {
 	  opacity : 0.5;

@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-logging"], function (require, exports, aurelia_framework_1, aurelia_logging_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-utils"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_utils_1) {
     var UIApplication = (function () {
         function UIApplication() {
             this.BaseUrl = './';
@@ -103,6 +103,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging"], function 
                 rest[_i - 2] = arguments[_i];
             }
             this.__logger.error(tag + "::" + msg, rest);
+        };
+        UIApplication.prototype.toast = function (config) {
+            if (!this.__overlayContainer)
+                this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
+            ui_utils_1.UIUtils.showToast(this.__overlayContainer, config);
         };
         UIApplication = __decorate([
             aurelia_framework_1.singleton(),

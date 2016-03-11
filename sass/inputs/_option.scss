@@ -6,9 +6,9 @@
  **/
 
 .ui-option {
-  min-height : 1.2rem;
+  min-height : 1.2em;
   text-align : center;
-  margin-top : 0.2rem;
+  margin-top : 0.2em;
   position   : relative;
   border     : 1px solid transparent;
   @include flexbox((
@@ -20,7 +20,7 @@
 
   > .ui-option-input {
 	@include position(absolute, null);
-	@include size(1.2rem, 1.2rem);
+	@include size(1.2em, 1.2em);
 	cursor  : pointer;
 	opacity : 0;
 	margin  : 0;
@@ -31,7 +31,7 @@
 	z-index          : 1;
 	line-height      : 1;
 	cursor           : pointer;
-	border-radius    : 0.25rem;
+	border-radius    : 0.25em;
 	color            : $input-text;
 	background-color : $input-bg;
 	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-text));
@@ -40,7 +40,7 @@
 	  text-align : left;
 	  position   : relative;
 	  font     : {
-		size   : 1.2rem;
+		size   : 1.2em;
 		weight : 100;
 		family : Material;
 	  }
@@ -66,10 +66,10 @@
   }
 
   .ui-option-label {
-	padding : 0.15rem 0;
+	padding : 0.15em 0;
 	@include flex(0 0 auto);
-	@include padding(end, 0.5rem);
-	@include padding(start, 0.2rem);
+	@include padding(end, 0.5em);
+	@include padding(start, 0.2em);
   }
 
   .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
@@ -92,7 +92,7 @@
 }
 
 .ui-option-group {
-  padding : 0 0.2rem;
+  padding : 0 0.2em;
   @include flex-row(flex-start);
   .ui-option {
 	@include flex(0 0 150px);

@@ -35,7 +35,7 @@
 
 	li > ul {
 	  list-style : circle;
-	  @include margin(start, 2rem);
+	  @include margin(start, 2em);
 
 	  li > ul {
 		list-style : square;
@@ -51,13 +51,13 @@
   }
 
   li > a {
-	margin  : 0.3rem 0;
+	margin  : 0.3em 0;
 	display : inline-block;
   }
 
   li > p {
 	padding : 0;
-	margin  : 0.3rem 0;
+	margin  : 0.3em 0;
   }
 
   td, th {
@@ -79,8 +79,8 @@
 	color      : transparent;
 	border   : {
 	  style  : solid;
-	  radius : 0.5rem;
-	  width  : 0.06rem 0 0;
+	  radius : 0.5em;
+	  width  : 0.06em 0 0;
 	  color  : $hr-shadow;
 	}
   }
@@ -96,12 +96,12 @@
   }
 
   pre > code {
-	margin        : 1rem;
+	margin        : 1em;
 	display       : block;
 	overflow      : auto;
 	max-height    : 270px;
 	color         : $pre-code-text;
-	padding       : 0.7rem 1.2rem;
+	padding       : 0.7em 1.2em;
 	background    : rgba($pre-code-bg, 0.4);
 	border        : 1px solid $pre-code-border;
 	border-radius : $base-border-radius;
@@ -111,8 +111,8 @@
 	  color       : #F0F0F0;
 	  background  : #6A6A6A;
 	  position    : absolute;
-	  padding     : 0.2rem 0.7rem;
-	  font-size   : 0.7rem;
+	  padding     : 0.2em 0.7em;
+	  font-size   : 0.7em;
 	  top         : 0;
 	  right       : 0;
 	  font-family : $base-font-family;

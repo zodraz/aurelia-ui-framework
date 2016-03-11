@@ -32,6 +32,29 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                 .get(__container)();
         }
         UIUtils.lazy = lazy;
+        function showToast(container, config) {
+            var tmr;
+            var opt = Object.assign({ theme: 'default', autoHide: true, extraClass: '' }, config);
+            var toast = document.createElement('div');
+            toast.classList.add('ui-toast');
+            toast.classList.add(opt.theme);
+            if (!isEmpty(opt.extraClass))
+                toast.classList.add(opt.extraClass);
+            toast.innerHTML = "<div class=\"ui-toast-wrapper\">\n\t\t\t<span class=\"ui-icon " + opt.icon + "\"></span>\n\t\t\t<p class=\"ui-message\">" + opt.message + "</p>\n\t\t\t<span class=\"ui-close\">&times;</span>\n\t\t</div>";
+            container.appendChild(toast);
+            if (opt.autoHide)
+                tmr = setTimeout(function () { return __removeToast(toast); }, 5000);
+            toast.onclick = function () {
+                clearTimeout(tmr);
+                __removeToast(toast);
+            };
+            setTimeout(function () { return toast.classList.add('ui-toast-show'); }, 10);
+        }
+        UIUtils.showToast = showToast;
+        function __removeToast(toast) {
+            setTimeout(function () { return toast.remove(); }, 1000);
+            toast.classList.remove('ui-toast-show');
+        }
         function getAscii(str) {
             if (isEmpty(str))
                 return '';
