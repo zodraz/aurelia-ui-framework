@@ -47,12 +47,13 @@
 	margin     : 0.2em 0;
   }
 
-  &:not([disabled]):hover, &:not([disabled]):focus {
+  &:not([disabled]):not(.ui-checked):hover,
+  &:not([disabled]):not(.ui-checked):focus {
 	@include box-shadow(0 2px 2px 0 rgba($white, 0.6) inset,
 			0 -2px 2px 0 rgba($white, 0.6) inset,
 			2px 2px 4px 0 $base-shadow-color);
   }
-  &:not([disabled]):active {
+  &:not([disabled]):not(.ui-checked):active, &.ui-checked {
 	@include box-shadow(0 2px 2px 0 rgba($black, 0.4) inset,
 			0 -2px 2px 0 rgba($black, 0.4) inset,
 			2px 2px 4px 0 $base-shadow-color);
@@ -61,7 +62,8 @@
   &[disabled] {
 	opacity : 0.5;
 	&, > span {
-	  cursor : not-allowed;
+	  pointer-events : none;
+	  cursor         : not-allowed;
 	}
   }
 
@@ -76,4 +78,50 @@
   @include button-style(danger, $button-danger-bg, $button-danger-text);
   @include button-style(success, $button-success-bg, $button-success-text);
   @include button-style(warning, $button-warning-bg, $button-warning-text);
+}
+
+.ui-button-group {
+  margin : 0.2em;
+  @include flexbox((
+		  display:inline-flex,
+		  flex-direction:row,
+		  flex-wrap:nowrap
+  ));
+  .ui-button-control .ui-button {
+	margin : 0;
+	@include flex(0 0 auto);
+  }
+  .ui-button-control:not(:first-child) .ui-button {
+	@include border-left-radius(0);
+  }
+  .ui-button-control:not(:last-child) .ui-button {
+	@include border-right-radius(0);
+  }
+
+  &.ui-button-group-primary .ui-button.ui-checked {
+	background : $button-primary-bg;
+	color      : $button-primary-text;
+  }
+  &.ui-button-group-info .ui-button.ui-checked {
+	background : $button-info-bg;
+	color      : $button-info-text;
+  }
+  &.ui-button-group-danger .ui-button.ui-checked {
+	background : $button-danger-bg;
+	color      : $button-danger-text;
+  }
+  &.ui-button-group-success .ui-button.ui-checked {
+	background : $button-success-bg;
+	color      : $button-success-text;
+  }
+  &.ui-button-group-warning .ui-button.ui-checked {
+	background : $button-warning-bg;
+	color      : $button-warning-text;
+  }
+}
+
+[dir="rtl"] {
+  .ui-button-group {
+	@include flex-direction(row-reverse);
+  }
 }

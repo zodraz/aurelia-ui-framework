@@ -1,5 +1,5 @@
 <template class="ui-button-control">
-	<button class="ui-button" ref="__button" click.trigger="fireClick($event)">
+	<button class="ui-button" ref="__button" click.trigger="fireClick($event)" data-value.bind="value">
 		<span class.bind="icon" if.bind="icon"></span>
 		<span innerhtml.bind="label" if.bind="label"></span>
 	</button>

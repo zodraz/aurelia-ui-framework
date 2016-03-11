@@ -37,7 +37,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UISwitch.prototype.attached = function () {
             if (!isNaN(this.width))
-                this.__switch.style.width = parseInt(this.width) + 'px';
+                this.__switch.style.width = parseInt(this.width) + 'em';
             this.__switch.classList.add("ui-switch-" + this.__theme);
             this.disable();
         };

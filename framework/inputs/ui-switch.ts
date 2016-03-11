@@ -62,7 +62,7 @@ export class UISwitch {
 	}
 
 	attached() {
-		if (!isNaN(this.width)) this.__switch.style.width = parseInt(this.width) + 'px';
+		if (!isNaN(this.width)) this.__switch.style.width = parseInt(this.width) + 'em';
 		this.__switch.classList.add(`ui-switch-${this.__theme}`);
 		this.disable();
 	}

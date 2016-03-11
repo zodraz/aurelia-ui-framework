@@ -51,7 +51,7 @@ If `disabled | theme` set on button group, it will override the properties of in
 ```html
 <ui-switch checked.bind=? disabled.bind=? change.trigger=?
     (theme) primary|secondary|info|danger|success|warning 
-    label-on=? label-off=? width='?px'>
+    label-on=? label-off=? width='?em'>
     <!-- Label text -->
 </ui-switch>
 ```

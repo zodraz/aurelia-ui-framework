@@ -91,13 +91,15 @@
 			<hr/>
 			<div>
 				<ui-switch primary checked.bind="enabled" label-on="All Enabled" label-off="All Disabled"
-						   width="120">
+						   width="8">
 					Disable Elements
 				</ui-switch>
 			</div>
 			<h2>Buttons</h2>
 			<div class="ui-pad-all">
-				<h4>Themes <small>Click to show toast messages</small></h4>
+				<h4>Themes
+					<small>Click to show toast messages</small>
+				</h4>
 				<div>
 					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Normal"
 							   click.trigger="toastMe('page')"></ui-button>
@@ -119,6 +121,41 @@
 					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Round" round></ui-button>
 					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Icon Top" top></ui-button>
 					<ui-button icon="fi-vaadin-circle-1" label="Disabled" disabled="true"></ui-button>
+				</div>
+				<h4>Button Groups</h4>
+				<div>
+					<ui-button-group>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
+								   primary></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"
+								   info></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger"
+								   danger></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
+								   success></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
+								   warning></ui-button>
+					</ui-button-group>
+				</div>
+				<h6>
+					<ui-switch primary checked.bind="toggle" label-on="Multiple" label-off="Single"
+							   width="6">
+						Toggle Mode
+					</ui-switch>
+				</h6>
+				<div>
+					<ui-button-group toggle.bind="toggle?'multiple':'single'" round value="0" primary>
+						<ui-button value="0" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Primary"></ui-button>
+						<ui-button value="1" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Info"></ui-button>
+						<ui-button value="2" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Danger"></ui-button>
+						<ui-button value="3" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Success"></ui-button>
+						<ui-button value="4" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Warning"></ui-button>
+					</ui-button-group>
 				</div>
 			</div>
 			<hr/>
