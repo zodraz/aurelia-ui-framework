@@ -92,7 +92,7 @@ export class UIPhone extends UIInputGroup {
 		this.dir = 'ltr';
 		if (this.element.hasAttribute('international')) {
 			this.__phoneFormat = PhoneLib.FORMAT.INTERNATIONAL;
-			this.prefixIcon    = `ui-icon ui-flag`;
+			this.prefixIcon    = `ui-flag`;
 		}
 		else {
 			this.prefixText = '+' + PhoneLib.getDialingCode(this.country);
@@ -125,7 +125,7 @@ export class UIPhone extends UIInputGroup {
 		if (this.ignoreUpdate)return;
 		this.ignoreUpdate = true;
 		if (this.__phoneFormat === PhoneLib.FORMAT.INTERNATIONAL) {
-			if (isEmpty(newValue))this.prefixIcon = 'ui-icon ui-flag';
+			if (isEmpty(newValue))this.prefixIcon = 'ui-flag';
 			if (!isEmpty(newValue) && !/^\+/.test(newValue)) newValue = '+' + newValue;
 		}
 		if (!isEmpty(newValue)) {
@@ -148,8 +148,8 @@ export class UIPhone extends UIInputGroup {
 
 	protected processValue() {
 		if (this.__phoneFormat === PhoneLib.FORMAT.INTERNATIONAL) {
-			if (isEmpty(this.__value))this.prefixIcon = 'ui-icon ui-flag';
-			if (!isEmpty(this.__value))this.prefixIcon = 'ui-icon ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
+			if (isEmpty(this.__value))this.prefixIcon = 'ui-flag';
+			if (!isEmpty(this.__value))this.prefixIcon = 'ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
 		}
 		try {
 			var info = PhoneLib.getNumberInfo(this.value,

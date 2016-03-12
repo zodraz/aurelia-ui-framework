@@ -49,22 +49,22 @@
 	}
 
 	.ui-switch-label:before, .ui-switch-label:after {
-	  position   : absolute;
-	  top        : 50%;
-	  margin-top : -0.5em;
+	  line-height : 2em;
+	  padding     : 0 0.75em;
 	  @include transition(inherit);
+	  @include position(absolute, 0, 0, 0, 0);
 	}
 
 	.ui-switch-label:before {
 	  content     : attr(data-off);
-	  right       : 0.6em;
+	  text-align  : right;
 	  color       : $input-text;
 	  text-shadow : 0 1px rgba($white, 0.5)
 	}
 
 	.ui-switch-label:after {
 	  content     : attr(data-on);
-	  left        : 0.6em;
+	  text-align  : left;
 	  color       : white;
 	  text-shadow : 0 1px rgba($black, 0.2);
 	  opacity     : 0

@@ -59,10 +59,11 @@ html, body {
 }
 
 .ui-loading-shim {
-  @include position(fixed, $l : 0, $r : 0, $t : 0, $b : 12px);
+  @include position(fixed, $l : 0, $r : 0, $t : 0, $b : 1.2em);
   @include flex-column($align : center, $justify : center);
   background : rgba($base-bg, 0.3);
   z-index    : $z-index-splash;
+  cursor     : wait;
 
   > .ui-loader {
 	@include flex(0 0 auto);
@@ -76,14 +77,14 @@ html, body {
 	}
 	background : rgba($base-bg, 0.85);
 	color      : rgba($base-text, 0.5);
-	padding    : 1em 1em 0.5em 0.1em;
+	padding    : 1em 1em 0.5em 0.5em;
 	position   : relative;
 
 	span {
-	  font-size : 1.8em;
+	  font-size : 2em;
 	}
 	span.second {
-	  @include position(absolute, $t : 0.5em, $r : 0.5em);
+	  @include position(absolute, $t : 0.4em, $r : 0.4em);
 	  font-size : 1em;
 	}
   }

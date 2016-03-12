@@ -38,7 +38,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             this.dir = 'ltr';
             if (this.element.hasAttribute('international')) {
                 this.__phoneFormat = PhoneLib.FORMAT.INTERNATIONAL;
-                this.prefixIcon = "ui-icon ui-flag";
+                this.prefixIcon = "ui-flag";
             }
             else {
                 this.prefixText = '+' + PhoneLib.getDialingCode(this.country);
@@ -72,7 +72,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             this.ignoreUpdate = true;
             if (this.__phoneFormat === PhoneLib.FORMAT.INTERNATIONAL) {
                 if (isEmpty(newValue))
-                    this.prefixIcon = 'ui-icon ui-flag';
+                    this.prefixIcon = 'ui-flag';
                 if (!isEmpty(newValue) && !/^\+/.test(newValue))
                     newValue = '+' + newValue;
             }
@@ -93,9 +93,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
         UIPhone.prototype.processValue = function () {
             if (this.__phoneFormat === PhoneLib.FORMAT.INTERNATIONAL) {
                 if (isEmpty(this.__value))
-                    this.prefixIcon = 'ui-icon ui-flag';
+                    this.prefixIcon = 'ui-flag';
                 if (!isEmpty(this.__value))
-                    this.prefixIcon = 'ui-icon ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
+                    this.prefixIcon = 'ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
             }
             try {
                 var info = PhoneLib.getNumberInfo(this.value, this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : PhoneLib.getIso2Code(this.__value));

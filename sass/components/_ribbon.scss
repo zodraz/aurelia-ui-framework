@@ -7,7 +7,7 @@
 
 .ui-ribbon-wrapper {
   @include position(absolute, null);
-  @include size(100px, 100px);
+  @include size(8em, 8em);
   z-index  : $z-index-ribbon;
   overflow : hidden;
 

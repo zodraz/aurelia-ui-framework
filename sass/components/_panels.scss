@@ -7,7 +7,6 @@
 
 .ui-header {
   @include flex-row($wrap : false);
-  @include border-top-radius($base-border-radius);
   min-height    : 2em;
   border-bottom : 1px solid $base-border-color;
   background    : shade($base-bg, 2%);
