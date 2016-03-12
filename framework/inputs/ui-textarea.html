@@ -16,7 +16,7 @@
 			<div class="ui-input-wrapper">
 				<textarea class="ui-input" id="${__id}" autocomplete="off" rows.bind="rows" dir="${dir}"
 					   value.bind="__value" placeholder.bind="placeholder" ref="__input"></textarea>
-				<span class="ui-clear fi-vaadin-close ${__value?'show-clear':''}"
+				<span class="ui-clear fi-material-clear-button ${__value?'show-clear':''}"
 					  click.trigger="clearInput()" if.bind="__clear"></span>
 			</div>
 			<div class="ui-addon" if.bind="suffixIcon || suffixText">

@@ -124,7 +124,7 @@
 				</div>
 				<h4>Button Groups</h4>
 				<div>
-					<ui-button-group>
+					<ui-button-group click.trigger="changeTheme($event)">
 						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
 								   primary></ui-button>
 						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"
@@ -144,7 +144,7 @@
 					</ui-switch>
 				</h6>
 				<div>
-					<ui-button-group toggle.bind="toggle?'multiple':'single'" round value="0" primary>
+					<ui-button-group toggle.bind="toggle?'multiple':'single'" round value="0" primary ref="__bgToggle">
 						<ui-button value="0" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
 								   label="Primary"></ui-button>
 						<ui-button value="1" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
@@ -227,7 +227,7 @@
 						</ui-body>
 					</ui-panel>
 					<ui-panel>
-						<ui-header close="true" secondary>My Panel</ui-header>
+						<ui-header collapse="true" close="true" secondary>My Panel</ui-header>
 						<ui-body>
 							<h3>A Closable Panel</h3>
 						</ui-body>

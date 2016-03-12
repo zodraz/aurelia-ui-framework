@@ -31,7 +31,7 @@
 	z-index          : 1;
 	line-height      : 1;
 	cursor           : pointer;
-	border-radius    : 0.25em;
+	border-radius    : 0.1em;
 	color            : $input-text;
 	background-color : $input-bg;
 	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-text));
@@ -95,13 +95,13 @@
   padding : 0 0.2em;
   @include flex-row(flex-start);
   .ui-option {
-	@include flex(0 0 150px);
+	@include flex(0 0 10em);
 	.ui-label {
 	  display : block;
 	  @include ellipsis();
 	}
   }
   .ui-switch-control {
-	@include flex(0 0 150px);
+	@include flex(0 0 10em);
   }
 }

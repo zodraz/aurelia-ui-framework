@@ -2,7 +2,7 @@
 	<header class="ui-app-header">
 		<!-- Menu handle -->
 		<button class="ui-app-menu-handle" if.bind="options.showMenu" click.trigger="showMenu($event)">
-			<span></span><span></span><span></span>
+			<span class="fi-material-menu-button"></span>
 		</button>
 		<!-- App Logo -->
 		<img class="ui-app-logo" if.bind="options.logo" src.bind="options.logo"/>
@@ -15,7 +15,7 @@
 		</h1>
 		<div class="ui-header-options">
 			<content></content>
-			<ui-button small primary icon="fi-vaadin-move-right" click.trigger="logout()"></ui-button>
+			<ui-button small primary icon="fi-material-exit-to-app-button" click.trigger="logout()"></ui-button>
 		</div>
 	</header>
 	<router-view role="region" class="ui-viewport-body"></router-view>

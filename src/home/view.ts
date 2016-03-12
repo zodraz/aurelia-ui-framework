@@ -13,6 +13,7 @@ export class Home {
 
 	__page;
 	__content;
+	__bgToggle;
 
 	md = `
 # Hello World
@@ -76,9 +77,15 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 		console.log($event.target, $event.detail);
 	}
 
+	changeTheme($event) {
+		let theme                 = $event.detail.label.toLowerCase();
+		this.__bgToggle.className = `ui-button-group ui-button-group-${theme}`;
+	}
+
 	toastMe(pos, theme) {
 		if (pos == 'page') {
-			this.__page.toast({icon       : 'fi-vaadin-bell',
+			this.__page.toast({
+								  icon    : 'fi-vaadin-bell',
 								  autoHide: false,
 								  theme   : 'danger',
 								  message : 'Toasted message for the page'

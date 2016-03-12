@@ -76,14 +76,14 @@ html, body {
 	}
 	background : rgba($base-bg, 0.85);
 	color      : rgba($base-text, 0.5);
-	padding    : 17px 17px 8px 8px;
+	padding    : 1em 1em 0.5em 0.1em;
 	position   : relative;
 
 	span {
 	  font-size : 1.8em;
 	}
 	span.second {
-	  @include position(absolute, $t : 8px, $r : 8px);
+	  @include position(absolute, $t : 0.5em, $r : 0.5em);
 	  font-size : 1em;
 	}
   }
@@ -105,12 +105,12 @@ a, button {
   }
 
   &[target='_blank']:after {
-	font-size      : 7px;
+	font-size      : 0.5em;
 	content        : '\f1e6';
 	opacity        : 0.75;
 	font-family    : Material;
 	vertical-align : super;
-	margin-left    : 2px;
+	margin-left    : 0.1em;
   }
 
   &:hover {

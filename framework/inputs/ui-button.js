@@ -173,9 +173,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             }
         };
         UIButtonGroup.prototype.fireChange = function ($event) {
-            if (this.disabled === true || isEmpty($event.detail.value))
+            if (this.disabled === true)
                 return false;
             if (this.toggle !== false) {
+                if (isEmpty($event.detail.value))
+                    return false;
                 $event.cancelBubble = true;
                 if (this.toggle === 'multiple') {
                     var v = $event.detail.value;
@@ -193,6 +195,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 }
                 ui_event_1.UIEvent.fireEvent('change', this.element, this.value);
             }
+            return true;
         };
         __decorate([
             aurelia_framework_1.bindable(), 

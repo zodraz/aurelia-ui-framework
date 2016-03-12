@@ -34,29 +34,16 @@
 
 	.ui-app-logo {
 	  @include flex(0 0 auto);
-	  height : 32px;
+	  height : 2em;
 	}
 
 	.ui-app-menu-handle {
 	  @include margin(end, 0.5em);
 	  padding     : 0;
 	  line-height : 0;
-	  width       : 20px;
-	  span {
-		height     : 2px;
-		margin-top : 4px;
-		display    : block;
-		background : rgba($app-header-text, 0.8);
-		&:first-child {
-		  margin-top : 0;
-		}
-	  }
-	  &:hover span {
-		background : $app-header-text;
-	  }
-	  &:active span {
-		background : tint($app-header-bg, 25%);
-	  }
+	  font-size   : 1.5em;
+	  width       : 1.5em;
+	  color       : $app-header-text;
 	}
 
 	.ui-app-header-options {
@@ -90,8 +77,8 @@
 	@include transition(left 0.6s ease-out);
 	@include box-shadow(0 0 5px 1px #000);
 
-	min-width        : 220px;
-	max-width        : 300px;
+	min-width        : 15em;
+	max-width        : 20em;
 	z-index          : $z-index-splash+1;
 	color            : $app-menu-text;
 	background-color : $app-menu-bg;

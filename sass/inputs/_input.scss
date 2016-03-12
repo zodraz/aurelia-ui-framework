@@ -40,7 +40,7 @@
 	  display   : inline-block;
 	  position  : absolute;
 	  top       : 0.2em;
-	  right     : 3px;
+	  right     : 0.2em;
 	}
 	&.ui-required > span:after {
 	  content : '*';
@@ -76,7 +76,7 @@
 		  font-size  : 1em;
 		  color      : $input-text;
 		  background : $input-bg;
-		  padding    : 5px 8px;
+		  padding    : 0.3em 0.5em;
 		  border     : 1px solid $input-border;
 		  @include box-shadow(0 2px 2px 0 $shadow inset);
 
@@ -102,13 +102,13 @@
 		  display    : none;
 		  cursor     : pointer;
 		  font-size  : 0.5em;
-		  margin     : 5px 0;
-		  padding    : 0.35em;
+		  margin     : 0.5em 0;
+		  padding    : 0.5em 0.25em;
 		  background : $input-bg;
 		  color      : rgba($input-text, 0.5);
 		  @include size(auto, auto);
 		  @include transition(opacity 0.1s);
-		  @include position(absolute, $t : 0, $b : 0, $r : 2px);
+		  @include position(absolute, $t : 0, $b : 0, $r : 0.1em);
 		  &.show-clear {
 			display : inline-block;
 		  }
@@ -129,7 +129,7 @@
 		}
 
 		.ui-icon {
-		  min-height : 18px;
+		  min-height : 1.15em;
 		}
 	  }
 
@@ -169,8 +169,8 @@
 	  color      : rgba($input-text, 0.7);
 	  font-size  : 0.8em;
 	  text-align : center;
-	  margin-top : -8px;
-	  padding    : 10px 2px 1px;
+	  margin-top : -0.5em;
+	  padding    : .75em 0.2em 0.1em;
 	  border  : {
 		width : 0 1px 1px;
 		style : solid;
@@ -181,9 +181,9 @@
 		color      : $danger;
 		text-align : inherit;
 		&:before {
-		  content     : '\e09e';
-		  margin      : 0 4px;
-		  font-family : Vaadin;
+		  content     : '\f1b0';
+		  margin      : 0 0.25em;
+		  font-family : Material;
 		}
 	  }
 
@@ -220,7 +220,7 @@
 [dir='rtl'] {
   .ui-input-group {
 	.ui-label > span:after {
-	  left  : 3px;
+	  left  : 0.2em;
 	  right : auto;
 	}
 	.ui-control-wrapper {
@@ -235,7 +235,7 @@
 		}
 
 		> .ui-input-wrapper > .ui-clear {
-		  left  : 2px;
+		  left  : 0.1em;
 		  right : auto;
 		}
 	  }

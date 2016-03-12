@@ -188,8 +188,9 @@ export class UIButtonGroup {
 	}
 
 	fireChange($event) {
-		if (this.disabled === true || isEmpty($event.detail.value)) return false;
+		if (this.disabled === true) return false;
 		if (this.toggle !== false) {
+			if (isEmpty($event.detail.value)) return false;
 			$event.cancelBubble = true;
 			if (this.toggle === 'multiple') {
 				let v          = $event.detail.value;
@@ -207,5 +208,6 @@ export class UIButtonGroup {
 			}
 			UIEvent.fireEvent('change', this.element, this.value);
 		}
+		return true;
 	}
 }

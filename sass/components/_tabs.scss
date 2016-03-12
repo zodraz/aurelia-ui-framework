@@ -25,13 +25,13 @@
 	  @include border-top-radius($base-border-radius);
 	  text-align  : center;
 	  display     : inline-block;
-	  max-width   : 150px;
+	  max-width   : 10em;
 	  padding     : 0.3em 0.75em;
-	  margin-left : 8px;
+	  margin-left : 0.5em;
 	  color       : $tab-text;
 	  background  : $tab-bg;
 	  border  : {
-		width : 5px 1px 0;
+		width : 0.3em 1px 0;
 		style : solid;
 		color : $tab-border;
 	  }

@@ -42,9 +42,14 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
         Home.prototype.change = function ($event) {
             console.log($event.target, $event.detail);
         };
+        Home.prototype.changeTheme = function ($event) {
+            var theme = $event.detail.label.toLowerCase();
+            this.__bgToggle.className = "ui-button-group ui-button-group-" + theme;
+        };
         Home.prototype.toastMe = function (pos, theme) {
             if (pos == 'page') {
-                this.__page.toast({ icon: 'fi-vaadin-bell',
+                this.__page.toast({
+                    icon: 'fi-vaadin-bell',
                     autoHide: false,
                     theme: 'danger',
                     message: 'Toasted message for the page'
