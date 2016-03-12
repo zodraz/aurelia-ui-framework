@@ -16,10 +16,11 @@
 ### UIButton
 
 ```html
-<ui-button icon.bind=? label.bind=? href.bind=? disabled.bind=? click.trigger=?
-    (theme) primary|secondary|info|danger|success|warning 
+<ui-button icon.bind=? label.bind=? disabled.bind=? click.trigger=?
+    (theme) primary|info|danger|success|warning 
     (size) normal|small|large
-    (icon-align) left|top>
+    (icon-align) left|top
+    (style) normal|round>
     
     <!-- menu options for dropdown buttons -->
 </ui-button>
@@ -34,11 +35,12 @@ If `disabled | theme` set on button group, it will override the properties of in
 ```html
 <ui-button-group value.bind=? disabled.bind=? change.trigger=?
     
-    toggle="single|multiple" // Enable toggle
+    toggle.bind="single|multiple" // Enable toggle
     
-    (theme) primary|secondary|info|danger|success|warning 
+    (theme for toggle) primary|info|danger|success|warning 
     (size) normal|small|large
-    (icon-align) left|top>
+    (icon-align) left|top
+    (style) normal|round>
     
     <!-- ui-button value.bind=? -->
 </ui-button>
@@ -50,8 +52,8 @@ If `disabled | theme` set on button group, it will override the properties of in
 
 ```html
 <ui-switch checked.bind=? disabled.bind=? change.trigger=?
-    (theme) primary|secondary|info|danger|success|warning 
-    label-on=? label-off=? width='?px'>
+    (theme) primary|info|danger|success|warning 
+    label-on=? label-off=? width='?em'>
     <!-- Label text -->
 </ui-switch>
 ```
