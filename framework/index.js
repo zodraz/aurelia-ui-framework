@@ -1,10 +1,11 @@
-define(["require", "exports", "./core/ui-viewport", "./utils/ui-event", "./utils/ui-formatters", "./utils/ui-application", "./utils/ui-http-service", "./utils/ui-validation", "./utils/ui-utils", 'fetch', 'lodash', 'moment', 'numeral', './libs/marked', './libs/phonelib', './data/countries', './data/currencies'], function (require, exports, ui_viewport_1, ui_event_1, ui_formatters_1, ui_application_1, ui_http_service_1, ui_validation_1, ui_utils_1) {
+define(["require", "exports", "./core/ui-viewport", "./utils/ui-event", "./utils/ui-formatters", "./utils/ui-application", "./utils/ui-model", "./utils/ui-tree-models", "./utils/ui-http-service", "./utils/ui-validation", "./utils/ui-utils", 'fetch', 'lodash', 'moment', 'numeral', './libs/marked', './libs/phonelib', './data/countries', './data/currencies'], function (require, exports, ui_viewport_1, ui_event_1, ui_formatters_1, ui_application_1, ui_model_1, ui_tree_models_1, ui_http_service_1, ui_validation_1, ui_utils_1) {
     function configure(aurelia) {
         aurelia.globalResources('./core/ui-viewport');
         aurelia.globalResources('./core/ui-page');
         aurelia.globalResources('./core/ui-grid');
         aurelia.globalResources('./components/ui-menu');
         aurelia.globalResources('./components/ui-form');
+        aurelia.globalResources('./components/ui-tree');
         aurelia.globalResources('./components/ui-ribbon');
         aurelia.globalResources('./components/ui-panel');
         aurelia.globalResources('./components/ui-tab-panel');
@@ -22,6 +23,9 @@ define(["require", "exports", "./core/ui-viewport", "./utils/ui-event", "./utils
     exports.UIEvent = ui_event_1.UIEvent;
     exports.UIFormat = ui_formatters_1.UIFormat;
     exports.UIApplication = ui_application_1.UIApplication;
+    exports.UIModel = ui_model_1.UIModel;
+    exports.UITreeModel = ui_tree_models_1.UITreeModel;
+    exports.UITreeOptions = ui_tree_models_1.UITreeOptions;
     exports.UIHttpService = ui_http_service_1.UIHttpService;
     exports.UIValidationStrategy = ui_validation_1.UIValidationStrategy;
     exports.UIUtils = ui_utils_1.UIUtils;

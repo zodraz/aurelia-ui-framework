@@ -213,6 +213,16 @@
 	  display : block !important;
 	}
   }
+
+  &.ui-label-hide label {
+	display : none;
+  }
+  &.ui-auto {
+	padding : 0.25em 0.4em;
+	.ui-control-wrapper {
+	  @include flex(1 1 0%);
+	}
+  }
 }
 
 [dir='rtl'] {

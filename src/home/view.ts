@@ -1,6 +1,8 @@
 import {Validation} from "aurelia-validation";
 import {autoinject} from "aurelia-framework";
 import {UIApplication} from "../../framework/utils/ui-application";
+import {UITreeOptions} from "../../framework/utils/ui-tree-models";
+import {_} from "../../framework/utils/ui-utils";
 
 @autoinject()
 export class Home {
@@ -44,6 +46,13 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 `;
 
 	validation;
+	__tree;
+	checked;
+	treeModel;
+	treeOpts = new UITreeOptions({
+		showCheckbox  : true,
+		selectionLevel: 0
+	});
 
 	constructor(_validation:Validation, public appState:UIApplication) {
 		this.validation = _validation
@@ -57,6 +66,26 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 			.isNumber()
 			.isBetween(-180, 180);
 
+		var ct = [];
+		_.forEach(_.groupBy(window.countries, 'continent'), (v:any, k:string)=> {
+			let c = {
+				id      : _.camelCase(k),
+				name    : k,
+				expanded: k == 'Asia',
+				children: []
+			}
+			_.forEach(v, (o:any)=> {
+				c.children.push({
+									id       : o.iso3,
+									name     : o.name,
+									leaf     : true,
+									checked  : (o.iso3 == 'UAE' || o.iso3 == 'IND'),
+									iconGlyph: `ui-flag ${o.iso3}`
+								})
+			});
+			ct.push(c);
+		});
+		this.treeModel = ct;
 	}
 
 	onSubmit() {
@@ -70,6 +99,7 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 	}
 
 	attached() {
+		this.checked = this.__tree.getChecked();
 		setTimeout(()=>this.__content.scrollTop = 0, 20);
 	}
 

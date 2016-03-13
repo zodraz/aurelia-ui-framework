@@ -23,6 +23,7 @@ export function configure(aurelia:FrameworkConfiguration) {
 	///** Components **/
 	aurelia.globalResources('./components/ui-menu');
 	aurelia.globalResources('./components/ui-form');
+	aurelia.globalResources('./components/ui-tree');
 	aurelia.globalResources('./components/ui-ribbon');
 	aurelia.globalResources('./components/ui-panel');
 	aurelia.globalResources('./components/ui-tab-panel');
@@ -46,6 +47,8 @@ export {UIViewportOptions} from "./core/ui-viewport";
 export {UIEvent} from "./utils/ui-event";
 export {UIFormat} from "./utils/ui-formatters";
 export {UIApplication} from "./utils/ui-application";
+export {UIModel} from "./utils/ui-model";
+export {UITreeModel, UITreeOptions, UITreePanel} from "./utils/ui-tree-models";
 export {UIHttpService} from "./utils/ui-http-service";
 export {UIValidationStrategy} from "./utils/ui-validation";
 export {UIUtils, _, moment, numeral} from "./utils/ui-utils";

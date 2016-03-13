@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../framework/utils/ui-application"], function (require, exports, aurelia_validation_1, aurelia_framework_1, ui_application_1) {
+define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../framework/utils/ui-application", "../../framework/utils/ui-tree-models", "../../framework/utils/ui-utils"], function (require, exports, aurelia_validation_1, aurelia_framework_1, ui_application_1, ui_tree_models_1, ui_utils_1) {
     var Home = (function () {
         function Home(_validation, appState) {
             this.appState = appState;
@@ -17,6 +17,10 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
                 email: '', lat: null, long: null
             };
             this.md = "\n# Hello World\n\n##### I _Love_ ~~HTML~~ __Markdown__!\n\n---\n\nI can be __BOLD__, I can also be _ITALIC_, or you can ~~DELETE~~ me too!\n\nLook at me I'm a list\n\n* Item\n* Item\n* Item\n\nAnd I'm numbered\n\n1. Item\n2. Item\n3. Item\n\nI can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or show the whole url http://google.com\n\n![Image](images/heart.png) Dont you just love images!\n\n\n";
+            this.treeOpts = new ui_tree_models_1.UITreeOptions({
+                showCheckbox: true,
+                selectionLevel: 0
+            });
             this.validation = _validation
                 .on(this, null)
                 .ensure('model.email')
@@ -27,6 +31,26 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
                 .ensure('model.long')
                 .isNumber()
                 .isBetween(-180, 180);
+            var ct = [];
+            ui_utils_1._.forEach(ui_utils_1._.groupBy(window.countries, 'continent'), function (v, k) {
+                var c = {
+                    id: ui_utils_1._.camelCase(k),
+                    name: k,
+                    expanded: k == 'Asia',
+                    children: []
+                };
+                ui_utils_1._.forEach(v, function (o) {
+                    c.children.push({
+                        id: o.iso3,
+                        name: o.name,
+                        leaf: true,
+                        checked: (o.iso3 == 'UAE' || o.iso3 == 'IND'),
+                        iconGlyph: "ui-flag " + o.iso3
+                    });
+                });
+                ct.push(c);
+            });
+            this.treeModel = ct;
         }
         Home.prototype.onSubmit = function () {
             this.validation.validate()
@@ -37,6 +61,7 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
         };
         Home.prototype.attached = function () {
             var _this = this;
+            this.checked = this.__tree.getChecked();
             setTimeout(function () { return _this.__content.scrollTop = 0; }, 20);
         };
         Home.prototype.change = function ($event) {

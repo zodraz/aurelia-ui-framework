@@ -51,11 +51,11 @@
   }
 
   &:not(.ui-auto-fit) {
-	@include flex(1 1 auto);
+	@include flex(1 1 0%);
   }
 
   &:not(.ui-scroll) {
-	@include flex-row($align : stretch, $wrap : false);
+	@include flex-column($align : stretch);
   }
 }
 
@@ -121,7 +121,7 @@
   @include box-shadow(0 0 3px 0 $base-shadow-color);
 
   .ui-stat {
-	@include flex(1 1 auto);
+	@include flex(1 1 0%);
 	text-align: center;
 	padding: 0.5em 1.2em;
 	@include border(start, 1px solid rgba($white, 0.3));

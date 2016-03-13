@@ -9,8 +9,10 @@
 				<p>Most important change to the new version, removed the dependency on jQuery and jQuery based
 					components.</p>
 				<p>Flattened look & feel, using only shadows as visual indicators on buttons and switches.</p>
-				<p>UI Element glyph icon fonts <a href="./fonts/material/flaticon.html" target="_blank">Google Material Font</a>,
-					 Alternate glyph icon fonts <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
+				<p>UI Elements glyph icon fonts <a href="./fonts/material/flaticon.html" target="_blank">Google Material
+					Font</a>,
+					Alternate glyph icon fonts <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a
+							href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
 				<p>Changed color library from Crayola Crayon colors to <a href="#/colors">Copic Marker</a> colors.</p>
 				<p>Current theme colors: (primary, secondary, info, danger, success, warning)</p>
 				<div>
@@ -253,6 +255,28 @@
 					</ui-tab>
 					<ui-tab icon="fi-vaadin-palette" label="Copic Colors" scroll>
 						<compose view-model="./colors"></compose>
+					</ui-tab>
+					<ui-tab label="Tree" class="ui-column-row">
+						<ui-section row>
+							<ui-sidebar>
+								<ui-tree checked.trigger="checked = $event.detail" model.bind="treeModel"
+										 options.bind="treeOpts"
+										 view-model.ref="__tree"></ui-tree>
+							</ui-sidebar>
+							<ui-content scroll>
+								<h3>Tree View</h3>
+								<div>
+									<h3>Checked</h3>
+
+									<p repeat.for="n of checked.checked">${n}</p>
+								</div>
+								<div>
+									<h3>Partial</h3>
+
+									<p repeat.for="n of checked.partial">${n}</p>
+								</div>
+							</ui-content>
+						</ui-section>
 					</ui-tab>
 				</ui-tab-panel>
 			</div>
