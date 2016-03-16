@@ -50,12 +50,16 @@ route.settings = { sectionStart:boolean, sectionTitle:string, icon:string }
 
 ```javascript
 options = {
+	// App Logo
+	logo:string;
 	// App Title
 	title:string;
 	// App Subtitle
 	subtitle:string;
 	// Footer Copyright
 	copyright:string;
+	// Footer Message
+	footerMessage:string;
 
 	// Show app side menu
 	showMenu:boolean = true;
@@ -120,7 +124,7 @@ A Toolbar to display buttons, can add custom elements within `ui-column`. Defaul
 
 ```html
 <ui-toolbar>
-    <!-- ui-button | ui-column | ui-divider -->
+    <!-- ui-button | ui-button-group | ui-column | ui-divider -->
 </ui-toolbar>
 ```
 

@@ -10,6 +10,7 @@
 * [UIPhone](#uiphone)
 * [UIInputDual](#uiinputdual)
 * [UITextArea](#uitextarea)
+* [UIMarkdown](#uimarkdown)
 
 ---
 
@@ -20,7 +21,7 @@
     (theme) primary|info|danger|success|warning 
     (size) normal|small|large
     (icon-align) left|top
-    (style) normal|round>
+    (style) normal|round|square>
     
     <!-- menu options for dropdown buttons -->
 </ui-button>
@@ -40,7 +41,7 @@ If `disabled | theme` set on button group, it will override the properties of in
     (theme for toggle) primary|info|danger|success|warning 
     (size) normal|small|large
     (icon-align) left|top
-    (style) normal|round>
+    (style) normal|round|square>
     
     <!-- ui-button value.bind=? -->
 </ui-button>
@@ -53,10 +54,12 @@ If `disabled | theme` set on button group, it will override the properties of in
 ```html
 <ui-switch checked.bind=? disabled.bind=? change.trigger=?
     (theme) primary|info|danger|success|warning 
-    label-on=? label-off=? width='?em'>
+    label-on=? label-off=? width='?'>
     <!-- Label text -->
 </ui-switch>
 ```
+
+* width must be in `em` units
 
 ---
 
