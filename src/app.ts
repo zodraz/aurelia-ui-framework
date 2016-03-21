@@ -1,10 +1,9 @@
-import {UIViewportOptions, UIUtils, UIEvent} from "../framework/index";
+import {UIUtils, UIEvent, AuthInterceptor} from "../framework/index";
 import {autoinject} from "aurelia-framework";
 import {Router} from "aurelia-router";
 
 @autoinject()
 export class App {
-	private appOptions = new UIViewportOptions({});
 	private router:Router;
 
 	configureRouter(config, router:Router) {
@@ -12,7 +11,15 @@ export class App {
 		config.title                      = 'Aurelia UI Framework';
 		config.options.showLogo           = true;
 		config.options.showAuthentication = true;
+		config.addPipelineStep('authorize', AuthInterceptor);
 		config.map([{
+			route   : 'login',
+			moduleId: './login/view',
+			nav     : false,
+			auth    : false,
+			isLogin : true,
+			name    : 'login'
+		}, {
 			route   : 'home',
 			moduleId: './home/view',
 			settings: {sectionTitle: 'Aurelia UI Framework', icon: 'fi-material-window-with-different-sections'},
@@ -28,6 +35,22 @@ export class App {
 			nav     : true,
 			auth    : false,
 			name    : 'colors'
+		}, {
+			route   : 'readme',
+			moduleId: './home/readme',
+			settings: {icon: 'fi-vaadin-open-book'},
+			title   : 'ReadMe',
+			nav     : true,
+			auth    : false,
+			name    : 'readme'
+		}, {
+			route   : 'todo',
+			moduleId: './home/todo',
+			settings: {icon: 'fi-vaadin-tasks'},
+			title   : 'ToDo',
+			nav     : true,
+			auth    : false,
+			name    : 'todo'
 		}, {
 			route   : 'core',
 			moduleId: './core/view',

@@ -60,11 +60,11 @@
 }
 
 .ui-sidebar {
-  overflow: auto;
-  position: relative;
+  overflow         : auto;
+  position         : relative;
   @include flex(0 0 auto);
-  color: $sidebar-text;
-  background-color: $sidebar-bg;
+  color            : $sidebar-text;
+  background-color : $sidebar-bg;
 
   &:first-child {
 	@include border(end, 1px solid $base-border-color);
@@ -75,55 +75,57 @@
 }
 
 .ui-divider {
-  display: block;
+  display          : block;
   @include flex(0 0 1px);
-  min-height: 1px;
-  min-width: 1px;
-  margin: 0.15em;
-  background-color: rgba($black, 0.3);
-  border: {
-	width: 0 1px 1px 0;
-	color: rgba($white, 0.3);
-	style: solid;
+  min-height       : 1px;
+  min-width        : 1px;
+  margin           : 0.15em;
+  background-color : rgba($black, 0.3);
+  border  : {
+	width : 0 1px 1px 0;
+	color : rgba($white, 0.3);
+	style : solid;
   }
 }
 
 .ui-toolbar {
   @include flex(0 0 auto);
   @include flex-row(center, flex-end, true);
-  padding: 0.1em 0.5em;
-  border: {
-	width: 1px 0;
-	style: solid;
-	color: $base-border-color;
+  padding    : 0.1em 0.5em;
+  border  : {
+	width : 1px 0;
+	style : solid;
+	color : $base-border-color;
   }
-  z-index: 2;
-  color: $toolbar-text;
-  background: $toolbar-bg;
-  @include box-shadow(0 0 3px 0 $base-shadow-color);
-
+  z-index    : 2;
+  color      : $toolbar-text;
+  background : $toolbar-bg;
+  @include box-shadow(0 0 1px 0 $base-shadow-color);
+  .ui-button {
+	@include box-shadow(0 0 2px 0 $base-shadow-color);
+  }
   .ui-divider {
-	height: 1.8em;
+	height : 1.8em;
   }
 }
 
 .ui-statsbar {
   @include flex(0 0 auto);
-  z-index: 1;
-  border: {
-	width: 1px 0;
-	style: solid;
-	color: $base-border-color;
+  z-index    : 1;
+  border  : {
+	width : 1px 0;
+	style : solid;
+	color : $base-border-color;
   }
-  color: $statsbar-text;
-  background: $statsbar-bg;
+  color      : $statsbar-text;
+  background : $statsbar-bg;
   @include flex-row(stretch, flex-end, true);
-  @include box-shadow(0 0 3px 0 $base-shadow-color);
+  @include box-shadow(0 0 1px 0 $base-shadow-color);
 
   .ui-stat {
 	@include flex(1 1 0%);
-	text-align: center;
-	padding: 0.5em 1.2em;
+	text-align : center;
+	padding    : 0.5em 1.2em;
 	@include border(start, 1px solid rgba($white, 0.3));
 	@include border(end, 1px solid rgba($black, 0.3));
 	&:last-child {
@@ -137,19 +139,19 @@
 
 	span, div {
 	  @include flex(0 0 auto);
-	  margin: 0 0.2em;
+	  margin : 0 0.2em;
 	}
 
 	span {
-	  font-size: 2.5em;
+	  font-size : 2.5em;
 	}
 
 	h1 {
-	  font-weight: bold;
+	  font-weight : bold;
 	}
 	h6 {
-	  color: $statsbar-label;
-	  text-transform: uppercase;
+	  color          : $statsbar-label;
+	  text-transform : uppercase;
 	}
   }
 }

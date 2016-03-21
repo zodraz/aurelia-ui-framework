@@ -11,8 +11,10 @@ import {Validation} from "aurelia-validation";
 @autoinject()
 @customElement('ui-form')
 export class UIForm {
-	@bindable busy:boolean;
-	@bindable validation:Validation;
+	@bindable
+	busy:boolean;
+	@bindable
+	validation:Validation;
 
 	private __form:HTMLElement;
 
@@ -25,19 +27,18 @@ export class UIForm {
 			if (!isEmpty(el))el.focus();
 		}, 10);
 
-		//if (this.busy) setTimeout(()=>this.busyChanged(true), 200);
+		if (this.busy) setTimeout(()=>this.busyChanged(true), 200);
 	}
 
-	//busyChanged(newValue:any) {
-	//	$(this.element)
-	//		.find('ui-input,ui-phone,ui-textarea,ui-input-dual,ui-chosen,ui-markdown,ui-button,ui-date,ui-list,ui-option,ui-switch')
-	//		.each((i, e)=> {
-	//			try {
-	//				e.au.controller.viewModel.makeBusy(newValue);
-	//			} catch (e) {
-	//			}
-	//		});
-	//}
+	busyChanged(newValue:any) {
+		let els = this.element.querySelectorAll('ui-input,ui-phone,ui-textarea,ui-input-dual,ui-chosen,ui-markdown,ui-button,ui-date,ui-list,ui-option,ui-switch');
+		_.forEach(els, el=> {
+			try {
+				el.au.controller.viewModel.disable(isTrue(newValue));
+			} catch (e) {
+			}
+		});
+	}
 
 	fireSubmit() {
 		UIEvent.fireEvent('submit', this.element, this);

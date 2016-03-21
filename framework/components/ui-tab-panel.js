@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_utils_1) {
+    "use strict";
     var UITabPanel = (function () {
         function UITabPanel(element) {
             this.element = element;
@@ -54,7 +55,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [Element])
         ], UITabPanel);
         return UITabPanel;
-    })();
+    }());
     exports.UITabPanel = UITabPanel;
     var UITab = (function () {
         function UITab(element) {
@@ -63,6 +64,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.icon = '';
             if (this.element.hasAttribute('scroll'))
                 this.element.classList.add('ui-scroll');
+            if (this.element.hasAttribute('flex'))
+                this.element.classList.add('ui-column-row');
         }
         __decorate([
             aurelia_framework_1.bindable, 
@@ -79,6 +82,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [Element])
         ], UITab);
         return UITab;
-    })();
+    }());
     exports.UITab = UITab;
 });

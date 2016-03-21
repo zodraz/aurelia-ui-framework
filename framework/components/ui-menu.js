@@ -7,7 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_application_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/ui-event", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_router_1, ui_event_1, ui_application_1) {
+    "use strict";
     var UIMenu = (function () {
         function UIMenu(element, appState) {
             this.element = element;
@@ -20,6 +21,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
         UIMenu.prototype.onClick = function ($event) {
             if (this.router)
                 return true;
+            $event.preventDefault();
+            var link = getParentByClass($event.target, 'ui-menu-link', 'ui-menu');
+            if (link === null)
+                return false;
+            ui_event_1.UIEvent.fireEvent('click', this.element, link.dataset['id']);
         };
         __decorate([
             aurelia_framework_1.bindable(), 
@@ -34,6 +40,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
             __metadata('design:paramtypes', [Element, ui_application_1.UIApplication])
         ], UIMenu);
         return UIMenu;
-    })();
+    }());
     exports.UIMenu = UIMenu;
 });

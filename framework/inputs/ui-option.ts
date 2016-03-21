@@ -9,7 +9,7 @@ import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
 export class UIOption {
-	protected __id = `auf-${seed++}`;
+	protected __id = `auf-${__seed++}`;
 	protected __input:Element;
 
 	protected checked  = false;
@@ -55,13 +55,14 @@ export class UICheckbox extends UIOption {
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean              = false;
+	checked:boolean  = false;
 
 	bind() {
 		super.bind();
@@ -83,18 +84,20 @@ export class UIRadio extends UIOption {
 	 * @property    value
 	 * @type        string
 	 */
-	@bindable() value:string     = '';
+	@bindable()
+	value:string     = '';
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:any                  = '';
+	checked:any      = '';
 
 	attached() {
 		if (!this.element.parentElement.classList.contains('ui-option-group')) {
@@ -111,18 +114,20 @@ export class UIRadio extends UIOption {
 export class UIOptionGroup {
 	private __label:Element;
 
-	private __name = `auf-${seed++}`;
+	private __name = `auf-${__seed++}`;
 
 	/**
 	 * @property    label
 	 * @type        string
 	 */
-	@bindable() label:string = '';
+	@bindable()
+	label:string = '';
 	/**
 	 * @property    name
 	 * @type        string
 	 */
-	@bindable() name:string  = '';
+	@bindable()
+	name:string  = '';
 	/**
 	 * @property    value
 	 * @type        string

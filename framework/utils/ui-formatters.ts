@@ -52,4 +52,10 @@ export module UIFormat {
 			numeral(nm > 1 ? nm / 100 : nm)
 				.format('0.00 %');
 	}
+
+	export function exRate(nm:any):string {
+		return nm === null || isNaN(nm) ? '' :
+			numeral(nm > 0 ? 1 / nm : nm)
+				.format('0.0000[a]');
+	}
 }

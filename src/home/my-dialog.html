@@ -1,0 +1,8 @@
+<template>
+	<ui-content class="ui-pad-all ui-scroll">
+		<div innerhtml.bind="md | markdown"></div>
+	</ui-content>
+	<ui-toolbar>
+		<ui-button click.trigger="close()" label="Close"></ui-button>
+	</ui-toolbar>
+</template>

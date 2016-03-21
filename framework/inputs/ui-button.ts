@@ -19,22 +19,26 @@ export class UIButton {
 	 * @property    label
 	 * @type        string
 	 */
-	@bindable() label:string     = '';
+	@bindable()
+	label:string     = '';
 	/**
 	 * @property    value
 	 * @type        string
 	 */
-	@bindable() value:string     = '';
+	@bindable()
+	value:string     = '';
 	/**
 	 * @property    icon
 	 * @type        string
 	 */
-	@bindable() icon:string      = '';
+	@bindable()
+	icon:string      = '';
 	/**
 	 * @property    disabled
 	 * @type        string
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 
 	constructor(public element:Element) {
 
@@ -58,6 +62,7 @@ export class UIButton {
 	attached() {
 		if (this.element.hasAttribute('top')) this.__button.classList.add('ui-icon-top');
 		if (this.element.hasAttribute('round')) this.__button.classList.add('ui-button-round');
+		if (this.element.hasAttribute('square')) this.__button.classList.add('ui-button-square');
 
 		this.__button.classList.add(`ui-button-${this.__size}`);
 		this.__button.classList.add(`ui-button-${this.__theme}`);
@@ -79,8 +84,9 @@ export class UIButton {
 	}
 
 	fireClick($event) {
-		if (this.disabled === true) return false;
+		$event.preventDefault();
 		$event.cancelBubble = true;
+		if (this.disabled === true) return false;
 		UIEvent.fireEvent('click', this.element, this);
 	}
 }
@@ -97,12 +103,14 @@ export class UIButtonGroup {
 	 * @property    toggle
 	 * @type        string
 	 */
-	@bindable() toggle:any       = false;
+	@bindable()
+	toggle:any       = false;
 	/**
 	 * @property    disabled
 	 * @type        string
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 	/**
 	 * @property    value
 	 * @type        string
@@ -125,7 +133,10 @@ export class UIButtonGroup {
 		if (this.element.hasAttribute('large')) this.__size = 'large';
 
 		if (this.element.hasAttribute('top')) this.__extraClass += ' ui-icon-top';
-		if (this.element.hasAttribute('round')) this.__extraClass = ' ui-button-round';
+		if (this.element.hasAttribute('round')) {
+			this.__extraClass += ' ui-button-round';
+		}
+		else if (this.element.hasAttribute('square')) this.__extraClass += ' ui-button-square';
 
 		if (this.element.hasAttribute('vertical')) this.element.classList.add('ui-vertical');
 
@@ -188,10 +199,11 @@ export class UIButtonGroup {
 	}
 
 	fireChange($event) {
+		$event.preventDefault();
+		$event.cancelBubble = true;
 		if (this.disabled === true) return false;
 		if (this.toggle !== false) {
 			if (isEmpty($event.detail.value)) return false;
-			$event.cancelBubble = true;
 			if (this.toggle === 'multiple') {
 				let v          = $event.detail.value;
 				let a:string[] = isEmpty(this.value) ? [] : (this.value + '').split(',');
@@ -208,6 +220,5 @@ export class UIButtonGroup {
 			}
 			UIEvent.fireEvent('change', this.element, this.value);
 		}
-		return true;
 	}
 }

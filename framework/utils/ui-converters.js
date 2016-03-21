@@ -1,4 +1,5 @@
 define(["require", "exports", "./ui-formatters"], function (require, exports, ui_formatters_1) {
+    "use strict";
     var MarkdownValueConverter = (function () {
         function MarkdownValueConverter() {
         }
@@ -6,8 +7,21 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return ui_formatters_1.UIFormat.toHTML(value || '');
         };
         return MarkdownValueConverter;
-    })();
+    }());
     exports.MarkdownValueConverter = MarkdownValueConverter;
+    var CodeHighlightValueConverter = (function () {
+        function CodeHighlightValueConverter() {
+        }
+        CodeHighlightValueConverter.prototype.toView = function (value) {
+            return marked(value || '', {
+                highlight: function (code) {
+                    return hljs.highlightAuto(code).value;
+                }
+            });
+        };
+        return CodeHighlightValueConverter;
+    }());
+    exports.CodeHighlightValueConverter = CodeHighlightValueConverter;
     var DateValueConverter = (function () {
         function DateValueConverter() {
         }
@@ -15,7 +29,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return ui_formatters_1.UIFormat.date(value, format);
         };
         return DateValueConverter;
-    })();
+    }());
     exports.DateValueConverter = DateValueConverter;
     var FromNowValueConverter = (function () {
         function FromNowValueConverter() {
@@ -24,7 +38,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return ui_formatters_1.UIFormat.fromNow(value);
         };
         return FromNowValueConverter;
-    })();
+    }());
     exports.FromNowValueConverter = FromNowValueConverter;
     var NumberValueConverter = (function () {
         function NumberValueConverter() {
@@ -33,7 +47,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return ui_formatters_1.UIFormat.number(value, format);
         };
         return NumberValueConverter;
-    })();
+    }());
     exports.NumberValueConverter = NumberValueConverter;
     var CurrencyValueConverter = (function () {
         function CurrencyValueConverter() {
@@ -42,7 +56,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return ui_formatters_1.UIFormat.currency(value, symbol, format);
         };
         return CurrencyValueConverter;
-    })();
+    }());
     exports.CurrencyValueConverter = CurrencyValueConverter;
     var PercentValueConverter = (function () {
         function PercentValueConverter() {
@@ -51,7 +65,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return ui_formatters_1.UIFormat.percent(value);
         };
         return PercentValueConverter;
-    })();
+    }());
     exports.PercentValueConverter = PercentValueConverter;
     var KeysValueConverter = (function () {
         function KeysValueConverter() {
@@ -60,7 +74,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return Object.keys(object);
         };
         return KeysValueConverter;
-    })();
+    }());
     exports.KeysValueConverter = KeysValueConverter;
     var GroupValueConverter = (function () {
         function GroupValueConverter() {
@@ -69,7 +83,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return _.groupBy(object, property);
         };
         return GroupValueConverter;
-    })();
+    }());
     exports.GroupValueConverter = GroupValueConverter;
     var SortValueConverter = (function () {
         function SortValueConverter() {
@@ -78,7 +92,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return _.sortBy(value, property);
         };
         return SortValueConverter;
-    })();
+    }());
     exports.SortValueConverter = SortValueConverter;
     var JsonValueConverter = (function () {
         function JsonValueConverter() {
@@ -87,7 +101,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return JSON.stringify(value, null, 4);
         };
         return JsonValueConverter;
-    })();
+    }());
     exports.JsonValueConverter = JsonValueConverter;
     var IsStringValueConverter = (function () {
         function IsStringValueConverter() {
@@ -96,7 +110,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return _.isString(value);
         };
         return IsStringValueConverter;
-    })();
+    }());
     exports.IsStringValueConverter = IsStringValueConverter;
     var IsArrayValueConverter = (function () {
         function IsArrayValueConverter() {
@@ -105,7 +119,7 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return _.isArray(value);
         };
         return IsArrayValueConverter;
-    })();
+    }());
     exports.IsArrayValueConverter = IsArrayValueConverter;
     var IsObjectValueConverter = (function () {
         function IsObjectValueConverter() {
@@ -114,6 +128,24 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
             return _.isObject(value);
         };
         return IsObjectValueConverter;
-    })();
+    }());
     exports.IsObjectValueConverter = IsObjectValueConverter;
+    var IsTrueValueConverter = (function () {
+        function IsTrueValueConverter() {
+        }
+        IsTrueValueConverter.prototype.toView = function (value) {
+            return isTrue(value);
+        };
+        return IsTrueValueConverter;
+    }());
+    exports.IsTrueValueConverter = IsTrueValueConverter;
+    var IsFalseValueConverter = (function () {
+        function IsFalseValueConverter() {
+        }
+        IsFalseValueConverter.prototype.toView = function (value) {
+            return !isTrue(value);
+        };
+        return IsFalseValueConverter;
+    }());
+    exports.IsFalseValueConverter = IsFalseValueConverter;
 });

@@ -5,12 +5,38 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-input-group {
-  $shadow : $tg-2;
+$shadow : $tg-2;
 
-  @if brightness($input-bg)<50 {
-	$shadow : $wg-10;
+@if brightness($input-bg)<50 {
+  $shadow : $wg-10;
+}
+
+.ui-input {
+  margin     : 0;
+  min-height : 2em;
+  font-size  : 1em;
+  color      : $input-text;
+  background : $input-bg;
+  padding    : 0.3em 0.5em;
+  border     : 1px solid $input-border;
+  @include box-shadow(0 2px 2px 0 $shadow inset);
+
+  &:focus {
+	border-color : $input-focus-border;
+	@include box-shadow(0 -3px 0 0 $input-focus-border inset, 0 2px 2px 0 $shadow inset);
   }
+
+  &[disabled] {
+	cursor     : not-allowed;
+	color      : rgba($input-text, 0.5);
+	background : $input-disabled-bg;
+  }
+  &[readonly] {
+	background : $input-readonly-bg;
+  }
+}
+
+.ui-input-group {
 
   @include flex-row(flex-start);
   margin-bottom : 0.5em;
@@ -21,6 +47,7 @@
 	position   : relative;
 	text-align : right;
 	text-align : end;
+	color      : $input-label;
 
 	> span {
 	  @include padding(end, 0.8em);
@@ -60,7 +87,7 @@
   }
 
   .ui-control-wrapper {
-	@include flex(1 0 20em);
+	@include flex(1 0 18em);
 	position : relative;
 
 	> .ui-input-control {
@@ -70,31 +97,9 @@
 	  > .ui-input-wrapper {
 		@include flex(1 1 0%);
 		position : relative;
-
 		> .ui-input {
-		  margin     : 0;
-		  width      : 100%;
-		  min-height : 2em;
-		  font-size  : 1em;
-		  color      : $input-text;
-		  background : $input-bg;
-		  padding    : 0.3em 0.5em;
-		  border     : 1px solid $input-border;
-		  @include box-shadow(0 2px 2px 0 $shadow inset);
-
-		  &:focus {
-			border-color : $input-focus-border;
-			@include box-shadow(0 -3px 0 0 $input-focus-border inset, 0 2px 2px 0 $shadow inset);
-		  }
-
-		  &[disabled] {
-			cursor     : not-allowed;
-			color      : rgba($input-text, 0.5);
-			background : $input-disabled-bg;
-		  }
-		  &[readonly] {
-			background : $input-readonly-bg;
-		  }
+		  width : 100%;
+		  @include padding(end, 1em);
 		}
 		> textarea.ui-input {
 		  margin-bottom : -2px;
@@ -104,13 +109,12 @@
 		  display    : none;
 		  cursor     : pointer;
 		  font-size  : 0.5em;
-		  margin     : 0.5em 0;
-		  padding    : 0.5em 0.25em;
+		  margin-top : -0.5em;
 		  background : $input-bg;
 		  color      : rgba($input-text, 0.5);
-		  @include size(auto, auto);
+		  @include size(1em, 1em);
 		  @include transition(opacity 0.1s);
-		  @include position(absolute, $t : 0, $b : 0, $r : 0.1em);
+		  @include position(absolute, $t : 50%, $r : 0.5em);
 		  &.show-clear {
 			display : inline-block;
 		  }
@@ -128,6 +132,12 @@
 		border     : 1px solid $input-border;
 		span {
 		  vertical-align : middle;
+		}
+
+		span.ui-flag, span.ui-icon {
+		  min-height      : 1.2em;
+		  min-width       : 1.2em;
+		  background-size : 1.2em auto;
 		}
 	  }
 
@@ -179,9 +189,9 @@
 		color      : $danger;
 		text-align : inherit;
 		&:before {
-		  content     : '\f1b0';
+		  content     : $font-ui-exclaim-alt;
 		  margin      : 0 0.25em;
-		  font-family : Material;
+		  font-family : Framework;
 		}
 	  }
 

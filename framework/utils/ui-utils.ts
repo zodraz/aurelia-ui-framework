@@ -13,19 +13,45 @@ export var _       = ld;
 export var moment  = mm;
 export var numeral = nm;
 
-window.isTrue  = function (b:any):boolean {
+window.isTrue     = function (b:any):boolean {
 	return (/^(true|yes|1|y|on)$/i).test(b);
 };
-window.isEmpty = function (a:any):boolean {
+window.isEmpty    = function (a:any):boolean {
 	if (typeof a === 'number') return false;
 	return a === undefined || a === null || a === '' || Object.keys(a).length == 0 || a.length === 0;
 };
+window.isFunction = function (a:any):boolean {
+	return _.isFunction(a);
+}
 
-window.seed = 1;
+window.getParentByTag = function (el, selector) {
+	do {
+		if (el.tagName.toLowerCase() === selector.toLowerCase()) return el;
+		el = el.parentElement;
+	} while (el !== null);
+	return null;
+};
+
+window.getParentByClass = function (el, selector, last?) {
+	do {
+		if (last && el.classList.contains(last)) return null;
+		if (el.classList.contains(selector)) return el;
+		el = el.parentElement;
+	} while (el !== null);
+	return null;
+};
+
 Object.defineProperties(window, {
-	'seed': {
+	'__seed'   : {
 		writable  : true,
-		enumerable: false
+		enumerable: false,
+		value     : 1
+	},
+	'Constants': {
+		configurable: false,
+		writable    : false,
+		enumerable  : false,
+		value       : {}
 	}
 });
 

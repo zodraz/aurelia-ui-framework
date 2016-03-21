@@ -10,13 +10,6 @@
 @import "utility/mixins";
 @import "utility/animations";
 
-// fonts
-@import url(font_url("material/flaticon.css", true));
-@import url(font_url("metrize/flaticon.css", true));
-@import url(font_url("vaadin/flaticon.css", true));
-@import url(font_url("filetypes/flaticon.css", true));
-@import url(font_url("editor/flaticon.css", true));
-
 @import "utility/reset";
 @import "utility/helpers";
 @import "utility/typography";
@@ -34,10 +27,15 @@
 @import "components/tabs";
 @import "components/toast";
 @import "components/panels";
+@import "components/dialog";
 @import "components/ribbon";
+@import "components/datagrid";
 
 @import "inputs/input";
+@import "inputs/date";
+@import "inputs/list";
 @import "inputs/button";
 @import "inputs/switch";
 @import "inputs/option";
+@import "inputs/editor";
 

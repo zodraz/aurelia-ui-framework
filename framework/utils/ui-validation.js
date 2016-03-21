@@ -4,6 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 define(["require", "exports", 'aurelia-validation', "aurelia-validation"], function (require, exports, aurelia_validation_1, aurelia_validation_2) {
+    "use strict";
     var UIValidationStrategy = (function (_super) {
         __extends(UIValidationStrategy, _super);
         function UIValidationStrategy() {
@@ -18,7 +19,7 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
                 return this;
             };
         }
-        UIValidationStrategy.prototype.appendMessageToElement = function (formGroup, validationProperty) {
+        UIValidationStrategy.prototype.appendMessageToElement = function (validationProperty, formGroup) {
             var helpBlock = formGroup.lastElementChild;
             if (helpBlock) {
                 if (!helpBlock.classList) {
@@ -51,7 +52,7 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
                 formGroup.parentElement.classList.remove('ui-invalid');
                 formGroup.parentElement.classList.remove('ui-valid');
             }
-            this.appendMessageToElement(formGroup, validationProperty);
+            this.appendMessageToElement(validationProperty, formGroup);
         };
         UIValidationStrategy.prototype.prepareElement = function (validationProperty, element) {
             this.appendUIVisuals(null, element.lastElementChild);
@@ -60,6 +61,6 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
             this.appendUIVisuals(validationProperty, element.lastElementChild);
         };
         return UIValidationStrategy;
-    })(aurelia_validation_1.ValidationViewStrategy);
+    }(aurelia_validation_1.ValidationViewStrategy));
     exports.UIValidationStrategy = UIValidationStrategy;
 });

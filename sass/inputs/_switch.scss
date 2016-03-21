@@ -182,6 +182,7 @@
 	cursor         : pointer;
 	top            : 0.25em;
 	margin         : 0 0.2em;
+	color          : $input-label;
 
 	&[disabled] {
 	  opacity : 0.5;

@@ -1,43 +1,44 @@
-<template role="main" class="ui-viewport" click.delegate="hideMenu($event)">
+<template role="main" class="ui-viewport" click.delegate="__hideMenu($event)">
 	<header class="ui-app-header">
 		<!-- Menu handle -->
-		<button class="ui-app-menu-handle" if.bind="options.showMenu" click.trigger="showMenu($event)">
-			<span class="fi-material-menu-button"></span>
+		<button class="ui-app-menu-handle" if.bind="showMenu" click.trigger="__showMenu($event)">
+			<span class="fi-ui-bar-light"></span>
 		</button>
 		<!-- App Logo -->
-		<img class="ui-app-logo" if.bind="options.logo" src.bind="options.logo"/>
+		<div class="ui-app-logo"></div>
 		<!-- App Title -->
 		<h1 class="ui-app-title">
 			<a href="#/">
-				<span innerhtml.bind="options.title"></span>
-				<small if.bind="options.subtitle" innerhtml.bind="options.subtitle"></small>
+				<span innerhtml.bind="appState.AppConfig.Title" class="${subtitle ? '':'nosub'}"></span>
+				<small if.bind="subtitle" innerhtml.bind="subtitle"></small>
 			</a>
 		</h1>
 		<div class="ui-app-header-options">
 			<content></content>
-			<ui-button small primary icon="fi-material-exit-to-app-button" click.trigger="logout()"></ui-button>
+			<ui-button primary icon="fi-ui-arrow-signout" click.trigger="logout()"></ui-button>
 		</div>
 	</header>
 	<router-view role="region" class="ui-viewport-body"></router-view>
-	<div class="ui-app-taskbar" if.bind="options.showTaskbar" role="toolbar">
-		<template replaceable part="quick-links"></template>
+	<div class="ui-app-taskbar ui-button-bar" if.bind="showTaskbar" role="toolbar">
+		<div class="ui-quick-links">
+			<template replaceable part="quick-links"></template>
+		</div>
 	</div>
 	<footer class="ui-app-footer">
-		<small innerhtml.bind="options.copyright"></small>
-		<small innerhtml.bind="options.footerMessage"></small>
+		<small innerhtml.bind="copyright"></small>
+		<small>Version ${appState.AppConfig.Version}</small>
 	</footer>
 
 	<div class="ui-app-menu-shim"></div>
 	<compose view="./ui-app-menu.html" class="ui-app-menu ui-menu ui-scroll"></compose>
 
-	<div class="ui-overlay-container">
-
-	</div>
+	<div class="ui-dialog-container"></div>
+	<div class="ui-overlay-container"></div>
 
 	<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">
 		<div class="ui-loader">
-			<span class="ui-spin fi-material-settings-cogwheel-button"></span>
-			<span class="ui-spin-opp fi-material-settings-cogwheel-button second"></span>
+			<span class="ui-spin fi-ui-cog-black"></span>
+			<span class="ui-spin-opp fi-ui-cog-black second"></span>
 		</div>
 	</div>
 </template>

@@ -12,20 +12,17 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 		super();
 
 		ValidationGroup.prototype['isPhone'] = function () {
-			this.passes(
-				(newValue)=> {
+			this.passes((newValue)=> {
 					return PhoneLib.isValid(newValue, '');
 				}, null)
-				.withMessage(
-					()=> {
-						return 'invalid phone number';
-					});
+				.withMessage(()=> {
+					return 'invalid phone number';
+				});
 			return this;
 		};
 	}
 
-	appendMessageToElement(formGroup,
-						   validationProperty) {
+	appendMessageToElement(validationProperty, formGroup) {
 		let helpBlock:Element = formGroup.lastElementChild;
 		if (helpBlock) {
 			if (!helpBlock.classList) {
@@ -46,8 +43,7 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 		helpBlock.textContent = validationProperty ? validationProperty.message : '';
 	}
 
-	appendUIVisuals(validationProperty,
-					formGroup) {
+	appendUIVisuals(validationProperty, formGroup) {
 		if (validationProperty && validationProperty.isDirty) {
 			if (validationProperty.isValid) {
 				formGroup.parentElement.classList.remove('ui-invalid');
@@ -63,16 +59,14 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 			formGroup.parentElement.classList.remove('ui-valid');
 		}
 
-		this.appendMessageToElement(formGroup, validationProperty);
+		this.appendMessageToElement(validationProperty, formGroup);
 	}
 
-	prepareElement(validationProperty,
-				   element) {
+	prepareElement(validationProperty, element) {
 		this.appendUIVisuals(null, element.lastElementChild);
 	}
 
-	updateElement(validationProperty,
-				  element) {
+	updateElement(validationProperty, element) {
 		this.appendUIVisuals(validationProperty, element.lastElementChild);
 	}
 }

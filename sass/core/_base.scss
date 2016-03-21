@@ -45,6 +45,10 @@ html, body {
   }
 }
 
+input, textarea {
+  font-family : $base-font-family-input;
+}
+
 .ui-splash {
   @include position(absolute, $l : 0, $r : 0, $t : 0);
   @include transition(top 1s);
@@ -107,9 +111,9 @@ a, button {
 
   &[target='_blank']:after {
 	font-size      : 0.5em;
-	content        : '\f1e6';
+	content        : $font-ui-external-thin;
 	opacity        : 0.75;
-	font-family    : Material;
+	font-family    : Framework;
 	vertical-align : super;
 	margin-left    : 0.1em;
   }

@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, bindingMode} from "aurelia-framework";
+import {customElement, bindable, bindingMode} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 
 @customElement('ui-textarea')
@@ -14,79 +14,91 @@ export class UITextArea extends UIInputGroup {
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	value:string                 = '';
+	value:string     = '';
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean              = false;
+	checked:boolean  = false;
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 	/**
 	 * @property    readonly
 	 * @type        boolean
 	 */
-	@bindable() readonly:boolean = false;
+	@bindable()
+	readonly:boolean = false;
 
 	/**
 	 * @property    prefix-icon
 	 * @type        string
 	 */
-	@bindable() prefixIcon:string;
+	@bindable()
+	prefixIcon:string;
 	/**
 	 * @property    prefix-text
 	 * @type        string
 	 */
-	@bindable() prefixText:string;
+	@bindable()
+	prefixText:string;
 
 	/**
 	 * @property    suffix-icon
 	 * @type        string
 	 */
-	@bindable() suffixIcon:string;
+	@bindable()
+	suffixIcon:string;
 	/**
 	 * @property    suffix-text
 	 * @type        string
 	 */
-	@bindable() suffixText:string;
+	@bindable()
+	suffixText:string;
 
 	/**
 	 * @property    button-icon
 	 * @type        string
 	 */
-	@bindable() buttonIcon:string;
+	@bindable()
+	buttonIcon:string;
 	/**
 	 * @property    button-text
 	 * @type        string
 	 */
-	@bindable() buttonText:string;
+	@bindable()
+	buttonText:string;
 
 	/**
 	 * @property    help-text
 	 * @type        string
 	 */
-	@bindable() helpText:string;
+	@bindable()
+	helpText:string;
 
 	/**
 	 * @property    placeholder
 	 * @type        string
 	 */
-	@bindable() placeholder:string = '';
+	@bindable()
+	placeholder:string = '';
 
 	/**
 	 * @property    rows
 	 * @type        string
 	 */
-	@bindable() rows:string = '5';
+	@bindable()
+	rows:string = '5';
 
 	/**
 	 * @property    dir
 	 * @type        string
 	 */
-	@bindable() dir:string = '';
+	@bindable()
+	dir:string = '';
 
 }

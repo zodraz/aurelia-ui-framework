@@ -4,13 +4,13 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, noView, bindable, bindingMode} from "aurelia-framework";
+import {autoinject, noView} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
 
 @noView()
 @autoinject()
 export class UIInputGroup {
-	protected __id = `auf-${seed++}`;
+	protected __id = `auf-${__seed++}`;
 	protected __input:HTMLInputElement;
 	protected __input2:HTMLInputElement;
 	protected __label:Element;
@@ -78,11 +78,11 @@ export class UIInputGroup {
 			this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
 		}
 
-		this.__input.oninput = (evt)=>this.value = this.format(evt);
+		this.__input.oninput = (evt)=>this.value = this.formatter(evt);
 		this.__input.onkeypress = (evt)=>this.keyPress(evt);
 
 		if (this.__input2) {
-			this.__input2.oninput = (evt)=>this.valueSecond = this.format(evt);
+			this.__input2.oninput = (evt)=>this.valueSecond = this.formatter(evt);
 			this.__input2.onkeypress = (evt)=>this.keyPress(evt);
 		}
 	}
@@ -161,7 +161,7 @@ export class UIInputGroup {
 
 		if (evt.target.type !== 'textarea') {
 			if ((evt.which || evt.keyCode) === 13) {
-				this.format(evt);
+				this.formatter(evt);
 				return UIEvent.fireEvent('enterpressed', this.element, this);
 			}
 
@@ -176,7 +176,7 @@ export class UIInputGroup {
 		return true;
 	}
 
-	protected format(evt) {
+	protected formatter(evt) {
 		return isEmpty(evt.target.value) ? '' : evt.target.value;
 	}
 }

@@ -16,12 +16,14 @@ export class UIMenu {
 	 * @property    router
 	 * @type        Aurelia Router
 	 */
-	@bindable() router:Router;
+	@bindable()
+	router:Router;
 	/**
 	 * @property    menu
 	 * @type        Array of links
 	 */
-	@bindable() menu:Array<any>;
+	@bindable()
+	menu:Array<any>;
 
 	constructor(public element:Element, public appState:UIApplication) {
 	}
@@ -33,5 +35,9 @@ export class UIMenu {
 
 	onClick($event) {
 		if (this.router) return true;
+		$event.preventDefault();
+		let link = getParentByClass($event.target, 'ui-menu-link', 'ui-menu');
+		if (link === null) return false;
+		UIEvent.fireEvent('click', this.element, link.dataset['id']);
 	}
 }

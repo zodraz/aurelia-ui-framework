@@ -13,10 +13,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+    "use strict";
     var UIOption = (function () {
         function UIOption(element) {
             this.element = element;
-            this.__id = "auf-" + seed++;
+            this.__id = "auf-" + __seed++;
             this.checked = false;
             this.disabled = false;
         }
@@ -47,7 +48,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UIOption);
         return UIOption;
-    })();
+    }());
     exports.UIOption = UIOption;
     var UICheckbox = (function (_super) {
         __extends(UICheckbox, _super);
@@ -79,7 +80,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [])
         ], UICheckbox);
         return UICheckbox;
-    })(UIOption);
+    }(UIOption));
     exports.UICheckbox = UICheckbox;
     var UIRadio = (function (_super) {
         __extends(UIRadio, _super);
@@ -115,12 +116,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [])
         ], UIRadio);
         return UIRadio;
-    })(UIOption);
+    }(UIOption));
     exports.UIRadio = UIRadio;
     var UIOptionGroup = (function () {
         function UIOptionGroup(element) {
             this.element = element;
-            this.__name = "auf-" + seed++;
+            this.__name = "auf-" + __seed++;
             this.label = '';
             this.name = '';
         }
@@ -165,6 +166,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UIOptionGroup);
         return UIOptionGroup;
-    })();
+    }());
     exports.UIOptionGroup = UIOptionGroup;
 });

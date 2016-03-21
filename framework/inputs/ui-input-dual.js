@@ -13,6 +13,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "./ui-input"], function (require, exports, aurelia_framework_1, ui_input_1) {
+    "use strict";
     var UIInputDual = (function (_super) {
         __extends(UIInputDual, _super);
         function UIInputDual() {
@@ -101,6 +102,6 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             __metadata('design:paramtypes', [])
         ], UIInputDual);
         return UIInputDual;
-    })(ui_input_1.UIInput);
+    }(ui_input_1.UIInput));
     exports.UIInputDual = UIInputDual;
 });

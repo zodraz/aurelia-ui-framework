@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1) {
+    "use strict";
     var UIButton = (function () {
         function UIButton(element) {
             this.element = element;
@@ -42,6 +43,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this.__button.classList.add('ui-icon-top');
             if (this.element.hasAttribute('round'))
                 this.__button.classList.add('ui-button-round');
+            if (this.element.hasAttribute('square'))
+                this.__button.classList.add('ui-button-square');
             this.__button.classList.add("ui-button-" + this.__size);
             this.__button.classList.add("ui-button-" + this.__theme);
             this.disable();
@@ -59,9 +62,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             this.disable();
         };
         UIButton.prototype.fireClick = function ($event) {
+            $event.preventDefault();
+            $event.cancelBubble = true;
             if (this.disabled === true)
                 return false;
-            $event.cancelBubble = true;
             ui_event_1.UIEvent.fireEvent('click', this.element, this);
         };
         __decorate([
@@ -86,7 +90,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             __metadata('design:paramtypes', [Element])
         ], UIButton);
         return UIButton;
-    })();
+    }());
     exports.UIButton = UIButton;
     var UIButtonGroup = (function () {
         function UIButtonGroup(element) {
@@ -114,8 +118,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this.__size = 'large';
             if (this.element.hasAttribute('top'))
                 this.__extraClass += ' ui-icon-top';
-            if (this.element.hasAttribute('round'))
-                this.__extraClass = ' ui-button-round';
+            if (this.element.hasAttribute('round')) {
+                this.__extraClass += ' ui-button-round';
+            }
+            else if (this.element.hasAttribute('square'))
+                this.__extraClass += ' ui-button-square';
             if (this.element.hasAttribute('vertical'))
                 this.element.classList.add('ui-vertical');
             this.disabled = isTrue(this.disabled);
@@ -173,12 +180,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             }
         };
         UIButtonGroup.prototype.fireChange = function ($event) {
+            $event.preventDefault();
+            $event.cancelBubble = true;
             if (this.disabled === true)
                 return false;
             if (this.toggle !== false) {
                 if (isEmpty($event.detail.value))
                     return false;
-                $event.cancelBubble = true;
                 if (this.toggle === 'multiple') {
                     var v = $event.detail.value;
                     var a = isEmpty(this.value) ? [] : (this.value + '').split(',');
@@ -195,7 +203,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 }
                 ui_event_1.UIEvent.fireEvent('change', this.element, this.value);
             }
-            return true;
         };
         __decorate([
             aurelia_framework_1.bindable(), 
@@ -216,6 +223,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             __metadata('design:paramtypes', [Element])
         ], UIButtonGroup);
         return UIButtonGroup;
-    })();
+    }());
     exports.UIButtonGroup = UIButtonGroup;
 });

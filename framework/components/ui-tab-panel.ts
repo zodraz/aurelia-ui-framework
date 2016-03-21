@@ -14,7 +14,8 @@ export class UITabPanel {
 	private __tabButtons;
 	private tabs = [];
 
-	@bindable activeTab = 0;
+	@bindable
+	activeTab = 0;
 
 	constructor(public element:Element) {
 	}
@@ -57,10 +58,13 @@ export class UITabPanel {
 @inlineView('<template class="ui-tab-content"><content></content></template>')
 @customElement('ui-tab')
 export class UITab {
-	@bindable label:string = '';
-	@bindable icon:string  = '';
+	@bindable
+	label:string = '';
+	@bindable
+	icon:string  = '';
 
 	constructor(public element:Element) {
 		if (this.element.hasAttribute('scroll')) this.element.classList.add('ui-scroll');
+		if (this.element.hasAttribute('flex')) this.element.classList.add('ui-column-row');
 	}
 }

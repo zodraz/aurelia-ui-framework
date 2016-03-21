@@ -5,6 +5,7 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 @import "utility/copic";
+@import "core/glyphs";
 
 $primary : $lapis-lazuli !default;
 $primary-text : $white !default;
@@ -68,6 +69,9 @@ $text-danger : $danger !default;
 $text-success : $success !default;
 $text-warning : $warning !default;
 
+$inline-code-bg : $wg-10 !default;
+$inline-code-text : $mustard !default;
+
 $pre-code-bg : $ng-10 !default;
 $pre-code-text : $ng-0 !default;
 $pre-code-border : $ng-8 !default;
@@ -110,7 +114,7 @@ $toolbar-text : $ng-2 !default;
 
 $statsbar-bg : $cg-8 !default;
 $statsbar-text : $process-blue !default;
-$statsbar-label:$wg-5 !default;
+$statsbar-label : $wg-5 !default;
 
 /** MENUS **/
 $menu-link-bg : transparent !default;
@@ -143,6 +147,7 @@ $button-warning-text : $white !default;
 /** INPUTS **/
 $input-bg : $cg-9 !default;
 $input-text : $cg-0 !default;
+$input-label : $cg-3 !default;
 $input-border : $cg-8 !default;
 $input-placeholder-text : $cg-7 !default;
 
@@ -158,12 +163,31 @@ $input-addon-text : $cg-1 !default;
 $input-button-bg : $secondary !default;
 $input-button-text : $secondary-text !default;
 
+/** DATE INPUT **/
+$date-weekday-bg : $antwerp-blue !default;
+$date-weekday-text : $cg-0 !default;
+
+$date-control-text : $antwerp-blue !default;
+$date-control-hover-bg : $antwerp-blue !default;
+$date-control-hover-text : $cg-1 !default;
+
+$date-active : $base-text !default;
+$date-muted : $cg-5 !default;
+$date-week : $maize !default;
+$date-disabled : $cg-3 !default;
+$date-selected-bg : $antwerp-blue !default;
+$date-selected-text : $cg-0 !default;
+
+$date-icon : $font-ui-calendar !default;
+$date-prev : $font-ui-page-prev-black !default;
+$date-next : $font-ui-page-next-black !default;
+
 /** TABS **/
 $tab-bg : $wg-9 !default;
 $tab-text : $wg-1 !default;
 $tab-border : $wg-8 !default;
 
-$tab-active-bg : $wg-10 !default;
+$tab-active-bg : $black !default;
 $tab-active-text : $wg-0 !default;
 $tab-active-border : $primary !default;
 
@@ -174,6 +198,27 @@ $toast-danger : $carmine !default;
 $toast-success : $mistletoe !default;
 $toast-warning : $atoll !default;
 $toast-text : $white !default;
+
+/** DATAGRID **/
+$datagrid-header-bg : $cg-10 !default;
+$datagrid-header-hover-bg : $cg-8 !default;
+$datagrid-footer-bg : $ng-10 !default;
+$datagrid-odd-bg : $black !default;
+$datagrid-even-row : $tg-9 !default;
+$datagrid-text : $tg-0 !default;
+
+$datagrid-button-view : $font-ui-preview-thin !default;
+$datagrid-button-edit : $font-ui-edit-thick !default;
+$datagrid-button-delete : $font-ui-delete-black !default;
+
+$datagrid-hover-bg : $agate !default;
+$datagrid-active-bg : $stratosphere-blue !default;
+$datagrid-indicator-color : $wg-6 !default;
+
+$pager-first-glyph : $font-ui-page-first-line !default;
+$pager-prev-glyph : $font-ui-page-prev-line !default;
+$pager-next-glyph : $font-ui-page-next-line !default;
+$pager-last-glyph : $font-ui-page-last-line !default;
 
 @import "framework!";
 

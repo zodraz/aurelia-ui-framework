@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event", "aurelia-validation"], function (require, exports, aurelia_framework_1, ui_event_1, aurelia_validation_1) {
+    "use strict";
     var UIForm = (function () {
         function UIForm(element) {
             this.element = element;
@@ -19,6 +20,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "aurelia
                 if (!isEmpty(el))
                     el.focus();
             }, 10);
+            if (this.busy)
+                setTimeout(function () { return _this.busyChanged(true); }, 200);
+        };
+        UIForm.prototype.busyChanged = function (newValue) {
+            var els = this.element.querySelectorAll('ui-input,ui-phone,ui-textarea,ui-input-dual,ui-chosen,ui-markdown,ui-button,ui-date,ui-list,ui-option,ui-switch');
+            _.forEach(els, function (el) {
+                try {
+                    el.au.controller.viewModel.disable(isTrue(newValue));
+                }
+                catch (e) {
+                }
+            });
         };
         UIForm.prototype.fireSubmit = function () {
             ui_event_1.UIEvent.fireEvent('submit', this.element, this);
@@ -37,6 +50,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "aurelia
             __metadata('design:paramtypes', [Element])
         ], UIForm);
         return UIForm;
-    })();
+    }());
     exports.UIForm = UIForm;
 });

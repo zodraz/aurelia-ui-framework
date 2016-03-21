@@ -1,4 +1,5 @@
 define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Core = (function () {
         function Core() {
         }
@@ -18,6 +19,6 @@ define(["require", "exports"], function (require, exports) {
                 }]);
         };
         return Core;
-    })();
+    }());
     exports.Core = Core;
 });

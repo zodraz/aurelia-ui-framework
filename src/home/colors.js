@@ -1,4 +1,5 @@
 define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Colors = (function () {
         function Colors() {
             this.colors = {
@@ -385,6 +386,6 @@ define(["require", "exports"], function (require, exports) {
             };
         }
         return Colors;
-    })();
+    }());
     exports.Colors = Colors;
 });

@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+    "use strict";
     var UIRibbon = (function () {
         function UIRibbon(element) {
             this.element = element;
@@ -45,6 +46,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             __metadata('design:paramtypes', [Element])
         ], UIRibbon);
         return UIRibbon;
-    })();
+    }());
     exports.UIRibbon = UIRibbon;
 });

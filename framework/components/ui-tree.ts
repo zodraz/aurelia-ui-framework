@@ -4,7 +4,15 @@
  *    @company   HMC
  *    @copyright 2015-2016, Adarsh Pastakia
  **/
-import {autoinject, bindable, useView, computedFrom, customElement, bindingMode, BindingEngine} from "aurelia-framework";
+import {
+	autoinject,
+	bindable,
+	useView,
+	computedFrom,
+	customElement,
+	bindingMode,
+	BindingEngine
+} from "aurelia-framework";
 import {UITreeModel, UITreeOptions} from "../utils/ui-tree-models";
 import {_, UIUtils} from "../utils/ui-utils";
 import {UIEvent} from "../utils/ui-event";
@@ -20,9 +28,12 @@ export class UITree {
 	__subscribeChecked;
 	__subscribeSearch;
 
-	@bindable() value;
-	@bindable() model                 = [];
-	@bindable() options:UITreeOptions = new UITreeOptions();
+	@bindable()
+	value;
+	@bindable()
+	model                 = [];
+	@bindable()
+	options:UITreeOptions = new UITreeOptions();
 
 	constructor(public element:Element, observer:BindingEngine) {
 		var self                = this;
@@ -170,8 +181,10 @@ export class UITree {
 @autoinject()
 @useView('./ui-tree-node.html')
 export class TreeNode {
-	@bindable node:UITreeModel;
-	@bindable options:UITreeOptions;
+	@bindable
+	node:UITreeModel;
+	@bindable
+	options:UITreeOptions;
 
 	constructor() {
 	}

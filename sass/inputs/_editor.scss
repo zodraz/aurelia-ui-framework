@@ -1,0 +1,76 @@
+/**
+ *	UI Markdown
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-markdown-editor {
+
+  .ui-markdown-tools {
+	padding    : 0;
+	background : $toolbar-bg;
+	border  : {
+	  style : solid;
+	  width : 1px 1px 0;
+	  color : $input-border;
+	}
+	@include flex-row($wrap : wrap);
+	@include border-top-radius($base-border-radius);
+	.ui-divider {
+	  height : 1em;
+	}
+  }
+
+  .ui-input {
+	border-radius : 0 !important;
+  }
+
+  &.ui-full-view {
+	margin : 0;
+	@include flex(1 1 0%);
+	@include align-items(stretch);
+	@include flex-direction(column);
+	.ui-label {
+	  display : none;
+	}
+	.ui-control-wrapper {
+	  @include flex-column();
+	  .ui-input-control {
+		@include flex(1 1 0%);
+		position : relative;
+		.ui-input {
+		  @include position(absolute, 0, 0, 0, 0);
+		  resize : none;
+		}
+	  }
+	}
+  }
+}
+
+.ui-markdown-preview, .ui-markdown-help {
+  @include position(absolute, 0, 0, 0, 0);
+  overflow         : auto;
+  padding          : 0.5em 1em;
+  z-index          : 5;
+
+  border           : none;
+  background-color : $input-bg;
+  color            : $input-text;
+  @include box-shadow(0 0 0.2em 0 $base-shadow-color inset);
+
+  ~ .ui-close {
+	@include position(absolute, $t : 0, $r : 0);
+	opacity   : .3;
+	z-index   : 9;
+	font-size : 1.5em;
+	color     : $base-text;
+
+	&:hover {
+	  opacity : .6;
+	}
+  }
+  &[dir="rtl"]:not(.ui-hide) ~ .ui-close {
+	@include position(absolute, $t : 0, $l : 0);
+  }
+}

@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, useView, bindable, bindingMode} from "aurelia-framework";
+import {customElement, useView, bindable, bindingMode} from "aurelia-framework";
 import {UIInput} from "./ui-input";
 
 @useView("./ui-input.html")

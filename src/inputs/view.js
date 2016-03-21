@@ -1,4 +1,5 @@
 define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Inputs = (function () {
         function Inputs() {
         }
@@ -62,6 +63,14 @@ define(["require", "exports"], function (require, exports) {
                     auth: false,
                     name: 'textarea'
                 }, {
+                    route: 'markdown',
+                    moduleId: './markdown',
+                    settings: { icon: 'fi-vaadin-top-margin-1' },
+                    title: 'Markdown Editor',
+                    nav: true,
+                    auth: false,
+                    name: 'markdown'
+                }, {
                     route: 'options',
                     moduleId: './options',
                     settings: { icon: 'fi-vaadin-options' },
@@ -82,6 +91,6 @@ define(["require", "exports"], function (require, exports) {
                 }]);
         };
         return Inputs;
-    })();
+    }());
     exports.Inputs = Inputs;
 });

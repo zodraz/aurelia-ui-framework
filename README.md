@@ -5,28 +5,72 @@
 > This UI framework has been built on the [Aurelia](http://aurelia.io) JavaScript client framework.
 
 
-## [Demo Pages](http://adarshpastakia.github.io/aurelia-ui-framework/)
+#### [Demo Pages](http://adarshpastakia.github.io/aurelia-ui-framework/v2)
 
-## [Help Wiki](https://github.com/adarshpastakia/aurelia-ui-framework/wiki/Home)
+#### [Help Wiki](https://github.com/adarshpastakia/aurelia-ui-framework/wiki/Home)
 
 
 ------
 
-# Version 2
+## AureliaUIFramework
+### Version 2
 
 > Rethought and Reworked Framework
 
-### ReadMe's
+### Sections
 
 * [Core](framework/core)
 * [Inputs](framework/inputs)
+* [Components](framework/components)
 * [Utils](framework/utils)
 
-### UI Elements
 
-###### Inputs
-* BaseInput - Generic input class to handle common functionality between all input controls
-* Input (Private) - Generic single line input control
+#### Usage `main.js`
+
+```javascript
+import {UIValidationStrategy} from "aurelia-ui-framework";
+
+function configure(aurelia) {
+    aurelia.use
+       .standardConfiguration()
+       .developmentLogging()
+       .plugin('aurelia-ui-framework', function (config) {
+           // AppKey for local/session storage key prefix
+           config.App.Key = 'App';
+           // Application Title
+           config.App.Title = 'Aurelia UI Framework';
+           // Application Version
+           config.App.Version = '1.00';
+
+           // HTTPClient Base API URL
+           config.Http.BaseUrl = './';
+           // HTTPClient Extra Headers
+           config.Http.Headers = {
+               'X-API-VERSION': '1'
+           };
+           // HTTPClient Send Basic Authorization Header
+           config.Http.AuthorizationHeader = false;
+       })
+       .plugin('aurelia-validation', function (config) {
+           config.useViewStrategy(new UIValidationStrategy());
+       });
+```
+
+---
+
+#### Core Components
+* Viewport - main app viewport
+* Section - row/column (can have title to be used as route viewport)
+* Content - auto/fill
+* Sidebar - can collapse
+* Header
+* Toolbar
+* Statsbar
+* Grid
+
+#### Inputs
+* BaseInput (Private) - Generic input class to handle common functionality between all input controls
+* Input - Single line input control
     * Text
     * Number
     * Email
@@ -43,8 +87,9 @@
 * Button
 * Markdown
 * Language
+* MultiSelect
 
-###### Components
+#### Components
 * Form
 * Tree
 * Ribbon
@@ -56,15 +101,16 @@
 * Tabs
 * Datagrid
 
-###### Core Components
-* Viewport - main app viewport
-* Section - row/column (can have title to be used as route viewport)
-* Content - auto/fill
-* Sidebar - can collapse
-* Header
-* Toolbar
-* Statsbar
-* Grid
+#### Utils
+* UIApplication
+* UIConverters - Global value converters
+* UIFormatters - Module containing common formatting methods
+* UIHttpService - HttpService extending Aurelie-Fetch
+* UIValidation - Aurelia validation strategy
+* UIEvent
+* UIUtils
+* UIModel
+* UITreeModel
 
 ### Dependencies
 

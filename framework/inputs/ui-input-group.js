@@ -8,10 +8,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+    "use strict";
     var UIInputGroup = (function () {
         function UIInputGroup(element) {
             this.element = element;
-            this.__id = "auf-" + seed++;
+            this.__id = "auf-" + __seed++;
             this.__type = 'text';
             this.__format = 'text';
             this.__value = '';
@@ -67,10 +68,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.__chkbox && this.disabled === true) {
                 this.__chkbox.attributes.setNamedItem(document.createAttribute('disabled'));
             }
-            this.__input.oninput = function (evt) { return _this.value = _this.format(evt); };
+            this.__input.oninput = function (evt) { return _this.value = _this.formatter(evt); };
             this.__input.onkeypress = function (evt) { return _this.keyPress(evt); };
             if (this.__input2) {
-                this.__input2.oninput = function (evt) { return _this.valueSecond = _this.format(evt); };
+                this.__input2.oninput = function (evt) { return _this.valueSecond = _this.formatter(evt); };
                 this.__input2.onkeypress = function (evt) { return _this.keyPress(evt); };
             }
         };
@@ -149,7 +150,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 return true;
             if (evt.target.type !== 'textarea') {
                 if ((evt.which || evt.keyCode) === 13) {
-                    this.format(evt);
+                    this.formatter(evt);
                     return ui_event_1.UIEvent.fireEvent('enterpressed', this.element, this);
                 }
                 var rx = '.';
@@ -167,7 +168,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
             return true;
         };
-        UIInputGroup.prototype.format = function (evt) {
+        UIInputGroup.prototype.formatter = function (evt) {
             return isEmpty(evt.target.value) ? '' : evt.target.value;
         };
         UIInputGroup = __decorate([
@@ -176,6 +177,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UIInputGroup);
         return UIInputGroup;
-    })();
+    }());
     exports.UIInputGroup = UIInputGroup;
 });

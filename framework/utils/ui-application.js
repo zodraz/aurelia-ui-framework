@@ -7,21 +7,55 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-utils"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_utils_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-utils", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_utils_1, aurelia_router_1) {
+    "use strict";
     var UIApplication = (function () {
-        function UIApplication() {
-            this.BaseUrl = './';
+        function UIApplication(router) {
+            this.router = router;
+            this.AppConfig = UIApplication.defaults.App;
+            this.HttpConfig = UIApplication.defaults.Http;
             this.IsHttpInUse = false;
-            this.SendAuthHeader = false;
             this.IsAuthenticated = false;
             this.__logger = aurelia_logging_1.getLogger('UIApplication');
+            this.__logger.info('Initialized');
+            Object.assign(this.AppConfig, UIApplication.defaults.App);
+            Object.assign(this.HttpConfig, UIApplication.defaults.Http);
         }
+        UIApplication.prototype.navigate = function (hash) {
+            this.__logger.info("navigate::" + hash);
+            this.router.navigate(hash);
+        };
+        UIApplication.prototype.navigateTo = function (route, params) {
+            if (params === void 0) { params = {}; }
+            this.__logger.info("navigateTo::" + route);
+            this.router.navigateToRoute(route, params);
+        };
         Object.defineProperty(UIApplication.prototype, "Username", {
             get: function () {
                 return this.__username;
             },
             set: function (v) {
                 this.__username = v;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(UIApplication.prototype, "UserGroup", {
+            get: function () {
+                return this.__userGroup;
+            },
+            set: function (v) {
+                this.__userGroup = v;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(UIApplication.prototype, "UserGroupLabel", {
+            get: function () {
+                return this.__userGroupLabel;
+            },
+            set: function (v) {
+                this.__userGroupLabel = v;
             },
             enumerable: true,
             configurable: true
@@ -50,28 +84,32 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-util
             if (value === void 0) { value = '§'; }
             if (window.sessionStorage) {
                 if (value === '§') {
-                    return JSON.parse(window.sessionStorage.getItem(key));
+                    return JSON.parse(window.sessionStorage.getItem(this.AppConfig.Key + ':' + key));
                 }
                 else if (value === null) {
-                    window.sessionStorage.removeItem(key);
+                    window.sessionStorage.removeItem(this.AppConfig.Key + ':' + key);
                 }
                 else {
-                    window.sessionStorage.setItem(key, JSON.stringify(value));
+                    window.sessionStorage.setItem(this.AppConfig.Key + ':' + key, JSON.stringify(value));
                 }
             }
             return null;
+        };
+        UIApplication.prototype.clearSession = function () {
+            if (window.sessionStorage)
+                window.sessionStorage.clear();
         };
         UIApplication.prototype.persist = function (key, value) {
             if (value === void 0) { value = '§'; }
             if (window.localStorage) {
                 if (value === '§') {
-                    return JSON.parse(window.localStorage.getItem(key));
+                    return JSON.parse(window.localStorage.getItem(this.AppConfig.Key + ':' + key));
                 }
                 else if (value === null) {
-                    window.localStorage.removeItem(key);
+                    window.localStorage.removeItem(this.AppConfig.Key + ':' + key);
                 }
                 else {
-                    window.localStorage.setItem(key, JSON.stringify(value));
+                    window.localStorage.setItem(this.AppConfig.Key + ':' + key, JSON.stringify(value));
                 }
             }
             return null;
@@ -109,12 +147,61 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-util
                 this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
             ui_utils_1.UIUtils.showToast(this.__overlayContainer, config);
         };
+        UIApplication.defaults = {
+            App: {
+                Key: 'App',
+                Title: 'Aurelia UI Framework',
+                Version: '1.00'
+            },
+            Http: {
+                BaseUrl: './',
+                Headers: {},
+                AuthorizationHeader: false
+            }
+        };
         UIApplication = __decorate([
             aurelia_framework_1.singleton(),
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [aurelia_router_1.Router])
         ], UIApplication);
         return UIApplication;
-    })();
+    }());
     exports.UIApplication = UIApplication;
+    var AuthInterceptor = (function () {
+        function AuthInterceptor(appState) {
+            this.appState = appState;
+            this.logger = aurelia_logging_1.getLogger('AuthInterceptor');
+            this.logger.info('Initialized');
+        }
+        AuthInterceptor.prototype.run = function (routingContext, next) {
+            if (routingContext.getAllInstructions()
+                .some(function (i) { return i.config.auth; })) {
+                if (!this.appState.IsAuthenticated) {
+                    this.logger.warn('Not authenticated');
+                    var url = routingContext.router.generate('login', { status: 401 });
+                    this.appState.IsAuthenticated = false;
+                    this.appState.session('AppCurrentRoute', routingContext.fragment);
+                    return next.complete(new aurelia_router_1.Redirect(url));
+                }
+            }
+            if (!routingContext.config.isLogin && !this.isAllowed(routingContext.config.group)) {
+                this.logger.warn("Access denied [" + routingContext.config.group + "]");
+                this.appState.toast({ message: '⚠︎ Access Denied', theme: 'danger' });
+                return next.reject();
+            }
+            return next();
+        };
+        AuthInterceptor.prototype.isAllowed = function (groups) {
+            if (groups && this.appState.UserGroup !== null) {
+                return new RegExp("^(" + groups + ")$").test(this.appState.UserGroup);
+            }
+            return true;
+        };
+        AuthInterceptor = __decorate([
+            aurelia_framework_1.autoinject(), 
+            __metadata('design:paramtypes', [UIApplication])
+        ], AuthInterceptor);
+        return AuthInterceptor;
+    }());
+    exports.AuthInterceptor = AuthInterceptor;
 });

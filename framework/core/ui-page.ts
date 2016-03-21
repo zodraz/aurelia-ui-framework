@@ -18,7 +18,8 @@ export class UIPage {
 	 * @property    page-title
 	 * @type        string
 	 */
-	@bindable() pageTitle:string;
+	@bindable()
+	pageTitle:string;
 
 	constructor(public element:Element) {
 	}
@@ -73,7 +74,8 @@ export class UISidebar {
 	 * @property    width
 	 * @type        string
 	 */
-	@bindable() width:string = '220px';
+	@bindable()
+	width:string = '220px';
 
 	constructor(public element:Element) {
 	}
@@ -92,7 +94,7 @@ export class UIDivider {
 }
 
 @customElement('ui-toolbar')
-@inlineView(`<template class="ui-toolbar" role="toolbar"><content></content></template>`)
+@inlineView(`<template class="ui-toolbar ui-button-bar" role="toolbar"><content></content></template>`)
 export class UIToolbar {
 }
 
@@ -104,7 +106,9 @@ export class UIStatsbar {
 @customElement('ui-stat')
 @inlineView('<template class="ui-stat"><span class="${icon}" if.bind="icon"></span><div><h1>${value}</h1><h6><content></content></h6></div></template>')
 export class UIStat {
-	@bindable() value;
-	@bindable() icon;
+	@bindable()
+	value;
+	@bindable()
+	icon;
 }
 

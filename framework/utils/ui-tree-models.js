@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (require, exports, aurelia_framework_1, ui_utils_1) {
+    "use strict";
     var UITreeModel = (function () {
         function UITreeModel(level, maxLevels, checkLevel, model, parent) {
             var _this = this;
@@ -80,7 +81,7 @@ define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (requ
             __metadata('design:type', Object)
         ], UITreeModel.prototype, "isLeaf", null);
         return UITreeModel;
-    })();
+    }());
     exports.UITreeModel = UITreeModel;
     var UITreeOptions = (function () {
         function UITreeOptions(obj) {
@@ -94,6 +95,6 @@ define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (requ
             Object.assign(this, obj);
         }
         return UITreeOptions;
-    })();
+    }());
     exports.UITreeOptions = UITreeOptions;
 });

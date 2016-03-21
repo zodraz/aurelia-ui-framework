@@ -12,6 +12,16 @@ export class MarkdownValueConverter {
 	}
 }
 
+export class CodeHighlightValueConverter {
+	toView(value:string) {
+		return marked(value || '', {
+			highlight: function (code) {
+				return hljs.highlightAuto(code).value;
+			}
+		});
+	}
+}
+
 // Dates
 export class DateValueConverter {
 	toView(value:string, format?:string) {
@@ -77,5 +87,15 @@ export class IsArrayValueConverter {
 export class IsObjectValueConverter {
 	toView(value:any) {
 		return _.isObject(value);
+	}
+}
+export class IsTrueValueConverter {
+	toView(value:any) {
+		return isTrue(value);
+	}
+}
+export class IsFalseValueConverter {
+	toView(value:any) {
+		return !isTrue(value);
 	}
 }

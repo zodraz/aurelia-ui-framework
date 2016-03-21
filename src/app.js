@@ -8,16 +8,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "../framework/index", "aurelia-framework"], function (require, exports, index_1, aurelia_framework_1) {
+    "use strict";
     var App = (function () {
         function App() {
-            this.appOptions = new index_1.UIViewportOptions({});
         }
         App.prototype.configureRouter = function (config, router) {
             this.router = router;
             config.title = 'Aurelia UI Framework';
             config.options.showLogo = true;
             config.options.showAuthentication = true;
+            config.addPipelineStep('authorize', index_1.AuthInterceptor);
             config.map([{
+                    route: 'login',
+                    moduleId: './login/view',
+                    nav: false,
+                    auth: false,
+                    isLogin: true,
+                    name: 'login'
+                }, {
                     route: 'home',
                     moduleId: './home/view',
                     settings: { sectionTitle: 'Aurelia UI Framework', icon: 'fi-material-window-with-different-sections' },
@@ -33,6 +41,22 @@ define(["require", "exports", "../framework/index", "aurelia-framework"], functi
                     nav: true,
                     auth: false,
                     name: 'colors'
+                }, {
+                    route: 'readme',
+                    moduleId: './home/readme',
+                    settings: { icon: 'fi-vaadin-open-book' },
+                    title: 'ReadMe',
+                    nav: true,
+                    auth: false,
+                    name: 'readme'
+                }, {
+                    route: 'todo',
+                    moduleId: './home/todo',
+                    settings: { icon: 'fi-vaadin-tasks' },
+                    title: 'ToDo',
+                    nav: true,
+                    auth: false,
+                    name: 'todo'
                 }, {
                     route: 'core',
                     moduleId: './core/view',
@@ -81,6 +105,6 @@ define(["require", "exports", "../framework/index", "aurelia-framework"], functi
             __metadata('design:paramtypes', [])
         ], App);
         return App;
-    })();
+    }());
     exports.App = App;
 });

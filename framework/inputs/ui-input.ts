@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, bindingMode} from "aurelia-framework";
+import {customElement, bindable, bindingMode} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 
 @customElement('ui-input')
@@ -14,74 +14,85 @@ export class UIInput extends UIInputGroup {
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	value:string                 = '';
+	value:string     = '';
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean              = false;
+	checked:boolean  = false;
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 	/**
 	 * @property    readonly
 	 * @type        boolean
 	 */
-	@bindable() readonly:boolean = false;
+	@bindable()
+	readonly:boolean = false;
 
 	/**
 	 * @property    prefix-icon
 	 * @type        string
 	 */
-	@bindable() prefixIcon:string;
+	@bindable()
+	prefixIcon:string;
 	/**
 	 * @property    prefix-text
 	 * @type        string
 	 */
-	@bindable() prefixText:string;
+	@bindable()
+	prefixText:string;
 
 	/**
 	 * @property    suffix-icon
 	 * @type        string
 	 */
-	@bindable() suffixIcon:string;
+	@bindable()
+	suffixIcon:string;
 	/**
 	 * @property    suffix-text
 	 * @type        string
 	 */
-	@bindable() suffixText:string;
+	@bindable()
+	suffixText:string;
 
 	/**
 	 * @property    button-icon
 	 * @type        string
 	 */
-	@bindable() buttonIcon:string;
+	@bindable()
+	buttonIcon:string;
 	/**
 	 * @property    button-text
 	 * @type        string
 	 */
-	@bindable() buttonText:string;
+	@bindable()
+	buttonText:string;
 
 	/**
 	 * @property    help-text
 	 * @type        string
 	 */
-	@bindable() helpText:string;
+	@bindable()
+	helpText:string;
 
 	/**
 	 * @property    placeholder
 	 * @type        string
 	 */
-	@bindable() placeholder:string = '';
+	@bindable()
+	placeholder:string = '';
 
 	/**
 	 * @property    dir
 	 * @type        string
 	 */
-	@bindable() dir:string = '';
+	@bindable()
+	dir:string = '';
 
 	bind() {
 		super.bind();
@@ -113,33 +124,24 @@ export class UIInput extends UIInputGroup {
 		}
 	}
 
-	protected format(evt) {
+	protected formatter(evt) {
 		let val   = isEmpty(evt.target.value) ? '' : evt.target.value;
 		let start = evt.target.selectionStart;
 		if (this.__format === 'title') {
 			val = val.replace(new RegExp(`[${this.ALPHA}'\\-']+(?=[\\.&\\s]*)`, 'g'), (txt) => {
-				if (txt.toLowerCase()
-					   .indexOf("mc") == 0) {
-					return txt.substr(0, 1)
-							  .toUpperCase() +
-						txt.substr(1, 1)
-						   .toLowerCase() +
-						txt.substr(2, 1)
-						   .toUpperCase() +
+				if (txt.toLowerCase().indexOf("mc") == 0) {
+					return txt.substr(0, 1).toUpperCase() +
+						txt.substr(1, 1).toLowerCase() +
+						txt.substr(2, 1).toUpperCase() +
 						txt.substr(3);
 				}
-				if (txt.toLowerCase()
-					   .indexOf("mac") == 0) {
-					return txt.substr(0, 1)
-							  .toUpperCase() +
-						txt.substr(1, 2)
-						   .toLowerCase() +
-						txt.substr(3, 1)
-						   .toUpperCase() +
+				if (txt.toLowerCase().indexOf("mac") == 0) {
+					return txt.substr(0, 1).toUpperCase() +
+						txt.substr(1, 2).toLowerCase() +
+						txt.substr(3, 1).toUpperCase() +
 						txt.substr(4);
 				}
-				return txt.charAt(0)
-						  .toUpperCase() + txt.substr(1);
+				return txt.charAt(0).toUpperCase() + txt.substr(1);
 			});
 		}
 		else if (this.__format === 'email' || this.__format === 'url') {

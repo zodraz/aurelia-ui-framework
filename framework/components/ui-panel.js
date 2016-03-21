@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+    "use strict";
     var UIPanel = (function () {
         function UIPanel(element) {
             this.element = element;
@@ -21,12 +22,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UIPanel);
         return UIPanel;
-    })();
+    }());
     exports.UIPanel = UIPanel;
     var UIHeader = (function () {
         function UIHeader(element) {
             this.element = element;
             this.close = false;
+            this.expand = false;
             this.collapse = false;
             if (element.hasAttribute('primary'))
                 this.element.classList.add('ui-primary');
@@ -35,10 +37,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         }
         UIHeader.prototype.bind = function () {
             this.close = isTrue(this.close);
+            this.expand = isTrue(this.expand);
             this.collapse = isTrue(this.collapse);
         };
         UIHeader.prototype.closeChanged = function (newValue) {
             this.close = isTrue(newValue);
+        };
+        UIHeader.prototype.expandChanged = function (newValue) {
+            this.expand = isTrue(newValue);
         };
         UIHeader.prototype.collapseChanged = function (newValue) {
             this.collapse = isTrue(newValue);
@@ -46,13 +52,24 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UIHeader.prototype.fireClose = function () {
             ui_event_1.UIEvent.fireEvent('close', this.element);
         };
+        UIHeader.prototype.fireExpand = function () {
+            ui_event_1.UIEvent.fireEvent('expand', this.element);
+        };
         UIHeader.prototype.fireCollapse = function () {
             ui_event_1.UIEvent.fireEvent('collapse', this.element);
         };
         __decorate([
             aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIHeader.prototype, "icon", void 0);
+        __decorate([
+            aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIHeader.prototype, "close", void 0);
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], UIHeader.prototype, "expand", void 0);
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
@@ -64,7 +81,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UIHeader);
         return UIHeader;
-    })();
+    }());
     exports.UIHeader = UIHeader;
     var UIBody = (function () {
         function UIBody(element) {
@@ -81,6 +98,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UIBody);
         return UIBody;
-    })();
+    }());
     exports.UIBody = UIBody;
 });

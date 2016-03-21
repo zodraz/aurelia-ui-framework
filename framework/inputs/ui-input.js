@@ -13,6 +13,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "./ui-input-group"], function (require, exports, aurelia_framework_1, ui_input_group_1) {
+    "use strict";
     var UIInput = (function (_super) {
         __extends(UIInput, _super);
         function UIInput() {
@@ -50,33 +51,24 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
                 this.__type = 'search';
             }
         };
-        UIInput.prototype.format = function (evt) {
+        UIInput.prototype.formatter = function (evt) {
             var val = isEmpty(evt.target.value) ? '' : evt.target.value;
             var start = evt.target.selectionStart;
             if (this.__format === 'title') {
                 val = val.replace(new RegExp("[" + this.ALPHA + "'\\-']+(?=[\\.&\\s]*)", 'g'), function (txt) {
-                    if (txt.toLowerCase()
-                        .indexOf("mc") == 0) {
-                        return txt.substr(0, 1)
-                            .toUpperCase() +
-                            txt.substr(1, 1)
-                                .toLowerCase() +
-                            txt.substr(2, 1)
-                                .toUpperCase() +
+                    if (txt.toLowerCase().indexOf("mc") == 0) {
+                        return txt.substr(0, 1).toUpperCase() +
+                            txt.substr(1, 1).toLowerCase() +
+                            txt.substr(2, 1).toUpperCase() +
                             txt.substr(3);
                     }
-                    if (txt.toLowerCase()
-                        .indexOf("mac") == 0) {
-                        return txt.substr(0, 1)
-                            .toUpperCase() +
-                            txt.substr(1, 2)
-                                .toLowerCase() +
-                            txt.substr(3, 1)
-                                .toUpperCase() +
+                    if (txt.toLowerCase().indexOf("mac") == 0) {
+                        return txt.substr(0, 1).toUpperCase() +
+                            txt.substr(1, 2).toLowerCase() +
+                            txt.substr(3, 1).toUpperCase() +
                             txt.substr(4);
                     }
-                    return txt.charAt(0)
-                        .toUpperCase() + txt.substr(1);
+                    return txt.charAt(0).toUpperCase() + txt.substr(1);
                 });
             }
             else if (this.__format === 'email' || this.__format === 'url') {
@@ -143,6 +135,6 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             __metadata('design:paramtypes', [])
         ], UIInput);
         return UIInput;
-    })(ui_input_group_1.UIInputGroup);
+    }(ui_input_group_1.UIInputGroup));
     exports.UIInput = UIInput;
 });

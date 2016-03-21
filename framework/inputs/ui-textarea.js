@@ -13,6 +13,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "./ui-input-group"], function (require, exports, aurelia_framework_1, ui_input_group_1) {
+    "use strict";
     var UITextArea = (function (_super) {
         __extends(UITextArea, _super);
         function UITextArea() {
@@ -86,6 +87,6 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             __metadata('design:paramtypes', [])
         ], UITextArea);
         return UITextArea;
-    })(ui_input_group_1.UIInputGroup);
+    }(ui_input_group_1.UIInputGroup));
     exports.UITextArea = UITextArea;
 });

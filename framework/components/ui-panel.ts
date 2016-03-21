@@ -22,8 +22,14 @@ export class UIPanel {
 @useView('./ui-header.html')
 @customElement("ui-header")
 export class UIHeader {
-	@bindable close:boolean    = false;
-	@bindable collapse:boolean = false;
+	@bindable
+	icon:string;
+	@bindable
+	close:boolean    = false;
+	@bindable
+	expand:boolean   = false;
+	@bindable
+	collapse:boolean = false;
 
 
 	constructor(public element:Element) {
@@ -33,11 +39,16 @@ export class UIHeader {
 
 	bind() {
 		this.close    = isTrue(this.close);
+		this.expand   = isTrue(this.expand);
 		this.collapse = isTrue(this.collapse);
 	}
 
 	closeChanged(newValue) {
 		this.close = isTrue(newValue);
+	}
+
+	expandChanged(newValue) {
+		this.expand = isTrue(newValue);
 	}
 
 	collapseChanged(newValue) {
@@ -46,6 +57,10 @@ export class UIHeader {
 
 	fireClose() {
 		UIEvent.fireEvent('close', this.element);
+	}
+
+	fireExpand() {
+		UIEvent.fireEvent('expand', this.element);
 	}
 
 	fireCollapse() {

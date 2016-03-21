@@ -18,26 +18,31 @@ export class UIViewport {
 	 * @property    router
 	 * @type        Aurelia Router
 	 */
-	@bindable() router:Router;
+	@bindable()
+	router:Router;
 
-	/**
-	 * @property    options
-	 * @type        UIViewportOptions
-	 */
-	@bindable() options:UIViewportOptions;
+
+	@bindable()
+	subtitle:string     = '';
+	@bindable()
+	copyright:string    = '';
+	@bindable()
+	showMenu:boolean    = true;
+	@bindable()
+	showTaskbar:boolean = true;
 
 	constructor(public element:Element, public appState:UIApplication, container:Container) {
 		UIUtils.container(container);
 		this.appState.info(this.constructor.name, "UIViewport Created");
 	}
 
-	showMenu($event) {
+	__showMenu($event) {
 		$event.stopPropagation();
 		this.element.classList.add('show-menu');
 		this.appState.info(this.constructor.name, "showMenu");
 	}
 
-	hideMenu($event) {
+	__hideMenu($event) {
 		if (this.element.classList.contains('show-menu')) {
 			this.appState.info(this.constructor.name, "hideMenu");
 			this.element.classList.remove('show-menu');
@@ -48,20 +53,5 @@ export class UIViewport {
 	logout() {
 		this.appState.info(this.constructor.name, "fire logout event");
 		UIEvent.fireEvent('logout', this.element);
-	}
-}
-
-export class UIViewportOptions {
-	logo          = "images/logo.png";
-	title         = 'Aurelia UI Framework';
-	subtitle      = 'Version 2';
-	copyright     = "Copyright &copy; 2016, Adarsh Pastakia";
-	footerMessage = "Made With <span class='heart'>&hearts;</span> For HMC";
-
-	showMenu    = true;
-	showTaskbar = true;
-
-	constructor(obj:any = {}) {
-		Object.assign(this, obj);
 	}
 }

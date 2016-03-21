@@ -8,8 +8,9 @@
 .ui-ribbon-wrapper {
   @include position(absolute, null);
   @include size(8em, 8em);
-  z-index  : $z-index-ribbon;
-  overflow : hidden;
+  z-index        : $z-index-ribbon;
+  overflow       : hidden;
+  pointer-events : none;
 
   &.ui-tr {
 	top   : -1px;

@@ -4,13 +4,13 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, bindingMode, useShadowDOM} from "aurelia-framework";
+import {autoinject, customElement, bindable, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
 @customElement('ui-switch')
 export class UISwitch {
-	private __id = `auf-${seed++}`;
+	private __id = `auf-${__seed++}`;
 	private __input:Element;
 	private __switch:HTMLElement;
 	private __label:Element;
@@ -20,28 +20,32 @@ export class UISwitch {
 	 * @property    label-on
 	 * @type        string
 	 */
-	@bindable() labelOn:string   = 'On';
+	@bindable()
+	labelOn:string          = 'On';
 	/**
 	 * @property    label-off
 	 * @type        string
 	 */
-	@bindable() labelOff:string  = 'Off';
+	@bindable()
+	labelOff:string         = 'Off';
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean        = false;
 	/**
 	 * @property    width
 	 * @type        number
 	 */
-	@bindable() width:any;
+	@bindable()
+	width:any;
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	private checked:boolean      = false;
+	private checked:boolean = false;
 
 	constructor(public element:Element) {
 

@@ -9,10 +9,9 @@
 				<p>Most important change to the new version, removed the dependency on jQuery and jQuery based
 					components.</p>
 				<p>Flattened look & feel, using only shadows as visual indicators on buttons and switches.</p>
-				<p>UI Elements glyph icon fonts <a href="./fonts/material/flaticon.html" target="_blank">Google Material
-					Font</a>,
-					Alternate glyph icon fonts <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a
-							href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
+				<p>Glyph icon fonts included <a href="./fonts/material/flaticon.html" target="_blank">Google Material
+					Font</a>, <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a
+						href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
 				<p>Changed color library from Crayola Crayon colors to <a href="#/colors">Copic Marker</a> colors.</p>
 				<p>Current theme colors: (primary, secondary, info, danger, success, warning)</p>
 				<div>
@@ -78,9 +77,17 @@
 			<div>
 				<ui-toolbar>
 					<ui-column fill>Toolbar text</ui-column>
-					<ui-button small success label="Tool"></ui-button>
+					<ui-button-group square>
+						<ui-button icon="fi-ui-edit-thick" info></ui-button>
+						<ui-button icon="fi-ui-delete-black" danger></ui-button>
+					</ui-button-group>
+					<ui-button-group square>
+						<ui-button icon="fi-vaadin-add-square"></ui-button>
+						<ui-button icon="fi-vaadin-minus-button"></ui-button>
+					</ui-button-group>
 					<ui-divider></ui-divider>
-					<ui-button small danger label="Tool"></ui-button>
+					<ui-button primary label="Tool"></ui-button>
+					<ui-button warning label="Tool"></ui-button>
 				</ui-toolbar>
 			</div>
 			<hr/>
@@ -207,17 +214,20 @@
 									   value.bind="model.lat" value-second.bind="model.long"
 									   placeholder="-90 to 90" placeholder-second="-180 to 180">Location
 						</ui-input-dual>
-					</ui-column>
-					<ui-column padded>
 						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
-					</ui-column>
-				</ui-row>
-				<ui-row>
-					<ui-column padded>
-						<ui-phone country="ae">National Phone</ui-phone>
-					</ui-column>
-					<ui-column padded>
+						<ui-phone country.bind="ctry">National Phone</ui-phone>
 						<ui-phone international>International Phone</ui-phone>
+						<ui-date>Date</ui-date>
+						<ui-date range>Date Range</ui-date>
+						<ui-combo options.bind="months">ComboBox</ui-combo>
+						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag"
+								  prefix-icon="ui-flag ${ctry}" suffix-text.bind="ctry"
+								  display-property="name" value-property="iso2" value.bind="ctry">Countries
+						</ui-combo>
+					</ui-column>
+					<ui-column padded>
+						<ui-markdown>Markdown Editor</ui-markdown>
+						<ui-date-view date.bind="dt"></ui-date-view>
 					</ui-column>
 				</ui-row>
 			</ui-form>
@@ -247,16 +257,52 @@
 				</ui-column>
 			</ui-row>
 			<hr/>
+			<h2>Dialogs</h2>
+			<div>
+				<ui-button label="Open New Window" click.trigger="showDialog(false)"></ui-button>
+				<ui-button label="Open Modal Window" click.trigger="showDialog(true)"></ui-button>
+			</div>
+			<hr/>
 			<h2>Tab Panel</h2>
 			<div style="height: 600px;position: relative;" class="ui-border-all">
 				<ui-tab-panel>
 					<ui-tab label="Markdown" scroll>
 						<div innerhtml.bind="md | markdown" class="ui-markdown"></div>
 					</ui-tab>
-					<ui-tab icon="fi-vaadin-palette" label="Copic Colors" scroll>
+					<ui-tab label="Editor" flex>
+						<ui-markdown full-view value.bind="md" label-hide></ui-markdown>
+					</ui-tab>
+					<ui-tab icon="fi-material-painter-palette" label="Copic Colors" scroll>
 						<compose view-model="./colors"></compose>
 					</ui-tab>
-					<ui-tab label="Tree" class="ui-column-row">
+					<ui-tab label="DataGrid" flex>
+						<ui-toolbar>
+							<ui-column fill><p>Filters Here</p></ui-column>
+							<ui-column>
+								<ui-pager total="5"></ui-pager>
+							</ui-column>
+							<ui-divider></ui-divider>
+							<ui-button square small icon="fi-vaadin-rotate-left"></ui-button>
+						</ui-toolbar>
+						<ui-datagrid data-list.bind="data" summary-row="true" default-sort="FName"
+									 linkclick.trigger="linkClicked($event)">
+							<ui-data-column locked center width="50" data-id="id">ID</ui-data-column>
+							<ui-data-column locked resizeable sortable link summary="Total"
+											data-id="FName" display.call="formatName($event)">Name
+							</ui-data-column>
+							<ui-data-column locked data-id="view" view button-title="Preview"
+											width="90" button.call="checkAge($event)"></ui-data-column>
+							<ui-data-column locked data-id="edit" edit></ui-data-column>
+							<ui-data-column locked data-id="delete" delete></ui-data-column>
+							<ui-data-column date sortable data-id="SDate" format="DD MMM YYYY">Birthday</ui-data-column>
+							<ui-data-column data-id="SDate" from-now center></ui-data-column>
+							<ui-data-column data-id="Amount" currency symbol="$" summary="sum">Amount
+							</ui-data-column>
+							<ui-data-column data-id="Count" number format="0.000a" summary="sum">Count
+							</ui-data-column>
+						</ui-datagrid>
+					</ui-tab>
+					<ui-tab label="Tree" flex>
 						<ui-section row>
 							<ui-sidebar>
 								<ui-tree checked.trigger="checked = $event.detail" model.bind="treeModel"

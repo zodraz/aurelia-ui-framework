@@ -22,7 +22,7 @@ export class UIHttpService {
 		httpClient.configure(
 			config => {
 				config
-					.withBaseUrl(appState.BaseUrl)
+					.withBaseUrl(appState.HttpConfig.BaseUrl)
 					.withDefaults({})
 					.withInterceptor({
 										 request(request) {
@@ -38,19 +38,24 @@ export class UIHttpService {
 												 eventAggregator.publish('Unauthorized', null);
 											 }
 											 if (response.status != 200) {
+												 let j;
+												 try {
+													 j = response.json();
+												 } catch (e) {
+												 }
+												 if (j && j.message) throw new Error(j.message);
+												 else if (j && j.error) throw new Error(j.error);
 												 throw Error(response.statusText);
 											 }
 											 return response;
 										 },
 										 requestError(error) {
 											 appState.IsHttpInUse = false;
-											 throw error;
-											 return null;
+											 return error;
 										 },
 										 responseError(error) {
 											 appState.IsHttpInUse = false;
-											 throw error;
-											 return null;
+											 return error;
 										 }
 									 });
 			});
@@ -108,10 +113,11 @@ export class UIHttpService {
 			'X-Requested-With'           : 'Fetch',
 			'Accept'                     : 'application/json',
 			'Content-Type'               : 'application/json',
-			'Access-Control-Allow-Origin': '*'
+			'Access-Control-Allow-Origin': '*',
 		};
+		Object.assign(headers, this.appState.HttpConfig.Headers || {});
 
-		if (this.appState.SendAuthHeader && !isEmpty(this.appState.AuthUser)) {
+		if (this.appState.HttpConfig.AuthorizationHeader && !isEmpty(this.appState.AuthUser)) {
 			var token                = this.appState.AuthUser + ":" + this.appState.AuthToken;
 			var hash                 = btoa(token);
 			headers['Authorization'] = "Basic " + hash;

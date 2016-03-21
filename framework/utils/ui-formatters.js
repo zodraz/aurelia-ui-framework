@@ -1,4 +1,5 @@
 define(["require", "exports", "./ui-utils"], function (require, exports, ui_utils_1) {
+    "use strict";
     var UIFormat;
     (function (UIFormat) {
         function toHTML(md) {
@@ -49,5 +50,11 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
                     .format('0.00 %');
         }
         UIFormat.percent = percent;
+        function exRate(nm) {
+            return nm === null || isNaN(nm) ? '' :
+                ui_utils_1.numeral(nm > 0 ? 1 / nm : nm)
+                    .format('0.0000[a]');
+        }
+        UIFormat.exRate = exRate;
     })(UIFormat = exports.UIFormat || (exports.UIFormat = {}));
 });

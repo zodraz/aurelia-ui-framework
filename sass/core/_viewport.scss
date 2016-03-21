@@ -9,6 +9,13 @@
   @include flex-column();
   @include position(absolute, 0, 0, 0, 0);
 
+  .ui-app-logo {
+	width           : 3em;
+	height          : 3em;
+	background      : image_url('logo.png') no-repeat center center;
+	background-size : 2.8em 2.8em;
+  }
+
   .ui-app-header {
 	color      : $app-header-text;
 	background : $app-header-bg;
@@ -25,15 +32,21 @@
 	  a {
 		color : $app-header-text;
 	  }
+	  span.nosub {
+		font-size   : 1.5em;
+		font-weight : $font-weight-normal;
+	  }
 	  small {
-		display : block;
-		color   : $text-muted;
+		font-weight : $font-weight-normal;
+		display     : block;
+		color       : $text-muted;
+		font-size   : 0.75em;
+		margin-top  : 0.2em
 	  }
 	}
 
 	.ui-app-logo {
 	  @include flex(0 0 auto);
-	  height : 2em;
 	}
 
 	.ui-app-menu-handle {
@@ -48,6 +61,10 @@
 	.ui-app-header-options {
 	  @include flex(0 0 auto);
 	  padding : 0 0.5em;
+	  .ui-button {
+		font-size : 1.2em;
+		padding   : 0.25em;
+	  }
 	}
   }
 
@@ -63,6 +80,30 @@
 	small {
 	  @include flex(0 0 auto);
 	  font-size : $app-footer-font-size;
+	}
+  }
+
+  .ui-app-taskbar {
+	min-height : 2em;
+	overflow   : hidden;
+	background : $base-bg;
+	border-top : 1px solid $base-border-color;
+
+	.ui-quick-links {
+	  display : inline-block;
+	  @include border(end, 1px solid $base-border-color);
+	}
+	.ui-button {
+	  font-size    : 0.8em;
+	  padding      : 0.25em;
+	  border-color : darken($button-default-bg, 10%);
+
+	  &.ui-active {
+		color        : $secondary-text;
+		background   : $secondary;
+		border-color : darken($secondary, 10%);
+		box-shadow   : 0 0 2px 0 $base-shadow-color inset !important;
+	  }
 	}
   }
 
@@ -110,6 +151,11 @@
 		border-color : $app-menu-active-border;
 		@include box-shadow(0 0 4px 0 #333 inset);
 	  }
+	  &[data-disabled="true"] {
+		color          : $wg-5;
+		pointer-events : none;
+		cursor         : not-allowed;
+	  }
 	}
 
 	hr {
@@ -139,11 +185,20 @@
 	}
   }
 
+  .ui-dialog-container {
+	@include position(absolute, 0, 0, 0, 0);
+	z-index        : $z-index-floating;
+	pointer-events : none;
+	&.ui-dragging {
+	  pointer-events : all;
+	}
+  }
+
   .ui-overlay-container {
 	@include position(absolute, 0, 0, 0, 0);
 	@include flex-column(flex-end, flex-start);
 	overflow       : hidden;
-	z-index        : $z-index-floating;
+	z-index        : $z-index-notify;
 	pointer-events : none;
 	padding        : 5em 0 1.5em;
   }

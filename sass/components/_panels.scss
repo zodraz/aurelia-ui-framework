@@ -21,15 +21,24 @@
 
   button {
 	@include flex(0 0 auto);
-	margin      : 0 0.1em;
+	margin      : 0 0.25em;
 	line-height : 1;
 	opacity     : 0.75;
+	padding     : 0 0.25em;
 	&:hover {
 	  opacity : 1;
 	}
 	@include transition(all 0.25s);
 	&.ui-close {
 	  font-size : 0.5em;
+	}
+
+	&.ui-close span:before {
+	  content : $font-ui-close-thick;
+	}
+
+	&.ui-collapse span:before {
+	  content : $font-ui-arrow-up;
 	}
   }
 
@@ -39,6 +48,9 @@
 	button {
 	  color       : $primary-text;
 	  text-shadow : 0 1px 0 contrast($primary-text);
+	  &:active {
+		text-shadow : 0 -1px 0 contrast($primary-text);
+	  }
 	}
   }
 
@@ -48,6 +60,9 @@
 	button {
 	  color       : $secondary-text;
 	  text-shadow : 0 1px 0 contrast($secondary-text);
+	  &:active {
+		text-shadow : 0 -1px 0 contrast($secondary-text);
+	  }
 	}
   }
 }
@@ -75,9 +90,8 @@
 	  max-height : 0;
 	}
 
-	button.ui-collapse {
-	  @include transform-origin(center center 0);
-	  @include transform(rotate(180deg));
+	button.ui-collapse span:before {
+	  content : $font-ui-arrow-down;
 	}
   }
 }

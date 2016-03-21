@@ -9,12 +9,14 @@ import 'lodash';
 import 'moment';
 import 'numeral';
 import './libs/marked';
+import './libs/highlight';
 import './libs/phonelib';
 import './data/countries';
 import './data/currencies';
 import {FrameworkConfiguration} from "aurelia-framework";
+import {UIApplication} from "./utils/ui-application";
 
-export function configure(aurelia:FrameworkConfiguration) {
+export function configure(aurelia:FrameworkConfiguration, configCallback) {
 	///** Core **/
 	aurelia.globalResources('./core/ui-viewport');
 	aurelia.globalResources('./core/ui-page');
@@ -23,9 +25,11 @@ export function configure(aurelia:FrameworkConfiguration) {
 	///** Components **/
 	aurelia.globalResources('./components/ui-menu');
 	aurelia.globalResources('./components/ui-form');
-	aurelia.globalResources('./components/ui-tree');
 	aurelia.globalResources('./components/ui-ribbon');
 	aurelia.globalResources('./components/ui-panel');
+	aurelia.globalResources('./components/ui-login');
+	aurelia.globalResources('./components/ui-tree');
+	aurelia.globalResources('./components/ui-datagrid');
 	aurelia.globalResources('./components/ui-tab-panel');
 
 	/** Inputs **/
@@ -34,20 +38,26 @@ export function configure(aurelia:FrameworkConfiguration) {
 	aurelia.globalResources('./inputs/ui-option');
 	aurelia.globalResources('./inputs/ui-input');
 	aurelia.globalResources('./inputs/ui-phone');
-	//aurelia.globalResources('./inputs/ui-combobox');
+	aurelia.globalResources('./inputs/ui-markdown');
 	aurelia.globalResources('./inputs/ui-textarea');
 	aurelia.globalResources('./inputs/ui-input-dual');
+	aurelia.globalResources('./inputs/ui-combo');
+	aurelia.globalResources('./inputs/ui-date');
+	aurelia.globalResources('./inputs/ui-date-view');
 
 	/** Utils **/
 	aurelia.globalResources('./utils/ui-converters');
-}
 
-export {UIViewportOptions} from "./core/ui-viewport";
+	if (configCallback !== undefined && typeof configCallback === 'function') {
+		configCallback(UIApplication.defaults);
+	}
+}
 
 export {UIEvent} from "./utils/ui-event";
 export {UIFormat} from "./utils/ui-formatters";
-export {UIApplication} from "./utils/ui-application";
+export {UIApplication, AuthInterceptor} from "./utils/ui-application";
 export {UIModel} from "./utils/ui-model";
+export {UIDialogService,UIDialog} from "./components/ui-dialog";
 export {UITreeModel, UITreeOptions, UITreePanel} from "./utils/ui-tree-models";
 export {UIHttpService} from "./utils/ui-http-service";
 export {UIValidationStrategy} from "./utils/ui-validation";

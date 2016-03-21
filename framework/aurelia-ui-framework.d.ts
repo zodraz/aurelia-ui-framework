@@ -10,26 +10,6 @@ declare module "aurelia-ui-framework" {
 
 /** CORE **/
 declare module "aurelia-ui-framework" {
-	// UIVIewport
-	export class UIViewportOptions {
-		// App Logo - Relative Path | URL
-		logo:string;
-		// App Title
-		title:string;
-		// App Subtitle
-		subtitle:string;
-		// Footer Copyright
-		copyright:string;
-		// Footer Message
-		footerMessage:string;
-
-		// Show app side menu
-		showMenu:boolean;
-		// Show Taskbar multiple dialogs
-		showTaskbar:boolean;
-
-		constructor(obj?);
-	}
 }
 
 /** UTILS **/
@@ -39,14 +19,29 @@ declare module "aurelia-ui-framework" {
 
 	// Application State Class
 	export class UIApplication {
+
+		static defaults;
+
 		IsHttpInUse:boolean;
 		IsAuthenticated:boolean;
 		SendAuthHeader:boolean;
 
+		AppConfig:UIAppConfig;
+		HttpConfig:UIHttpConfig;
+
 		Username:string;
+		UserGroup:string;
+
+		AuthUser:string;
 		AuthToken:string;
 
+		navigate(hash):void;
+
+		navigateTo(route, params?):void;
+
 		session(key, value?):any;
+
+		clearSession():void;
 
 		persist(key, value?):any;
 
@@ -59,6 +54,20 @@ declare module "aurelia-ui-framework" {
 		error(tag:string, msg:string, ...rest);
 
 		toast(config:any);
+	}
+
+	export interface UIAppConfig {
+		// App Key - Relative Path | URL
+		Key:string;
+		// App Title
+		Title:string;
+		// App Version
+		Version:string;
+	}
+	export interface UIHttpConfig {
+		BaseUrl:string;
+		Headers:Map<string,string>;
+		AuthorizationHeader:boolean;
 	}
 
 	// Utilities
@@ -106,15 +115,24 @@ declare module "aurelia-ui-framework" {
 }
 
 // Global methods
-declare var seed;
+declare var __seed;
+declare var Constants;
 
 declare function isTrue(b:any):boolean;
 declare function isEmpty(a:any):boolean;
+declare function isFunction(a:any):boolean;
+declare function getParentByTag(element:Element, selector:string):HTMLElement;
+declare function getParentByClass(element:Element, selector:string, lastElement?:string):HTMLElement;
 
 interface Window {
 	isTrue;
 	isEmpty;
-	seed:number;
+	isFunction;
+	getParentByTag;
+	getParentByClass;
+
+	__seed:number;
+	Constants:any;
 }
 declare module 'aurelia-validation' {
 	export interface ValidationGroup {

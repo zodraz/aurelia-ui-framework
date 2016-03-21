@@ -8,10 +8,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_event_1) {
+    "use strict";
     var UISwitch = (function () {
         function UISwitch(element) {
             this.element = element;
-            this.__id = "auf-" + seed++;
+            this.__id = "auf-" + __seed++;
             this.labelOn = 'On';
             this.labelOff = 'Off';
             this.disabled = false;
@@ -93,6 +94,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:paramtypes', [Element])
         ], UISwitch);
         return UISwitch;
-    })();
+    }());
     exports.UISwitch = UISwitch;
 });

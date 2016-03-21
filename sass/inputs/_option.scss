@@ -42,30 +42,31 @@
 	  font     : {
 		size   : 1.2em;
 		weight : 100;
-		family : Material;
+		family : Framework;
 	  }
 	}
   }
 
   &.ui-checkbox .ui-check-mark {
 	&:after {
-	  content : '\f11b';
+	  content : $font-ui-check-off;
 	}
   }
   &.ui-radio .ui-check-mark {
 	&:after {
-	  content : '\f145';
+	  content : $font-ui-radio-off;
 	}
 	border-radius : 50%;
   }
   &.ui-checkbox .ui-option-input:checked ~ .ui-check-mark:after {
-	content : '\f117';
+	content : $font-ui-check-on;
   }
   &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
-	content : '\f20d';
+	content : $font-ui-radio-on;
   }
 
   .ui-option-label {
+	color   : $input-label;
 	padding : 0.15em 0;
 	@include flex(0 0 auto);
 	@include padding(end, 0.5em);

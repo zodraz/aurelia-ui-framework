@@ -16,7 +16,7 @@
 			<div class="ui-input-wrapper">
 				<input class="ui-input" id="${__id}" type.bind="__type" autocomplete="off" size="1"
 					   value.bind="__value" placeholder.bind="placeholder" ref="__input" dir="${dir}"/>
-				<span class="ui-clear fi-material-clear-button ${__value?'show-clear':''}"
+				<span class="ui-clear fi-ui-close-light ${__value?'show-clear':''}"
 					  click.trigger="clearInput()" if.bind="__clear"></span>
 			</div>
 			<div class="ui-addon" if.bind="centerIcon || centerText">
@@ -26,7 +26,7 @@
 			<div class="ui-input-wrapper" if.bind="__dual">
 				<input class="ui-input" id="${__id+'-second'}" type.bind="__type" size="1" dir="${dir}"
 					   autocomplete="off" value.bind="__value2" placeholder.bind="placeholderSecond" ref="__input2"/>
-				<span class="ui-clear fi-material-clear-button ui-clear2 ${__value2?'show-clear':''}"
+				<span class="ui-clear fi-ui-close-light ui-clear2 ${__value2?'show-clear':''}"
 					  click.trigger="clearInput(true)" if.bind="__clear"></span>
 			</div>
 			<div class="ui-addon" if.bind="suffixIcon || suffixText">

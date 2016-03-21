@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
+import {customElement, bindable, useView, bindingMode} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 
 @useView('./ui-input.html')
@@ -22,70 +22,75 @@ export class UIPhone extends UIInputGroup {
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	value:string                 = '';
+	value:string     = '';
 	/**
 	 * @property    isd-code
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	isdCode:string               = '';
+	isdCode:string   = '';
 	/**
 	 * @property    area-code
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	areaCode:string              = '';
+	areaCode:string  = '';
 	/**
 	 * @property    phone
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	phone:string                 = '';
+	phone:string     = '';
 	/**
 	 * @property    extension
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	extension:string             = '';
+	extension:string = '';
 	/**
 	 * @property    country
 	 * @type        string
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	country:string               = 'us';
+	country:string   = 'us';
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean              = false;
+	checked:boolean  = false;
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable() disabled:boolean = false;
+	@bindable()
+	disabled:boolean = false;
 	/**
 	 * @property    readonly
 	 * @type        boolean
 	 */
-	@bindable() readonly:boolean = false;
+	@bindable()
+	readonly:boolean = false;
 
 	/**
 	 * @property    button-icon
 	 * @type        string
 	 */
-	@bindable() buttonIcon:string;
+	@bindable()
+	buttonIcon:string;
 	/**
 	 * @property    button-text
 	 * @type        string
 	 */
-	@bindable() buttonText:string;
+	@bindable()
+	buttonText:string;
 
 	/**
 	 * @property    help-text
 	 * @type        string
 	 */
-	@bindable() helpText:string;
+	@bindable()
+	helpText:string;
 
 	bind() {
 		super.bind();

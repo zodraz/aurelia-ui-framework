@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], function (require, exports, aurelia_framework_1, ui_utils_1) {
+    "use strict";
     var UIPage = (function () {
         function UIPage(element) {
             this.element = element;
@@ -25,7 +26,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [Element])
         ], UIPage);
         return UIPage;
-    })();
+    }());
     exports.UIPage = UIPage;
     var UISection = (function () {
         function UISection(element) {
@@ -45,7 +46,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [Element])
         ], UISection);
         return UISection;
-    })();
+    }());
     exports.UISection = UISection;
     var UIContent = (function () {
         function UIContent(element) {
@@ -67,7 +68,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [Element])
         ], UIContent);
         return UIContent;
-    })();
+    }());
     exports.UIContent = UIContent;
     var UISidebar = (function () {
         function UISidebar(element) {
@@ -92,7 +93,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [Element])
         ], UISidebar);
         return UISidebar;
-    })();
+    }());
     exports.UISidebar = UISidebar;
     var UIDivider = (function () {
         function UIDivider() {
@@ -103,18 +104,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [])
         ], UIDivider);
         return UIDivider;
-    })();
+    }());
     exports.UIDivider = UIDivider;
     var UIToolbar = (function () {
         function UIToolbar() {
         }
         UIToolbar = __decorate([
             aurelia_framework_1.customElement('ui-toolbar'),
-            aurelia_framework_1.inlineView("<template class=\"ui-toolbar\" role=\"toolbar\"><content></content></template>"), 
+            aurelia_framework_1.inlineView("<template class=\"ui-toolbar ui-button-bar\" role=\"toolbar\"><content></content></template>"), 
             __metadata('design:paramtypes', [])
         ], UIToolbar);
         return UIToolbar;
-    })();
+    }());
     exports.UIToolbar = UIToolbar;
     var UIStatsbar = (function () {
         function UIStatsbar() {
@@ -125,7 +126,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [])
         ], UIStatsbar);
         return UIStatsbar;
-    })();
+    }());
     exports.UIStatsbar = UIStatsbar;
     var UIStat = (function () {
         function UIStat() {
@@ -144,6 +145,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             __metadata('design:paramtypes', [])
         ], UIStat);
         return UIStat;
-    })();
+    }());
     exports.UIStat = UIStat;
 });

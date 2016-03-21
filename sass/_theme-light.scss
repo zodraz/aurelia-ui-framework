@@ -5,6 +5,7 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 @import "utility/copic";
+@import "core/glyphs";
 
 $primary : $lapis-lazuli !default;
 $primary-text : $white !default;
@@ -67,6 +68,9 @@ $text-info : $info !default;
 $text-danger : $danger !default;
 $text-success : $success !default;
 $text-warning : $warning !default;
+
+$inline-code-bg : $tg-0 !default;
+$inline-code-text : $lipstick-red !default;
 
 $pre-code-bg : $wg-2 !default;
 $pre-code-text : $wg-9 !default;
@@ -143,6 +147,7 @@ $button-warning-text : $white !default;
 /** INPUTS **/
 $input-bg : $white-sp !default;
 $input-text : $wg-9 !default;
+$input-label : $wg-7 !default;
 $input-border : $wg-4 !default;
 $input-placeholder-text : $wg-3 !default;
 
@@ -158,13 +163,32 @@ $input-addon-text : $cg-7 !default;
 $input-button-bg : $secondary !default;
 $input-button-text : $secondary-text !default;
 
+/** DATE INPUT **/
+$date-weekday-bg : $secondary !default;
+$date-weekday-text : $secondary-text !default;
+
+$date-control-text : $primary !default;
+$date-control-hover-bg : $primary !default;
+$date-control-hover-text : $primary-text !default;
+
+$date-active : $base-text !default;
+$date-muted : $cg-5 !default;
+$date-week : $night-blue !default;
+$date-disabled : $cg-3 !default;
+$date-selected-bg : $primary !default;
+$date-selected-text : $primary-text !default;
+
+$date-icon : $font-ui-calendar !default;
+$date-prev : $font-ui-page-prev-line !default;
+$date-next : $font-ui-page-next-line !default;
+
 /** TABS **/
-$tab-bg : $wg-1 !default;
-$tab-text : $wg-7 !default;
+$tab-bg : $wg-00 !default;
+$tab-text : $wg-9 !default;
 $tab-border : $wg-3 !default;
 
-$tab-active-bg : $wg-00 !default;
-$tab-active-text : $wg-9 !default;
+$tab-active-bg : $white !default;
+$tab-active-text : $ng-9 !default;
 $tab-active-border : $primary !default;
 
 /** TOASTS **/
@@ -174,6 +198,27 @@ $toast-danger : $carmine !default;
 $toast-success : $mistletoe !default;
 $toast-warning : $atoll !default;
 $toast-text : $white !default;
+
+/** DATAGRID **/
+$datagrid-header-bg : $cg-0 !default;
+$datagrid-header-hover-bg : $cg-2 !default;
+$datagrid-footer-bg : $ng-0 !default;
+$datagrid-odd-bg : $white !default;
+$datagrid-even-row : $tg-1 !default;
+$datagrid-text : $tg-9 !default;
+
+$datagrid-button-view : $font-ui-preview-thin !default;
+$datagrid-button-edit : $font-ui-edit-thick !default;
+$datagrid-button-delete : $font-ui-delete-black !default;
+
+$datagrid-hover-bg : $aqua-blue !default;
+$datagrid-active-bg : $smoky-blue !default;
+$datagrid-indicator-color : $wg-7 !default;
+
+$pager-first-glyph : $font-ui-page-first-black !default;
+$pager-prev-glyph : $font-ui-page-prev-black !default;
+$pager-next-glyph : $font-ui-page-next-black !default;
+$pager-last-glyph : $font-ui-page-last-black !default;
 
 @import "framework!";
 

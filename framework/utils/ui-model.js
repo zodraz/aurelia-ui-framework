@@ -8,10 +8,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-validation", "./ui-http-service", "./ui-utils"], function (require, exports, aurelia_framework_1, aurelia_logging_1, aurelia_validation_1, ui_http_service_1, ui_utils_1) {
+    "use strict";
     var UIModel = (function () {
         function UIModel() {
-            this.__observers = [];
             var _v = ui_utils_1.UIUtils.lazy(aurelia_validation_1.Validation);
+            this.logger = aurelia_logging_1.getLogger(this.constructor.name);
             Object.defineProperties(this, {
                 'httpClient': {
                     value: ui_utils_1.UIUtils.lazy(ui_http_service_1.UIHttpService),
@@ -20,7 +21,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
                 },
                 'validation': {
                     value: _v.on(this, null),
-                    writable: false,
+                    writable: true,
                     enumerable: false
                 },
                 'logger': {
@@ -39,7 +40,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
                     enumerable: false
                 }
             });
-            this.logger.debug("Model Initialized");
+            this.logger.warn("Model Initialized");
         }
         UIModel.prototype.get = function () {
             var rest = [];
@@ -70,19 +71,23 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
             throw new Error('Not implemented [delete]');
         };
         UIModel.prototype.validate = function () {
+            this.logger.info('Validating...');
             return this.validation.validate();
         };
         UIModel.prototype.dispose = function () {
             this.logger.debug("Model Disposing");
-            while (this.__observers && this.__observers.length)
-                this.__observers.pop().dispose();
+            while (this.__observers && this.__observers.length) {
+                this.__observers.pop()
+                    .dispose();
+            }
         };
         UIModel.prototype.deserialize = function (json) {
             var _this = this;
             this.__original = ui_utils_1._.cloneDeep(json);
-            Object.keys(json)
+            Object.keys(this.__original)
                 .forEach(function (key) {
-                _this[key] = json[key];
+                if (_this.hasOwnProperty(key))
+                    _this[key] = json[key];
             });
         };
         UIModel.prototype.serialize = function () {
@@ -106,7 +111,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
                         _pojo[key] = o[key].join(',');
                     }
                     else {
-                        _pojo[key] = o[key] || null;
+                        _pojo[key] = isEmpty(o[key]) ? null : o[key];
                     }
                 }
             });
@@ -117,8 +122,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
             if (ui_utils_1._.isEmpty(this.__original)) {
                 Object.keys(this)
                     .forEach(function (key) {
-                    if (key !== 'undefined' && !/^__/.test(key))
+                    if (key !== 'undefined' && !/^__/.test(key)) {
                         _this.__original[key] = _this[key];
+                    }
                 });
             }
             return this.__checkDirty(this.__original, this);
@@ -151,6 +157,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
             __metadata('design:paramtypes', [])
         ], UIModel);
         return UIModel;
-    })();
+    }());
     exports.UIModel = UIModel;
 });

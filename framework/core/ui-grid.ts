@@ -28,8 +28,10 @@ export class UIRow {
 @inlineView(`<template class="ui-column" css.bind="{'flex-basis': width}"><content></content></template>`)
 export class UIColumn {
 
-	@bindable() size:string  = '';
-	@bindable() width:string = 'none';
+	@bindable()
+	size:string  = '';
+	@bindable()
+	width:string = 'none';
 
 	constructor(public element:Element) {
 	}
@@ -41,7 +43,7 @@ export class UIColumn {
 		else if (this.element.hasAttribute('full')) {
 			this.element.classList.add('ui-col-full');
 		}
-		else if(isEmpty(this.size)) {
+		else if (isEmpty(this.size)) {
 			this.element.classList.add('ui-col-auto');
 		}
 

@@ -1,4 +1,5 @@
 define(["require", "exports"], function (require, exports) {
+    "use strict";
     var Utils = (function () {
         function Utils() {
         }
@@ -18,6 +19,6 @@ define(["require", "exports"], function (require, exports) {
                 }]);
         };
         return Utils;
-    })();
+    }());
     exports.Utils = Utils;
 });

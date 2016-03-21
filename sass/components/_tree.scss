@@ -28,7 +28,7 @@
   }
 
   .ui-tree-level .ui-tree-level {
-	padding : 0 0.75em 0 1.6em;
+	padding : 0 0.75em 0 1.5em;
   }
 
   .ui-tree-item {
@@ -42,13 +42,16 @@
 	  @include flex(0 0 auto);
 
 	  padding       : 0.125em;
-	  font-size     : 0.25em;
+	  font-size     : 1em;
 	  line-height   : 1;
-	  margin        : 0 0.5em;
+	  margin        : 0 0.1em;
 	  border-radius : 0.2em;
 	  color         : $text-muted;
+	  & span:before {
+		content : $font-ui-square-expand;
+	  }
 	  &.expanded span:before {
-		content : '\f16a';
+		content : $font-ui-square-collapse;
 	  }
 	  &:hover {
 		color : $primary;
@@ -59,20 +62,20 @@
 	  @include flex(0 0 auto);
 
 	  padding     : 0.25em;
-	  font-size   : 0.75em;
+	  font-size   : 1em;
 	  color       : $base-shadow-color;
 	  font-weight : $font-weight-strong;
 	  &:hover {
 		color : $primary;
 	  }
 	  &.off span:before {
-		content : '\f11b';
+		content : $font-ui-tree-check-off;
 	  }
 	  &.on span:before {
-		content : '\f142';
+		content : $font-ui-tree-check-on;
 	  }
 	  &.partial span:before {
-		content : '\f116';
+		content : $font-ui-tree-check-partial;
 	  }
 
 	  &.on {
@@ -100,6 +103,7 @@
 	  b {
 		color           : $primary;
 		text-decoration : underline;
+		font-weight     : $font-weight-strong;
 	  }
 
 	  &:hover {

@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aurelia-event-aggregator", "./ui-application", "fetch"], function (require, exports, aurelia_framework_1, aurelia_fetch_client_1, aurelia_event_aggregator_1, ui_application_1) {
+    "use strict";
     var UIHttpService = (function () {
         function UIHttpService(httpClient, appState, eventAggregator) {
             this.httpClient = httpClient;
@@ -16,7 +17,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
             this.appState.info(this.constructor.name, 'Initialized');
             httpClient.configure(function (config) {
                 config
-                    .withBaseUrl(appState.BaseUrl)
+                    .withBaseUrl(appState.HttpConfig.BaseUrl)
                     .withDefaults({})
                     .withInterceptor({
                     request: function (request) {
@@ -32,19 +33,27 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                             eventAggregator.publish('Unauthorized', null);
                         }
                         if (response.status != 200) {
+                            var j = void 0;
+                            try {
+                                j = response.json();
+                            }
+                            catch (e) {
+                            }
+                            if (j && j.message)
+                                throw new Error(j.message);
+                            else if (j && j.error)
+                                throw new Error(j.error);
                             throw Error(response.statusText);
                         }
                         return response;
                     },
                     requestError: function (error) {
                         appState.IsHttpInUse = false;
-                        throw error;
-                        return null;
+                        return error;
                     },
                     responseError: function (error) {
                         appState.IsHttpInUse = false;
-                        throw error;
-                        return null;
+                        return error;
                     }
                 });
             });
@@ -96,9 +105,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 'X-Requested-With': 'Fetch',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
             };
-            if (this.appState.SendAuthHeader && !isEmpty(this.appState.AuthUser)) {
+            Object.assign(headers, this.appState.HttpConfig.Headers || {});
+            if (this.appState.HttpConfig.AuthorizationHeader && !isEmpty(this.appState.AuthUser)) {
                 var token = this.appState.AuthUser + ":" + this.appState.AuthToken;
                 var hash = btoa(token);
                 headers['Authorization'] = "Basic " + hash;
@@ -110,6 +120,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
             __metadata('design:paramtypes', [aurelia_fetch_client_1.HttpClient, ui_application_1.UIApplication, aurelia_event_aggregator_1.EventAggregator])
         ], UIHttpService);
         return UIHttpService;
-    })();
+    }());
     exports.UIHttpService = UIHttpService;
 });
