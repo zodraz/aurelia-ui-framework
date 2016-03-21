@@ -11,14 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UISection = (function () {
-        function UISection(el) {
-            this.dir = 'ui-flex-row';
-            if (el.hasAttribute('column'))
-                this.dir = 'ui-flex-column';
+        function UISection(element) {
+            this.element = element;
+            this.__dir = 'ui-flex-row';
+            if (element.hasAttribute('column')) {
+                this.__dir = 'ui-flex-column';
+            }
         }
         UISection = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-section"), 
             __metadata('design:paramtypes', [Element])
         ], UISection);

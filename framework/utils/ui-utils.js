@@ -5,9 +5,11 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
     var Utils;
     (function (Utils) {
         function lazy(T) {
-            if (!Utils.container)
+            if (!Utils.__container) {
                 return;
-            return aurelia_framework_1.Lazy.of(T).get(Utils.container)();
+            }
+            return aurelia_framework_1.Lazy.of(T)
+                .get(Utils.__container)();
         }
         Utils.lazy = lazy;
         function getAscii(str) {
@@ -104,7 +106,8 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                     l += aw;
                 }
             }
-            _f.css('max-height', '0').css('visibility', 'hidden');
+            _f.css('max-height', '0')
+                .css('visibility', 'hidden');
             return { top: t, left: l, hReverse: _hr, vReverse: _vr };
         }
         Utils.getFloatPosition = getFloatPosition;
@@ -112,48 +115,70 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
     var Format;
     (function (Format) {
         function toHTML(value) {
-            return marked(value, { sanitize: true, highlight: (function (v) { return v; }) });
+            return marked(value, {
+                sanitize: false,
+                highlight: (function (v) { return v; })
+            });
         }
         Format.toHTML = toHTML;
         function dateDisplay(value, format) {
             if (format === void 0) { format = 'DD MMM YYYY hh:mm A'; }
-            if (!exports.moment(value || null).isValid())
+            if (!exports.moment(value || null)
+                .isValid()) {
                 return '';
-            return exports.moment(value).format(format);
+            }
+            return exports.moment(value)
+                .format(format);
         }
         Format.dateDisplay = dateDisplay;
         function dateISO(value) {
-            if (!exports.moment(value || null).isValid())
+            if (!exports.moment(value || null)
+                .isValid()) {
                 return null;
-            return exports.moment(value).toISOString();
+            }
+            return exports.moment(value)
+                .toISOString();
         }
         Format.dateISO = dateISO;
         function dateGMT(value) {
-            if (!exports.moment(value || null).isValid())
+            if (!exports.moment(value || null)
+                .isValid()) {
                 return null;
-            return exports.moment(value).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+            }
+            return exports.moment(value)
+                .format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
         }
         Format.dateGMT = dateGMT;
         function dateOracle(value) {
-            if (!exports.moment(value || null).isValid())
+            if (!exports.moment(value || null)
+                .isValid()) {
                 return null;
-            return exports.moment(value).utc().format('DD-MMM-YYYY hh:mm:ss');
+            }
+            return exports.moment(value)
+                .utc()
+                .format('DD-MMM-YYYY hh:mm:ss');
         }
         Format.dateOracle = dateOracle;
         function dateSql(value) {
-            if (!exports.moment(value || null).isValid())
+            if (!exports.moment(value || null)
+                .isValid()) {
                 return null;
-            return exports.moment(value).utc().format('YYYY-MM-DD hh:mm:ss');
+            }
+            return exports.moment(value)
+                .utc()
+                .format('YYYY-MM-DD hh:mm:ss');
         }
         Format.dateSql = dateSql;
         function fromNow(value) {
-            return exports.moment(value).fromNow(false);
+            return exports.moment(value)
+                .fromNow(false);
         }
         Format.fromNow = fromNow;
         function numberDisplay(value, format) {
             if (format === void 0) { format = '0[.]00'; }
-            if (isNaN(parseFloat(value)))
+            if (isNaN(parseFloat(value))) {
                 return value;
+            }
             return exports.numeral(value)
                 .format(format)
                 .replace(/[^\d]+/g, function (txt) {
@@ -164,8 +189,9 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         function currencyDisplay(value, format, symbol) {
             if (format === void 0) { format = '$ 0[.]00'; }
             if (symbol === void 0) { symbol = '$'; }
-            if (isNaN(parseFloat(value)))
+            if (isNaN(parseFloat(value))) {
                 return value;
+            }
             return exports.numeral(value)
                 .format(format)
                 .replace('$', symbol)
@@ -175,10 +201,12 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         }
         Format.currencyDisplay = currencyDisplay;
         function exRate(value) {
-            if (isNaN(parseFloat(value)))
+            if (isNaN(parseFloat(value))) {
                 return ' ';
-            if (parseFloat(value || 0) <= 0)
+            }
+            if (parseFloat(value || 0) <= 0) {
                 return ' ';
+            }
             return numberDisplay(1 / parseFloat(value), '0.0000a') + '/$';
         }
         Format.exRate = exRate;
@@ -186,21 +214,24 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
     function watch(defaultValue) {
         var observer = Utils.lazy(aurelia_framework_1.BindingEngine);
         return function (viewModel, key) {
-            if (!viewModel._subscriptions)
-                viewModel._subscriptions = [];
-            var v = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
-            viewModel[key] = v || defaultValue;
-            viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
+            if (!viewModel.__subscriptions) {
+                viewModel.__subscriptions = [];
+            }
+            var _value = sessionStorage.getItem(viewModel.constructor.name + ":" + key);
+            viewModel[key] = _value || defaultValue;
+            viewModel.__subscriptions.push(observer.propertyObserver(viewModel, key)
                 .subscribe(function () {
                 sessionStorage.setItem(viewModel.constructor.name + ":" + key, viewModel[key]);
             }));
-            var _unbindHook = viewModel.unbind;
+            var __unbindHook = viewModel.unbind;
             viewModel.unbind = (function () {
-                while (viewModel._subscriptions.length) {
-                    viewModel._subscriptions.pop().dispose();
+                while (viewModel.__subscriptions.length) {
+                    viewModel.__subscriptions.pop()
+                        .dispose();
                 }
-                if (exports._.isFunction(_unbindHook))
-                    _unbindHook.call(viewModel);
+                if (exports._.isFunction(__unbindHook)) {
+                    __unbindHook.call(viewModel);
+                }
             });
         };
     }

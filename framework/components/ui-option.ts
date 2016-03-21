@@ -37,6 +37,8 @@ export class UIOption {
 	}
 
 	bind() {
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
+
 		this._type    = this._checkbox ? 'checkbox' : 'radio';
 		this._classes = this._checkbox ? 'ui-checkbox' : 'ui-radio';
 	}

@@ -7,13 +7,16 @@
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @customElement("ui-content")
 export class UIContent {
-	@bindable class:string = '';
+	private __classes;
 
-	constructor(el:Element) {
-		if (el.hasAttribute('auto')) this.class += ' ui-auto-height';
-		if (el.hasAttribute('scroll')) this.class += ' ui-scroll';
+	constructor(public element:Element) {
+		if (element.hasAttribute('auto')) {
+			this.__classes += ' ui-auto-height';
+		}
+		if (element.hasAttribute('scroll')) {
+			this.__classes += ' ui-scroll';
+		}
 	}
 }

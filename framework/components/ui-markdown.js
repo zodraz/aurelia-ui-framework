@@ -12,6 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "aurelia-framework", "./ui-input"], function (require, exports, aurelia_framework_1, ui_input_1) {
     var UIMarkdown = (function () {
         function UIMarkdown(element) {
+            this.element = element;
             this._noLabel = false;
             this._focus = false;
             this._classes = '';
@@ -36,6 +37,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
             }
         }
         UIMarkdown.prototype.bind = function () {
+            if (this.element.hasAttribute('readonly'))
+                this.readonly = true;
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
             this.value = this.value || '';
         };
         UIMarkdown.prototype.attached = function () {

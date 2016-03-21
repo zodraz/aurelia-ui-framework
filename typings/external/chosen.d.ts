@@ -19,6 +19,9 @@ interface ChosenOptions {
 	placeholder_text_single?: string;
 	no_results_text?: string;
 	inherit_select_classes?:boolean;
+	create_option?:boolean;
+	persistent_create_option?: boolean;
+	skip_no_results?:boolean;
 }
 
 interface JQuery {

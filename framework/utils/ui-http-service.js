@@ -16,21 +16,21 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             this.appState = appState;
             this.eventAggregator = eventAggregator;
             var self = this;
-            this.logger = aurelia_logging_1.getLogger('HttpService');
-            this.logger.debug('Initialized');
+            this.__logger = aurelia_logging_1.getLogger('HttpService');
+            this.__logger.debug('Initialized');
             httpClient.configure(function (config) {
                 config
                     .withBaseUrl(appState.BaseUrl)
                     .withDefaults({})
                     .withInterceptor({
                     request: function (request) {
-                        self.logger.info("Requesting " + request.method + " " + request.url);
+                        self.__logger.info("Requesting " + request.method + " " + request.url);
                         appState.IsHttpInUse = true;
                         request.url = encodeURI(request.url);
                         return request;
                     },
                     response: function (response) {
-                        self.logger.info("Response " + response.url + " " + response.status);
+                        self.__logger.info("Response " + response.url + " " + response.status);
                         appState.IsHttpInUse = false;
                         if (response.status == 401) {
                             eventAggregator.publish('Unauthorized', null);
@@ -52,7 +52,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
             });
         }
         UIHttpService.prototype.get = function (slug) {
-            this.logger.debug("get [" + slug + "]");
+            this.__logger.debug("get [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'get',
@@ -62,7 +62,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                 .then(function (response) { return response.json(); });
         };
         UIHttpService.prototype.put = function (slug, obj) {
-            this.logger.debug("put [" + slug + "]");
+            this.__logger.debug("put [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'put',
@@ -73,7 +73,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                 .then(function (response) { return response.json(); });
         };
         UIHttpService.prototype.post = function (slug, obj) {
-            this.logger.debug("post [" + slug + "]");
+            this.__logger.debug("post [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'post',
@@ -84,7 +84,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-f
                 .then(function (response) { return response.json(); });
         };
         UIHttpService.prototype.delete = function (slug) {
-            this.logger.debug("delete [" + slug + "]");
+            this.__logger.debug("delete [" + slug + "]");
             return this.httpClient
                 .fetch(slug, {
                 method: 'delete',

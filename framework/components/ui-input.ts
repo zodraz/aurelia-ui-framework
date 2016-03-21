@@ -109,6 +109,9 @@ export class UIInput {
 	}
 
 	bind() {
+		if (this.element.hasAttribute('readonly')) this.readonly = true;
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
+
 		this._valueChanged(this.value);
 	}
 
@@ -163,10 +166,10 @@ export class UIInput {
 					return (new RegExp('[' + this.ALPHA + '\'\\.\\-&\\s]', 'g'))
 						.test(String.fromCharCode(e.charCode));
 				}
-				else if (this._type == 'address') {
-					return (/\w*/)
-						.test(String.fromCharCode(e.charCode));
-				}
+				//else if (this._type == 'address') {
+				//	return (/\w*/)
+				//		.test(String.fromCharCode(e.charCode));
+				//}
 				else if (this._type == 'number') {
 					return (/[0-9\-]/).test(String.fromCharCode(e.charCode));
 				}

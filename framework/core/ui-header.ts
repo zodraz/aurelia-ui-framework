@@ -8,18 +8,20 @@ import {autoinject, customElement, containerless, bindable} from "aurelia-framew
 import {UIEvent} from "../utils/ui-event";
 
 @autoinject()
-@containerless()
 @customElement("ui-header")
 export class UIHeader {
-	@bindable class:string     = '';
 	@bindable close:boolean    = false;
 	@bindable collapse:boolean = false;
 
-	private _theme = 'ui-default';
+	private __theme = 'ui-default';
 
 	constructor(public element:Element) {
-		if (element.hasAttribute('primary')) this._theme = 'ui-primary';
-		if (element.hasAttribute('secondary')) this._theme = 'ui-secondary';
+		if (element.hasAttribute('primary')) {
+			this.__theme = 'ui-primary';
+		}
+		if (element.hasAttribute('secondary')) {
+			this.__theme = 'ui-secondary';
+		}
 	}
 
 	closeChanged(newValue) {

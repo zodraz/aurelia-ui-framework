@@ -13,21 +13,28 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
     var UIApp = (function () {
         function UIApp(appState) {
             this.appState = appState;
-            this.thisYear = new Date().getFullYear();
+            this.__thisYear = new Date().getFullYear();
             $.notify.addStyle('ui', {
                 html: "<div><div data-notify-html></div></div>"
             });
         }
         UIApp.prototype.showMenu = function ($event) {
             $event.stopPropagation();
-            $(this.uiApp).addClass('show-menu');
+            $(this.__uiApp)
+                .addClass('show-menu');
         };
         UIApp.prototype.hideMenu = function ($event) {
-            if (!$($event.target).closest('button').hasClass('ui-app-menu-handle')) {
-                $(this.uiApp).removeClass('show-menu');
+            if (!$($event.target)
+                .closest('button')
+                .hasClass('ui-app-menu-handle')) {
+                $(this.__uiApp)
+                    .removeClass('show-menu');
             }
-            if (!$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
-                $('.ui-dropdown').removeClass('ui-dropdown');
+            if (!$($event.target)
+                .closest('.ui-button')
+                .hasClass('ui-dropdown')) {
+                $('.ui-dropdown')
+                    .removeClass('ui-dropdown');
             }
             return true;
         };
@@ -49,7 +56,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
         ], UIApp.prototype, "authenticated");
         UIApp = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-app"), 
             __metadata('design:paramtypes', [ui_app_state_1.UIApplicationState])
         ], UIApp);

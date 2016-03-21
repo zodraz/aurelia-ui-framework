@@ -11,20 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIContent = (function () {
-        function UIContent(el) {
-            this.class = '';
-            if (el.hasAttribute('auto'))
-                this.class += ' ui-auto-height';
-            if (el.hasAttribute('scroll'))
-                this.class += ' ui-scroll';
+        function UIContent(element) {
+            this.element = element;
+            if (element.hasAttribute('auto')) {
+                this.__classes += ' ui-auto-height';
+            }
+            if (element.hasAttribute('scroll')) {
+                this.__classes += ' ui-scroll';
+            }
         }
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIContent.prototype, "class");
         UIContent = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-content"), 
             __metadata('design:paramtypes', [Element])
         ], UIContent);

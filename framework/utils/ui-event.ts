@@ -9,17 +9,11 @@ import {BindingEngine} from "aurelia-framework";
 import {EventAggregator, Subscription} from "aurelia-event-aggregator";
 
 export class UIEvent extends CustomEvent {
-	private _value:any = null;
-
-	get value() {
-		return this._value;
-	}
-
-	set value(any) {
-		this._value = any;
-	}
-
-	static fireEvent(event:string, element:EventTarget, data?:any, source?:Element):any {
+	static fireEvent(
+		event:string,
+		element:EventTarget,
+		data?:any,
+		source?:Element):any {
 		try {
 			let e        = new Event(event, {bubbles: true, cancelable: true}) as UIEvent;
 			e.detail     = data;
@@ -33,21 +27,33 @@ export class UIEvent extends CustomEvent {
 	}
 
 
-	static ea;
-	static ob;
+	static __ea;
+	static __ob;
 
-	static observe(object, prop) {
-		if (!UIEvent.ob) UIEvent.ob = Utils.lazy(BindingEngine);
-		return UIEvent.ob.propertyObserver(object, prop);
+	static observe(
+		object,
+		prop) {
+		if (!UIEvent.__ob) {
+			UIEvent.__ob = Utils.lazy(BindingEngine);
+		}
+		return UIEvent.__ob.propertyObserver(object, prop);
 	}
 
-	static broadcast(evt, data) {
-		if (!UIEvent.ea) UIEvent.ea = Utils.lazy(EventAggregator);
-		UIEvent.ea.publish(evt, data);
+	static broadcast(
+		evt,
+		data) {
+		if (!UIEvent.__ea) {
+			UIEvent.__ea = Utils.lazy(EventAggregator);
+		}
+		UIEvent.__ea.publish(evt, data);
 	}
 
-	static subscribe(evt, fn):Subscription {
-		if (!UIEvent.ea) UIEvent.ea = Utils.lazy(EventAggregator);
-		return UIEvent.ea.subscribe(evt, fn);
+	static subscribe(
+		evt,
+		fn):Subscription {
+		if (!UIEvent.__ea) {
+			UIEvent.__ea = Utils.lazy(EventAggregator);
+		}
+		return UIEvent.__ea.subscribe(evt, fn);
 	}
 }

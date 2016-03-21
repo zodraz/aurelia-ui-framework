@@ -80,6 +80,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._intype = 'number';
         }
         UIInput.prototype.bind = function () {
+            if (this.element.hasAttribute('readonly'))
+                this.readonly = true;
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
             this._valueChanged(this.value);
         };
         UIInput.prototype.attached = function () {
@@ -130,10 +134,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 }
                 if (_this._type == 'name') {
                     return (new RegExp('[' + _this.ALPHA + '\'\\.\\-&\\s]', 'g'))
-                        .test(String.fromCharCode(e.charCode));
-                }
-                else if (_this._type == 'address') {
-                    return (/\w*/)
                         .test(String.fromCharCode(e.charCode));
                 }
                 else if (_this._type == 'number') {

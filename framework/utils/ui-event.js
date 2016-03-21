@@ -8,18 +8,7 @@ define(["require", "exports", "./ui-utils", "aurelia-framework", "aurelia-event-
         __extends(UIEvent, _super);
         function UIEvent() {
             _super.apply(this, arguments);
-            this._value = null;
         }
-        Object.defineProperty(UIEvent.prototype, "value", {
-            get: function () {
-                return this._value;
-            },
-            set: function (any) {
-                this._value = any;
-            },
-            enumerable: true,
-            configurable: true
-        });
         UIEvent.fireEvent = function (event, element, data, source) {
             try {
                 var e = new Event(event, { bubbles: true, cancelable: true });
@@ -34,19 +23,22 @@ define(["require", "exports", "./ui-utils", "aurelia-framework", "aurelia-event-
             }
         };
         UIEvent.observe = function (object, prop) {
-            if (!UIEvent.ob)
-                UIEvent.ob = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
-            return UIEvent.ob.propertyObserver(object, prop);
+            if (!UIEvent.__ob) {
+                UIEvent.__ob = ui_utils_1.Utils.lazy(aurelia_framework_1.BindingEngine);
+            }
+            return UIEvent.__ob.propertyObserver(object, prop);
         };
         UIEvent.broadcast = function (evt, data) {
-            if (!UIEvent.ea)
-                UIEvent.ea = ui_utils_1.Utils.lazy(aurelia_event_aggregator_1.EventAggregator);
-            UIEvent.ea.publish(evt, data);
+            if (!UIEvent.__ea) {
+                UIEvent.__ea = ui_utils_1.Utils.lazy(aurelia_event_aggregator_1.EventAggregator);
+            }
+            UIEvent.__ea.publish(evt, data);
         };
         UIEvent.subscribe = function (evt, fn) {
-            if (!UIEvent.ea)
-                UIEvent.ea = ui_utils_1.Utils.lazy(aurelia_event_aggregator_1.EventAggregator);
-            return UIEvent.ea.subscribe(evt, fn);
+            if (!UIEvent.__ea) {
+                UIEvent.__ea = ui_utils_1.Utils.lazy(aurelia_event_aggregator_1.EventAggregator);
+            }
+            return UIEvent.__ea.subscribe(evt, fn);
         };
         return UIEvent;
     })(CustomEvent);

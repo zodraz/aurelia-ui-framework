@@ -11,7 +11,8 @@ define(["require", "exports", 'aurelia-validation', "aurelia-validation"], funct
             aurelia_validation_2.ValidationGroup.prototype.isPhone = function () {
                 this.passes(function (newValue) {
                     return PhoneLib.isValid(newValue, '');
-                }, null).withMessage(function () {
+                }, null)
+                    .withMessage(function () {
                     return 'invalid phone number';
                 });
                 return this;

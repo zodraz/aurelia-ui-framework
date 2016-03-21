@@ -11,19 +11,31 @@ declare module "aurelia-ui-framework" {
 
 	export function watch(defaultValue?:any);
 
-	export class UIValidationStrategy {}
-	export class AuthInterceptor {}
-	export class KeysValueConverter {}
-	export class GroupValueConverter {}
-	export class SortValueConverter {}
-	export class DateValueConverter {}
-	export class NumberValueConverter {}
-	export class CurrencyValueConverter {}
-	export class MarkdownValueConverter {}
+	export class UIValidationStrategy {
+	}
+	export class AuthInterceptor {
+	}
+	export class KeysValueConverter {
+	}
+	export class GroupValueConverter {
+	}
+	export class SortValueConverter {
+	}
+	export class DateValueConverter {
+	}
+	export class NumberValueConverter {
+	}
+	export class CurrencyValueConverter {
+	}
+	export class MarkdownValueConverter {
+	}
 
-	export class IsStringValueConverter {}
-	export class IsArrayValueConverter {}
-	export class IsObjectValueConverter {}
+	export class IsStringValueConverter {
+	}
+	export class IsArrayValueConverter {
+	}
+	export class IsObjectValueConverter {
+	}
 
 	export class UILangSelect {
 		static LANGUAGES;
@@ -33,31 +45,50 @@ declare module "aurelia-ui-framework" {
 		data:any;
 		value:any;
 
-		static fireEvent(event:string, element:EventTarget, data?:any, source?:Element);
+		static fireEvent(
+			event:string,
+			element:EventTarget,
+			data?:any,
+			source?:Element);
 
-		static observe(object, prop);
+		static observe(
+			object,
+			prop);
 
-		static broadcast(evt:string, data?:any);
+		static broadcast(
+			evt:string,
+			data?:any);
 
-		static subscribe(evt:string, fn:any):any;
+		static subscribe(
+			evt:string,
+			fn:any):any;
 	}
 
 	export class UIHttpService {
 		get(slug:string);
 
-		post(slug:string, obj:any);
+		post(
+			slug:string,
+			obj:any);
 
-		put(slug:string, obj:any);
+		put(
+			slug:string,
+			obj:any);
 
 		delete(slug:string);
 	}
 
 	export class UIDialogService {
-		show(dialog:any, model?:any):Promise<any>;
+		show(
+			dialog:any,
+			model?:any):Promise<any>;
 	}
 
 	export class UIDwrService {
-		execute(method:string, params:Array<any>, inject?:boolean):Promise<ResponseHandler>;
+		execute(
+			method:string,
+			params:Array<any>,
+			inject?:boolean):Promise<ResponseHandler>;
 	}
 
 	export interface ResponseHandler {
@@ -77,13 +108,13 @@ declare module "aurelia-ui-framework" {
 		validation:ValidationGroup;
 		observers:any;
 
-		get();
+		get(...rest);
 
-		post();
+		post(...rest);
 
-		put();
+		put(...rest);
 
-		delete();
+		delete(...rest);
 
 		deserialize(json:any);
 
@@ -121,21 +152,31 @@ declare module "aurelia-ui-framework" {
 		public AppSource:number;
 		public UserGroup:string;
 
-		_current;
 		router;
+		currentRoute;
 
-		navigateTo(route:string, params?:any);
+		navigateTo(
+			route:string,
+			params?:any);
 
 		get(key:string):any;
 
-		set(key:string, value:any):any;
+		set(
+			key:string,
+			value:any):any;
 
 		//Logging
-		logDebug(category:string, message:string);
+		logDebug(
+			category:string,
+			message:string);
 
-		logInfo(category:string, message:string);
+		logInfo(
+			category:string,
+			message:string);
 
-		logWarn(category:string, message:string);
+		logWarn(
+			category:string,
+			message:string);
 
 		// Notifications
 		notifyInfo(msg);
@@ -146,19 +187,27 @@ declare module "aurelia-ui-framework" {
 
 		notifyPageError(msg);
 
-		notifyDialogError(dlg, msg);
+		notifyDialogError(
+			dlg,
+			msg);
 
 		notifyConfirm(msg):Promise<boolean>;
 
 		// Local Storage
 		getLocal(key:string):string;
 
-		saveLocal(key:string, value?:string);
+		saveLocal(
+			key:string,
+			value?:string);
 
 		// Session Storage
 		getState(key:string):string;
 
-		saveState(key:string, value?:string);
+		saveState(
+			key:string,
+			value?:string);
+
+		clearState();
 	}
 
 	export class UITreeModel {
@@ -199,15 +248,25 @@ declare module "aurelia-ui-framework" {
 	}
 
 	export interface UITreePanel {
-		select(id:any, level:number);
-		expand(id:any, level:number, expand:boolean);
-		check(id:any, level:number, check:boolean);
+		select(
+			id:any,
+			level:number);
+		expand(
+			id:any,
+			level:number,
+			expand:boolean);
+		check(
+			id:any,
+			level:number,
+			check:boolean);
 		getChecked():any;
 	}
 
 
 	export module Utils {
-		export function lazy(T, container);
+		export function lazy(
+			T,
+			container);
 	}
 
 	// Format
@@ -215,7 +274,9 @@ declare module "aurelia-ui-framework" {
 		export function toHTML(value:string):string;
 
 		// Dates
-		export function dateDisplay(value:any, format?:string);
+		export function dateDisplay(
+			value:any,
+			format?:string);
 
 		export function dateISO(value:any);
 
@@ -228,9 +289,14 @@ declare module "aurelia-ui-framework" {
 		export function fromNow(value:any):string ;
 
 		// Numbers
-		export function numberDisplay(value:any, format?:string);
+		export function numberDisplay(
+			value:any,
+			format?:string);
 
-		export function currencyDisplay(value:any, format?:string, symbol?:string);
+		export function currencyDisplay(
+			value:any,
+			format?:string,
+			symbol?:string);
 
 		export function exRate(value);
 	}

@@ -87,10 +87,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             { id: 'nl', name: 'Nederlands' },
             { id: 'pt', name: 'Português' },
             { id: 'ru', name: 'Русский' },
+            { id: 'th', name: 'ภาษาไทย' },
             { id: 'tl', name: 'Tagalog' },
+            { id: 'tw', name: '漢語' },
             { id: 'vi', name: 'Tiếng Việt' },
-            { id: 'zh', name: '中文' },
-            { id: 'tw', name: '漢語' }
+            { id: 'zh', name: '中文' }
         ];
         __decorate([
             aurelia_framework_1.bindable({

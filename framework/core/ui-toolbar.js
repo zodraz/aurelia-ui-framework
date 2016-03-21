@@ -11,16 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIToolbar = (function () {
-        function UIToolbar(el) {
-            this.class = '';
+        function UIToolbar(element) {
+            this.element = element;
         }
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIToolbar.prototype, "class");
         UIToolbar = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-toolbar"), 
             __metadata('design:paramtypes', [Element])
         ], UIToolbar);

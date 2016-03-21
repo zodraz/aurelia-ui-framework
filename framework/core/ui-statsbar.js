@@ -11,16 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
     var UIStatsbar = (function () {
-        function UIStatsbar(el) {
-            this.class = '';
+        function UIStatsbar(element) {
+            this.element = element;
         }
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIStatsbar.prototype, "class");
         UIStatsbar = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-statsbar"), 
             __metadata('design:paramtypes', [Element])
         ], UIStatsbar);

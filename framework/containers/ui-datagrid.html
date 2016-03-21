@@ -41,7 +41,7 @@
 					</div>
 
 				</td>
-				<td style="min-width: 20px;">
+				<td css.bind="{'min-width': '20px'}">
 					<div>&nbsp;</div>
 				</td>
 			</tr>
@@ -51,7 +51,7 @@
 					class="${col.locked ? 'sticky':''} ${isLastLocked(col.locked, $index)?'last-of-type':''} ${col.cls}">
 					<div>&nbsp;</div>
 				</td>
-				<td style="min-width: 20px;">
+				<td css.bind="{'min-width': '20px'}">
 				</td>
 			</tr>
 			</tbody>
@@ -70,7 +70,7 @@
 						  data-resizeable="${col.resizeable}" data-index="${$index}"><i></i></span>
 					</div>
 				</td>
-				<td style="min-width: 20px;">
+				<td css.bind="{'min-width': '20px'}">
 					<div>&nbsp;</div>
 				</td>
 			</tr>
@@ -84,7 +84,7 @@
 					style.bind="{'text-align': col.dataAlign || getAlignment(col), 'left':col.edge+'px'}">
 					<div innerHTML.bind="summary(col) & signal:'UIDataGrid:Reload'"></div>
 				</td>
-				<td style="min-width: 20px;">
+				<td css.bind="{'min-width': '20px'}">
 					<div>&nbsp;</div>
 				</td>
 			</tr>

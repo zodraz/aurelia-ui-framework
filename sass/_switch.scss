@@ -191,6 +191,23 @@
 	  }
 	}
 
+	&.ui-switch.ui-switch-long {
+	  width: 96px;
+
+	  > .ui-switch-input {
+		~ .ui-switch-label {
+		  &:before {
+			color: $arsenic;
+		  }
+		}
+		&:checked {
+		  ~ .ui-switch-handle {
+			left: 76px;
+		  }
+		}
+	  }
+	}
+
 	&.ui-switch.ui-switch-ampm {
 
 	  > .ui-switch-input {

@@ -73,6 +73,8 @@ export class UITextArea {
 	}
 
 	bind() {
+		if (this.element.hasAttribute('readonly')) this.readonly = true;
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
 	}
 
 	attached() {

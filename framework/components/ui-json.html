@@ -1,0 +1,69 @@
+<template>
+	<require from="./ui-json-part"></require>
+	<style type="text/css">
+		.ui-json-editor .ui-level {
+			padding: 5px;
+			display: block;
+			border: 1px solid rgba(120, 120, 120, 0.25);
+			border-radius: 5px;
+			margin: 8px;
+		}
+
+		.ui-json-editor label {
+			text-align: right;
+			text-align: end;
+			width: 240px;
+			font-size: 1rem;
+			display: inline-block;
+		}
+
+		.ui-json-editor button {
+			border-radius: 3px;
+			border: 1px solid #e5e5e5;
+			background: white;
+			color: #FF4040;
+			width: 30px;
+			height: 30px;
+			font-size: 1.1rem;
+			display: inline-block;
+		}
+		.ui-json-editor button:hover {
+			background: #f0f0f0;
+		}
+		.ui-json-editor button:active {
+			background: #e0e0e0;
+		}
+
+		.ui-json-editor input:not([type="checkbox"]),.ui-json-editor textarea {
+			width: 600px;
+			padding: 3px 5px;
+			font-size: 1rem;
+			border: 1px solid #e5e5e5;
+			outline: none;
+		}
+		.ui-json-editor input:focus,.ui-json-editor textarea:focus {
+			border-bottom: 3px solid #0099cc;
+		}
+
+		.ui-json-editor .ui-level > .ui-toggle {
+			font-size: 1.2rem;
+			margin-bottom: 4px;
+		}
+
+		.ui-json-editor .ui-level > .ui-body {
+			transition: max-height 0.5s;
+			overflow: hidden;
+		}
+
+		.ui-json-editor .ui-level.collapse > .ui-body {
+			max-height: 0;
+		}
+
+		.ui-json-editor .ui-level.collapse > .ui-toggle .fi-elegant-minus6:before {
+			content: '\e07d';
+		}
+	</style>
+	<div class="ui-json-editor">
+		<json-part json.bind="value" key="Root"></json-part>
+	</div>
+</template>

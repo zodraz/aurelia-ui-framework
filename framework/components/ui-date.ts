@@ -106,6 +106,7 @@ export class UIDate {
 	}
 
 	bind() {
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
 	}
 
 	attached() {
@@ -161,16 +162,16 @@ export class UIDate {
 			.on('dp.change', (e)=> {
 				if (this.range) {
 					if (primary) {
-						this.value.start = e.date;
+						this.value.start = e.date.toISOString();
 						$(this._inputEnd).data('DateTimePicker').minDate(e.date);
 					}
 					if (!primary) {
-						this.value.end = e.date;
+						this.value.end = e.date.toISOString();
 						$(this._inputStart).data('DateTimePicker').maxDate(e.date);
 					}
 				}
 				else {
-					this.value = e.date;
+					this.value = e.date.toISOString();
 				}
 			});
 	}
@@ -200,8 +201,8 @@ export class UIDate {
 	private _valueChanged(newValue) {
 		if ($(this._inputStart).data('DateTimePicker')) {
 			if (this.range) {
-				$(this._inputStart).data('DateTimePicker').date(newValue.start);
-				$(this._inputEnd).data('DateTimePicker').date(newValue.end);
+				$(this._inputStart).data('DateTimePicker').date(newValue.start || null);
+				$(this._inputEnd).data('DateTimePicker').date(newValue.end || null);
 			} else if (!this.range) {
 				$(this._inputStart).data('DateTimePicker').date(newValue || null);
 			}

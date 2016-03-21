@@ -25,10 +25,11 @@ export class UILangSelect {
 		{id: 'nl', name: 'Nederlands'},
 		{id: 'pt', name: 'Português'},
 		{id: 'ru', name: 'Русский'},
+		{id: 'th', name: 'ภาษาไทย'},
 		{id: 'tl', name: 'Tagalog'},
+		{id: 'tw', name: '漢語'},
 		{id: 'vi', name: 'Tiếng Việt'},
-		{id: 'zh', name: '中文'},
-		{id: 'tw', name: '漢語'}
+		{id: 'zh', name: '中文'}
 	];
 
 	private _selector;

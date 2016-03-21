@@ -25,6 +25,8 @@ export class UIForm {
 			$(this._form).data('UIForm', this)
 				.find('input,select,textarea').first().focus();
 		}, 200);
+
+		if (this.busy) setTimeout(()=>this.busyChanged(true), 200);
 	}
 
 	busyChanged(newValue:any) {

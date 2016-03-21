@@ -16,11 +16,14 @@ export var moment  = mm;
 export var numeral = nm;
 
 export module Utils {
-	export var container:Container;
+	export var __container:Container;
 
 	export function lazy(T) {
-		if (!container) return;
-		return Lazy.of(T).get(container)();
+		if (!__container) {
+			return;
+		}
+		return Lazy.of(T)
+				   .get(__container)();
 	}
 
 	export function getAscii(str) {
@@ -82,11 +85,14 @@ export module Utils {
 		return str;
 	}
 
-	export function getFloatPosition(anchor, floater, side:boolean = false) {
+	export function getFloatPosition(
+		anchor,
+		floater,
+		side:boolean = false) {
 		let _f = $(floater), _a = $(anchor);
 		_f.offset({left: -1000, top: -1000})
-			.css('max-height', side ? '480px' : '320px')
-			.css('visibility', 'visible');
+		  .css('max-height', side ? '480px' : '320px')
+		  .css('visibility', 'visible');
 		let o  = _a.offset(),
 			aw = _a.outerWidth(),
 			ah = _a.outerHeight(),
@@ -124,7 +130,8 @@ export module Utils {
 				l += aw;
 			}
 		}
-		_f.css('max-height', '0').css('visibility', 'hidden');
+		_f.css('max-height', '0')
+		  .css('visibility', 'hidden');
 		return {top: t, left: l, hReverse: _hr, vReverse: _vr}
 	}
 }
@@ -132,63 +139,108 @@ export module Utils {
 // Format
 export module Format {
 	export function toHTML(value:string):string {
-		return marked(value, {sanitize: true, highlight: (v=>v)});
+		return marked(
+			value, {
+				sanitize: false,
+				highlight: (
+					v=>v)
+			});
 	}
 
 	// Dates
-	export function dateDisplay(value:any, format:string = 'DD MMM YYYY hh:mm A') {
-		if (!moment(value || null).isValid()) return '';
-		return moment(value).format(format);
+	export function dateDisplay(
+		value:any,
+		format:string = 'DD MMM YYYY hh:mm A') {
+		if (!moment(value || null)
+				.isValid()) {
+			return '';
+		}
+		return moment(value)
+			.format(format);
 	}
 
 	export function dateISO(value:any) {
-		if (!moment(value || null).isValid()) return null;
-		return moment(value).toISOString();
+		if (!moment(value || null)
+				.isValid()) {
+			return null;
+		}
+		return moment(value)
+			.toISOString();
 	}
 
 	export function dateGMT(value:any) {
-		if (!moment(value || null).isValid()) return null;
-		return moment(value).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+		if (!moment(value || null)
+				.isValid()) {
+			return null;
+		}
+		return moment(value)
+			.format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
 	}
 
 	export function dateOracle(value:any) {
-		if (!moment(value || null).isValid()) return null;
-		return moment(value).utc().format('DD-MMM-YYYY hh:mm:ss');
+		if (!moment(value || null)
+				.isValid()) {
+			return null;
+		}
+		return moment(value)
+			.utc()
+			.format('DD-MMM-YYYY hh:mm:ss');
 	}
 
 	export function dateSql(value:any) {
-		if (!moment(value || null).isValid()) return null;
-		return moment(value).utc().format('YYYY-MM-DD hh:mm:ss');
+		if (!moment(value || null)
+				.isValid()) {
+			return null;
+		}
+		return moment(value)
+			.utc()
+			.format('YYYY-MM-DD hh:mm:ss');
 	}
 
 	export function fromNow(value:any):string {
-		return moment(value).fromNow(false);
+		return moment(value)
+			.fromNow(false);
 	}
 
 
 	// Numbers
-	export function numberDisplay(value:any, format:string = '0[.]00') {
-		if (isNaN(parseFloat(value))) return value;
+	export function numberDisplay(
+		value:any,
+		format:string = '0[.]00') {
+		if (isNaN(parseFloat(value))) {
+			return value;
+		}
 		return numeral(value)
 			.format(format)
-			.replace(/[^\d]+/g, function (txt) {
-				return `<small>${txt.toUpperCase()}</small>`;
-			});
+			.replace(
+				/[^\d]+/g, function (txt) {
+					return `<small>${txt.toUpperCase()}</small>`;
+				});
 	}
 
-	export function currencyDisplay(value:any, format:string = '$ 0[.]00', symbol:string = '$') {
-		if (isNaN(parseFloat(value))) return value;
+	export function currencyDisplay(
+		value:any,
+		format:string = '$ 0[.]00',
+		symbol:string = '$') {
+		if (isNaN(parseFloat(value))) {
+			return value;
+		}
 		return numeral(value)
 			.format(format)
 			.replace('$', symbol)
-			.replace(/[^\d]+/g, function (txt) {
-				return `<small>${txt.toUpperCase()}</small>`;
-			});
+			.replace(
+				/[^\d]+/g, function (txt) {
+					return `<small>${txt.toUpperCase()}</small>`;
+				});
 	}
 
 	export function exRate(value):string {
-		if (isNaN(parseFloat(value))) return ' ';
-		if (parseFloat(value || 0) <= 0) return ' ';
+		if (isNaN(parseFloat(value))) {
+			return ' ';
+		}
+		if (parseFloat(value || 0) <= 0) {
+			return ' ';
+		}
 		return numberDisplay(1 / parseFloat(value), '0.0000a') + '/$';
 	}
 }
@@ -196,20 +248,29 @@ export module Format {
 
 export function watch(defaultValue?:any) {
 	let observer:BindingEngine = Utils.lazy(BindingEngine);
-	return function (viewModel, key) {
-		if (!viewModel._subscriptions) viewModel._subscriptions = [];
-		let v          = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
-		viewModel[key] = v || defaultValue;
-		viewModel._subscriptions.push(observer.propertyObserver(viewModel, key)
-			.subscribe(()=> {
-				sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
-			}));
-		let _unbindHook  = viewModel.unbind;
+	return function (
+		viewModel,
+		key) {
+		if (!viewModel.__subscriptions) {
+			viewModel.__subscriptions = [];
+		}
+		let _value     = sessionStorage.getItem(`${viewModel.constructor.name}:${key}`);
+		viewModel[key] = _value || defaultValue;
+		viewModel.__subscriptions.push(
+			observer.propertyObserver(viewModel, key)
+					.subscribe(
+						()=> {
+							sessionStorage.setItem(`${viewModel.constructor.name}:${key}`, viewModel[key]);
+						}));
+		let __unbindHook = viewModel.unbind;
 		viewModel.unbind = (()=> {
-			while (viewModel._subscriptions.length) {
-				viewModel._subscriptions.pop().dispose();
+			while (viewModel.__subscriptions.length) {
+				viewModel.__subscriptions.pop()
+						 .dispose();
 			}
-			if (_.isFunction(_unbindHook)) _unbindHook.call(viewModel);
+			if (_.isFunction(__unbindHook)) {
+				__unbindHook.call(viewModel);
+			}
 		});
 	}
 }

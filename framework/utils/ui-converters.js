@@ -62,6 +62,15 @@ define(["require", "exports", "./ui-utils"], function (require, exports, ui_util
         return CurrencyValueConverter;
     })();
     exports.CurrencyValueConverter = CurrencyValueConverter;
+    var JsonValueConverter = (function () {
+        function JsonValueConverter() {
+        }
+        JsonValueConverter.prototype.toView = function (value) {
+            return JSON.stringify(value, null, 4);
+        };
+        return JsonValueConverter;
+    })();
+    exports.JsonValueConverter = JsonValueConverter;
     var IsStringValueConverter = (function () {
         function IsStringValueConverter() {
         }

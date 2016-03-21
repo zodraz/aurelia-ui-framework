@@ -7,11 +7,8 @@
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @customElement("ui-statsbar")
 export class UIStatsbar {
-	@bindable class:string = '';
-
-	constructor(el:Element) {
+	constructor(public element:Element) {
 	}
 }

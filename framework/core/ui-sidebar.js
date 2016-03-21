@@ -20,13 +20,8 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UISidebar.prototype, "class");
-        __decorate([
-            aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
         ], UISidebar.prototype, "width");
         UISidebar = __decorate([
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-sidebar"), 
             __metadata('design:paramtypes', [])
         ], UISidebar);

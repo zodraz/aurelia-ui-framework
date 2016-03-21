@@ -6,10 +6,8 @@
  **/
 import {customElement, containerless, bindable} from "aurelia-framework";
 
-@containerless()
 @customElement("ui-sidebar")
 export class UISidebar {
-	@bindable class:string;
 	@bindable width:string = '220px';
 
 	private $parent:any;

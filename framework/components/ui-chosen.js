@@ -40,6 +40,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
             this.options = [];
             this.valueProperty = 'id';
             this.displayProperty = 'name';
+            this._allowAdd = false;
             this._id = "chosen-" + ui_input_1.UIInput._id++;
             if (element.hasAttribute('required'))
                 this._labelClasses += ' ui-required ';
@@ -51,29 +52,37 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._checkbox = true;
             if (element.hasAttribute('multiple'))
                 this._multiple = true;
+            if (element.hasAttribute('allow-new'))
+                this._allowAdd = true;
             if (element.hasAttribute('label-top'))
                 this._classes = 'ui-label-top';
         }
         UIChosen.prototype.bind = function () {
+            if (this.element.hasAttribute('readonly'))
+                this.readonly = true;
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
             if (this.value) {
-                this._valueChanged(this.value);
             }
         };
         UIChosen.prototype.attached = function () {
             var _this = this;
             $(this._select)
                 .append($(this._options).children())
-                .val(this.value)
                 .attr(this.readonly === true ? 'readonly' : 'R', '')
                 .attr(this.disabled === true ? 'disabled' : 'D', '')
                 .attr(this._multiple ? 'multiple' : 'single', '')
+                .val((this._multiple) ? (this.value || '').split(',') : this.value)
                 .chosen({
                 width: '100%',
                 search_contains: true,
                 disable_search_threshold: 10,
                 allow_single_deselect: this._clear,
                 placeholder_text_single: this.placeholder,
-                placeholder_text_multiple: this.placeholder
+                placeholder_text_multiple: this.placeholder,
+                create_option: this._allowAdd,
+                persistent_create_option: true,
+                skip_no_results: this._allowAdd
             })
                 .change(function () {
                 var v = $(_this._select).val();

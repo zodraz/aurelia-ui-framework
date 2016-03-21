@@ -37,106 +37,139 @@ export class UIApplicationState {
 	public AppSource:number = 0;
 	public UserGroup:string;
 
-	public _current;
+	public currentRoute;
 
-	private _keyObjects = {};
+	private __keyObjects = {};
 
-	private _logger:Logger;
+	private __logger:Logger;
 
-	constructor(public router:Router, public container:Container, public eventAggregator:EventAggregator) {
-		this._logger = getLogger('UIApplicationState');
-		this._logger.debug('Initialized');
+	constructor(
+		public router:Router,
+		public container:Container,
+		public eventAggregator:EventAggregator) {
+		this.__logger = getLogger('UIApplicationState');
+		this.__logger.debug('Initialized');
 
-		Utils.container = container;
+		Utils.__container = container;
 
-		this.eventAggregator.subscribe('Unauthorized', () => {
-			this._logger.debug('Unauthorized');
-			this.Username        = null;
-			this.IsAuthenticated = false;
-			this.navigateTo('login', {message: '401 Unauthorized'});
-		});
-		this.eventAggregator.subscribe('Logout', () => {
-			this._logger.debug('Logout');
-			this.Username        = null;
-			this.IsAuthenticated = false;
-			this.navigateTo('login');
-		});
+		this.eventAggregator.subscribe(
+			'Unauthorized', () => {
+				this.__logger.debug('Unauthorized');
+				this.Username        = null;
+				this.IsAuthenticated = false;
+				this.navigateTo('login', {message: '401 Unauthorized'});
+			});
+		this.eventAggregator.subscribe(
+			'Logout', () => {
+				this.__logger.debug('Logout');
+				this.Username        = null;
+				this.IsAuthenticated = false;
+				this.navigateTo('login');
+			});
 
-		$.notify.defaults({
-			style: 'ui',
-			className: 'danger'
-		});
+		$.notify.defaults(
+			{
+				style: 'ui',
+				className: 'danger'
+			});
 	}
 
 	get(key) {
-		return this._keyObjects[key];
+		return this.__keyObjects[key];
 	}
 
-	set(key, value) {
-		this._keyObjects[key] = value;
+	set(
+		key,
+		value) {
+		this.__keyObjects[key] = value;
 		return value;
 	}
 
-	navigateTo(route:string, params:any = {}) {
-		this._current = null;
-		this._logger.debug(`navigateTo::${route}`);
+	navigateTo(
+		route:string,
+		params:any = {}) {
+		this.currentRoute = null;
+		this.__logger.debug(`navigateTo::${route}`);
 		this.router.navigateToRoute(route, params, {});
 	}
 
 	// Logging
-	logDebug(category:string, message:string) {
-		getLogger(category).debug(message);
+	logDebug(
+		category:string,
+		message:string) {
+		getLogger(category)
+			.debug(message);
 	}
 
-	logInfo(category:string, message:string) {
-		getLogger(category).info(message);
+	logInfo(
+		category:string,
+		message:string) {
+		getLogger(category)
+			.info(message);
 	}
 
-	logWarn(category:string, message:string) {
-		getLogger(category).warn(message);
+	logWarn(
+		category:string,
+		message:string) {
+		getLogger(category)
+			.warn(message);
 	}
 
 	// Notifications
 	notifyError(msg) {
-		this._logger.debug(`notify::${msg}`);
+		this.__logger.debug(`notify::${msg}`);
 		$.notify(msg);
 	}
 
 	notifyInfo(msg) {
-		this._logger.debug(`notifyInfo::${msg}`);
-		$.notify(msg, {
-			className: 'info'
-		});
+		this.__logger.debug(`notifyInfo::${msg}`);
+		$.notify(
+			msg, {
+				className: 'info'
+			});
 	}
 
 	notifySuccess(msg) {
-		this._logger.debug(`notifyInfo::${msg}`);
-		$.notify(msg, {
-			className: 'success'
-		});
+		this.__logger.debug(`notifyInfo::${msg}`);
+		$.notify(
+			msg, {
+				className: 'success'
+			});
 	}
 
 	notifyPageError(msg) {
-		this._logger.debug(`notifyPage::${msg}`);
-		$('.ui-page-title').notify(msg, {
-			elementPosition: 'b c',
-			arrowShow: false,
-			autoHide: false
-		});
+		this.__logger.debug(`notifyPage::${msg}`);
+		$('.ui-app-header')
+			.notify(
+				msg, {
+					elementPosition: 'b c',
+					arrowShow: false,
+					autoHide: false
+				});
 	}
 
-	notifyDialogError(dlg, msg) {
-		this._logger.debug(`notifyDialog::${msg}`);
-		$(dlg).find('.ui-header').notify(msg, {
-			elementPosition: 'b c',
-			arrowShow: false,
-			autoHide: false
-		});
+	notifyDialogError(
+		dlg,
+		msg) {
+		this.__logger.debug(`notifyDialog::${msg}`);
+		$(dlg)
+			.find('.ui-header')
+			.notify(
+				msg, {
+					elementPosition: 'b c',
+					arrowShow: false,
+					autoHide: false
+				});
 	}
 
 	notifyConfirm(msg) {
-		return new Promise((resolve, reject)=> {
-			let _el = $('body').append(`
+		return new Promise(
+			(
+				resolve,
+				reject)=> {
+				let _el = $('body')
+					.append(
+						`
 			<div class='ui-notify-confirm'>
 				<div class='ui-notify'>
 					<div class='title'>${msg}</div>
@@ -146,12 +179,15 @@ export class UIApplicationState {
 					</div>
 				</div>
 			</div>
-			`).children('.ui-notify-confirm');
-			_el.one('click', '.ui-button', function (e) {
-				($(e.target).hasClass('yes')) ? resolve() : reject();
-				_el.remove();
+			`)
+					.children('.ui-notify-confirm');
+				_el.one(
+					'click', '.ui-button', function (e) {
+						($(e.target)
+							.hasClass('yes')) ? resolve() : reject();
+						_el.remove();
+					});
 			});
-		});
 	}
 
 	// Local Storage
@@ -159,11 +195,15 @@ export class UIApplicationState {
 		return JSON.parse(window.localStorage.getItem(`${this.AppKey}_${key}`));
 	}
 
-	saveLocal(key:string, value:string = null) {
-		if (value)
+	saveLocal(
+		key:string,
+		value:string = null) {
+		if (value) {
 			window.localStorage.setItem(`${this.AppKey}_${key}`, JSON.stringify(value));
-		else
+		}
+		else {
 			window.localStorage.removeItem(`${this.AppKey}_${key}`);
+		}
 	}
 
 	// Session Storage
@@ -171,11 +211,19 @@ export class UIApplicationState {
 		return JSON.parse(window.sessionStorage.getItem(`${this.AppKey}_${key}`));
 	}
 
-	saveState(key:string, value:string = null) {
-		if (value)
+	saveState(
+		key:string,
+		value:string = null) {
+		if (value) {
 			window.sessionStorage.setItem(`${this.AppKey}_${key}`, JSON.stringify(value));
-		else
+		}
+		else {
 			window.sessionStorage.removeItem(`${this.AppKey}_${key}`);
+		}
+	}
+
+	clearState() {
+		window.sessionStorage.clear();
 	}
 }
 
@@ -188,20 +236,24 @@ export class AuthInterceptor {
 		this.logger.debug('Initialized');
 	}
 
-	run(routingContext, next) {
+	run(
+		routingContext,
+		next) {
 		// Check if the route has an "auth" key
 		// The reason for using `nextInstructions` is because this includes child routes.
-		if (routingContext.getAllInstructions().some(i => i.config.auth)) {
+		if (routingContext.getAllInstructions()
+						  .some(
+							  i => i.config.auth)) {
 			if (!this.appState.IsAuthenticated) {
 				this.logger.debug('Not authenticated');
 				let url                       = routingContext.router.generate('login', {message: '401 Unauthorized'});
 				this.appState.IsAuthenticated = false;
-				this.appState._current        = routingContext;
+				this.appState.currentRoute    = routingContext;
 				return next.complete(new Redirect(url));
 			}
 		}
-		if (routingContext.config.isLogin && !this.appState._current) {
-			this.appState._current = routingContext.router.currentInstruction;
+		if (routingContext.config.isLogin && !this.appState.currentRoute) {
+			this.appState.currentRoute = routingContext.router.currentInstruction;
 		}
 		// Check if route is not login then check if the user group is allowed to access the route
 		if (!routingContext.config.isLogin && !this.isAllowed(routingContext.config.group)) {
@@ -216,9 +268,10 @@ export class AuthInterceptor {
 	// Test user group against permitted route groups
 	isAllowed(groups) {
 		if (groups && this.appState.UserGroup !== null) {
-			var rx = groups.replace(/(\!+\d+)/g, function (x) {
-				return x.replace('!', '[^') + ']';
-			});
+			var rx = groups.replace(
+				/(\!+\d+)/g, function (x) {
+					return x.replace('!', '[^') + ']';
+				});
 			return new RegExp(`^(${rx})$`).test(this.appState.UserGroup);
 		}
 

@@ -11,7 +11,6 @@ import {Router} from "aurelia-router";
 import {UIApplicationState} from "../utils/ui-app-state";
 
 @autoinject()
-@containerless()
 @customElement("ui-app")
 export class UIApp {
 	@bindable title:string;
@@ -20,27 +19,35 @@ export class UIApp {
 	@bindable router:Router;
 	@bindable authenticated:boolean;
 
-	private thisYear = new Date().getFullYear();
+	private __uiApp;
+	private __thisYear = new Date().getFullYear();
 
-	private uiApp;
 
 	constructor(public appState:UIApplicationState) {
-		$.notify.addStyle('ui', {
-			html: "<div><div data-notify-html></div></div>"
-		});
+		$.notify.addStyle(
+			'ui', {
+				html: "<div><div data-notify-html></div></div>"
+			});
 	}
 
 	private showMenu($event) {
 		$event.stopPropagation();
-		$(this.uiApp).addClass('show-menu');
+		$(this.__uiApp)
+			.addClass('show-menu');
 	}
 
 	private hideMenu($event) {
-		if (!$($event.target).closest('button').hasClass('ui-app-menu-handle')) {
-			$(this.uiApp).removeClass('show-menu');
+		if (!$($event.target)
+				.closest('button')
+				.hasClass('ui-app-menu-handle')) {
+			$(this.__uiApp)
+				.removeClass('show-menu');
 		}
-		if (!$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
-			$('.ui-dropdown').removeClass('ui-dropdown');
+		if (!$($event.target)
+				.closest('.ui-button')
+				.hasClass('ui-dropdown')) {
+			$('.ui-dropdown')
+				.removeClass('ui-dropdown');
 		}
 		return true;
 	}

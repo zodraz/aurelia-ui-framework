@@ -80,7 +80,7 @@
 
 							<p>Email: ${model.email}</p>
 
-							<p>Date: ${model.date | date}</p></div>
+							<p>Date: ${model.date}</p></div>
 					</ui-column>
 					<ui-column fill>
 						<div style="padding-left: 120px;">
@@ -100,7 +100,7 @@
 				</ui-row>
 				<ui-column>
 					<ui-column>
-						<ui-chosen multiple label="Tags" placeholder="Input some tags" value.bind="model.tags"
+						<ui-chosen multiple allow-new label="Tags" placeholder="Input some tags" value.bind="model.tags"
 								   help-text="Tags: ${model.tags}">
 							<option value="tag-1">Tag-1</option>
 							<option value="tag-2">Tag-2</option>

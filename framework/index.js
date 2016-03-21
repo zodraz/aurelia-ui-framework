@@ -48,6 +48,7 @@ define(["require", "exports", "./utils/ui-app-state", "./utils/ui-converters", "
     exports.MarkdownValueConverter = ui_converters_1.MarkdownValueConverter;
     exports.SortValueConverter = ui_converters_1.SortValueConverter;
     exports.GroupValueConverter = ui_converters_1.GroupValueConverter;
+    exports.JsonValueConverter = ui_converters_1.JsonValueConverter;
     exports.IsArrayValueConverter = ui_converters_1.IsArrayValueConverter;
     exports.IsObjectValueConverter = ui_converters_1.IsObjectValueConverter;
     exports.IsStringValueConverter = ui_converters_1.IsStringValueConverter;

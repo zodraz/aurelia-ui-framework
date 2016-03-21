@@ -2,6 +2,7 @@ define(["require", "exports", "./framework/utils/ui-validations"], function (req
     function configure(aurelia) {
         aurelia.use
             .standardConfiguration()
+            .developmentLogging()
             .feature('framework')
             .plugin('aurelia-validation', function (config) {
             config.useViewStrategy(new ui_validations_1.UIValidationStrategy());

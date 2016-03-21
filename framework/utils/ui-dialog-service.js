@@ -15,14 +15,16 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             var _this = this;
             this.container = container;
             this.compositionEngine = compositionEngine;
-            this._windows = [];
-            this._isDragging = false;
-            this._isResizing = false;
-            this._startX = 0;
-            this._startY = 0;
+            this.__windows = [];
+            this.__isDragging = false;
+            this.__isResizing = false;
+            this.__startX = 0;
+            this.__startY = 0;
             if (!this.dialogContainer) {
-                $('.ui-app').append('<div class="ui-dialog-container"></div>');
-                this.dialogContainer = $('body .ui-dialog-container').get(0);
+                $('.ui-app')
+                    .append('<div class="ui-dialog-container"></div>');
+                this.dialogContainer = $('body .ui-dialog-container')
+                    .get(0);
                 $(this.dialogContainer)
                     .on('close', function (e) { return _this.closeDialog(e.originalEvent); })
                     .on('collapse', function (e) { return _this.collapse(e.originalEvent); })
@@ -30,12 +32,12 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                     .on('mousemove', function (e) { return _this.move(e.originalEvent); })
                     .on('mouseup', function (e) { return _this.moveEnd(e.originalEvent); });
             }
-            if (!this._taskbar) {
-                this._taskbar = $('body .ui-app-taskbar');
-                this._taskbar.on('click', 'button', function (e) { return _this.switchActive(e.originalEvent.target.window); });
+            if (!this.__taskbar) {
+                this.__taskbar = $('body .ui-app-taskbar');
+                this.__taskbar.on('click', 'button', function (e) { return _this.switchActive(e.originalEvent.target.window); });
             }
         }
-        UIDialogService.prototype._invokeLifecycle = function (instance, name, model) {
+        UIDialogService.prototype.__invokeLifecycle = function (instance, name, model) {
             if (instance && typeof instance[name] === 'function') {
                 var result = instance[name](model);
                 if (result instanceof Promise) {
@@ -48,7 +50,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             }
             return Promise.resolve(true);
         };
-        UIDialogService.prototype._getViewModel = function (instruction) {
+        UIDialogService.prototype.__getViewModel = function (instruction) {
             if (typeof instruction.viewModel === 'function') {
                 instruction.viewModel = aurelia_metadata_1.Origin.get(instruction.viewModel).moduleId;
             }
@@ -66,20 +68,24 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                 childContainer: childContainer,
                 model: model ? model : {}
             };
-            return this._getViewModel(instruction)
+            return this.__getViewModel(instruction)
                 .then(function (returnedInstruction) {
                 var viewModel = returnedInstruction.viewModel;
-                return _this._invokeLifecycle(viewModel, 'canActivate', model).then(function (canActivate) {
+                return _this.__invokeLifecycle(viewModel, 'canActivate', model)
+                    .then(function (canActivate) {
                     if (canActivate) {
-                        return _this.compositionEngine.createController(returnedInstruction).then(function (controller) {
+                        return _this.compositionEngine.createController(returnedInstruction)
+                            .then(function (controller) {
                             controller.automate();
                             var slot = new aurelia_templating_2.ViewSlot(_this.dialogContainer, true);
                             slot.add(controller.view);
-                            if (_this._active) {
-                                _this._active.active = false;
+                            if (_this.__active) {
+                                _this.__active.active = false;
                             }
-                            _this._active = $(controller.view).children().get(0).au.controller.viewModel;
-                            _this._windows.push(_this._active);
+                            _this.__active = $(controller.view)
+                                .children()
+                                .get(0).au.controller.viewModel;
+                            _this.__windows.push(_this.__active);
                             setTimeout(function () {
                                 slot.attached();
                             }, 200);
@@ -89,105 +95,136 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
             });
         };
         UIDialogService.prototype.addTaskButton = function (btn) {
-            this._taskbar.append(btn);
+            this.__taskbar.append(btn);
         };
         UIDialogService.prototype.closeDialog = function (e) {
             var _this = this;
-            var dialog = $(e.target).closest('ui-dialog').get(0).au.controller;
-            this._invokeLifecycle(dialog.contentView.bindingContext, 'canDeactivate', null).then(function (canDeactivate) {
+            var dialog = $(e.target)
+                .closest('ui-dialog')
+                .get(0).au.controller;
+            this.__invokeLifecycle(dialog.contentView.bindingContext, 'canDeactivate', null)
+                .then(function (canDeactivate) {
                 if (canDeactivate) {
-                    ui_utils_1._.remove(_this._windows, 'id', dialog.viewModel.id);
+                    ui_utils_1._.remove(_this.__windows, 'id', dialog.viewModel.id);
                     dialog.viewModel.remove();
-                    _this._invokeLifecycle(dialog.contentView.bindingContext, 'detached', null);
-                    if (_this._active)
-                        _this._active.active = false;
+                    _this.__invokeLifecycle(dialog.contentView.bindingContext, 'detached', null);
+                    if (_this.__active) {
+                        _this.__active.active = false;
+                    }
                     _this.__getNextActive();
-                    _this._invokeLifecycle(dialog.contentView.bindingContext, 'deactivate', null);
+                    _this.__invokeLifecycle(dialog.contentView.bindingContext, 'deactivate', null);
                 }
             });
         };
         UIDialogService.prototype.switchActive = function (d, ignore) {
             if (ignore === void 0) { ignore = false; }
-            if (!ignore && this._active && this._active.id == d.id) {
+            if (!ignore && this.__active && this.__active.id == d.id) {
                 d.minimized = true;
                 d.active = false;
                 this.__getNextActive();
                 return;
             }
-            if (this._active) {
-                if (d.id === this._active.id)
+            if (this.__active) {
+                if (d.id === this.__active.id) {
                     return;
-                this._active.active = false;
+                }
+                this.__active.active = false;
             }
             if (d && !d.modal) {
-                (this._active = d).minimized = false;
-                (this._active = d).active = true;
+                (this.__active = d).minimized = false;
+                (this.__active = d).active = true;
             }
         };
         UIDialogService.prototype.collapse = function (e) {
-            $(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
-            if (this._active)
-                this._active.active = false;
+            $(e.target)
+                .closest('ui-dialog')
+                .get(0).au.controller.viewModel.minimized = true;
+            if (this.__active) {
+                this.__active.active = false;
+            }
             this.__getNextActive();
         };
         UIDialogService.prototype.__getNextActive = function () {
-            if (this._windows.length > 0) {
-                this._active = null;
-                var a = ui_utils_1._.findLast(this._windows, function (e) { return e.minimized === false; });
+            if (this.__windows.length > 0) {
+                this.__active = null;
+                var a = ui_utils_1._.findLast(this.__windows, function (e) { return e.minimized === false; });
                 if (a) {
                     a.active = true;
-                    this._active = a;
+                    this.__active = a;
                 }
             }
         };
         UIDialogService.prototype.moveStart = function ($event) {
-            this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
-            if ($($event.target).closest('.ui-lang-select').length == 0 && !$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
-                $('.ui-dropdown').removeClass('ui-dropdown');
+            this.__dialog = $($event.target)
+                .closest('ui-dialog')
+                .get(0).au.controller.viewModel;
+            if ($($event.target)
+                .closest('.ui-lang-select').length == 0 && !$($event.target)
+                .closest('.ui-button')
+                .hasClass('ui-dropdown')) {
+                $('.ui-dropdown')
+                    .removeClass('ui-dropdown');
             }
-            if ($($event.target).closest('button').length !== 0)
-                return;
-            if ($event.button != 0)
-                return;
-            if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {
-                return this.switchActive(this._dialog, true);
-            }
-            this._startX = ($event.x || $event.clientX);
-            this._startY = ($event.y || $event.clientY);
-            this._isDragging = true;
-            this._isResizing = $($event.target).hasClass('ui-resizer');
-            if (this._isResizing && !this._dialog.resize) {
-                this._isDragging = false;
-                this._isResizing = false;
+            if ($($event.target)
+                .closest('button').length !== 0) {
                 return;
             }
-            else if (!this._dialog.drag) {
-                this._isDragging = false;
-                this._isResizing = false;
+            if ($event.button != 0) {
                 return;
             }
-            $(this._dialog._dialog).addClass('ui-dragging');
-            $(this.dialogContainer).addClass('ui-dragging');
+            if (!$($event.target)
+                .hasClass('ui-resizer') && $($event.target)
+                .closest('.ui-header').length == 0) {
+                return this.switchActive(this.__dialog, true);
+            }
+            this.__startX = ($event.x || $event.clientX);
+            this.__startY = ($event.y || $event.clientY);
+            this.__isDragging = true;
+            this.__isResizing = $($event.target)
+                .hasClass('ui-resizer');
+            if (this.__isResizing && !this.__dialog.resize) {
+                this.__isDragging = false;
+                this.__isResizing = false;
+                return;
+            }
+            else if (!this.__dialog.drag) {
+                this.__isDragging = false;
+                this.__isResizing = false;
+                return;
+            }
+            $(this.__dialog.__dialog)
+                .addClass('ui-dragging');
+            $(this.dialogContainer)
+                .addClass('ui-dragging');
         };
         UIDialogService.prototype.moveEnd = function ($event) {
-            if (!this._isDragging)
+            if (!this.__isDragging) {
                 return;
-            $(this.dialogContainer).removeClass('ui-dragging');
-            $(this._dialog._dialog).removeClass('ui-dragging');
-            this._isDragging = false;
-            this._dialog = null;
+            }
+            $(this.dialogContainer)
+                .removeClass('ui-dragging');
+            $(this.__dialog.__dialog)
+                .removeClass('ui-dragging');
+            this.__isDragging = false;
+            this.__dialog = null;
         };
         UIDialogService.prototype.move = function ($event) {
-            if (!this._isDragging)
+            if (!this.__isDragging) {
                 return;
-            var x = ($event.x || $event.clientX) - this._startX;
-            var y = ($event.y || $event.clientY) - this._startY;
-            if (!this._isResizing) {
-                var p = $(this._dialog._dialog).offset();
-                var w = $(this._dialog._dialog).outerWidth();
-                var h = $(this._dialog._dialog).outerHeight();
-                var pw = $(this.dialogContainer).outerWidth();
-                var ph = $(this.dialogContainer).outerHeight();
+            }
+            var x = ($event.x || $event.clientX) - this.__startX;
+            var y = ($event.y || $event.clientY) - this.__startY;
+            if (!this.__isResizing) {
+                var p = $(this.__dialog.__dialog)
+                    .offset();
+                var w = $(this.__dialog.__dialog)
+                    .outerWidth();
+                var h = $(this.__dialog.__dialog)
+                    .outerHeight();
+                var pw = $(this.dialogContainer)
+                    .outerWidth();
+                var ph = $(this.dialogContainer)
+                    .outerHeight();
                 if (p.left + x < 0) {
                     x = 0;
                     p.left = 0;
@@ -204,15 +241,15 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating", "aureli
                     y = 0;
                     p.top = ph - h - 36;
                 }
-                this._dialog._current.top = p.top + y;
-                this._dialog._current.left = p.left + x;
+                this.__dialog._current.top = p.top + y;
+                this.__dialog._current.left = p.left + x;
             }
             else {
-                this._dialog._current.width += x;
-                this._dialog._current.height += y;
+                this.__dialog._current.width += x;
+                this.__dialog._current.height += y;
             }
-            this._startX = x !== 0 ? ($event.x || $event.clientX) : this._startX;
-            this._startY = y !== 0 ? ($event.y || $event.clientY) : this._startY;
+            this.__startX = x !== 0 ? ($event.x || $event.clientX) : this.__startX;
+            this.__startY = y !== 0 ? ($event.y || $event.clientY) : this.__startY;
         };
         UIDialogService = __decorate([
             aurelia_framework_1.autoinject(), 

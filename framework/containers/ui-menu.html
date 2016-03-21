@@ -37,7 +37,7 @@
 			<hr if.bind="link==='-'"/>
 			<p class="ui-menu-section" if.bind="link.length && link!=='-'">${link}</p>
 			<a if.bind="link.title" class="ui-menu-link ${link.isActive ? 'ui-active' : ''}"
-			   data-id="${link.id}" href.bind="link.href">
+			   data-id="${link.id}" href.bind="link.href || 'javascript:;'">
 				<i class="ui-icon ${link.icon}"></i>&nbsp;${link.title}</a>
 		</li>
 	</ul>

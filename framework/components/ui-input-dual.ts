@@ -124,6 +124,9 @@ export class UIInputDual {
 	}
 
 	bind() {
+		if (this.element.hasAttribute('readonly')) this.readonly = true;
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
+
 		if (!_.isEmpty(this.valueLeft)) {
 			this._valueLeftChanged(this.valueLeft);
 		}
@@ -169,10 +172,10 @@ export class UIInputDual {
 					return (new RegExp('[' + this.ALPHA + '\'\\.\\-&\\s]', 'g'))
 						.test(String.fromCharCode(e.charCode));
 				}
-				else if (this._type == 'address') {
-					return (/\w*/)
-						.test(String.fromCharCode(e.charCode));
-				}
+				//else if (this._type == 'address') {
+				//	return (/\w*/)
+				//		.test(String.fromCharCode(e.charCode));
+				//}
 				else if (this._type == 'number') {
 					return (/[0-9\-]/).test(String.fromCharCode(e.charCode));
 				}

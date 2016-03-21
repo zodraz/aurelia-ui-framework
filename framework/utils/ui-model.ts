@@ -18,35 +18,37 @@ export class UIModel {
 	public httpClient:UIHttpService;
 	public validation:ValidationGroup;
 
-	private _original:any;
-	private observers = [];
+	private __original:any;
+	private __observers = [];
 
 	constructor() {
 		let _v = Utils.lazy(Validation);
-		Object.defineProperty(this, 'httpClient', {
-			value: Utils.lazy(UIHttpService),
-			writable: false,
-			enumerable: false
-		});
-		Object.defineProperty(this, 'validation', {
-			value: _v.on(this, null),
-			writable: false,
-			enumerable: false
-		});
-		Object.defineProperty(this, 'logger', {
-			value: getLogger(this.constructor.name),
-			writable: false,
-			enumerable: false
-		});
-		Object.defineProperty(this, 'observers', {
-			value: [],
-			writable: true,
-			enumerable: false
-		});
-		Object.defineProperty(this, '_original', {
-			value: {},
-			writable: true,
-			enumerable: false
+		Object.defineProperties(this, {
+			'httpClient': {
+				value: Utils.lazy(UIHttpService),
+				writable: false,
+				enumerable: false
+			},
+			'validation': {
+				value: _v.on(this, null),
+				writable: false,
+				enumerable: false
+			},
+			'logger': {
+				value: getLogger(this.constructor.name),
+				writable: false,
+				enumerable: false
+			},
+			'__observers': {
+				value: [],
+				writable: true,
+				enumerable: false
+			},
+			'__original': {
+				value: {},
+				writable: true,
+				enumerable: false
+			}
 		});
 		this.logger.debug("Model Initialized");
 	}
@@ -73,15 +75,15 @@ export class UIModel {
 
 	dispose() {
 		this.logger.debug("Model Disposing");
-		while (this.observers && this.observers.length)
-			this.observers.pop().dispose();
+		while (this.__observers && this.__observers.length)
+			this.__observers.pop().dispose();
 	}
 
 	deserialize(json) {
-		this._original = json;
-		Object.keys(this._original)
+		this.__original = _.cloneDeep(json);
+		Object.keys(json)
 			.forEach((key) => {
-				this[key] = this._original[key];
+				this[key] = json[key];
 			});
 	}
 
@@ -102,6 +104,9 @@ export class UIModel {
 					if (_.isObject(o[key])) {
 						_pojo[key] = this._serializeObject(o[key])
 					}
+					else if (_.isArray(o[key])) {
+						_pojo[key] = o[key].join(',');
+					}
 					else {
 						_pojo[key] = o[key] || null;
 					}
@@ -111,21 +116,36 @@ export class UIModel {
 	}
 
 	isDirty() {
-		return Object.keys(this._original)
-			.every((key) => this.hasOwnProperty(key) && (this[key] === this._original[key]));
+		if (_.isEmpty(this.__original)) {
+			Object.keys(this)
+				.forEach((key) => {
+					if (key !== 'undefined' && !/^__/.test(key))
+						this.__original[key] = this[key]
+				});
+		}
+		return this._checkDirty(this.__original, this);
 	}
 
-	saveChanges() {
-		Object.keys(this._original)
-			.forEach((key) => {
-				this._original[key] = this[key];
+	_checkDirty(o, t) {
+		return !Object.keys(o)
+			.every((key) => {
+				if (t[key] instanceof UIModel) return !t[key].isDirty();
+				if (_.isArray(o[key]) && o[key].length != t[key].length) return false;
+				if (_.isArray(o[key]) || _.isObject(o[key])) return !this._checkDirty(o[key], t[key]);
+
+				if (t[key] !== o[key])this.logger.debug(key, o[key], t[key], t[key] === o[key]);
+				return t.hasOwnProperty(key) && (t[key] === o[key]);
 			});
 	}
 
+	saveChanges() {
+		this.__original = _.cloneDeep(this.serialize());
+	}
+
 	discardChanges() {
-		Object.keys(this._original)
+		Object.keys(_.cloneDeep(this.__original))
 			.forEach((key) => {
-				this[key] = this._original[key];
+				this[key] = this.__original[key];
 			});
 	}
 }

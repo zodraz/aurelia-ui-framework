@@ -7,6 +7,7 @@
 
 .ui-section {
   @include flex(1 1 0%);
+  display: block;
   overflow: hidden;
   position: relative;
 
@@ -20,6 +21,7 @@
 }
 
 .ui-content {
+  display: block;
   position: relative;
 
   &.ui-auto-height {
@@ -61,6 +63,7 @@
 }
 
 .ui-sidebar {
+  display: block;
   @include flex(0 0 220px);
   @include flex-column($wrap: false);
   overflow: auto;
@@ -80,6 +83,7 @@
 }
 
 .ui-header {
+  display: block;
   @include flex-row($wrap: false);
   @include flex(0 0 auto);
   min-height: 2em;
@@ -128,6 +132,7 @@
 }
 
 .ui-statsbar {
+  display: block;
   @include flex-row($align: stretch, $wrap: false);
   @include flex(0 0 auto);
   background-color: rgba($primary, 0.20);
@@ -155,6 +160,7 @@
 }
 
 .ui-toolbar {
+  display: block;
   @include flex-row($align: center, $justify: flex-end, $wrap: false);
   @include flex(0 0 auto);
   background-color: $toolbar-bg;
@@ -179,6 +185,7 @@
 }
 
 .ui-panel {
+  display: block;
   margin: 5px;
   min-height: 100px;
   max-height: 600px;

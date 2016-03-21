@@ -36,8 +36,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 this.theme = 'gender';
             if (element.hasAttribute('priority'))
                 this.theme = 'priority';
+            if (element.hasAttribute('long'))
+                this.theme += ' ui-switch-long';
         }
         UISwitch.prototype.attached = function () {
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
             $(this._input)
                 .attr(this.disabled === true ? 'disabled' : 'D', '');
             $(this._label)

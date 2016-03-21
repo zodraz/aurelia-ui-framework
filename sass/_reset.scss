@@ -77,13 +77,19 @@ input[type=number]::-webkit-outer-spin-button {
   visibility: hidden !important;
 }
 
-.ui-inline {
-  display: inline !important;
-}
-
 .ui-scroll {
   position: relative;
   overflow: auto !important;
+}
+
+.ui-block {
+  display: block;
+}
+.ui-inline {
+  display: inline-block;
+}
+.ui-flex {
+  @include display-flex();
 }
 
 // TEXT ALIGN

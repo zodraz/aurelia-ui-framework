@@ -35,7 +35,6 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         ], UIGridRow.prototype, "class");
         UIGridRow = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement('ui-row'), 
             __metadata('design:paramtypes', [Element])
         ], UIGridRow);

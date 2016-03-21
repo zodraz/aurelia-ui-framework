@@ -13,14 +13,15 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
     var UIHeader = (function () {
         function UIHeader(element) {
             this.element = element;
-            this.class = '';
             this.close = false;
             this.collapse = false;
-            this._theme = 'ui-default';
-            if (element.hasAttribute('primary'))
-                this._theme = 'ui-primary';
-            if (element.hasAttribute('secondary'))
-                this._theme = 'ui-secondary';
+            this.__theme = 'ui-default';
+            if (element.hasAttribute('primary')) {
+                this.__theme = 'ui-primary';
+            }
+            if (element.hasAttribute('secondary')) {
+                this.__theme = 'ui-secondary';
+            }
         }
         UIHeader.prototype.closeChanged = function (newValue) {
             this.close = (newValue !== false);
@@ -36,10 +37,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         __decorate([
             aurelia_framework_1.bindable, 
-            __metadata('design:type', String)
-        ], UIHeader.prototype, "class");
-        __decorate([
-            aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
         ], UIHeader.prototype, "close");
         __decorate([
@@ -48,7 +45,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         ], UIHeader.prototype, "collapse");
         UIHeader = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.containerless(),
             aurelia_framework_1.customElement("ui-header"), 
             __metadata('design:paramtypes', [Element])
         ], UIHeader);

@@ -44,9 +44,12 @@ export class UISwitch {
 		if (element.hasAttribute('ampm'))this.theme = 'ampm';
 		if (element.hasAttribute('gender'))this.theme = 'gender';
 		if (element.hasAttribute('priority'))this.theme = 'priority';
+		if (element.hasAttribute('long'))this.theme += ' ui-switch-long';
 	}
 
 	attached() {
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
+
 		$(this._input)
 			.attr(this.disabled === true ? 'disabled' : 'D', '');
 		$(this._label)

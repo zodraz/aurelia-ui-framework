@@ -1,0 +1,32 @@
+<template class="ui-level ${_collapsed?'collapse':''}">
+	<div class="ui-toggle">
+		<button><span class="fi-elegant-cross8"></span></button>
+		<button if.bind="parent" click.trigger="removeJson()"><span class="fi-elegant-prohibited1"></span></button>
+		<a click.trigger="toggle()"><span class="fi-elegant-minus6"></span> <span class="ui-uppercase">${key}</span>
+			<small>(${getType()})</small>
+		</a>
+	</div>
+	<div class="ui-body" ref="_body" if.bind="!_collapsed">
+		<div repeat.for="_key of json | keys">
+			<div if.bind="isSingleline(json[_key])">
+				<label>${isArray(json)?'':_key}</label><input value.bind="json[_key]"/>
+				<button><span class="fi-elegant-mini2"></span></button>
+			</div>
+			<div if.bind="isMultiline(json[_key])">
+				<label>${isArray(json)?'':_key}</label><textarea rows="5" value.bind="json[_key]"></textarea>
+				<button><span class="fi-elegant-mini2"></span></button>
+			</div>
+			<div if.bind="isNumber(json[_key])">
+				<label>${isArray(json)?'':_key}</label><input value.bind="json[_key]" type="number"/>
+				<button><span class="fi-elegant-mini2"></span></button>
+			</div>
+			<div if.bind="isBoolean(json[_key])">
+				<label></label>
+				<button><span class="fi-elegant-mini2"></span></button>
+				<ui-option checked.bind="json[_key]">${isArray(json)?'':_key}</ui-option>
+			</div>
+			<json-part if.bind="isObject(json[_key]) || isArray(json[_key])" json.bind="json[_key]" parent.bind="json"
+					   key.bind="isArray(json)?json[_key].name:_key"></json-part>
+		</div>
+	</div>
+</template>

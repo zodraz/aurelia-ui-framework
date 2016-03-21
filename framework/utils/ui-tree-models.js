@@ -16,8 +16,7 @@ define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (requ
             this.children = [];
             this.parent = null;
             this.isvisible = true;
-            this._checkLevel = 0;
-            var me = this;
+            this.__checkLevel = 0;
             this.id = model.id;
             this.name = model.name || model.text;
             this.level = level;
@@ -28,7 +27,7 @@ define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (requ
             this.expanded = model.expanded || false;
             this.checked = model.checked ? 1 : 0;
             this.parent = parent;
-            this._checkLevel = checkLevel;
+            this.__checkLevel = checkLevel;
             if (level < maxLevels && (model.children || []).length > 0) {
                 ui_utils_1._.each(model.children, function (m) {
                     _this.children.push(new UITreeModel(level + 1, maxLevels, checkLevel, m, _this));
@@ -42,8 +41,9 @@ define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (requ
                 ui_utils_1._.forEach(this.children, function (c) {
                     c.updateChild(v);
                 });
-                if (this.parent && this.level > this._checkLevel)
+                if (this.parent && this.level > this.__checkLevel) {
                     this.parent.updatePartial();
+                }
             },
             enumerable: true,
             configurable: true
@@ -58,14 +58,17 @@ define(["require", "exports", 'aurelia-framework', "./ui-utils"], function (requ
             if (this.children && this.children.length > 0) {
                 var c = ui_utils_1._.countBy(this.children, 'checked');
                 var v = 2;
-                if (!c[1] && !c[2])
+                if (!c[1] && !c[2]) {
                     v = 0;
-                if (!c[0] && !c[2])
+                }
+                if (!c[0] && !c[2]) {
                     v = 1;
+                }
                 this.checked = v;
             }
-            if (this.parent && this.level > this._checkLevel)
+            if (this.parent && this.level > this.__checkLevel) {
                 this.parent.updatePartial();
+            }
         };
         Object.defineProperty(UITreeModel.prototype, "isleaf", {
             get: function () {

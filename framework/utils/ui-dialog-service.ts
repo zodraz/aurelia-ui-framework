@@ -10,16 +10,19 @@ import {UIDialog} from "../containers/ui-dialog";
 export class UIDialogService {
 
 	public dialogContainer;
-	private _taskbar;
+	private __taskbar;
 
-	private _active:any;
-	private _windows:Array<any> = [];
+	private __active:any;
+	private __windows:Array<any> = [];
 
-	constructor(private container:Container,
-				private compositionEngine:CompositionEngine) {
+	constructor(
+		private container:Container,
+		private compositionEngine:CompositionEngine) {
 		if (!this.dialogContainer) {
-			$('.ui-app').append('<div class="ui-dialog-container"></div>');
-			this.dialogContainer = $('body .ui-dialog-container').get(0);
+			$('.ui-app')
+				.append('<div class="ui-dialog-container"></div>');
+			this.dialogContainer = $('body .ui-dialog-container')
+				.get(0);
 
 			$(this.dialogContainer)
 				.on('close', (e)=>this.closeDialog(e.originalEvent))
@@ -28,13 +31,16 @@ export class UIDialogService {
 				.on('mousemove', (e)=>this.move(e.originalEvent))
 				.on('mouseup', (e)=>this.moveEnd(e.originalEvent));
 		}
-		if (!this._taskbar) {
-			this._taskbar = $('body .ui-app-taskbar');
-			this._taskbar.on('click', 'button', (e)=>this.switchActive((<any>e.originalEvent.target).window));
+		if (!this.__taskbar) {
+			this.__taskbar = $('body .ui-app-taskbar');
+			this.__taskbar.on('click', 'button', (e)=>this.switchActive((<any>e.originalEvent.target).window));
 		}
 	}
 
-	_invokeLifecycle(instance, name, model) {
+	private __invokeLifecycle(
+		instance,
+		name,
+		model) {
 		if (instance && typeof instance[name] === 'function') {
 			let result = instance[name](model);
 
@@ -52,7 +58,7 @@ export class UIDialogService {
 		return Promise.resolve(true);
 	}
 
-	_getViewModel(instruction) {
+	private __getViewModel(instruction) {
 		if (typeof instruction.viewModel === 'function') {
 			instruction.viewModel = Origin.get(instruction.viewModel).moduleId;
 		}
@@ -64,7 +70,9 @@ export class UIDialogService {
 		return Promise.resolve(instruction);
 	}
 
-	show(vm:any, model?:any):Promise<any> {
+	show(
+		vm:any,
+		model?:any):Promise<any> {
 		let childContainer = this.container.createChild();
 
 
@@ -75,82 +83,106 @@ export class UIDialogService {
 			model: model ? model : {}
 		};
 
-		return this._getViewModel(instruction)
-			.then(returnedInstruction => {
-				let viewModel:any = <any>returnedInstruction.viewModel;
+		return this.__getViewModel(instruction)
+				   .then(
+					   returnedInstruction => {
+						   let viewModel:any = <any>returnedInstruction.viewModel;
 
-				return this._invokeLifecycle(viewModel, 'canActivate', model).then(canActivate => {
-					if (canActivate) {
-						return this.compositionEngine.createController(returnedInstruction).then(controller => {
-							controller.automate();
+						   return this.__invokeLifecycle(viewModel, 'canActivate', model)
+									  .then(
+										  canActivate => {
+											  if (canActivate) {
+												  return this.compositionEngine.createController(returnedInstruction)
+															 .then(
+																 controller => {
+																	 controller.automate();
 
-							let slot = new ViewSlot(this.dialogContainer, true);
-							slot.add(controller.view);
+																	 let slot = new ViewSlot(this.dialogContainer, true);
+																	 slot.add(controller.view);
 
-							if (this._active) {
-								this._active.active = false;
-							}
-							this._active = $(controller.view).children().get(0).au.controller.viewModel;
-							this._windows.push(this._active);
+																	 if (this.__active) {
+																		 this.__active.active = false;
+																	 }
+																	 this.__active = $(controller.view)
+																		 .children()
+																		 .get(0).au.controller.viewModel;
+																	 this.__windows.push(this.__active);
 
-							setTimeout(() => {
-								slot.attached();
-							}, 200);
-						});
-					}
-				});
-			});
+																	 setTimeout(
+																		 () => {
+																			 slot.attached();
+																		 }, 200);
+																 });
+											  }
+										  });
+					   });
 	}
 
 	addTaskButton(btn) {
-		this._taskbar.append(btn);
+		this.__taskbar.append(btn);
 	}
 
 	closeDialog(e) {
-		let dialog = $(e.target).closest('ui-dialog').get(0).au.controller;
-		this._invokeLifecycle(dialog.contentView.bindingContext, 'canDeactivate', null).then(canDeactivate => {
-			if (canDeactivate) {
-				_.remove(this._windows, 'id', dialog.viewModel.id);
-				dialog.viewModel.remove();
-				this._invokeLifecycle(dialog.contentView.bindingContext, 'detached', null);
+		let dialog = $(e.target)
+			.closest('ui-dialog')
+			.get(0).au.controller;
+		this.__invokeLifecycle(dialog.contentView.bindingContext, 'canDeactivate', null)
+			.then(
+				canDeactivate => {
+					if (canDeactivate) {
+						_.remove(this.__windows, 'id', dialog.viewModel.id);
+						dialog.viewModel.remove();
+						this.__invokeLifecycle(dialog.contentView.bindingContext, 'detached', null);
 
-				if (this._active)this._active.active = false;
-				this.__getNextActive();
-				this._invokeLifecycle(dialog.contentView.bindingContext, 'deactivate', null);
-			}
-		});
+						if (this.__active) {
+							this.__active.active = false;
+						}
+						this.__getNextActive();
+						this.__invokeLifecycle(dialog.contentView.bindingContext, 'deactivate', null);
+					}
+				});
 	}
 
-	switchActive(d, ignore = false) {
-		if (!ignore && this._active && this._active.id == d.id) {
+	switchActive(
+		d,
+		ignore = false) {
+		if (!ignore && this.__active && this.__active.id == d.id) {
 			d.minimized = true;
 			d.active    = false;
 			this.__getNextActive();
 			return;
 		}
-		if (this._active) {
-			if (d.id === this._active.id) return;
-			this._active.active = false;
+		if (this.__active) {
+			if (d.id === this.__active.id) {
+				return;
+			}
+			this.__active.active = false;
 		}
 		if (d && !d.modal) {
-			(this._active = d).minimized = false;
-			(this._active = d).active = true;
+			(this.__active = d).minimized = false;
+			(this.__active = d).active = true;
 		}
 	}
 
 	collapse(e) {
-		$(e.target).closest('ui-dialog').get(0).au.controller.viewModel.minimized = true;
-		if (this._active)this._active.active = false;
+		$(e.target)
+			.closest('ui-dialog')
+			.get(0).au.controller.viewModel.minimized = true;
+		if (this.__active) {
+			this.__active.active = false;
+		}
 		this.__getNextActive();
 	}
 
 	__getNextActive() {
-		if (this._windows.length > 0) {
-			this._active = null;
-			let a        = _.findLast(this._windows, e=>e.minimized === false);
+		if (this.__windows.length > 0) {
+			this.__active = null;
+			let a         = _.findLast(
+				this.__windows,
+				e=>e.minimized === false);
 			if (a) {
-				a.active     = true;
-				this._active = a;
+				a.active      = true;
+				this.__active = a;
 			}
 		}
 	}
@@ -159,64 +191,91 @@ export class UIDialogService {
 	/**
 	 * dialog move
 	 */
-	private _isDragging = false;
-	private _isResizing = false;
-	private _startX     = 0;
-	private _startY     = 0;
-	private _dialog;
+	private __isDragging = false;
+	private __isResizing = false;
+	private __startX     = 0;
+	private __startY     = 0;
+	private __dialog;
 
 	private moveStart($event) {
-		this._dialog = $($event.target).closest('ui-dialog').get(0).au.controller.viewModel;
-		if ($($event.target).closest('.ui-lang-select').length == 0 && !$($event.target).closest('.ui-button').hasClass('ui-dropdown')) {
-			$('.ui-dropdown').removeClass('ui-dropdown');
+		this.__dialog = $($event.target)
+			.closest('ui-dialog')
+			.get(0).au.controller.viewModel;
+		if ($($event.target)
+				.closest('.ui-lang-select').length == 0 && !$($event.target)
+				.closest('.ui-button')
+				.hasClass('ui-dropdown')) {
+			$('.ui-dropdown')
+				.removeClass('ui-dropdown');
 		}
 
-		if ($($event.target).closest('button').length !== 0) return;
-		if ($event.button != 0) return;
-		if (!$($event.target).hasClass('ui-resizer') && $($event.target).closest('.ui-header').length == 0) {
-			return this.switchActive(this._dialog, true);
-		}
-
-		this._startX     = ($event.x || $event.clientX);
-		this._startY     = ($event.y || $event.clientY);
-		this._isDragging = true;
-		this._isResizing = $($event.target).hasClass('ui-resizer');
-
-		if (this._isResizing && !this._dialog.resize) {
-			this._isDragging = false;
-			this._isResizing = false;
+		if ($($event.target)
+				.closest('button').length !== 0) {
 			return;
 		}
-		else if (!this._dialog.drag) {
-			this._isDragging = false;
-			this._isResizing = false;
+		if ($event.button != 0) {
+			return;
+		}
+		if (!$($event.target)
+				.hasClass('ui-resizer') && $($event.target)
+				.closest('.ui-header').length == 0) {
+			return this.switchActive(this.__dialog, true);
+		}
+
+		this.__startX     = ($event.x || $event.clientX);
+		this.__startY     = ($event.y || $event.clientY);
+		this.__isDragging = true;
+		this.__isResizing = $($event.target)
+			.hasClass('ui-resizer');
+
+		if (this.__isResizing && !this.__dialog.resize) {
+			this.__isDragging = false;
+			this.__isResizing = false;
+			return;
+		}
+		else if (!this.__dialog.drag) {
+			this.__isDragging = false;
+			this.__isResizing = false;
 			return;
 		}
 
-		$(this._dialog._dialog).addClass('ui-dragging');
-		$(this.dialogContainer).addClass('ui-dragging');
+		$(this.__dialog.__dialog)
+			.addClass('ui-dragging');
+		$(this.dialogContainer)
+			.addClass('ui-dragging');
 	}
 
 	private moveEnd($event) {
-		if (!this._isDragging) return;
-		$(this.dialogContainer).removeClass('ui-dragging');
-		$(this._dialog._dialog).removeClass('ui-dragging');
-		this._isDragging = false;
-		this._dialog     = null;
+		if (!this.__isDragging) {
+			return;
+		}
+		$(this.dialogContainer)
+			.removeClass('ui-dragging');
+		$(this.__dialog.__dialog)
+			.removeClass('ui-dragging');
+		this.__isDragging = false;
+		this.__dialog     = null;
 	}
 
 	private move($event) {
-		if (!this._isDragging) return;
+		if (!this.__isDragging) {
+			return;
+		}
 
-		let x = ($event.x || $event.clientX) - this._startX;
-		let y = ($event.y || $event.clientY) - this._startY;
+		let x = ($event.x || $event.clientX) - this.__startX;
+		let y = ($event.y || $event.clientY) - this.__startY;
 
-		if (!this._isResizing) {
-			let p  = $(this._dialog._dialog).offset();
-			let w  = $(this._dialog._dialog).outerWidth();
-			let h  = $(this._dialog._dialog).outerHeight();
-			let pw = $(this.dialogContainer).outerWidth();
-			let ph = $(this.dialogContainer).outerHeight();
+		if (!this.__isResizing) {
+			let p  = $(this.__dialog.__dialog)
+				.offset();
+			let w  = $(this.__dialog.__dialog)
+				.outerWidth();
+			let h  = $(this.__dialog.__dialog)
+				.outerHeight();
+			let pw = $(this.dialogContainer)
+				.outerWidth();
+			let ph = $(this.dialogContainer)
+				.outerHeight();
 
 			if (p.left + x < 0) {
 				x      = 0;
@@ -234,15 +293,15 @@ export class UIDialogService {
 				y     = 0;
 				p.top = ph - h - 36;
 			}
-			this._dialog._current.top  = p.top + y;
-			this._dialog._current.left = p.left + x;
+			this.__dialog._current.top  = p.top + y;
+			this.__dialog._current.left = p.left + x;
 		}
 		else {
-			this._dialog._current.width += x;
-			this._dialog._current.height += y;
+			this.__dialog._current.width += x;
+			this.__dialog._current.height += y;
 		}
 
-		this._startX = x !== 0 ? ($event.x || $event.clientX) : this._startX;
-		this._startY = y !== 0 ? ($event.y || $event.clientY) : this._startY;
+		this.__startX = x !== 0 ? ($event.x || $event.clientX) : this.__startX;
+		this.__startY = y !== 0 ? ($event.y || $event.clientY) : this.__startY;
 	}
 }

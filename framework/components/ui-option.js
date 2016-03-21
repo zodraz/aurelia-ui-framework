@@ -26,6 +26,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input"], function (requ
                 this._checkbox = false;
         }
         UIOption.prototype.bind = function () {
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
             this._type = this._checkbox ? 'checkbox' : 'radio';
             this._classes = this._checkbox ? 'ui-checkbox' : 'ui-radio';
         };

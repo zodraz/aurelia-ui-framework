@@ -7,12 +7,13 @@
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @customElement("ui-section")
 export class UISection {
-	private dir:string = 'ui-flex-row';
+	private __dir:string = 'ui-flex-row';
 
-	constructor(el:Element) {
-		if (el.hasAttribute('column')) this.dir = 'ui-flex-column';
+	constructor(public element:Element) {
+		if (element.hasAttribute('column')) {
+			this.__dir = 'ui-flex-column';
+		}
 	}
 }

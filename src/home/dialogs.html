@@ -1,5 +1,5 @@
 <template>
-	<div class="ui-pad-all">
+	<ui-content class="ui-pad-all" auto>
 		<p>
 			<ui-button primary icon="fi-elegant-full9" click.trigger="open()">Show Dialog</ui-button>
 			<ui-button secondary icon="fi-elegant-full9" click.trigger="modal()">Show Modal</ui-button>
@@ -9,6 +9,11 @@
 			Open multiple dialogs that can be resized, minimized and dragged.
 		</p>
 
-	</div>
+	</ui-content>
+	<!--<ui-content scroll>-->
+		<!--<ui-button click.trigger="printJson()">Print</ui-button>-->
+		<!--<ui-json value.bind="json"></ui-json>-->
+
+	<!--</ui-content>-->
 
 </template>

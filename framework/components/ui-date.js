@@ -61,6 +61,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
             this.dt = ui_utils_1.moment().format('DD');
         }
         UIDate.prototype.bind = function () {
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
         };
         UIDate.prototype.attached = function () {
             if (this.inline && (this._inputStart = this._inputInline))
@@ -121,16 +123,16 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
                 .on('dp.change', function (e) {
                 if (_this.range) {
                     if (primary) {
-                        _this.value.start = e.date;
+                        _this.value.start = e.date.toISOString();
                         $(_this._inputEnd).data('DateTimePicker').minDate(e.date);
                     }
                     if (!primary) {
-                        _this.value.end = e.date;
+                        _this.value.end = e.date.toISOString();
                         $(_this._inputStart).data('DateTimePicker').maxDate(e.date);
                     }
                 }
                 else {
-                    _this.value = e.date;
+                    _this.value = e.date.toISOString();
                 }
             });
         };
@@ -157,8 +159,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-in
         UIDate.prototype._valueChanged = function (newValue) {
             if ($(this._inputStart).data('DateTimePicker')) {
                 if (this.range) {
-                    $(this._inputStart).data('DateTimePicker').date(newValue.start);
-                    $(this._inputEnd).data('DateTimePicker').date(newValue.end);
+                    $(this._inputStart).data('DateTimePicker').date(newValue.start || null);
+                    $(this._inputEnd).data('DateTimePicker').date(newValue.end || null);
                 }
                 else if (!this.range) {
                     $(this._inputStart).data('DateTimePicker').date(newValue || null);

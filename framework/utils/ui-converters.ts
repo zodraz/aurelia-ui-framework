@@ -48,6 +48,12 @@ export class CurrencyValueConverter {
 	}
 }
 
+export class JsonValueConverter {
+	toView(value:any) {
+		return JSON.stringify(value, null, 4);
+	}
+}
+
 export class IsStringValueConverter {
 	toView(value:any) {
 		return _.isString(value);

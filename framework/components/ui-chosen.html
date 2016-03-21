@@ -17,7 +17,7 @@
 				<content></content>
 			</div>
 			<select ref="_select" class="ui-input ${_inputClasses} ui-primary" id.bind="_id"
-					placeholder="${placeholder}" value.bind="_value" style="width: 100%">
+					placeholder="${placeholder}" value.bind="_value" css.bind="{width: '100%'}">
 				<option value="" if.bind="!_multiple"></option>
 				<option model.bind="opt" repeat.for="opt of options"
 						value="${opt[valueProperty]!==null&&opt[valueProperty]!==undefined?opt[valueProperty]:opt}">

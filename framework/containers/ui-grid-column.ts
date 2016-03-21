@@ -7,7 +7,6 @@
 import {autoinject, customElement, containerless, bindable} from "aurelia-framework";
 
 @autoinject()
-@containerless()
 @customElement('ui-column')
 export class UIGridColumn {
 	private _classes = '';

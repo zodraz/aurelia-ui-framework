@@ -9,7 +9,7 @@
 			<span class="ui-icon fi-editor-translation"></span>
 		</div>
 		<a class="ui-input ui-button ui-button-secondary ${_current ? '' : 'ui-text-muted'}" ref="_selector"
-		   click.trigger="_openList()" style="width: 200px">
+		   click.trigger="_openList()" css.bind="{width: '200px'}">
 			${_current ? _current.name : '--Choose a Language--'}&nbsp;&nbsp;
 			<span class="fi-elegant-little9 ui-text-muted ui-right"></span>
 		</a>
@@ -28,7 +28,7 @@
 			<p class="ui-menu-section ui-text-muted">Available</p>
 			<li repeat.for="lang of _languages | sort:'id'">
 				<a class="ui-menu-link" click.trigger="_addLanguage(lang)">
-					${lang.name}<span style="float:right" class="fi-bigmug-line-add149 ui-text-info"></span></a>
+					${lang.name}<span css.bind="{float:'right'}" class="fi-bigmug-line-add149 ui-text-info"></span></a>
 			</li>
 		</ul>
 		<p if.bind="_errors.length>0" class="ui-text-muted"><span class="ui-text-warning fi-elegant-error6"></span>

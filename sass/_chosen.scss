@@ -27,16 +27,10 @@
 	  background-color: $input-bg;
 	}
 
-	li.highlighted {
+	li.highlighted.active-result {
 	  color: $primary-text;
 	  font-weight: $font-weight-strong;
 	  background-color: rgba($primary, 0.65);
-	}
-
-	li.result-selected {
-	  color: $primary-text;
-	  font-weight: $font-weight-strong;
-	  background-color: rgba($primary, 0.85);
 	}
 
 	.chosen-container {
@@ -114,6 +108,13 @@
 	}
 
 	.chosen-container-single {
+	  .chosen-drop {
+		li.result-selected {
+		  color: $primary-text;
+		  font-weight: $font-weight-strong;
+		  background-color: rgba($primary, 0.85);
+		}
+	  }
 	  .chosen-single {
 		height: 26px;
 		line-height: 26px;
@@ -152,6 +153,11 @@
 	}
 
 	.chosen-container-multi {
+	  .chosen-drop {
+		li.result-selected {
+		  color: rgba($text-muted, 0.5);
+		}
+	  }
 	  .chosen-choices {
 		line-height: 1;
 		padding: 0;

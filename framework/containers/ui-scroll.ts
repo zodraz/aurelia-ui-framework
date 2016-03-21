@@ -7,8 +7,7 @@
 import {autoinject, bindable, customElement, containerless, inlineView} from "aurelia-framework";
 
 @autoinject()
-@containerless()
-@inlineView('<template><div class="ui-scroll ${class}"><content></content></div></template>')
+@inlineView('<template class="ui-block ui-scroll ${class}"><content></content></template>')
 @customElement('ui-scroll')
 export class UIScroll {
 	@bindable class:string;

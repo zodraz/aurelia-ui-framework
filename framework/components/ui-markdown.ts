@@ -39,7 +39,7 @@ export class UIMarkdown {
 	@bindable rows:number        = 10;
 	private value:string         = '';
 
-	constructor(element:Element) {
+	constructor(public element:Element) {
 		this._id = `markdown-${UIInput._id++}`;
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
@@ -50,6 +50,9 @@ export class UIMarkdown {
 	}
 
 	bind() {
+		if (this.element.hasAttribute('readonly')) this.readonly = true;
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
+
 		this.value = this.value || '';
 	}
 

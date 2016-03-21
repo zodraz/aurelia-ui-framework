@@ -69,6 +69,8 @@ export class UIChosen {
 	@bindable valueProperty      = 'id';
 	@bindable displayProperty    = 'name';
 
+	private _allowAdd = false;
+
 	constructor(public element:Element) {
 		this._id = `chosen-${UIInput._id++}`;
 		if (element.hasAttribute('required')) this._labelClasses += ' ui-required ';
@@ -76,29 +78,39 @@ export class UIChosen {
 		if (element.hasAttribute('nolabel')) this._noLabel = true;
 		if (element.hasAttribute('checkbox')) this._checkbox = true;
 		if (element.hasAttribute('multiple')) this._multiple = true;
+		if (element.hasAttribute('allow-new')) this._allowAdd = true;
 		if (element.hasAttribute('label-top')) this._classes = 'ui-label-top';
 	}
 
 	bind() {
+		if (this.element.hasAttribute('readonly')) this.readonly = true;
+		if (this.element.hasAttribute('disabled')) this.disabled = true;
+
 		if (this.value) {
-			this._valueChanged(this.value);
 		}
 	}
 
 	attached() {
 		$(this._select)
 			.append($(this._options).children())
-			.val(this.value)
 			.attr(this.readonly === true ? 'readonly' : 'R', '')
 			.attr(this.disabled === true ? 'disabled' : 'D', '')
 			.attr(this._multiple ? 'multiple' : 'single', '')
+			.val((this._multiple) ? (this.value || '').split(',') : this.value)
 			.chosen({
 				width: '100%',
 				search_contains: true,
 				disable_search_threshold: 10,
 				allow_single_deselect: this._clear,
 				placeholder_text_single: this.placeholder,
-				placeholder_text_multiple: this.placeholder
+				placeholder_text_multiple: this.placeholder,
+				create_option: this._allowAdd,
+				// persistent_create_option decides if you can add any term, even if part
+				// of the term is also found, or only unique, not overlapping terms
+				persistent_create_option: true,
+				// with the skip_no_results option you can disable the 'No results match..'
+				// message, which is somewhat redundant when option adding is enabled
+				skip_no_results: this._allowAdd
 			})
 			.change(()=> {
 				/**

@@ -1,34 +1,32 @@
-<template>
-	<div ref="uiApp" class="ui-app" mouseup.delegate="hideMenu($event)">
-		<div class="ui-app-header">
-			<button class="ui-app-menu-handle" click.trigger="showMenu($event)" if.bind="appState.IsAuthenticated">
-				<span class="fi-elegant-square18"></span>
-			</button>
-			<div class="ui-divider"></div>
-			<div class="ui-app-logo"></div>
-			<h1><a href="#/">${title}<span if.bind="subTitle">${subTitle}</span></a></h1>
+<template ref="__uiApp" class="ui-app" mouseup.delegate="hideMenu($event)">
+	<div class="ui-app-header">
+		<button class="ui-app-menu-handle" click.trigger="showMenu($event)" if.bind="appState.IsAuthenticated">
+			<span class="fi-elegant-square18"></span>
+		</button>
+		<div class="ui-divider"></div>
+		<div class="ui-app-logo"></div>
+		<h1><a href="#/">${title}<span if.bind="subTitle">${subTitle}</span></a></h1>
 
-			<template replaceable part="quick-links"></template>
-		</div>
-		<router-view class="ui-app-view"></router-view>
-		<div class="ui-app-taskbar">
-			<template replaceable part="task-links"></template>
-		</div>
-		<div class="ui-app-footer">
-			<p>&copy; ${appState.StartYear}-${thisYear} ${appState.Copyright}</p>
+		<template replaceable part="quick-links"></template>
+	</div>
+	<router-view class="ui-app-view"></router-view>
+	<div class="ui-app-taskbar">
+		<template replaceable part="task-links"></template>
+	</div>
+	<div class="ui-app-footer">
+		<p>&copy; ${appState.StartYear}-${__thisYear} ${appState.Copyright}</p>
 
-			<p>With &hearts; for HMC</p>
-		</div>
+		<p>With &hearts; for HMC</p>
+	</div>
 
-		<div class="ui-app-menu-shim"></div>
-		<ui-menu router.bind="router"></ui-menu>
+	<div class="ui-app-menu-shim"></div>
+	<ui-menu router.bind="router"></ui-menu>
 
 
-		<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">
-			<div class="ui-loader">
-				<span class="ui-spin fi-elegant-wheel1"></span>
-				<span class="ui-spin-opp fi-elegant-wheel1 second"></span>
-			</div>
+	<div class="ui-loading-shim" if.bind="router.isNavigating || appState.IsHttpInUse">
+		<div class="ui-loader">
+			<span class="ui-spin fi-elegant-wheel1"></span>
+			<span class="ui-spin-opp fi-elegant-wheel1 second"></span>
 		</div>
 	</div>
 

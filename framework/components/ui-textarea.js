@@ -47,6 +47,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 this._classes = 'ui-label-top';
         }
         UITextArea.prototype.bind = function () {
+            if (this.element.hasAttribute('readonly'))
+                this.readonly = true;
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
         };
         UITextArea.prototype.attached = function () {
             var _this = this;

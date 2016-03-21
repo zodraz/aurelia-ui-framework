@@ -6,21 +6,27 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 		super();
 
 		ValidationGroup.prototype.isPhone = function () {
-			this.passes((newValue)=> {
-				return PhoneLib.isValid(newValue, '');
-			}, null).withMessage(()=> {
-				return 'invalid phone number';
-			});
+			this.passes(
+				(newValue)=> {
+					return PhoneLib.isValid(newValue, '');
+				}, null)
+				.withMessage(
+					()=> {
+						return 'invalid phone number';
+					});
 			return this;
 		};
 	}
 
-	appendMessageToElement(formGroup, validationProperty) {
+	appendMessageToElement(
+		formGroup,
+		validationProperty) {
 		let helpBlock:Element = formGroup.lastElementChild;
 		if (helpBlock) {
 			if (!helpBlock.classList) {
 				helpBlock = null;
-			} else if (!helpBlock.classList.contains('ui-help-block')) {
+			}
+			else if (!helpBlock.classList.contains('ui-help-block')) {
 				helpBlock = null;
 			}
 		}
@@ -34,16 +40,20 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 		helpBlock.textContent = validationProperty ? validationProperty.message : '';
 	}
 
-	appendUIVisuals(validationProperty, formGroup) {
+	appendUIVisuals(
+		validationProperty,
+		formGroup) {
 		if (validationProperty && validationProperty.isDirty) {
 			if (validationProperty.isValid) {
 				formGroup.parentElement.classList.remove('ui-invalid');
 				formGroup.parentElement.classList.add('ui-valid');
-			} else {
+			}
+			else {
 				formGroup.parentElement.classList.remove('ui-valid');
 				formGroup.parentElement.classList.add('ui-invalid');
 			}
-		} else {
+		}
+		else {
 			formGroup.parentElement.classList.remove('ui-invalid');
 			formGroup.parentElement.classList.remove('ui-valid');
 		}
@@ -51,11 +61,15 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 		this.appendMessageToElement(formGroup, validationProperty);
 	}
 
-	prepareElement(validationProperty, element) {
+	prepareElement(
+		validationProperty,
+		element) {
 		this.appendUIVisuals(null, element.lastElementChild);
 	}
 
-	updateElement(validationProperty, element) {
+	updateElement(
+		validationProperty,
+		element) {
 		this.appendUIVisuals(validationProperty, element.lastElementChild);
 	}
 }

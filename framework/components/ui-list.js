@@ -46,6 +46,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "./ui-in
                 this._multiple = true;
         }
         UIList.prototype.bind = function () {
+            if (this.element.hasAttribute('readonly'))
+                this.readonly = true;
+            if (this.element.hasAttribute('disabled'))
+                this.disabled = true;
             if (this.value) {
                 this._valueChanged(this.value);
             }
