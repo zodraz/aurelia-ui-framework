@@ -1,0 +1,44 @@
+/**
+ *	UI List Input
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-list {
+  overflow      : auto;
+  max-height    : 18em;
+  background    : $base-bg;
+  border-radius : $base-border-radius;
+  border        : 1px solid $base-border-color;
+  &.floating {
+	position : absolute;
+	left     : 0;
+	right    : 0;
+	z-index  : 50;
+	@include box-shadow(0 2px 4px 0 $base-shadow-color);
+  }
+
+  .ui-list-item {
+	display : block;
+	cursor  : pointer;
+	padding : 0.4em 0.5em;
+
+	&:hover, &.hilight {
+	  background : rgba($secondary, 0.5);
+	  color      : $secondary-text
+	}
+	&.selected {
+	  background : $secondary;
+	  color      : $secondary-text
+	}
+  }
+
+  .ui-list-group {
+	display : block;
+	> p {
+	  padding : 0.2em 0.5em;
+	  color   : $text-muted;
+	}
+  }
+}

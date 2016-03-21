@@ -2,236 +2,140 @@ declare module "aurelia-ui-framework" {
 	import * as _ from "lodash";
 	import * as moment from "moment";
 	import * as numeral from "numeral";
-	import {Logger} from "aurelia-logging";
-	import {ValidationGroup} from "aurelia-validation";
 
 	export var _:_.LoDashStatic;
 	export var moment:moment.MomentStatic;
 	export var numeral:numeral.Numeral;
+}
 
-	export function watch(defaultValue?:any);
+/** CORE **/
+declare module "aurelia-ui-framework" {
+}
 
-	export class UIValidationStrategy {}
-	export class AuthInterceptor {}
-	export class KeysValueConverter {}
-	export class GroupValueConverter {}
-	export class SortValueConverter {}
-	export class DateValueConverter {}
-	export class NumberValueConverter {}
-	export class CurrencyValueConverter {}
-	export class MarkdownValueConverter {}
+/** UTILS **/
+declare module "aurelia-ui-framework" {
+	import {Container, PropertyObserver} from "aurelia-framework";
+	import {Subscription} from "aurelia-event-aggregator";
 
-	export class IsStringValueConverter {}
-	export class IsArrayValueConverter {}
-	export class IsObjectValueConverter {}
+	// Application State Class
+	export class UIApplication {
 
-	export class UILangSelect {
-		static LANGUAGES;
-	}
+		static defaults;
 
-	export class UIEvent {
-		data:any;
-		value:any;
-
-		static fireEvent(event:string, element:EventTarget, data?:any, source?:Element);
-
-		static observe(object, prop);
-
-		static broadcast(evt:string, data?:any);
-
-		static subscribe(evt:string, fn:any):any;
-	}
-
-	export class UIHttpService {
-		get(slug:string);
-
-		post(slug:string, obj:any);
-
-		put(slug:string, obj:any);
-
-		delete(slug:string);
-	}
-
-	export class UIDialogService {
-		show(dialog:any, model?:any):Promise<any>;
-	}
-
-	export class UIDwrService {
-		execute(method:string, params:Array<any>, inject?:boolean):Promise<ResponseHandler>;
-	}
-
-	export interface ResponseHandler {
-		data:any;
-		secondaryData:any;
-		thirdData:any;
-		fourthData:any;
-		fifthData:any;
-
-		exitCode:number;
-		error:string;
-	}
-
-	export class UIModel {
-		logger:Logger;
-		httpClient:UIHttpService;
-		validation:ValidationGroup;
-		observers:any;
-
-		get();
-
-		post();
-
-		put();
-
-		delete();
-
-		deserialize(json:any);
-
-		serialize():any;
-
-		saveChanges();
-
-		discardChanges();
-
-		isDirty():boolean;
-
-		dispose();
-	}
-
-	export class UIApplicationState {
-		IsAuthenticated:boolean;
 		IsHttpInUse:boolean;
+		IsAuthenticated:boolean;
+		SendAuthHeader:boolean;
 
-		// Application Settings
-		public AppKey:string;
-		public Version:string;
-		public StartYear:string;
-		public Copyright:string;
+		AppConfig:UIAppConfig;
+		HttpConfig:UIHttpConfig;
 
-		public Username:string;
+		Username:string;
+		UserGroup:string;
 
-		// Api Connections
-		public BaseUrl:string;
-		public AuthUser:string;
-		public AuthToken:string;
-		public AllowAuthHeader:boolean;
+		AuthUser:string;
+		AuthToken:string;
 
-		// Mosaic/Voila
-		public IpAddress:string;
-		public AppSource:number;
-		public UserGroup:string;
+		navigate(hash):void;
 
-		_current;
-		router;
+		navigateTo(route, params?):void;
 
-		navigateTo(route:string, params?:any);
+		session(key, value?):any;
 
-		get(key:string):any;
+		clearSession():void;
 
-		set(key:string, value:any):any;
+		persist(key, value?):any;
 
-		//Logging
-		logDebug(category:string, message:string);
+		info(tag:string, msg:string, ...rest);
 
-		logInfo(category:string, message:string);
+		warn(tag:string, msg:string, ...rest);
 
-		logWarn(category:string, message:string);
+		debug(tag:string, msg:string, ...rest);
 
-		// Notifications
-		notifyInfo(msg);
+		error(tag:string, msg:string, ...rest);
 
-		notifyError(msg);
-
-		notifySuccess(msg);
-
-		notifyPageError(msg);
-
-		notifyDialogError(dlg, msg);
-
-		notifyConfirm(msg):Promise<boolean>;
-
-		// Local Storage
-		getLocal(key:string):string;
-
-		saveLocal(key:string, value?:string);
-
-		// Session Storage
-		getState(key:string):string;
-
-		saveState(key:string, value?:string);
+		toast(config:any);
 	}
 
-	export class UITreeModel {
-		id:any;
-		name:string;
-		level:number;
-
-		iconGlyph:string;
-
-		root:boolean;
-		leaf:boolean;
-		active:boolean;
-		expanded:boolean;
-
-		children:Array<UITreeModel>;
-
-		// 0=false, 1=true, 2=partial
-		checked:number;
-
-		parent:UITreeModel;
-
-		isvisible:boolean;
+	export interface UIAppConfig {
+		// App Key - Relative Path | URL
+		Key:string;
+		// App Title
+		Title:string;
+		// App Version
+		Version:string;
+	}
+	export interface UIHttpConfig {
+		BaseUrl:string;
+		Headers:Map<string,string>;
+		AuthorizationHeader:boolean;
 	}
 
-	export interface UITreeOptionsModel {
-		// show maximum of ? levels
-		maxLevels?:number;
+	// Utilities
+	export module UIUtils {
+		export function container(container:Container);
 
-		// show checkboxes
-		showCheckbox?:boolean;
-		// show checkbox only at ? level, -1/null all levels
-		checkboxLevel?:number;
+		export function lazy(T:any):any;
 
-		showRoot?:boolean;
-		rootLabel?:string;
+		export function showToast(container, config);
 
-		selectionLevel?:number;
+		export function getAscii(str):string;
 	}
+	// Event Utility
+	export module UIEvent {
+		export function fireEvent(event:string,
+								  element:EventTarget,
+								  data?:any):any;
 
-	export interface UITreePanel {
-		select(id:any, level:number);
-		expand(id:any, level:number, expand:boolean);
-		check(id:any, level:number, check:boolean);
-		getChecked():any;
+		export function observe(object, property);
+
+		export function broadcast(event, data):PropertyObserver;
+
+		export function subscribe(event, callback):Subscription;
 	}
-
-
-	export module Utils {
-		export function lazy(T, container);
-	}
-
-	// Format
-	export module Format {
-		export function toHTML(value:string):string;
+	// Formatter
+	export module UIFormat {
+		export function toHTML(md):string;
 
 		// Dates
-		export function dateDisplay(value:any, format?:string);
+		export function date(dt:any, ft?:string):string;
 
-		export function dateISO(value:any);
+		export function dateToISO(dt):string;
 
-		export function dateGMT(value:any);
+		export function dateToGMT(dt):string;
 
-		export function dateOracle(value:any);
-
-		export function dateSql(value:any);
-
-		export function fromNow(value:any):string ;
+		export function fromNow(dt):string;
 
 		// Numbers
-		export function numberDisplay(value:any, format?:string);
+		export function number(nm:any, fm?:string):string;
 
-		export function currencyDisplay(value:any, format?:string, symbol?:string);
+		export function currency(nm:any, sy?:string, fm?:string):string;
 
-		export function exRate(value);
+		export function percent(nm:any):string;
+	}
+}
+
+// Global methods
+declare var __seed;
+declare var Constants;
+
+declare function isTrue(b:any):boolean;
+declare function isEmpty(a:any):boolean;
+declare function isFunction(a:any):boolean;
+declare function getParentByTag(element:Element, selector:string):HTMLElement;
+declare function getParentByClass(element:Element, selector:string, lastElement?:string):HTMLElement;
+
+interface Window {
+	isTrue;
+	isEmpty;
+	isFunction;
+	getParentByTag;
+	getParentByClass;
+
+	__seed:number;
+	Constants:any;
+}
+declare module 'aurelia-validation' {
+	export interface ValidationGroup {
+		isPhone():any;
 	}
 }

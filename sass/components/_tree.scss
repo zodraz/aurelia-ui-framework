@@ -1,0 +1,119 @@
+/**
+ *	UI Tree
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-tree-panel {
+  display   : block;
+  font-size : 0.9em;
+
+  a {
+	text-decoration : none;
+  }
+
+  .ui-search {
+	@include sticky();
+	top              : 0;
+	z-index          : 50;
+	padding          : 0.3em 0 0;
+	background-color : $base-bg;
+	border-bottom    : 1px solid $base-border-color;
+  }
+
+  .ui-tree-level {
+	padding : 0.75em;
+	z-index : 10;
+  }
+
+  .ui-tree-level .ui-tree-level {
+	padding : 0 0.75em 0 1.5em;
+  }
+
+  .ui-tree-item {
+	display : block;
+  }
+
+  .ui-tree-item > .ui-tree-item-link {
+	@include flex-row(center, $wrap : false);
+
+	a.ui-expander {
+	  @include flex(0 0 auto);
+
+	  padding       : 0.125em;
+	  font-size     : 1em;
+	  line-height   : 1;
+	  margin        : 0 0.1em;
+	  border-radius : 0.2em;
+	  color         : $text-muted;
+	  & span:before {
+		content : $font-ui-square-expand;
+	  }
+	  &.expanded span:before {
+		content : $font-ui-square-collapse;
+	  }
+	  &:hover {
+		color : $primary;
+	  }
+	}
+
+	a.ui-node-checkbox {
+	  @include flex(0 0 auto);
+
+	  padding     : 0.25em;
+	  font-size   : 1em;
+	  color       : $base-shadow-color;
+	  font-weight : $font-weight-strong;
+	  &:hover {
+		color : $primary;
+	  }
+	  &.off span:before {
+		content : $font-ui-tree-check-off;
+	  }
+	  &.on span:before {
+		content : $font-ui-tree-check-on;
+	  }
+	  &.partial span:before {
+		content : $font-ui-tree-check-partial;
+	  }
+
+	  &.on {
+		& ~ a.ui-link {
+		  font-weight : $font-weight-strong;
+		}
+	  }
+	}
+
+	a.ui-link {
+	  color       : $base-text;
+	  padding     : 0.35rem 0.25rem;
+	  min-width   : 13em;
+	  white-space : nowrap;
+	  font-weight : $font-weight-normal;
+	  @include flex(1 1 0%);
+	  @include flex-row($wrap : false);
+
+	  span.ui-icon {
+		font-weight     : normal;
+		margin          : 0 0.25em;
+		background-size : auto 1.2em;
+	  }
+
+	  b {
+		color           : $primary;
+		text-decoration : underline;
+		font-weight     : $font-weight-strong;
+	  }
+
+	  &:hover {
+		background-color : rgba($primary, 0.25);
+	  }
+	  &.ui-active {
+		color            : $primary-text;
+		font-weight      : $font-weight-strong;
+		background-color : rgba($primary, 0.75);
+	  }
+	}
+  }
+}

@@ -7,36 +7,35 @@
 @import "compass/css3";
 @import "compass/css3/selection";
 @import "compass/utilities";
-@import "colors";
-@import "mixins";
-@import "variables";
-// fonts
-@import url(font_url("bigmug-line/flaticon.css", true));
-@import url(font_url("bigmug-solid/flaticon.css", true));
-@import url(font_url("elegant-font/flaticon.css", true));
-@import url(font_url("extended-ui/flaticon.css", true));
-@import url(font_url("essentials/flaticon.css", true));
-@import url(font_url("editor/flaticon.css", true));
-@import url(font_url("ecomm/flaticon.css", true));
-@import "reset";
-@import "base";
-@import "grid";
-@import "menu";
-@import "form";
-@import "input";
-@import "date";
-@import "input-option";
-@import "switch";
-@import "buttons";
-@import "chosen";
-@import "notify";
-@import "ribbon";
-@import "tabs";
-@import "tree";
-@import "pager";
-@import "animations";
-@import "datagrid";
-@import "typography";
-@import "containers";
-@import "markdown";
-@import "textcomplete";
+@import "utility/mixins";
+@import "utility/animations";
+
+@import "utility/reset";
+@import "utility/helpers";
+@import "utility/typography";
+@import "utility/rtl";
+@import "utility/markdown";
+
+@import "core/base";
+@import "core/viewport";
+@import "core/page";
+@import "core/grid";
+
+@import "components/form";
+@import "components/menu";
+@import "components/tree";
+@import "components/tabs";
+@import "components/toast";
+@import "components/panels";
+@import "components/dialog";
+@import "components/ribbon";
+@import "components/datagrid";
+
+@import "inputs/input";
+@import "inputs/date";
+@import "inputs/list";
+@import "inputs/button";
+@import "inputs/switch";
+@import "inputs/option";
+@import "inputs/editor";
+

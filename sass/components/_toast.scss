@@ -1,0 +1,73 @@
+/**
+ *	UI Toast
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-toast {
+  position   : relative;
+  max-height : 0;
+  overflow   : hidden;
+  max-width  : 18em;
+  z-index    : $z-index-notify;
+  @include transition(all 1s);
+
+  &.ui-toast-show {
+	max-height : 8em;
+  }
+
+  .ui-toast-wrapper {
+	pointer-events : all;
+	cursor         : pointer;
+	margin         : 0.3em;
+	padding        : 0.3em .8em;
+	background     : $toast-default;
+	color          : $toast-text;
+	border         : 1px solid $base-border-color;
+	border-radius  : $base-border-radius;
+	@include flex-row(flex-start, $wrap : false);
+	@include box-shadow(1px 1px 2px 0 $base-shadow-color);
+
+	.ui-icon {
+	  font-size  : 1.2em;
+	  margin-top : 0.3em;
+	}
+	.ui-message {
+	  @include flex(1 1 0%);
+	  padding : 0.2em 0.8em;
+	}
+	.ui-close {
+	  opacity     : 0.6;
+	  color       : $wg-00;
+	  text-shadow : 0 -1px 0 $wg-10;
+	  &:hover {
+		opacity : 0.9;
+	  }
+	}
+  }
+
+  &.ui-page-toast {
+	display   : block;
+	max-width : 30em;
+	margin    : 0 auto;
+	@include position(absolute, $t : 0.3em, $l : 0.3em, $r : 0.3em);
+  }
+
+  &.info .ui-toast-wrapper {
+	background   : $toast-info;
+	border-color : $info;
+  }
+  &.danger .ui-toast-wrapper {
+	background   : $toast-danger;
+	border-color : $danger;
+  }
+  &.success .ui-toast-wrapper {
+	background   : $toast-success;
+	border-color : $success;
+  }
+  &.warning .ui-toast-wrapper {
+	background   : $toast-warning;
+	border-color : $warning;
+  }
+}

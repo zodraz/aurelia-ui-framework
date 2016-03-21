@@ -1,0 +1,108 @@
+/**
+ *	UI Option
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+.ui-option {
+  min-height : 1.2em;
+  text-align : center;
+  margin-top : 0.2em;
+  position   : relative;
+  border     : 1px solid transparent;
+  @include flexbox((
+		  display: inline-flex,
+		  flex-direction:row,
+		  flex-wrap:nowrap,
+		  align-items:center
+  ));
+
+  > .ui-option-input {
+	@include position(absolute, null);
+	@include size(1.2em, 1.2em);
+	cursor  : pointer;
+	opacity : 0;
+	margin  : 0;
+	z-index : 2;
+  }
+  > .ui-check-mark {
+	@include flex(0 0 auto);
+	z-index          : 1;
+	line-height      : 1;
+	cursor           : pointer;
+	border-radius    : 0.1em;
+	color            : $input-text;
+	background-color : $input-bg;
+	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-text));
+
+	&:after {
+	  text-align : left;
+	  position   : relative;
+	  font     : {
+		size   : 1.2em;
+		weight : 100;
+		family : Framework;
+	  }
+	}
+  }
+
+  &.ui-checkbox .ui-check-mark {
+	&:after {
+	  content : $font-ui-check-off;
+	}
+  }
+  &.ui-radio .ui-check-mark {
+	&:after {
+	  content : $font-ui-radio-off;
+	}
+	border-radius : 50%;
+  }
+  &.ui-checkbox .ui-option-input:checked ~ .ui-check-mark:after {
+	content : $font-ui-check-on;
+  }
+  &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
+	content : $font-ui-radio-on;
+  }
+
+  .ui-option-label {
+	color   : $input-label;
+	padding : 0.15em 0;
+	@include flex(0 0 auto);
+	@include padding(end, 0.5em);
+	@include padding(start, 0.2em);
+  }
+
+  .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
+  .ui-option-input:hover:not(:disabled) ~ .ui-check-mark {
+	color        : $input-focus-border;
+	border-color : $input-focus-border;
+	@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 3px 1px $input-focus-border);
+  }
+  .ui-option-input:disabled {
+	cursor : not-allowed;
+	~ .ui-check-mark {
+	  opacity : 0.5;
+	  cursor  : not-allowed;
+	}
+	~ .ui-option-label {
+	  opacity : 0.5;
+	  cursor  : not-allowed;
+	}
+  }
+}
+
+.ui-option-group {
+  padding : 0 0.2em;
+  @include flex-row(flex-start);
+  .ui-option {
+	@include flex(0 0 10em);
+	.ui-label {
+	  display : block;
+	  @include ellipsis();
+	}
+  }
+  .ui-switch-control {
+	@include flex(0 0 10em);
+  }
+}

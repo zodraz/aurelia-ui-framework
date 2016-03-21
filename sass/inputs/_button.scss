@@ -1,0 +1,146 @@
+/**
+ *	UI Button
+ *	@author 	Adarsh Pastakia
+ *	@company	HMC
+ *  @copyright 	2015-2016, Adarsh Pastakia
+ **/
+
+@mixin button-style($pre, $bg, $text) {
+  &.ui-button-#{$pre} {
+	background   : $bg;
+	color        : $text;
+	border-color : darken($bg, 5%);
+  }
+}
+
+.ui-button-control {
+  display        : inline-block;
+  pointer-events : none;
+}
+
+.ui-button {
+  pointer-events : all;
+  text-align     : center;
+  display        : inline-block;
+  margin         : 0.2em;
+  font-size      : 1.1em;
+  font-weight    : $font-weight-normal;
+  padding        : $base-padding;
+  border-radius  : $base-border-radius;
+  border         : 1px solid $base-border-color;
+  @include box-shadow(2px 2px 4px 0 $base-shadow-color);
+
+  &.ui-button-large {
+	font-size : 1.4em;
+  }
+  &.ui-button-small {
+	font-size : 0.9em;
+	padding   : 0.2em;
+  }
+
+  &.ui-button-square {
+	padding : 0.25em;
+  }
+  &.ui-button-round {
+	border-radius : 1em;
+  }
+
+  &.ui-icon-top > span {
+	display    : block;
+	text-align : center;
+	width      : 100%;
+	margin     : 0.2em 0;
+  }
+
+  &:not([disabled]):not(.ui-checked):hover,
+  &:not([disabled]):not(.ui-checked):focus {
+	@include box-shadow(0 2px 2px 0 rgba($white, 0.6) inset,
+			0 -2px 2px 0 rgba($white, 0.6) inset,
+			2px 2px 4px 0 $base-shadow-color);
+  }
+  &:not([disabled]):not(.ui-checked):active {
+	@include box-shadow(0 0 2px $base-shadow-color inset);
+  }
+
+  &[disabled] {
+	opacity : 0.5;
+	&, > span {
+	  pointer-events : none;
+	  cursor         : not-allowed;
+	}
+  }
+
+  span {
+	vertical-align : baseline;
+	margin         : 0 0.2em;
+  }
+
+  @include button-style(default, $button-default-bg, $button-default-text);
+  @include button-style(primary, $button-primary-bg, $button-primary-text);
+  @include button-style(info, $button-info-bg, $button-info-text);
+  @include button-style(danger, $button-danger-bg, $button-danger-text);
+  @include button-style(success, $button-success-bg, $button-success-text);
+  @include button-style(warning, $button-warning-bg, $button-warning-text);
+}
+
+.ui-button-bar .ui-button {
+  @include box-shadow(0 0 1px 0 $base-shadow-color);
+
+  &:not([disabled]):not(.ui-checked):not(.ui-active):hover,
+  &:not([disabled]):not(.ui-checked):not(.ui-active):focus {
+	@include box-shadow(0 2px 2px 0 rgba($white, 0.6) inset,
+			0 -2px 2px 0 rgba($white, 0.6) inset,
+			0 0 3px 0 $base-shadow-color);
+	z-index : 5;
+  }
+  &:not([disabled]):not(.ui-checked):not(.ui-active):active {
+	@include box-shadow(0 0 2px $base-shadow-color inset);
+  }
+}
+
+.ui-button-group {
+  margin         : 0.2em;
+  pointer-events : none;
+  @include flexbox((
+		  display:inline-flex,
+		  flex-direction:row,
+		  flex-wrap:nowrap
+  ));
+  .ui-button-control .ui-button, > .ui-button {
+	margin : 0;
+	@include flex(0 0 auto);
+  }
+  .ui-button-control:not(:first-child) .ui-button, > .ui-button:not(:first-child) {
+	@include border-left-radius(0);
+  }
+  .ui-button-control:not(:last-child) .ui-button, > .ui-button:not(:last-child) {
+	@include border-right-radius(0);
+  }
+
+  &.ui-button-group-primary .ui-button.ui-checked {
+	background : $button-primary-bg;
+	color      : $button-primary-text;
+  }
+  &.ui-button-group-info .ui-button.ui-checked {
+	background : $button-info-bg;
+	color      : $button-info-text;
+  }
+  &.ui-button-group-danger .ui-button.ui-checked {
+	background : $button-danger-bg;
+	color      : $button-danger-text;
+  }
+  &.ui-button-group-success .ui-button.ui-checked {
+	background : $button-success-bg;
+	color      : $button-success-text;
+  }
+  &.ui-button-group-warning .ui-button.ui-checked {
+	background : $button-warning-bg;
+	color      : $button-warning-text;
+  }
+}
+
+[dir="rtl"] {
+  .ui-button-group {
+	@include flex-direction(row-reverse);
+  }
+}
