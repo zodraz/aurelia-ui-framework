@@ -6,10 +6,12 @@
  **/
 
 [dir='rtl'] {
-  [class^="fi-"], [class*="fi-"] {
-	transform : scale(-1, 1);
-  }
-  .ui-flip {
-	transform : scale(1, 1);
+  :not([dir='ltr']) {
+	[class^="fi-"], [class*="fi-"] {
+	  transform : scale(-1, 1);
+	}
+	.ui-flip {
+	  transform : scale(1, 1);
+	}
   }
 }
