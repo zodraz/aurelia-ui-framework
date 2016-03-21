@@ -7,8 +7,8 @@ var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
 var pages = '../auf-pages/v2';
-var release = '../auf-release2';
-var skeleton = '../auf-skeleton2';
+var release = '../auf-release';
+var skeleton = '../auf-skeleton';
 
 // SASS/Compass compiler
 gulp.task('sass:compile', function (done) {
@@ -111,7 +111,7 @@ gulp.task('aurelia:skeleton', function () {
 			   .pipe(gulp.dest(skeleton));
 });
 gulp.task('aurelia:release', function () {
-	gulp.src(['./package.json', './sass/_*.scss'], {base: './'})
+	gulp.src(['./package.json', './sass/**/_*.scss'], {base: './'})
 		.pipe(gulp.dest(release));
 	gulp.src([
 				 './dist/aurelia-ui-framework.js',
