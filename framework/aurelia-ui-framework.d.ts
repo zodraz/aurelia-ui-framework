@@ -10,6 +10,27 @@ declare module "aurelia-ui-framework" {
 
 /** CORE **/
 declare module "aurelia-ui-framework" {
+	export class UIDialog {
+		close();
+	}
+	export class UITreeOptions {
+		maxLevels:number;
+
+		// show checkboxes
+		showCheckbox:boolean;
+		// show checkbox only at ? level, -1/null all levels
+		checkboxLevel:number;
+
+		showRoot:boolean;
+		rootLabel:string;
+
+		selectionLevel:number;
+
+		constructor(obj?);
+	}
+	export class UIDialogService {
+		show<T extends UIDialog>(viewModel:T, model?:any);
+	}
 }
 
 /** UTILS **/
@@ -54,6 +75,9 @@ declare module "aurelia-ui-framework" {
 		error(tag:string, msg:string, ...rest);
 
 		toast(config:any);
+	}
+
+	export class AuthInterceptor {
 	}
 
 	export interface UIAppConfig {
