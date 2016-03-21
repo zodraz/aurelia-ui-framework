@@ -1,12 +1,331 @@
 <template>
-	<ui-page title="${title} <span class='ui-font-small'>using HTML<span class='fi-ext-programming-language3'></span> CSS<span class='fi-ext-programming-language2'></span></span>">
-		<ui-section>
-			<ui-sidebar class="ui-pad-all">
-				<ui-menu router.bind="router" title="${title}"></ui-menu>
-			</ui-sidebar>
-			<ui-content class="ui-flex-column">
-				<router-view></router-view>
-			</ui-content>
-		</ui-section>
+	<ui-page page-title="Framework Elements" view-model.ref="__page">
+		<ui-ribbon danger>Version 2</ui-ribbon>
+		<ui-content scroll padded style="padding-bottom: 30px;" ref="__content">
+			<div class="ui-pad-all">
+				<h1 class="ui-text-primary">Aurelia UI Framework v2
+					<small class="ui-text-warning">Re-thought, Re-designed, and Re-worked</small>
+				</h1>
+				<p>Most important change to the new version, removed the dependency on jQuery and jQuery based
+					components.</p>
+				<p>Flattened look & feel, using only shadows as visual indicators on buttons and switches.</p>
+				<p>Glyph icon fonts included <a href="./fonts/material/flaticon.html" target="_blank">Google Material
+					Font</a>, <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a
+						href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
+				<p>Changed color library from Crayola Crayon colors to <a href="#/colors">Copic Marker</a> colors.</p>
+				<p>Current theme colors: (primary, secondary, info, danger, success, warning)</p>
+				<div>
+					<p class="color-map primary"></p>
+					<p class="color-map secondary"></p>
+					<p class="color-map info"></p>
+					<p class="color-map danger"></p>
+					<p class="color-map success"></p>
+					<p class="color-map warning"></p>
+					</p>
+				</div>
+			</div>
+			<hr/>
+			<h2>Grid Layout</h2>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" width="120px">Fixed Width</ui-column>
+				<ui-column padded class="ui-bg-success" auto>Auto Filled Column</ui-column>
+				<ui-column padded class="ui-bg-danger" fill>Stretched Column</ui-column>
+				<ui-column padded class="ui-bg-warning" full>Full Width Column Wrapped</ui-column>
+			</ui-row>
+
+			<h4>Xtra Large Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="xl-3">xl-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="xl-3">xl-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="xl-3">xl-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="xl-3">xl-3</ui-column>
+			</ui-row>
+
+			<h4>Large Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="lg-3">lg-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="lg-3">lg-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="lg-3">lg-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="lg-3">lg-3</ui-column>
+			</ui-row>
+
+			<h4>Medium Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="md-3">md-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="md-3">md-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="md-3">md-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="md-3">md-3</ui-column>
+			</ui-row>
+
+			<h4>Small Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="sm-3">sm-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="sm-3">sm-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="sm-3">sm-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="sm-3">sm-3</ui-column>
+			</ui-row>
+
+			<h4>Xtra Small Views</h4>
+			<ui-row class="ui-border-b">
+				<ui-column padded class="ui-bg-info" size="xs-3">xs-3</ui-column>
+				<ui-column padded class="ui-bg-success" size="xs-3">xs-3</ui-column>
+				<ui-column padded class="ui-bg-danger" size="xs-3">xs-3</ui-column>
+				<ui-column padded class="ui-bg-warning" size="xs-3">xs-3</ui-column>
+			</ui-row>
+			<hr/>
+			<h2>Toolbar</h2>
+			<div>
+				<ui-toolbar>
+					<ui-column fill>Toolbar text</ui-column>
+					<ui-button-group square>
+						<ui-button icon="fi-ui-edit-thick" info></ui-button>
+						<ui-button icon="fi-ui-delete-black" danger></ui-button>
+					</ui-button-group>
+					<ui-button-group square>
+						<ui-button icon="fi-vaadin-add-square"></ui-button>
+						<ui-button icon="fi-vaadin-minus-button"></ui-button>
+					</ui-button-group>
+					<ui-divider></ui-divider>
+					<ui-button primary label="Tool"></ui-button>
+					<ui-button warning label="Tool"></ui-button>
+				</ui-toolbar>
+			</div>
+			<hr/>
+			<h2>StatsBar</h2>
+			<div>
+				<ui-statsbar>
+					<ui-stat value="24" icon="fi-vaadin-clock">Hours</ui-stat>
+					<ui-stat value="365" icon="fi-vaadin-calendar-and-clock">Days</ui-stat>
+					<ui-stat value="42" icon="fi-vaadin-chat">Answer</ui-stat>
+				</ui-statsbar>
+			</div>
+			<hr/>
+			<div>
+				<ui-switch primary checked.bind="enabled" label-on="All Enabled" label-off="All Disabled"
+						   width="8">
+					Disable Elements
+				</ui-switch>
+			</div>
+			<h2>Buttons</h2>
+			<div class="ui-pad-all">
+				<h4>Themes
+					<small>Click to show toast messages</small>
+				</h4>
+				<div>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Normal"
+							   click.trigger="toastMe('page')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
+							   primary click.trigger="toastMe('global', 'primary')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"
+							   info click.trigger="toastMe('global', 'info')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger"
+							   danger click.trigger="toastMe('global', 'danger')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
+							   success click.trigger="toastMe('global', 'success')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
+							   warning click.trigger="toastMe('global', 'warning')"></ui-button>
+				</div>
+				<h4>Styles</h4>
+				<div>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Small" small></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Large" large></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Round" round></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Icon Top" top></ui-button>
+					<ui-button icon="fi-vaadin-circle-1" label="Disabled" disabled="true"></ui-button>
+				</div>
+				<h4>Button Groups</h4>
+				<div>
+					<ui-button-group click.trigger="changeTheme($event)">
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
+								   primary></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"
+								   info></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger"
+								   danger></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
+								   success></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
+								   warning></ui-button>
+					</ui-button-group>
+				</div>
+				<h6>
+					<ui-switch primary checked.bind="toggle" label-on="Multiple" label-off="Single"
+							   width="6">
+						Toggle Mode
+					</ui-switch>
+				</h6>
+				<div>
+					<ui-button-group toggle.bind="toggle?'multiple':'single'" round value="0" primary ref="__bgToggle">
+						<ui-button value="0" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Primary"></ui-button>
+						<ui-button value="1" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Info"></ui-button>
+						<ui-button value="2" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Danger"></ui-button>
+						<ui-button value="3" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Success"></ui-button>
+						<ui-button value="4" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
+								   label="Warning"></ui-button>
+					</ui-button-group>
+				</div>
+			</div>
+			<hr/>
+			<h2>Switches</h2>
+			<div class="ui-pad-all">
+				<ui-switch disabled.bind="!enabled" checked="true" primary></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" info></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" danger></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" success></ui-switch>
+				<ui-switch disabled.bind="!enabled" checked="true" warning></ui-switch>
+				<ui-switch disabled.bind="!enabled" ampm></ui-switch>
+				<ui-switch disabled.bind="!enabled" gender></ui-switch>
+				<ui-switch checked="true" primary disabled="true">Disabled</ui-switch>
+			</div>
+			<hr/>
+			<h2>Checkbox/Radio</h2>
+			<div class="ui-pad-all">
+				<ui-option-group label="Checkboxes">
+					<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)">Check 1</ui-checkbox>
+					<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)">Check 2</ui-checkbox>
+					<ui-checkbox disabled.bind="!enabled" change.trigger="change($event)" checked="true">Check 3
+					</ui-checkbox>
+					<ui-checkbox disabled="true">Disabled</ui-checkbox>
+				</ui-option-group>
+				<ui-option-group label.bind="'Radios<small>Value:'+optVal+'</small>'"
+								 name="radio" value.bind="optVal" required change.trigger="change($event)">
+					<ui-radio disabled.bind="!enabled" value="1">Check 1</ui-radio>
+					<ui-radio disabled.bind="!enabled" value="2">Check 2</ui-radio>
+					<ui-radio disabled.bind="!enabled" value="3">Check 3</ui-radio>
+					<ui-radio value="4" disabled="true">Disabled</ui-radio>
+				</ui-option-group>
+			</div>
+			<hr/>
+			<h2>Inputs</h2>
+			<ui-form validate.bind="validation" submit.trigger="onSubmit()">
+				<ui-row>
+					<ui-column padded>
+						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
+								  capitalize value.bind="model.email"
+								  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
+						</ui-input>
+						<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
+						<ui-input-dual required decimal checkbox prefix-icon="fi-vaadin-placeholder"
+									   prefix-text="Lat." center-text="Long."
+									   value.bind="model.lat" value-second.bind="model.long"
+									   placeholder="-90 to 90" placeholder-second="-180 to 180">Location
+						</ui-input-dual>
+						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
+						<ui-phone country.bind="ctry">National Phone</ui-phone>
+						<ui-phone international>International Phone</ui-phone>
+						<ui-date>Date</ui-date>
+						<ui-date range>Date Range</ui-date>
+						<ui-combo options.bind="months">ComboBox</ui-combo>
+						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag"
+								  prefix-icon="ui-flag ${ctry}" suffix-text.bind="ctry"
+								  display-property="name" value-property="iso2" value.bind="ctry">Countries
+						</ui-combo>
+					</ui-column>
+					<ui-column padded>
+						<ui-markdown>Markdown Editor</ui-markdown>
+						<ui-date-view date.bind="dt"></ui-date-view>
+					</ui-column>
+				</ui-row>
+			</ui-form>
+			<hr/>
+			<h2>Panel</h2>
+			<ui-row>
+				<ui-column fill>
+					<ui-panel>
+						<ui-body>
+							<h3>A Simple Panel</h3>
+						</ui-body>
+					</ui-panel>
+					<ui-panel>
+						<ui-header collapse="true" close="true" secondary>My Panel</ui-header>
+						<ui-body>
+							<h3>A Closable Panel</h3>
+						</ui-body>
+					</ui-panel>
+				</ui-column>
+				<ui-column fill>
+					<ui-panel>
+						<ui-header collapse="true" primary>My Panel</ui-header>
+						<ui-body>
+							<h3>A Panel with Header</h3>
+						</ui-body>
+					</ui-panel>
+				</ui-column>
+			</ui-row>
+			<hr/>
+			<h2>Dialogs</h2>
+			<div>
+				<ui-button label="Open New Window" click.trigger="showDialog(false)"></ui-button>
+				<ui-button label="Open Modal Window" click.trigger="showDialog(true)"></ui-button>
+			</div>
+			<hr/>
+			<h2>Tab Panel</h2>
+			<div style="height: 600px;position: relative;" class="ui-border-all">
+				<ui-tab-panel>
+					<ui-tab label="Markdown" scroll>
+						<div innerhtml.bind="md | markdown" class="ui-markdown"></div>
+					</ui-tab>
+					<ui-tab label="Editor" flex>
+						<ui-markdown full-view value.bind="md" label-hide></ui-markdown>
+					</ui-tab>
+					<ui-tab icon="fi-material-painter-palette" label="Copic Colors" scroll>
+						<compose view-model="./colors"></compose>
+					</ui-tab>
+					<ui-tab label="DataGrid" flex>
+						<ui-toolbar>
+							<ui-column fill><p>Filters Here</p></ui-column>
+							<ui-column>
+								<ui-pager total="5"></ui-pager>
+							</ui-column>
+							<ui-divider></ui-divider>
+							<ui-button square small icon="fi-vaadin-rotate-left"></ui-button>
+						</ui-toolbar>
+						<ui-datagrid data-list.bind="data" summary-row="true" default-sort="FName"
+									 linkclick.trigger="linkClicked($event)">
+							<ui-data-column locked center width="50" data-id="id">ID</ui-data-column>
+							<ui-data-column locked resizeable sortable link summary="Total"
+											data-id="FName" display.call="formatName($event)">Name
+							</ui-data-column>
+							<ui-data-column locked data-id="view" view button-title="Preview"
+											width="90" button.call="checkAge($event)"></ui-data-column>
+							<ui-data-column locked data-id="edit" edit></ui-data-column>
+							<ui-data-column locked data-id="delete" delete></ui-data-column>
+							<ui-data-column date sortable data-id="SDate" format="DD MMM YYYY">Birthday</ui-data-column>
+							<ui-data-column data-id="SDate" from-now center></ui-data-column>
+							<ui-data-column data-id="Amount" currency symbol="$" summary="sum">Amount
+							</ui-data-column>
+							<ui-data-column data-id="Count" number format="0.000a" summary="sum">Count
+							</ui-data-column>
+						</ui-datagrid>
+					</ui-tab>
+					<ui-tab label="Tree" flex>
+						<ui-section row>
+							<ui-sidebar>
+								<ui-tree checked.trigger="checked = $event.detail" model.bind="treeModel"
+										 options.bind="treeOpts"
+										 view-model.ref="__tree"></ui-tree>
+							</ui-sidebar>
+							<ui-content scroll>
+								<h3>Tree View</h3>
+								<div>
+									<h3>Checked</h3>
+
+									<p repeat.for="n of checked.checked">${n}</p>
+								</div>
+								<div>
+									<h3>Partial</h3>
+
+									<p repeat.for="n of checked.partial">${n}</p>
+								</div>
+							</ui-content>
+						</ui-section>
+					</ui-tab>
+				</ui-tab-panel>
+			</div>
+		</ui-content>
 	</ui-page>
 </template>

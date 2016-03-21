@@ -37,8 +37,10 @@ var tsProject = ts.createProject({
 	experimentalDecorators: true
 });
 gulp.task('scripts:compile', function () {
-	var tsRoot = gulp.src(['!node_modules/**/*.ts', '!jspm_packages/**/*.ts', '!typings/framework/**/*.d.ts',
-			'**/*.ts', '!jspm_packages/**/aurelia-ui-framework.d.ts', 'typings/**/*.d.ts'], {base: './'})
+	var tsRoot = gulp.src([
+							  './jspm_packages/github/adarshpastakia/aurelia-ui-framework.d.ts',
+							  './jspm_packages/npm/aurelia-*/*.d.ts',
+							  'src/**/*.ts'], {base: './'})
 		.pipe(ts(tsProject));
 
 	return tsRoot.js.pipe(gulp.dest('.'));
@@ -52,22 +54,13 @@ var config = {
 	bundles: {
 		"dist/app": {
 			includes: [
-				'[main*]',
-				'[src/**/*]',
-				'[models/**/*]',
-				'src/**/*.html!text'
-			],
-			options: {
-				inject: true,
-				minify: true
-			}
-		},
-		"dist/aurelia": {
-			includes: [
-				'jspm_packages/**/aurelia-*',
-				'jspm_packages/**/aurelia-validation*/resources/*',
-				'jspm_packages/github/adarshpastakia/**/*',
-				'jspm_packages/github/adarshpastakia/**/*.html!text'
+				'main',
+				'./src/**/*.js',
+				'./src/**/*.html!text',
+				'./framework/**/*.js',
+				'./framework/**/*.html!text',
+				'./jspm_packages/**/aurelia-*.js',
+				'./jspm_packages/**/aurelia-validation*/resources/*.js'
 			],
 			options: {
 				inject: true,
@@ -91,7 +84,7 @@ gulp.task('aurelia:build', function () {
 
 gulp.task('watch', function () {
 	gulp.watch('./sass/**/*.scss', ['sass:compile']);
-	gulp.watch('**/*.ts', ['scripts:compile']);
+	gulp.watch('./src/**/*.ts', ['scripts:compile']);
 });
 
 gulp.task('build', function () {

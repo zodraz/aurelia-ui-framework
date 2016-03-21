@@ -1,0 +1,12 @@
+<template>
+	<ui-page page-title="Components">
+		<ui-section row>
+			<ui-sidebar scroll>
+				<ui-menu router.bind="router"></ui-menu>
+			</ui-sidebar>
+			<ui-content scroll padded>
+				<router-view></router-view>
+			</ui-content>
+		</ui-section>
+	</ui-page>
+</template>

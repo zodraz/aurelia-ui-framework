@@ -1,10 +1,8 @@
 <template>
-	<ui-dialog data-title="${title}" modal.bind="modal" view-model.ref="_dialog">
-		<ui-content class="ui-pad-all ui-scroll">
-			<div innerhtml.bind="md | markdown"></div>
-		</ui-content>
-		<ui-toolbar>
-			<ui-button click.trigger="_dialog.close()">Close</ui-button>
-		</ui-toolbar>
-	</ui-dialog>
+	<ui-content class="ui-pad-all ui-scroll">
+		<div innerhtml.bind="md | markdown"></div>
+	</ui-content>
+	<ui-toolbar>
+		<ui-button click.trigger="close()" label="Close"></ui-button>
+	</ui-toolbar>
 </template>

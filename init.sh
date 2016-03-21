@@ -1,15 +1,21 @@
-sudo npm init
+npm init
 
-sudo npm install jspm gulp gulp-compass gulp-plumber gulp-typescript aurelia-bundler merge2 browser-sync run-sequence --save-dev
+npm install jspm gulp gulp-compass gulp-plumber gulp-typescript aurelia-bundler merge2 browser-sync run-sequence --save-dev
 
-sudo jspm init
+jspm init
 
-sudo jspm install text
-sudo jspm install jquery
-sudo jspm install core-js
-sudo jspm install aurelia-router
-sudo jspm install aurelia-logging
-sudo jspm install aurelia-framework
-sudo jspm install aurelia-validation
-sudo jspm install aurelia-bootstrapper
-sudo jspm install aurelia-ui-framework
+jspm install text
+jspm install fetch
+jspm install lodash
+jspm install moment
+jspm install numeral
+jspm install aurelia-ui-framework
+jspm install aurelia-bootstrapper
+jspm install aurelia-validation
+jspm install aurelia-fetch-client
+jspm install aurelia-framework
+jspm install aurelia-metadata
+jspm install aurelia-router
+jspm install aurelia-logging
+jspm install aurelia-event-aggregator
+jspm install aurelia-templating-resources

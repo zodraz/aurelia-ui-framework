@@ -1,6 +1,6 @@
 <template>
-	<ui-login login.trigger="onLogin($event)" busy.bind="busy">
-		<h4><span class="fi-elegant-outlined4"></span></h4>
-		<p class="ui-font-big ui-align-center">Welcome to Aurelia UI Framework<br/>Please sign-in to continue</p>
+	<ui-login login.trigger="doLogin($event)" error.bind="error">
+		<h4><span class="fi-ui-key-white"></span></h4>
+		<p class="ui-font-big ui-text-center"><strong>Aurelia UI Framework 2</strong><br/>Please sign-in to continue</p>
 	</ui-login>
 </template>

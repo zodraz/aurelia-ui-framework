@@ -1,7 +1,10 @@
-export class MyDialog {
+import {UIDialog} from "../../framework/index";
+
+export class MyDialog extends UIDialog {
 	static i = 1;
 
 	modal = false;
+	icon  = 'fi-vaadin-exclamation-circle';
 	title = `Dialog ${MyDialog.i++}`;
 
 	canActivate(model) {

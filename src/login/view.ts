@@ -1,22 +1,21 @@
+import {UIApplication} from "../../framework/index";
 import {autoinject} from "aurelia-framework";
-import {UIApplicationState} from "aurelia-ui-framework";
 
 @autoinject()
-export class AppLogin {
+export class Login {
+	error = '';
 
-	constructor(public appState:UIApplicationState) {
-
+	constructor(public appState:UIApplication) {
 	}
 
-	onLogin($event) {
-		this.appState.IsAuthenticated = true;
-		this.appState.UserGroup       = 'User';
-		this.appState.Username        = 'user@domain.com';
-		this.appState.IpAddress       = '192.168.0.1';
-		if (this.appState.currentRoute) {
-			this.appState.router.navigate(this.appState.currentRoute.fragment);
+	activate(params) {
+		if (params && params.status == 401) {
+			this.error = '<span class="fi-ui-error-exclaim"></span> Unauthorized Access';
 		}
-		else
-			this.appState.navigateTo('home');
+	}
+
+	doLogin($event) {
+		let route = this.appState.session('AppCurrentRoute') || '/home';
+		this.appState.navigate(route);
 	}
 }

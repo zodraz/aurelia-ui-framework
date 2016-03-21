@@ -1,0 +1,639 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 19/02/2016 14:47
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-3d-cube-in-circular-button:before { content: "\f100"; }
+.flaticon-add-circular-button:before { content: "\f101"; }
+.flaticon-add-to-the-cloud-with-circular-button:before { content: "\f102"; }
+.flaticon-add-with-circular-button:before { content: "\f103"; }
+.flaticon-adjust-circular-button:before { content: "\f104"; }
+.flaticon-airplane-filled-symbol-in-circular-button:before { content: "\f105"; }
+.flaticon-alarm-clock-circular-button:before { content: "\f106"; }
+.flaticon-animal-footprint-in-circular-button:before { content: "\f107"; }
+.flaticon-arrow-cycling-symbol-in-a-circle:before { content: "\f108"; }
+.flaticon-arrows-cycle-in-circular-button:before { content: "\f109"; }
+.flaticon-atom-in-circular-button:before { content: "\f10a"; }
+.flaticon-attach-symbol-of-oblique-paperclip-in-circular-button-of-interface:before { content: "\f10b"; }
+.flaticon-attachment-circular-button:before { content: "\f10c"; }
+.flaticon-back-left-arrow-in-circular-button:before { content: "\f10d"; }
+.flaticon-backward-circular-multimedia-button:before { content: "\f10e"; }
+.flaticon-bag-in-a-circle:before { content: "\f10f"; }
+.flaticon-ban-block-prohibition:before { content: "\f110"; }
+.flaticon-bars-graphic-in-a-circle:before { content: "\f111"; }
+.flaticon-behance-logo-in-circular-social-interface-button:before { content: "\f112"; }
+.flaticon-bezier-circular-design-button:before { content: "\f113"; }
+.flaticon-block-menu-in-circular-button:before { content: "\f114"; }
+.flaticon-bolt-flash-circular-button:before { content: "\f115"; }
+.flaticon-box-add-circular-interface-button:before { content: "\f116"; }
+.flaticon-box-circular-button:before { content: "\f117"; }
+.flaticon-box-close-circular-button:before { content: "\f118"; }
+.flaticon-box-remove-circular-button:before { content: "\f119"; }
+.flaticon-browser-sizes-circular-button:before { content: "\f11a"; }
+.flaticon-brush-en-circular-button:before { content: "\f11b"; }
+.flaticon-burn-circular-interface-button-with-fire-flames:before { content: "\f11c"; }
+.flaticon-call-telephone-auricular-in-circular-button:before { content: "\f11d"; }
+.flaticon-cd-dvd-circular-button:before { content: "\f11e"; }
+.flaticon-chart-down-in-a-circle:before { content: "\f11f"; }
+.flaticon-chat-circular-button:before { content: "\f120"; }
+.flaticon-check-circular-button:before { content: "\f121"; }
+.flaticon-check-with-circular-button:before { content: "\f122"; }
+.flaticon-circle:before { content: "\f123"; }
+.flaticon-circles-in-a-circle:before { content: "\f124"; }
+.flaticon-clock-circular-interface-button:before { content: "\f125"; }
+.flaticon-close-with-button-circle:before { content: "\f126"; }
+.flaticon-cloud-filled-shape-in-a-circle:before { content: "\f127"; }
+.flaticon-cloud-remove-circular-button:before { content: "\f128"; }
+.flaticon-cloud-upload-circular-interface-button:before { content: "\f129"; }
+.flaticon-coins-circular-button:before { content: "\f12a"; }
+.flaticon-comment-in-circular-button:before { content: "\f12b"; }
+.flaticon-comment-oval-filled-speech-bubble-in-circular-button:before { content: "\f12c"; }
+.flaticon-comments-circular-button-with-two-oval-speech-bubbles-inside:before { content: "\f12d"; }
+.flaticon-compass-circular-button:before { content: "\f12e"; }
+.flaticon-compass-circular-button-with-winds-star-symbol:before { content: "\f12f"; }
+.flaticon-contract-horizontally-symbol-in-circular-interface-button:before { content: "\f130"; }
+.flaticon-contract-vertically-with-circular-button:before { content: "\f131"; }
+.flaticon-contract-with-circular-button:before { content: "\f132"; }
+.flaticon-contract-with-four-arrows-in-circular-button:before { content: "\f133"; }
+.flaticon-contract-with-oblique-arrows-in-circular-button:before { content: "\f134"; }
+.flaticon-copy-document-with-circular-button:before { content: "\f135"; }
+.flaticon-copy-paste-document-with-circular-interface-button:before { content: "\f136"; }
+.flaticon-credit-card-in-a-circle:before { content: "\f137"; }
+.flaticon-cross-in-circular-button:before { content: "\f138"; }
+.flaticon-curved-right-arrow-in-circular-button:before { content: "\f139"; }
+.flaticon-digg-logo-in-social-circular-button:before { content: "\f13a"; }
+.flaticon-directions-arrows-of-cross-in-circular-button:before { content: "\f13b"; }
+.flaticon-document-circular-button-interface-symbol:before { content: "\f13c"; }
+.flaticon-document-in-circular-button:before { content: "\f13d"; }
+.flaticon-documents-circular-button:before { content: "\f13e"; }
+.flaticon-dollar-in-circular-button:before { content: "\f13f"; }
+.flaticon-dots-circle-in-circular-symbol:before { content: "\f140"; }
+.flaticon-double-diamonds-in-a-circle:before { content: "\f141"; }
+.flaticon-double-vertical-arrow-in-circular-button:before { content: "\f142"; }
+.flaticon-down-arrow-big-symbol-in-circular-button:before { content: "\f143"; }
+.flaticon-down-arrow-circular-button:before { content: "\f144"; }
+.flaticon-down-arrow-circular-button-1:before { content: "\f145"; }
+.flaticon-down-arrow-circular-button-2:before { content: "\f146"; }
+.flaticon-down-arrow-in-a-circle:before { content: "\f147"; }
+.flaticon-down-arrow-in-a-circle-1:before { content: "\f148"; }
+.flaticon-down-arrow-in-circular-button:before { content: "\f149"; }
+.flaticon-down-arrow-multi-line-symbol-in-circular-button:before { content: "\f14a"; }
+.flaticon-download-from-the-cloud-with-circular-button:before { content: "\f14b"; }
+.flaticon-download-heart-in-circular-button:before { content: "\f14c"; }
+.flaticon-download-with-circular-button:before { content: "\f14d"; }
+.flaticon-drop-circular-button:before { content: "\f14e"; }
+.flaticon-drops-in-a-circle:before { content: "\f14f"; }
+.flaticon-eject-circular-button:before { content: "\f150"; }
+.flaticon-email-add-circular-interface-button:before { content: "\f151"; }
+.flaticon-email-close-circular-button-interface-symbol:before { content: "\f152"; }
+.flaticon-email-download-with-circular-button:before { content: "\f153"; }
+.flaticon-email-in-circular-button:before { content: "\f154"; }
+.flaticon-email-remove-circular-interface-button:before { content: "\f155"; }
+.flaticon-email-spam-circular-interface-button:before { content: "\f156"; }
+.flaticon-email-upload-circular-button-interface-symbol:before { content: "\f157"; }
+.flaticon-euro-in-a-circle:before { content: "\f158"; }
+.flaticon-exclamation-in-a-circle:before { content: "\f159"; }
+.flaticon-exclamation-in-circular-button:before { content: "\f15a"; }
+.flaticon-expand-arrows-in-circular-button:before { content: "\f15b"; }
+.flaticon-expand-circular-symbol:before { content: "\f15c"; }
+.flaticon-expand-four-oblique-arrows-symbol-in-circular-button:before { content: "\f15d"; }
+.flaticon-expand-horizontally-with-circular-button:before { content: "\f15e"; }
+.flaticon-expand-oblique-arrows-symbol-in-circular-interface-button:before { content: "\f15f"; }
+.flaticon-expand-with-arrows-in-vertical-symbol-in-circular-button:before { content: "\f160"; }
+.flaticon-eye-and-slash-disabled-visualization-option-in-circular-button:before { content: "\f161"; }
+.flaticon-eye-visible-option-in-circular-button:before { content: "\f162"; }
+.flaticon-favorite-star-circular-interface-button:before { content: "\f163"; }
+.flaticon-female-sign-in-a-circle:before { content: "\f164"; }
+.flaticon-forward-with-multimedia-circular-button:before { content: "\f165"; }
+.flaticon-four-directions-in-circular-button:before { content: "\f166"; }
+.flaticon-graphs-circular-interface-button:before { content: "\f167"; }
+.flaticon-grid-or-visualization-option-circular-interface-button:before { content: "\f168"; }
+.flaticon-grid-symbol-of-squares-in-circular-button:before { content: "\f169"; }
+.flaticon-hdd-circular-button:before { content: "\f16a"; }
+.flaticon-hdd-net-symbol-in-a-circle:before { content: "\f16b"; }
+.flaticon-hdd-raid-circular-symbol:before { content: "\f16c"; }
+.flaticon-home-wifi-circular-button-interface-symbol:before { content: "\f16d"; }
+.flaticon-idea-circular-button:before { content: "\f16e"; }
+.flaticon-information-circular-button-interface-symbol:before { content: "\f16f"; }
+.flaticon-italic-circular-button:before { content: "\f170"; }
+.flaticon-key-circular-button:before { content: "\f171"; }
+.flaticon-landscape-in-circular-button:before { content: "\f172"; }
+.flaticon-layers-in-circular-button:before { content: "\f173"; }
+.flaticon-leaf-shape-in-a-circle:before { content: "\f174"; }
+.flaticon-left-arrow-big-symbol-in-circular-button:before { content: "\f175"; }
+.flaticon-left-arrow-circular-button:before { content: "\f176"; }
+.flaticon-left-arrow-circular-button-1:before { content: "\f177"; }
+.flaticon-left-arrow-in-a-circle:before { content: "\f178"; }
+.flaticon-left-arrow-of-multi-lines-in-circular-button:before { content: "\f179"; }
+.flaticon-left-arrow-thin-symbol-in-circular-button:before { content: "\f17a"; }
+.flaticon-left-arrow-triangle-in-circular-button:before { content: "\f17b"; }
+.flaticon-left-curved-arrow-in-circular-button:before { content: "\f17c"; }
+.flaticon-left-right-double-horizontal-arrow-in-circular-button:before { content: "\f17d"; }
+.flaticon-left-text-justify-circular-button:before { content: "\f17e"; }
+.flaticon-like-add-circular-button:before { content: "\f17f"; }
+.flaticon-like-ban-circular-button:before { content: "\f180"; }
+.flaticon-like-close-circular-interface-button:before { content: "\f181"; }
+.flaticon-like-heart-in-circular-button:before { content: "\f182"; }
+.flaticon-like-remove-with-circular-button:before { content: "\f183"; }
+.flaticon-like-upload-circular-button:before { content: "\f184"; }
+.flaticon-line-with-dots-straight-symbol-in-a-circle:before { content: "\f185"; }
+.flaticon-list-circular-button:before { content: "\f186"; }
+.flaticon-list-circular-interface-button:before { content: "\f187"; }
+.flaticon-location-circular-button:before { content: "\f188"; }
+.flaticon-location-circular-button-1:before { content: "\f189"; }
+.flaticon-locked-padlock-in-circular-button:before { content: "\f18a"; }
+.flaticon-login-lock-refresh-in-circular-button:before { content: "\f18b"; }
+.flaticon-luminosity-with-circular-button:before { content: "\f18c"; }
+.flaticon-magic-wand-circular-interface-button:before { content: "\f18d"; }
+.flaticon-magnet-circular-button:before { content: "\f18e"; }
+.flaticon-mailbox-in-circular-button:before { content: "\f18f"; }
+.flaticon-male-sign-in-a-circle:before { content: "\f190"; }
+.flaticon-male-user-in-circular-button:before { content: "\f191"; }
+.flaticon-man-in-circular-interface-button:before { content: "\f192"; }
+.flaticon-map-filled-folded-paper-symbol-in-circular-interface-button:before { content: "\f193"; }
+.flaticon-maps-location-circular-button:before { content: "\f194"; }
+.flaticon-marker-add-with-circular-button:before { content: "\f195"; }
+.flaticon-marker-in-circular-button:before { content: "\f196"; }
+.flaticon-marker-minus-sign-in-circular-symbol:before { content: "\f197"; }
+.flaticon-marker-with-three-dots-circular-button:before { content: "\f198"; }
+.flaticon-minus-sign-in-circular-button:before { content: "\f199"; }
+.flaticon-minus-sign-in-circular-button-1:before { content: "\f19a"; }
+.flaticon-money-pig-outlined-in-circular-button:before { content: "\f19b"; }
+.flaticon-more-circular-button-with-three-points:before { content: "\f19c"; }
+.flaticon-multi-borders-in-a-circle:before { content: "\f19d"; }
+.flaticon-music-circular-button:before { content: "\f19e"; }
+.flaticon-new-email-with-circular-button:before { content: "\f19f"; }
+.flaticon-next-step-circular-button:before { content: "\f1a0"; }
+.flaticon-next-step-with-circular-multimedia-button:before { content: "\f1a1"; }
+.flaticon-number-eight-in-a-circle:before { content: "\f1a2"; }
+.flaticon-number-five-in-circular-button:before { content: "\f1a3"; }
+.flaticon-number-four-in-circular-button:before { content: "\f1a4"; }
+.flaticon-number-nine-in-a-circle:before { content: "\f1a5"; }
+.flaticon-number-one-in-a-circle:before { content: "\f1a6"; }
+.flaticon-number-seven-in-a-circle:before { content: "\f1a7"; }
+.flaticon-number-six-in-a-circle:before { content: "\f1a8"; }
+.flaticon-number-three-in-a-circle:before { content: "\f1a9"; }
+.flaticon-number-two-in-a-circle:before { content: "\f1aa"; }
+.flaticon-number-zero-in-a-circle:before { content: "\f1ab"; }
+.flaticon-off-circular-button-symbol:before { content: "\f1ac"; }
+.flaticon-pause-with-circular-button:before { content: "\f1ad"; }
+.flaticon-photo-camera-filled-symbol-of-the-tool-in-circular-button:before { content: "\f1ae"; }
+.flaticon-pin-of-map-in-circular-button:before { content: "\f1af"; }
+.flaticon-pinterest-social-logo:before { content: "\f1b0"; }
+.flaticon-play-right-arrow-circular-button:before { content: "\f1b1"; }
+.flaticon-play-right-arrow-symbol-in-circular-multimedia-button:before { content: "\f1b2"; }
+.flaticon-play-with-circular-button-with-right-arrow-of-bold-rounded-filled-triangle:before { content: "\f1b3"; }
+.flaticon-plus-sign-in-add-circular-interface-button:before { content: "\f1b4"; }
+.flaticon-podcast-circular-button:before { content: "\f1b5"; }
+.flaticon-pounds-circular-button:before { content: "\f1b6"; }
+.flaticon-previous-fast-step-circular-multimedia-interface-button:before { content: "\f1b7"; }
+.flaticon-previous-step-circular-button:before { content: "\f1b8"; }
+.flaticon-question-circular-button:before { content: "\f1b9"; }
+.flaticon-question-in-circular-button:before { content: "\f1ba"; }
+.flaticon-quote-circular-button:before { content: "\f1bb"; }
+.flaticon-random-circular-button:before { content: "\f1bc"; }
+.flaticon-record-circular-button:before { content: "\f1bd"; }
+.flaticon-recycle-with-double-curved-arrows-in-circular-button:before { content: "\f1be"; }
+.flaticon-refresh-circular-arrow-in-a-circle:before { content: "\f1bf"; }
+.flaticon-retweet-circular-button:before { content: "\f1c0"; }
+.flaticon-right-arrow-circular-button:before { content: "\f1c1"; }
+.flaticon-right-arrow-circular-button-1:before { content: "\f1c2"; }
+.flaticon-right-arrow-in-a-circle:before { content: "\f1c3"; }
+.flaticon-right-arrow-in-circular-button:before { content: "\f1c4"; }
+.flaticon-right-arrow-in-circular-button-1:before { content: "\f1c5"; }
+.flaticon-right-arrow-multi-line-symbol-in-a-circle:before { content: "\f1c6"; }
+.flaticon-right-text-alignment-with-circular-button:before { content: "\f1c7"; }
+.flaticon-rss-subscription-circular-button:before { content: "\f1c8"; }
+.flaticon-rulers-circular-button:before { content: "\f1c9"; }
+.flaticon-rulers-on-axis-in-circular-button:before { content: "\f1ca"; }
+.flaticon-scale-circular-button:before { content: "\f1cb"; }
+.flaticon-screwdriver-in-a-circle:before { content: "\f1cc"; }
+.flaticon-search-with-magnifier-in-circular-button:before { content: "\f1cd"; }
+.flaticon-select-circle-with-circular-button:before { content: "\f1ce"; }
+.flaticon-select-square-of-broken-line-in-circular-button:before { content: "\f1cf"; }
+.flaticon-selection-download-button-circle:before { content: "\f1d0"; }
+.flaticon-selection-download-circle:before { content: "\f1d1"; }
+.flaticon-selection-upload-circle:before { content: "\f1d2"; }
+.flaticon-settings-circular-button:before { content: "\f1d3"; }
+.flaticon-settings-circular-button-with-two-wheels:before { content: "\f1d4"; }
+.flaticon-settings-tools-cross-in-circular-button:before { content: "\f1d5"; }
+.flaticon-share-this-social-circular-button:before { content: "\f1d6"; }
+.flaticon-shield-in-circular-button-of-security:before { content: "\f1d7"; }
+.flaticon-sliders-console-circular-button:before { content: "\f1d8"; }
+.flaticon-sliders-symbol-in-a-circle:before { content: "\f1d9"; }
+.flaticon-snowflake-in-a-circle:before { content: "\f1da"; }
+.flaticon-social-500px-circular-button:before { content: "\f1db"; }
+.flaticon-social-bebo-circular-button:before { content: "\f1dc"; }
+.flaticon-social-blogger-circular-interface-button:before { content: "\f1dd"; }
+.flaticon-social-deviantart-in-circular-button:before { content: "\f1de"; }
+.flaticon-social-dribbble-circular-button:before { content: "\f1df"; }
+.flaticon-social-email-circular-button:before { content: "\f1e0"; }
+.flaticon-social-envato-symbol-in-a-circle:before { content: "\f1e1"; }
+.flaticon-social-evernote-circular-button:before { content: "\f1e2"; }
+.flaticon-social-facebook-circular-button:before { content: "\f1e3"; }
+.flaticon-social-flickr-circular-button:before { content: "\f1e4"; }
+.flaticon-social-forrst-logo-in-circular-button:before { content: "\f1e5"; }
+.flaticon-social-github-circular-button:before { content: "\f1e6"; }
+.flaticon-social-google-plus-circular-button:before { content: "\f1e7"; }
+.flaticon-social-grooveshark-circular-button:before { content: "\f1e8"; }
+.flaticon-social-last-fm-in-circular-button-symbol:before { content: "\f1e9"; }
+.flaticon-social-linkedin-circular-button:before { content: "\f1ea"; }
+.flaticon-social-myspace-in-circular-button:before { content: "\f1eb"; }
+.flaticon-social-paypal-circular-button:before { content: "\f1ec"; }
+.flaticon-social-photobucket-circular-button:before { content: "\f1ed"; }
+.flaticon-social-quora-circular-button:before { content: "\f1ee"; }
+.flaticon-social-skype-circular-button:before { content: "\f1ef"; }
+.flaticon-social-soundcloud-circular-button:before { content: "\f1f0"; }
+.flaticon-social-stumbleupon-logo-in-circular-button:before { content: "\f1f1"; }
+.flaticon-social-tumblr-circular-button:before { content: "\f1f2"; }
+.flaticon-social-twitter-circular-button:before { content: "\f1f3"; }
+.flaticon-social-vimeo-circular-button:before { content: "\f1f4"; }
+.flaticon-social-yahoo-circular-button:before { content: "\f1f5"; }
+.flaticon-social-yelp-circular-button:before { content: "\f1f6"; }
+.flaticon-social-youtube-circular-button:before { content: "\f1f7"; }
+.flaticon-social-zerply-circular-button:before { content: "\f1f8"; }
+.flaticon-sos-circular-button:before { content: "\f1f9"; }
+.flaticon-sound-in-circular-button:before { content: "\f1fa"; }
+.flaticon-sound-off-with-circular-button:before { content: "\f1fb"; }
+.flaticon-speed-circular-button:before { content: "\f1fc"; }
+.flaticon-square-shape-with-dots-on-corners-in-circular-button:before { content: "\f1fd"; }
+.flaticon-stop-circular-multimedia-button:before { content: "\f1fe"; }
+.flaticon-sun-in-a-circle:before { content: "\f1ff"; }
+.flaticon-sunshine-weather-symbol-in-a-circle:before { content: "\f200"; }
+.flaticon-text-bold-circular-button:before { content: "\f201"; }
+.flaticon-text-center-alignment-circular-interface-button:before { content: "\f202"; }
+.flaticon-text-height-with-circular-button:before { content: "\f203"; }
+.flaticon-text-justify-circular-button:before { content: "\f204"; }
+.flaticon-text-justify-to-right-with-circular-button:before { content: "\f205"; }
+.flaticon-text-left-alignment-with-circular-interface-button:before { content: "\f206"; }
+.flaticon-text-normal-option-circular-button:before { content: "\f207"; }
+.flaticon-text-option-line-through-circular-button:before { content: "\f208"; }
+.flaticon-text-paragraph-in-circular-button:before { content: "\f209"; }
+.flaticon-text-size-plus-sign-in-circular-button:before { content: "\f20a"; }
+.flaticon-text-size-reduce-symbol-in-circular-interface-button:before { content: "\f20b"; }
+.flaticon-text-width-circular-button:before { content: "\f20c"; }
+.flaticon-three-point-on-top-of-a-circle:before { content: "\f20d"; }
+.flaticon-three-points-at-the-bottom-of-a-circle:before { content: "\f20e"; }
+.flaticon-triple-points-in-a-circle:before { content: "\f20f"; }
+.flaticon-underline-text-option-circular-interface-button:before { content: "\f210"; }
+.flaticon-up-arrow-circle:before { content: "\f211"; }
+.flaticon-up-arrow-circular-button:before { content: "\f212"; }
+.flaticon-up-arrow-circular-button-1:before { content: "\f213"; }
+.flaticon-up-arrow-circular-button-2:before { content: "\f214"; }
+.flaticon-up-arrow-circular-button-interface-symbol:before { content: "\f215"; }
+.flaticon-up-arrow-in-circular-button:before { content: "\f216"; }
+.flaticon-up-arrow-rounded-triangle-in-circular-button:before { content: "\f217"; }
+.flaticon-up-multi-line-arrow-in-a-circle:before { content: "\f218"; }
+.flaticon-upload-circular-button:before { content: "\f219"; }
+.flaticon-upload-selection-circular-button:before { content: "\f21a"; }
+.flaticon-url-link-in-circular-button:before { content: "\f21b"; }
+.flaticon-user-add-with-circular-button:before { content: "\f21c"; }
+.flaticon-user-remove-circular-button-of-interface:before { content: "\f21d"; }
+.flaticon-user-with-minus-sign-in-circular-button:before { content: "\f21e"; }
+.flaticon-viddler-social-circle-symbol:before { content: "\f21f"; }
+.flaticon-video-viewport-in-a-circle:before { content: "\f220"; }
+.flaticon-viewport-circular-interface-button:before { content: "\f221"; }
+.flaticon-virb-logo-in-social-circular-button:before { content: "\f222"; }
+.flaticon-waves-in-a-circle:before { content: "\f223"; }
+.flaticon-wifi-circular-button:before { content: "\f224"; }
+.flaticon-wind-circular-weather-interface-button:before { content: "\f225"; }
+.flaticon-wireframe-globe-in-a-circle:before { content: "\f226"; }
+.flaticon-woman-in-a-circle:before { content: "\f227"; }
+.flaticon-wordpress-logo-in-circular-button:before { content: "\f228"; }
+.flaticon-world-circular-symbol:before { content: "\f229"; }
+.flaticon-wrench-oblique-tool-in-circular-button:before { content: "\f22a"; }
+.flaticon-yen-currency-sign-in-a-circle:before { content: "\f22b"; }
+    
+    $font-Flaticon-3d-cube-in-circular-button: "\f100";
+    $font-Flaticon-add-circular-button: "\f101";
+    $font-Flaticon-add-to-the-cloud-with-circular-button: "\f102";
+    $font-Flaticon-add-with-circular-button: "\f103";
+    $font-Flaticon-adjust-circular-button: "\f104";
+    $font-Flaticon-airplane-filled-symbol-in-circular-button: "\f105";
+    $font-Flaticon-alarm-clock-circular-button: "\f106";
+    $font-Flaticon-animal-footprint-in-circular-button: "\f107";
+    $font-Flaticon-arrow-cycling-symbol-in-a-circle: "\f108";
+    $font-Flaticon-arrows-cycle-in-circular-button: "\f109";
+    $font-Flaticon-atom-in-circular-button: "\f10a";
+    $font-Flaticon-attach-symbol-of-oblique-paperclip-in-circular-button-of-interface: "\f10b";
+    $font-Flaticon-attachment-circular-button: "\f10c";
+    $font-Flaticon-back-left-arrow-in-circular-button: "\f10d";
+    $font-Flaticon-backward-circular-multimedia-button: "\f10e";
+    $font-Flaticon-bag-in-a-circle: "\f10f";
+    $font-Flaticon-ban-block-prohibition: "\f110";
+    $font-Flaticon-bars-graphic-in-a-circle: "\f111";
+    $font-Flaticon-behance-logo-in-circular-social-interface-button: "\f112";
+    $font-Flaticon-bezier-circular-design-button: "\f113";
+    $font-Flaticon-block-menu-in-circular-button: "\f114";
+    $font-Flaticon-bolt-flash-circular-button: "\f115";
+    $font-Flaticon-box-add-circular-interface-button: "\f116";
+    $font-Flaticon-box-circular-button: "\f117";
+    $font-Flaticon-box-close-circular-button: "\f118";
+    $font-Flaticon-box-remove-circular-button: "\f119";
+    $font-Flaticon-browser-sizes-circular-button: "\f11a";
+    $font-Flaticon-brush-en-circular-button: "\f11b";
+    $font-Flaticon-burn-circular-interface-button-with-fire-flames: "\f11c";
+    $font-Flaticon-call-telephone-auricular-in-circular-button: "\f11d";
+    $font-Flaticon-cd-dvd-circular-button: "\f11e";
+    $font-Flaticon-chart-down-in-a-circle: "\f11f";
+    $font-Flaticon-chat-circular-button: "\f120";
+    $font-Flaticon-check-circular-button: "\f121";
+    $font-Flaticon-check-with-circular-button: "\f122";
+    $font-Flaticon-circle: "\f123";
+    $font-Flaticon-circles-in-a-circle: "\f124";
+    $font-Flaticon-clock-circular-interface-button: "\f125";
+    $font-Flaticon-close-with-button-circle: "\f126";
+    $font-Flaticon-cloud-filled-shape-in-a-circle: "\f127";
+    $font-Flaticon-cloud-remove-circular-button: "\f128";
+    $font-Flaticon-cloud-upload-circular-interface-button: "\f129";
+    $font-Flaticon-coins-circular-button: "\f12a";
+    $font-Flaticon-comment-in-circular-button: "\f12b";
+    $font-Flaticon-comment-oval-filled-speech-bubble-in-circular-button: "\f12c";
+    $font-Flaticon-comments-circular-button-with-two-oval-speech-bubbles-inside: "\f12d";
+    $font-Flaticon-compass-circular-button: "\f12e";
+    $font-Flaticon-compass-circular-button-with-winds-star-symbol: "\f12f";
+    $font-Flaticon-contract-horizontally-symbol-in-circular-interface-button: "\f130";
+    $font-Flaticon-contract-vertically-with-circular-button: "\f131";
+    $font-Flaticon-contract-with-circular-button: "\f132";
+    $font-Flaticon-contract-with-four-arrows-in-circular-button: "\f133";
+    $font-Flaticon-contract-with-oblique-arrows-in-circular-button: "\f134";
+    $font-Flaticon-copy-document-with-circular-button: "\f135";
+    $font-Flaticon-copy-paste-document-with-circular-interface-button: "\f136";
+    $font-Flaticon-credit-card-in-a-circle: "\f137";
+    $font-Flaticon-cross-in-circular-button: "\f138";
+    $font-Flaticon-curved-right-arrow-in-circular-button: "\f139";
+    $font-Flaticon-digg-logo-in-social-circular-button: "\f13a";
+    $font-Flaticon-directions-arrows-of-cross-in-circular-button: "\f13b";
+    $font-Flaticon-document-circular-button-interface-symbol: "\f13c";
+    $font-Flaticon-document-in-circular-button: "\f13d";
+    $font-Flaticon-documents-circular-button: "\f13e";
+    $font-Flaticon-dollar-in-circular-button: "\f13f";
+    $font-Flaticon-dots-circle-in-circular-symbol: "\f140";
+    $font-Flaticon-double-diamonds-in-a-circle: "\f141";
+    $font-Flaticon-double-vertical-arrow-in-circular-button: "\f142";
+    $font-Flaticon-down-arrow-big-symbol-in-circular-button: "\f143";
+    $font-Flaticon-down-arrow-circular-button: "\f144";
+    $font-Flaticon-down-arrow-circular-button-1: "\f145";
+    $font-Flaticon-down-arrow-circular-button-2: "\f146";
+    $font-Flaticon-down-arrow-in-a-circle: "\f147";
+    $font-Flaticon-down-arrow-in-a-circle-1: "\f148";
+    $font-Flaticon-down-arrow-in-circular-button: "\f149";
+    $font-Flaticon-down-arrow-multi-line-symbol-in-circular-button: "\f14a";
+    $font-Flaticon-download-from-the-cloud-with-circular-button: "\f14b";
+    $font-Flaticon-download-heart-in-circular-button: "\f14c";
+    $font-Flaticon-download-with-circular-button: "\f14d";
+    $font-Flaticon-drop-circular-button: "\f14e";
+    $font-Flaticon-drops-in-a-circle: "\f14f";
+    $font-Flaticon-eject-circular-button: "\f150";
+    $font-Flaticon-email-add-circular-interface-button: "\f151";
+    $font-Flaticon-email-close-circular-button-interface-symbol: "\f152";
+    $font-Flaticon-email-download-with-circular-button: "\f153";
+    $font-Flaticon-email-in-circular-button: "\f154";
+    $font-Flaticon-email-remove-circular-interface-button: "\f155";
+    $font-Flaticon-email-spam-circular-interface-button: "\f156";
+    $font-Flaticon-email-upload-circular-button-interface-symbol: "\f157";
+    $font-Flaticon-euro-in-a-circle: "\f158";
+    $font-Flaticon-exclamation-in-a-circle: "\f159";
+    $font-Flaticon-exclamation-in-circular-button: "\f15a";
+    $font-Flaticon-expand-arrows-in-circular-button: "\f15b";
+    $font-Flaticon-expand-circular-symbol: "\f15c";
+    $font-Flaticon-expand-four-oblique-arrows-symbol-in-circular-button: "\f15d";
+    $font-Flaticon-expand-horizontally-with-circular-button: "\f15e";
+    $font-Flaticon-expand-oblique-arrows-symbol-in-circular-interface-button: "\f15f";
+    $font-Flaticon-expand-with-arrows-in-vertical-symbol-in-circular-button: "\f160";
+    $font-Flaticon-eye-and-slash-disabled-visualization-option-in-circular-button: "\f161";
+    $font-Flaticon-eye-visible-option-in-circular-button: "\f162";
+    $font-Flaticon-favorite-star-circular-interface-button: "\f163";
+    $font-Flaticon-female-sign-in-a-circle: "\f164";
+    $font-Flaticon-forward-with-multimedia-circular-button: "\f165";
+    $font-Flaticon-four-directions-in-circular-button: "\f166";
+    $font-Flaticon-graphs-circular-interface-button: "\f167";
+    $font-Flaticon-grid-or-visualization-option-circular-interface-button: "\f168";
+    $font-Flaticon-grid-symbol-of-squares-in-circular-button: "\f169";
+    $font-Flaticon-hdd-circular-button: "\f16a";
+    $font-Flaticon-hdd-net-symbol-in-a-circle: "\f16b";
+    $font-Flaticon-hdd-raid-circular-symbol: "\f16c";
+    $font-Flaticon-home-wifi-circular-button-interface-symbol: "\f16d";
+    $font-Flaticon-idea-circular-button: "\f16e";
+    $font-Flaticon-information-circular-button-interface-symbol: "\f16f";
+    $font-Flaticon-italic-circular-button: "\f170";
+    $font-Flaticon-key-circular-button: "\f171";
+    $font-Flaticon-landscape-in-circular-button: "\f172";
+    $font-Flaticon-layers-in-circular-button: "\f173";
+    $font-Flaticon-leaf-shape-in-a-circle: "\f174";
+    $font-Flaticon-left-arrow-big-symbol-in-circular-button: "\f175";
+    $font-Flaticon-left-arrow-circular-button: "\f176";
+    $font-Flaticon-left-arrow-circular-button-1: "\f177";
+    $font-Flaticon-left-arrow-in-a-circle: "\f178";
+    $font-Flaticon-left-arrow-of-multi-lines-in-circular-button: "\f179";
+    $font-Flaticon-left-arrow-thin-symbol-in-circular-button: "\f17a";
+    $font-Flaticon-left-arrow-triangle-in-circular-button: "\f17b";
+    $font-Flaticon-left-curved-arrow-in-circular-button: "\f17c";
+    $font-Flaticon-left-right-double-horizontal-arrow-in-circular-button: "\f17d";
+    $font-Flaticon-left-text-justify-circular-button: "\f17e";
+    $font-Flaticon-like-add-circular-button: "\f17f";
+    $font-Flaticon-like-ban-circular-button: "\f180";
+    $font-Flaticon-like-close-circular-interface-button: "\f181";
+    $font-Flaticon-like-heart-in-circular-button: "\f182";
+    $font-Flaticon-like-remove-with-circular-button: "\f183";
+    $font-Flaticon-like-upload-circular-button: "\f184";
+    $font-Flaticon-line-with-dots-straight-symbol-in-a-circle: "\f185";
+    $font-Flaticon-list-circular-button: "\f186";
+    $font-Flaticon-list-circular-interface-button: "\f187";
+    $font-Flaticon-location-circular-button: "\f188";
+    $font-Flaticon-location-circular-button-1: "\f189";
+    $font-Flaticon-locked-padlock-in-circular-button: "\f18a";
+    $font-Flaticon-login-lock-refresh-in-circular-button: "\f18b";
+    $font-Flaticon-luminosity-with-circular-button: "\f18c";
+    $font-Flaticon-magic-wand-circular-interface-button: "\f18d";
+    $font-Flaticon-magnet-circular-button: "\f18e";
+    $font-Flaticon-mailbox-in-circular-button: "\f18f";
+    $font-Flaticon-male-sign-in-a-circle: "\f190";
+    $font-Flaticon-male-user-in-circular-button: "\f191";
+    $font-Flaticon-man-in-circular-interface-button: "\f192";
+    $font-Flaticon-map-filled-folded-paper-symbol-in-circular-interface-button: "\f193";
+    $font-Flaticon-maps-location-circular-button: "\f194";
+    $font-Flaticon-marker-add-with-circular-button: "\f195";
+    $font-Flaticon-marker-in-circular-button: "\f196";
+    $font-Flaticon-marker-minus-sign-in-circular-symbol: "\f197";
+    $font-Flaticon-marker-with-three-dots-circular-button: "\f198";
+    $font-Flaticon-minus-sign-in-circular-button: "\f199";
+    $font-Flaticon-minus-sign-in-circular-button-1: "\f19a";
+    $font-Flaticon-money-pig-outlined-in-circular-button: "\f19b";
+    $font-Flaticon-more-circular-button-with-three-points: "\f19c";
+    $font-Flaticon-multi-borders-in-a-circle: "\f19d";
+    $font-Flaticon-music-circular-button: "\f19e";
+    $font-Flaticon-new-email-with-circular-button: "\f19f";
+    $font-Flaticon-next-step-circular-button: "\f1a0";
+    $font-Flaticon-next-step-with-circular-multimedia-button: "\f1a1";
+    $font-Flaticon-number-eight-in-a-circle: "\f1a2";
+    $font-Flaticon-number-five-in-circular-button: "\f1a3";
+    $font-Flaticon-number-four-in-circular-button: "\f1a4";
+    $font-Flaticon-number-nine-in-a-circle: "\f1a5";
+    $font-Flaticon-number-one-in-a-circle: "\f1a6";
+    $font-Flaticon-number-seven-in-a-circle: "\f1a7";
+    $font-Flaticon-number-six-in-a-circle: "\f1a8";
+    $font-Flaticon-number-three-in-a-circle: "\f1a9";
+    $font-Flaticon-number-two-in-a-circle: "\f1aa";
+    $font-Flaticon-number-zero-in-a-circle: "\f1ab";
+    $font-Flaticon-off-circular-button-symbol: "\f1ac";
+    $font-Flaticon-pause-with-circular-button: "\f1ad";
+    $font-Flaticon-photo-camera-filled-symbol-of-the-tool-in-circular-button: "\f1ae";
+    $font-Flaticon-pin-of-map-in-circular-button: "\f1af";
+    $font-Flaticon-pinterest-social-logo: "\f1b0";
+    $font-Flaticon-play-right-arrow-circular-button: "\f1b1";
+    $font-Flaticon-play-right-arrow-symbol-in-circular-multimedia-button: "\f1b2";
+    $font-Flaticon-play-with-circular-button-with-right-arrow-of-bold-rounded-filled-triangle: "\f1b3";
+    $font-Flaticon-plus-sign-in-add-circular-interface-button: "\f1b4";
+    $font-Flaticon-podcast-circular-button: "\f1b5";
+    $font-Flaticon-pounds-circular-button: "\f1b6";
+    $font-Flaticon-previous-fast-step-circular-multimedia-interface-button: "\f1b7";
+    $font-Flaticon-previous-step-circular-button: "\f1b8";
+    $font-Flaticon-question-circular-button: "\f1b9";
+    $font-Flaticon-question-in-circular-button: "\f1ba";
+    $font-Flaticon-quote-circular-button: "\f1bb";
+    $font-Flaticon-random-circular-button: "\f1bc";
+    $font-Flaticon-record-circular-button: "\f1bd";
+    $font-Flaticon-recycle-with-double-curved-arrows-in-circular-button: "\f1be";
+    $font-Flaticon-refresh-circular-arrow-in-a-circle: "\f1bf";
+    $font-Flaticon-retweet-circular-button: "\f1c0";
+    $font-Flaticon-right-arrow-circular-button: "\f1c1";
+    $font-Flaticon-right-arrow-circular-button-1: "\f1c2";
+    $font-Flaticon-right-arrow-in-a-circle: "\f1c3";
+    $font-Flaticon-right-arrow-in-circular-button: "\f1c4";
+    $font-Flaticon-right-arrow-in-circular-button-1: "\f1c5";
+    $font-Flaticon-right-arrow-multi-line-symbol-in-a-circle: "\f1c6";
+    $font-Flaticon-right-text-alignment-with-circular-button: "\f1c7";
+    $font-Flaticon-rss-subscription-circular-button: "\f1c8";
+    $font-Flaticon-rulers-circular-button: "\f1c9";
+    $font-Flaticon-rulers-on-axis-in-circular-button: "\f1ca";
+    $font-Flaticon-scale-circular-button: "\f1cb";
+    $font-Flaticon-screwdriver-in-a-circle: "\f1cc";
+    $font-Flaticon-search-with-magnifier-in-circular-button: "\f1cd";
+    $font-Flaticon-select-circle-with-circular-button: "\f1ce";
+    $font-Flaticon-select-square-of-broken-line-in-circular-button: "\f1cf";
+    $font-Flaticon-selection-download-button-circle: "\f1d0";
+    $font-Flaticon-selection-download-circle: "\f1d1";
+    $font-Flaticon-selection-upload-circle: "\f1d2";
+    $font-Flaticon-settings-circular-button: "\f1d3";
+    $font-Flaticon-settings-circular-button-with-two-wheels: "\f1d4";
+    $font-Flaticon-settings-tools-cross-in-circular-button: "\f1d5";
+    $font-Flaticon-share-this-social-circular-button: "\f1d6";
+    $font-Flaticon-shield-in-circular-button-of-security: "\f1d7";
+    $font-Flaticon-sliders-console-circular-button: "\f1d8";
+    $font-Flaticon-sliders-symbol-in-a-circle: "\f1d9";
+    $font-Flaticon-snowflake-in-a-circle: "\f1da";
+    $font-Flaticon-social-500px-circular-button: "\f1db";
+    $font-Flaticon-social-bebo-circular-button: "\f1dc";
+    $font-Flaticon-social-blogger-circular-interface-button: "\f1dd";
+    $font-Flaticon-social-deviantart-in-circular-button: "\f1de";
+    $font-Flaticon-social-dribbble-circular-button: "\f1df";
+    $font-Flaticon-social-email-circular-button: "\f1e0";
+    $font-Flaticon-social-envato-symbol-in-a-circle: "\f1e1";
+    $font-Flaticon-social-evernote-circular-button: "\f1e2";
+    $font-Flaticon-social-facebook-circular-button: "\f1e3";
+    $font-Flaticon-social-flickr-circular-button: "\f1e4";
+    $font-Flaticon-social-forrst-logo-in-circular-button: "\f1e5";
+    $font-Flaticon-social-github-circular-button: "\f1e6";
+    $font-Flaticon-social-google-plus-circular-button: "\f1e7";
+    $font-Flaticon-social-grooveshark-circular-button: "\f1e8";
+    $font-Flaticon-social-last-fm-in-circular-button-symbol: "\f1e9";
+    $font-Flaticon-social-linkedin-circular-button: "\f1ea";
+    $font-Flaticon-social-myspace-in-circular-button: "\f1eb";
+    $font-Flaticon-social-paypal-circular-button: "\f1ec";
+    $font-Flaticon-social-photobucket-circular-button: "\f1ed";
+    $font-Flaticon-social-quora-circular-button: "\f1ee";
+    $font-Flaticon-social-skype-circular-button: "\f1ef";
+    $font-Flaticon-social-soundcloud-circular-button: "\f1f0";
+    $font-Flaticon-social-stumbleupon-logo-in-circular-button: "\f1f1";
+    $font-Flaticon-social-tumblr-circular-button: "\f1f2";
+    $font-Flaticon-social-twitter-circular-button: "\f1f3";
+    $font-Flaticon-social-vimeo-circular-button: "\f1f4";
+    $font-Flaticon-social-yahoo-circular-button: "\f1f5";
+    $font-Flaticon-social-yelp-circular-button: "\f1f6";
+    $font-Flaticon-social-youtube-circular-button: "\f1f7";
+    $font-Flaticon-social-zerply-circular-button: "\f1f8";
+    $font-Flaticon-sos-circular-button: "\f1f9";
+    $font-Flaticon-sound-in-circular-button: "\f1fa";
+    $font-Flaticon-sound-off-with-circular-button: "\f1fb";
+    $font-Flaticon-speed-circular-button: "\f1fc";
+    $font-Flaticon-square-shape-with-dots-on-corners-in-circular-button: "\f1fd";
+    $font-Flaticon-stop-circular-multimedia-button: "\f1fe";
+    $font-Flaticon-sun-in-a-circle: "\f1ff";
+    $font-Flaticon-sunshine-weather-symbol-in-a-circle: "\f200";
+    $font-Flaticon-text-bold-circular-button: "\f201";
+    $font-Flaticon-text-center-alignment-circular-interface-button: "\f202";
+    $font-Flaticon-text-height-with-circular-button: "\f203";
+    $font-Flaticon-text-justify-circular-button: "\f204";
+    $font-Flaticon-text-justify-to-right-with-circular-button: "\f205";
+    $font-Flaticon-text-left-alignment-with-circular-interface-button: "\f206";
+    $font-Flaticon-text-normal-option-circular-button: "\f207";
+    $font-Flaticon-text-option-line-through-circular-button: "\f208";
+    $font-Flaticon-text-paragraph-in-circular-button: "\f209";
+    $font-Flaticon-text-size-plus-sign-in-circular-button: "\f20a";
+    $font-Flaticon-text-size-reduce-symbol-in-circular-interface-button: "\f20b";
+    $font-Flaticon-text-width-circular-button: "\f20c";
+    $font-Flaticon-three-point-on-top-of-a-circle: "\f20d";
+    $font-Flaticon-three-points-at-the-bottom-of-a-circle: "\f20e";
+    $font-Flaticon-triple-points-in-a-circle: "\f20f";
+    $font-Flaticon-underline-text-option-circular-interface-button: "\f210";
+    $font-Flaticon-up-arrow-circle: "\f211";
+    $font-Flaticon-up-arrow-circular-button: "\f212";
+    $font-Flaticon-up-arrow-circular-button-1: "\f213";
+    $font-Flaticon-up-arrow-circular-button-2: "\f214";
+    $font-Flaticon-up-arrow-circular-button-interface-symbol: "\f215";
+    $font-Flaticon-up-arrow-in-circular-button: "\f216";
+    $font-Flaticon-up-arrow-rounded-triangle-in-circular-button: "\f217";
+    $font-Flaticon-up-multi-line-arrow-in-a-circle: "\f218";
+    $font-Flaticon-upload-circular-button: "\f219";
+    $font-Flaticon-upload-selection-circular-button: "\f21a";
+    $font-Flaticon-url-link-in-circular-button: "\f21b";
+    $font-Flaticon-user-add-with-circular-button: "\f21c";
+    $font-Flaticon-user-remove-circular-button-of-interface: "\f21d";
+    $font-Flaticon-user-with-minus-sign-in-circular-button: "\f21e";
+    $font-Flaticon-viddler-social-circle-symbol: "\f21f";
+    $font-Flaticon-video-viewport-in-a-circle: "\f220";
+    $font-Flaticon-viewport-circular-interface-button: "\f221";
+    $font-Flaticon-virb-logo-in-social-circular-button: "\f222";
+    $font-Flaticon-waves-in-a-circle: "\f223";
+    $font-Flaticon-wifi-circular-button: "\f224";
+    $font-Flaticon-wind-circular-weather-interface-button: "\f225";
+    $font-Flaticon-wireframe-globe-in-a-circle: "\f226";
+    $font-Flaticon-woman-in-a-circle: "\f227";
+    $font-Flaticon-wordpress-logo-in-circular-button: "\f228";
+    $font-Flaticon-world-circular-symbol: "\f229";
+    $font-Flaticon-wrench-oblique-tool-in-circular-button: "\f22a";
+    $font-Flaticon-yen-currency-sign-in-a-circle: "\f22b";
