@@ -1,0 +1,11 @@
+<template class="ui-tab-panel">
+	<div class="ui-tab-header" ref="__tabButtons">
+		<a class="ui-tab" repeat.for="tab of tabs"
+		   data-index="${$index}" click.trigger="activeTab = $index">
+			<span if.bind="tab.getAttribute('icon')" class="${tab.getAttribute('icon')}"></span>
+			${tab.getAttribute('label')}</a>
+	</div>
+	<div class="ui-tab-body" ref="__tabs">
+		<content></content>
+	</div>
+</template>
