@@ -507,6 +507,8 @@ System.config({
       "src/home/colors.js",
       "src/home/my-dialog.html!github:systemjs/plugin-text@0.0.4.js",
       "src/home/my-dialog.js",
+      "src/home/readme.js",
+      "src/home/todo.js",
       "src/home/view.html!github:systemjs/plugin-text@0.0.4.js",
       "src/home/view.js",
       "src/inputs/readme.js",

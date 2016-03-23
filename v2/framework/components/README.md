@@ -89,6 +89,8 @@ class MyDialog extends UIDialog {
 _Initializing the view_
 
 ```javascript
+import {UIDialogService} from "aurelia-ui-framework";
+
 @inject(UIDialogService)
 class AnyView {
     constructor(dialogService){}

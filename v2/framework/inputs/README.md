@@ -111,6 +111,10 @@ Attributes common to all input elements except checkbox/radio
 * Singular attributes
 
     * `checkbox`: add a checkbox to enable/disable input
+    
+    * `label-hide`: hide the label
+   
+    * `label-top`: place label label above the input control
 
 * Bindable attributes
 
@@ -172,3 +176,14 @@ Attributes common to all input elements except checkbox/radio
 ```html
 <ui-textarea rows.bind=?>Label</ui-textarea>
 ```
+
+----
+
+### UIMarkDown
+
+```html
+<ui-markdown full-view rows.bind=? value.bind=? dir.bind=? 
+    placeholder=? disabled.bind=? readonly.bind=?>Label</ui-markdown>
+```
+
+* `full-view` will stretch the editor to fill the page, tab/body body

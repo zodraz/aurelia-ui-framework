@@ -22,7 +22,8 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 ##### Usage
 
 ```html
-<ui-viewport router.bind="Main Router" options.bind="appOptions" logout.trigger=?>
+<ui-viewport router.bind="Main Router" copyright.bind=? subtitle.bind=?
+    show-menu.bind=true|false show-taskbar.bind=true|false logout.trigger=?>
     <!-- Header extras -->
     
     <template replace-part="quick-links">
@@ -43,29 +44,8 @@ router.options = { showAuthentication:boolean, showLogo:boolean }
 Route extra options
 
 ```javascript
+route.group // Permitted groups for Authentication Interceptor eg. [0,1,2]
 route.settings = { sectionStart:boolean, sectionTitle:string, icon:string }
-```
-
-##### UIViewportOptions
-
-```javascript
-options = {
-	// App Logo
-	logo:string;
-	// App Title
-	title:string;
-	// App Subtitle
-	subtitle:string;
-	// Footer Copyright
-	copyright:string;
-	// Footer Message
-	footerMessage:string;
-
-	// Show app side menu
-	showMenu:boolean = true;
-	// Show Taskbar multiple dialogs
-	showTaskbar:boolean = true;
-}
 ```
 
 ---

@@ -16,9 +16,12 @@
 
 ---
 	
-### Global Methods ###
+### Global Properties/Methods ###
 
 ```javascript
+// Global Constants Object attached to Window
+Constants = {}
+
 // check true using regex `/^(true|yes|1|y|on)$`
 window.isTrue(?)
 
@@ -32,6 +35,106 @@ window.getParentByTag(element:Element, selector:string):HTMLElement
 
 // Get DOM Parent by ClassName, stop when parent class-name contains `lastElement`
 window.getParentByClass(element:Element, selector:string, lastElement?:string):HTMLElement
+```
+
+---
+	
+### UIApplication ###
+
+Singleton class for application level settings and methods
+
+```javascript
+
+/**
+ * Usage
+ */
+import {UIApplication} from "aurelia-ui-framework";
+
+@inject(UIApplication)
+export class AppClass {
+    constructor(appState) {
+    ...
+    }
+}
+
+/**
+ * Properties
+ */
+AppConfig:Object
+HttpConfig:Object
+
+// Boolean indicator set/unset by the HttpService
+IsHttpInUse:boolean
+
+IsAuthenticated:boolean
+
+// Authorization user and password for Basic Authentication header
+AuthUser:string
+AuthToken:string
+
+Username:string
+UserGroup:string
+UserGroupLabel:string
+
+/**
+ * Methods
+ */
+// Route navigation
+navigate(hash)
+
+navigateTo(route, params)
+
+// Toast notifications
+toast({
+    icon:string,
+    message:string,
+    theme:string, // primary | info | danger | success | warning
+    extraClass:string,
+    autoHide:boolean
+})
+
+// Storage
+session(key, value?) // session storage, if value is null it will be deleted
+persist(key, value?) // local storage, if value is null it will be deleted
+clearSession()
+
+// Logging
+info(tag, message, ...args?)
+warn(tag, message, ...args?)
+debug(tag, message, ...args?)
+error(tag, message, ...args?)
+
+```
+
+---
+
+### UIHttpService ###
+
+```javascript
+
+/**
+ * Usage
+ */
+import {UIHttpService} from "aurelia-ui-framework";
+
+@inject(UIHttpService)
+export class AppClass {
+    constructor(httpService) {
+    ...
+    }
+}
+
+/**
+ * Methods
+ */
+get(api-route):Promise
+
+post(api-route, json-body):Promise
+
+put(api-route, json-body):Promise
+
+delete(api-route):Promise
+
 ```
 
 ---
