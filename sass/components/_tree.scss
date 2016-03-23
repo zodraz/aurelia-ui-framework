@@ -91,7 +91,7 @@
 	  min-width   : 13em;
 	  white-space : nowrap;
 	  font-weight : $font-weight-normal;
-	  @include flex(1 1 0%);
+	  @include flex(1 1 0);
 	  @include flex-row($wrap : false);
 
 	  span.ui-icon {

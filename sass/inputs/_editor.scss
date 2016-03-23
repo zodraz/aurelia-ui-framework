@@ -28,7 +28,7 @@
 
   &.ui-full-view {
 	margin : 0;
-	@include flex(1 1 0%);
+	@include flex(1 1 0);
 	@include align-items(stretch);
 	@include flex-direction(column);
 	.ui-label {
@@ -37,7 +37,7 @@
 	.ui-control-wrapper {
 	  @include flex-column();
 	  .ui-input-control {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		position : relative;
 		.ui-input {
 		  @include position(absolute, 0, 0, 0, 0);
@@ -72,5 +72,11 @@
   }
   &[dir="rtl"]:not(.ui-hide) ~ .ui-close {
 	@include position(absolute, $t : 0, $l : 0);
+  }
+}
+
+.ui-json-editor {
+  .ui-input-group .ui-label {
+	@include flex-basis(15em);
   }
 }

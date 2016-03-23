@@ -36,6 +36,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "aurelia
         UIForm.prototype.fireSubmit = function () {
             ui_event_1.UIEvent.fireEvent('submit', this.element, this);
         };
+        UIForm.prototype.getForm = function () {
+            return this.__form;
+        };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)

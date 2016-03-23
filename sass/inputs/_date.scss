@@ -14,6 +14,13 @@
   }
 }
 
+.ui-date-input .ui-input {
+  background : $input-bg;
+  &[disabled] {
+	background : $input-disabled-bg;
+  }
+}
+
 .ui-date-addon {
   position : relative;
   span.date {
@@ -109,7 +116,7 @@
 		color  : $date-disabled !important;
 	  }
 	  .label {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		font-variant : small-caps;
 	  }
 	}
@@ -127,7 +134,7 @@
 	.footer {
 	  font-weight : 600;
 	  span {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		margin        : 0.25em 0.4em;
 		border-radius : $base-border-radius;
 		color         : $date-control-text;
@@ -191,14 +198,14 @@
 	}
 	.months {
 	  span {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		margin      : 0.1em 0.2em;
 		line-height : 300%;
 	  }
 	}
 	.years {
 	  span {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		margin      : 0.1em 0.2em;
 		line-height : 200%;
 	  }
@@ -209,7 +216,7 @@
 	  @include flex-column(stretch, space-between);
 
 	  .years, .months {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		span {
 		  @include align-self(stretch);
 		}

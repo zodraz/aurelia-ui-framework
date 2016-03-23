@@ -31,6 +31,10 @@ declare module "aurelia-ui-framework" {
 	export class UIDialogService {
 		show<T extends UIDialog>(viewModel:T, model?:any);
 	}
+
+	export class UIForm {
+		getForm():HTMLFormElement;
+	}
 }
 
 /** UTILS **/

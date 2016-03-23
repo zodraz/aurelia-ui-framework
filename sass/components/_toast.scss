@@ -34,7 +34,7 @@
 	  margin-top : 0.3em;
 	}
 	.ui-message {
-	  @include flex(1 1 0%);
+	  @include flex(1 1 0);
 	  padding : 0.2em 0.8em;
 	}
 	.ui-close {

@@ -71,10 +71,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             if (!(vm instanceof UIDialog))
                 throw new Error("ViewModel must extend from UIDialog");
             var viewFactory = this.compiler.compile('<template><div class="${modal?\'ui-modal\':\'\'} ui-dialog-wrapper" ref="__dialogWrapper">' +
-                '<div class="ui-dialog ${__active?\'ui-active\':\'ui-inactive\'}" ref="__dialog" css.bind="__current">' +
+                '<div class="uia-dialog ${__active?\'ui-active\':\'ui-inactive\'}" ref="__dialog" css.bind="__current">' +
                 '<ui-header primary close="true" close.trigger="close($event)" ' +
                 'expand.trigger="expand($event)" collapse.trigger="collapse($event)" ' +
-                'icon="${icon}" collapse="${!modal}" expand="true">${title}</ui-header>' +
+                'icon="${icon}" collapse="${!modal}" expand="${maximizable}">${title}</ui-header>' +
                 '<span class="ui-resizer fi-ui"></span>' +
                 '</div></div></template>', this.resources);
             var view = viewFactory.create(this.container);
@@ -280,6 +280,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             this.modal = false;
             this.drag = true;
             this.resize = true;
+            this.maximizable = true;
         }
         UIDialog.prototype.close = function ($event) {
             if ($event)

@@ -104,6 +104,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
             Object.keys(o)
                 .forEach(function (key) {
                 if (key !== 'undefined' && !/^__/.test(key)) {
+                    if (o[key] instanceof UIModel) {
+                        _pojo[key] = o[key].serialize();
+                    }
                     if (ui_utils_1._.isObject(o[key])) {
                         _pojo[key] = _this.__serializeObject(o[key]);
                     }
