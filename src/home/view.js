@@ -195,11 +195,6 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
             var _this = this;
             this.checked = this.__tree.getChecked();
             setTimeout(function () { return _this.__content.scrollTop = 0; }, 20);
-            this.httpClient.get('./src/data/model.json').then(function (resp) {
-                _this.jsonModel = resp;
-                console.log(resp);
-            });
-            this.httpClient.get('./src/data/schema.json').then(function (resp) { return _this.jsonSchema = resp; });
         };
         Home.prototype.formatName = function ($event) {
             return $event.model.FName + " <strong>" + $event.model.LName + "</strong>";
