@@ -1,5 +1,5 @@
 /**
- *    UI Input      Singleline Input
+ *    UI Input      Dual Single Line Input
  *    @author       Adarsh Pastakia
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia

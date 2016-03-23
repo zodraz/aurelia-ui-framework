@@ -23,6 +23,7 @@ define(["require", "exports", "./utils/ui-application", "./utils/ui-event", "./u
         aurelia.globalResources('./inputs/ui-combo');
         aurelia.globalResources('./inputs/ui-date');
         aurelia.globalResources('./inputs/ui-date-view');
+        aurelia.globalResources('./inputs/ui-json-editor');
         aurelia.globalResources('./utils/ui-converters');
         if (configCallback !== undefined && typeof configCallback === 'function') {
             configCallback(ui_application_1.UIApplication.defaults);

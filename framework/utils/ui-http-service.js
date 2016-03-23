@@ -27,7 +27,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                     response: function (response) {
                         appState.info(this.constructor.name, "Response " + response.url + " " + response.status);
                         appState.IsHttpInUse = false;
-                        console.log('Response', response instanceof TypeError, response);
                         if (response instanceof TypeError) {
                             throw Error(response['message']);
                         }

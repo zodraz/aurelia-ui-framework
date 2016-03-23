@@ -74,3 +74,9 @@
 	@include position(absolute, $t : 0, $l : 0);
   }
 }
+
+.ui-json-editor {
+  .ui-input-group .ui-label {
+	@include flex-basis(15em);
+  }
+}

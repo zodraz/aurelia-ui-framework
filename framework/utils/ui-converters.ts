@@ -54,6 +54,7 @@ export class PercentValueConverter {
 // Objects/Arrays
 export class KeysValueConverter {
 	toView(object:any) {
+		if (isEmpty(object)) return [];
 		return Object.keys(object);
 	}
 }

@@ -71,6 +71,8 @@ define(["require", "exports", "./ui-formatters"], function (require, exports, ui
         function KeysValueConverter() {
         }
         KeysValueConverter.prototype.toView = function (object) {
+            if (isEmpty(object))
+                return [];
             return Object.keys(object);
         };
         return KeysValueConverter;

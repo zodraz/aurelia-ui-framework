@@ -35,7 +35,6 @@ export class UIHttpService {
 											 appState.info(this.constructor.name, `Response ${response.url} ${response.status}`);
 											 appState.IsHttpInUse = false;
 
-											 console.log('Response', response instanceof TypeError, response);
 											 if (response instanceof TypeError) {
 												 throw Error(response['message']);
 											 }

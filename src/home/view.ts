@@ -283,4 +283,5 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 			this.appState.toast({theme: theme, icon: 'fi-vaadin-bell', message: 'Toasted message'});
 		}
 	}
+
 }
