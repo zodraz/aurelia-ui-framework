@@ -110,7 +110,7 @@
   .ui-viewport-body {
 	z-index  : 1;
 	position : relative;
-	@include flex(1 1 0%);
+	@include flex(1 1 0);
   }
 
   .ui-app-menu {

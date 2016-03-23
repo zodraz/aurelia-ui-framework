@@ -103,6 +103,9 @@ export class UIModel {
 		Object.keys(o)
 			  .forEach((key) => {
 				  if (key !== 'undefined' && !/^__/.test(key)) {
+					  if (o[key] instanceof UIModel) {
+						  _pojo[key] = o[key].serialize();
+					  }
 					  if (_.isObject(o[key])) {
 						  _pojo[key] = this.__serializeObject(o[key])
 					  }

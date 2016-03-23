@@ -18,12 +18,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
             httpClient.configure(function (config) {
                 config
                     .withBaseUrl(appState.HttpConfig.BaseUrl)
-                    .withDefaults({})
                     .withInterceptor({
                     request: function (request) {
                         appState.info(this.constructor.name, "Requesting " + request.method + " " + request.url);
                         appState.IsHttpInUse = true;
-                        request.url = encodeURI(request.url);
                         return request;
                     },
                     response: function (response) {

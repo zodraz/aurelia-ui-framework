@@ -23,12 +23,12 @@ export class UIHttpService {
 			config => {
 				config
 					.withBaseUrl(appState.HttpConfig.BaseUrl)
-					.withDefaults({})
+					//.withDefaults({})
 					.withInterceptor({
 										 request(request) {
 											 appState.info(this.constructor.name, `Requesting ${request.method} ${request.url}`);
 											 appState.IsHttpInUse = true;
-											 request.url          = encodeURI(request.url);
+											 //request.url          = encodeURI(request.url);
 											 return request;
 										 },
 										 response(response) {

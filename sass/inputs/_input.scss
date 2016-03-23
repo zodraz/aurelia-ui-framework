@@ -95,7 +95,7 @@ $shadow : $tg-2;
 	  min-height : 2em;
 
 	  > .ui-input-wrapper {
-		@include flex(1 1 0%);
+		@include flex(1 1 0);
 		position : relative;
 		> .ui-input {
 		  width : 100%;
@@ -230,7 +230,7 @@ $shadow : $tg-2;
   &.ui-auto {
 	padding : 0.25em 0.4em;
 	.ui-control-wrapper {
-	  @include flex(1 1 0%);
+	  @include flex(1 1 0);
 	}
   }
 }
