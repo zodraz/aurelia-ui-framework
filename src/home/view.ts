@@ -258,14 +258,14 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 							});
 	}
 
-	checkAge($event) {
+	checkAge($event):any {
 		if (moment()
 				.diff($event.model.SDate, 'years', true) > 50) {
 			return {theme: 'warning'};
 		}
 		if (moment()
 				.diff($event.model.SDate, 'years', true) < 40) {
-			return {theme: 'success'};
+			return 'No Preview';
 		}
 		return {theme: 'info'};
 	}

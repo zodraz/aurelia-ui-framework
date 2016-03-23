@@ -43,4 +43,8 @@ export class UIForm {
 	fireSubmit() {
 		UIEvent.fireEvent('submit', this.element, this);
 	}
+
+	getForm() {
+		return this.__form;
+	}
 }

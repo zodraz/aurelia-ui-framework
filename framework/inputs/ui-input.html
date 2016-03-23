@@ -14,7 +14,7 @@
 				<span class="ui-check-mark"></span>
 			</div>
 			<div class="ui-input-wrapper">
-				<input class="ui-input" id="${__id}" type.bind="__type" autocomplete="off" size="1"
+				<input class="ui-input" id="${__id}" type="${__type}" autocomplete="off" size="1" name="${name}"
 					   value.bind="__value" placeholder.bind="placeholder" ref="__input" dir="${dir}"/>
 				<span class="ui-clear fi-ui-close-light ${__value?'show-clear':''}"
 					  click.trigger="clearInput()" if.bind="__clear"></span>
@@ -24,7 +24,7 @@
 				<span if.bind="centerText" innerhtml.bind="centerText"></span>
 			</div>
 			<div class="ui-input-wrapper" if.bind="__dual">
-				<input class="ui-input" id="${__id+'-second'}" type.bind="__type" size="1" dir="${dir}"
+				<input class="ui-input" id="${__id+'-second'}" type="${__type}" size="1" dir="${dir}"
 					   autocomplete="off" value.bind="__value2" placeholder.bind="placeholderSecond" ref="__input2"/>
 				<span class="ui-clear fi-ui-close-light ui-clear2 ${__value2?'show-clear':''}"
 					  click.trigger="clearInput(true)" if.bind="__clear"></span>

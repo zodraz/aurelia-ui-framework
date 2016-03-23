@@ -128,11 +128,11 @@ export class UIHttpService {
 		for (var i = 0, q = (form.querySelectorAll('input') as NodeListOf<HTMLInputElement>); i < q.length; i++) {
 			if (q[i].type == 'file') {
 				for (var x = 0; x < q[i].files.length; x++) {
-					data.append("file" + (i++), q[i].files[x], q[i].files[x].name);
+					data.append((q[i].name || 'file') + (i++), q[i].files[x], q[i].files[x].name);
 				}
 			}
 			else {
-				data.append(q[i].name, q[i].value);
+				data.append(q[i].name || ('input' + (i++)), q[i].value);
 			}
 		}
 		return this.httpClient

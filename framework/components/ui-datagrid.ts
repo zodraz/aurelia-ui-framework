@@ -127,16 +127,18 @@ export class UIDataGrid {
 	}
 
 	buildButton(value, column, model) {
-		var ret = {
+		let ret, obj = {
 			enabled: true, theme: 'default', title: column.buttonTitle, icon: column.buttonGlyph
 		};
 		if (isFunction(column.button)) {
-			Object.assign(ret, column.button({value: value, column: column, model: model}) || {});
+			ret = column.button({value: value, column: column, model: model});
 		}
-		if (!ret.enabled) return '<span>&nbsp;</span>';
-		return `<button class="ui-button ui-button-${ret.theme} ui-button-small">
-					${ret.icon ? '<span class="' + ret.icon + '"></span>' : ''}
-					${ret.title ? '<span>' + ret.title + '</span>' : ''}
+		if (_.isString(ret)) return `<span>${ret}</span>`;
+		Object.assign(obj, ret || {});
+		if (!obj.enabled) return '<span>&nbsp;</span>';
+		return `<button class="ui-button ui-button-${obj.theme} ui-button-small">
+					${obj.icon ? '<span class="' + obj.icon + '"></span>' : ''}
+					${obj.title ? '<span>' + obj.title + '</span>' : ''}
 				</button>`;
 	}
 

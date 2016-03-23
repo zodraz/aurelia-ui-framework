@@ -221,7 +221,7 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
             }
             if (index_1.moment()
                 .diff($event.model.SDate, 'years', true) < 40) {
-                return { theme: 'success' };
+                return 'No Preview';
             }
             return { theme: 'info' };
         };

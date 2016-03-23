@@ -95,12 +95,15 @@ export class UIInput extends UIInputGroup {
 	@bindable()
 	dir:string = '';
 
+	/**
+	 * @property    name
+	 * @type        string
+	 */
+	@bindable()
+	name:string = '';
+
 	constructor(public element:Element) {
 		super(element);
-	}
-
-	bind() {
-		super.bind();
 
 		if (this.element.hasAttribute('number')) {
 			//this.__type   = 'number';
@@ -127,6 +130,13 @@ export class UIInput extends UIInputGroup {
 		else if (this.element.hasAttribute('search')) {
 			this.__type = 'search';
 		}
+		else if (this.element.hasAttribute('file')) {
+			this.__type = 'file';
+		}
+	}
+
+	bind() {
+		super.bind();
 	}
 
 	protected formatter(evt) {

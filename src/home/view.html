@@ -204,7 +204,7 @@
 			<hr/>
 			<h2>Inputs</h2>
 			<div>
-				<ui-switch width="5" checked.bind="formBusy" label-on="Busy">Make Busy</ui-switch>
+				<ui-switch danger width="5" checked.bind="formBusy" label-on="Busy">Make Busy</ui-switch>
 			</div>
 			<ui-form validate.bind="validation" busy.bind="formBusy" submit.trigger="onSubmit()">
 				<ui-row>
@@ -229,6 +229,7 @@
 								  prefix-icon="ui-flag ${ctry}" suffix-text.bind="ctry"
 								  display-property="name" value-property="iso2" value.bind="ctry">Countries
 						</ui-combo>
+						<ui-input file button-icon="fi-ui-circle-remove" name="file">File</ui-input>
 					</ui-column>
 					<ui-column padded>
 						<ui-markdown>Markdown Editor</ui-markdown>
