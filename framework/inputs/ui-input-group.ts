@@ -4,11 +4,8 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, noView} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
 
-@noView()
-@autoinject()
 export class UIInputGroup {
 	protected __id = `auf-${__seed++}`;
 	protected __input:HTMLInputElement;

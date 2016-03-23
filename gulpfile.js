@@ -1,7 +1,8 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var compass = require('gulp-compass'),
-	plumber = require('gulp-plumber');
+	plumber = require('gulp-plumber'),
+	rename = require('gulp-rename');
 var ts = require('gulp-typescript');
 var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
@@ -54,16 +55,6 @@ var config = {
 	force: true,
 	packagePath: '.',
 	bundles: {
-		"dist/aurelia-ui-framework": {
-			includes: [
-				'./framework/**/*.js',
-				'./framework/**/*.html!text'
-			],
-			options: {
-				inject: false,
-				minify: true
-			}
-		},
 		"dist/demo": {
 			includes: [
 				'main',
@@ -104,7 +95,8 @@ gulp.task('aurelia:skeleton', function () {
 						'./index.html',
 						'./browserconfig.xml',
 						'./manifest.json',
-						'./**/*.md',
+						'./framework/**/*.md',
+						'./*.md',
 						//'./src/**/*.ts',
 						//'./src/**/*.html',
 						'./fonts/**/*',
@@ -115,9 +107,10 @@ gulp.task('aurelia:skeleton', function () {
 gulp.task('aurelia:release', function () {
 	gulp.src(['./package.json', './sass/**/_*.scss'], {base: './'})
 		.pipe(gulp.dest(release));
-	gulp.src([
-				 './dist/aurelia-ui-framework.js',
-				 './framework/aurelia-ui-framework.d.ts'])
+	gulp.src(['./framework/*/*.js', './framework/*/*.html', './framework/aurelia-ui-framework.d.ts'])
+		.pipe(gulp.dest(release));
+	gulp.src("./framework/index.js")
+		.pipe(rename("aurelia-ui-framework.js"))
 		.pipe(gulp.dest(release));
 	return;
 });

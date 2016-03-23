@@ -16,8 +16,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
     "use strict";
     var UITextArea = (function (_super) {
         __extends(UITextArea, _super);
-        function UITextArea() {
-            _super.apply(this, arguments);
+        function UITextArea(element) {
+            _super.call(this, element);
             this.value = '';
             this.checked = false;
             this.disabled = false;
@@ -83,8 +83,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             __metadata('design:type', String)
         ], UITextArea.prototype, "dir", void 0);
         UITextArea = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-textarea'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UITextArea);
         return UITextArea;
     }(ui_input_group_1.UIInputGroup));

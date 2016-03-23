@@ -44,29 +44,30 @@ export class UIValidationStrategy extends ValidationViewStrategy {
 	}
 
 	appendUIVisuals(validationProperty, formGroup) {
+		if (isEmpty(formGroup)) return;
 		if (validationProperty && validationProperty.isDirty) {
 			if (validationProperty.isValid) {
-				formGroup.parentElement.classList.remove('ui-invalid');
-				formGroup.parentElement.classList.add('ui-valid');
+				formGroup.classList.remove('ui-invalid');
+				formGroup.classList.add('ui-valid');
 			}
 			else {
-				formGroup.parentElement.classList.remove('ui-valid');
-				formGroup.parentElement.classList.add('ui-invalid');
+				formGroup.classList.remove('ui-valid');
+				formGroup.classList.add('ui-invalid');
 			}
 		}
 		else {
-			formGroup.parentElement.classList.remove('ui-invalid');
-			formGroup.parentElement.classList.remove('ui-valid');
+			formGroup.classList.remove('ui-invalid');
+			formGroup.classList.remove('ui-valid');
 		}
 
-		this.appendMessageToElement(validationProperty, formGroup);
+		if (formGroup.lastElementChild !== null)this.appendMessageToElement(validationProperty, formGroup.lastElementChild);
 	}
 
 	prepareElement(validationProperty, element) {
-		this.appendUIVisuals(null, element.lastElementChild);
+		this.appendUIVisuals(null, element);
 	}
 
 	updateElement(validationProperty, element) {
-		this.appendUIVisuals(validationProperty, element.lastElementChild);
+		this.appendUIVisuals(validationProperty, element);
 	}
 }

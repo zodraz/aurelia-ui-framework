@@ -20,6 +20,16 @@ export class UIRow {
 		else {
 			this.element.classList.add('ui-row');
 		}
+
+		if (this.element.hasAttribute('start'))this.element.classList.add('ui-align-start');
+		if (this.element.hasAttribute('end'))this.element.classList.add('ui-align-end');
+		if (this.element.hasAttribute('center'))this.element.classList.add('ui-align-center');
+		if (this.element.hasAttribute('spaced'))this.element.classList.add('ui-align-spaced');
+
+		if (this.element.hasAttribute('top'))this.element.classList.add('ui-align-top');
+		if (this.element.hasAttribute('bottom'))this.element.classList.add('ui-align-bottom');
+		if (this.element.hasAttribute('middle'))this.element.classList.add('ui-align-middle');
+		if (this.element.hasAttribute('stretch'))this.element.classList.add('ui-align-stretch');
 	}
 }
 
@@ -52,5 +62,10 @@ export class UIColumn {
 		for (var size of this.size.split(' ')) {
 			this.element.classList.add(`ui-col-${size}`);
 		}
+
+		if (this.element.hasAttribute('top'))this.element.classList.add('ui-align-top');
+		if (this.element.hasAttribute('bottom'))this.element.classList.add('ui-align-bottom');
+		if (this.element.hasAttribute('middle'))this.element.classList.add('ui-align-middle');
+		if (this.element.hasAttribute('stretch'))this.element.classList.add('ui-align-stretch');
 	}
 }

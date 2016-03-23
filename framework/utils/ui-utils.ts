@@ -73,6 +73,7 @@ export module UIUtils {
 
 	export function showToast(container, config) {
 		let tmr;
+		if (typeof config === 'string') config = {message: config};
 		let opt   = Object.assign({theme: 'default', autoHide: true, extraClass: ''}, config);
 		let toast = document.createElement('div');
 		toast.classList.add('ui-toast');

@@ -47,8 +47,8 @@ declare module "aurelia-ui-framework" {
 		IsAuthenticated:boolean;
 		SendAuthHeader:boolean;
 
-		AppConfig:UIAppConfig;
-		HttpConfig:UIHttpConfig;
+		AppConfig:AppConfig;
+		HttpConfig:HttpConfig;
 
 		Username:string;
 		UserGroup:string;
@@ -80,7 +80,7 @@ declare module "aurelia-ui-framework" {
 	export class AuthInterceptor {
 	}
 
-	export interface UIAppConfig {
+	export interface AppConfig {
 		// App Key - Relative Path | URL
 		Key:string;
 		// App Title
@@ -88,10 +88,24 @@ declare module "aurelia-ui-framework" {
 		// App Version
 		Version:string;
 	}
-	export interface UIHttpConfig {
+	export interface HttpConfig {
 		BaseUrl:string;
 		Headers:Map<string,string>;
 		AuthorizationHeader:boolean;
+	}
+
+	export class UIHttpService {
+		get(slug:string):Promise<Response>;
+
+		post(slug:string, body:any):Promise<Response>;
+
+		put(slug:string, body:any):Promise<Response>;
+
+		delete(slug:string):Promise<Response>;
+
+		upload(slug:string, form:HTMLFormElement):Promise<Response>;
+
+		reupload(slug:string, form:HTMLFormElement):Promise<Response>;
 	}
 
 	// Utilities
@@ -148,6 +162,19 @@ declare function isFunction(a:any):boolean;
 declare function getParentByTag(element:Element, selector:string):HTMLElement;
 declare function getParentByClass(element:Element, selector:string, lastElement?:string):HTMLElement;
 
+declare function escape(v:string):string;
+declare function unescape(v:string):string;
+
+interface ICountry {
+	continent:string;
+	iso3:string;
+	iso2:string;
+	name:string;
+	tld:string;
+	currency:string;
+	phone:number;
+}
+
 interface Window {
 	isTrue;
 	isEmpty;
@@ -157,6 +184,15 @@ interface Window {
 
 	__seed:number;
 	Constants:any;
+
+	countries:Array<ICountry>;
+	currencies:Map<string,string>;
+
+	escape;
+	unescape;
+}
+interface Element {
+	au:any;
 }
 declare module 'aurelia-validation' {
 	export interface ValidationGroup {

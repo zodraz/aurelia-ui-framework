@@ -26,13 +26,13 @@ $shadow : $tg-2;
 	@include box-shadow(0 -3px 0 0 $input-focus-border inset, 0 2px 2px 0 $shadow inset);
   }
 
+  &[readonly] {
+	background : $input-readonly-bg;
+  }
   &[disabled] {
 	cursor     : not-allowed;
 	color      : rgba($input-text, 0.5);
 	background : $input-disabled-bg;
-  }
-  &[readonly] {
-	background : $input-readonly-bg;
   }
 }
 
@@ -255,6 +255,11 @@ $shadow : $tg-2;
 		> .ui-input-wrapper > .ui-clear {
 		  left  : 0.1em;
 		  right : auto;
+		}
+
+		.ui-input {
+		  text-align : right;
+		  text-align : end;
 		}
 	  }
 	  > .ui-input-control:not(:last-child) {

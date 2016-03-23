@@ -4,7 +4,7 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {autoinject, customElement, bindable, inlineView} from "aurelia-framework";
+import {autoinject, customElement, bindable, inlineView, children} from "aurelia-framework";
 import {_} from "../utils/ui-utils";
 
 @autoinject()
@@ -12,7 +12,10 @@ import {_} from "../utils/ui-utils";
 export class UITabPanel {
 	private __tabs;
 	private __tabButtons;
-	private tabs = [];
+	private __selectedTab;
+
+	//@children({selector: '.ui-tab-content'})
+	tabs = [];
 
 	@bindable
 	activeTab = 0;
@@ -22,46 +25,61 @@ export class UITabPanel {
 
 	bind() {
 		_.forEach(this.element.querySelectorAll('ui-tab'),
-				  t=>this.tabs.push(t));
+				  t=>this.tabs.push(t.au.controller.viewModel));
 	}
 
 	attached() {
 		this.activeTabChanged(this.activeTab);
 	}
 
-	activeTabChanged(newValue) {
-		if (this.tabs[newValue]) {
-			try {
-				this.__tabButtons
-					.querySelector('.ui-active')
-					.classList
-					.remove('ui-active');
-				this.__tabs
-					.querySelector('.ui-active')
-					.classList
-					.remove('ui-active');
-			} catch (e) {
-			}
+	itemsChanged(mutations) {
+		// if (this.items.length > 0) {
+		// 	if (!this.selectedItem || this.items.indexOf(this.selectedItem) === -1) {
+		// 		this.selectItem(this.items[0]);
+		// 	}
+		// }
+	}
 
-			this.__tabButtons
-				.querySelector(`[data-index="${newValue}"]`)
-				.classList
-				.add('ui-active');
-			this.tabs[newValue]
-				.classList
-				.add('ui-active');
+	activeTabChanged(newValue) {
+		if (this.__selectedTab) this.__selectedTab.isSelected = false;
+		if (this.tabs[newValue]) {
+			(this.__selectedTab = this.tabs[newValue]).isSelected = true;
 		}
+		// if (this.tabs[newValue]) {
+		// 	try {
+		// 		let active;
+		// 		if ((active = this.__tabButtons.querySelector('.ui-active')) !== null) {
+		// 			active.classList
+		// 				  .remove('ui-active');
+		// 		}
+		// 		if ((active = this.__tabs.querySelector('.ui-active')) !== null) {
+		// 			active.classList
+		// 				  .remove('ui-active');
+		// 		}
+		// 	} catch (e) {
+		// 	}
+		//
+		// 	this.__tabButtons
+		// 		.querySelector(`[data-index="${newValue}"]`)
+		// 		.classList
+		// 		.add('ui-active');
+		// 	this.tabs[newValue]
+		// 		.classList
+		// 		.add('ui-active');
+		// }
 	}
 }
 
 @autoinject()
-@inlineView('<template class="ui-tab-content"><content></content></template>')
+@inlineView('<template class="ui-tab-content ${isSelected?\'ui-active\':\'\'}"><content></content></template>')
 @customElement('ui-tab')
 export class UITab {
 	@bindable
 	label:string = '';
 	@bindable
 	icon:string  = '';
+
+	isSelected = false;
 
 	constructor(public element:Element) {
 		if (this.element.hasAttribute('scroll')) this.element.classList.add('ui-scroll');

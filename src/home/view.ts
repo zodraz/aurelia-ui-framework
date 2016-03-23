@@ -2,6 +2,7 @@ import {Validation} from "aurelia-validation";
 import {autoinject} from "aurelia-framework";
 import {_, moment, UIApplication, UITreeOptions, UIDialogService} from "../../framework/index";
 import {MyDialog} from "./my-dialog";
+import {UIHttpService} from "../../framework/utils/ui-http-service";
 
 @autoinject()
 export class Home {
@@ -170,7 +171,8 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 		Currency: 'USD'
 	}];
 
-	constructor(_validation:Validation, public appState:UIApplication, public dialogService:UIDialogService) {
+	constructor(_validation:Validation, public appState:UIApplication,
+				public dialogService:UIDialogService, public httpClient:UIHttpService) {
 		this.validation = _validation
 			.on(this, null)
 			.ensure('model.email')
@@ -213,6 +215,19 @@ I can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Mar
 			.catch(()=> {
 
 			});
+	}
+
+	getError(code) {
+		if (code == 404) {
+			this.httpClient.get('https://api.hmcoffers.com/api/picks/all/Mosaic/PCME')
+				.then(resp=>this.__page.toast('Success'))
+				.catch(e=>this.__page.toast(e.message));
+		}
+		if (code == 400) {
+			this.httpClient.get('https://api.hmcoffers.com/api/picks/Mosaic/PCME')
+				.then(resp=>this.__page.toast('Success'))
+				.catch(e=>this.__page.toast(e.message));
+		}
 	}
 
 	attached() {

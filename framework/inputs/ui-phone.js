@@ -16,8 +16,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
     "use strict";
     var UIPhone = (function (_super) {
         __extends(UIPhone, _super);
-        function UIPhone() {
-            _super.apply(this, arguments);
+        function UIPhone(element) {
+            _super.call(this, element);
             this.__phoneType = PhoneLib.TYPE.FIXED_LINE_OR_MOBILE;
             this.__phoneFormat = PhoneLib.FORMAT.NATIONAL;
             this.placeholder = '';
@@ -161,9 +161,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             __metadata('design:type', String)
         ], UIPhone.prototype, "helpText", void 0);
         UIPhone = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.useView('./ui-input.html'),
             aurelia_framework_1.customElement('ui-phone'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIPhone);
         return UIPhone;
     }(ui_input_group_1.UIInputGroup));

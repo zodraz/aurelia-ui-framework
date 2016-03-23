@@ -4,9 +4,10 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {customElement, bindable, bindingMode} from "aurelia-framework";
+import {customElement, bindable, bindingMode, autoinject} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 
+@autoinject()
 @customElement('ui-textarea')
 export class UITextArea extends UIInputGroup {
 	/**
@@ -100,5 +101,9 @@ export class UITextArea extends UIInputGroup {
 	 */
 	@bindable()
 	dir:string = '';
+
+	constructor(element:Element) {
+		super(element);
+	}
 
 }

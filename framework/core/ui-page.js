@@ -14,6 +14,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.element = element;
         }
         UIPage.prototype.toast = function (config) {
+            if (typeof config === 'string')
+                config = { message: config };
             config.extraClass = 'ui-page-toast';
             ui_utils_1.UIUtils.showToast(this.__body, config);
         };

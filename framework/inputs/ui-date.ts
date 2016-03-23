@@ -4,10 +4,11 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {customElement, bindable, bindingMode} from "aurelia-framework";
+import {customElement, bindable, bindingMode, autoinject} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 import {moment} from "../utils/ui-utils";
 
+@autoinject()
 @customElement('ui-date')
 export class UIDate extends UIInputGroup {
 	private __dual = false;
@@ -107,6 +108,10 @@ export class UIDate extends UIInputGroup {
 	__dateStart:UIDateOptions = new UIDateOptions();
 	__dateEnd:UIDateOptions   = new UIDateOptions();
 
+	constructor(element:Element) {
+		super(element);
+	}
+
 	bind() {
 		super.bind();
 		this.__dual = this.element.hasAttribute('range');
@@ -116,12 +121,10 @@ export class UIDate extends UIInputGroup {
 		Object.assign(this.__dateStart, this.options);
 		Object.assign(this.__dateEnd, this.options);
 
-		this.__value = moment(this.date).format(this.format);
+		this.dateChanged(this.date);
 
 		if (this.__dual) {
-			this.__value2 = moment(this.dateEnd).format(this.format);
-
-			this.__dateStart.maxDate = this.dateEnd;
+			this.dateEndChanged(this.dateEnd);
 			this.__dateEnd.minDate   = this.date;
 		}
 	}
@@ -129,7 +132,10 @@ export class UIDate extends UIInputGroup {
 	dateChanged(newValue) {
 		if (moment(newValue).isValid()) {
 			this.__value = moment(newValue).format(this.format);
-			if (this.__dual)this.__dateEnd.minDate = newValue;
+			if (this.__dual) {
+				this.__dateEnd.minDate = newValue;
+				if (moment(newValue).isAfter(this.dateEnd))this.dateEnd = newValue;
+			}
 		}
 		else {
 			this.__value = '';
@@ -139,7 +145,7 @@ export class UIDate extends UIInputGroup {
 	dateEndChanged(newValue) {
 		if (moment(newValue).isValid()) {
 			this.__value2 = moment(newValue).format(this.format);
-			if (this.__dual)this.__dateStart.maxDate = newValue;
+			//if (this.__dual)this.__dateStart.maxDate = newValue;
 		}
 		else {
 			this.__value2 = '';

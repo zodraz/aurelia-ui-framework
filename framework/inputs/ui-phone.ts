@@ -4,9 +4,10 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {customElement, bindable, useView, bindingMode} from "aurelia-framework";
+import {customElement, bindable, useView, bindingMode, autoinject} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 
+@autoinject()
 @useView('./ui-input.html')
 @customElement('ui-phone')
 export class UIPhone extends UIInputGroup {
@@ -91,6 +92,10 @@ export class UIPhone extends UIInputGroup {
 	 */
 	@bindable()
 	helpText:string;
+
+	constructor(element:Element) {
+		super(element);
+	}
 
 	bind() {
 		super.bind();

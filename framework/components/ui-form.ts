@@ -31,7 +31,7 @@ export class UIForm {
 	}
 
 	busyChanged(newValue:any) {
-		let els = this.element.querySelectorAll('ui-input,ui-phone,ui-textarea,ui-input-dual,ui-chosen,ui-markdown,ui-button,ui-date,ui-list,ui-option,ui-switch');
+		let els = this.element.querySelectorAll('ui-button,ui-combo,ui-date,ui-input,ui-input-dual,ui-markdown,ui-checkbox,ui-radio,ui-phone,ui-switch,ui-textarea');
 		_.forEach(els, el=> {
 			try {
 				el.au.controller.viewModel.disable(isTrue(newValue));

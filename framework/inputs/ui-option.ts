@@ -7,7 +7,6 @@
 import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia-framework";
 import {UIEvent} from "../utils/ui-event";
 
-@autoinject()
 export class UIOption {
 	protected __id = `auf-${__seed++}`;
 	protected __input:Element;
@@ -46,6 +45,7 @@ export class UIOption {
 	}
 }
 
+@autoinject()
 @useView('./ui-option.html')
 @customElement('ui-checkbox')
 export class UICheckbox extends UIOption {
@@ -64,6 +64,10 @@ export class UICheckbox extends UIOption {
 	@bindable({defaultBindingMode: bindingMode.twoWay})
 	checked:boolean  = false;
 
+	constructor(element:Element) {
+		super(element);
+	}
+
 	bind() {
 		super.bind();
 		this.checked = isTrue(this.checked);
@@ -75,6 +79,7 @@ export class UICheckbox extends UIOption {
 	}
 }
 
+@autoinject()
 @useView('./ui-option.html')
 @customElement('ui-radio')
 export class UIRadio extends UIOption {
@@ -98,6 +103,10 @@ export class UIRadio extends UIOption {
 	 */
 	@bindable({defaultBindingMode: bindingMode.twoWay})
 	checked:any      = '';
+
+	constructor(element:Element) {
+		super(element);
+	}
 
 	attached() {
 		if (!this.element.parentElement.classList.contains('ui-option-group')) {

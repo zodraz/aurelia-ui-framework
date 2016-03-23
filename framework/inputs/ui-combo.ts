@@ -4,11 +4,12 @@
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
-import {customElement, bindable, bindingMode} from "aurelia-framework";
+import {customElement, bindable, bindingMode, autoinject} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 import {_, UIUtils} from "../utils/ui-utils";
 import {UIEvent} from "../utils/ui-event";
 
+@autoinject
 @customElement('ui-combo')
 export class UIComboBox extends UIInputGroup {
 	__list;
@@ -19,6 +20,10 @@ export class UIComboBox extends UIInputGroup {
 	__noResult = false;
 
 	__hilight:HTMLElement = null;
+
+	constructor(element:Element) {
+		super(element);
+	}
 
 	/**
 	 * @property    value
@@ -142,7 +147,7 @@ export class UIComboBox extends UIInputGroup {
 	}
 
 	attached() {
-		setTimeout(()=>this.valueChanged(this.value), 100);
+		setTimeout(()=>this.valueChanged(this.value), 500);
 	}
 
 	detached() {

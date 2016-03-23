@@ -16,8 +16,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
     "use strict";
     var UIComboBox = (function (_super) {
         __extends(UIComboBox, _super);
-        function UIComboBox() {
-            _super.apply(this, arguments);
+        function UIComboBox(element) {
+            _super.call(this, element);
             this.__noResult = false;
             this.__hilight = null;
             this.value = '';
@@ -38,7 +38,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         };
         UIComboBox.prototype.attached = function () {
             var _this = this;
-            setTimeout(function () { return _this.valueChanged(_this.value); }, 100);
+            setTimeout(function () { return _this.valueChanged(_this.value); }, 500);
         };
         UIComboBox.prototype.detached = function () {
         };
@@ -252,8 +252,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             __metadata('design:type', Object)
         ], UIComboBox.prototype, "iconClass", void 0);
         UIComboBox = __decorate([
+            aurelia_framework_1.autoinject,
             aurelia_framework_1.customElement('ui-combo'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIComboBox);
         return UIComboBox;
     }(ui_input_group_1.UIInputGroup));

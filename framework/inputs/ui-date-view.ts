@@ -16,7 +16,7 @@ export class UIDateView {
 	__start;
 	__month;
 	__year;
-	__current;
+	__current = moment();
 
 	__disablePrev;
 	__disableNext;
@@ -31,7 +31,7 @@ export class UIDateView {
 	 * @property    value
 	 * @type        string
 	 */
-	@bindable({defaultBindingMode: bindingMode.twoWay, attribute: 'date'})
+	@bindable({defaultBindingMode: bindingMode.twoWay})
 	date:string           = moment().format();
 	/**
 	 * @property    options
@@ -40,20 +40,20 @@ export class UIDateView {
 	@bindable()
 	options:UIDateOptions = new UIDateOptions();
 
-	@bindable()
+	@bindable({defaultBindingMode: bindingMode.twoWay})
 	showing = true;
 
 	constructor(public element:Element) {
 	}
 
 	bind() {
-		this.__current = moment(this.date);
+		if (moment(this.date).isValid()) this.__current = moment(this.date);
 		this.__changeDates();
 	}
 
 	showingChanged(newValue) {
 		if (this.showing = isTrue(newValue)) {
-			this.__current = moment(this.date);
+			if (moment(this.date).isValid()) this.__current = moment(this.date);
 			this.__dates.classList.remove('ui-hidden');
 			this.__months.classList.add('ui-hide');
 			this.__years.classList.add('ui-hide');

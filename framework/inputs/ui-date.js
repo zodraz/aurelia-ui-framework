@@ -16,8 +16,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
     "use strict";
     var UIDate = (function (_super) {
         __extends(UIDate, _super);
-        function UIDate() {
-            _super.apply(this, arguments);
+        function UIDate(element) {
+            _super.call(this, element);
             this.__dual = false;
             this.date = ui_utils_1.moment().format();
             this.dateEnd = ui_utils_1.moment().format();
@@ -37,18 +37,20 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.__today = ui_utils_1.moment().format('DD');
             Object.assign(this.__dateStart, this.options);
             Object.assign(this.__dateEnd, this.options);
-            this.__value = ui_utils_1.moment(this.date).format(this.format);
+            this.dateChanged(this.date);
             if (this.__dual) {
-                this.__value2 = ui_utils_1.moment(this.dateEnd).format(this.format);
-                this.__dateStart.maxDate = this.dateEnd;
+                this.dateEndChanged(this.dateEnd);
                 this.__dateEnd.minDate = this.date;
             }
         };
         UIDate.prototype.dateChanged = function (newValue) {
             if (ui_utils_1.moment(newValue).isValid()) {
                 this.__value = ui_utils_1.moment(newValue).format(this.format);
-                if (this.__dual)
+                if (this.__dual) {
                     this.__dateEnd.minDate = newValue;
+                    if (ui_utils_1.moment(newValue).isAfter(this.dateEnd))
+                        this.dateEnd = newValue;
+                }
             }
             else {
                 this.__value = '';
@@ -57,8 +59,6 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UIDate.prototype.dateEndChanged = function (newValue) {
             if (ui_utils_1.moment(newValue).isValid()) {
                 this.__value2 = ui_utils_1.moment(newValue).format(this.format);
-                if (this.__dual)
-                    this.__dateStart.maxDate = newValue;
             }
             else {
                 this.__value2 = '';
@@ -121,8 +121,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             __metadata('design:type', UIDateOptions)
         ], UIDate.prototype, "options", void 0);
         UIDate = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-date'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIDate);
         return UIDate;
     }(ui_input_group_1.UIInputGroup));

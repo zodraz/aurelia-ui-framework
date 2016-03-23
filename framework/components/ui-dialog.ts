@@ -26,6 +26,9 @@ export class UIDialogService {
 				private container:Container,
 				private resources:ViewResources,
 				private compositionEngine:CompositionEngine) {
+	}
+
+	show(vm, model) {
 		if (!this.dialogContainer) {
 			this.dialogContainer = document.body.querySelector('.ui-viewport .ui-dialog-container');
 
@@ -39,9 +42,7 @@ export class UIDialogService {
 			this.taskBar = document.body.querySelector('.ui-viewport .ui-app-taskbar');
 			this.taskBar.addEventListener('click', (e)=>this.__taskClick(e.target['window']));
 		}
-	}
 
-	show(vm, model) {
 		let instruction:any = {
 			viewModel     : Origin.get(vm).moduleId,
 			container     : this.container,

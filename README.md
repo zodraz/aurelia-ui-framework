@@ -60,7 +60,8 @@ function configure(aurelia) {
 
 #### Core Components
 * Viewport - main app viewport
-* Section - row/column (can have title to be used as route viewport)
+* Page - (has page title, to be used as route viewport)
+* Section - row/column layout
 * Content - auto/fill
 * Sidebar - can collapse
 * Header

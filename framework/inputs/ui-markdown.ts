@@ -4,9 +4,10 @@
  *    @company     HMC
  *    @copyright   2015-2016, Adarsh Pastakia
  **/
-import {customElement, bindable, bindingMode} from "aurelia-framework";
+import {customElement, bindable, bindingMode, autoinject} from "aurelia-framework";
 import {UIInputGroup} from "./ui-input-group";
 
+@autoinject()
 @customElement('ui-markdown')
 export class UIMarkdown extends UIInputGroup {
 	private __help;
@@ -51,6 +52,10 @@ export class UIMarkdown extends UIInputGroup {
 	 */
 	@bindable()
 	rows:string = '10';
+
+	constructor(element:Element) {
+		super(element);
+	}
 
 	bind() {
 		super.bind();

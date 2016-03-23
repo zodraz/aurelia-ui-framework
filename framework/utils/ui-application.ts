@@ -8,6 +8,7 @@
 import {singleton, autoinject} from "aurelia-framework";
 import {getLogger} from "aurelia-logging";
 import {UIUtils} from "./ui-utils";
+import {UIEvent} from "./ui-event";
 import {Redirect, Router} from "aurelia-router";
 
 @singleton()
@@ -163,6 +164,7 @@ export class UIApplication {
 }
 
 
+@singleton()
 @autoinject()
 export class AuthInterceptor {
 	private logger;
@@ -170,6 +172,8 @@ export class AuthInterceptor {
 	constructor(public appState:UIApplication) {
 		this.logger = getLogger('AuthInterceptor');
 		this.logger.info('Initialized');
+
+		UIEvent.subscribe('Unauthorized', ()=>appState.navigateTo('login', {status: 401}));
 	}
 
 	run(routingContext, next) {

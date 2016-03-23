@@ -7,12 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../framework/index", "./my-dialog"], function (require, exports, aurelia_validation_1, aurelia_framework_1, index_1, my_dialog_1) {
+define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../framework/index", "./my-dialog", "../../framework/utils/ui-http-service"], function (require, exports, aurelia_validation_1, aurelia_framework_1, index_1, my_dialog_1, ui_http_service_1) {
     "use strict";
     var Home = (function () {
-        function Home(_validation, appState, dialogService) {
+        function Home(_validation, appState, dialogService, httpClient) {
             this.appState = appState;
             this.dialogService = dialogService;
+            this.httpClient = httpClient;
             this.optVal = 2;
             this.enabled = true;
             this.months = [
@@ -177,6 +178,19 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
                 .catch(function () {
             });
         };
+        Home.prototype.getError = function (code) {
+            var _this = this;
+            if (code == 404) {
+                this.httpClient.get('https://api.hmcoffers.com/api/picks/all/Mosaic/PCME')
+                    .then(function (resp) { return _this.__page.toast('Success'); })
+                    .catch(function (e) { return _this.__page.toast(e.message); });
+            }
+            if (code == 400) {
+                this.httpClient.get('https://api.hmcoffers.com/api/picks/Mosaic/PCME')
+                    .then(function (resp) { return _this.__page.toast('Success'); })
+                    .catch(function (e) { return _this.__page.toast(e.message); });
+            }
+        };
         Home.prototype.attached = function () {
             var _this = this;
             this.checked = this.__tree.getChecked();
@@ -226,7 +240,7 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
         };
         Home = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [aurelia_validation_1.Validation, index_1.UIApplication, index_1.UIDialogService])
+            __metadata('design:paramtypes', [aurelia_validation_1.Validation, index_1.UIApplication, index_1.UIDialogService, ui_http_service_1.UIHttpService])
         ], Home);
         return Home;
     }());

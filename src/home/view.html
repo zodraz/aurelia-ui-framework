@@ -132,6 +132,8 @@
 					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Round" round></ui-button>
 					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Icon Top" top></ui-button>
 					<ui-button icon="fi-vaadin-circle-1" label="Disabled" disabled="true"></ui-button>
+					<ui-button disabled.bind="!enabled" click.trigger="getError(404)" label="Get Http Error 404"></ui-button>
+					<ui-button disabled.bind="!enabled" click.trigger="getError(400)" label="Get Http Error 400"></ui-button>
 				</div>
 				<h4>Button Groups</h4>
 				<div>
@@ -201,7 +203,10 @@
 			</div>
 			<hr/>
 			<h2>Inputs</h2>
-			<ui-form validate.bind="validation" submit.trigger="onSubmit()">
+			<div>
+				<ui-switch width="5" checked.bind="formBusy" label-on="Busy">Make Busy</ui-switch>
+			</div>
+			<ui-form validate.bind="validation" busy.bind="formBusy" submit.trigger="onSubmit()">
 				<ui-row>
 					<ui-column padded>
 						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
@@ -217,7 +222,7 @@
 						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
 						<ui-phone country.bind="ctry">National Phone</ui-phone>
 						<ui-phone international>International Phone</ui-phone>
-						<ui-date>Date</ui-date>
+						<ui-date date="1979-03-02">Date</ui-date>
 						<ui-date range>Date Range</ui-date>
 						<ui-combo options.bind="months">ComboBox</ui-combo>
 						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag"

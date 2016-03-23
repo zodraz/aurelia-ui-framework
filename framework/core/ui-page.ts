@@ -25,6 +25,7 @@ export class UIPage {
 	}
 
 	toast(config) {
+		if (typeof config === 'string') config = {message: config};
 		config.extraClass = 'ui-page-toast';
 		UIUtils.showToast(this.__body, config);
 	}

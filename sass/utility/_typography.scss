@@ -83,10 +83,6 @@ code {
   text-transform : capitalize;
 }
 
-.ui-flip {
-  transform : scale(-1, 1);
-}
-
 // Sizes
 .ui-font-small, small {
   font-size : 0.75em;
@@ -163,4 +159,22 @@ code {
 .ui-text-end {
   text-align : right;
   text-align : end;
+}
+
+[dir='rtl'] {
+  [class^="fi-"], [class*="fi-"] {
+	transform : scale(-1, 1);
+  }
+  .ui-flip {
+	transform : scale(1, 1);
+  }
+}
+
+[dir='ltr'] {
+  [class^="fi-"], [class*="fi-"] {
+	transform : scale(1, 1);
+  }
+  .ui-flip {
+	transform : scale(-1, 1);
+  }
 }

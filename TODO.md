@@ -2,9 +2,6 @@
 ## Pending
 
 ##### Core
-* [] Check app menu disabled styling
-* [] Verify user group check in auth interceptor
-* [] Add flex align/justify attributes to UIRow and UIColumn 
 
 ##### Inputs
 * [] Add tag input element
@@ -12,7 +9,6 @@
 * [] Add support for textarea auto-complete
 * [] Add time selector for date input
 * [] Add multi-select element
-* [] Combobox initial value set not working
 * [] Combobox config and support for accepting non listed value
 
 
@@ -21,6 +17,9 @@
 ##### Core
 * [-] Refactor application constants as plugin config
 * [-] Check way to add global constants
+* [-] Verify user group check in auth interceptor
+* [-] Add flex align/justify attributes to UIRow and UIColumn 
+* [-] Check app menu disabled styling
 
 ##### Inputs
 * [-] Add button/button group input
@@ -32,6 +31,7 @@
 * [-] Add date input
 * [-] Add markdown editor
 * [-] Add combobox input
+* [-] Combobox initial value set not working
 
 ##### Components
 * [-] Add menu component
