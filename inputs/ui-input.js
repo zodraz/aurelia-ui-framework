@@ -16,8 +16,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
     "use strict";
     var UIInput = (function (_super) {
         __extends(UIInput, _super);
-        function UIInput() {
-            _super.apply(this, arguments);
+        function UIInput(element) {
+            _super.call(this, element);
+            this.element = element;
             this.value = '';
             this.checked = false;
             this.disabled = false;
@@ -131,8 +132,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             __metadata('design:type', String)
         ], UIInput.prototype, "dir", void 0);
         UIInput = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-input'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIInput);
         return UIInput;
     }(ui_input_group_1.UIInputGroup));

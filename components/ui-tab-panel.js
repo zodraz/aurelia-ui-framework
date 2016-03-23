@@ -17,32 +17,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
         }
         UITabPanel.prototype.bind = function () {
             var _this = this;
-            ui_utils_1._.forEach(this.element.querySelectorAll('ui-tab'), function (t) { return _this.tabs.push(t); });
+            ui_utils_1._.forEach(this.element.querySelectorAll('ui-tab'), function (t) { return _this.tabs.push(t.au.controller.viewModel); });
         };
         UITabPanel.prototype.attached = function () {
             this.activeTabChanged(this.activeTab);
         };
+        UITabPanel.prototype.itemsChanged = function (mutations) {
+        };
         UITabPanel.prototype.activeTabChanged = function (newValue) {
+            if (this.__selectedTab)
+                this.__selectedTab.isSelected = false;
             if (this.tabs[newValue]) {
-                try {
-                    this.__tabButtons
-                        .querySelector('.ui-active')
-                        .classList
-                        .remove('ui-active');
-                    this.__tabs
-                        .querySelector('.ui-active')
-                        .classList
-                        .remove('ui-active');
-                }
-                catch (e) {
-                }
-                this.__tabButtons
-                    .querySelector("[data-index=\"" + newValue + "\"]")
-                    .classList
-                    .add('ui-active');
-                this.tabs[newValue]
-                    .classList
-                    .add('ui-active');
+                (this.__selectedTab = this.tabs[newValue]).isSelected = true;
             }
         };
         __decorate([
@@ -62,6 +48,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
             this.element = element;
             this.label = '';
             this.icon = '';
+            this.isSelected = false;
             if (this.element.hasAttribute('scroll'))
                 this.element.classList.add('ui-scroll');
             if (this.element.hasAttribute('flex'))
@@ -77,7 +64,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils"], functio
         ], UITab.prototype, "icon", void 0);
         UITab = __decorate([
             aurelia_framework_1.autoinject(),
-            aurelia_framework_1.inlineView('<template class="ui-tab-content"><content></content></template>'),
+            aurelia_framework_1.inlineView('<template class="ui-tab-content ${isSelected?\'ui-active\':\'\'}"><content></content></template>'),
             aurelia_framework_1.customElement('ui-tab'), 
             __metadata('design:paramtypes', [Element])
         ], UITab);

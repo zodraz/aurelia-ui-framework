@@ -16,8 +16,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
     "use strict";
     var UIMarkdown = (function (_super) {
         __extends(UIMarkdown, _super);
-        function UIMarkdown() {
-            _super.apply(this, arguments);
+        function UIMarkdown(element) {
+            _super.call(this, element);
             this.value = '';
             this.disabled = false;
             this.readonly = false;
@@ -146,8 +146,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             __metadata('design:type', String)
         ], UIMarkdown.prototype, "rows", void 0);
         UIMarkdown = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-markdown'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIMarkdown);
         return UIMarkdown;
     }(ui_input_group_1.UIInputGroup));

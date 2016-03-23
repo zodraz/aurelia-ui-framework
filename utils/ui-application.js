@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-utils", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_utils_1, aurelia_router_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-utils", "./ui-event", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_logging_1, ui_utils_1, ui_event_1, aurelia_router_1) {
     "use strict";
     var UIApplication = (function () {
         function UIApplication(router) {
@@ -172,6 +172,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-util
             this.appState = appState;
             this.logger = aurelia_logging_1.getLogger('AuthInterceptor');
             this.logger.info('Initialized');
+            ui_event_1.UIEvent.subscribe('Unauthorized', function () { return appState.navigateTo('login', { status: 401 }); });
         }
         AuthInterceptor.prototype.run = function (routingContext, next) {
             if (routingContext.getAllInstructions()
@@ -198,6 +199,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-util
             return true;
         };
         AuthInterceptor = __decorate([
+            aurelia_framework_1.singleton(),
             aurelia_framework_1.autoinject(), 
             __metadata('design:paramtypes', [UIApplication])
         ], AuthInterceptor);

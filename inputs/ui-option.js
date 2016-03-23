@@ -43,17 +43,13 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             $event.cancelBubble = true;
             ui_event_1.UIEvent.fireEvent('change', this.element, this.checked);
         };
-        UIOption = __decorate([
-            aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [Element])
-        ], UIOption);
         return UIOption;
     }());
     exports.UIOption = UIOption;
     var UICheckbox = (function (_super) {
         __extends(UICheckbox, _super);
-        function UICheckbox() {
-            _super.apply(this, arguments);
+        function UICheckbox(element) {
+            _super.call(this, element);
             this.__type = 'checkbox';
             this.disabled = false;
             this.checked = false;
@@ -75,17 +71,18 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:type', Boolean)
         ], UICheckbox.prototype, "checked", void 0);
         UICheckbox = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.useView('./ui-option.html'),
             aurelia_framework_1.customElement('ui-checkbox'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UICheckbox);
         return UICheckbox;
     }(UIOption));
     exports.UICheckbox = UICheckbox;
     var UIRadio = (function (_super) {
         __extends(UIRadio, _super);
-        function UIRadio() {
-            _super.apply(this, arguments);
+        function UIRadio(element) {
+            _super.call(this, element);
             this.__type = 'radio';
             this.value = '';
             this.disabled = false;
@@ -111,9 +108,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             __metadata('design:type', Object)
         ], UIRadio.prototype, "checked", void 0);
         UIRadio = __decorate([
+            aurelia_framework_1.autoinject(),
             aurelia_framework_1.useView('./ui-option.html'),
             aurelia_framework_1.customElement('ui-radio'), 
-            __metadata('design:paramtypes', [])
+            __metadata('design:paramtypes', [Element])
         ], UIRadio);
         return UIRadio;
     }(UIOption));

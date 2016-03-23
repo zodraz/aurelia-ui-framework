@@ -62,6 +62,8 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         UIUtils.lazy = lazy;
         function showToast(container, config) {
             var tmr;
+            if (typeof config === 'string')
+                config = { message: config };
             var opt = Object.assign({ theme: 'default', autoHide: true, extraClass: '' }, config);
             var toast = document.createElement('div');
             toast.classList.add('ui-toast');

@@ -11,7 +11,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
     "use strict";
     var UIDialogService = (function () {
         function UIDialogService(compiler, container, resources, compositionEngine) {
-            var _this = this;
             this.compiler = compiler;
             this.container = container;
             this.resources = resources;
@@ -21,6 +20,9 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             this.__isResizing = false;
             this.__startX = 0;
             this.__startY = 0;
+        }
+        UIDialogService.prototype.show = function (vm, model) {
+            var _this = this;
             if (!this.dialogContainer) {
                 this.dialogContainer = document.body.querySelector('.ui-viewport .ui-dialog-container');
                 this.dialogContainer.addEventListener('close', function (e) { return _this.__closeDialog(e.detail); });
@@ -33,9 +35,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
                 this.taskBar = document.body.querySelector('.ui-viewport .ui-app-taskbar');
                 this.taskBar.addEventListener('click', function (e) { return _this.__taskClick(e.target['window']); });
             }
-        }
-        UIDialogService.prototype.show = function (vm, model) {
-            var _this = this;
             var instruction = {
                 viewModel: aurelia_metadata_1.Origin.get(vm).moduleId,
                 container: this.container,

@@ -29,19 +29,20 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                     response: function (response) {
                         appState.info(this.constructor.name, "Response " + response.url + " " + response.status);
                         appState.IsHttpInUse = false;
+                        console.log('Response', response instanceof TypeError, response);
+                        if (response instanceof TypeError) {
+                            throw Error(response['message']);
+                        }
                         if (response.status == 401) {
                             eventAggregator.publish('Unauthorized', null);
                         }
                         if (response.status != 200) {
                             var j = void 0;
-                            try {
+                            if (isFunction(response.json))
                                 j = response.json();
-                            }
-                            catch (e) {
-                            }
                             if (j && j.message)
                                 throw new Error(j.message);
-                            else if (j && j.error)
+                            if (j && j.error)
                                 throw new Error(j.error);
                             throw Error(response.statusText);
                         }
@@ -49,10 +50,14 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                     },
                     requestError: function (error) {
                         appState.IsHttpInUse = false;
+                        if (error !== null)
+                            throw Error(error.message);
                         return error;
                     },
                     responseError: function (error) {
                         appState.IsHttpInUse = false;
+                        if (error !== null)
+                            throw Error(error.message);
                         return error;
                     }
                 });
@@ -100,11 +105,39 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
             })
                 .then(function (response) { return response.json(); });
         };
+        UIHttpService.prototype.upload = function (slug, form) {
+            this.appState.info(this.constructor.name, "upload [" + slug + "]");
+            this.__upload('post', slug, form);
+        };
+        UIHttpService.prototype.reupload = function (slug, form) {
+            this.appState.info(this.constructor.name, "reupload [" + slug + "]");
+            this.__upload('put', slug, form);
+        };
+        UIHttpService.prototype.__upload = function (method, slug, form) {
+            var data = new FormData();
+            for (var i = 0, q = form.querySelectorAll('input'); i < q.length; i++) {
+                if (q[i].type == 'file') {
+                    for (var x = 0; x < q[i].files.length; x++) {
+                        data.append("file" + (i++), q[i].files[x], q[i].files[x].name);
+                    }
+                }
+                else {
+                    data.append(q[i].name, q[i].value);
+                }
+            }
+            return this.httpClient
+                .fetch(slug, {
+                method: method,
+                body: data,
+                mode: 'cors',
+                headers: this.__getHeaders()
+            })
+                .then(function (response) { return response.json(); });
+        };
         UIHttpService.prototype.__getHeaders = function () {
             var headers = {
                 'X-Requested-With': 'Fetch',
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             };
             Object.assign(headers, this.appState.HttpConfig.Headers || {});

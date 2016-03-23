@@ -13,17 +13,20 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-da
         function UIDateView(element) {
             this.element = element;
             this.m = ui_utils_1.moment;
+            this.__current = ui_utils_1.moment();
             this.date = ui_utils_1.moment().format();
             this.options = new ui_date_1.UIDateOptions();
             this.showing = true;
         }
         UIDateView.prototype.bind = function () {
-            this.__current = ui_utils_1.moment(this.date);
+            if (ui_utils_1.moment(this.date).isValid())
+                this.__current = ui_utils_1.moment(this.date);
             this.__changeDates();
         };
         UIDateView.prototype.showingChanged = function (newValue) {
             if (this.showing = isTrue(newValue)) {
-                this.__current = ui_utils_1.moment(this.date);
+                if (ui_utils_1.moment(this.date).isValid())
+                    this.__current = ui_utils_1.moment(this.date);
                 this.__dates.classList.remove('ui-hidden');
                 this.__months.classList.add('ui-hide');
                 this.__years.classList.add('ui-hide');
@@ -159,7 +162,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-da
             this.__disableNext = __end.isAfter(this.options.maxDate, 'year');
         };
         __decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay, attribute: 'date' }), 
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)
         ], UIDateView.prototype, "date", void 0);
         __decorate([
@@ -167,7 +170,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-da
             __metadata('design:type', ui_date_1.UIDateOptions)
         ], UIDateView.prototype, "options", void 0);
         __decorate([
-            aurelia_framework_1.bindable(), 
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', Object)
         ], UIDateView.prototype, "showing", void 0);
         UIDateView = __decorate([
