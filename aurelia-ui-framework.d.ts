@@ -99,6 +99,8 @@ declare module "aurelia-ui-framework" {
 	}
 
 	export class UIHttpService {
+		setBaseUrl(url:string);
+
 		get(slug:string):Promise<Response>;
 
 		post(slug:string, body:any):Promise<Response>;

@@ -60,6 +60,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 });
             });
         }
+        UIHttpService.prototype.setBaseUrl = function (url) {
+            this.httpClient.baseUrl = url;
+        };
         UIHttpService.prototype.get = function (slug) {
             this.appState.info(this.constructor.name, "get [" + slug + "]");
             return this.httpClient
