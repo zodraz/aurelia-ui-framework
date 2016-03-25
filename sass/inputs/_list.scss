@@ -20,7 +20,7 @@
   }
 
   .ui-lang-remove {
-	cursor  : pointer;
+	cursor : pointer;
 	color  : $danger;
 	margin : 0.4em 0.5em;
 	&:hover {
@@ -47,6 +47,41 @@
 	> p {
 	  padding : 0.2em 0.5em;
 	  color   : $text-muted;
+	}
+  }
+}
+
+.ui-tags {
+  @include flex-row(flex-start, flex-start, true);
+  padding : 0 !important;
+  > input {
+	border     : none !important;
+	overflow   : visible;
+	font-size  : 1em;
+	margin     : 0.3em;
+	color      : $input-text;
+	background : transparent !important;
+	@include flex(1 1 0);
+  }
+  .ui-tag {
+	cursor        : pointer;
+	position      : relative;
+	margin        : 0.3em;
+	background    : shade($input-bg, 5%);
+	border-radius : $base-border-radius;
+	padding       : 0.1em 1.25em 0.1em 0.3em;
+	min-height    : 1.8em;
+	line-height   : 1;
+	border        : none;
+	@include box-shadow(0 0 2px 0 $base-shadow-color);
+
+	&:after {
+	  @include position(absolute, $r : 0, $t : 0, $b : 0);
+	  font-size   : 1em;
+	  color       : $text-muted;
+	  content     : '×';
+	  line-height : 1.7em;
+	  padding     : 0 0.2em;
 	}
   }
 }

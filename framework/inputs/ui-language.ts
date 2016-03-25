@@ -19,24 +19,24 @@ export class UILanguage extends UIInputGroup {
 	__available;
 
 	static LANGUAGES = [
-		{id: 'AR', name: 'العربية', rtl: true},
-		{id: 'DE', name: 'Deutsche'},
-		{id: 'EN', name: 'English'},
-		{id: 'ES', name: 'Español'},
-		{id: 'FR', name: 'Français'},
-		{id: 'HI', name: 'हिंदी'},
-		{id: 'IT', name: 'Italiano'},
-		{id: 'JA', name: '日本'},
-		{id: 'KO', name: '한국어'},
-		{id: 'MS', name: 'Malay'},
-		{id: 'NL', name: 'Nederlands'},
-		{id: 'PT', name: 'Português'},
-		{id: 'RU', name: 'Русский'},
-		{id: 'TH', name: 'ภาษาไทย'},
-		{id: 'TL', name: 'Tagalog'},
-		{id: 'TW', name: '漢語'},
-		{id: 'VI', name: 'Tiếng Việt'},
-		{id: 'ZH', name: '中文'}
+		{id: 'AR', text: 'العربية', rtl: true},
+		{id: 'DE', text: 'Deutsche'},
+		{id: 'EN', text: 'English'},
+		{id: 'ES', text: 'Español'},
+		{id: 'FR', text: 'Français'},
+		{id: 'HI', text: 'हिंदी'},
+		{id: 'IT', text: 'Italiano'},
+		{id: 'JA', text: '日本'},
+		{id: 'KO', text: '한국어'},
+		{id: 'MS', text: 'Malay'},
+		{id: 'NL', text: 'Nederlands'},
+		{id: 'PT', text: 'Português'},
+		{id: 'RU', text: 'Русский'},
+		{id: 'TH', text: 'ภาษาไทย'},
+		{id: 'TL', text: 'Tagalog'},
+		{id: 'TW', text: '漢語'},
+		{id: 'VI', text: 'Tiếng Việt'},
+		{id: 'ZH', text: '中文'}
 	];
 
 	constructor(element:Element) {
@@ -69,8 +69,9 @@ export class UILanguage extends UIInputGroup {
 	}
 
 	languageChanged(newValue) {
+		if (newValue === null) return this.__value = '';
 		let l:any    = _.find(this.__languages, ['id', newValue]);
-		this.__value = l === null ? '' : l.name;
+		this.__value = l === null ? '' : l.text;
 	}
 
 	languagesChanged(newValue) {

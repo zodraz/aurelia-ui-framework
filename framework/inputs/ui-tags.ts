@@ -1,5 +1,5 @@
 /**
- *    UI Input      ComboBox
+ *    UI Input      Tag Editor
  *    @author       Adarsh Pastakia
  *    @company      HMC
  *    @copyright    2015-2016, Adarsh Pastakia
@@ -10,8 +10,8 @@ import {_, UIUtils} from "../utils/ui-utils";
 import {UIEvent} from "../utils/ui-event";
 
 @autoinject
-@customElement('ui-combo')
-export class UIComboBox extends UIInputGroup {
+@customElement('ui-tags')
+export class UITags extends UIInputGroup {
 	__list;
 	__focus;
 	__options;
@@ -19,7 +19,8 @@ export class UIComboBox extends UIInputGroup {
 	__subscribeSearch;
 	__noResult = false;
 
-	__hilight:HTMLElement = null;
+	__tags = [];
+	__hilight;
 
 	constructor(element:Element) {
 		super(element);
@@ -162,42 +163,40 @@ export class UIComboBox extends UIInputGroup {
 	}
 
 	valueChanged(newValue) {
-		this.__hilight = this.__list.querySelector(`[data-value="${newValue}"]`);
-		this.__select(this.__hilight);
+		console.log(newValue);
+		let v:any = this.value || [];
+		if (!_.isArray(v)) v = v.split(',');
+		this.__options = _.cloneDeep(this.options);
+		this.__tags    = _['removeByValues'](this.__options['§'], this.valueProperty, v);
 	}
 
 	optionsChanged(newValue) {
 		this.__noResult = isEmpty(newValue);
 		this.options    = newValue;
-		this.value      = null;
 		if (_.isArray(newValue) && !isEmpty(newValue)) this.options = {'§': newValue};
 		this.__options = _.cloneDeep(this.options);
 	}
 
 	__select(item) {
-		if (item !== null) {
-			this.value        = item.dataset['value'];
-			this.__searchText = item['model'][this.displayProperty];
-			UIEvent.fireEvent('select', this.element, item['model']);
-		}
-		else {
-			this.value = this.__searchText = '';
-		}
-		this.__options  = _.cloneDeep(this.options);
-		this.__focus    = false;
-		this.__noResult = isEmpty(this.__options);
+		this.__searchText = '';
+		this.__tags.push(item['model']);
+		this.value = _.map(this.__tags, this.valueProperty).join(',');
+	}
+
+	__deselect(item) {
+		_.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
+		this.value = _.map(this.__tags, this.valueProperty).join(',');
 	}
 
 	__clicked($event) {
 		let o = getParentByClass($event.target, 'ui-list-item', 'ui-list');
 		if (o !== null) {
-			this.__select(this.__hilight = o);
+			this.__select(o);
 		}
 	}
 
 	__gotFocus() {
-		this.__hilight = this.__list.querySelector(`[data-value="${this.value}"]`);
-		this.__focus   = true;
+		this.__focus = true;
 		setTimeout(()=> {
 			this.__input.select();
 			this.__scrollIntoView();
@@ -205,8 +204,12 @@ export class UIComboBox extends UIInputGroup {
 	}
 
 	__lostFocus() {
-		this.__select(this.__hilight);
 		this.__focus = false;
+	}
+
+	inputClicked(evt) {
+		let b = getParentByClass(evt.target, 'ui-tag', 'ui-input');
+		if (b !== null)this.__deselect(b['model']);
 	}
 
 	keyDown(evt) {
@@ -214,8 +217,8 @@ export class UIComboBox extends UIInputGroup {
 		let code = (evt.keyCode || evt.which);
 
 		if (code == 13 && this.__focus) {
-			this.__select(this.__hilight);
 			this.__focus = false;
+			this.__select(this.__hilight);
 			return false;
 		}
 		else if (code == 13 && !this.__focus) {
@@ -225,6 +228,9 @@ export class UIComboBox extends UIInputGroup {
 		if (this.__noResult) return true;
 
 		this.__focus = true;
+		if (code === 8 && isEmpty(this.__searchText)) {
+			this.__deselect(this.__tags.pop());
+		}
 		if (code === 38) {
 			let h = this.__list.querySelector('.ui-list-item.hilight');
 			// if no hilight get selected
@@ -270,7 +276,6 @@ export class UIComboBox extends UIInputGroup {
 	}
 
 	__scrollIntoView() {
-		this.__list.scrollTop = (this.__hilight !== null ? this.__hilight.offsetTop - (this.__list.offsetHeight / 2) : 0);
 	}
 
 	__searchTextChanged() {

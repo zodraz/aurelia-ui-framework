@@ -18,14 +18,14 @@
 						<p>Added</p>
 						<div class="ui-row" repeat.for="opt of __languages | sort:'id'">
 							<span class="ui-list-item ui-column ui-col-fill"
-								  mousedown.trigger="__select(opt)">${opt.name}</span>
+								  mousedown.trigger="__select(opt)">${opt.text}</span>
 							<span class="fi-ui-circle-remove ui-lang-remove"
 								  mousedown.trigger="__remove(opt)"></span>
 						</div>
 						<p>Available</p>
 						<div class="ui-list-item ui-row"
 							 repeat.for="opt of __available | sort:'id'" mousedown.trigger="__add(opt)">
-							<span class="ui-column ui-col-fill">${opt.name}</span>
+							<span class="ui-column ui-col-fill">${opt.text}</span>
 							<span class="fi-ui-circle-add ui-text-info"></span>
 						</div>
 					</div>

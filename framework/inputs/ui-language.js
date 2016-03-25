@@ -28,8 +28,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.languageChanged(this.language);
         };
         UILanguage.prototype.languageChanged = function (newValue) {
+            if (newValue === null)
+                return this.__value = '';
             var l = ui_utils_1._.find(this.__languages, ['id', newValue]);
-            this.__value = l === null ? '' : l.name;
+            this.__value = l === null ? '' : l.text;
         };
         UILanguage.prototype.languagesChanged = function (newValue) {
             var s = [], a = [];
@@ -63,24 +65,24 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.__focus = false;
         };
         UILanguage.LANGUAGES = [
-            { id: 'AR', name: 'العربية', rtl: true },
-            { id: 'DE', name: 'Deutsche' },
-            { id: 'EN', name: 'English' },
-            { id: 'ES', name: 'Español' },
-            { id: 'FR', name: 'Français' },
-            { id: 'HI', name: 'हिंदी' },
-            { id: 'IT', name: 'Italiano' },
-            { id: 'JA', name: '日本' },
-            { id: 'KO', name: '한국어' },
-            { id: 'MS', name: 'Malay' },
-            { id: 'NL', name: 'Nederlands' },
-            { id: 'PT', name: 'Português' },
-            { id: 'RU', name: 'Русский' },
-            { id: 'TH', name: 'ภาษาไทย' },
-            { id: 'TL', name: 'Tagalog' },
-            { id: 'TW', name: '漢語' },
-            { id: 'VI', name: 'Tiếng Việt' },
-            { id: 'ZH', name: '中文' }
+            { id: 'AR', text: 'العربية', rtl: true },
+            { id: 'DE', text: 'Deutsche' },
+            { id: 'EN', text: 'English' },
+            { id: 'ES', text: 'Español' },
+            { id: 'FR', text: 'Français' },
+            { id: 'HI', text: 'हिंदी' },
+            { id: 'IT', text: 'Italiano' },
+            { id: 'JA', text: '日本' },
+            { id: 'KO', text: '한국어' },
+            { id: 'MS', text: 'Malay' },
+            { id: 'NL', text: 'Nederlands' },
+            { id: 'PT', text: 'Português' },
+            { id: 'RU', text: 'Русский' },
+            { id: 'TH', text: 'ภาษาไทย' },
+            { id: 'TL', text: 'Tagalog' },
+            { id: 'TW', text: '漢語' },
+            { id: 'VI', text: 'Tiếng Việt' },
+            { id: 'ZH', text: '中文' }
         ];
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 

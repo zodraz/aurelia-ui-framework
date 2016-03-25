@@ -166,6 +166,11 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                 return exports._.filter(collection, function (item) {
                     return exports._.indexOf(values, item[property]) > -1;
                 });
+            },
+            'removeByValues': function (collection, property, values) {
+                return exports._.remove(collection, function (item) {
+                    return exports._.indexOf(values, item[property]) > -1;
+                });
             }
         });
     })(UIUtils = exports.UIUtils || (exports.UIUtils = {}));

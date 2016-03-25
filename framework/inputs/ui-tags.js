@@ -14,12 +14,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils/ui-utils", "../utils/ui-event"], function (require, exports, aurelia_framework_1, ui_input_group_1, ui_utils_1, ui_event_1) {
     "use strict";
-    var UIComboBox = (function (_super) {
-        __extends(UIComboBox, _super);
-        function UIComboBox(element) {
+    var UITags = (function (_super) {
+        __extends(UITags, _super);
+        function UITags(element) {
             _super.call(this, element);
             this.__noResult = false;
-            this.__hilight = null;
+            this.__tags = [];
             this.value = '';
             this.checked = false;
             this.disabled = false;
@@ -33,68 +33,70 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.iconClass = '';
             this.emptyText = 'No Results Found...';
         }
-        UIComboBox.prototype.bind = function () {
+        UITags.prototype.bind = function () {
             _super.prototype.bind.call(this);
             this.optionsChanged(this.options);
         };
-        UIComboBox.prototype.attached = function () {
+        UITags.prototype.attached = function () {
             var _this = this;
             _super.prototype.attached.call(this);
             setTimeout(function () { return _this.valueChanged(_this.value); }, 500);
         };
-        UIComboBox.prototype.detached = function () {
+        UITags.prototype.detached = function () {
         };
-        UIComboBox.prototype.valueChanged = function (newValue) {
-            this.__hilight = this.__list.querySelector("[data-value=\"" + newValue + "\"]");
-            this.__select(this.__hilight);
+        UITags.prototype.valueChanged = function (newValue) {
+            console.log(newValue);
+            var v = this.value || [];
+            if (!ui_utils_1._.isArray(v))
+                v = v.split(',');
+            this.__options = ui_utils_1._.cloneDeep(this.options);
+            this.__tags = ui_utils_1._['removeByValues'](this.__options['§'], this.valueProperty, v);
         };
-        UIComboBox.prototype.optionsChanged = function (newValue) {
+        UITags.prototype.optionsChanged = function (newValue) {
             this.__noResult = isEmpty(newValue);
             this.options = newValue;
-            this.value = null;
             if (ui_utils_1._.isArray(newValue) && !isEmpty(newValue))
                 this.options = { '§': newValue };
             this.__options = ui_utils_1._.cloneDeep(this.options);
         };
-        UIComboBox.prototype.__select = function (item) {
-            if (item !== null) {
-                this.value = item.dataset['value'];
-                this.__searchText = item['model'][this.displayProperty];
-                ui_event_1.UIEvent.fireEvent('select', this.element, item['model']);
-            }
-            else {
-                this.value = this.__searchText = '';
-            }
-            this.__options = ui_utils_1._.cloneDeep(this.options);
-            this.__focus = false;
-            this.__noResult = isEmpty(this.__options);
+        UITags.prototype.__select = function (item) {
+            this.__searchText = '';
+            this.__tags.push(item['model']);
+            this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
         };
-        UIComboBox.prototype.__clicked = function ($event) {
+        UITags.prototype.__deselect = function (item) {
+            ui_utils_1._.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
+            this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
+        };
+        UITags.prototype.__clicked = function ($event) {
             var o = getParentByClass($event.target, 'ui-list-item', 'ui-list');
             if (o !== null) {
-                this.__select(this.__hilight = o);
+                this.__select(o);
             }
         };
-        UIComboBox.prototype.__gotFocus = function () {
+        UITags.prototype.__gotFocus = function () {
             var _this = this;
-            this.__hilight = this.__list.querySelector("[data-value=\"" + this.value + "\"]");
             this.__focus = true;
             setTimeout(function () {
                 _this.__input.select();
                 _this.__scrollIntoView();
             }, 20);
         };
-        UIComboBox.prototype.__lostFocus = function () {
-            this.__select(this.__hilight);
+        UITags.prototype.__lostFocus = function () {
             this.__focus = false;
         };
-        UIComboBox.prototype.keyDown = function (evt) {
+        UITags.prototype.inputClicked = function (evt) {
+            var b = getParentByClass(evt.target, 'ui-tag', 'ui-input');
+            if (b !== null)
+                this.__deselect(b['model']);
+        };
+        UITags.prototype.keyDown = function (evt) {
             if (evt.ctrlKey || evt.altKey || evt.metaKey || (evt.keyCode || evt.which) === 0)
                 return true;
             var code = (evt.keyCode || evt.which);
             if (code == 13 && this.__focus) {
-                this.__select(this.__hilight);
                 this.__focus = false;
+                this.__select(this.__hilight);
                 return false;
             }
             else if (code == 13 && !this.__focus) {
@@ -103,6 +105,9 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             if (this.__noResult)
                 return true;
             this.__focus = true;
+            if (code === 8 && isEmpty(this.__searchText)) {
+                this.__deselect(this.__tags.pop());
+            }
             if (code === 38) {
                 var h = this.__list.querySelector('.ui-list-item.hilight');
                 if (h === null)
@@ -140,18 +145,17 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             }
             return true;
         };
-        UIComboBox.prototype.keyPress = function (evt) {
+        UITags.prototype.keyPress = function (evt) {
             if (evt.ctrlKey || evt.altKey || evt.metaKey || (evt.keyCode || evt.which) === 0)
                 return true;
             var code = (evt.keyCode || evt.which);
         };
-        UIComboBox.prototype.formatter = function () {
+        UITags.prototype.formatter = function () {
             return this.value;
         };
-        UIComboBox.prototype.__scrollIntoView = function () {
-            this.__list.scrollTop = (this.__hilight !== null ? this.__hilight.offsetTop - (this.__list.offsetHeight / 2) : 0);
+        UITags.prototype.__scrollIntoView = function () {
         };
-        UIComboBox.prototype.__searchTextChanged = function () {
+        UITags.prototype.__searchTextChanged = function () {
             var _this = this;
             if (ui_utils_1._.isEmpty(this.__searchText)) {
                 this.__options = ui_utils_1._.cloneDeep(this.options);
@@ -188,85 +192,85 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "value", void 0);
+        ], UITags.prototype, "value", void 0);
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', Boolean)
-        ], UIComboBox.prototype, "checked", void 0);
+        ], UITags.prototype, "checked", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
-        ], UIComboBox.prototype, "disabled", void 0);
+        ], UITags.prototype, "disabled", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)
-        ], UIComboBox.prototype, "readonly", void 0);
+        ], UITags.prototype, "readonly", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "prefixIcon", void 0);
+        ], UITags.prototype, "prefixIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "prefixText", void 0);
+        ], UITags.prototype, "prefixText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "suffixIcon", void 0);
+        ], UITags.prototype, "suffixIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "suffixText", void 0);
+        ], UITags.prototype, "suffixText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "buttonIcon", void 0);
+        ], UITags.prototype, "buttonIcon", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "buttonText", void 0);
+        ], UITags.prototype, "buttonText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "helpText", void 0);
+        ], UITags.prototype, "helpText", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "placeholder", void 0);
+        ], UITags.prototype, "placeholder", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "dir", void 0);
+        ], UITags.prototype, "dir", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
-        ], UIComboBox.prototype, "options", void 0);
+        ], UITags.prototype, "options", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
-        ], UIComboBox.prototype, "valueProperty", void 0);
+        ], UITags.prototype, "valueProperty", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
-        ], UIComboBox.prototype, "displayProperty", void 0);
+        ], UITags.prototype, "displayProperty", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
-        ], UIComboBox.prototype, "iconProperty", void 0);
+        ], UITags.prototype, "iconProperty", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
-        ], UIComboBox.prototype, "iconClass", void 0);
+        ], UITags.prototype, "iconClass", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
-        ], UIComboBox.prototype, "emptyText", void 0);
-        UIComboBox = __decorate([
+        ], UITags.prototype, "emptyText", void 0);
+        UITags = __decorate([
             aurelia_framework_1.autoinject,
-            aurelia_framework_1.customElement('ui-combo'), 
+            aurelia_framework_1.customElement('ui-tags'), 
             __metadata('design:paramtypes', [Element])
-        ], UIComboBox);
-        return UIComboBox;
+        ], UITags);
+        return UITags;
     }(ui_input_group_1.UIInputGroup));
-    exports.UIComboBox = UIComboBox;
+    exports.UITags = UITags;
 });

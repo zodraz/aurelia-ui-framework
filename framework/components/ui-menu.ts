@@ -5,7 +5,7 @@
  *    @copyright    2015-2016, Adarsh Pastakia
  **/
 
-import {customElement, bindable, inlineView} from "aurelia-framework";
+import {customElement, bindable} from "aurelia-framework";
 import {Router} from "aurelia-router";
 import {UIEvent} from "../utils/ui-event";
 import {UIApplication} from "../utils/ui-application";
@@ -23,9 +23,24 @@ export class UIMenu {
 	 * @type        Array of links
 	 */
 	@bindable()
-	menu:Array<any>;
+	menu:Array<any> = [];
 
 	constructor(public element:Element, public appState:UIApplication) {
+	}
+
+	bind() {
+		for (var i = 0, c = (<HTMLElement>this.element).children; i < c.length; i++) {
+			if (c[i].tagName.toLowerCase() === 'menu') {
+				this.menu.push({
+								   id  : c[i].getAttribute('id'),
+								   text: c[i].textContent,
+								   icon: c[i].getAttribute('icon'),
+								   href: c[i].getAttribute('href') || 'javascript:;',
+							   });
+			}
+			if (c[i].tagName.toLowerCase() === 'section') this.menu.push(c[i].textContent);
+			if (c[i].tagName.toLowerCase() === 'divider') this.menu.push('-');
+		}
 	}
 
 	isActive(route) {

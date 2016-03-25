@@ -42,6 +42,7 @@ export function configure(aurelia:FrameworkConfiguration, configCallback) {
 	aurelia.globalResources('./inputs/ui-textarea');
 	aurelia.globalResources('./inputs/ui-input-dual');
 	aurelia.globalResources('./inputs/ui-combo');
+	aurelia.globalResources('./inputs/ui-tags');
 	aurelia.globalResources('./inputs/ui-language');
 	aurelia.globalResources('./inputs/ui-date');
 	aurelia.globalResources('./inputs/ui-date-view');
@@ -58,7 +59,8 @@ export {UIEvent} from "./utils/ui-event";
 export {UIFormat} from "./utils/ui-formatters";
 export {UIApplication, AuthInterceptor} from "./utils/ui-application";
 export {UIModel} from "./utils/ui-model";
-export {UIDialogService,UIDialog} from "./components/ui-dialog";
+export {UILanguage} from "./inputs/ui-language";
+export {UIDialogService, UIDialog} from "./components/ui-dialog";
 export {UITreeModel, UITreeOptions, UITreePanel} from "./utils/ui-tree-models";
 export {UIHttpService} from "./utils/ui-http-service";
 export {UIValidationStrategy} from "./utils/ui-validation";

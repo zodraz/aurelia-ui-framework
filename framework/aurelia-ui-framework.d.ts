@@ -67,6 +67,10 @@ declare module "aurelia-ui-framework" {
 	export class UIForm {
 		getForm():HTMLFormElement;
 	}
+
+	export class UILanguage {
+		static LANGUAGES;
+	}
 }
 
 /** UTILS **/
