@@ -20,6 +20,10 @@ define(["require", "exports", "aurelia-framework", "aurelia-router", "../utils/u
             ui_utils_1.UIUtils.container(container);
             this.appState.info(this.constructor.name, "UIViewport Created");
         }
+        UIViewport.prototype.bind = function () {
+            this.showMenu = isTrue(this.showMenu);
+            this.showTaskbar = isTrue(this.showTaskbar);
+        };
         UIViewport.prototype.__showMenu = function ($event) {
             $event.stopPropagation();
             this.element.classList.add('show-menu');

@@ -161,6 +161,20 @@ export class UIApplication {
 		if (!this.__overlayContainer) this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
 		UIUtils.showToast(this.__overlayContainer, config);
 	}
+
+	toastSuccess(config) {
+		if (!this.__overlayContainer) this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
+		if (typeof config === 'string') config = {message: config};
+		config.theme = 'success';
+		UIUtils.showToast(this.__overlayContainer, config);
+	}
+
+	toastError(config) {
+		if (!this.__overlayContainer) this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
+		if (typeof config === 'string') config = {message: config};
+		config.theme = 'danger';
+		UIUtils.showToast(this.__overlayContainer, config);
+	}
 }
 
 
@@ -186,7 +200,7 @@ export class AuthInterceptor {
 				let url                       = routingContext.router.generate('login', {status: 401});
 				this.appState.IsAuthenticated = false;
 				this.appState.session('AppCurrentRoute', routingContext.fragment);
-				return next.complete(new Redirect(url));
+				return next.reject(new Redirect(url));
 			}
 		}
 		// Check if route is not login then check if the user group is allowed to access the route

@@ -44,6 +44,7 @@ export class UIInputGroup {
 
 	constructor(public element:Element) {
 		this.__clear = this.element.hasAttribute('clear');
+		if (this.element.hasAttribute('auto-width')) this.element.classList.add('ui-auto');
 		if (this.element.hasAttribute('label-top')) this.element.classList.add('ui-label-top');
 		if (this.element.hasAttribute('label-hide')) this.element.classList.add('ui-label-hide');
 	}
@@ -53,8 +54,8 @@ export class UIInputGroup {
 		if (!this.__checkbox) this.checked = true;
 
 		if (this.__checkbox) this.checked = isTrue(this.checked);
-		this.disabled = this.element.hasAttribute('disabled');
-		this.readonly = this.element.hasAttribute('readonly');
+		this.disabled = this.element.hasAttribute('disabled') || isTrue(this.disabled);
+		this.readonly = this.element.hasAttribute('readonly') || isTrue(this.readonly);
 
 		if (!isEmpty(this.value)) this.__value = this.value;
 		if (!isEmpty(this.valueSecond)) this.__value2 = this.valueSecond;
@@ -150,7 +151,7 @@ export class UIInputGroup {
 
 	onAddonClick($event) {
 		$event.preventDefault();
-		UIEvent.fireEvent('addon', this.element, this);
+		UIEvent.fireEvent('buttonclick', this.element, this);
 	}
 
 	protected keyPress(evt) {

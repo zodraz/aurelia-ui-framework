@@ -7,7 +7,7 @@
 import * as ld from "lodash";
 import * as mm from "moment";
 import * as nm from "numeral";
-import {Lazy, Container} from "aurelia-framework";
+import {Lazy, Container, ViewCompiler, ViewResources, ViewSlot} from "aurelia-framework";
 
 export var _       = ld;
 export var moment  = mm;
@@ -69,6 +69,22 @@ export module UIUtils {
 		}
 		return Lazy.of(T)
 				   .get(__container)();
+	}
+
+	let __compiler;
+	let __resources;
+
+	export function compileView(markup, container, vm?) {
+		if (!__compiler) __compiler = lazy(ViewCompiler);
+		if (!__resources) __resources = lazy(ViewResources);
+
+		var viewFactory = __compiler.compile(`<template>${markup}</template>`, __resources);
+		let view        = viewFactory.create(__container);
+		view.bind(vm);
+
+		let slot = new ViewSlot(container, true);
+		slot.add(view);
+		slot.attached();
 	}
 
 	export function showToast(container, config) {
@@ -158,6 +174,17 @@ export module UIUtils {
 		}
 		return str;
 	}
+
+
+	// LoDash Mixins
+	_.mixin({
+				'findByValues': function (collection, property, values) {
+					return _.filter(collection, function (item) {
+						return _.indexOf(values, item[property]) > -1;
+					});
+				}
+			});
+
 
 	//export function getFloatPosition(
 	//	anchor,

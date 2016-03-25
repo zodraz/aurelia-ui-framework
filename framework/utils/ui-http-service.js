@@ -60,6 +60,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 });
             });
         }
+        UIHttpService.prototype.setBaseUrl = function (url) {
+            this.httpClient.baseUrl = url;
+        };
         UIHttpService.prototype.get = function (slug) {
             this.appState.info(this.constructor.name, "get [" + slug + "]");
             return this.httpClient
@@ -104,11 +107,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
         };
         UIHttpService.prototype.upload = function (slug, form) {
             this.appState.info(this.constructor.name, "upload [" + slug + "]");
-            this.__upload('post', slug, form);
+            return this.__upload('post', slug, form);
         };
         UIHttpService.prototype.reupload = function (slug, form) {
             this.appState.info(this.constructor.name, "reupload [" + slug + "]");
-            this.__upload('put', slug, form);
+            return this.__upload('put', slug, form);
         };
         UIHttpService.prototype.__upload = function (method, slug, form) {
             var data = new FormData();

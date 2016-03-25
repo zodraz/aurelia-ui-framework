@@ -65,6 +65,10 @@ export class UIHttpService {
 			});
 	}
 
+	setBaseUrl(url) {
+		this.httpClient.baseUrl = url;
+	}
+
 	//**** SHARED METHODS ****//
 	get(slug:string) {
 		this.appState.info(this.constructor.name, `get [${slug}]`);
@@ -114,12 +118,12 @@ export class UIHttpService {
 
 	upload(slug:string, form:HTMLFormElement) {
 		this.appState.info(this.constructor.name, `upload [${slug}]`);
-		this.__upload('post', slug, form);
+		return this.__upload('post', slug, form);
 	}
 
 	reupload(slug:string, form:HTMLFormElement) {
 		this.appState.info(this.constructor.name, `reupload [${slug}]`);
-		this.__upload('put', slug, form);
+		return this.__upload('put', slug, form);
 	}
 
 	__upload(method:string, slug:string, form:HTMLFormElement) {

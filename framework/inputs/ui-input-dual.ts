@@ -128,11 +128,11 @@ export class UIInputDual extends UIInputGroup {
 			this.__format = 'title';
 		}
 		else if (this.element.hasAttribute('email')) {
-			this.__type   = 'email';
+			// this.__type   = 'email';
 			this.__format = 'email';
 		}
 		else if (this.element.hasAttribute('url')) {
-			this.__type   = 'url';
+			// this.__type   = 'url';
 			this.__format = 'url';
 		}
 		else if (this.element.hasAttribute('password')) {

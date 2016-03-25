@@ -1,7 +1,7 @@
 <template>
 	<p if.bind="key!=='§'">${key}</p>
 	<div model.bind="opt"
-		 class="ui-list-item ${(opt[valueProperty] || opt)===value?'selected':''}"
+		 class="ui-list-item ${opt[valueProperty]===value?'selected':''}"
 		 repeat.for="opt of __options[key]" data-value="${opt[valueProperty]}">
 		<span class="${iconClass} ${opt[iconProperty]}" if.bind="iconProperty"></span>
 		<span innerhtml.bind="opt['__display'] || opt[displayProperty]"></span></div>

@@ -96,6 +96,10 @@ code {
   font-size : 1.5em;
 }
 
+.ui-font-serif {
+  font-family: $base-font-family-serif;
+}
+
 // Colors
 .ui-text-muted {
   color : $text-muted !important;

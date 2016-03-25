@@ -60,6 +60,21 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
                 .get(__container)();
         }
         UIUtils.lazy = lazy;
+        var __compiler;
+        var __resources;
+        function compileView(markup, container, vm) {
+            if (!__compiler)
+                __compiler = lazy(aurelia_framework_1.ViewCompiler);
+            if (!__resources)
+                __resources = lazy(aurelia_framework_1.ViewResources);
+            var viewFactory = __compiler.compile("<template>" + markup + "</template>", __resources);
+            var view = viewFactory.create(__container);
+            view.bind(vm);
+            var slot = new aurelia_framework_1.ViewSlot(container, true);
+            slot.add(view);
+            slot.attached();
+        }
+        UIUtils.compileView = compileView;
         function showToast(container, config) {
             var tmr;
             if (typeof config === 'string')
@@ -146,5 +161,12 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
             return str;
         }
         UIUtils.getAscii = getAscii;
+        exports._.mixin({
+            'findByValues': function (collection, property, values) {
+                return exports._.filter(collection, function (item) {
+                    return exports._.indexOf(values, item[property]) > -1;
+                });
+            }
+        });
     })(UIUtils = exports.UIUtils || (exports.UIUtils = {}));
 });

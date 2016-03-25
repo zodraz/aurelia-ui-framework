@@ -24,6 +24,8 @@ define(["require", "exports", "../utils/ui-event"], function (require, exports, 
                 + "\\u0e50-\\u0e59\\u0ed0-\\u0ed9\\u0f20-\\u0f33\\u1040-\\u1049\\u1090-\\u1099\\u1369-\\u137c\\u17e0-\\u17e9\\u1810-\\u1819\\u1946-\\u194f\\u19d0-\\u19d9\\u1a80-\\u1a99\\u1b50-\\u1b59\\u1bb0-\\u1bb9\\u1c40-\\u1c49"
                 + "\\u1c50-\\u1c59\\ua620-\\ua629\\ua8d0-\\ua8d9\\ua900-\\ua909\\ua9d0-\\ua9d9\\uaa50-\\uaa59\\uabf0-\\uabf9";
             this.__clear = this.element.hasAttribute('clear');
+            if (this.element.hasAttribute('auto-width'))
+                this.element.classList.add('ui-auto');
             if (this.element.hasAttribute('label-top'))
                 this.element.classList.add('ui-label-top');
             if (this.element.hasAttribute('label-hide'))
@@ -35,8 +37,8 @@ define(["require", "exports", "../utils/ui-event"], function (require, exports, 
                 this.checked = true;
             if (this.__checkbox)
                 this.checked = isTrue(this.checked);
-            this.disabled = this.element.hasAttribute('disabled');
-            this.readonly = this.element.hasAttribute('readonly');
+            this.disabled = this.element.hasAttribute('disabled') || isTrue(this.disabled);
+            this.readonly = this.element.hasAttribute('readonly') || isTrue(this.readonly);
             if (!isEmpty(this.value))
                 this.__value = this.value;
             if (!isEmpty(this.valueSecond))
@@ -134,7 +136,7 @@ define(["require", "exports", "../utils/ui-event"], function (require, exports, 
         };
         UIInputGroup.prototype.onAddonClick = function ($event) {
             $event.preventDefault();
-            ui_event_1.UIEvent.fireEvent('addon', this.element, this);
+            ui_event_1.UIEvent.fireEvent('buttonclick', this.element, this);
         };
         UIInputGroup.prototype.keyPress = function (evt) {
             if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0)

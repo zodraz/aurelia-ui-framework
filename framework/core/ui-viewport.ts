@@ -36,6 +36,11 @@ export class UIViewport {
 		this.appState.info(this.constructor.name, "UIViewport Created");
 	}
 
+	bind() {
+		this.showMenu    = isTrue(this.showMenu);
+		this.showTaskbar = isTrue(this.showTaskbar);
+	}
+
 	__showMenu($event) {
 		$event.stopPropagation();
 		this.element.classList.add('show-menu');

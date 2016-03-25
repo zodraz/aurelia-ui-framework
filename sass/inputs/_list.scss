@@ -19,8 +19,16 @@
 	@include box-shadow(0 2px 4px 0 $base-shadow-color);
   }
 
+  .ui-lang-remove {
+	cursor  : pointer;
+	color  : $danger;
+	margin : 0.4em 0.5em;
+	&:hover {
+	  color : darken($danger, 10%);
+	}
+  }
+
   .ui-list-item {
-	display : block;
 	cursor  : pointer;
 	padding : 0.4em 0.5em;
 

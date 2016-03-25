@@ -233,6 +233,9 @@ $shadow : $tg-2;
 	.ui-control-wrapper {
 	  @include flex(1 1 0);
 	}
+	&.ui-label-top .ui-control-wrapper {
+	  @include flex-basis(100%);
+	}
   }
 }
 

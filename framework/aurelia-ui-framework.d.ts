@@ -10,8 +10,40 @@ declare module "aurelia-ui-framework" {
 
 /** CORE **/
 declare module "aurelia-ui-framework" {
+	import {ValidationGroup} from "aurelia-validation";
+	import {Logger} from "aurelia-logging";
+
 	export class UIDialog {
 		close();
+
+		toast(config);
+	}
+
+	export class UIModel {
+		logger:Logger;
+		httpClient:UIHttpService;
+		validation:ValidationGroup;
+		observers:any;
+
+		get(...rest);
+
+		post(...rest);
+
+		put(...rest);
+
+		delete(...rest);
+
+		deserialize(json:any);
+
+		serialize():any;
+
+		saveChanges();
+
+		discardChanges();
+
+		isDirty():boolean;
+
+		dispose();
 	}
 	export class UITreeOptions {
 		maxLevels:number;
@@ -29,7 +61,7 @@ declare module "aurelia-ui-framework" {
 		constructor(obj?);
 	}
 	export class UIDialogService {
-		show<T extends UIDialog>(viewModel:T, model?:any);
+		show<UIDialog>(viewModel:UIDialog, model?:any);
 	}
 
 	export class UIForm {
@@ -56,6 +88,7 @@ declare module "aurelia-ui-framework" {
 
 		Username:string;
 		UserGroup:string;
+		UserGroupLabel:string;
 
 		AuthUser:string;
 		AuthToken:string;
@@ -79,6 +112,10 @@ declare module "aurelia-ui-framework" {
 		error(tag:string, msg:string, ...rest);
 
 		toast(config:any);
+
+		toastError(config:any);
+
+		toastSuccess(config:any);
 	}
 
 	export class AuthInterceptor {
@@ -99,17 +136,17 @@ declare module "aurelia-ui-framework" {
 	}
 
 	export class UIHttpService {
-		get(slug:string):Promise<Response>;
+		get(slug:string):Promise<any>;
 
-		post(slug:string, body:any):Promise<Response>;
+		post(slug:string, body:any):Promise<any>;
 
-		put(slug:string, body:any):Promise<Response>;
+		put(slug:string, body:any):Promise<any>;
 
-		delete(slug:string):Promise<Response>;
+		delete(slug:string):Promise<any>;
 
-		upload(slug:string, form:HTMLFormElement):Promise<Response>;
+		upload(slug:string, form:HTMLFormElement):Promise<any>;
 
-		reupload(slug:string, form:HTMLFormElement):Promise<Response>;
+		reupload(slug:string, form:HTMLFormElement):Promise<any>;
 	}
 
 	// Utilities
@@ -117,6 +154,8 @@ declare module "aurelia-ui-framework" {
 		export function container(container:Container);
 
 		export function lazy(T:any):any;
+
+		export function compileView(markup:string, container:Element, vm?);
 
 		export function showToast(container, config);
 
@@ -130,7 +169,7 @@ declare module "aurelia-ui-framework" {
 
 		export function observe(object, property);
 
-		export function broadcast(event, data):PropertyObserver;
+		export function broadcast(event, data?):PropertyObserver;
 
 		export function subscribe(event, callback):Subscription;
 	}
@@ -188,6 +227,7 @@ interface Window {
 
 	__seed:number;
 	Constants:any;
+	FormData:any;
 
 	countries:Array<ICountry>;
 	currencies:Map<string,string>;

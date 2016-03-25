@@ -13,7 +13,8 @@
 	width           : 3em;
 	height          : 3em;
 	background      : image_url('logo.png') no-repeat center center;
-	background-size : 2.8em 2.8em;
+	background-size : auto 2.8em;
+	margin          : 0 auto;
   }
 
   .ui-app-header {
@@ -129,11 +130,16 @@
 
 	.ui-auth-info {
 	  top           : 0;
+	  padding       : 0.3em 0.7em;
 	  margin-bottom : 0.5em;
 	  background    : rgba(#333, 0.95);
 	  @include sticky();
 	  @include box-shadow(-3px 0 3px 1px #111);
 	  @include backdrop-blur(9px);
+	}
+
+	.ui-menu-section {
+	  padding : 0.3em 0.7em;
 	}
 
 	.ui-menu-link {

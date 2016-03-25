@@ -108,7 +108,7 @@ gulp.task('aurelia:skeleton', function () {
 gulp.task('aurelia:release', function () {
 	gulp.src(['./package.json', './sass/**/_*.scss'], {base: './'})
 		.pipe(gulp.dest(release));
-	gulp.src(['./framework/*/*.js', './framework/*/*.html', './framework/aurelia-ui-framework.d.ts'])
+	gulp.src(['./framework/*/*.js', './framework/*/*.html', './framework/**/*.d.ts'])
 		.pipe(gulp.dest(release));
 	gulp.src("./framework/index.js")
 		.pipe(rename("aurelia-ui-framework.js"))

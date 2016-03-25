@@ -224,7 +224,7 @@
 						<ui-phone international>International Phone</ui-phone>
 						<ui-date date="1979-03-02">Date</ui-date>
 						<ui-date range>Date Range</ui-date>
-						<ui-combo options.bind="months">ComboBox</ui-combo>
+						<ui-combo options.bind="months" disabled.bind="!enabled">ComboBox</ui-combo>
 						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag"
 								  prefix-icon="ui-flag ${ctry}" suffix-text.bind="ctry"
 								  display-property="name" value-property="iso2" value.bind="ctry">Countries

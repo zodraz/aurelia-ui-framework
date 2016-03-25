@@ -1,5 +1,5 @@
 import {autoinject} from "aurelia-framework";
-import {_} from "../utils/ui-utils";
+import {_, UIUtils} from "../utils/ui-utils";
 import {UIEvent} from "../utils/ui-event";
 import {Origin} from "aurelia-metadata";
 import {
@@ -40,7 +40,7 @@ export class UIDialogService {
 		}
 		if (!this.taskBar) {
 			this.taskBar = document.body.querySelector('.ui-viewport .ui-app-taskbar');
-			this.taskBar.addEventListener('click', (e)=>this.__taskClick(e.target['window']));
+			if (this.taskBar)this.taskBar.addEventListener('click', (e)=>this.__taskClick(e.target['window']));
 		}
 
 		let instruction:any = {
@@ -85,11 +85,11 @@ export class UIDialogService {
 		if (!(vm instanceof UIDialog)) throw new Error("ViewModel must extend from UIDialog");
 
 		var viewFactory = this.compiler.compile('<template><div class="${modal?\'ui-modal\':\'\'} ui-dialog-wrapper" ref="__dialogWrapper">' +
-												'<div class="uia-dialog ${__active?\'ui-active\':\'ui-inactive\'}" ref="__dialog" css.bind="__current">' +
+												'<div class="ui-dialog ${__active?\'ui-active\':\'ui-inactive\'}" ref="__dialog" css.bind="__current">' +
 												'<ui-header primary close="true" close.trigger="close($event)" ' +
 												'expand.trigger="expand($event)" collapse.trigger="collapse($event)" ' +
-												'icon="${icon}" collapse="${!modal}" expand="${maximizable}">${title}</ui-header>' +
-												'<span class="ui-resizer fi-ui"></span>' +
+												'icon="${icon}" collapse="${!modal}" expand="${maximize}">${title}</ui-header>' +
+												'<span class="ui-resizer fi-ui" if.bind="resize"></span>' +
 												'</div></div></template>', this.resources);
 		let view        = viewFactory.create(this.container);
 		if (vm.modal) {
@@ -331,14 +331,18 @@ export class UIDialog {
 	};
 
 	public icon;
-	public title               = 'Dialog';
-	public width               = '';
-	public height              = '';
-	public modal:boolean       = false;
-	public drag:boolean        = true;
-	public resize:boolean      = true;
-	public maximizable:boolean = true;
+	public title            = 'Dialog';
+	public width            = '';
+	public height           = '';
+	public modal:boolean    = false;
+	public drag:boolean     = true;
+	public resize:boolean   = true;
+	public maximize:boolean = true;
 
+	bind() {
+		this.__current.width  = this.width || this.__current.width;
+		this.__current.height = this.height || this.__current.height;
+	}
 
 	close($event) {
 		if ($event) $event.cancelBubble = true;
@@ -353,5 +357,11 @@ export class UIDialog {
 	collapse($event) {
 		if ($event) $event.cancelBubble = true;
 		UIEvent.fireEvent('collapse', this.__dialogWrapper, this);
+	}
+
+	toast(config) {
+		if (typeof config === 'string') config = {message: config};
+		config.extraClass = 'ui-page-toast';
+		UIUtils.showToast(this.__dialog, config);
 	}
 }

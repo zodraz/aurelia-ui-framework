@@ -49,7 +49,7 @@ export class UIModel {
 				enumerable: false
 			}
 		});
-		this.logger.warn("Model Initialized");
+		this.logger.info("Model Initialized");
 	}
 
 	get(...rest) {

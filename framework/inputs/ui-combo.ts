@@ -141,12 +141,20 @@ export class UIComboBox extends UIInputGroup {
 	@bindable()
 	iconClass:any        = '';
 
+	/**
+	 * @property    empty-text
+	 * @type        string
+	 */
+	@bindable()
+	emptyText = 'No Results Found...';
+
 	bind() {
 		super.bind();
 		this.optionsChanged(this.options);
 	}
 
 	attached() {
+		super.attached();
 		setTimeout(()=>this.valueChanged(this.value), 500);
 	}
 
@@ -160,23 +168,23 @@ export class UIComboBox extends UIInputGroup {
 
 	optionsChanged(newValue) {
 		this.__noResult = isEmpty(newValue);
-		if (_.isArray(newValue)) this.options = {'§': newValue};
+		this.options    = newValue;
+		if (_.isArray(newValue) && !isEmpty(newValue)) this.options = {'§': newValue};
 		this.__options = _.cloneDeep(this.options);
 	}
 
 	__select(item) {
 		if (item !== null) {
 			this.value        = item.dataset['value'];
-			this.__searchText = item['model'][this.displayProperty] || item['model'];
+			this.__searchText = item['model'][this.displayProperty];
 			UIEvent.fireEvent('select', this.element, item['model']);
-			this.__options = _.cloneDeep(this.options);
-			this.__focus   = false;
 		}
 		else {
 			this.value = this.__searchText = '';
-			this.__options = _.cloneDeep(this.options);
-			this.__focus   = false;
 		}
+		this.__options = _.cloneDeep(this.options);
+		this.__focus   = false;
+		this.__noResult = isEmpty(this.__options);
 	}
 
 	__clicked($event) {
@@ -212,6 +220,8 @@ export class UIComboBox extends UIInputGroup {
 		else if (code == 13 && !this.__focus) {
 			return UIEvent.fireEvent('enterpressed', this.element, this);
 		}
+
+		if (this.__noResult) return true;
 
 		this.__focus = true;
 		if (code === 38) {
@@ -264,7 +274,8 @@ export class UIComboBox extends UIInputGroup {
 
 	__searchTextChanged() {
 		if (_.isEmpty(this.__searchText)) {
-			this.__options = _.cloneDeep(this.options);
+			this.__options  = _.cloneDeep(this.options);
+			this.__noResult = isEmpty(this.__options);
 			return;
 		}
 		var opts        = _.cloneDeep(this.options);

@@ -49,9 +49,7 @@ export class UILogin {
 @autoinject()
 export class LoginModel extends UIModel {
 
-	@ensure(t=>t.isNotEmpty())
 	username:string = '';
-	@ensure(t=>t.isNotEmpty())
 	password:string = '';
 
 	remember:boolean = false;

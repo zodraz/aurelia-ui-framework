@@ -4,7 +4,7 @@
 	</div>
 	<ui-page>
 		<ui-row class="ui-col-fill ui-align-center ui-align-middle">
-			<ui-form submit.trigger="doLogin()" busy.bind="busy" class="ui-login"
+			<ui-form submit.trigger="doLogin()" busy.bind="appState.IsHttpInUse" class="ui-login"
 					 validate.bind="model.validation">
 
 				<div class="ui-login-content" ref="__content">

@@ -42,6 +42,7 @@ export function configure(aurelia:FrameworkConfiguration, configCallback) {
 	aurelia.globalResources('./inputs/ui-textarea');
 	aurelia.globalResources('./inputs/ui-input-dual');
 	aurelia.globalResources('./inputs/ui-combo');
+	aurelia.globalResources('./inputs/ui-language');
 	aurelia.globalResources('./inputs/ui-date');
 	aurelia.globalResources('./inputs/ui-date-view');
 

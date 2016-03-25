@@ -43,7 +43,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
             });
             this.__table.width = w;
         };
-        UIDataGrid.prototype.dataChanged = function (newValue) {
+        UIDataGrid.prototype.dataListChanged = function (newValue) {
             this.__table.style.tableLayout = 'auto';
             this.__doSort(newValue);
             this.__table.style.tableLayout = 'fixed';
@@ -59,7 +59,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
                 return false;
             }
             try {
-                ui_event_1.UIEvent.fireEvent('linkclick', this.element, { dataId: id, model: model });
+                var target = getParentByClass($event.target, 'ui-button', 'dg-col') ||
+                    getParentByClass($event.target, 'ui-link', 'dg-col');
+                ui_event_1.UIEvent.fireEvent('linkclick', this.element, { dataId: id, target: target, model: model });
             }
             catch (e) {
             }
@@ -102,7 +104,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
         };
         UIDataGrid.prototype.buildButton = function (value, column, model) {
             var ret, obj = {
-                enabled: true, theme: 'default', title: column.buttonTitle, icon: column.buttonGlyph
+                enabled: true, theme: column.buttonTheme, title: column.buttonTitle, icon: column.buttonIcon
             };
             if (isFunction(column.button)) {
                 ret = column.button({ value: value, column: column, model: model });
@@ -135,6 +137,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
                         retVal = ui_formatters_1.UIFormat.number(newValue, column.format || '0,0.00');
                         break;
                     case 'date':
+                        retVal = ui_formatters_1.UIFormat.date(newValue, column.format || 'DD MMM YYYY');
+                        break;
+                    case 'datetime':
                         retVal = ui_formatters_1.UIFormat.date(newValue, column.format || 'DD MMM YYYY hh:mm A');
                         break;
                     case 'fromnow':
@@ -239,7 +244,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
         function UIDataColumn(element) {
             this.element = element;
             this.buttonTitle = '';
-            this.buttonGlyph = '';
+            this.buttonIcon = '';
+            this.buttonTheme = '';
+            this.class = '';
             this.edge = 0;
             this.__title = '';
             this.__type = 'text';
@@ -259,6 +266,8 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
                 this.__type = 'currency';
             if (this.element.hasAttribute('date'))
                 this.__type = 'date';
+            if (this.element.hasAttribute('datetime'))
+                this.__type = 'datetime';
             if (this.element.hasAttribute('from-now'))
                 this.__type = 'fromnow';
             if (this.element.hasAttribute('exrate'))
@@ -273,19 +282,23 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
         }
         UIDataColumn.prototype.bind = function () {
             if (this.element.hasAttribute('view'))
-                this.buttonGlyph = 'fi-ui-view';
+                this.buttonIcon = 'fi-ui-view';
             if (this.element.hasAttribute('edit'))
-                this.buttonGlyph = 'fi-ui-edit';
+                this.buttonIcon = 'fi-ui-edit';
             if (this.element.hasAttribute('delete'))
-                this.buttonGlyph = 'fi-ui-delete';
+                this.buttonIcon = 'fi-ui-delete';
             this.__title = this.element.textContent;
-            if (this.__button = !(isEmpty(this.buttonGlyph) && isEmpty(this.buttonTitle)))
+            if (this.__button = !(isEmpty(this.buttonIcon) && isEmpty(this.buttonTitle) && !this.element.hasAttribute('button')))
                 this.__align = 'center';
-            if (!isEmpty(this.buttonGlyph) && isEmpty(this.buttonTitle)) {
+            if (!this.width && !isEmpty(this.buttonIcon) && isEmpty(this.buttonTitle)) {
                 this.width = 36;
             }
             else if (this.__type == 'date') {
-                this.width = 160;
+                this.width = 150;
+                this.__align = 'center';
+            }
+            else if (this.__type == 'datetime') {
+                this.width = 180;
                 this.__align = 'center';
             }
             else if (this.__type == 'exrate') {
@@ -350,7 +363,15 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], UIDataColumn.prototype, "buttonGlyph", void 0);
+        ], UIDataColumn.prototype, "buttonIcon", void 0);
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIDataColumn.prototype, "buttonTheme", void 0);
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', String)
+        ], UIDataColumn.prototype, "class", void 0);
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Number)

@@ -65,7 +65,7 @@ export class UIDataGrid {
 		this.__table.width = w;
 	}
 
-	dataChanged(newValue) {
+	dataListChanged(newValue) {
 		this.__table.style.tableLayout = 'auto';
 		this.__doSort(newValue);
 		this.__table.style.tableLayout = 'fixed';
@@ -83,7 +83,9 @@ export class UIDataGrid {
 			return false;
 		}
 		try {
-			UIEvent.fireEvent('linkclick', this.element, {dataId: id, model: model})
+			let target = getParentByClass($event.target, 'ui-button', 'dg-col') ||
+				getParentByClass($event.target, 'ui-link', 'dg-col');
+			UIEvent.fireEvent('linkclick', this.element, {dataId: id, target: target, model: model})
 		}
 		catch (e) {
 		}
@@ -128,7 +130,7 @@ export class UIDataGrid {
 
 	buildButton(value, column, model) {
 		let ret, obj = {
-			enabled: true, theme: 'default', title: column.buttonTitle, icon: column.buttonGlyph
+			enabled: true, theme: column.buttonTheme, title: column.buttonTitle, icon: column.buttonIcon
 		};
 		if (isFunction(column.button)) {
 			ret = column.button({value: value, column: column, model: model});
@@ -164,6 +166,9 @@ export class UIDataGrid {
 					retVal = UIFormat.number(newValue, column.format || '0,0.00');
 					break;
 				case 'date':
+					retVal = UIFormat.date(newValue, column.format || 'DD MMM YYYY');
+					break;
+				case 'datetime':
 					retVal = UIFormat.date(newValue, column.format || 'DD MMM YYYY hh:mm A');
 					break;
 				case 'fromnow':
@@ -286,7 +291,12 @@ export class UIDataColumn {
 	@bindable
 	buttonTitle:string = '';
 	@bindable
-	buttonGlyph:string = '';
+	buttonIcon:string = '';
+	@bindable
+	buttonTheme:string = '';
+
+	@bindable
+	class:string = '';
 
 	@bindable
 	width:number;
@@ -312,6 +322,7 @@ export class UIDataColumn {
 		if (this.element.hasAttribute('number')) this.__type = 'number';
 		if (this.element.hasAttribute('currency')) this.__type = 'currency';
 		if (this.element.hasAttribute('date')) this.__type = 'date';
+		if (this.element.hasAttribute('datetime')) this.__type = 'datetime';
 		if (this.element.hasAttribute('from-now')) this.__type = 'fromnow';
 		if (this.element.hasAttribute('exrate')) this.__type = 'exrate';
 		if (this.element.hasAttribute('color')) this.__type = 'color';
@@ -325,18 +336,22 @@ export class UIDataColumn {
 	}
 
 	bind() {
-		if (this.element.hasAttribute('view')) this.buttonGlyph = 'fi-ui-view';
-		if (this.element.hasAttribute('edit')) this.buttonGlyph = 'fi-ui-edit';
-		if (this.element.hasAttribute('delete')) this.buttonGlyph = 'fi-ui-delete';
+		if (this.element.hasAttribute('view')) this.buttonIcon = 'fi-ui-view';
+		if (this.element.hasAttribute('edit')) this.buttonIcon = 'fi-ui-edit';
+		if (this.element.hasAttribute('delete')) this.buttonIcon = 'fi-ui-delete';
 
 		this.__title = this.element.textContent;
-		if (this.__button = !(isEmpty(this.buttonGlyph) && isEmpty(this.buttonTitle))) this.__align = 'center';
+		if (this.__button = !(isEmpty(this.buttonIcon) && isEmpty(this.buttonTitle) && !this.element.hasAttribute('button'))) this.__align = 'center';
 
-		if (!isEmpty(this.buttonGlyph) && isEmpty(this.buttonTitle)) {
+		if (!this.width && !isEmpty(this.buttonIcon) && isEmpty(this.buttonTitle)) {
 			this.width = 36;
 		}
 		else if (this.__type == 'date') {
-			this.width   = 160;
+			this.width   = 150;
+			this.__align = 'center';
+		}
+		else if (this.__type == 'datetime') {
+			this.width   = 180;
 			this.__align = 'center';
 		}
 		else if (this.__type == 'exrate') {
