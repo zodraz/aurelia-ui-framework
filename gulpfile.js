@@ -26,14 +26,13 @@ gulp.task('sass:compile', function (done) {
 							 }));
 });
 
-
 // Typescript Compiler
 var tsProject = ts.createProject({
-									 declaration: true,
+									 declaration: false,
 									 noExternalResolve: true,
 									 sortOutput: true,
 									 target: 'ES5',
-									 module: 'amd',
+									 module: 'commonjs',
 									 noImplicitAny: false,
 									 removeComments: true,
 									 emitDecoratorMetadata: true,
@@ -78,12 +77,15 @@ gulp.task('aurelia:bundle', function () {
 gulp.task('aurelia:unbundle', function () {
 	return bundler.unbundle(config);
 });
+gulp.task('readme:copy', function () {
+	return gulp.src(['./framework/**/*.md'], {base: './framework'})
+			   .pipe(gulp.dest('./src'));
+});
 gulp.task('aurelia:pages', function () {
 	return gulp.src([
 						'./index.html',
 						'./config.js',
 						'./jspm_packages/system*',
-						'./framework/**/*.md',
 						'./*.md',
 						'./fonts/**/*',
 						'./styles/**/*',
@@ -96,7 +98,6 @@ gulp.task('aurelia:skeleton', function () {
 						'./index.html',
 						'./browserconfig.xml',
 						'./manifest.json',
-						'./framework/**/*.md',
 						'./*.md',
 						//'./src/**/*.ts',
 						//'./src/**/*.html',
@@ -127,7 +128,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('production', function () {
-	runSequence('sass:compile', 'scripts:compile', 'aurelia:bundle', 'aurelia:pages', 'aurelia:skeleton', 'aurelia:release', 'aurelia:unbundle');
+	runSequence('sass:compile', 'scripts:compile', 'readme:copy', 'aurelia:bundle', 'aurelia:pages', 'aurelia:skeleton', 'aurelia:release', 'aurelia:unbundle');
 });
 
 gulp.task('serve', ['build'], function (done) {

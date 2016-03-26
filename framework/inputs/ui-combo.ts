@@ -15,6 +15,7 @@ export class UIComboBox extends UIInputGroup {
 	__list;
 	__focus;
 	__options;
+	__original;
 	__searchText;
 	__subscribeSearch;
 	__noResult = false;
@@ -162,28 +163,25 @@ export class UIComboBox extends UIInputGroup {
 	}
 
 	valueChanged(newValue) {
-		this.__hilight = this.__list.querySelector(`[data-value="${newValue}"]`);
-		this.__select(this.__hilight);
+		let v = _['findDeep'](this.__original, this.valueProperty, newValue);
+		this.__searchText = v ? v[this.displayProperty] : '';
 	}
 
 	optionsChanged(newValue) {
 		this.__noResult = isEmpty(newValue);
-		this.options    = newValue;
-		this.value      = null;
-		if (_.isArray(newValue) && !isEmpty(newValue)) this.options = {'§': newValue};
-		this.__options = _.cloneDeep(this.options);
+		if (_.isArray(newValue) && !isEmpty(newValue)) this.__original = {'§': newValue};
+		this.__options = _.cloneDeep(this.__original);
 	}
 
 	__select(item) {
 		if (item !== null) {
+			if(this.value !== item.dataset['value'])UIEvent.fireEvent('select', this.element, item['model']);
 			this.value        = item.dataset['value'];
-			this.__searchText = item['model'][this.displayProperty];
-			UIEvent.fireEvent('select', this.element, item['model']);
 		}
 		else {
 			this.value = this.__searchText = '';
 		}
-		this.__options  = _.cloneDeep(this.options);
+		this.__options  = _.cloneDeep(this.__original);
 		this.__focus    = false;
 		this.__noResult = isEmpty(this.__options);
 	}
@@ -275,11 +273,11 @@ export class UIComboBox extends UIInputGroup {
 
 	__searchTextChanged() {
 		if (_.isEmpty(this.__searchText)) {
-			this.__options  = _.cloneDeep(this.options);
+			this.__options  = _.cloneDeep(this.__original);
 			this.__noResult = isEmpty(this.__options);
 			return;
 		}
-		var opts        = _.cloneDeep(this.options);
+		var opts        = _.cloneDeep(this.__original);
 		var rx          = new RegExp(UIUtils.getAscii(this.__searchText), 'i');
 		this.__options  = _.forEach(opts, (v, k)=> {
 			opts[k] = _.filter(v, (n:any)=> {

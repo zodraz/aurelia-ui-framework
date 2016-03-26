@@ -187,6 +187,14 @@ export module UIUtils {
 					return _.remove(collection, function (item) {
 						return _.indexOf(values, item[property]) > -1;
 					});
+				},
+				'findDeep': function (collection, property, value) {
+					let ret = null;
+					_.forEach(collection, function (item) {
+						ret = _.find(item, [property, value]);
+						return ret===null;
+					});
+					return ret;
 				}
 			});
 

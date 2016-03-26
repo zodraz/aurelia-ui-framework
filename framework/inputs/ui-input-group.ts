@@ -47,6 +47,8 @@ export class UIInputGroup {
 		if (this.element.hasAttribute('auto-width')) this.element.classList.add('ui-auto');
 		if (this.element.hasAttribute('label-top')) this.element.classList.add('ui-label-top');
 		if (this.element.hasAttribute('label-hide')) this.element.classList.add('ui-label-hide');
+
+		this.element['focus'] = ()=>this.__input.focus();
 	}
 
 	bind() {

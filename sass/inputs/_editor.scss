@@ -36,11 +36,20 @@
 	}
 	.ui-control-wrapper {
 	  @include flex-column();
+
+    .ui-input-help {
+      border-width: 0;
+    }
+    .ui-markdown-tools {
+      border-width: 0;
+    }
+
 	  .ui-input-control {
 		@include flex(1 1 0);
 		position : relative;
 		.ui-input {
 		  @include position(absolute, 0, 0, 0, 0);
+      border-width: 1px 0;
 		  resize : none;
 		}
 	  }

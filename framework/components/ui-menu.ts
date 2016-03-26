@@ -51,8 +51,9 @@ export class UIMenu {
 	onClick($event) {
 		if (this.router) return true;
 		$event.preventDefault();
+		$event.cancelBubble=true;
 		let link = getParentByClass($event.target, 'ui-menu-link', 'ui-menu');
-		if (link === null) return false;
-		UIEvent.fireEvent('click', this.element, link.dataset['id']);
+		if (link !== null) UIEvent.fireEvent('menu', this.element, link.dataset['id']);
+		return false;
 	}
 }

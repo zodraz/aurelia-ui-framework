@@ -15,7 +15,7 @@ export class ReadMe {
 
 	activate() {
 		return this.httpClient
-				   .fetch('./framework/core/README.md')
+				   .fetch('./src/core/README.md')
 				   .then(resp=>resp.text())
 				   .then(resp=>this.readme = resp)
 	}

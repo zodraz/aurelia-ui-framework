@@ -72,11 +72,11 @@ input, textarea {
   > .ui-loader {
 	@include flex(0 0 auto);
 	@include backdrop-blur(2px);
-	@include box-shadow(0 0 4px 1px rgba($base-shadow-color, .75) inset);
+	@include box-shadow(0 0 2px 0 rgba($base-shadow-color, .75) inset);
 	border   : {
 	  width  : 1px;
 	  style  : solid;
-	  color  : $base-border-color;
+	  color  : rgba($base-border-color, 0.75);
 	  radius : $base-border-radius;
 	}
 	background : rgba($base-bg, 0.85);

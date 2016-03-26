@@ -5,6 +5,7 @@ import {Origin} from "aurelia-metadata";
 import {
 	customElement,
 	useView,
+	singleton,
 	Container,
 	View,
 	ViewCompiler,
@@ -15,6 +16,7 @@ import {
 import {child} from "aurelia-templating";
 
 @autoinject()
+@singleton()
 export class UIDialogService {
 	private dialogContainer;
 	private taskBar;
@@ -44,7 +46,7 @@ export class UIDialogService {
 		}
 
 		let instruction:any = {
-			viewModel     : Origin.get(vm).moduleId,
+			viewModel     : vm,
 			container     : this.container,
 			childContainer: this.container.createChild(),
 			model         : model ? model : {}
@@ -61,7 +63,7 @@ export class UIDialogService {
 														 controller.automate();
 
 														 let view = this.__createDialog(controller.viewModel);
-														 this.__invokeLifecycle(viewModel, 'bind', null);
+														 this.__invokeLifecycle(viewModel, 'bind', model);
 
 														 let childSlot:any = new ViewSlot(view['fragment'].querySelector('.ui-dialog'), true);
 														 childSlot.add(controller.view);
@@ -347,6 +349,13 @@ export class UIDialog {
 	close($event) {
 		if ($event) $event.cancelBubble = true;
 		UIEvent.fireEvent('close', this.__dialogWrapper, this);
+	}
+
+	focus() {
+		setTimeout(()=> {
+			let el:any = this.__dialog.querySelector('ui-input input,textarea,ui-phone input,ui-combo input');
+			if (!isEmpty(el))el.focus();
+		}, 10);
 	}
 
 	expand($event) {

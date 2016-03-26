@@ -15,7 +15,7 @@ declare module "aurelia-ui-framework" {
 
 	export class UIDialog {
 		close();
-
+		focus();
 		toast(config);
 	}
 

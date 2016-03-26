@@ -163,7 +163,6 @@ export class UITags extends UIInputGroup {
 	}
 
 	valueChanged(newValue) {
-		console.log(newValue);
 		let v:any = this.value || [];
 		if (!_.isArray(v)) v = v.split(',');
 		this.__options = _.cloneDeep(this.options);

@@ -23,7 +23,7 @@ export class UIForm {
 
 	attached() {
 		setTimeout(()=> {
-			let el:any = this.__form.querySelector('ui-input input,textarea,ui-phone input,ui-combo input');
+			let el:any = this.__form.querySelector('ui-input input,textarea,ui-phone input');
 			if (!isEmpty(el))el.focus();
 		}, 10);
 
