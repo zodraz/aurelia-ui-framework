@@ -5,131 +5,178 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-markdown {
-  line-height : 1.3;
+.ui-markdown
+{
+    line-height: 1.3;
 
-  em {
-	font-style : italic;
-  }
+    em
+    {
+        font-style: italic;
+    }
 
-  strong, b {
-	font-weight : bold;
-  }
+    strong,
+    b
+    {
+        font-weight: bold;
+    }
 
-  blockquote {
-	padding          : 0.5em 1em;
-	border-left      : 0.25em solid $primary;
-	background-color : shade($base-bg, 2%);
-  }
+    blockquote
+    {
+        padding: .5em 1em;
 
-  a {
-	font-weight     : bold;
-	text-decoration : underline;
-  }
+        border-left: .25em solid $primary;
+        background-color: shade($base-bg, 2%);
+    }
 
-  ul {
-	list-style : {
-	  type     : disc;
-	  position : inside;
-	}
+    a
+    {
+        font-weight: bold;
 
-	li > ul {
-	  list-style : circle;
-	  @include margin(start, 2em);
+        text-decoration: underline;
+    }
 
-	  li > ul {
-		list-style : square;
-	  }
-	}
-  }
+    ul
+    {
+        list-style: 
+        {
+            position: inside;
 
-  ol {
-	list-style : {
-	  type     : decimal;
-	  position : inside;
-	}
-  }
+            type: disc;
+        }
 
-  li > a {
-	margin  : 0.3em 0;
-	display : inline-block;
-  }
+        li > ul
+        {
+            list-style: circle;
 
-  li > p {
-	padding : 0;
-	margin  : 0.3em 0;
-  }
+            @include margin(start, 2em);
 
-  td, th {
-	padding : 0.25em 0.5em;
-  }
+            li > ul
+            {
+                list-style: square;
+            }
+        }
+    }
 
-  th {
-	font-weight   : bold;
-	border-bottom : 1px solid #E5E5E5;
-  }
+    ol
+    {
+        list-style: 
+        {
+            position: inside;
 
-  tr:nth-of-type(even) td {
-	background-color : #F0F0F0;
-  }
+            type: decimal;
+        }
+    }
 
-  hr {
-	margin     : 0.5em 0;
-	background : $hr-highlight;
-	color      : transparent;
-	border   : {
-	  style  : solid;
-	  radius : 0.5em;
-	  width  : 0.06em 0 0;
-	  color  : $hr-shadow;
-	}
-  }
+    li > a
+    {
+        display: inline-block;
 
-  a > img {
-	box-shadow    : 0 0 .125em 0 rgba($primary, 0.7);
-	border        : 1px solid $primary;
-	border-radius : 0.25em;
+        margin: .3em 0;
+    }
 
-	&:hover {
-	  box-shadow : 0 0 .25em 1px rgba($primary, 0.8);
-	}
-  }
+    li > p
+    {
+        margin: .3em 0;
+        padding: 0;
+    }
 
-  pre > code {
-	margin        : 1em;
-	display       : block;
-	overflow      : auto;
-	max-height    : 48em;
-	color         : $pre-code-text;
-	padding       : 0.7em 1.2em;
-	background    : rgba($pre-code-bg, 0.4);
-	border        : 1px solid $pre-code-border;
-	border-radius : $base-border-radius;
-	position      : relative;
+    td,
+    th
+    {
+        padding: .25em .5em;
+    }
 
-	&:after {
-	  color       : #F0F0F0;
-	  background  : #6A6A6A;
-	  position    : absolute;
-	  padding     : 0.2em 0.7em;
-	  font-size   : 0.7em;
-	  top         : 0;
-	  right       : 0;
-	  font-family : $base-font-family;
-	  @include border-top-right-radius($base-border-radius);
-	  @include border-bottom-left-radius($base-border-radius);
-	}
-	&.lang-html:after {
-	  content    : 'HTML';
-	  background : #01786F;
-	}
-	&.lang-javascript:after {
-	  content    : 'JavaScript';
-	  background : #E6735C;
-	}
-	&.lang-scss:after {
-	  content    : 'SCSS';
-	  background : #008080;
-	}
-  }
+    th
+    {
+        font-weight: bold;
+
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    tr:nth-of-type(even) td
+    {
+        background-color: #f0f0f0;
+    }
+
+    hr
+    {
+        margin: .5em 0;
+
+        color: transparent;
+        border: 
+        {
+            width: .06em 0 0;
+
+            color: $hr-shadow;
+
+            style: solid;
+            radius: .5em;
+        }
+        background: $hr-highlight;
+    }
+
+    a > img
+    {
+        border: 1px solid $primary;
+        border-radius: .25em;
+        box-shadow: 0 0 .125em 0 rgba($primary, .7);
+
+        &:hover
+        {
+            box-shadow: 0 0 .25em 1px rgba($primary, .8);
+        }
+    }
+
+    pre > code
+    {
+        position: relative;
+
+        display: block;
+        overflow: auto;
+
+        max-height: 48em;
+        margin: 1em;
+        padding: .7em 1.2em;
+
+        color: $pre-code-text;
+        border: 1px solid $pre-code-border;
+        border-radius: $base-border-radius;
+        background: rgba($pre-code-bg, .4);
+
+        &:after
+        {
+            font-family: $base-font-family;
+            font-size: .7em;
+
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            padding: .2em .7em;
+
+            color: #f0f0f0;
+            background: #6a6a6a;
+
+            @include border-top-right-radius($base-border-radius);
+            @include border-bottom-left-radius($base-border-radius);
+        }
+        &.lang-html:after
+        {
+            content: 'HTML';
+
+            background: #01786f;
+        }
+        &.lang-javascript:after
+        {
+            content: 'JavaScript';
+
+            background: #e6735c;
+        }
+        &.lang-scss:after
+        {
+            content: 'SCSS';
+
+            background: #008080;
+        }
+    }
 }

@@ -1,17 +1,18 @@
-## CORE
+CORE
+----
 
-* [UIViewport](#uiviewport)
-* [UIPage](#uipage)
-* [UISection](#uisection)
-* [UIContent](#uicontent)
-* [UISidebar](#uisidebar)
-* [UIToolbar](#uitoolbar)
-* [UIStatsbar](#uistatsbar)
+-	[UIViewport](#uiviewport)
+-	[UIPage](#uipage)
+-	[UISection](#uisection)
+-	[UIContent](#uicontent)
+-	[UISidebar](#uisidebar)
+-	[UIToolbar](#uitoolbar)
+-	[UIStatsbar](#uistatsbar)
 
 Grid Layout
 
-* [UIRow](#uirow)
-* [UIColumn](#uicolumn)
+-	[UIRow](#uirow)
+-	[UIColumn](#uicolumn)
 
 ---
 
@@ -25,7 +26,7 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 <ui-viewport router.bind="Main Router" copyright.bind=? subtitle.bind=?
     show-menu.bind=true|false show-taskbar.bind=true|false logout.trigger=?>
     <!-- Header extras -->
-    
+
     <template replace-part="quick-links">
         <!-- to add buttons to the taskbar -->
     </template>
@@ -40,7 +41,6 @@ router.options = { showAuthentication:boolean, showLogo:boolean }
 
 `showAuthentication`: Controls whether to show login/logout links in the menu
 
-
 Route extra options
 
 ```javascript
@@ -49,7 +49,7 @@ route.settings = { sectionStart:boolean, sectionTitle:string, icon:string }
 ```
 
 ---
-	
+
 ### UIPage
 
 Router view container
@@ -61,7 +61,7 @@ Router view container
 ```
 
 ---
-	    
+
 ### UISection
 
 Define page section, can contain UISidebar, UIContent, UIToolbar, UIStatsbar. Default layout `row`.
@@ -71,10 +71,10 @@ Define page section, can contain UISidebar, UIContent, UIToolbar, UIStatsbar. De
     <!-- content -->
 </ui-section>
 ```
-    
+
 ---
-	    
-### UIContent 
+
+### UIContent
 
 Container for actual page content. Default layout `fill` and `no-scroll`.
 
@@ -85,8 +85,8 @@ Container for actual page content. Default layout `fill` and `no-scroll`.
 ```
 
 ---
-	    
-### UISidebar 
+
+### UISidebar
 
 Sidebar to for content / child router menu. Default width `220px`, not `collapsible`.
 
@@ -97,7 +97,7 @@ Sidebar to for content / child router menu. Default width `220px`, not `collapsi
 ```
 
 ---
-	    
+
 ### UIToolbar
 
 A Toolbar to display buttons, can add custom elements within `ui-column`. Default alignment `flex-end`.
@@ -109,7 +109,7 @@ A Toolbar to display buttons, can add custom elements within `ui-column`. Defaul
 ```
 
 ---
-	    
+
 ### UIStatsbar
 
 A simple bar container to metrical statistics for the view
@@ -119,7 +119,7 @@ A simple bar container to metrical statistics for the view
     <ui-stat label.bind=? value.bind=? icon.bind=?></ui-stat>
 </ui-statsbar>
 ```
-    
+
 ---
 
 ### UIRow
@@ -132,11 +132,11 @@ Flexbox display wrapper, default layout direction `row`
 </ui-row>
 ```
 
---- 
+---
 
 ### UIColumn
 
-Flexed element, default basis `auto`. 
+Flexed element, default basis `auto`.
 
 ```html
 <ui-column auto|fill|fit size=? width='?px'>
@@ -144,12 +144,12 @@ Flexed element, default basis `auto`.
 </ui-column>
 ```
 
-* `auto`: auto fit to content size
-* `fill`: fill available space
-* `full`: wrap if necessary and take 100% space
+-	`auto`: auto fit to content size
+-	`fill`: fill available space
+-	`full`: wrap if necessary and take 100% space
 
 Applicable sizes `xs`,`sm`,`md`,`lg`,`xl` `1-12`.
 
 eg. `size='xl-3 lg-4 md-6'`: 25% width on X-Large, 33.33% width on Large, 50% width on Medium views
 
-----
+---

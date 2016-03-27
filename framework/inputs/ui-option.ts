@@ -8,165 +8,165 @@ import {autoinject, customElement, bindable, useView, bindingMode} from "aurelia
 import {UIEvent} from "../utils/ui-event";
 
 export class UIOption {
-	protected __id = `auf-${__seed++}`;
-	protected __input:Element;
+  protected __id = `auf-${__seed++}`;
+  protected __input: Element;
 
-	protected checked  = false;
-	protected disabled = false;
+  protected checked = false;
+  protected disabled = false;
 
-	constructor(public element:Element) {
-	}
+  constructor(public element: Element) {
+  }
 
-	bind() {
-		this.disabled = isTrue(this.disabled);
-	}
+  bind() {
+    this.disabled = isTrue(this.disabled);
+  }
 
-	attached() {
-		this.disable();
-	}
+  attached() {
+    this.disable();
+  }
 
-	disable(disabled?) {
-		if (this.__input.attributes.getNamedItem('disabled') !== null) {
-			this.__input.attributes.removeNamedItem('disabled');
-		}
-		if (disabled === true || this.disabled === true) {
-			this.__input.attributes.setNamedItem(document.createAttribute('disabled'));
-		}
-	}
+  disable(disabled?) {
+    if (this.__input.attributes.getNamedItem('disabled') !== null) {
+      this.__input.attributes.removeNamedItem('disabled');
+    }
+    if (disabled === true || this.disabled === true) {
+      this.__input.attributes.setNamedItem(document.createAttribute('disabled'));
+    }
+  }
 
-	disabledChanged(newValue) {
-		this.disabled = isTrue(newValue);
-		this.disable();
-	}
+  disabledChanged(newValue) {
+    this.disabled = isTrue(newValue);
+    this.disable();
+  }
 
-	valueChanged($event) {
-		$event.cancelBubble = true;
-		UIEvent.fireEvent('change', this.element, this.checked);
-	}
+  valueChanged($event) {
+    $event.cancelBubble = true;
+    UIEvent.fireEvent('change', this.element, this.checked);
+  }
 }
 
 @autoinject()
 @useView('./ui-option.html')
 @customElement('ui-checkbox')
 export class UICheckbox extends UIOption {
-	__type = 'checkbox';
+  __type = 'checkbox';
 
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable()
-	disabled:boolean = false;
+  @bindable()
+  disabled: boolean = false;
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
-	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:boolean  = false;
+  @bindable({ defaultBindingMode: bindingMode.twoWay })
+  checked: boolean = false;
 
-	constructor(element:Element) {
-		super(element);
-	}
+  constructor(element: Element) {
+    super(element);
+  }
 
-	bind() {
-		super.bind();
-		this.checked = isTrue(this.checked);
-	}
+  bind() {
+    super.bind();
+    this.checked = isTrue(this.checked);
+  }
 
-	attached() {
-		super.attached();
-		this.element.classList.add('ui-checkbox');
-	}
+  attached() {
+    super.attached();
+    this.element.classList.add('ui-checkbox');
+  }
 }
 
 @autoinject()
 @useView('./ui-option.html')
 @customElement('ui-radio')
 export class UIRadio extends UIOption {
-	__type = 'radio';
+  __type = 'radio';
 
 	/**
 	 * @property    value
 	 * @type        string
 	 */
-	@bindable()
-	value:string     = '';
+  @bindable()
+  value: string = '';
 	/**
 	 * @property    disabled
 	 * @type        boolean
 	 */
-	@bindable()
-	disabled:boolean = false;
+  @bindable()
+  disabled: boolean = false;
 	/**
 	 * @property    checked
 	 * @type        boolean
 	 */
-	@bindable({defaultBindingMode: bindingMode.twoWay})
-	checked:any      = '';
+  @bindable({ defaultBindingMode: bindingMode.twoWay })
+  checked: any = '';
 
-	constructor(element:Element) {
-		super(element);
-	}
+  constructor(element: Element) {
+    super(element);
+  }
 
-	attached() {
-		if (!this.element.parentElement.classList.contains('ui-option-group')) {
-			throw new Error('UIRadio must be a child of UIOptionGroup');
-		}
+  attached() {
+    if (!this.element.parentElement.classList.contains('ui-option-group')) {
+      throw new Error('UIRadio must be a child of UIOptionGroup');
+    }
 
-		super.attached();
-		this.element.classList.add('ui-radio');
-	}
+    super.attached();
+    this.element.classList.add('ui-radio');
+  }
 }
 
 @useView('./ui-option-group.html')
 @customElement('ui-option-group')
 export class UIOptionGroup {
-	private __label:Element;
+  private __label: Element;
 
-	private __name = `auf-${__seed++}`;
+  private __name = `auf-${__seed++}`;
 
 	/**
 	 * @property    label
 	 * @type        string
 	 */
-	@bindable()
-	label:string = '';
+  @bindable()
+  label: string = '';
 	/**
 	 * @property    name
 	 * @type        string
 	 */
-	@bindable()
-	name:string  = '';
+  @bindable()
+  name: string = '';
 	/**
 	 * @property    value
 	 * @type        string
 	 */
-	@bindable({defaultBindingMode: bindingMode.twoWay})
-	value:string;
+  @bindable({ defaultBindingMode: bindingMode.twoWay })
+  value: string;
 
-	constructor(public element:Element) {
-	}
+  constructor(public element: Element) {
+  }
 
-	attached() {
-		// Need to iterate to all inputs to set the name
-		setTimeout(()=> {
-			let radios = this.element.querySelectorAll('.ui-radio .ui-option-input');
-			_.forEach(radios, (b:HTMLInputElement)=> {
-				b.setAttribute('name', this.name || this.__name);
-				if (this.value + '' === b.value + '')b.setAttribute('checked', "true");
-			});
-		}, 200);
-		if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
-	}
+  attached() {
+    // Need to iterate to all inputs to set the name
+    setTimeout(() => {
+      let radios = this.element.querySelectorAll('.ui-radio .ui-option-input');
+      _.forEach(radios, (b: HTMLInputElement) => {
+        b.setAttribute('name', this.name || this.__name);
+        if (this.value + '' === b.value + '') b.setAttribute('checked', "true");
+      });
+    }, 200);
+    if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
+  }
 
-	valueChanged(newValue) {
-		let opt = this.element.querySelector(`.ui-option-input[value="${newValue}"]`);
-		if (opt)opt.setAttribute('checked', 'true');
-	}
+  valueChanged(newValue) {
+    let opt = this.element.querySelector(`.ui-option-input[value="${newValue}"]`);
+    if (opt) opt.setAttribute('checked', 'true');
+  }
 
-	checkChanged($event) {
-		this.value          = $event.detail;
-		$event.cancelBubble = true;
-		UIEvent.fireEvent('change', this.element, this.value);
-	}
+  checkChanged($event) {
+    this.value = $event.detail;
+    $event.cancelBubble = true;
+    UIEvent.fireEvent('change', this.element, this.value);
+  }
 }

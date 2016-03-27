@@ -16,44 +16,44 @@ export class UIMenu {
 	 * @property    router
 	 * @type        Aurelia Router
 	 */
-	@bindable()
-	router:Router;
+  @bindable()
+  router: Router;
 	/**
 	 * @property    menu
 	 * @type        Array of links
 	 */
-	@bindable()
-	menu:Array<any> = [];
+  @bindable()
+  menu: Array<any> = [];
 
-	constructor(public element:Element, public appState:UIApplication) {
-	}
+  constructor(public element: Element, public appState: UIApplication) {
+  }
 
-	bind() {
-		for (var i = 0, c = (<HTMLElement>this.element).children; i < c.length; i++) {
-			if (c[i].tagName.toLowerCase() === 'menu') {
-				this.menu.push({
-								   id  : c[i].getAttribute('id'),
-								   text: c[i].textContent,
-								   icon: c[i].getAttribute('icon'),
-								   href: c[i].getAttribute('href') || 'javascript:;',
-							   });
-			}
-			if (c[i].tagName.toLowerCase() === 'section') this.menu.push(c[i].textContent);
-			if (c[i].tagName.toLowerCase() === 'divider') this.menu.push('-');
-		}
-	}
+  bind() {
+    for (var i = 0, c = (<HTMLElement>this.element).children; i < c.length; i++) {
+      if (c[i].tagName.toLowerCase() === 'menu') {
+        this.menu.push({
+          id: c[i].getAttribute('id'),
+          text: c[i].textContent,
+          icon: c[i].getAttribute('icon'),
+          href: c[i].getAttribute('href') || 'javascript:;',
+        });
+      }
+      if (c[i].tagName.toLowerCase() === 'section') this.menu.push(c[i].textContent);
+      if (c[i].tagName.toLowerCase() === 'divider') this.menu.push('-');
+    }
+  }
 
-	isActive(route) {
-		return route.isActive || route.href == location.hash ||
-			location.hash.indexOf(route.config.redirect || 'QWER') > -1;
-	}
+  isActive(route) {
+    return route.isActive || route.href == location.hash ||
+      location.hash.indexOf(route.config.redirect || 'QWER') > -1;
+  }
 
-	onClick($event) {
-		if (this.router) return true;
-		$event.preventDefault();
-		$event.cancelBubble=true;
-		let link = getParentByClass($event.target, 'ui-menu-link', 'ui-menu');
-		if (link !== null) UIEvent.fireEvent('menu', this.element, link.dataset['id']);
-		return false;
-	}
+  onClick($event) {
+    if (this.router) return true;
+    $event.preventDefault();
+    $event.cancelBubble = true;
+    let link = getParentByClass($event.target, 'ui-menu-link', 'ui-menu');
+    if (link !== null) UIEvent.fireEvent('menuclick', this.element, link.dataset['id']);
+    return false;
+  }
 }

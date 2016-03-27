@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "../../framework/index", "fetch"], function (require, exports, aurelia_framework_1, aurelia_fetch_client_1, index_1) {
+define(["require", "exports", "aurelia-framework", "../../framework/index", "fetch"], function (require, exports, aurelia_framework_1, index_1) {
     "use strict";
     var ReadMe = (function () {
         function ReadMe(httpClient) {
@@ -17,8 +17,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "../.
         ReadMe.prototype.activate = function () {
             var _this = this;
             return this.httpClient
-                .fetch('./framework/utils/README.md')
-                .then(function (resp) { return resp.text(); })
+                .text('./src/utils/README.md')
                 .then(function (resp) { return _this.readme = resp; });
         };
         ReadMe.prototype.attached = function () {
@@ -34,7 +33,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "../.
         ReadMe = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.inlineView('<template><div ref="__content" class="ui-markdown" innerhtml.bind="readme | markdown"></div></template>'), 
-            __metadata('design:paramtypes', [aurelia_fetch_client_1.HttpClient])
+            __metadata('design:paramtypes', [index_1.UIHttpService])
         ], ReadMe);
         return ReadMe;
     }());

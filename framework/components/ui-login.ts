@@ -14,71 +14,71 @@ import {UIApplication} from "../utils/ui-application";
 @autoinject()
 @customElement('ui-login')
 export class UILogin {
-	model:LoginModel;
+  model: LoginModel;
 
-	__temp;
-	__content;
+  __temp;
+  __content;
 
-	@bindable
-	error:string;
-	@bindable
-	busy:boolean = false;
+  @bindable
+  error: string;
+  @bindable
+  busy: boolean = false;
 
-	constructor(public element:Element, public appState:UIApplication) {
-		this.model = new LoginModel();
-	}
+  constructor(public element: Element, public appState: UIApplication) {
+    this.model = new LoginModel();
+  }
 
-	attached() {
-		if (this.model.remember === true) this.doLogin();
+  attached() {
+    if (this.model.remember === true) this.doLogin();
 
-		this.__content.appendChild(this.__temp);
-	}
+    this.__content.appendChild(this.__temp);
+  }
 
-	doLogin() {
-		this.error = '';
-		this.model.validate()
-			.then(()=> {
-				UIEvent.fireEvent('login', this.element, this.model);
-			})
-			.catch(e=> {
-			});
-	}
+  doLogin() {
+    this.error = '';
+    this.model.validate()
+      .then(() => {
+      UIEvent.fireEvent('login', this.element, this.model);
+    })
+      .catch(e=> {
+    });
+  }
 }
 
 @transient()
 @autoinject()
 export class LoginModel extends UIModel {
 
-	username:string = '';
-	password:string = '';
+  username: string = '';
+  password: string = '';
 
-	remember:boolean = false;
+  remember: boolean = false;
 
-	appState:UIApplication;
+  appState: UIApplication;
 
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		let _u, _p;
-		this.appState = UIUtils.lazy(UIApplication);
-		if ((_u = this.appState.persist('AppUsername')) !== null) {
-			this.username = _u;
-		}
-		if ((_p = this.appState.persist('AppPassword')) !== null) {
-			this.password = _p;
-			this.remember = true;
-		}
+    let _u, _p;
+    this.appState = UIUtils.lazy(UIApplication);
+    if ((_u = this.appState.persist('AppUsername')) !== null) {
+      this.username = _u;
+    }
+    if ((_p = this.appState.persist('AppPassword')) !== null) {
+      this.password = _p;
+      this.remember = true;
+    }
 
-		this.validation
-			.ensure('username', null)
-			.isNotEmpty()
-			.isEmail()
-			.ensure('password', null)
-			.isNotEmpty();
-	}
+    this.validation
+      .ensure('username', null)
+      .isNotEmpty()
+      .isEmail()
+      .ensure('password', null)
+      .isNotEmpty();
+  }
 
-	save() {
-		this.appState.persist('AppUsername', this.username);
-		this.appState.persist('AppPassword', this.remember ? this.password : null);
-	}
+  save() {
+    this.appState.persist('AppUsername', this.username);
+    this.appState.persist('AppPassword', this.remember ? this.password : null);
+  }
 }

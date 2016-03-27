@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../framework/index", "./my-dialog", "../../framework/utils/ui-http-service"], function (require, exports, aurelia_validation_1, aurelia_framework_1, index_1, my_dialog_1, ui_http_service_1) {
+define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../framework/index", "./my-dialog", "fetch"], function (require, exports, aurelia_validation_1, aurelia_framework_1, index_1, my_dialog_1) {
     "use strict";
     var Home = (function () {
         function Home(_validation, appState, dialogService, httpClient) {
@@ -35,12 +35,12 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
                 email: '', lat: null, long: null
             };
             this.ctry = 'AE';
-            this.md = "\n# Hello World\n\n##### I _Love_ ~~HTML~~ __Markdown__!\n\n---\n\nI can be __BOLD__, I can also be _ITALIC_, or you can ~~DELETE~~ me too!\n\nLook at me I'm a list\n\n* Item\n* Item\n* Item\n\nAnd I'm numbered\n\n1. Item\n2. Item\n3. Item\n\nI can also be a link [Click Me](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or show the whole url http://google.com\n\n![Image](images/heart.png) Dont you just love images!\n\n\n";
             this.treeOpts = new index_1.UITreeOptions({
                 showCheckbox: true,
                 selectionLevel: 0
             });
-            this.data = [{
+            this.data = [
+                {
                     id: 1,
                     FName: 'Leroy',
                     LName: 'Gibbs',
@@ -171,6 +171,12 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
             });
             this.treeModel = ct;
         }
+        Home.prototype.canActivate = function (model) {
+            var _this = this;
+            return this.httpClient
+                .text('./src/home/example.md')
+                .then(function (resp) { return _this.md = resp; });
+        };
         Home.prototype.onSubmit = function () {
             this.validation.validate()
                 .then(function () {
@@ -181,12 +187,12 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
         Home.prototype.getError = function (code) {
             var _this = this;
             if (code == 404) {
-                this.httpClient.get('https://api.hmcoffers.com/api/picks/all/Mosaic/PCME')
+                this.httpClient.get('./test404.html')
                     .then(function (resp) { return _this.__page.toast('Success'); })
                     .catch(function (e) { return _this.__page.toast(e.message); });
             }
             if (code == 400) {
-                this.httpClient.get('https://api.hmcoffers.com/api/picks/Mosaic/PCME')
+                this.httpClient.post('https://api.hmcoffers.com/api/login', {})
                     .then(function (resp) { return _this.__page.toast('Success'); })
                     .catch(function (e) { return _this.__page.toast(e.message); });
             }
@@ -240,7 +246,7 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
         };
         Home = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [aurelia_validation_1.Validation, index_1.UIApplication, index_1.UIDialogService, ui_http_service_1.UIHttpService])
+            __metadata('design:paramtypes', [aurelia_validation_1.Validation, index_1.UIApplication, index_1.UIDialogService, index_1.UIHttpService])
         ], Home);
         return Home;
     }());

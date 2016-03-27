@@ -1,16 +1,17 @@
-## INPUTS
+INPUTS
+------
 
-* [UIButton](#uibutton)
-* [UIButtonGroup](#uibuttongroup)
-* [UISwitch](#uiswitch)
-* [UICheckbox](#uicheckbox)
-* [UIRadio](#uiradio)
-* [UIOptionGroup](#uioptiongroup)
-* [UIInput](#uiinput)
-* [UIPhone](#uiphone)
-* [UIInputDual](#uiinputdual)
-* [UITextArea](#uitextarea)
-* [UIMarkdown](#uimarkdown)
+-	[UIButton](#uibutton)
+-	[UIButtonGroup](#uibuttongroup)
+-	[UISwitch](#uiswitch)
+-	[UICheckbox](#uicheckbox)
+-	[UIRadio](#uiradio)
+-	[UIOptionGroup](#uioptiongroup)
+-	[UIInput](#uiinput)
+-	[UIPhone](#uiphone)
+-	[UIInputDual](#uiinputdual)
+-	[UITextArea](#uitextarea)
+-	[UIMarkdown](#uimarkdown)
 
 ---
 
@@ -18,11 +19,11 @@
 
 ```html
 <ui-button icon.bind=? label.bind=? disabled.bind=? click.trigger=?
-    (theme) primary|info|danger|success|warning 
+    (theme) primary|info|danger|success|warning
     (size) normal|small|large
     (icon-align) left|top
     (style) normal|round|square>
-    
+
     <!-- menu options for dropdown buttons -->
 </ui-button>
 ```
@@ -35,14 +36,14 @@ If `disabled | theme` set on button group, it will override the properties of in
 
 ```html
 <ui-button-group value.bind=? disabled.bind=? change.trigger=?
-    
+
     toggle.bind="single|multiple" // Enable toggle
-    
-    (theme for toggle) primary|info|danger|success|warning 
+
+    (theme for toggle) primary|info|danger|success|warning
     (size) normal|small|large
     (icon-align) left|top
     (style) normal|round|square>
-    
+
     <!-- ui-button value.bind=? -->
 </ui-button>
 ```
@@ -53,13 +54,13 @@ If `disabled | theme` set on button group, it will override the properties of in
 
 ```html
 <ui-switch checked.bind=? disabled.bind=? change.trigger=?
-    (theme) primary|info|danger|success|warning 
+    (theme) primary|info|danger|success|warning
     label-on=? label-off=? width='?'>
     <!-- Label text -->
 </ui-switch>
 ```
 
-* width must be in `em` units
+-	width must be in `em` units
 
 ---
 
@@ -85,7 +86,7 @@ UIOptionGroup as parent container is mandatory
 </ui-radio>
 ```
 
-----
+---
 
 ### UIOptionGroup
 
@@ -97,7 +98,7 @@ UIOptionGroup as parent container is mandatory
 </ui-option-group>
 ```
 
-----
+---
 
 ### UIInput
 
@@ -107,42 +108,49 @@ UIOptionGroup as parent container is mandatory
 
 Attributes common to all input elements except checkbox/radio
 
+-	Singular attributes
 
-* Singular attributes
+	-	`checkbox`: add a checkbox to enable/disable input
 
-    * `checkbox`: add a checkbox to enable/disable input
-    
-    * `label-hide`: hide the label
-   
-    * `label-top`: place label label above the input control
+	-	`label-hide`: hide the label
 
-* Bindable attributes
+	-	`label-top`: place label label above the input control
 
-    * `dir`: not applicable to phone input
+-	Bindable attributes
 
-    * `disabled`
-    
-    * `readonly`
-    
-    * `placeholder`
-    
-    * `checked`: available only if checkbox is enabled
-    
-    * `help-text`: text to be displayed below the input field
-    
-    * `prefix-icon`: Add-On prefix icon 
-    
-    * `prefix-text`: Add-On prefix text
-    
-    * `suffix-icon`: Add-On suffix icon 
-    
-    * `suffix-text`: Add-On suffix text
-    
-    * `button-icon`: Add-On button icon 
-    
-    * `button-text`: Add-On button text
+	-	`dir`: not applicable to phone input
 
-----
+	-	`disabled`
+
+	-	`readonly`
+
+	-	`placeholder`
+
+	-	`checked`: available only if checkbox is enabled
+
+	-	`help-text`: text to be displayed below the input field
+
+	-	`prefix-icon`: Add-On prefix icon
+
+	-	`prefix-text`: Add-On prefix text
+
+	-	`suffix-icon`: Add-On suffix icon
+
+	-	`suffix-text`: Add-On suffix text
+
+	-	`button-icon`: Add-On button icon
+
+	-	`button-text`: Add-On button text
+
+-	Events
+
+	-	`checked.trigger`
+
+	-	`buttonclick.trigger`
+
+	-	`change.trigger`
+
+---
 
 ### UIPhone
 
@@ -151,17 +159,17 @@ Attributes common to all input elements except checkbox/radio
     value.bind=? isd-code.bind=? area-code.bind=? phone.bind=? extension.bind=?>Label</ui-phone>
 ```
 
-* All input attributes are applicable except input type
+-	All input attributes are applicable except input type
 
-* `international`: accept full phone input, including ISD code
+-	`international`: accept full phone input, including ISD code
 
-* `national`: requires the country to be set else defaults to US phone format and validation
+-	`national`: requires the country to be set else defaults to US phone format and validation
 
-* `country`: ISO-2 standard country code
+-	`country`: ISO-2 standard country code
 
-* `value`: Full unformatted phone number. eg. +15551234567,123
+-	`value`: Full unformatted phone number. eg. +15551234567,123
 
-----
+---
 
 ### UIInputDual
 
@@ -169,7 +177,7 @@ Attributes common to all input elements except checkbox/radio
 <ui-input-dual value-second.bind=? placeholder-second.bind=?>Label</ui-input-dual>
 ```
 
-----
+---
 
 ### UITextArea
 
@@ -177,13 +185,14 @@ Attributes common to all input elements except checkbox/radio
 <ui-textarea rows.bind=?>Label</ui-textarea>
 ```
 
-----
+---
 
 ### UIMarkDown
 
 ```html
-<ui-markdown full-view rows.bind=? value.bind=? dir.bind=? 
+<ui-markdown full-view rows.bind=? value.bind=? dir.bind=?
     placeholder=? disabled.bind=? readonly.bind=?>Label</ui-markdown>
 ```
 
-* `full-view` will stretch the editor to fill the page, tab/body body
+-	`full-view` will stretch the editor to fill the page, tab/body body
+-	`side-view` will place the editor and preview side-by-side

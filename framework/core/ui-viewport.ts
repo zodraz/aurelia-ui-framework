@@ -18,45 +18,45 @@ export class UIViewport {
 	 * @property    router
 	 * @type        Aurelia Router
 	 */
-	@bindable()
-	router:Router;
+  @bindable()
+  router: Router;
 
 
-	@bindable()
-	subtitle:string     = '';
-	@bindable()
-	copyright:string    = '';
-	@bindable()
-	showMenu:boolean    = true;
-	@bindable()
-	showTaskbar:boolean = true;
+  @bindable()
+  subtitle: string = '';
+  @bindable()
+  copyright: string = '';
+  @bindable()
+  showMenu: boolean = true;
+  @bindable()
+  showTaskbar: boolean = true;
 
-	constructor(public element:Element, public appState:UIApplication, container:Container) {
-		UIUtils.container(container);
-		this.appState.info(this.constructor.name, "UIViewport Created");
-	}
+  constructor(public element: Element, public appState: UIApplication, container: Container) {
+    UIUtils.container(container);
+    this.appState.info(this.constructor.name, "UIViewport Created");
+  }
 
-	bind() {
-		this.showMenu    = isTrue(this.showMenu);
-		this.showTaskbar = isTrue(this.showTaskbar);
-	}
+  bind() {
+    this.showMenu = isTrue(this.showMenu);
+    this.showTaskbar = isTrue(this.showTaskbar);
+  }
 
-	__showMenu($event) {
-		$event.stopPropagation();
-		this.element.classList.add('show-menu');
-		this.appState.info(this.constructor.name, "showMenu");
-	}
+  __showMenu($event) {
+    $event.stopPropagation();
+    this.element.classList.add('show-menu');
+    this.appState.info(this.constructor.name, "showMenu");
+  }
 
-	__hideMenu($event) {
-		if (this.element.classList.contains('show-menu')) {
-			this.appState.info(this.constructor.name, "hideMenu");
-			this.element.classList.remove('show-menu');
-		}
-		return true;
-	}
+  __hideMenu($event) {
+    if (this.element.classList.contains('show-menu')) {
+      this.appState.info(this.constructor.name, "hideMenu");
+      this.element.classList.remove('show-menu');
+    }
+    return true;
+  }
 
-	logout() {
-		this.appState.info(this.constructor.name, "fire logout event");
-		UIEvent.fireEvent('logout', this.element);
-	}
+  logout() {
+    this.appState.info(this.constructor.name, "fire logout event");
+    UIEvent.fireEvent('logout', this.element);
+  }
 }

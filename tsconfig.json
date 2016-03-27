@@ -1,5 +1,6 @@
 {
   "filesGlob": [
+    "main.ts",
     "src/**/*.ts",
     "framework/**/*.ts",
     "jspm_packages/npm/aurelia*/**/*.ts"
@@ -9,7 +10,7 @@
   },
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "amd",
     "declaration": false,
     "noImplicitAny": false,
     "removeComments": true,
@@ -18,6 +19,7 @@
     "noLib": false
   },
   "files": [
+    "main.ts",
     "src/app.ts",
     "src/components/readme.ts",
     "src/components/view.ts",

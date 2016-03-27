@@ -32,7 +32,7 @@ var tsProject = ts.createProject({
 									 noExternalResolve: true,
 									 sortOutput: true,
 									 target: 'ES5',
-									 module: 'commonjs',
+									 module: 'amd',
 									 noImplicitAny: false,
 									 removeComments: true,
 									 emitDecoratorMetadata: true,

@@ -1,22 +1,22 @@
-## UTILS
+UTILS
+-----
 
-* [Global Methods](#global-methods)
-* [UIApplication](#uiapplication)
-* [UIHttpService](#uihttpservice)
-* [UIModel](#uimodel)
-* [UIValidationStrategy](#uivalidationstrategy)
-* [UIConverters](#uiconverters)
-    * [Value Converters](#__value-converters__)
-    * [Repeat Converters](#__repeat-converters__)
-    * [If Converters](#__if-converters__)
-* [UIFormat](#uiformat)
-* [UIEvent](#uievent)
-* [UIUtils](#uiutils)
-
+-	[Global Methods](#global-methods)
+-	[UIApplication](#uiapplication)
+-	[UIHttpService](#uihttpservice)
+-	[UIModel](#uimodel)
+-	[UIValidationStrategy](#uivalidationstrategy)
+-	[UIConverters](#uiconverters)
+	-	[Value Converters](#__value-converters__)
+	-	[Repeat Converters](#__repeat-converters__)
+	-	[If Converters](#__if-converters__)
+-	[UIFormat](#uiformat)
+-	[UIEvent](#uievent)
+-	[UIUtils](#uiutils)
 
 ---
-	
-### Global Properties/Methods ###
+
+### Global Properties/Methods
 
 ```javascript
 // Global Constants Object attached to Window
@@ -38,8 +38,8 @@ window.getParentByClass(element:Element, selector:string, lastElement?:string):H
 ```
 
 ---
-	
-### UIApplication ###
+
+### UIApplication
 
 Singleton class for application level settings and methods
 
@@ -108,7 +108,7 @@ error(tag, message, ...args?)
 
 ---
 
-### UIHttpService ###
+### UIHttpService
 
 ```javascript
 
@@ -138,97 +138,108 @@ delete(api-route):Promise
 ```
 
 ---
-	
-### UIConverters ###
 
-##### __Value Converters__
+### UIConverters
 
-_MarkdownValueConverter_ 
+##### **Value Converters**
+
+*MarkdownValueConverter*
+
 ```html
 <div>${markdownText | markdown}</div>
 ```
-    
-_DateValueConverter_ 
+
+*DateValueConverter*
+
 ```html
 <div>${value | date:'format?'}</div>
 ```
 
-_FromNowValueConverter_
+*FromNowValueConverter*
+
 ```html
 <div>${value | formNow}</div>
 ```
 
-_NumberValueConverter_
+*NumberValueConverter*
+
 ```html
 <div>${value | number:'format?'}</div>
 ```
 
-_CurrencyValueConverter_
+*CurrencyValueConverter*
+
 ```html
 <div>${value | currency:'symbol?':'format?'}</div>
 ```
 
-_PercentValueConverter_
+*PercentValueConverter*
+
 ```html
 <div>${value | percent}</div>
 ```
 
-_JsonValueConverter_
+*JsonValueConverter*
+
 ```html
 <div>${value | json}</div>
 ```
 
+##### **Repeat Converters**
 
+*KeysValueConverter*
 
-##### __Repeat Converters__
-
-_KeysValueConverter_
 ```html
 <div repeat.for="key of object | keys"></div>
 ```
 
-_GroupValueConverter_
+*GroupValueConverter*
+
 ```html
 <div repeat.for="key of object | group:'property'"></div>
 ```
 
-_SortValueConverter_
+*SortValueConverter*
+
 ```html
 <div repeat.for="key of object | sort:'property'"></div>
 ```
 
-	
+##### **If Converters**
 
-##### __If Converters__
+*IsTrueValueConverter*
 
-_IsTrueValueConverter_
 ```html
 <div if.bind="value | isTrue"></div>
 ```
 
-_IsFalseValueConverter_
+*IsFalseValueConverter*
+
 ```html
 <div if.bind="value | isFalse"></div>
 ```
 
-_IsStringValueConverter_
+*IsStringValueConverter*
+
 ```html
 <div if.bind="value | isString"></div>
 ```
-    
-_IsObjectValueConverter_
+
+*IsObjectValueConverter*
+
 ```html
 <div if.bind="value | isObject"></div>
 ```
 
-_IsArrayValueConverter_
+*IsArrayValueConverter*
+
 ```html
 <div if.bind="value | isArray"></div>
 ```
 
 ---
-	
-### UIFormat ###
+
+### UIFormat
 
 ```javascript
 // parse markdown text into HTML markup, uses marked js library
@@ -254,8 +265,8 @@ UIFormat.percent(value):string
 ```
 
 ---
-	
-### UIEvent ###
+
+### UIEvent
 
 ```javascript
 // fire an event
@@ -272,8 +283,8 @@ UIEvent.observe(object,property):PropertyObserver
 ```
 
 ---
-	
-### UIUtils ###
+
+### UIUtils
 
 ```javascript
 // set the container on app startup to support lazy loading

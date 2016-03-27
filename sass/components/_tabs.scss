@@ -5,65 +5,91 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-tab-panel {
-  position : absolute;
-  width    : 100%;
-  top      : 0;
-  bottom   : 0;
-  @include flex-column();
+.ui-tab-panel
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
 
-  .ui-tab-header {
-	overflow      : visible;
-	min-height    : 2.5em;
-	border-bottom : 1px solid $primary;
-	@include flex(0 0 auto);
-	@include flex-row($align : flex-end, $justify : flex-start);
+    width: 100%;
 
-	.ui-tab {
-	  @include flex(0 0 auto);
-	  @include text-truncate();
-	  @include border-top-radius($base-border-radius);
-	  text-align  : center;
-	  display     : inline-block;
-	  max-width   : 10em;
-	  padding     : 0.3em 0.75em;
-	  margin-left : 0.5em;
-	  color       : $tab-text;
-	  background  : $tab-bg;
-	  border  : {
-		width : 0.3em 1px 0;
-		style : solid;
-		color : $tab-border;
-	  }
-	  font-weight : $font-weight-normal;
+    @include flex-column();
 
-	  &:hover {
-		padding          : 0.4em 0.75em;
-		border-top-color : rgba($tab-active-border, 0.65);
-	  }
-	  &.ui-active {
-		padding       : 0.5em 0.75em;
-		margin-bottom : -1px;
-		border-color  : $tab-active-border;
-		font-weight   : $font-weight-strong;
-		background    : $tab-active-bg;
-		color         : $tab-active-text;
-	  }
-	}
-  }
+    .ui-tab-header
+    {
+        overflow: visible;
 
-  .ui-tab-body {
-	position : relative;
-	@include flex(1 1 0);
-	.ui-tab-content {
-	  position : absolute;
-	  width    : 100%;
-	  top      : 0;
-	  bottom   : 0;
+        min-height: 2.5em;
 
-	  &:not(.ui-active) {
-		display : none;
-	  }
-	}
-  }
+        border-bottom: 1px solid $primary;
+
+        @include flex(0 0 auto);
+        @include flex-row($align: flex-end, $justify : flex-start);
+
+        .ui-tab
+        {
+            font-weight: $font-weight-normal;
+
+            display: inline-block;
+
+            max-width: 10em;
+            margin-left: .5em;
+            padding: .3em .75em;
+
+            text-align: center;
+
+            color: $tab-text;
+            border: 
+            {
+                width: .3em 1px 0;
+
+                color: $tab-border;
+
+                style: solid;
+            }
+            background: $tab-bg;
+
+            @include flex(0 0 auto);
+            @include text-truncate();
+            @include border-top-radius($base-border-radius);
+
+            &:hover
+            {
+                padding: .4em .75em;
+
+                border-top-color: rgba($tab-active-border, .65);
+            }
+            &.ui-active
+            {
+                font-weight: $font-weight-strong;
+
+                margin-bottom: -1px;
+                padding: .5em .75em;
+
+                color: $tab-active-text;
+                border-color: $tab-active-border;
+                background: $tab-active-bg;
+            }
+        }
+    }
+
+    .ui-tab-body
+    {
+        position: relative;
+
+        @include flex(1 1 0);
+        .ui-tab-content
+        {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+
+            width: 100%;
+
+            &:not(.ui-active)
+            {
+                display: none;
+            }
+        }
+    }
 }

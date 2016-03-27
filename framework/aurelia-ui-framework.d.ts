@@ -1,249 +1,254 @@
 declare module "aurelia-ui-framework" {
-	import * as _ from "lodash";
-	import * as moment from "moment";
-	import * as numeral from "numeral";
+  import * as _ from "lodash";
+  import * as moment from "moment";
+  import * as numeral from "numeral";
 
-	export var _:_.LoDashStatic;
-	export var moment:moment.MomentStatic;
-	export var numeral:numeral.Numeral;
+  export var _: _.LoDashStatic;
+  export var moment: moment.MomentStatic;
+  export var numeral: numeral.Numeral;
 }
 
 /** CORE **/
 declare module "aurelia-ui-framework" {
-	import {ValidationGroup} from "aurelia-validation";
-	import {Logger} from "aurelia-logging";
+  import {ValidationGroup} from "aurelia-validation";
+  import {Logger} from "aurelia-logging";
 
-	export class UIDialog {
-		close();
-		focus();
-		toast(config);
-	}
+  export class UIDialog {
+    close();
+    focus();
+    toast(config);
+  }
 
-	export class UIModel {
-		logger:Logger;
-		httpClient:UIHttpService;
-		validation:ValidationGroup;
-		observers:any;
+  export class UIModel {
+    logger: Logger;
+    httpClient: UIHttpService;
+    validation: ValidationGroup;
+    observers: any;
 
-		get(...rest);
+    get(...rest);
 
-		post(...rest);
+    post(...rest);
 
-		put(...rest);
+    put(...rest);
 
-		delete(...rest);
+    delete(...rest);
 
-		deserialize(json:any);
+    deserialize(json: any);
 
-		serialize():any;
+    serialize(): any;
 
-		saveChanges();
+    saveChanges();
 
-		discardChanges();
+    discardChanges();
 
-		isDirty():boolean;
+    isDirty(): boolean;
 
-		dispose();
-	}
-	export class UITreeOptions {
-		maxLevels:number;
+    dispose();
+  }
+  export class UITreeOptions {
+    maxLevels: number;
 
-		// show checkboxes
-		showCheckbox:boolean;
-		// show checkbox only at ? level, -1/null all levels
-		checkboxLevel:number;
+    // show checkboxes
+    showCheckbox: boolean;
+    // show checkbox only at ? level, -1/null all levels
+    checkboxLevel: number;
 
-		showRoot:boolean;
-		rootLabel:string;
+    showRoot: boolean;
+    rootLabel: string;
 
-		selectionLevel:number;
+    selectionLevel: number;
 
-		constructor(obj?);
-	}
-	export class UIDialogService {
-		show<UIDialog>(viewModel:UIDialog, model?:any);
-	}
+    constructor(obj?);
+  }
+  export class UIDialogService {
+    show<UIDialog>(viewModel: UIDialog, model?: any);
+  }
 
-	export class UIForm {
-		getForm():HTMLFormElement;
-	}
+  export class UIForm {
+    getForm(): HTMLFormElement;
+  }
 
-	export class UILanguage {
-		static LANGUAGES;
-	}
+  export class UILanguage {
+    static LANGUAGES;
+  }
 }
 
 /** UTILS **/
 declare module "aurelia-ui-framework" {
-	import {Container, PropertyObserver} from "aurelia-framework";
-	import {Subscription} from "aurelia-event-aggregator";
+  import {Container, PropertyObserver} from "aurelia-framework";
+  import {Subscription} from "aurelia-event-aggregator";
 
-	// Application State Class
-	export class UIApplication {
+  // Application State Class
+  export class UIApplication {
 
-		static defaults;
+    static defaults;
 
-		IsHttpInUse:boolean;
-		IsAuthenticated:boolean;
-		SendAuthHeader:boolean;
+    IsHttpInUse: boolean;
+    IsAuthenticated: boolean;
+    SendAuthHeader: boolean;
 
-		AppConfig:AppConfig;
-		HttpConfig:HttpConfig;
+    AppConfig: AppConfig;
+    HttpConfig: HttpConfig;
 
-		Username:string;
-		UserGroup:string;
-		UserGroupLabel:string;
+    Username: string;
+    UserGroup: string;
+    UserGroupLabel: string;
 
-		AuthUser:string;
-		AuthToken:string;
+    AuthUser: string;
+    AuthToken: string;
 
-		navigate(hash):void;
+    navigate(hash): void;
 
-		navigateTo(route, params?):void;
+    navigateTo(route, params?): void;
 
-		session(key, value?):any;
+    session(key, value?): any;
 
-		clearSession():void;
+    clearSession(): void;
 
-		persist(key, value?):any;
+    persist(key, value?): any;
 
-		info(tag:string, msg:string, ...rest);
+    info(tag: string, msg: string, ...rest);
 
-		warn(tag:string, msg:string, ...rest);
+    warn(tag: string, msg: string, ...rest);
 
-		debug(tag:string, msg:string, ...rest);
+    debug(tag: string, msg: string, ...rest);
 
-		error(tag:string, msg:string, ...rest);
+    error(tag: string, msg: string, ...rest);
 
-		toast(config:any);
+    toast(config: any);
 
-		toastError(config:any);
+    toastError(config: any);
 
-		toastSuccess(config:any);
-	}
+    toastSuccess(config: any);
+  }
 
-	export class AuthInterceptor {
-	}
+  export class AuthInterceptor {
+  }
 
-	export interface AppConfig {
-		// App Key - Relative Path | URL
-		Key:string;
-		// App Title
-		Title:string;
-		// App Version
-		Version:string;
-	}
-	export interface HttpConfig {
-		BaseUrl:string;
-		Headers:Map<string,string>;
-		AuthorizationHeader:boolean;
-	}
+  export class UIValidationStrategy {
+  }
 
-	export class UIHttpService {
-		get(slug:string):Promise<any>;
+  export interface AppConfig {
+    // App Key - Relative Path | URL
+    Key: string;
+    // App Title
+    Title: string;
+    // App Version
+    Version: string;
+  }
+  export interface HttpConfig {
+    BaseUrl: string;
+    Headers: Map<string, string>;
+    AuthorizationHeader: boolean;
+  }
 
-		post(slug:string, body:any):Promise<any>;
+  export class UIHttpService {
+    get(slug: string): Promise<any>;
 
-		put(slug:string, body:any):Promise<any>;
+    text(slug: string): Promise<any>;
 
-		delete(slug:string):Promise<any>;
+    post(slug: string, body: any): Promise<any>;
 
-		upload(slug:string, form:HTMLFormElement):Promise<any>;
+    put(slug: string, body: any): Promise<any>;
 
-		reupload(slug:string, form:HTMLFormElement):Promise<any>;
-	}
+    delete(slug: string): Promise<any>;
 
-	// Utilities
-	export module UIUtils {
-		export function container(container:Container);
+    upload(slug: string, form: HTMLFormElement): Promise<any>;
 
-		export function lazy(T:any):any;
+    reupload(slug: string, form: HTMLFormElement): Promise<any>;
+  }
 
-		export function compileView(markup:string, container:Element, vm?);
+  // Utilities
+  export module UIUtils {
+    export function container(container: Container);
 
-		export function showToast(container, config);
+    export function lazy(T: any): any;
 
-		export function getAscii(str):string;
-	}
-	// Event Utility
-	export module UIEvent {
-		export function fireEvent(event:string,
-								  element:EventTarget,
-								  data?:any):any;
+    export function compileView(markup: string, container: Element, vm?);
 
-		export function observe(object, property);
+    export function showToast(container, config);
 
-		export function broadcast(event, data?):PropertyObserver;
+    export function getAscii(str): string;
+  }
+  // Event Utility
+  export module UIEvent {
+    export function fireEvent(event: string,
+      element: EventTarget,
+      data?: any): any;
 
-		export function subscribe(event, callback):Subscription;
-	}
-	// Formatter
-	export module UIFormat {
-		export function toHTML(md):string;
+    export function observe(object, property);
 
-		// Dates
-		export function date(dt:any, ft?:string):string;
+    export function broadcast(event, data?): PropertyObserver;
 
-		export function dateToISO(dt):string;
+    export function subscribe(event, callback): Subscription;
+  }
+  // Formatter
+  export module UIFormat {
+    export function toHTML(md): string;
 
-		export function dateToGMT(dt):string;
+    // Dates
+    export function date(dt: any, ft?: string): string;
 
-		export function fromNow(dt):string;
+    export function dateToISO(dt): string;
 
-		// Numbers
-		export function number(nm:any, fm?:string):string;
+    export function dateToGMT(dt): string;
 
-		export function currency(nm:any, sy?:string, fm?:string):string;
+    export function fromNow(dt): string;
 
-		export function percent(nm:any):string;
-	}
+    // Numbers
+    export function number(nm: any, fm?: string): string;
+
+    export function currency(nm: any, sy?: string, fm?: string): string;
+
+    export function percent(nm: any): string;
+  }
 }
 
 // Global methods
 declare var __seed;
 declare var Constants;
 
-declare function isTrue(b:any):boolean;
-declare function isEmpty(a:any):boolean;
-declare function isFunction(a:any):boolean;
-declare function getParentByTag(element:Element, selector:string):HTMLElement;
-declare function getParentByClass(element:Element, selector:string, lastElement?:string):HTMLElement;
+declare function isTrue(b: any): boolean;
+declare function isEmpty(a: any): boolean;
+declare function isFunction(a: any): boolean;
+declare function getParentByTag(element: Element, selector: string): HTMLElement;
+declare function getParentByClass(element: Element, selector: string, lastElement?: string): HTMLElement;
 
-declare function escape(v:string):string;
-declare function unescape(v:string):string;
+declare function escape(v: string): string;
+declare function unescape(v: string): string;
 
 interface ICountry {
-	continent:string;
-	iso3:string;
-	iso2:string;
-	name:string;
-	tld:string;
-	currency:string;
-	phone:number;
+  continent: string;
+  iso3: string;
+  iso2: string;
+  name: string;
+  tld: string;
+  currency: string;
+  phone: number;
 }
 
 interface Window {
-	isTrue;
-	isEmpty;
-	isFunction;
-	getParentByTag;
-	getParentByClass;
+  isTrue;
+  isEmpty;
+  isFunction;
+  getParentByTag;
+  getParentByClass;
 
-	__seed:number;
-	Constants:any;
-	FormData:any;
+  __seed: number;
+  Constants: any;
+  FormData: any;
 
-	countries:Array<ICountry>;
-	currencies:Map<string,string>;
+  countries: Array<ICountry>;
+  currencies: Map<string, string>;
 
-	escape;
-	unescape;
+  escape;
+  unescape;
 }
 interface Element {
-	au:any;
+  au: any;
 }
 declare module 'aurelia-validation' {
-	export interface ValidationGroup {
-		isPhone():any;
-	}
+  export interface ValidationGroup {
+    isPhone(): any;
+  }
 }

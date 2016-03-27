@@ -1,108 +1,146 @@
-.ui-dialog-container {
-  &.ui-dragging {
-	pointer-events : all;
-  }
+.ui-dialog-container
+{
+    &.ui-dragging
+    {
+        pointer-events: all;
+    }
 
-  .ui-dialog-wrapper {
-	z-index : $z-index-floating - 1;
-	&.ui-modal {
-	  z-index        : $z-index-floating;
-	  @include position(absolute, 0, 0, 0, 0);
-	  @include flex-column(center, center);
-	  pointer-events : all;
-	  background     : rgba($white, 0.5);
-	  .ui-dialog {
-		position : relative;
-		@include flex(0 1 auto);
-	  }
-	}
-  }
+    .ui-dialog-wrapper
+    {
+        z-index: $z-index-floating - 1;
+        &.ui-modal
+        {
+            z-index: $z-index-floating;
 
-  .ui-dialog {
-	pointer-events : all;
-	position       : absolute;
-	background     : $base-bg;
-	border         : 1px solid $primary;
-	border-radius  : $base-border-radius;
-	@include flex-column($align : stretch, $justify : flex-start);
-	@include box-shadow(0 0 20px 5px rgba($black, 0.5), 0 0 5px 0 $primary inset);
+            pointer-events: all;
 
-	min-width      : 300px;
-	min-height     : 200px;
+            background: rgba($white, .5);
 
-	.ui-header {
-	  button {
-		padding   : 0;
-		font-size : 1.2em;
-	  }
-	  .ui-collapse span:before {
-		content : $font-ui-dialog-minimize;
-	  }
-	  .ui-expand span:before {
-		content : $font-ui-dialog-maximize;
-	  }
-	  .ui-close span:before {
-		content : $font-ui-dialog-close;
-	  }
-	}
+            @include position(absolute, 0, 0, 0, 0);
+            @include flex-column(center, center);
+            .ui-dialog
+            {
+                position: relative;
 
-	.ui-resizer {
-	  position  : absolute;
-	  bottom    : 0px;
-	  right     : 0px;
-	  z-index   : 10;
-	  font-size : 1.5em;
-	  cursor    : nwse-resize;
-	  &:before {
-		content : $font-ui-dialog-resize;
-	  }
-	  opacity   : 0.3 !important;
-	  &:hover, &:active {
-		opacity : 0.6 !important;
-	  }
-	}
+                @include flex(0 1 auto);
+            }
+        }
+    }
 
-	&.ui-maximize {
-	  top      : 1em !important;
-	  left     : 1em !important;
-	  right    : 1em !important;
-	  bottom   : 3em !important;
-	  width    : auto !important;
-	  height   : auto !important;
-	  position : absolute !important;
-	  .ui-resizer {
-		display : none;
-	  }
-	  .ui-expand span:before {
-		content : $font-ui-dialog-restore;
-	  }
-	}
+    .ui-dialog
+    {
+        position: absolute;
 
-	&.ui-minimize {
-	  display : none;
-	}
+        min-width: 300px;
+        min-height: 200px;
 
-	&.ui-active {
-	  z-index : 5;
-	  > :not(.ui-header) {
-		opacity : 1;
-	  }
-	}
-	&.ui-inactive {
-	  z-index : 1;
-	  > :not(.ui-header) {
-		opacity : .65;
-	  }
-	  > .ui-header {
-		background : $secondary;
-		color      : $secondary-text;
-	  }
-	}
+        pointer-events: all;
 
-	&.ui-dragging {
-	  > :not(.ui-header) {
-		opacity : 0.5;
-	  }
-	}
-  }
+        border: 1px solid $primary;
+        border-radius: $base-border-radius;
+        background: $base-bg;
+
+        @include flex-column($align: stretch, $justify : flex-start);
+        @include box-shadow(0 0 20px 5px rgba($black, .5), 0 0 5px 0 $primary inset);
+
+        .ui-header
+        {
+            button
+            {
+                font-size: 1.2em;
+
+                padding: 0;
+            }
+            .ui-collapse span:before
+            {
+                content: $font-ui-dialog-minimize;
+            }
+            .ui-expand span:before
+            {
+                content: $font-ui-dialog-maximize;
+            }
+            .ui-close span:before
+            {
+                content: $font-ui-dialog-close;
+            }
+        }
+
+        .ui-resizer
+        {
+            font-size: 1.5em;
+
+            position: absolute;
+            z-index: 10;
+            right: 0;
+            bottom: 0;
+
+            cursor: nwse-resize;
+
+            opacity: .3 !important;
+            &:before
+            {
+                content: $font-ui-dialog-resize;
+            }
+            &:hover,
+            &:active
+            {
+                opacity: .6 !important;
+            }
+        }
+
+        &.ui-maximize
+        {
+            position: absolute !important;
+            top: 1em !important;
+            right: 1em !important;
+            bottom: 3em !important;
+            left: 1em !important;
+
+            width: auto !important;
+            height: auto !important;
+            .ui-resizer
+            {
+                display: none;
+            }
+            .ui-expand span:before
+            {
+                content: $font-ui-dialog-restore;
+            }
+        }
+
+        &.ui-minimize
+        {
+            display: none;
+        }
+
+        &.ui-active
+        {
+            z-index: 5;
+            > :not(.ui-header)
+            {
+                opacity: 1;
+            }
+        }
+        &.ui-inactive
+        {
+            z-index: 1;
+            > :not(.ui-header)
+            {
+                opacity: .65;
+            }
+            > .ui-header
+            {
+                color: $secondary-text;
+                background: $secondary;
+            }
+        }
+
+        &.ui-dragging
+        {
+            > :not(.ui-header)
+            {
+                opacity: .5;
+            }
+        }
+    }
 }

@@ -5,55 +5,75 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-menu {
-  .ui-menu-title {
-	color         : $primary;
-	font-size     : 1.3em;
-	margin-bottom : 0.5em;
-	font-weight   : $font-weight-strong;
-	border-bottom : 2px solid $primary;
-  }
+.ui-menu
+{
+    .ui-menu-title
+    {
+        font-size: 1.3em;
+        font-weight: $font-weight-strong;
 
-  .ui-menu-section {
-	font-size : 0.8em;
-	color     : $text-muted;
-  }
+        margin-bottom: .5em;
 
-  .ui-menu-link {
-	display     : block;
-	font-size   : 1em;
-	margin      : 1px 0;
-	text-align  : start;
-	font-weight : $font-weight-normal;
-	padding     : 1em 0.5em;
-	color       : $menu-link-text;
-	background  : $menu-link-bg;
-	@include border(start, 4px solid transparent);
+        color: $primary;
+        border-bottom: 2px solid $primary;
+    }
 
-	.ui-icon {
-	  display : inline-block;
-	  width   : 1.2em;
-	}
+    .ui-menu-section
+    {
+        font-size: .8em;
 
-	&[data-disabled="true"] {
-	  color          : $wg-5;
-	  pointer-events : none;
-	  cursor         : not-allowed;
-	}
+        color: $text-muted;
+    }
 
-	&:hover {
-	  color            : $menu-hover-text;
-	  background-color : $menu-hover-bg;
-	}
-	&:active {
-	  color            : $menu-click-text;
-	  background-color : $menu-click-bg;
-	}
-	&.ui-active {
-	  color            : $menu-active-text;
-	  border-color     : $menu-active-border;
-	  background-color : $menu-active-bg;
-	  font-weight      : $font-weight-strong;
-	}
-  }
+    .ui-menu-link
+    {
+        font-size: 1em;
+        font-weight: $font-weight-normal;
+
+        display: block;
+
+        margin: 1px 0;
+        padding: 1em .5em;
+
+        text-align: start;
+
+        color: $menu-link-text;
+        background: $menu-link-bg;
+
+        @include border(start, 4px solid transparent);
+
+        .ui-icon
+        {
+            display: inline-block;
+
+            width: 1.2em;
+        }
+
+        &[data-disabled='true']
+        {
+            cursor: not-allowed;
+            pointer-events: none;
+
+            color: $wg-5;
+        }
+
+        &:hover
+        {
+            color: $menu-hover-text;
+            background-color: $menu-hover-bg;
+        }
+        &:active
+        {
+            color: $menu-click-text;
+            background-color: $menu-click-bg;
+        }
+        &.ui-active
+        {
+            font-weight: $font-weight-strong;
+
+            color: $menu-active-text;
+            border-color: $menu-active-border;
+            background-color: $menu-active-bg;
+        }
+    }
 }

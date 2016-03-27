@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var index_1 = require("../framework/index");
 var aurelia_framework_1 = require("aurelia-framework");
+require('./highlight');
 var App = (function () {
-    function App() {
+    function App(appState) {
+        appState.IsAuthenticated = true;
     }
     App.prototype.configureRouter = function (config, router) {
         this.router = router;
@@ -103,7 +105,7 @@ var App = (function () {
     };
     App = __decorate([
         aurelia_framework_1.autoinject(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [index_1.UIApplication])
     ], App);
     return App;
 }());

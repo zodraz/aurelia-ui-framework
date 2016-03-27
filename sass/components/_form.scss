@@ -5,32 +5,42 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-form {
-  > .ui-row > .ui-column {
-	@include flex(1 1 20em);
-	min-width : 20em;
-  }
+.ui-form
+{
+    > .ui-row > .ui-column
+    {
+        min-width: 20em;
+
+        @include flex(1 1 20em);
+    }
 }
 
-.ui-login {
-  margin-top       : -3em;
-  padding          : 0.5em 1em;
-  background-color : $base-bg;
-  border-radius    : $base-border-radius;
-  border           : 1px solid $base-border-color;
-  @include flex(0 0 20em);
-  @include box-shadow(0 0 10px 0 $base-shadow-color);
+.ui-login
+{
+    margin-top: -3em;
+    padding: .5em 1em;
 
-  h4 {
-	color       : $primary;
-	text-align  : center;
-	font-size   : 5em;
-	text-shadow : 1px 1px 1px $base-bg, 1px 1px 2px #333, -1px -1px 1px contrast($base-bg, #CCC, #333);
-  }
+    border: 1px solid $base-border-color;
+    border-radius: $base-border-radius;
+    background-color: $base-bg;
 
-  .ui-login-error {
-	background    : $danger;
-	color         : contrast($danger);
-	border-radius : $base-border-radius;
-  }
+    @include flex(0 0 20em);
+    @include box-shadow(0 0 10px 0 $base-shadow-color);
+
+    h4
+    {
+        font-size: 5em;
+
+        text-align: center;
+
+        color: $primary;
+        text-shadow: 1px 1px 1px $base-bg, 1px 1px 2px #333, -1px -1px 1px contrast($base-bg, #ccc, #333);
+    }
+
+    .ui-login-error
+    {
+        color: contrast($danger);
+        border-radius: $base-border-radius;
+        background: $danger;
+    }
 }

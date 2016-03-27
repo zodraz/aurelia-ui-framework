@@ -1,21 +1,22 @@
-## COMPONENTS
+COMPONENTS
+----------
 
-* [UIForm](#uiform)
-* [UIMenu](#uimenu)
-* [UIPanel](#uipanel)
-* [UIDialog](#uidialog)
-* [UITabPanel](#uitabpanel)
-* [UITree](#uitree)
-* [UIDataGrid](#uidatagrid)
-* [UIPager](#uipager)
-* [UILogin](#uilogin)
-* [UIRibbon](#uiribbon)
+-	[UIForm](#uiform)
+-	[UIMenu](#uimenu)
+-	[UIPanel](#uipanel)
+-	[UIDialog](#uidialog)
+-	[UITabPanel](#uitabpanel)
+-	[UITree](#uitree)
+-	[UIDataGrid](#uidatagrid)
+-	[UIPager](#uipager)
+-	[UILogin](#uilogin)
+-	[UIRibbon](#uiribbon)
 
 ---
 
 ### UIForm
 
-* Form layout can contain only two columns
+-	Form layout can contain only two columns
 
 ```html
 <ui-form busy.bind=? validation.bind=? submit.trigger=?>    
@@ -30,9 +31,8 @@
 
 ### UIMenu
 
-
 ```html
-<ui-menu (router.bind=? | menu.bind=?) click.trigger=?>    
+<ui-menu (router.bind=? | menu.bind=?) menuclick.trigger=?>    
 </ui-menu>
 ```
 
@@ -46,8 +46,8 @@ menu:Array = [{
 }, '-', 'Section']
 ```
 
-* `-` will create a separator
-* `string` will add a section header
+-	`-` will create a separator
+-	`string` will add a section header
 
 ---
 
@@ -68,7 +68,7 @@ menu:Array = [{
 
 ### UIDialog
 
-_Dialog content view_
+*Dialog content view*
 
 ```html
 <template>
@@ -76,7 +76,7 @@ _Dialog content view_
 </template>
 ```
 
-_Dialog content view-model must extend UIDialog_
+*Dialog content view-model must extend UIDialog*
 
 ```javascript
 class MyDialog extends UIDialog {
@@ -86,7 +86,7 @@ class MyDialog extends UIDialog {
 }
 ```
 
-_Initializing the view_
+*Initializing the view*
 
 ```javascript
 import {UIDialogService} from "aurelia-ui-framework";

@@ -5,83 +5,118 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-list {
-  overflow      : auto;
-  max-height    : 18em;
-  background    : $base-bg;
-  border-radius : $base-border-radius;
-  border        : 1px solid $base-border-color;
-  &.floating {
-	position : absolute;
-	left     : 0;
-	right    : 0;
-	z-index  : 50;
-	@include box-shadow(0 2px 4px 0 $base-shadow-color);
-  }
+.ui-list
+{
+    overflow: auto;
 
-  .ui-lang-remove {
-	cursor : pointer;
-	color  : $danger;
-	margin : 0.4em 0.5em;
-	&:hover {
-	  color : darken($danger, 10%);
-	}
-  }
+    max-height: 18em;
 
-  .ui-list-item {
-	cursor  : pointer;
-	padding : 0.4em 0.5em;
+    border: 1px solid $base-border-color;
+    border-radius: $base-border-radius;
+    background: $base-bg;
+    &.floating
+    {
+        position: absolute;
+        z-index: 50;
+        right: 0;
+        left: 0;
 
-	&:hover, &.hilight {
-	  background : rgba($secondary, 0.5);
-	  color      : $secondary-text
-	}
-	&.selected {
-	  background : $secondary;
-	  color      : $secondary-text
-	}
-  }
+        @include box-shadow(0 2px 4px 0 $base-shadow-color);
+    }
 
-  .ui-list-group {
-	display : block;
-	> p {
-	  padding : 0.2em 0.5em;
-	  color   : $text-muted;
-	}
-  }
+    .ui-lang-remove
+    {
+        margin: .4em .5em;
+
+        cursor: pointer;
+
+        color: $danger;
+        &:hover
+        {
+            color: darken($danger, 10%);
+        }
+    }
+
+    .ui-list-item
+    {
+        padding: .4em .5em;
+
+        cursor: pointer;
+
+        &:hover,
+        &.hilight
+        {
+            color: $secondary-text;
+            background: rgba($secondary, .5);
+        }
+        &.selected
+        {
+            color: $secondary-text;
+            background: $secondary;
+        }
+    }
+
+    .ui-list-group
+    {
+        display: block;
+        > p
+        {
+            padding: .2em .5em;
+
+            color: $text-muted;
+        }
+    }
 }
 
-.ui-tags {
-  @include flex-row(flex-start, flex-start, true);
-  padding : 0 !important;
-  > input {
-	border     : none !important;
-	overflow   : visible;
-	font-size  : 1em;
-	margin     : 0.3em;
-	color      : $input-text;
-	background : transparent !important;
-	@include flex(1 1 0);
-  }
-  .ui-tag {
-	cursor        : pointer;
-	position      : relative;
-	margin        : 0.3em;
-	background    : shade($input-bg, 5%);
-	border-radius : $base-border-radius;
-	padding       : 0.1em 1.25em 0.1em 0.3em;
-	min-height    : 1.8em;
-	line-height   : 1;
-	border        : none;
-	@include box-shadow(0 0 2px 0 $base-shadow-color);
+.ui-tags
+{
+    padding: 0 !important;
 
-	&:after {
-	  @include position(absolute, $r : 0, $t : 0, $b : 0);
-	  font-size   : 1em;
-	  color       : $text-muted;
-	  content     : '×';
-	  line-height : 1.7em;
-	  padding     : 0 0.2em;
-	}
-  }
+    @include flex-row(flex-start, flex-start, true);
+    > input
+    {
+        font-size: 1em;
+
+        overflow: visible;
+
+        margin: .3em;
+
+        color: $input-text;
+        border: none !important;
+        background: transparent !important;
+
+        @include flex(1 1 0);
+    }
+    .ui-tag
+    {
+        line-height: 1;
+
+        position: relative;
+
+        min-height: 1.8em;
+        margin: .3em;
+        padding: .1em 1.25em .1em .3em;
+
+        cursor: pointer;
+
+        border: none;
+        border-radius: $base-border-radius;
+        background: shade($input-bg, 5%);
+
+        @include box-shadow(0 0 2px 0 $base-shadow-color);
+
+        &:after
+        {
+            font-size: 1em;
+            line-height: 1.7em;
+
+            padding: 0 .2em;
+
+            content: '×';
+
+            color: $text-muted;
+
+            @include position(absolute, $r: 0, $t : 0, $b : 0);
+        }
+    }
 }

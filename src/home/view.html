@@ -272,11 +272,8 @@
 			<h2>Tab Panel</h2>
 			<div style="height: 600px;position: relative;" class="ui-border-all">
 				<ui-tab-panel>
-					<ui-tab label="Markdown" scroll>
-						<div innerhtml.bind="md | markdown" class="ui-markdown"></div>
-					</ui-tab>
-					<ui-tab label="Editor" flex>
-						<ui-markdown full-view value.bind="md" label-hide></ui-markdown>
+					<ui-tab label="Markdown" flex>
+						<ui-markdown full-view side-view value.bind="md" label-hide></ui-markdown>
 					</ui-tab>
 					<ui-tab icon="fi-material-painter-palette" label="Copic Colors" scroll>
 						<compose view-model="./colors"></compose>
