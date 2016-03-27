@@ -143,19 +143,19 @@ declare module "aurelia-ui-framework" {
   }
 
   export class UIHttpService {
-    get(slug: string): Promise<any>;
+    get(slug: string): Promise<any | string | void>;
 
-    text(slug: string): Promise<any>;
+    text(slug: string): Promise<any | string | void>;
 
-    post(slug: string, body: any): Promise<any>;
+    post(slug: string, body: any): Promise<any | string | void>;
 
-    put(slug: string, body: any): Promise<any>;
+    put(slug: string, body: any): Promise<any | string | void>;
 
-    delete(slug: string): Promise<any>;
+    delete(slug: string): Promise<any | string | void>;
 
-    upload(slug: string, form: HTMLFormElement): Promise<any>;
+    upload(slug: string, form: HTMLFormElement): Promise<any | string | void>;
 
-    reupload(slug: string, form: HTMLFormElement): Promise<any>;
+    reupload(slug: string, form: HTMLFormElement): Promise<any | string | void>;
   }
 
   // Utilities

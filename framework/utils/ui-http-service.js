@@ -15,18 +15,19 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
             this.appState = appState;
             this.eventAggregator = eventAggregator;
             this.appState.info(this.constructor.name, 'Initialized');
+            var self = this;
             httpClient.configure(function (config) {
                 config
                     .withBaseUrl(appState.HttpConfig.BaseUrl)
                     .withInterceptor({
                     request: function (request) {
-                        appState.info(this.constructor.name, "Requesting " + request.method + " " + request.url);
+                        appState.info(self.constructor.name, "Requesting " + request.method + " " + request.url);
                         appState.IsHttpInUse = true;
                         request.url = encodeURI(request.url);
                         return request;
                     },
                     response: function (response) {
-                        appState.info(this.constructor.name, "Response " + response.url + " " + response.status);
+                        appState.info(self.constructor.name, "Response " + response.status + " " + response.url);
                         appState.IsHttpInUse = false;
                         if (response instanceof TypeError) {
                             throw Error(response['message']);

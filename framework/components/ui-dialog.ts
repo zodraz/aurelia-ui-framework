@@ -187,9 +187,14 @@ export class UIDialogService {
 
   private __taskClick(dialog) {
     if (!dialog) return;
-    dialog.__minimized = false;
-    dialog.__dialog.classList.remove('ui-minimize');
-    this.__changeActive(dialog);
+    if (dialog.__minimized === true) {
+      dialog.__minimized = false;
+      dialog.__dialog.classList.remove('ui-minimize');
+      this.__changeActive(dialog);
+    }
+    else {
+      this.__collapse({ detail: dialog });
+    }
   }
 
   private __changeActive(dialog) {

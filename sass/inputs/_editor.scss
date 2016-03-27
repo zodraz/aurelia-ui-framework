@@ -10,7 +10,6 @@
     {
         @include scale(.5,.5);
         @include transform-origin(100% 0 0);
-        @include box-shadow(0 0 3px 0 $base-shadow-color);
     }
     .ui-markdown-tools
     {

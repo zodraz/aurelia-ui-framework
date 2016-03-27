@@ -1,5 +1,7 @@
+import {autoinject} from "aurelia-framework";
 import {UIDialog, UIHttpService} from "../../framework/index";
 
+@autoinject()
 export class MyDialog extends UIDialog {
   static i = 1;
 
@@ -15,8 +17,8 @@ export class MyDialog extends UIDialog {
   canActivate(model) {
     this.modal = (model || { modal: false }).modal;
     return this.httpClient
-      .text('./example.md')
-      .then(resp=> this.md = resp);
+      .text('./src/home/example.md')
+      .then(resp=> this.md = resp)
   }
 
 }

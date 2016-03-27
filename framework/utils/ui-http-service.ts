@@ -19,6 +19,7 @@ export class UIHttpService {
     public eventAggregator: EventAggregator) {
     this.appState.info(this.constructor.name, 'Initialized');
 
+    let self = this;
     httpClient.configure(
       config => {
         config
@@ -26,13 +27,13 @@ export class UIHttpService {
         //.withDefaults({})
           .withInterceptor({
           request(request) {
-            appState.info(this.constructor.name, `Requesting ${request.method} ${request.url}`);
+            appState.info(self.constructor.name, `Requesting ${request.method} ${request.url}`);
             appState.IsHttpInUse = true;
             request.url = encodeURI(request.url);
             return request;
           },
           response(response) {
-            appState.info(this.constructor.name, `Response ${response.url} ${response.status}`);
+            appState.info(self.constructor.name, `Response ${response.status} ${response.url}`);
             appState.IsHttpInUse = false;
 
             if (response instanceof TypeError) {
@@ -77,7 +78,7 @@ export class UIHttpService {
   }
 
   //**** SHARED METHODS ****//
-  get(slug: string) {
+  get(slug: string): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `get [${slug}]`);
     return this.httpClient
       .fetch(slug,
@@ -89,7 +90,7 @@ export class UIHttpService {
       .then(resp => resp.json());
   }
 
-  text(slug: string) {
+  text(slug: string): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `text [${slug}]`);
     return this.httpClient
       .fetch(slug,
@@ -101,7 +102,7 @@ export class UIHttpService {
       .then(resp => resp.text());
   }
 
-  put(slug: string, obj) {
+  put(slug: string, obj): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `put [${slug}]`);
     return this.httpClient
       .fetch(slug,
@@ -114,7 +115,7 @@ export class UIHttpService {
       .then(resp => resp.json());
   }
 
-  post(slug: string, obj) {
+  post(slug: string, obj): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `post [${slug}]`);
     return this.httpClient
       .fetch(slug,
@@ -127,7 +128,7 @@ export class UIHttpService {
       .then(resp => resp.json());
   }
 
-  delete(slug: string) {
+  delete(slug: string): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `delete [${slug}]`);
     return this.httpClient
       .fetch(slug,
@@ -139,12 +140,12 @@ export class UIHttpService {
       .then(resp => resp.json());
   }
 
-  upload(slug: string, form: HTMLFormElement) {
+  upload(slug: string, form: HTMLFormElement): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `upload [${slug}]`);
     return this.__upload('post', slug, form);
   }
 
-  reupload(slug: string, form: HTMLFormElement) {
+  reupload(slug: string, form: HTMLFormElement): Promise<any | string | void> {
     this.appState.info(this.constructor.name, `reupload [${slug}]`);
     return this.__upload('put', slug, form);
   }

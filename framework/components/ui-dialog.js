@@ -157,9 +157,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
         UIDialogService.prototype.__taskClick = function (dialog) {
             if (!dialog)
                 return;
-            dialog.__minimized = false;
-            dialog.__dialog.classList.remove('ui-minimize');
-            this.__changeActive(dialog);
+            if (dialog.__minimized === true) {
+                dialog.__minimized = false;
+                dialog.__dialog.classList.remove('ui-minimize');
+                this.__changeActive(dialog);
+            }
+            else {
+                this.__collapse({ detail: dialog });
+            }
         };
         UIDialogService.prototype.__changeActive = function (dialog) {
             if (!isEmpty(this.__active)) {
