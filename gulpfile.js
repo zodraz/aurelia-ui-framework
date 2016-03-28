@@ -26,7 +26,7 @@ gulp.task('sass:compile', function (done) {
 
 // Typescript Compiler
 var tsProject = ts.createProject({
-	declaration: true,
+	declaration: false,
 	noExternalResolve: true,
 	sortOutput: true,
 	target: 'ES5',
@@ -38,8 +38,7 @@ var tsProject = ts.createProject({
 });
 gulp.task('scripts:compile', function () {
 	var tsRoot = gulp.src([
-							  './jspm_packages/github/adarshpastakia/aurelia-ui-framework.d.ts',
-							  './jspm_packages/npm/aurelia-*/*.d.ts',
+							  './jspm_packages/**/aurelia-*/**/*.d.ts',
 							  'src/**/*.ts'], {base: './'})
 		.pipe(ts(tsProject));
 
@@ -54,13 +53,21 @@ var config = {
 	bundles: {
 		"dist/app": {
 			includes: [
-				'main',
-				'./src/**/*.js',
-				'./src/**/*.html!text',
-				'./framework/**/*.js',
-				'./framework/**/*.html!text',
-				'./jspm_packages/**/aurelia-*.js',
-				'./jspm_packages/**/aurelia-validation*/resources/*.js'
+				'[main.js]',
+				'[./src/**/*.js]',
+				'[./src/**/*.html!text]'
+			],
+			options: {
+				inject: true,
+				minify: true
+			}
+		},
+		"dist/framework": {
+			includes:[
+				'./jspm_packages/**/aurelia-ui-framework/**/*.js',
+				'./jspm_packages/**/aurelia-ui-framework/**/*.html!text',
+				'./jspm_packages/npm/**/aurelia-*.js',
+				'./jspm_packages/npm/**/aurelia-validation*/resources/*.js'
 			],
 			options: {
 				inject: true,
@@ -92,7 +99,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('production', ['build'], function () {
-	runSequence('aurelia:bundle', 'aurelia:build', 'aurelia:unbundle');
+	runSequence('sass:compile', 'scripts:compile', 'aurelia:bundle', 'aurelia:build', 'aurelia:unbundle');
 });
 
 gulp.task('serve', ['build'], function (done) {

@@ -201,7 +201,10 @@
 			</div>
 			<hr/>
 			<h2>Inputs</h2>
-			<ui-form validate.bind="validation" submit.trigger="onSubmit()">
+			<div>
+				<ui-switch danger width="5" checked.bind="formBusy" label-on="Busy">Make Busy</ui-switch>
+			</div>
+			<ui-form validate.bind="validation" busy.bind="formBusy" submit.trigger="onSubmit()">
 				<ui-row>
 					<ui-column padded>
 						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
@@ -217,13 +220,14 @@
 						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
 						<ui-phone country.bind="ctry">National Phone</ui-phone>
 						<ui-phone international>International Phone</ui-phone>
-						<ui-date>Date</ui-date>
+						<ui-date date="1979-03-02">Date</ui-date>
 						<ui-date range>Date Range</ui-date>
-						<ui-combo options.bind="months">ComboBox</ui-combo>
+						<ui-combo options.bind="months" disabled.bind="!enabled">ComboBox</ui-combo>
 						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag"
 								  prefix-icon="ui-flag ${ctry}" suffix-text.bind="ctry"
 								  display-property="name" value-property="iso2" value.bind="ctry">Countries
 						</ui-combo>
+						<ui-input file button-icon="fi-ui-circle-remove" name="file">File</ui-input>
 					</ui-column>
 					<ui-column padded>
 						<ui-markdown>Markdown Editor</ui-markdown>
@@ -266,11 +270,8 @@
 			<h2>Tab Panel</h2>
 			<div style="height: 600px;position: relative;" class="ui-border-all">
 				<ui-tab-panel>
-					<ui-tab label="Markdown" scroll>
-						<div innerhtml.bind="md | markdown" class="ui-markdown"></div>
-					</ui-tab>
-					<ui-tab label="Editor" flex>
-						<ui-markdown full-view value.bind="md" label-hide></ui-markdown>
+					<ui-tab label="Markdown" flex>
+						<ui-markdown full-view side-view value.bind="md" label-hide></ui-markdown>
 					</ui-tab>
 					<ui-tab icon="fi-material-painter-palette" label="Copic Colors" scroll>
 						<compose view-model="./colors"></compose>

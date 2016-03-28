@@ -1,0 +1,38 @@
+{
+  "filesGlob": [
+    "main.ts",
+    "src/**/*.ts",
+    "jspm_packages/**/aurelia*/**/*.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noLib": false
+  },
+  "files": [
+    "main.ts",
+    "src/app.ts",
+    "src/components/readme.ts",
+    "src/components/view.ts",
+    "src/core/readme.ts",
+    "src/core/view.ts",
+    "src/home/colors.ts",
+    "src/home/my-dialog.ts",
+    "src/home/readme.ts",
+    "src/home/todo.ts",
+    "src/home/view.ts",
+    "src/inputs/readme.ts",
+    "src/inputs/view.ts",
+    "src/login/view.ts",
+    "src/utils/readme.ts",
+    "src/utils/view.ts"
+  ]
+}

@@ -1,33 +1,31 @@
 import {inlineView, autoinject} from "aurelia-framework";
-import {HttpClient} from "aurelia-fetch-client";
-import {_} from "../../framework/index";
+import {_, UIHttpService} from "aurelia-ui-framework";
 import "fetch";
 
 @autoinject()
 @inlineView('<template><div ref="__content" class="ui-markdown" innerhtml.bind="readme | markdown"></div></template>')
 export class ReadMe {
 
-	__content;
-	readme = '';
+  __content;
+  readme = '';
 
-	constructor(public httpClient:HttpClient) {
-	}
+  constructor(public httpClient: UIHttpService) {
+  }
 
-	activate() {
-		return this.httpClient
-				   .fetch('./framework/core/README.md')
-				   .then(resp=>resp.text())
-				   .then(resp=>this.readme = resp)
-	}
+  activate() {
+    return this.httpClient
+      .text('./src/core/README.md')
+      .then(resp=> this.readme = resp)
+  }
 
-	attached() {
-		_.forEach(this.__content.querySelectorAll('.lang-html'), c=> {
-			c.classList.add('html');
-			hljs.highlightBlock(c);
-		});
-		_.forEach(this.__content.querySelectorAll('.lang-javascript'), c=> {
-			c.classList.add('javascript');
-			hljs.highlightBlock(c);
-		});
-	}
+  attached() {
+    _.forEach(this.__content.querySelectorAll('.lang-html'), c=> {
+      c.classList.add('html');
+      hljs.highlightBlock(c);
+    });
+    _.forEach(this.__content.querySelectorAll('.lang-javascript,.lang-typescript'), c=> {
+      c.classList.add('javascript');
+      hljs.highlightBlock(c);
+    });
+  }
 }
