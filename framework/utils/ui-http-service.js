@@ -23,7 +23,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                     request: function (request) {
                         appState.info(self.constructor.name, "Requesting " + request.method + " " + request.url);
                         appState.IsHttpInUse = true;
-                        request.url = encodeURI(request.url);
                         return request;
                     },
                     response: function (response) {

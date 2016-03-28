@@ -29,7 +29,7 @@ export class UIHttpService {
           request(request) {
             appState.info(self.constructor.name, `Requesting ${request.method} ${request.url}`);
             appState.IsHttpInUse = true;
-            request.url = encodeURI(request.url);
+            //request.url = encodeURI(request.url);
             return request;
           },
           response(response) {
