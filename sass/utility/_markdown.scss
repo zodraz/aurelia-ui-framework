@@ -166,7 +166,8 @@
 
             background: #01786f;
         }
-        &.lang-javascript:after
+        &.lang-javascript:after,
+        &.lang-typescript:after
         {
             content: 'JavaScript';
 

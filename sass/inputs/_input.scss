@@ -129,7 +129,7 @@ $shadow: $tg-2;
         {
             min-height: 2em;
 
-            @include flex-row(stretch);
+            @include flex-row(stretch, $wrap: false);
 
             > .ui-input-wrapper
             {

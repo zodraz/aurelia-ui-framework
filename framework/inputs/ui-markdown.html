@@ -7,47 +7,47 @@
 	<div class="ui-control-wrapper">
 		<div class="ui-markdown-tools ui-button-bar" click.delegate="toolClick($event)">
 			<div class="ui-button-group" dir="ltr">
-				<button type="button" tabindex="-1" data-id="h1"
+				<button type="button" tabindex="-1" data-id="h1" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"><b>H1</b></button>
-				<button type="button" tabindex="-1" data-id="h2"
+				<button type="button" tabindex="-1" data-id="h2" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"><b>H2</b></button>
-				<button type="button" tabindex="-1" data-id="h3"
+				<button type="button" tabindex="-1" data-id="h3" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"><b>H3</b></button>
-				<button type="button" tabindex="-1" data-id="h4"
+				<button type="button" tabindex="-1" data-id="h4" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"><b>H4</b></button>
-				<button type="button" tabindex="-1" data-id="h5"
+				<button type="button" tabindex="-1" data-id="h5" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"><b>H5</b></button>
-				<button type="button" tabindex="-1" data-id="h6"
+				<button type="button" tabindex="-1" data-id="h6" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"><b>H6</b></button>
 			</div>
 			<div class="ui-divider"></div>
 			<div class="ui-button-group" dir="ltr">
-				<button type="button" tabindex="-1" data-id="b"
+				<button type="button" tabindex="-1" data-id="b" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain" title="Bold"><span
 						class="fi-ui-bold"></span></button>
-				<button type="button" tabindex="-1" data-id="i"
+				<button type="button" tabindex="-1" data-id="i" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain" title="Italic"><span
 						class="fi-ui-italic"></span></button>
-				<button type="button" tabindex="-1" data-id="s"
+				<button type="button" tabindex="-1" data-id="s" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"
 						title="Strikethrough"><span
 						class="fi-ui-strikethrough"></span></button>
 			</div>
 			<div class="ui-divider"></div>
 			<div class="ui-button-group" dir="ltr">
-				<button type="button" tabindex="-1" data-id="a"
+				<button type="button" tabindex="-1" data-id="a" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain" title="Link"><span
 						class="fi-ui-link"></span></button>
-				<button type="button" tabindex="-1" data-id="img"
+				<button type="button" tabindex="-1" data-id="img" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain" title="Image"><span
 						class="fi-ui-image"></span></button>
 			</div>
 			<div class="ui-divider"></div>
 			<div class="ui-button-group" dir="ltr">
-				<button type="button" tabindex="-1" data-id="ul"
+				<button type="button" tabindex="-1" data-id="ul" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain" title="Bullet List"><span
 						class="fi-ui-list-bullet"></span></button>
-				<button type="button" tabindex="-1" data-id="ol"
+				<button type="button" tabindex="-1" data-id="ol" disabled.bind="__disableTools"
 						class="ui-button ui-button-default ui-button-small ui-plain"
 						title="Numbered List"><span
 						class="fi-ui-list-numbered"></span></button>
@@ -60,7 +60,7 @@
 						class="ui-button ui-button-default ui-button-small ui-plain ui-text-primary"
 						title="Syntax Help"><span
 						class="fi-ui-help-black"></span></button>
-				<button type="button" tabindex="-1" data-id="preview"
+				<button type="button" tabindex="-1" data-id="preview" if.bind="!__hidePreview"
 						class="ui-button ui-button-default ui-button-small ui-plain ui-text-primary"
 						title="Preview"><span
 						class="fi-ui-search-black"></span></button>

@@ -72,6 +72,9 @@ define(["require", "exports", "../utils/ui-event"], function (require, exports, 
                 this.__input2.onchange = function (evt) { return evt.detail = _this; };
             }
         };
+        UIInputGroup.prototype.focus = function () {
+            this.__input.focus();
+        };
         UIInputGroup.prototype.clearInput = function (isSecond) {
             if (isSecond === true)
                 this.valueSecond = '';

@@ -27,7 +27,7 @@ AureliaUIFramework
 
 #### Usage `main.js`
 
-```javascript
+```typescript
 import {UIValidationStrategy} from "aurelia-ui-framework";
 
 function configure(aurelia) {

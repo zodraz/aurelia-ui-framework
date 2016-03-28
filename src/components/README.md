@@ -36,7 +36,7 @@ COMPONENTS
 </ui-menu>
 ```
 
-```javascript
+```typescript
 menu:Array = [{
     id
     icon?
@@ -78,8 +78,18 @@ menu:Array = [{
 
 *Dialog content view-model must extend UIDialog*
 
-```javascript
+```typescript
 class MyDialog extends UIDialog {
+    icon:string;
+    title:string;
+    width:string;
+    height:string;
+
+    modal: boolean;
+    drag: boolean;
+    resize: boolean;
+    maximize: boolean;
+
     // The model being passed can be consumed in any of the following methods
     canActivate(model?){}
     activate(model?){}
@@ -88,7 +98,7 @@ class MyDialog extends UIDialog {
 
 *Initializing the view*
 
-```javascript
+```typescript
 import {UIDialogService} from "aurelia-ui-framework";
 
 @inject(UIDialogService)
@@ -113,3 +123,77 @@ class AnyView {
     </ui-tab>
 </ui-tab-panel>
 ```
+
+---
+
+### UITree
+
+```html
+<ui-tree model.bind=? value.bind=? options.bind=?></ui-tree>
+```
+
+```typescript
+treeOptions:UITreeOptions = {
+  // show maximum of ? levels
+  maxLevels: number;
+
+  // show checkboxes
+  showCheckbox: boolean;
+  // show checkbox only at ? level, -1/null all levels
+  checkboxLevel: number;
+
+  showRoot: boolean;
+  rootLabel: string;
+}
+```
+
+```typescript
+treeModel:Array<UITreeModel> = [{
+  id: any;
+  name: string;
+  leaf: boolean;
+
+  iconGlyph?: string;
+
+  checked?: boolean;
+  expanded?: boolean;
+  isVisible?: boolean;
+}]
+```
+
+---
+
+### UIDataGrid
+
+```html
+<ui-datagrid data-list.bind=? summary-row="true | false"
+  default-sort=? default-order="asc | desc" linkclick.trigger=?>
+    <ui-column data-id=? locked sortable resizeable
+      (align) [start | center | end]
+      (display) [link | edit | delete]
+      (data-type) [text | date | datetime| from-now | number | currency]>Label</ui-column>
+    ...
+</ui-datagrid>
+```
+
+-	More Column Attributes
+
+	-	`data-sort=?` second sort column
+
+	-	`format=?` date/number format
+
+	-	`symbol=?` currency symbol
+
+	-	`summary=?` summary type `sum`, `avg`
+
+	-	`button-title=?`, `button-icon=?`, `button-theme=?` button display
+
+-	Callable Attributes
+
+	-	`button.call` callback function to return button config
+
+	-	`display.call` callback function to return html string to display
+
+	-	`value.call` callback function to return calculated value
+
+	-	all callbacks are passed `{value, column, model}`, current value, column data-id and row model

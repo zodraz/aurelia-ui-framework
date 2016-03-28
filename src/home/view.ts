@@ -199,19 +199,6 @@ export class Home {
     });
   }
 
-  getError(code) {
-    if (code == 404) {
-      this.httpClient.get('./test404.html')
-        .then(resp=> this.__page.toast('Success'))
-        .catch(e=> this.__page.toast(e.message));
-    }
-    if (code == 400) {
-      this.httpClient.post('https://api.hmcoffers.com/api/login', {})
-        .then(resp=> this.__page.toast('Success'))
-        .catch(e=> this.__page.toast(e.message));
-    }
-  }
-
   attached() {
     this.checked = this.__tree.getChecked();
     setTimeout(() => this.__content.scrollTop = 0, 20);

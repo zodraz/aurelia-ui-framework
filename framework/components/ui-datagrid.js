@@ -373,11 +373,11 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
             __metadata('design:type', String)
         ], UIDataColumn.prototype, "class", void 0);
         __decorate([
-            aurelia_framework_1.bindable, 
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }), 
             __metadata('design:type', Number)
         ], UIDataColumn.prototype, "width", void 0);
         __decorate([
-            aurelia_framework_1.bindable, 
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }), 
             __metadata('design:type', Number)
         ], UIDataColumn.prototype, "minWidth", void 0);
         UIDataColumn = __decorate([
@@ -420,13 +420,13 @@ define(["require", "exports", "aurelia-framework", "aurelia-templating-resources
                 this.current++;
             if (n === 2)
                 this.current = this.total;
-            ui_event_1.UIEvent.fireEvent('change', this.element, this.current);
+            ui_event_1.UIEvent.fireEvent('pagechanged', this.element, this.current);
         };
         UIPager.prototype.keyCheck = function (evt) {
             if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0)
                 return true;
             if ((evt.which || evt.keyCode) === 13) {
-                return ui_event_1.UIEvent.fireEvent('change', this.element, this.current);
+                return ui_event_1.UIEvent.fireEvent('pagechanged', this.element, this.current);
             }
             return /[0-9]/.test(String.fromCharCode(evt.charCode));
         };

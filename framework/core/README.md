@@ -35,7 +35,7 @@ Main app template must contain UIViewport, can only have a single UIViewport. Th
 
 Router extra options
 
-```javascript
+```typescript
 router.options = { showAuthentication:boolean, showLogo:boolean }
 ```
 
@@ -43,7 +43,7 @@ router.options = { showAuthentication:boolean, showLogo:boolean }
 
 Route extra options
 
-```javascript
+```typescript
 route.group // Permitted groups for Authentication Interceptor eg. [0,1,2]
 route.settings = { sectionStart:boolean, sectionTitle:string, icon:string }
 ```

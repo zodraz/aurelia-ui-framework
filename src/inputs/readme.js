@@ -25,7 +25,7 @@ define(["require", "exports", "aurelia-framework", "../../framework/index"], fun
                 c.classList.add('html');
                 hljs.highlightBlock(c);
             });
-            index_1._.forEach(this.__content.querySelectorAll('.lang-javascript'), function (c) {
+            index_1._.forEach(this.__content.querySelectorAll('.lang-javascript,.lang-typescript'), function (c) {
                 c.classList.add('javascript');
                 hljs.highlightBlock(c);
             });

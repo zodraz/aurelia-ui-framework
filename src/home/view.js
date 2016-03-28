@@ -184,19 +184,6 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
                 .catch(function () {
             });
         };
-        Home.prototype.getError = function (code) {
-            var _this = this;
-            if (code == 404) {
-                this.httpClient.get('./test404.html')
-                    .then(function (resp) { return _this.__page.toast('Success'); })
-                    .catch(function (e) { return _this.__page.toast(e.message); });
-            }
-            if (code == 400) {
-                this.httpClient.post('https://api.hmcoffers.com/api/login', {})
-                    .then(function (resp) { return _this.__page.toast('Success'); })
-                    .catch(function (e) { return _this.__page.toast(e.message); });
-            }
-        };
         Home.prototype.attached = function () {
             var _this = this;
             this.checked = this.__tree.getChecked();

@@ -18,7 +18,7 @@ UTILS
 
 ### Global Properties/Methods
 
-```javascript
+```typescript
 // Global Constants Object attached to Window
 Constants = {}
 
@@ -43,8 +43,7 @@ window.getParentByClass(element:Element, selector:string, lastElement?:string):H
 
 Singleton class for application level settings and methods
 
-```javascript
-
+```typescript
 /**
  * Usage
  */
@@ -110,7 +109,7 @@ error(tag, message, ...args?)
 
 ### UIHttpService
 
-```javascript
+```typescript
 
 /**
  * Usage
@@ -193,12 +192,6 @@ delete(api-route):Promise
 <div repeat.for="key of object | keys"></div>
 ```
 
-*GroupValueConverter*
-
-```html
-<div repeat.for="key of object | group:'property'"></div>
-```
-
 *SortValueConverter*
 
 ```html
@@ -241,7 +234,7 @@ delete(api-route):Promise
 
 ### UIFormat
 
-```javascript
+```typescript
 // parse markdown text into HTML markup, uses marked js library
 UIFormat.toHTML(markdown):string
 
@@ -268,7 +261,7 @@ UIFormat.percent(value):string
 
 ### UIEvent
 
-```javascript
+```typescript
 // fire an event
 UIEvent.fireEvent(event,target,data?):boolean
 
@@ -286,7 +279,7 @@ UIEvent.observe(object,property):PropertyObserver
 
 ### UIUtils
 
-```javascript
+```typescript
 // set the container on app startup to support lazy loading
 UIUtils.setContainer(container)
 

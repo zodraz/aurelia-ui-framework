@@ -13,6 +13,8 @@ export class UIMarkdown extends UIInputGroup {
   private __help;
   private __close;
   private __preview;
+  private __hidePreview;
+  private __disableTools;
 
 	/**
 	 * @property    value
@@ -60,7 +62,10 @@ export class UIMarkdown extends UIInputGroup {
   bind() {
     super.bind();
     if (this.element.hasAttribute('full-view')) this.element.classList.add('ui-full-view');
-    if (this.element.hasAttribute('side-view')) this.element.classList.add('ui-side-view');
+    if (this.element.hasAttribute('side-view')) {
+      this.__hidePreview = true;
+      this.element.classList.add('ui-side-view');
+    }
   }
 
   toolClick($event) {
@@ -152,10 +157,12 @@ export class UIMarkdown extends UIInputGroup {
     else if (type == 'help') {
       this.__help.classList.toggle('ui-hide');
       this.__preview.classList.add('ui-hide');
+      this.__disableTools = !this.__help.classList.contains('ui-hide');
     }
     else if (type == 'preview') {
       this.__help.classList.add('ui-hide');
       this.__preview.classList.toggle('ui-hide');
+      this.__disableTools = !this.__preview.classList.contains('ui-hide');
     }
   }
 }

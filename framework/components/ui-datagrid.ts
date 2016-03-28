@@ -298,9 +298,9 @@ export class UIDataColumn {
   @bindable
   class: string = '';
 
-  @bindable
+  @bindable({ defaultBindingMode: bindingMode.oneTime })
   width: number;
-  @bindable
+  @bindable({ defaultBindingMode: bindingMode.oneTime })
   minWidth: number;
 
   private edge = 0;
@@ -406,14 +406,14 @@ export class UIPager {
     if (n === -1) this.current--;
     if (n === 1) this.current++;
     if (n === 2) this.current = this.total;
-    UIEvent.fireEvent('change', this.element, this.current);
+    UIEvent.fireEvent('pagechanged', this.element, this.current);
   }
 
   keyCheck(evt) {
     if (evt.ctrlKey || evt.altKey || evt.metaKey || evt.charCode === 0) return true;
 
     if ((evt.which || evt.keyCode) === 13) {
-      return UIEvent.fireEvent('change', this.element, this.current);
+      return UIEvent.fireEvent('pagechanged', this.element, this.current);
     }
     return /[0-9]/.test(String.fromCharCode(evt.charCode));
   }

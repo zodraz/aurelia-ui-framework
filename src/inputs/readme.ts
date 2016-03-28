@@ -22,7 +22,7 @@ export class ReadMe {
       c.classList.add('html');
       hljs.highlightBlock(c);
     });
-    _.forEach(this.__content.querySelectorAll('.lang-javascript'), c=> {
+    _.forEach(this.__content.querySelectorAll('.lang-javascript,.lang-typescript'), c=> {
       c.classList.add('javascript');
       hljs.highlightBlock(c);
     });

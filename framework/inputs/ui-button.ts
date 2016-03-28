@@ -13,7 +13,6 @@ import {_} from "../utils/ui-utils";
 export class UIButton {
   private __button: Element;
   private __size = 'normal';
-  private __theme = 'default';
 
 	/**
 	 * @property    label
@@ -27,12 +26,18 @@ export class UIButton {
 	 */
   @bindable()
   value: string = '';
-	/**
+  /**
 	 * @property    icon
 	 * @type        string
 	 */
   @bindable()
   icon: string = '';
+  /**
+	 * @property    icon
+	 * @type        string
+	 */
+  @bindable()
+  theme: string = 'default';
 	/**
 	 * @property    disabled
 	 * @type        string
@@ -46,12 +51,12 @@ export class UIButton {
 
   bind() {
     // Set Theme
-    if (this.element.hasAttribute('primary')) this.__theme = 'primary';
-    if (this.element.hasAttribute('secondary')) this.__theme = 'secondary';
-    if (this.element.hasAttribute('info')) this.__theme = 'info';
-    if (this.element.hasAttribute('danger')) this.__theme = 'danger';
-    if (this.element.hasAttribute('success')) this.__theme = 'success';
-    if (this.element.hasAttribute('warning')) this.__theme = 'warning';
+    if (this.element.hasAttribute('primary')) this.theme = 'primary';
+    if (this.element.hasAttribute('secondary')) this.theme = 'secondary';
+    if (this.element.hasAttribute('info')) this.theme = 'info';
+    if (this.element.hasAttribute('danger')) this.theme = 'danger';
+    if (this.element.hasAttribute('success')) this.theme = 'success';
+    if (this.element.hasAttribute('warning')) this.theme = 'warning';
     // Set Size
     if (this.element.hasAttribute('small')) this.__size = 'small';
     if (this.element.hasAttribute('large')) this.__size = 'large';
@@ -65,7 +70,6 @@ export class UIButton {
     if (this.element.hasAttribute('square')) this.__button.classList.add('ui-button-square');
 
     this.__button.classList.add(`ui-button-${this.__size}`);
-    this.__button.classList.add(`ui-button-${this.__theme}`);
     this.disable();
   }
 

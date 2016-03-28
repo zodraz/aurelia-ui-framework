@@ -99,8 +99,8 @@ gulp.task('aurelia:skeleton', function () {
 						'./browserconfig.xml',
 						'./manifest.json',
 						'./*.md',
-						//'./src/**/*.ts',
-						//'./src/**/*.html',
+						'./src/**/*.ts',
+						'./src/**/*.html',
 						'./fonts/**/*',
 						'./images/**/*',
 						'./styles/**/*'], {base: './'})
