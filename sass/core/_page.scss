@@ -5,153 +5,210 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-page {
-  position : relative;
-  @include flex-column();
-  @include position(absolute, 0, 0, 0, 0);
+.ui-page
+{
+    position: relative;
 
-  > .ui-page-title {
-	font      : {
-	  size    : 1.1em;
-	  variant : small-caps;
-	  weight  : $font-weight-normal;
-	}
-	color            : $page-title-text;
-	text-align       : center;
-	padding          : 0.2em 1em;
-	background-color : $page-title-bg;
-	@include flex(0 0 auto);
-  }
+    @include flex-column();
+    @include position(absolute, 0, 0, 0, 0);
 
-  .ui-page-body {
-	@include flex-column();
-	@include flex(1 1 0);
-  }
+    > .ui-page-title
+    {
+        font: 
+        {
+            size: 1.1em;
+            variant: small-caps;
+            weight: $font-weight-normal;
+        }
+
+        padding: .2em 1em;
+
+        text-align: center;
+
+        color: $page-title-text;
+        background-color: $page-title-bg;
+
+        @include flex(0 0 auto);
+    }
+
+    .ui-page-body
+    {
+        @include flex-column();
+        @include flex(1 1 0);
+    }
 }
 
-.ui-section {
-  overflow : hidden;
-  position : relative;
-  @include flex(1 1 0);
+.ui-section
+{
+    position: relative;
 
-  &.ui-section-row {
-	@include flex-row($align : stretch, $wrap : false);
-  }
+    overflow: hidden;
 
-  &.ui-section-column {
-	@include flex-column($align : stretch);
-  }
+    @include flex(1 1 0);
+
+    &.ui-section-row
+    {
+        @include flex-row($align: stretch, $wrap : false);
+    }
+
+    &.ui-section-column
+    {
+        @include flex-column($align: stretch);
+    }
 }
 
-.ui-content {
-  position : relative;
+.ui-content
+{
+    position: relative;
 
-  &.ui-auto-fit {
-	@include flex(0 0 auto);
-  }
+    &.ui-auto-fit
+    {
+        @include flex(0 0 auto);
+    }
 
-  &:not(.ui-auto-fit) {
-	@include flex(1 1 0);
-  }
+    &:not(.ui-auto-fit)
+    {
+        @include flex(1 1 0);
+    }
 
-  &:not(.ui-scroll) {
-	@include flex-column($align : stretch);
-  }
+    &:not(.ui-scroll)
+    {
+        @include flex-column($align: stretch);
+    }
 }
 
-.ui-sidebar {
-  overflow         : auto;
-  position         : relative;
-  @include flex(0 0 auto);
-  color            : $sidebar-text;
-  background-color : $sidebar-bg;
+.ui-sidebar
+{
+    position: relative;
 
-  &:first-child {
-	@include border(end, 1px solid $base-border-color);
-  }
-  &:last-child {
-	@include border(start, 1px solid $base-border-color);
-  }
+    overflow: auto;
+
+    color: $sidebar-text;
+    background-color: $sidebar-bg;
+
+    @include flex(0 0 auto);
+
+    &:first-child
+    {
+        @include border(end, 1px solid $base-border-color);
+    }
+    &:last-child
+    {
+        @include border(start, 1px solid $base-border-color);
+    }
 }
 
-.ui-divider {
-  display          : block;
-  @include flex(0 0 1px);
-  min-height       : 1px;
-  min-width        : 1px;
-  margin           : 0.15em;
-  background-color : rgba($black, 0.3);
-  border  : {
-	width : 0 1px 1px 0;
-	color : rgba($white, 0.3);
-	style : solid;
-  }
+.ui-divider
+{
+    display: block;
+
+    min-width: 1px;
+    min-height: 1px;
+    margin: .15em;
+
+    border: 
+    {
+        width: 0 1px 1px 0;
+
+        color: rgba($white, .3);
+
+        style: solid;
+    }
+    background-color: rgba($black, .3);
+
+    @include flex(0 0 1px);
 }
 
-.ui-toolbar {
-  @include flex(0 0 auto);
-  @include flex-row(center, flex-end, true);
-  padding    : 0.1em 0.5em;
-  border  : {
-	width : 1px 0;
-	style : solid;
-	color : $base-border-color;
-  }
-  z-index    : 2;
-  color      : $toolbar-text;
-  background : $toolbar-bg;
-  @include box-shadow(0 0 1px 0 $base-shadow-color);
-  .ui-button {
-	@include box-shadow(0 0 2px 0 $base-shadow-color);
-  }
-  .ui-divider {
-	height : 1.8em;
-  }
+.ui-toolbar
+{
+    z-index: 2;
+
+    padding: .1em .5em;
+
+    color: $toolbar-text;
+    border: 
+    {
+        width: 1px 0;
+
+        color: $base-border-color;
+
+        style: solid;
+    }
+    background: $toolbar-bg;
+
+    @include flex(0 0 auto);
+    @include flex-row(center, flex-end, true);
+    @include box-shadow(0 0 1px 0 $base-shadow-color);
+    .ui-button
+    {
+        @include box-shadow(0 0 2px 0 $base-shadow-color);
+    }
+    .ui-divider
+    {
+        height: 1.8em;
+    }
 }
 
-.ui-statsbar {
-  @include flex(0 0 auto);
-  z-index    : 1;
-  border  : {
-	width : 1px 0;
-	style : solid;
-	color : $base-border-color;
-  }
-  color      : $statsbar-text;
-  background : $statsbar-bg;
-  @include flex-row(stretch, flex-end, true);
-  @include box-shadow(0 0 1px 0 $base-shadow-color);
+.ui-statsbar
+{
+    z-index: 1;
 
-  .ui-stat {
-	@include flex(1 1 0);
-	text-align : center;
-	padding    : 0.5em 1.2em;
-	@include border(start, 1px solid rgba($white, 0.3));
-	@include border(end, 1px solid rgba($black, 0.3));
-	&:last-child {
-	  @include border(end, none);
-	}
-	&:first-child {
-	  @include border(start, none);
-	}
+    color: $statsbar-text;
+    border: 
+    {
+        width: 1px 0;
 
-	@include flex-row(center, center, false);
+        color: $base-border-color;
 
-	span, div {
-	  @include flex(0 0 auto);
-	  margin : 0 0.2em;
-	}
+        style: solid;
+    }
+    background: $statsbar-bg;
 
-	span {
-	  font-size : 2.5em;
-	}
+    @include flex(0 0 auto);
+    @include flex-row(stretch, flex-end, true);
+    @include box-shadow(0 0 1px 0 $base-shadow-color);
 
-	h1 {
-	  font-weight : bold;
-	}
-	h6 {
-	  color          : $statsbar-label;
-	  text-transform : uppercase;
-	}
-  }
+    .ui-stat
+    {
+        padding: .5em 1.2em;
+
+        text-align: center;
+
+        @include flex(1 1 0);
+        @include border(start, 1px solid rgba($white, .3));
+        @include border(end, 1px solid rgba($black, .3));
+        @include flex-row(center, center, false);
+        &:last-child
+        {
+            @include border(end, none);
+        }
+        &:first-child
+        {
+            @include border(start, none);
+        }
+
+        span,
+        div
+        {
+            margin: 0 .2em;
+
+            @include flex(0 0 auto);
+        }
+
+        span
+        {
+            font-size: 2.5em;
+        }
+
+        h1
+        {
+            font-weight: bold;
+        }
+        h6
+        {
+            text-transform: uppercase;
+
+            color: $statsbar-label;
+        }
+    }
 }

@@ -16,7 +16,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "aurelia
         UIForm.prototype.attached = function () {
             var _this = this;
             setTimeout(function () {
-                var el = _this.__form.querySelector('input,select,textarea');
+                var el = _this.__form.querySelector('ui-input input,textarea,ui-phone input');
                 if (!isEmpty(el))
                     el.focus();
             }, 10);

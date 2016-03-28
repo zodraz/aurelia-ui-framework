@@ -1,0 +1,42 @@
+<template class="ui-json-part ${__collapsed?'collapse':''}">
+	<ui-row>
+		<ui-column click.trigger="__collapsed=!__collapsed">
+			<p><span class="ui-text-muted ${__collapsed?'fi-ui-square-expand':'fi-ui-square-collapse'}"></span></p>
+		</ui-column>
+		<ui-column show.bind="isArray(json)">
+			<ui-button square small icon="fi-ui-circle-add" click.trigger="addJson()"></ui-button>
+		</ui-column>
+		<ui-column show.bind="parent!=null && (isArray(parent) && parent.length>1)">
+			<ui-button square small icon="fi-ui-circle-remove" click.trigger="removeJson()"></ui-button>
+		</ui-column>
+		<ui-column click.trigger="__collapsed=!__collapsed"><p>${key}</p></ui-column>
+	</ui-row>
+	<div ref="__body" if.bind="!__collapsed" style="padding-left: 2em">
+		<div repeat.for="_key of json | keys">
+			<div if.bind="isSingleline(json[_key])">
+				<ui-input value.bind="json[_key]" addon.trigger="removeProperty($index)"
+						  button-icon="${isArray(json) && json.length>1?'fi-ui-circle-remove':''}">
+					${isArray(json)?'':_key}
+				</ui-input>
+			</div>
+			<div if.bind="isMultiline(json[_key])">
+				<ui-textarea value.bind="json[_key]" addon.trigger="removeProperty($index)"
+							 button-icon="${isArray(json) && json.length>1?'fi-ui-circle-remove':''}">
+					${isArray(json)?'':_key}
+				</ui-textarea>
+			</div>
+			<div if.bind="isNumber(json[_key])">
+				<ui-input value.bind="json[_key]" number addon.trigger="removeProperty($index)"
+						  button-icon="${isArray(json) && json.length>1?'fi-ui-circle-remove':''}">
+					${isArray(json)?'':_key}
+				</ui-input>
+			</div>
+			<ui-option-group if.bind="isBoolean(json[_key])">
+				<ui-checkbox checked.bind="json[_key]">${isArray(json)?'':_key}</ui-checkbox>
+			</ui-option-group>
+			<ui-json-part if.bind="isObject(json[_key]) || isArray(json[_key])" json.bind="json[_key]"
+						  parent.bind="json" index.bind="$index"
+						  key.bind="isArray(json)?(json[_key].name||json[_key].type):_key"></ui-json-part>
+		</div>
+	</div>
+</template>

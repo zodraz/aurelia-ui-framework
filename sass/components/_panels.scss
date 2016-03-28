@@ -5,93 +5,123 @@
  *  @copyright 	 2015-2016, Adarsh Pastakia
  **/
 
-.ui-header {
-  @include flex-row($wrap : false);
-  min-height    : 2em;
-  border-bottom : 1px solid $base-border-color;
-  background    : shade($base-bg, 2%);
+.ui-header
+{
+    min-height: 2em;
 
-  h5 {
-	@include flex(1 1 0);
-	margin       : 0;
-	font-weight  : $font-weight-strong;
-	padding      : $base-padding;
-	font-variant : small-caps;
-  }
+    border-bottom: 1px solid $base-border-color;
+    background: shade($base-bg, 2%);
 
-  button {
-	@include flex(0 0 auto);
-	margin      : 0 0.25em;
-	line-height : 1;
-	opacity     : 0.75;
-	padding     : 0 0.25em;
-	&:hover {
-	  opacity : 1;
-	}
-	@include transition(all 0.25s);
-	&.ui-close {
-	  font-size : 0.5em;
-	}
+    @include flex-row($wrap: false);
 
-	&.ui-close span:before {
-	  content : $font-ui-close-thick;
-	}
+    h5
+    {
+        font-weight: $font-weight-strong;
+        font-variant: small-caps;
 
-	&.ui-collapse span:before {
-	  content : $font-ui-arrow-up;
-	}
-  }
+        margin: 0;
+        padding: $base-padding;
 
-  &.ui-primary {
-	color      : $primary-text;
-	background : $primary;
-	button {
-	  color       : $primary-text;
-	  text-shadow : 0 1px 0 contrast($primary-text);
-	  &:active {
-		text-shadow : 0 -1px 0 contrast($primary-text);
-	  }
-	}
-  }
+        @include flex(1 1 0);
+    }
 
-  &.ui-secondary {
-	background : $secondary;
-	color      : $secondary-text;
-	button {
-	  color       : $secondary-text;
-	  text-shadow : 0 1px 0 contrast($secondary-text);
-	  &:active {
-		text-shadow : 0 -1px 0 contrast($secondary-text);
-	  }
-	}
-  }
+    button
+    {
+        line-height: 1;
+
+        margin: 0 .25em;
+        padding: 0 .25em;
+
+        opacity: .75;
+
+        @include flex(0 0 auto);
+        @include transition(all .25s);
+        &:hover
+        {
+            opacity: 1;
+        }
+        &.ui-close
+        {
+            font-size: .5em;
+        }
+
+        &.ui-close span:before
+        {
+            content: $font-ui-close-thick;
+        }
+
+        &.ui-collapse span:before
+        {
+            content: $font-ui-arrow-up;
+        }
+    }
+
+    &.ui-primary
+    {
+        color: $primary-text;
+        background: $primary;
+        button
+        {
+            color: $primary-text;
+            text-shadow: 0 1px 0 contrast($primary-text);
+            &:active
+            {
+                text-shadow: 0 -1px 0 contrast($primary-text);
+            }
+        }
+    }
+
+    &.ui-secondary
+    {
+        color: $secondary-text;
+        background: $secondary;
+        button
+        {
+            color: $secondary-text;
+            text-shadow: 0 1px 0 contrast($secondary-text);
+            &:active
+            {
+                text-shadow: 0 -1px 0 contrast($secondary-text);
+            }
+        }
+    }
 }
 
-.ui-panel {
-  display          : block;
-  margin           : 0.25em;
-  color            : $base-text;
-  position         : relative;
-  border-radius    : $base-border-radius;
-  border           : 1px solid $base-border-color;
-  background-color : $base-bg;
-  overflow         : hidden;
+.ui-panel
+{
+    position: relative;
 
-  > .ui-panel-body {
-	@include transition(all 0.5s);
-	@include flex(0 0 auto);
-	max-height : 40em;
-	display    : block;
-	padding    : 0 !important;
-  }
+    display: block;
+    overflow: hidden;
 
-  &.ui-collapse {
-	> .ui-panel-body {
-	  max-height : 0;
-	}
+    margin: .25em;
 
-	button.ui-collapse span:before {
-	  content : $font-ui-arrow-down;
-	}
-  }
+    color: $base-text;
+    border: 1px solid $base-border-color;
+    border-radius: $base-border-radius;
+    background-color: $base-bg;
+
+    > .ui-panel-body
+    {
+        display: block;
+
+        max-height: 40em;
+        padding: 0 !important;
+
+        @include transition(all .5s);
+        @include flex(0 0 auto);
+    }
+
+    &.ui-collapse
+    {
+        > .ui-panel-body
+        {
+            max-height: 0;
+        }
+
+        button.ui-collapse span:before
+        {
+            content: $font-ui-arrow-down;
+        }
+    }
 }

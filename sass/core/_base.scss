@@ -4,134 +4,185 @@
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
-@import "compass/css3";
-@import "compass/css3/selection";
+@import 'compass/css3';
+@import 'compass/css3/selection';
 
-*, *:after, *:before {
-  @include box-sizing(border-box);
-  @include selection($primary, $primary-text);
-  @include input-placeholder {
-	color : $input-placeholder-text;
-  }
+*,
+*:after,
+*:before
+{
+    @include box-sizing(border-box);
+    @include selection($primary, $primary-text);
+    @include input-placeholder
+    {
+        color: $input-placeholder-text;
+    }
 }
 
-html, body {
-  margin           : 0;
-  padding          : 0;
-  cursor           : default;
-  overflow         : hidden;
+html,
+body
+{
+    font: 
+    {
+        size: $base-font-size;
+        family: $base-font-family;
+        weight: $font-weight-normal;
+    }
+    line-height: $base-line-height;
 
-  @include size(100%, 100%);
-  @include user-select(none);
+    overflow: hidden;
 
-  color            : $base-text;
-  background-color : $base-bg;
-  @if ($base-bg-image) {
-	background-image : image_url($base-bg-image);
-  }
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
-  font     : {
-	size   : $base-font-size;
-	family : $base-font-family;
-	weight : $font-weight-normal;
-  }
-  line-height      : $base-line-height;
+    cursor: default;
 
-  box-sizing       : border-box;
+    color: $base-text;
+    background-color: $base-bg;
 
-  .ui-selectable {
-	cursor : text;
-	@include user-select(text);
-  }
+    @include size(100%, 100%);
+    @include user-select(none);
+    @if ($base-bg-image)
+    {
+        background-image: image_url($base-bg-image);
+    }
+
+    .ui-selectable
+    {
+        cursor: text;
+
+        @include user-select(text);
+    }
 }
 
-input, textarea {
-  font-family : $base-font-family-input;
+input,
+textarea
+{
+    font-family: $base-font-family-input;
 }
 
-.ui-splash {
-  @include position(absolute, $l : 0, $r : 0, $t : 0);
-  @include transition(top 1s);
-  @include box-shadow(0 0 5px 0 #333);
-  height     : 100%;
-  z-index    : $z-index-splash;
-  background : $base-bg image_url($base-splash-image) no-repeat center center;
+.ui-splash
+{
+    z-index: $z-index-splash;
 
-  &.animate {
-	top : -100%;
-  }
+    height: 100%;
+
+    background: $base-bg image_url($base-splash-image) no-repeat center center;
+
+    @include position(absolute, $l: 0, $r : 0, $t : 0);
+    @include transition(top 1s);
+    @include box-shadow(0 0 5px 0 #333);
+
+    &.animate
+    {
+        top: -100%;
+    }
 }
 
-.ui-loading-shim {
-  @include position(fixed, $l : 0, $r : 0, $t : 0, $b : 1.2em);
-  @include flex-column($align : center, $justify : center);
-  background : rgba($base-bg, 0.3);
-  z-index    : $z-index-splash;
-  cursor     : wait;
+.ui-loading-shim
+{
+    z-index: $z-index-splash;
 
-  > .ui-loader {
-	@include flex(0 0 auto);
-	@include backdrop-blur(2px);
-	@include box-shadow(0 0 4px 1px rgba($base-shadow-color, .75) inset);
-	border   : {
-	  width  : 1px;
-	  style  : solid;
-	  color  : $base-border-color;
-	  radius : $base-border-radius;
-	}
-	background : rgba($base-bg, 0.85);
-	color      : rgba($base-text, 0.5);
-	padding    : 1em 1em 0.5em 0.5em;
-	position   : relative;
+    cursor: wait;
 
-	span {
-	  font-size : 2em;
-	}
-	span.second {
-	  @include position(absolute, $t : 0.4em, $r : 0.4em);
-	  font-size : 1em;
-	}
-  }
+    background: rgba($base-bg, .3);
+
+    @include position(fixed, $l: 0, $r : 0, $t : 0, $b : 1.2em);
+    @include flex-column($align: center, $justify : center);
+
+    > .ui-loader
+    {
+        position: relative;
+
+        padding: 1em 1em .5em .5em;
+
+        color: rgba($base-text, .5);
+        border: 
+        {
+            width: 1px;
+
+            color: rgba($base-border-color, .75);
+
+            style: solid;
+            radius: $base-border-radius;
+        }
+        background: rgba($base-bg, .85);
+
+        @include flex(0 0 auto);
+        @include backdrop-blur(2px);
+        @include box-shadow(0 0 2px 0 rgba($base-shadow-color, .75) inset);
+
+        span
+        {
+            font-size: 2em;
+        }
+        span.second
+        {
+            font-size: 1em;
+
+            @include position(absolute, $t: .4em, $r : .4em);
+        }
+    }
 }
 
-a, button {
-  margin          : 0;
-  color           : $text-link;
-  font-weight     : $font-weight-strong;
-  text-decoration : none;
-  &, * {
-	cursor  : pointer;
-	outline : none !important;
-  }
+a,
+button
+{
+    font-weight: $font-weight-strong;
 
-  img {
-	vertical-align : middle;
-	pointer-events : all;
-  }
+    margin: 0;
 
-  &[target='_blank']:after {
-	font-size      : 0.5em;
-	content        : $font-ui-external-thin;
-	opacity        : 0.75;
-	font-family    : Framework;
-	vertical-align : super;
-	margin-left    : 0.1em;
-  }
+    text-decoration: none;
 
-  &:hover {
-	color : darken($text-link, 20%);
-  }
+    color: $text-link;
+    &,
+    *
+    {
+        cursor: pointer;
+
+        outline: none !important;
+    }
+
+    img
+    {
+        vertical-align: middle;
+        pointer-events: all;
+    }
+
+    &[target='_blank']:after
+    {
+        font-family: Framework;
+        font-size: .5em;
+
+        margin-left: .1em;
+
+        content: $font-ui-external-thin;
+        vertical-align: super;
+
+        opacity: .75;
+    }
+
+    &:hover
+    {
+        color: darken($text-link, 20%);
+    }
 }
 
-hr {
-  margin     : 0.2em 0;
-  height     : 2px;
-  background : $hr-highlight;
-  color      : transparent;
-  border   : {
-	style  : solid;
-	radius : 0.5em;
-	width  : 1px 0 0;
-	color  : $hr-shadow;
-  }
+hr
+{
+    height: 2px;
+    margin: .2em 0;
+
+    color: transparent;
+    border: 
+    {
+        width: 1px 0 0;
+
+        color: $hr-shadow;
+
+        style: solid;
+        radius: .5em;
+    }
+    background: $hr-highlight;
 }

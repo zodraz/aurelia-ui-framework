@@ -5,215 +5,299 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-viewport {
-  @include flex-column();
-  @include position(absolute, 0, 0, 0, 0);
+.ui-viewport
+{
+    @include flex-column();
+    @include position(absolute, 0, 0, 0, 0);
 
-  .ui-app-logo {
-	width           : 3em;
-	height          : 3em;
-	background      : image_url('logo.png') no-repeat center center;
-	background-size : 2.8em 2.8em;
-  }
+    .ui-app-logo
+    {
+        width: 3em;
+        height: 3em;
+        margin: 0 auto;
 
-  .ui-app-header {
-	color      : $app-header-text;
-	background : $app-header-bg;
-	z-index    : 2;
+        background: image_url('logo.png') no-repeat center center;
+        background-size: auto 2.8em;
+    }
 
-	@include flex-row($justify : flex-end);
-	@include flex(0 0 auto);
-	@include box-shadow(0 0 5px 0 $base-shadow-color);
+    .ui-app-header
+    {
+        z-index: 2;
 
-	.ui-app-title {
-	  @include flex(1 0 auto);
-	  font-size    : $app-header-font-size;
-	  font-variant : small-caps;
-	  a {
-		color : $app-header-text;
-	  }
-	  span.nosub {
-		font-size   : 1.5em;
-		font-weight : $font-weight-normal;
-	  }
-	  small {
-		font-weight : $font-weight-normal;
-		display     : block;
-		color       : $text-muted;
-		font-size   : 0.75em;
-		margin-top  : 0.2em
-	  }
-	}
+        color: $app-header-text;
+        background: $app-header-bg;
 
-	.ui-app-logo {
-	  @include flex(0 0 auto);
-	}
+        @include flex-row($justify: flex-end);
+        @include flex(0 0 auto);
+        @include box-shadow(0 0 5px 0 $base-shadow-color);
 
-	.ui-app-menu-handle {
-	  @include margin(end, 0.5em);
-	  padding     : 0;
-	  line-height : 0;
-	  font-size   : 1.5em;
-	  width       : 1.5em;
-	  color       : $app-header-text;
-	}
+        .ui-app-title
+        {
+            font-size: $app-header-font-size;
+            font-variant: small-caps;
 
-	.ui-app-header-options {
-	  @include flex(0 0 auto);
-	  padding : 0 0.5em;
-	  .ui-button {
-		font-size : 1.2em;
-		padding   : 0.25em;
-	  }
-	}
-  }
+            @include flex(1 0 auto);
+            a
+            {
+                color: $app-header-text;
+            }
+            span.nosub
+            {
+                font-size: 1.5em;
+                font-weight: $font-weight-normal;
+            }
+            small
+            {
+                font-size: .75em;
+                font-weight: $font-weight-normal;
 
-  .ui-app-footer {
-	@include flex(0 0 auto);
-	color      : $app-footer-text;
-	background : $app-footer-bg;
-	padding    : $base-padding;
-	.heart {
-	  color : $cadmium-red;
-	}
-	@include flex-row($justify : space-between);
-	small {
-	  @include flex(0 0 auto);
-	  font-size : $app-footer-font-size;
-	}
-  }
+                display: block;
 
-  .ui-app-taskbar {
-	min-height : 2em;
-	overflow   : hidden;
-	background : $base-bg;
-	border-top : 1px solid $base-border-color;
+                margin-top: .2em;
 
-	.ui-quick-links {
-	  display : inline-block;
-	  @include border(end, 1px solid $base-border-color);
-	}
-	.ui-button {
-	  font-size    : 0.8em;
-	  padding      : 0.25em;
-	  border-color : darken($button-default-bg, 10%);
+                color: $text-muted;
+            }
+        }
 
-	  &.ui-active {
-		color        : $secondary-text;
-		background   : $secondary;
-		border-color : darken($secondary, 10%);
-		box-shadow   : 0 0 2px 0 $base-shadow-color inset !important;
-	  }
-	}
-  }
+        .ui-app-logo
+        {
+            @include flex(0 0 auto);
+        }
 
-  .ui-viewport-body {
-	z-index  : 1;
-	position : relative;
-	@include flex(1 1 0);
-  }
+        .ui-app-menu-handle
+        {
+            font-size: 1.5em;
+            line-height: 0;
 
-  .ui-app-menu {
-	@include position(fixed, $l : -20em, $t : 0, $b : 0);
-	@include transition(left 0.6s ease-out);
-	@include box-shadow(0 0 5px 1px #000);
+            width: 1.5em;
+            padding: 0;
 
-	min-width        : 15em;
-	max-width        : 20em;
-	z-index          : $z-index-splash+1;
-	color            : $app-menu-text;
-	background-color : $app-menu-bg;
-	@if ($app-menu-bg-image) {
-	  background-image : image_url($app-menu-bg-image);
-	}
+            color: $app-header-text;
 
-	.ui-auth-info {
-	  top           : 0;
-	  margin-bottom : 0.5em;
-	  background    : rgba(#333, 0.95);
-	  @include sticky();
-	  @include box-shadow(-3px 0 3px 1px #111);
-	  @include backdrop-blur(9px);
-	}
+            @include margin(end, .5em);
+        }
 
-	.ui-menu-link {
-	  font-size : $app-menu-font-size;
-	  color     : $app-menu-text;
-	  @include border(start, 3px solid transparent);
+        .ui-app-header-options
+        {
+            padding: 0 .5em;
 
-	  &:hover {
-		color      : $app-menu-hover-text;
-		background : $app-menu-hover-bg;
-	  }
-	  &.ui-active {
-		color        : $app-menu-active-text;
-		background   : $app-menu-active-bg;
-		border-color : $app-menu-active-border;
-		@include box-shadow(0 0 4px 0 #333 inset);
-	  }
-	  &[data-disabled="true"] {
-		color          : $wg-5;
-		pointer-events : none;
-		cursor         : not-allowed;
-	  }
-	}
+            @include flex(0 0 auto);
+            .ui-button
+            {
+                font-size: 1.2em;
 
-	hr {
-	  background-color : $wg-7;
-	  border-color     : $black-sp;
-	}
-  }
+                padding: .25em;
+            }
+        }
+    }
 
-  .ui-app-menu-shim {
-	@include position(fixed, 0, 0, 0, 0);
-	@include backdrop-blur(1px);
-	@include transition(opacity 0.3s);
+    .ui-app-footer
+    {
+        padding: $base-padding;
 
-	opacity          : 0;
-	display          : none;
-	background-color : rgba($app-menu-shim, 0.5);
-	z-index          : $z-index-splash;
-  }
+        color: $app-footer-text;
+        background: $app-footer-bg;
 
-  &.show-menu {
-	.ui-app-menu {
-	  left : 0;
-	}
-	.ui-app-menu-shim {
-	  display : block;
-	  opacity : 1;
-	}
-  }
+        @include flex(0 0 auto);
+        @include flex-row($justify: space-between);
+        .heart
+        {
+            color: $cadmium-red;
+        }
+        small
+        {
+            font-size: $app-footer-font-size;
 
-  .ui-dialog-container {
-	@include position(absolute, 0, 0, 0, 0);
-	z-index        : $z-index-floating;
-	pointer-events : none;
-	&.ui-dragging {
-	  pointer-events : all;
-	}
-  }
+            @include flex(0 0 auto);
+        }
+    }
 
-  .ui-overlay-container {
-	@include position(absolute, 0, 0, 0, 0);
-	@include flex-column(flex-end, flex-start);
-	overflow       : hidden;
-	z-index        : $z-index-notify;
-	pointer-events : none;
-	padding        : 5em 0 1.5em;
-  }
+    .ui-app-taskbar
+    {
+        overflow: hidden;
+
+        min-height: 2em;
+
+        border-top: 1px solid $base-border-color;
+        background: $base-bg;
+
+        .ui-quick-links
+        {
+            display: inline-block;
+
+            @include border(end, 1px solid $base-border-color);
+        }
+        .ui-button
+        {
+            font-size: .8em;
+
+            padding: .25em;
+
+            border-color: darken($button-default-bg, 10%);
+
+            &.ui-active
+            {
+                color: $secondary-text;
+                border-color: darken($secondary, 10%);
+                background: $secondary;
+                box-shadow: 0 0 2px 0 $base-shadow-color inset !important;
+            }
+        }
+    }
+
+    .ui-viewport-body
+    {
+        position: relative;
+        z-index: 1;
+
+        @include flex(1 1 0);
+    }
+
+    .ui-app-menu
+    {
+        z-index: $z-index-splash+1;
+
+        min-width: 15em;
+        max-width: 20em;
+
+        color: $app-menu-text;
+        background-color: $app-menu-bg;
+
+        @include position(fixed, $l: -20em, $t : 0, $b : 0);
+        @include transition(left .6s ease-out);
+        @include box-shadow(0 0 5px 1px #000);
+        @if ($app-menu-bg-image)
+        {
+            background-image: image_url($app-menu-bg-image);
+        }
+
+        .ui-auth-info
+        {
+            top: 0;
+
+            margin-bottom: .5em;
+            padding: .3em .7em;
+
+            background: rgba(#333, .95);
+
+            @include sticky();
+            @include box-shadow(-3px 0 3px 1px #111);
+            @include backdrop-blur(9px);
+        }
+
+        .ui-menu-section
+        {
+            padding: .3em .7em;
+        }
+
+        .ui-menu-link
+        {
+            font-size: $app-menu-font-size;
+
+            color: $app-menu-text;
+
+            @include border(start, 3px solid transparent);
+
+            &:hover
+            {
+                color: $app-menu-hover-text;
+                background: $app-menu-hover-bg;
+            }
+            &.ui-active
+            {
+                color: $app-menu-active-text;
+                border-color: $app-menu-active-border;
+                background: $app-menu-active-bg;
+
+                @include box-shadow(0 0 4px 0 #333 inset);
+            }
+            &[data-disabled='true']
+            {
+                cursor: not-allowed;
+                pointer-events: none;
+
+                color: $wg-5;
+            }
+        }
+
+        hr
+        {
+            border-color: $black-sp;
+            background-color: $wg-7;
+        }
+    }
+
+    .ui-app-menu-shim
+    {
+        z-index: $z-index-splash;
+
+        display: none;
+
+        opacity: 0;
+        background-color: rgba($app-menu-shim, .5);
+
+        @include position(fixed, 0, 0, 0, 0);
+        @include backdrop-blur(1px);
+        @include transition(opacity .3s);
+    }
+
+    &.show-menu
+    {
+        .ui-app-menu
+        {
+            left: 0;
+        }
+        .ui-app-menu-shim
+        {
+            display: block;
+
+            opacity: 1;
+        }
+    }
+
+    .ui-dialog-container
+    {
+        z-index: $z-index-floating;
+
+        pointer-events: none;
+
+        @include position(absolute, 0, 0, 0, 0);
+        &.ui-dragging
+        {
+            pointer-events: all;
+        }
+    }
+
+    .ui-overlay-container
+    {
+        z-index: $z-index-notify;
+
+        overflow: hidden;
+
+        padding: 5em 0 1.5em;
+
+        pointer-events: none;
+
+        @include position(absolute, 0, 0, 0, 0);
+        @include flex-column(flex-end, flex-start);
+    }
 }
 
-[dir='rtl'] {
-  .ui-viewport .ui-app-menu {
-	left  : auto;
-	right : -305px;
-	@include transition-property(right);
-  }
+[dir='rtl']
+{
+    .ui-viewport .ui-app-menu
+    {
+        right: -305px;
+        left: auto;
 
-  .ui-viewport.show-menu {
-	.ui-app-menu {
-	  right : 0;
-	}
-  }
+        @include transition-property(right);
+    }
+
+    .ui-viewport.show-menu
+    {
+        .ui-app-menu
+        {
+            right: 0;
+        }
+    }
 }

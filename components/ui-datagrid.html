@@ -39,7 +39,7 @@
 						 click.trigger="linkClicked($event, col.dataId, model)"
 						 innerhtml.bind="buildButton(model[col.dataId], col, model) & signal:__id">
 					</div>
-					<div class="ui-selectable" if.bind="!col.__button && !col.__link">
+					<div class="ui-selectable ${col.class}" if.bind="!col.__button && !col.__link">
 						<span innerhtml.bind="format(model[col.dataId], col, model) & signal:__id"></span>&nbsp;
 					</div>
 					<div if.bind="col.__link">

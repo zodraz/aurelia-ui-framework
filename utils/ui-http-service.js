@@ -15,17 +15,18 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
             this.appState = appState;
             this.eventAggregator = eventAggregator;
             this.appState.info(this.constructor.name, 'Initialized');
+            var self = this;
             httpClient.configure(function (config) {
                 config
                     .withBaseUrl(appState.HttpConfig.BaseUrl)
                     .withInterceptor({
                     request: function (request) {
-                        appState.info(this.constructor.name, "Requesting " + request.method + " " + request.url);
+                        appState.info(self.constructor.name, "Requesting " + request.method + " " + request.url);
                         appState.IsHttpInUse = true;
                         return request;
                     },
                     response: function (response) {
-                        appState.info(this.constructor.name, "Response " + response.url + " " + response.status);
+                        appState.info(self.constructor.name, "Response " + response.status + " " + response.url);
                         appState.IsHttpInUse = false;
                         if (response instanceof TypeError) {
                             throw Error(response['message']);
@@ -33,15 +34,24 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                         if (response.status == 401) {
                             eventAggregator.publish('Unauthorized', null);
                         }
-                        if (response.status != 200) {
-                            var j = void 0;
-                            if (isFunction(response.json))
-                                j = response.json();
-                            if (j && j.message)
-                                throw new Error(j.message);
-                            if (j && j.error)
-                                throw new Error(j.error);
-                            throw Error(response.statusText);
+                        else if (response.status != 200) {
+                            return response.text()
+                                .then(function (resp) {
+                                var json = {};
+                                try {
+                                    json = JSON.parse(resp);
+                                }
+                                catch (e) { }
+                                if (json.message)
+                                    throw Error(json.message);
+                                if (json.error)
+                                    throw Error(json.error);
+                                if (response.statusText)
+                                    throw Error(response.statusText);
+                                if (!response.statusText)
+                                    throw Error('Network Error!!');
+                                return null;
+                            });
                         }
                         return response;
                     },
@@ -71,7 +81,17 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 mode: 'cors',
                 headers: this.__getHeaders()
             })
-                .then(function (response) { return response.json(); });
+                .then(function (resp) { return resp.json(); });
+        };
+        UIHttpService.prototype.text = function (slug) {
+            this.appState.info(this.constructor.name, "text [" + slug + "]");
+            return this.httpClient
+                .fetch(slug, {
+                method: 'get',
+                mode: 'cors',
+                headers: this.__getHeaders()
+            })
+                .then(function (resp) { return resp.text(); });
         };
         UIHttpService.prototype.put = function (slug, obj) {
             this.appState.info(this.constructor.name, "put [" + slug + "]");
@@ -82,7 +102,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 mode: 'cors',
                 headers: this.__getHeaders()
             })
-                .then(function (response) { return response.json(); });
+                .then(function (resp) { return resp.json(); });
         };
         UIHttpService.prototype.post = function (slug, obj) {
             this.appState.info(this.constructor.name, "post [" + slug + "]");
@@ -93,7 +113,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 mode: 'cors',
                 headers: this.__getHeaders()
             })
-                .then(function (response) { return response.json(); });
+                .then(function (resp) { return resp.json(); });
         };
         UIHttpService.prototype.delete = function (slug) {
             this.appState.info(this.constructor.name, "delete [" + slug + "]");
@@ -103,15 +123,15 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 mode: 'cors',
                 headers: this.__getHeaders()
             })
-                .then(function (response) { return response.json(); });
+                .then(function (resp) { return resp.json(); });
         };
         UIHttpService.prototype.upload = function (slug, form) {
             this.appState.info(this.constructor.name, "upload [" + slug + "]");
-            this.__upload('post', slug, form);
+            return this.__upload('post', slug, form);
         };
         UIHttpService.prototype.reupload = function (slug, form) {
             this.appState.info(this.constructor.name, "reupload [" + slug + "]");
-            this.__upload('put', slug, form);
+            return this.__upload('put', slug, form);
         };
         UIHttpService.prototype.__upload = function (method, slug, form) {
             var data = new FormData();
@@ -132,7 +152,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                 mode: 'cors',
                 headers: this.__getHeaders()
             })
-                .then(function (response) { return response.json(); });
+                .then(function (resp) { return resp.json(); });
         };
         UIHttpService.prototype.__getHeaders = function () {
             var headers = {

@@ -109,4 +109,3 @@
 @function contrast($color, $dark: $black, $light: $white) {
   @return contrast-color($color, $dark, $light);
 }
-

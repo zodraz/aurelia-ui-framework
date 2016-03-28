@@ -33,10 +33,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             }
             if (!this.taskBar) {
                 this.taskBar = document.body.querySelector('.ui-viewport .ui-app-taskbar');
-                this.taskBar.addEventListener('click', function (e) { return _this.__taskClick(e.target['window']); });
+                if (this.taskBar)
+                    this.taskBar.addEventListener('click', function (e) { return _this.__taskClick(e.target['window']); });
             }
             var instruction = {
-                viewModel: aurelia_metadata_1.Origin.get(vm).moduleId,
+                viewModel: vm,
                 container: this.container,
                 childContainer: this.container.createChild(),
                 model: model ? model : {}
@@ -52,7 +53,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
                             _this.__invokeLifecycle(viewModel, 'activate', model);
                             controller.automate();
                             var view = _this.__createDialog(controller.viewModel);
-                            _this.__invokeLifecycle(viewModel, 'bind', null);
+                            _this.__invokeLifecycle(viewModel, 'bind', model);
                             var childSlot = new aurelia_framework_2.ViewSlot(view['fragment'].querySelector('.ui-dialog'), true);
                             childSlot.add(controller.view);
                             childSlot.viewModel = controller.viewModel;
@@ -71,11 +72,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             if (!(vm instanceof UIDialog))
                 throw new Error("ViewModel must extend from UIDialog");
             var viewFactory = this.compiler.compile('<template><div class="${modal?\'ui-modal\':\'\'} ui-dialog-wrapper" ref="__dialogWrapper">' +
-                '<div class="uia-dialog ${__active?\'ui-active\':\'ui-inactive\'}" ref="__dialog" css.bind="__current">' +
+                '<div class="ui-dialog ${__active?\'ui-active\':\'ui-inactive\'}" ref="__dialog" css.bind="__current">' +
                 '<ui-header primary close="true" close.trigger="close($event)" ' +
                 'expand.trigger="expand($event)" collapse.trigger="collapse($event)" ' +
-                'icon="${icon}" collapse="${!modal}" expand="${maximizable}">${title}</ui-header>' +
-                '<span class="ui-resizer fi-ui"></span>' +
+                'icon="${icon}" collapse="${!modal}" expand="${maximize}">${title}</ui-header>' +
+                '<span class="ui-resizer fi-ui" if.bind="resize"></span>' +
                 '</div></div></template>', this.resources);
             var view = viewFactory.create(this.container);
             if (vm.modal) {
@@ -156,9 +157,14 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
         UIDialogService.prototype.__taskClick = function (dialog) {
             if (!dialog)
                 return;
-            dialog.__minimized = false;
-            dialog.__dialog.classList.remove('ui-minimize');
-            this.__changeActive(dialog);
+            if (dialog.__minimized === true) {
+                dialog.__minimized = false;
+                dialog.__dialog.classList.remove('ui-minimize');
+                this.__changeActive(dialog);
+            }
+            else {
+                this.__collapse({ detail: dialog });
+            }
         };
         UIDialogService.prototype.__changeActive = function (dialog) {
             if (!isEmpty(this.__active)) {
@@ -258,7 +264,8 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             this.__startY = y !== 0 ? ($event.y || $event.clientY) : this.__startY;
         };
         UIDialogService = __decorate([
-            aurelia_framework_1.autoinject(), 
+            aurelia_framework_1.autoinject(),
+            aurelia_framework_2.singleton(), 
             __metadata('design:paramtypes', [aurelia_framework_2.ViewCompiler, aurelia_framework_2.Container, aurelia_framework_2.ViewResources, aurelia_framework_2.CompositionEngine])
         ], UIDialogService);
         return UIDialogService;
@@ -280,12 +287,24 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             this.modal = false;
             this.drag = true;
             this.resize = true;
-            this.maximizable = true;
+            this.maximize = true;
         }
+        UIDialog.prototype.bind = function () {
+            this.__current.width = this.width || this.__current.width;
+            this.__current.height = this.height || this.__current.height;
+        };
         UIDialog.prototype.close = function ($event) {
             if ($event)
                 $event.cancelBubble = true;
             ui_event_1.UIEvent.fireEvent('close', this.__dialogWrapper, this);
+        };
+        UIDialog.prototype.focus = function () {
+            var _this = this;
+            setTimeout(function () {
+                var el = _this.__dialog.querySelector('ui-input input,textarea,ui-phone input,ui-combo input');
+                if (!isEmpty(el))
+                    el.focus();
+            }, 10);
         };
         UIDialog.prototype.expand = function ($event) {
             if ($event)
@@ -296,6 +315,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "../util
             if ($event)
                 $event.cancelBubble = true;
             ui_event_1.UIEvent.fireEvent('collapse', this.__dialogWrapper, this);
+        };
+        UIDialog.prototype.toast = function (config) {
+            if (typeof config === 'string')
+                config = { message: config };
+            config.extraClass = 'ui-page-toast';
+            ui_utils_1.UIUtils.showToast(this.__dialog, config);
         };
         UIDialog.__id = 0;
         UIDialog.__x = 0;

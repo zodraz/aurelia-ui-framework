@@ -29,6 +29,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             _super.prototype.bind.call(this);
             if (this.element.hasAttribute('full-view'))
                 this.element.classList.add('ui-full-view');
+            if (this.element.hasAttribute('side-view')) {
+                this.__hidePreview = true;
+                this.element.classList.add('ui-side-view');
+            }
         };
         UIMarkdown.prototype.toolClick = function ($event) {
             var tool = getParentByTag($event.target, 'button');
@@ -113,12 +117,14 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
                 this.__preview.classList.add('ui-hide');
             }
             else if (type == 'help') {
-                this.__help.classList.remove('ui-hide');
-                this.__close.classList.remove('ui-hide');
+                this.__help.classList.toggle('ui-hide');
+                this.__preview.classList.add('ui-hide');
+                this.__disableTools = !this.__help.classList.contains('ui-hide');
             }
             else if (type == 'preview') {
-                this.__close.classList.remove('ui-hide');
-                this.__preview.classList.remove('ui-hide');
+                this.__help.classList.add('ui-hide');
+                this.__preview.classList.toggle('ui-hide');
+                this.__disableTools = !this.__preview.classList.contains('ui-hide');
             }
         };
         __decorate([

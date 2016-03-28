@@ -5,228 +5,318 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-datagrid {
-  position : relative;
-  display  : block;
-  width    : 100%;
-  height   : 100%;
-  @include flex(1 1 0);
+.ui-datagrid
+{
+    position: relative;
 
-  .ui-ghost {
-	z-index : 20;
-	@include position(absolute);
+    display: block;
 
-	&.resize {
-	  width      : 2px;
-	  top        : 0;
-	  bottom     : 0;
-	  background : $base-border-color;
-	}
+    width: 100%;
+    height: 100%;
 
-	&.drag {
-	  left       : 0;
-	  right      : 0;
-	  border     : 1px dotted $primary;
-	  background : rgba($base-border-color, 0.1);
-	}
-  }
-  .ui-indicator {
-	height     : 0.1em;
-	display    : none;
-	background : $primary;
-	@include position(absolute);
-  }
+    @include flex(1 1 0);
 
-  .ui-datagrid-wrapper {
-	@include position(absolute, 0, 0, 0, 0);
-	overflow : auto;
+    .ui-ghost
+    {
+        z-index: 20;
 
-	> table > thead, > table > tfoot {
-	  @include sticky();
-	  z-index : 20;
-	}
+        @include position(absolute);
 
-	> table {
-	  min-width    : 100%;
-	  min-height   : 100%;
-	  table-layout : fixed;
+        &.resize
+        {
+            top: 0;
+            bottom: 0;
 
-	  > thead {
-		top : 0;
-	  }
-	  > tfoot {
-		bottom : -1px;
-	  }
-	  > tbody {
-		overflow : auto;
-		z-index  : 10;
+            width: 2px;
 
-		tr:nth-of-type(odd) > td {
-		  background-color : $datagrid-odd-bg;
-		}
-		tr:nth-of-type(even) > td {
-		  background-color : $datagrid-even-row;
-		}
-		tr:last-child {
-		  height      : 100%;
-		  line-height : 0.1;
-		  > td, > td > div {
-			padding : 0;
-			height  : 100%;
-		  }
-		}
+            background: $base-border-color;
+        }
 
-		tr.ui-ghost {
-		  visibility : hidden;
-		}
-	  }
+        &.drag
+        {
+            right: 0;
+            left: 0;
 
-	  colgroup > col:not(:last-child) {
-	  }
+            border: 1px dotted $primary;
+            background: rgba($base-border-color, .1);
+        }
+    }
+    .ui-indicator
+    {
+        display: none;
 
-	  td {
-		> div {
-		  color          : $datagrid-text;
-		  vertical-align : middle;
-		  line-height    : 1.5;
-		  padding        : 0.35em 0.5em;
-		  border-right   : 1px solid rgba($base-border-color, 0.2);
-		  @include text-truncate();
+        height: .1em;
 
-		  &.ui-button-bar {
-			padding : 0.1em;
+        background: $primary;
 
-			.fi-ui-view:before {
-			  content : $datagrid-button-view;
-			}
-			.fi-ui-edit:before {
-			  content : $datagrid-button-edit;
-			}
-			.fi-ui-delete:before {
-			  content : $datagrid-button-delete;
-			}
-		  }
+        @include position(absolute);
+    }
 
-		  a {
-			font-weight : $font-weight-normal;
-		  }
-		}
-	  }
+    .ui-datagrid-wrapper
+    {
+        overflow: auto;
 
-	  td.sticky {
-		@include sticky();
-		left    : 0;
-		z-index : 10;
+        @include position(absolute, 0, 0, 0, 0);
 
-		&.last-of-type > div {
-		  border-right : 1px solid $base-border-color !important;
-		}
-	  }
+        > table > thead,
+        > table > tfoot
+        {
+            z-index: 20;
 
-	  thead td {
-		> div {
-		  padding       : 0;
-		  background    : $datagrid-header-bg;
-		  border-bottom : 1px solid $base-border-color;
-		  @include flex-row(stretch);
+            @include sticky();
+        }
 
-		  > span:first-child {
-			padding : 0.3em 0.5em;
-			@include flex(1 1 0);
-			&.sortable {
-			  position      : relative;
-			  cursor        : pointer;
-			  padding-right : 1.2em;
-			  &:hover {
-				background-color : $datagrid-header-hover-bg;
-			  }
+        > table
+        {
+            min-width: 100%;
+            min-height: 100%;
 
-			  &:before {
-				content     : $font-ui-sort-asc;
-				font-family : Framework;
-				display     : block;
-				width       : 1em;
-				font-weight : $font-weight-normal;
-				color       : rgba($datagrid-indicator-color, .3);
-				@include position(absolute, $t : 0, $r : 0);
-			  }
-			  &:after {
-				width       : 1em;
-				content     : $font-ui-sort-desc;
-				font-family : Framework;
-				display     : block;
-				font-weight : $font-weight-normal;
-				color       : rgba($datagrid-indicator-color, .3);
-				@include position(absolute, $b : 0, $r : 0);
-			  }
+            table-layout: fixed;
 
-			  &.asc:before {
-				color : $datagrid-indicator-color;
-			  }
+            > thead
+            {
+                top: 0;
+            }
+            > tfoot
+            {
+                bottom: -1px;
+            }
+            > tbody
+            {
+                z-index: 10;
 
-			  &.desc:after {
-				color : $datagrid-indicator-color;
-			  }
-			}
-		  }
-		  > span.resizer {
-			margin-left : 4px;
-			@include flex(0 0 1px);
+                overflow: auto;
 
-			&.enable {
-			  cursor       : ew-resize;
-			  border-left  : 1px solid $base-border-color;
-			  border-right : 1px solid lighten($base-border-color, 30%);
-			}
-		  }
-		}
+                tr:nth-of-type(odd) > td
+                {
+                    background-color: $datagrid-odd-bg;
+                }
+                tr:nth-of-type(even) > td
+                {
+                    background-color: $datagrid-even-row;
+                }
+                tr:last-child
+                {
+                    line-height: .1;
 
-		tr:hover:not(.active) > td > div {
-		  background-color : $datagrid-hover-bg;
-		  @include transition(background 0.2s linear 0.5s);
-		}
+                    height: 100%;
+                    > td,
+                    > td > div
+                    {
+                        height: 100%;
+                        padding: 0;
+                    }
+                }
 
-		tr.active > td > div {
-		  @include transition(background 0.05s linear 0s);
-		  background-color : $datagrid-active-bg;
-		}
-	  }
-	  tfoot td {
-		> div {
-		  background : $datagrid-footer-bg;
-		  border-top : 1px solid $base-border-color;
-		}
-	  }
-	}
-  }
+                tr.ui-ghost
+                {
+                    visibility: hidden;
+                }
+            }
+
+
+
+            td
+            {
+                > div
+                {
+                    line-height: 1.5;
+
+                    padding: .35em .5em;
+
+                    vertical-align: middle;
+
+                    color: $datagrid-text;
+                    border-right: 1px solid rgba($base-border-color, .2);
+
+                    @include text-truncate();
+
+                    &.ui-button-bar
+                    {
+                        padding: .1em;
+
+                        .fi-ui-view:before
+                        {
+                            content: $datagrid-button-view;
+                        }
+                        .fi-ui-edit:before
+                        {
+                            content: $datagrid-button-edit;
+                        }
+                        .fi-ui-delete:before
+                        {
+                            content: $datagrid-button-delete;
+                        }
+                    }
+
+                    a
+                    {
+                        font-weight: $font-weight-normal;
+                    }
+                }
+            }
+
+            td.sticky
+            {
+                z-index: 10;
+                left: 0;
+
+                @include sticky();
+
+                &.last-of-type > div
+                {
+                    border-right: 1px solid $base-border-color !important;
+                }
+            }
+
+            thead td
+            {
+                > div
+                {
+                    padding: 0;
+
+                    border-bottom: 1px solid $base-border-color;
+                    background: $datagrid-header-bg;
+
+                    @include flex-row(stretch);
+
+                    > span:first-child
+                    {
+                        padding: .3em .5em;
+
+                        @include flex(1 1 0);
+                        &.sortable
+                        {
+                            position: relative;
+
+                            padding-right: 1.2em;
+
+                            cursor: pointer;
+                            &:hover
+                            {
+                                background-color: $datagrid-header-hover-bg;
+                            }
+
+                            &:before
+                            {
+                                font-family: Framework;
+                                font-weight: $font-weight-normal;
+
+                                display: block;
+
+                                width: 1em;
+
+                                content: $font-ui-sort-asc;
+
+                                color: rgba($datagrid-indicator-color, .3);
+
+                                @include position(absolute, $t: 0, $r : 0);
+                            }
+                            &:after
+                            {
+                                font-family: Framework;
+                                font-weight: $font-weight-normal;
+
+                                display: block;
+
+                                width: 1em;
+
+                                content: $font-ui-sort-desc;
+
+                                color: rgba($datagrid-indicator-color, .3);
+
+                                @include position(absolute, $b: 0, $r : 0);
+                            }
+
+                            &.asc:before
+                            {
+                                color: $datagrid-indicator-color;
+                            }
+
+                            &.desc:after
+                            {
+                                color: $datagrid-indicator-color;
+                            }
+                        }
+                    }
+                    > span.resizer
+                    {
+                        margin-left: 4px;
+
+                        @include flex(0 0 1px);
+
+                        &.enable
+                        {
+                            cursor: ew-resize;
+
+                            border-right: 1px solid lighten($base-border-color, 30%);
+                            border-left: 1px solid $base-border-color;
+                        }
+                    }
+                }
+
+                tr:hover:not(.active) > td > div
+                {
+                    background-color: $datagrid-hover-bg;
+
+                    @include transition(background .2s linear .5s);
+                }
+
+                tr.active > td > div
+                {
+                    background-color: $datagrid-active-bg;
+
+                    @include transition(background .05s linear 0s);
+                }
+            }
+            tfoot td
+            {
+                > div
+                {
+                    border-top: 1px solid $base-border-color;
+                    background: $datagrid-footer-bg;
+                }
+            }
+        }
+    }
 }
 
-.ui-pager {
-  font-size : 0.9em;
+.ui-pager
+{
+    font-size: .9em;
 
-  .ui-page-input {
-	padding    : 0;
-	border     : none !important;
-	box-shadow : 0 0 1px 0 $base-shadow-color !important;
-	@include padding(end, 0.25em);
+    .ui-page-input
+    {
+        padding: 0;
 
-	.ui-input {
-	  padding     : 0.1em 0.3em;
-	  line-height : 1.5;
-	  min-height  : 1px;
-	}
-  }
+        border: none !important;
+        box-shadow: 0 0 1px 0 $base-shadow-color !important;
 
-  .fi-ui-pager-first:before {
-	content : $pager-first-glyph;
-  }
-  .fi-ui-pager-prev:before {
-	content : $pager-prev-glyph;
-  }
-  .fi-ui-pager-next:before {
-	content : $pager-next-glyph;
-  }
-  .fi-ui-pager-last:before {
-	content : $pager-last-glyph;
-  }
+        @include padding(end, .25em);
+
+        .ui-input
+        {
+            line-height: 1.5;
+
+            min-height: 1px;
+            padding: .1em .3em;
+        }
+    }
+
+    .fi-ui-pager-first:before
+    {
+        content: $pager-first-glyph;
+    }
+    .fi-ui-pager-prev:before
+    {
+        content: $pager-prev-glyph;
+    }
+    .fi-ui-pager-next:before
+    {
+        content: $pager-next-glyph;
+    }
+    .fi-ui-pager-last:before
+    {
+        content: $pager-last-glyph;
+    }
 }

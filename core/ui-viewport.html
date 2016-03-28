@@ -1,7 +1,7 @@
 <template role="main" class="ui-viewport" click.delegate="__hideMenu($event)">
 	<header class="ui-app-header">
 		<!-- Menu handle -->
-		<button class="ui-app-menu-handle" if.bind="showMenu" click.trigger="__showMenu($event)">
+		<button class="ui-app-menu-handle" if.bind="showMenu && appState.IsAuthenticated" click.trigger="__showMenu($event)">
 			<span class="fi-ui-bar-light"></span>
 		</button>
 		<!-- App Logo -->
@@ -15,7 +15,7 @@
 		</h1>
 		<div class="ui-app-header-options">
 			<content></content>
-			<ui-button primary icon="fi-ui-arrow-signout" click.trigger="logout()"></ui-button>
+			<ui-button primary icon="fi-ui-arrow-signout" if.bind="appState.IsAuthenticated" click.trigger="logout()"></ui-button>
 		</div>
 	</header>
 	<router-view role="region" class="ui-viewport-body"></router-view>

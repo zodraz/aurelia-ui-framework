@@ -1,4 +1,4 @@
-define(["require", "exports", "./utils/ui-application", "./utils/ui-event", "./utils/ui-formatters", "./utils/ui-application", "./utils/ui-model", "./components/ui-dialog", "./utils/ui-tree-models", "./utils/ui-http-service", "./utils/ui-validation", "./utils/ui-utils", 'fetch', 'lodash', 'moment', 'numeral', './libs/marked', './libs/highlight', './libs/phonelib', './data/countries', './data/currencies'], function (require, exports, ui_application_1, ui_event_1, ui_formatters_1, ui_application_2, ui_model_1, ui_dialog_1, ui_tree_models_1, ui_http_service_1, ui_validation_1, ui_utils_1) {
+define(["require", "exports", "./utils/ui-application", "./utils/ui-event", "./utils/ui-formatters", "./utils/ui-application", "./utils/ui-model", "./inputs/ui-language", "./components/ui-dialog", "./utils/ui-tree-models", "./utils/ui-http-service", "./utils/ui-validation", "./utils/ui-utils", 'fetch', 'lodash', 'moment', 'numeral', './libs/marked', './libs/phonelib', './data/countries', './data/currencies'], function (require, exports, ui_application_1, ui_event_1, ui_formatters_1, ui_application_2, ui_model_1, ui_language_1, ui_dialog_1, ui_tree_models_1, ui_http_service_1, ui_validation_1, ui_utils_1) {
     "use strict";
     function configure(aurelia, configCallback) {
         aurelia.globalResources('./core/ui-viewport');
@@ -21,6 +21,8 @@ define(["require", "exports", "./utils/ui-application", "./utils/ui-event", "./u
         aurelia.globalResources('./inputs/ui-textarea');
         aurelia.globalResources('./inputs/ui-input-dual');
         aurelia.globalResources('./inputs/ui-combo');
+        aurelia.globalResources('./inputs/ui-tags');
+        aurelia.globalResources('./inputs/ui-language');
         aurelia.globalResources('./inputs/ui-date');
         aurelia.globalResources('./inputs/ui-date-view');
         aurelia.globalResources('./utils/ui-converters');
@@ -34,6 +36,7 @@ define(["require", "exports", "./utils/ui-application", "./utils/ui-event", "./u
     exports.UIApplication = ui_application_2.UIApplication;
     exports.AuthInterceptor = ui_application_2.AuthInterceptor;
     exports.UIModel = ui_model_1.UIModel;
+    exports.UILanguage = ui_language_1.UILanguage;
     exports.UIDialogService = ui_dialog_1.UIDialogService;
     exports.UIDialog = ui_dialog_1.UIDialog;
     exports.UITreeModel = ui_tree_models_1.UITreeModel;

@@ -40,7 +40,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "aurelia-v
                     enumerable: false
                 }
             });
-            this.logger.warn("Model Initialized");
+            this.logger.info("Model Initialized");
         }
         UIModel.prototype.get = function () {
             var rest = [];

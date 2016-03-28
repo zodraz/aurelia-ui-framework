@@ -147,6 +147,22 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-util
                 this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
             ui_utils_1.UIUtils.showToast(this.__overlayContainer, config);
         };
+        UIApplication.prototype.toastSuccess = function (config) {
+            if (!this.__overlayContainer)
+                this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
+            if (typeof config === 'string')
+                config = { message: config };
+            config.theme = 'success';
+            ui_utils_1.UIUtils.showToast(this.__overlayContainer, config);
+        };
+        UIApplication.prototype.toastError = function (config) {
+            if (!this.__overlayContainer)
+                this.__overlayContainer = document.body.querySelector('.ui-viewport .ui-overlay-container');
+            if (typeof config === 'string')
+                config = { message: config };
+            config.theme = 'danger';
+            ui_utils_1.UIUtils.showToast(this.__overlayContainer, config);
+        };
         UIApplication.defaults = {
             App: {
                 Key: 'App',
@@ -182,7 +198,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "./ui-util
                     var url = routingContext.router.generate('login', { status: 401 });
                     this.appState.IsAuthenticated = false;
                     this.appState.session('AppCurrentRoute', routingContext.fragment);
-                    return next.complete(new aurelia_router_1.Redirect(url));
+                    return next.reject(new aurelia_router_1.Redirect(url));
                 }
             }
             if (!routingContext.config.isLogin && !this.isAllowed(routingContext.config.group)) {

@@ -31,6 +31,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.displayProperty = 'text';
             this.iconProperty = '';
             this.iconClass = '';
+            this.emptyText = 'No Results Found...';
         }
         UIComboBox.prototype.bind = function () {
             _super.prototype.bind.call(this);
@@ -38,33 +39,38 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         };
         UIComboBox.prototype.attached = function () {
             var _this = this;
+            _super.prototype.attached.call(this);
             setTimeout(function () { return _this.valueChanged(_this.value); }, 500);
         };
         UIComboBox.prototype.detached = function () {
         };
         UIComboBox.prototype.valueChanged = function (newValue) {
-            this.__hilight = this.__list.querySelector("[data-value=\"" + newValue + "\"]");
-            this.__select(this.__hilight);
+            var v = ui_utils_1._['findDeep'](this.__original, this.valueProperty, newValue);
+            this.__searchText = v ? v[this.displayProperty] : '';
+            if (v === null)
+                this.value = null;
         };
         UIComboBox.prototype.optionsChanged = function (newValue) {
+            var _this = this;
             this.__noResult = isEmpty(newValue);
-            if (ui_utils_1._.isArray(newValue))
-                this.options = { '§': newValue };
-            this.__options = ui_utils_1._.cloneDeep(this.options);
+            this.__original = newValue;
+            if (ui_utils_1._.isArray(newValue) && !isEmpty(newValue))
+                this.__original = { '§': newValue };
+            this.__options = ui_utils_1._.cloneDeep(this.__original);
+            setTimeout(function () { return _this.valueChanged(_this.value); }, 500);
         };
         UIComboBox.prototype.__select = function (item) {
             if (item !== null) {
+                if (this.value !== item.dataset['value'])
+                    ui_event_1.UIEvent.fireEvent('select', this.element, item['model']);
                 this.value = item.dataset['value'];
-                this.__searchText = item['model'][this.displayProperty] || item['model'];
-                ui_event_1.UIEvent.fireEvent('select', this.element, item['model']);
-                this.__options = ui_utils_1._.cloneDeep(this.options);
-                this.__focus = false;
             }
             else {
                 this.value = this.__searchText = '';
-                this.__options = ui_utils_1._.cloneDeep(this.options);
-                this.__focus = false;
             }
+            this.__options = ui_utils_1._.cloneDeep(this.__original);
+            this.__focus = false;
+            this.__noResult = isEmpty(this.__options);
         };
         UIComboBox.prototype.__clicked = function ($event) {
             var o = getParentByClass($event.target, 'ui-list-item', 'ui-list');
@@ -97,6 +103,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             else if (code == 13 && !this.__focus) {
                 return ui_event_1.UIEvent.fireEvent('enterpressed', this.element, this);
             }
+            if (this.__noResult)
+                return true;
             this.__focus = true;
             if (code === 38) {
                 var h = this.__list.querySelector('.ui-list-item.hilight');
@@ -149,10 +157,11 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UIComboBox.prototype.__searchTextChanged = function () {
             var _this = this;
             if (ui_utils_1._.isEmpty(this.__searchText)) {
-                this.__options = ui_utils_1._.cloneDeep(this.options);
+                this.__options = ui_utils_1._.cloneDeep(this.__original);
+                this.__noResult = isEmpty(this.__options);
                 return;
             }
-            var opts = ui_utils_1._.cloneDeep(this.options);
+            var opts = ui_utils_1._.cloneDeep(this.__original);
             var rx = new RegExp(ui_utils_1.UIUtils.getAscii(this.__searchText), 'i');
             this.__options = ui_utils_1._.forEach(opts, function (v, k) {
                 opts[k] = ui_utils_1._.filter(v, function (n) {
@@ -251,6 +260,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Object)
         ], UIComboBox.prototype, "iconClass", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', Object)
+        ], UIComboBox.prototype, "emptyText", void 0);
         UIComboBox = __decorate([
             aurelia_framework_1.autoinject,
             aurelia_framework_1.customElement('ui-combo'), 

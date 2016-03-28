@@ -5,115 +5,156 @@
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
 
-.ui-tree-panel {
-  display   : block;
-  font-size : 0.9em;
+.ui-tree-panel
+{
+    font-size: .9em;
 
-  a {
-	text-decoration : none;
-  }
+    display: block;
 
-  .ui-search {
-	@include sticky();
-	top              : 0;
-	z-index          : 50;
-	padding          : 0.3em 0 0;
-	background-color : $base-bg;
-	border-bottom    : 1px solid $base-border-color;
-  }
+    a
+    {
+        text-decoration: none;
+    }
 
-  .ui-tree-level {
-	padding : 0.75em;
-	z-index : 10;
-  }
+    .ui-search
+    {
+        z-index: 50;
+        top: 0;
 
-  .ui-tree-level .ui-tree-level {
-	padding : 0 0.75em 0 1.5em;
-  }
+        padding: .3em 0 0;
 
-  .ui-tree-item {
-	display : block;
-  }
+        border-bottom: 1px solid $base-border-color;
+        background-color: $base-bg;
 
-  .ui-tree-item > .ui-tree-item-link {
-	@include flex-row(center, $wrap : false);
+        @include sticky();
+    }
 
-	a.ui-expander {
-	  @include flex(0 0 auto);
+    .ui-tree-level
+    {
+        z-index: 10;
 
-	  padding       : 0.125em;
-	  font-size     : 1em;
-	  line-height   : 1;
-	  margin        : 0 0.1em;
-	  border-radius : 0.2em;
-	  color         : $text-muted;
-	  & span:before {
-		content : $font-ui-square-expand;
-	  }
-	  &.expanded span:before {
-		content : $font-ui-square-collapse;
-	  }
-	  &:hover {
-		color : $primary;
-	  }
-	}
+        padding: .75em;
+    }
 
-	a.ui-node-checkbox {
-	  @include flex(0 0 auto);
+    .ui-tree-level .ui-tree-level
+    {
+        padding: 0 .75em 0 1.5em;
+    }
 
-	  padding     : 0.25em;
-	  font-size   : 1em;
-	  color       : $base-shadow-color;
-	  font-weight : $font-weight-strong;
-	  &:hover {
-		color : $primary;
-	  }
-	  &.off span:before {
-		content : $font-ui-tree-check-off;
-	  }
-	  &.on span:before {
-		content : $font-ui-tree-check-on;
-	  }
-	  &.partial span:before {
-		content : $font-ui-tree-check-partial;
-	  }
+    .ui-tree-item
+    {
+        display: block;
+    }
 
-	  &.on {
-		& ~ a.ui-link {
-		  font-weight : $font-weight-strong;
-		}
-	  }
-	}
+    .ui-tree-item > .ui-tree-item-link
+    {
+        @include flex-row(center, $wrap: false);
 
-	a.ui-link {
-	  color       : $base-text;
-	  padding     : 0.35rem 0.25rem;
-	  min-width   : 13em;
-	  white-space : nowrap;
-	  font-weight : $font-weight-normal;
-	  @include flex(1 1 0);
-	  @include flex-row($wrap : false);
+        a.ui-expander
+        {
+            font-size: 1em;
+            line-height: 1;
 
-	  span.ui-icon {
-		font-weight     : normal;
-		margin          : 0 0.25em;
-		background-size : auto 1.2em;
-	  }
+            margin: 0 .1em;
+            padding: .125em;
 
-	  b {
-		color           : $primary;
-		text-decoration : underline;
-		font-weight     : $font-weight-strong;
-	  }
+            color: $text-muted;
+            border-radius: .2em;
 
-	  &:hover {
-		background-color : rgba($primary, 0.25);
-	  }
-	  &.ui-active {
-		color            : $primary-text;
-		font-weight      : $font-weight-strong;
-		background-color : rgba($primary, 0.75);
-	  }
-	}
-  }
+            @include flex(0 0 auto);
+            & span:before
+            {
+                content: $font-ui-square-expand;
+            }
+            &.expanded span:before
+            {
+                content: $font-ui-square-collapse;
+            }
+            &:hover
+            {
+                color: $primary;
+            }
+        }
+
+        a.ui-node-checkbox
+        {
+            font-size: 1em;
+            font-weight: $font-weight-strong;
+
+            padding: .25em;
+
+            color: $base-shadow-color;
+
+            @include flex(0 0 auto);
+            &:hover
+            {
+                color: $primary;
+            }
+            &.off span:before
+            {
+                content: $font-ui-tree-check-off;
+            }
+            &.on span:before
+            {
+                content: $font-ui-tree-check-on;
+            }
+            &.partial span:before
+            {
+                content: $font-ui-tree-check-partial;
+            }
+
+            &.on
+            {
+                & ~ a.ui-link
+                {
+                    font-weight: $font-weight-strong;
+                }
+            }
+        }
+
+        a.ui-link
+        {
+            font-weight: $font-weight-normal;
+
+            min-width: 13em;
+            padding: .35rem .25rem;
+
+            white-space: nowrap;
+
+            color: $base-text;
+
+            @include flex(1 1 0);
+            @include flex-row($wrap: false);
+
+            span.ui-icon
+            {
+                font-weight: normal;
+
+                margin: 0 .25em;
+
+                background-size: auto 1.2em;
+            }
+
+            b
+            {
+                font-weight: $font-weight-strong;
+
+                text-decoration: underline;
+
+                color: $primary;
+            }
+
+            &:hover
+            {
+                background-color: rgba($primary, .25);
+            }
+            &.ui-active
+            {
+                font-weight: $font-weight-strong;
+
+                color: $primary-text;
+                background-color: rgba($primary, .75);
+            }
+        }
+    }
 }

@@ -12,7 +12,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-validation", "../utils/ui-event", "../utils/ui-utils", "../utils/ui-model", "../utils/ui-application"], function (require, exports, aurelia_framework_1, aurelia_validation_1, ui_event_1, ui_utils_1, ui_model_1, ui_application_1) {
+define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../utils/ui-utils", "../utils/ui-model", "../utils/ui-application"], function (require, exports, aurelia_framework_1, ui_event_1, ui_utils_1, ui_model_1, ui_application_1) {
     "use strict";
     var UILogin = (function () {
         function UILogin(element, appState) {
@@ -79,14 +79,6 @@ define(["require", "exports", "aurelia-framework", "aurelia-validation", "../uti
             this.appState.persist('AppUsername', this.username);
             this.appState.persist('AppPassword', this.remember ? this.password : null);
         };
-        __decorate([
-            aurelia_validation_1.ensure(function (t) { return t.isNotEmpty(); }), 
-            __metadata('design:type', String)
-        ], LoginModel.prototype, "username", void 0);
-        __decorate([
-            aurelia_validation_1.ensure(function (t) { return t.isNotEmpty(); }), 
-            __metadata('design:type', String)
-        ], LoginModel.prototype, "password", void 0);
         LoginModel = __decorate([
             aurelia_framework_1.transient(),
             aurelia_framework_1.autoinject(), 

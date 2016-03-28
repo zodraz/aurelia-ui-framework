@@ -13,25 +13,25 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
         function UIButton(element) {
             this.element = element;
             this.__size = 'normal';
-            this.__theme = 'default';
             this.label = '';
             this.value = '';
             this.icon = '';
+            this.theme = 'default';
             this.disabled = false;
         }
         UIButton.prototype.bind = function () {
             if (this.element.hasAttribute('primary'))
-                this.__theme = 'primary';
+                this.theme = 'primary';
             if (this.element.hasAttribute('secondary'))
-                this.__theme = 'secondary';
+                this.theme = 'secondary';
             if (this.element.hasAttribute('info'))
-                this.__theme = 'info';
+                this.theme = 'info';
             if (this.element.hasAttribute('danger'))
-                this.__theme = 'danger';
+                this.theme = 'danger';
             if (this.element.hasAttribute('success'))
-                this.__theme = 'success';
+                this.theme = 'success';
             if (this.element.hasAttribute('warning'))
-                this.__theme = 'warning';
+                this.theme = 'warning';
             if (this.element.hasAttribute('small'))
                 this.__size = 'small';
             if (this.element.hasAttribute('large'))
@@ -46,7 +46,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             if (this.element.hasAttribute('square'))
                 this.__button.classList.add('ui-button-square');
             this.__button.classList.add("ui-button-" + this.__size);
-            this.__button.classList.add("ui-button-" + this.__theme);
             this.disable();
         };
         UIButton.prototype.disable = function (disabled) {
@@ -80,6 +79,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
         ], UIButton.prototype, "icon", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', String)
+        ], UIButton.prototype, "theme", void 0);
         __decorate([
             aurelia_framework_1.bindable(), 
             __metadata('design:type', Boolean)

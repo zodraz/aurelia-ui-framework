@@ -19,7 +19,7 @@
 					   click.trigger="__gotFocus()" keydown.trigger="keyDown($event)"
 					   value.bind="__searchText" placeholder.bind="placeholder" ref="__input"
 					   dir="${dir}" input.trigger="__searchTextChanged() & debounce:200"/>
-				<span class="ui-clear fi-ui-close-light ${__value?'show-clear':''}"
+				<span class="ui-clear fi-ui-close-light ${value?'show-clear':''}"
 					  click.trigger="clearInput()" if.bind="__clear"></span>
 
 				<div class="ui-list floating" show.bind="__focus && !readonly"
@@ -32,7 +32,7 @@
 					<!--<div class="ui-list-option" model.bind="opt" if.bind="__options | isArray"-->
 					<!--repeat.for="opt of __options" value.bind="opt[valueProperty] || opt">-->
 					<!--<span innerhtml.bind="opt[displayProperty] || opt"></span></div>-->
-					<p class="ui-text-muted" if.bind="__noResult">No Results Found...</p>
+					<p class="ui-text-muted ui-pad-all" if.bind="__noResult">${emptyText}</p>
 				</div>
 			</div>
 			<div class="ui-addon" click.trigger="__input.focus()" style="cursor: pointer">
