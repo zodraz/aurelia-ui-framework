@@ -46,14 +46,14 @@ export class UIHttpService {
             else if (response.status != 200) {
               return response.text()
                 .then(resp => {
+                let json: any = {};
                 try {
-                  let json = JSON.parse(resp);
-                  if (json.message) throw Error(json.message);
-                  if (json.error) throw Error(json.error);
-                } catch (e) {
-                  if (response.statusText) throw Error(response.statusText);
-                  if (!response.statusText) throw Error('Network Error!!');
-                }
+                  json = JSON.parse(resp);
+                } catch (e) { }
+                if (json.message) throw Error(json.message);
+                if (json.error) throw Error(json.error);
+                if (response.statusText) throw Error(response.statusText);
+                if (!response.statusText) throw Error('Network Error!!');
                 return null;
               });
             }

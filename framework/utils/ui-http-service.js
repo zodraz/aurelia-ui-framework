@@ -37,19 +37,19 @@ define(["require", "exports", "aurelia-framework", "aurelia-fetch-client", "aure
                         else if (response.status != 200) {
                             return response.text()
                                 .then(function (resp) {
+                                var json = {};
                                 try {
-                                    var json_1 = JSON.parse(resp);
-                                    if (json_1.message)
-                                        throw Error(json_1.message);
-                                    if (json_1.error)
-                                        throw Error(json_1.error);
+                                    json = JSON.parse(resp);
                                 }
-                                catch (e) {
-                                    if (response.statusText)
-                                        throw Error(response.statusText);
-                                    if (!response.statusText)
-                                        throw Error('Network Error!!');
-                                }
+                                catch (e) { }
+                                if (json.message)
+                                    throw Error(json.message);
+                                if (json.error)
+                                    throw Error(json.error);
+                                if (response.statusText)
+                                    throw Error(response.statusText);
+                                if (!response.statusText)
+                                    throw Error('Network Error!!');
                                 return null;
                             });
                         }
