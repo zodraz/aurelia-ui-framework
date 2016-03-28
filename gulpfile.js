@@ -7,7 +7,7 @@ var ts = require('gulp-typescript');
 var bundler = require('aurelia-bundler');
 var browserSync = require('browser-sync');
 
-var pages = '../auf-pages/v2';
+var pages = '../auf-pages';
 var release = '../auf-release';
 var skeleton = '../auf-skeleton';
 
@@ -99,8 +99,8 @@ gulp.task('aurelia:skeleton', function () {
 						'./browserconfig.xml',
 						'./manifest.json',
 						'./*.md',
-						'./src/**/*.ts',
-						'./src/**/*.html',
+						// './src/**/*.ts',
+						// './src/**/*.html',
 						'./fonts/**/*',
 						'./images/**/*',
 						'./styles/**/*'], {base: './'})

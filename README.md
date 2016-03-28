@@ -5,7 +5,7 @@ Aurelia UI Framework for Business Apps
 >
 > This UI framework has been built on the [Aurelia](http://aurelia.io) JavaScript client framework.
 
-#### [Demo Pages](http://adarshpastakia.github.io/aurelia-ui-framework/v2)
+#### [Demo Pages](http://adarshpastakia.github.io/aurelia-ui-framework)
 
 #### [Help Wiki](https://github.com/adarshpastakia/aurelia-ui-framework/wiki/Home)
 
