@@ -128,7 +128,7 @@ export class UIComboBox extends UIInputGroup {
 	 * @type        string
 	 */
   @bindable()
-  displayProperty: any = 'text';
+  displayProperty: any = 'name';
 	/**
 	 * @property    icon-property
 	 * @type        string

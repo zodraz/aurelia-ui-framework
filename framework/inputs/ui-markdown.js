@@ -39,7 +39,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             if (tool === null)
                 return;
             var id = tool.dataset['id'];
-            var start = this.__input.selectionStart, end = this.__input.selectionEnd, sub = this.value.substr(start, end - start) || 'EditThis';
+            var start = this.__input.selectionStart, end = this.__input.selectionEnd, sub = (this.value || '').substr(start, end - start) || 'EditThis';
             var diff = 0;
             if (id == 'preview') {
                 this.__toggle('preview');

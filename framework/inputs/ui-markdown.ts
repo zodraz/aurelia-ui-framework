@@ -74,7 +74,7 @@ export class UIMarkdown extends UIInputGroup {
     let id = tool.dataset['id'];
     let start = this.__input.selectionStart,
       end = this.__input.selectionEnd,
-      sub = this.value.substr(start, end - start) || 'EditThis';
+      sub = (this.value || '').substr(start, end - start) || 'EditThis';
 
     var diff = 0;
 

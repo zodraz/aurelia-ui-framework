@@ -28,7 +28,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.dir = '';
             this.options = [];
             this.valueProperty = 'id';
-            this.displayProperty = 'text';
+            this.displayProperty = 'name';
             this.iconProperty = '';
             this.iconClass = '';
             this.emptyText = 'No Results Found...';

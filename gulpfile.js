@@ -87,6 +87,7 @@ gulp.task('aurelia:pages', function () {
 						'./config.js',
 						'./jspm_packages/system*',
 						'./*.md',
+						'./src/**/*.md',
 						'./fonts/**/*',
 						'./styles/**/*',
 						'./images/**/*',
@@ -99,6 +100,7 @@ gulp.task('aurelia:skeleton', function () {
 						'./browserconfig.xml',
 						'./manifest.json',
 						'./*.md',
+						'./src/**/*.md',
 						// './src/**/*.ts',
 						// './src/**/*.html',
 						'./fonts/**/*',
@@ -107,7 +109,7 @@ gulp.task('aurelia:skeleton', function () {
 			   .pipe(gulp.dest(skeleton));
 });
 gulp.task('aurelia:release', function () {
-	gulp.src(['./package.json', './sass/**/_*.scss'], {base: './'})
+	gulp.src(['./package.json', './sass/**/_*.scss', './README.md'], {base: './'})
 		.pipe(gulp.dest(release));
 	gulp.src(['./framework/*/*.js', './framework/*/*.html', './framework/**/*.d.ts'])
 		.pipe(gulp.dest(release));
