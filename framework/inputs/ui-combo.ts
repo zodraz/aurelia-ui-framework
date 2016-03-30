@@ -166,6 +166,7 @@ export class UIComboBox extends UIInputGroup {
     let v = _['findDeep'](this.__original, this.valueProperty, newValue);
     this.__searchText = v ? v[this.displayProperty] : '';
     if (v === null) this.value = null;
+    UIEvent.fireEvent('select', this.element, v);
   }
 
   optionsChanged(newValue) {
@@ -178,8 +179,8 @@ export class UIComboBox extends UIInputGroup {
 
   __select(item) {
     if (item !== null) {
-      if (this.value !== item.dataset['value']) UIEvent.fireEvent('select', this.element, item['model']);
       this.value = item.dataset['value'];
+      this.__searchText = item.model[this.displayProperty];
     }
     else {
       this.value = this.__searchText = '';
@@ -288,7 +289,7 @@ export class UIComboBox extends UIInputGroup {
         if (!isEmpty(n[this.displayProperty])) {
           lbl = n[this.displayProperty];
         }
-
+        lbl = lbl + '';
         let asc = UIUtils.getAscii(lbl);
         if (rx.test(asc)) {
           if (n.hasOwnProperty(this.displayProperty)) {

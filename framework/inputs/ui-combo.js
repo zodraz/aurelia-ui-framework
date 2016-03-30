@@ -49,6 +49,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.__searchText = v ? v[this.displayProperty] : '';
             if (v === null)
                 this.value = null;
+            ui_event_1.UIEvent.fireEvent('select', this.element, v);
         };
         UIComboBox.prototype.optionsChanged = function (newValue) {
             var _this = this;
@@ -61,9 +62,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         };
         UIComboBox.prototype.__select = function (item) {
             if (item !== null) {
-                if (this.value !== item.dataset['value'])
-                    ui_event_1.UIEvent.fireEvent('select', this.element, item['model']);
                 this.value = item.dataset['value'];
+                this.__searchText = item.model[this.displayProperty];
             }
             else {
                 this.value = this.__searchText = '';
@@ -169,6 +169,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
                     if (!isEmpty(n[_this.displayProperty])) {
                         lbl = n[_this.displayProperty];
                     }
+                    lbl = lbl + '';
                     var asc = ui_utils_1.UIUtils.getAscii(lbl);
                     if (rx.test(asc)) {
                         if (n.hasOwnProperty(_this.displayProperty)) {
