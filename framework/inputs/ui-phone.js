@@ -83,7 +83,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
                 this.__value =
                     PhoneLib.formatInput(newValue, this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : '', false, true);
                 this.value =
-                    PhoneLib.format(newValue, this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : '', PhoneLib.FORMAT.FULL);
+                    PhoneLib.format(this.__value, this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : '', PhoneLib.FORMAT.FULL);
             }
             else {
                 this.__value = '';
@@ -99,7 +99,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
                     this.prefixIcon = 'ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
             }
             try {
-                var info = PhoneLib.getNumberInfo(this.value, this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : PhoneLib.getIso2Code(this.__value));
+                var info = PhoneLib.getNumberInfo(_.trim(this.value), this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : PhoneLib.getIso2Code(this.__value));
                 this.isdCode = isNaN(info.countryCode) ? '' : info.countryCode;
                 this.areaCode = isNaN(info.areaCode) ? '' : info.areaCode;
                 this.phone = isNaN(info.phone) ? '' : info.phone;

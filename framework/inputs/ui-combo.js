@@ -45,11 +45,17 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UIComboBox.prototype.detached = function () {
         };
         UIComboBox.prototype.valueChanged = function (newValue) {
-            var v = ui_utils_1._['findDeep'](this.__original, this.valueProperty, newValue);
-            this.__searchText = v ? v[this.displayProperty] : '';
-            if (v === null)
-                this.value = null;
-            ui_event_1.UIEvent.fireEvent('select', this.element, v);
+            if (!isEmpty(newValue)) {
+                var v = ui_utils_1._['findDeep'](this.__original, this.valueProperty, newValue);
+                this.__searchText = v ? v[this.displayProperty] : '';
+                if (v === null)
+                    this.value = null;
+                ui_event_1.UIEvent.fireEvent('select', this.element, v);
+            }
+            else {
+                this.value = this.__searchText = '';
+                ui_event_1.UIEvent.fireEvent('select', this.element, null);
+            }
         };
         UIComboBox.prototype.optionsChanged = function (newValue) {
             var _this = this;

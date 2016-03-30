@@ -119,4 +119,22 @@
             @include position(absolute, $r: 0, $t : 0, $b : 0);
         }
     }
+    &.ui-readonly
+    {
+        pointer-events: none;
+
+        background: $input-readonly-bg;
+    }
+    &.ui-disabled
+    {
+        cursor: not-allowed;
+        pointer-events: none;
+
+        color: rgba($input-text, .5);
+        background: $input-disabled-bg;
+        .ui-tag
+        {
+            opacity: .7;
+        }
+    }
 }

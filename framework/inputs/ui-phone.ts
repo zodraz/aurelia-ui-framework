@@ -145,7 +145,7 @@ export class UIPhone extends UIInputGroup {
         this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : '',
         false, true);
       this.value =
-      PhoneLib.format(newValue,
+      PhoneLib.format(this.__value,
 								this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : '',
 								PhoneLib.FORMAT.FULL);
     }
@@ -162,7 +162,7 @@ export class UIPhone extends UIInputGroup {
       if (!isEmpty(this.__value)) this.prefixIcon = 'ui-flag ' + (PhoneLib.getIso2Code(this.value) || 'US');
     }
     try {
-      var info = PhoneLib.getNumberInfo(this.value,
+      var info = PhoneLib.getNumberInfo(_.trim(this.value),
         this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL ? this.country : PhoneLib.getIso2Code(this.__value));
 
       this.isdCode = isNaN(info.countryCode) ? '' : info.countryCode;

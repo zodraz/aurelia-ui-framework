@@ -180,12 +180,12 @@ export module UIUtils {
   _.mixin({
 				'findByValues': function(collection, property, values) {
       return _.filter(collection, function(item) {
-        return _.indexOf(values, item[property]) > -1;
+        return _.indexOf(values, item[property] + '') > -1;
       });
 				},
 				'removeByValues': function(collection, property, values) {
       return _.remove(collection, function(item) {
-        return _.indexOf(values, item[property]) > -1;
+        return _.indexOf(values, item[property] + '') > -1;
       });
 				},
 				'findDeep': function(collection, property, value) {

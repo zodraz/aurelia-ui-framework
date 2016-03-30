@@ -26,7 +26,8 @@ $shadow: $tg-2;
 
     @include box-shadow(0 2px 2px 0 $shadow inset);
 
-    &:focus
+    &:focus,
+    &.ui-focus
     {
         border-color: $input-focus-border;
 

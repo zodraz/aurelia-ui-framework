@@ -17,24 +17,23 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
             this.optVal = 2;
             this.enabled = true;
             this.months = [
-                { id: 0, text: 'January' },
-                { id: 1, text: 'February' },
-                { id: 2, text: 'March' },
-                { id: 3, text: 'April' },
-                { id: 4, text: 'May' },
-                { id: 5, text: 'June' },
-                { id: 6, text: 'July' },
-                { id: 7, text: 'August' },
-                { id: 8, text: 'September' },
-                { id: 9, text: 'October' },
-                { id: 10, text: 'November' },
-                { id: 11, text: 'December' }
+                { id: 0, name: 'January' },
+                { id: 1, name: 'February' },
+                { id: 2, name: 'March' },
+                { id: 3, name: 'April' },
+                { id: 4, name: 'May' },
+                { id: 5, name: 'June' },
+                { id: 6, name: 'July' },
+                { id: 7, name: 'August' },
+                { id: 8, name: 'September' },
+                { id: 9, name: 'October' },
+                { id: 10, name: 'November' },
+                { id: 11, name: 'December' }
             ];
             this.countries = index_1._.groupBy(window.countries, 'continent');
             this.model = {
-                email: '', lat: null, long: null
+                email: '', lat: null, long: null, ctry: 'AE'
             };
-            this.ctry = 'AE';
             this.treeOpts = new index_1.UITreeOptions({
                 showCheckbox: true,
                 selectionLevel: 0
@@ -171,6 +170,9 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
             });
             this.treeModel = ct;
         }
+        Home.prototype.getDisplay = function () {
+            return JSON.stringify(this.model, null, 4);
+        };
         Home.prototype.canActivate = function (model) {
             var _this = this;
             return this.httpClient

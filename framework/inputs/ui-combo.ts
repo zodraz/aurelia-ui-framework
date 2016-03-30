@@ -163,10 +163,16 @@ export class UIComboBox extends UIInputGroup {
   }
 
   valueChanged(newValue) {
-    let v = _['findDeep'](this.__original, this.valueProperty, newValue);
-    this.__searchText = v ? v[this.displayProperty] : '';
-    if (v === null) this.value = null;
-    UIEvent.fireEvent('select', this.element, v);
+    if (!isEmpty(newValue)) {
+      let v = _['findDeep'](this.__original, this.valueProperty, newValue);
+      this.__searchText = v ? v[this.displayProperty] : '';
+      if (v === null) this.value = null;
+      UIEvent.fireEvent('select', this.element, v);
+    }
+    else {
+      this.value = this.__searchText = '';
+      UIEvent.fireEvent('select', this.element, null);
+    }
   }
 
   optionsChanged(newValue) {

@@ -15,7 +15,9 @@ export class UITags extends UIInputGroup {
   __list;
   __focus;
   __options;
+  __tagInput;
   __searchText;
+  __ignoreChange;
   __subscribeSearch;
   __noResult = false;
 
@@ -128,7 +130,7 @@ export class UITags extends UIInputGroup {
 	 * @type        string
 	 */
   @bindable()
-  displayProperty: any = 'text';
+  displayProperty: any = 'name';
 	/**
 	 * @property    icon-property
 	 * @type        string
@@ -175,6 +177,20 @@ export class UITags extends UIInputGroup {
     if (_.isArray(newValue) && !isEmpty(newValue)) this.options = { '§': newValue };
     this.__options = _.cloneDeep(this.options);
   }
+  readonlyChanged() {
+    super.readonlyChanged();
+    if (isTrue(this.readonly))
+      this.__tagInput.classList.add('ui-readonly');
+    else
+      this.__tagInput.classList.remove('ui-readonly');
+  }
+  disable(disabled?) {
+    super.disable(disabled);
+    if (disabled === true || this.disabled === true || this.checked === false)
+      this.__tagInput.classList.add('ui-disabled');
+    else
+      this.__tagInput.classList.remove('ui-disabled');
+  }
 
   __select(item) {
     this.__searchText = '';
@@ -200,10 +216,12 @@ export class UITags extends UIInputGroup {
       this.__input.select();
       this.__scrollIntoView();
     }, 20);
+    this.__tagInput.classList.add('ui-focus');
   }
 
   __lostFocus() {
     this.__focus = false;
+    this.__tagInput.classList.remove('ui-focus');
   }
 
   inputClicked(evt) {
