@@ -53,6 +53,7 @@ System.config({
       "framework/inputs/ui-json-part.html!github:systemjs/plugin-text@0.0.4.js",
       "framework/inputs/ui-language.html!github:systemjs/plugin-text@0.0.4.js",
       "framework/inputs/ui-language.js",
+      "framework/inputs/ui-list-group.html!github:systemjs/plugin-text@0.0.4.js",
       "framework/inputs/ui-list-item.html!github:systemjs/plugin-text@0.0.4.js",
       "framework/inputs/ui-markdown.html!github:systemjs/plugin-text@0.0.4.js",
       "framework/inputs/ui-markdown.js",
