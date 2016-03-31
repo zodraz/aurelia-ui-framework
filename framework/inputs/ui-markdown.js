@@ -31,6 +31,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
                 this.element.classList.add('ui-full-view');
             if (this.element.hasAttribute('side-view')) {
                 this.__hidePreview = true;
+                this.element.classList.add('ui-full-view');
                 this.element.classList.add('ui-side-view');
             }
         };

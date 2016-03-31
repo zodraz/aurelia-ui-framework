@@ -64,6 +64,7 @@ export class UIMarkdown extends UIInputGroup {
     if (this.element.hasAttribute('full-view')) this.element.classList.add('ui-full-view');
     if (this.element.hasAttribute('side-view')) {
       this.__hidePreview = true;
+      this.element.classList.add('ui-full-view');
       this.element.classList.add('ui-side-view');
     }
   }
