@@ -208,7 +208,7 @@
 				<ui-row>
 					<ui-column padded>
 						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
-								  capitalize value.bind="model.email"
+								  capitalize value.bind="model.email" disabled.bind="!enabled"
 								  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
 						</ui-input>
 						<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
@@ -217,7 +217,7 @@
 									   value.bind="model.lat" value-second.bind="model.long"
 									   placeholder="-90 to 90" placeholder-second="-180 to 180">Location
 						</ui-input-dual>
-						<ui-textarea help-text="A multiline input">Textarea</ui-textarea>
+						<ui-textarea help-text="A multiline input" disabled.bind="!enabled">Textarea</ui-textarea>
 						<ui-phone country.bind="model.ctry" area-code.bind="model.areaCode" phone.bind="model.phone">National Phone</ui-phone>
 						<ui-phone international value.bind="model.internationalPhone">International Phone</ui-phone>
 						<ui-date date="1979-03-02">Date</ui-date>
@@ -230,7 +230,7 @@
 						<ui-tags options.bind="months" disabled.bind="!enabled" value.bind="model.tags">Tag Input</ui-tags>
 						<ui-tags options.bind="countries" value-property="iso3" disabled.bind="!enabled" value.bind="model.ctries">Grouped Tag Input</ui-tags>
 						<ui-input file button-icon="fi-ui-circle-remove" name="file">File</ui-input>
-						<div><pre>${getDisplay(model.tags, model.month, model.phone, model.internationalPhone, model.ctry, model.ctries)}</pre></div>
+						<div><pre>${getDisplay(model.email, model.lat, model.long, model.tags, model.month, model.phone, model.internationalPhone, model.ctry, model.ctries)}</pre></div>
 					</ui-column>
 					<ui-column padded>
 						<ui-language>Language</ui-language>

@@ -22,12 +22,16 @@
 							<span class="fi-ui-circle-remove ui-lang-remove"
 								  mousedown.trigger="__remove(opt)"></span>
 						</div>
+						<div class="ui-list-item" if.bind="__languages.length==0">
+							<span class="ui-text ui-text-muted">No Languages Added</span></div>
 						<p>Available</p>
 						<div class="ui-list-item"
 							 repeat.for="opt of __available | sort:'id'" mousedown.trigger="__add(opt)">
 							<span class="ui-column ui-col-fill ui-text">${opt.name}</span>
 							<span class="fi-ui-circle-add ui-text-info ui-icon"></span>
 						</div>
+						<div class="ui-list-item" if.bind="__available.length==0">
+							<span class="ui-text ui-text-muted">No Languages Available</span></div>
 					</div>
 				</div>
 			</div>

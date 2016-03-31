@@ -91,6 +91,7 @@ export class UIDateView {
   }
 
   datePanelClick($event) {
+    console.log($event);
     if ($event.target.classList.contains('disabled') ||
       $event.target.classList.contains('selected')) {
       return;

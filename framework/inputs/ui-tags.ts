@@ -181,6 +181,7 @@ export class UITags extends UIInputGroup {
     this.__isGrouped = !_.isArray(newValue);
     this.__options = this.__available = _.cloneDeep(this.options);
   }
+
   readonlyChanged() {
     super.readonlyChanged();
     if (isTrue(this.readonly))
@@ -188,6 +189,7 @@ export class UITags extends UIInputGroup {
     else
       this.__tagInput.classList.remove('ui-readonly');
   }
+
   disable(disabled?) {
     super.disable(disabled);
     if (disabled === true || this.disabled === true || this.checked === false)
