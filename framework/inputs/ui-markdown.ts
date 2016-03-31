@@ -69,6 +69,11 @@ export class UIMarkdown extends UIInputGroup {
     }
   }
 
+  disable(disabled?) {
+    super.disable(disabled);
+    this.__disableTools = isTrue(disabled) || !this.__help.classList.contains('ui-hide') || !this.__preview.classList.contains('ui-hide');
+  }
+
   toolClick($event) {
     let tool = <HTMLElement>getParentByTag($event.target, 'button');
     if (tool === null) return;
@@ -158,12 +163,12 @@ export class UIMarkdown extends UIInputGroup {
     else if (type == 'help') {
       this.__help.classList.toggle('ui-hide');
       this.__preview.classList.add('ui-hide');
-      this.__disableTools = !this.__help.classList.contains('ui-hide');
+      this.__disableTools = isTrue(this.disabled) || !this.__help.classList.contains('ui-hide');
     }
     else if (type == 'preview') {
       this.__help.classList.add('ui-hide');
       this.__preview.classList.toggle('ui-hide');
-      this.__disableTools = !this.__preview.classList.contains('ui-hide');
+      this.__disableTools = isTrue(this.disabled) || !this.__preview.classList.contains('ui-hide');
     }
   }
 }
