@@ -68,6 +68,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-utils", "./ui-da
             return c;
         };
         UIDateView.prototype.datePanelClick = function ($event) {
+            console.log($event);
             if ($event.target.classList.contains('disabled') ||
                 $event.target.classList.contains('selected')) {
                 return;

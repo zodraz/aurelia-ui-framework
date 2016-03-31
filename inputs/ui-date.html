@@ -23,7 +23,7 @@
 
 				<ui-date-view date.bind="date" class="floating"
 							  showing.bind="__startFocus" options.bind="__dateStart"
-							  mousedown.trigger="element.parentElement.firstElementChild.focus()"></ui-date-view>
+							  mousedown.trigger="$event.target.parentElement.firstElementChild.focus()"></ui-date-view>
 			</div>
 			<div class="ui-addon ui-small-caps" if.bind="__dual" click.trigger="__input2.focus()">to</div>
 			<div class="ui-input-wrapper" if.bind="__dual">
@@ -36,7 +36,7 @@
 
 				<ui-date-view date.bind="dateEnd" class="floating"
 							  showing.bind="__endFocus" options.bind="__dateEnd"
-							  mousedown.trigger="element.parentElement.firstElementChild.focus()"></ui-date-view>
+							  mousedown.trigger="$event.target.parentElement.firstElementChild.focus()"></ui-date-view>
 			</div>
 			<div class="ui-addon" if.bind="suffixIcon || suffixText">
 				<span if.bind="suffixIcon" class="${suffixIcon}"></span>

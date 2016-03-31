@@ -28,7 +28,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.dir = '';
             this.options = [];
             this.valueProperty = 'id';
-            this.displayProperty = 'text';
+            this.displayProperty = 'name';
             this.iconProperty = '';
             this.iconClass = '';
             this.emptyText = 'No Results Found...';
@@ -45,32 +45,41 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UIComboBox.prototype.detached = function () {
         };
         UIComboBox.prototype.valueChanged = function (newValue) {
-            var v = ui_utils_1._['findDeep'](this.__original, this.valueProperty, newValue);
-            this.__searchText = v ? v[this.displayProperty] : '';
-            if (v === null)
-                this.value = null;
+            if (!isEmpty(newValue)) {
+                var v = ui_utils_1._['findDeep'](this.options, this.valueProperty, newValue);
+                this.__searchText = v ? v[this.displayProperty] : '';
+                if (v === null)
+                    this.value = null;
+                ui_event_1.UIEvent.fireEvent('select', this.element, v);
+            }
+            else {
+                this.value = this.__searchText = '';
+                ui_event_1.UIEvent.fireEvent('select', this.element, null);
+            }
         };
         UIComboBox.prototype.optionsChanged = function (newValue) {
             var _this = this;
             this.__noResult = isEmpty(newValue);
-            this.__original = newValue;
-            if (ui_utils_1._.isArray(newValue) && !isEmpty(newValue))
-                this.__original = { '§': newValue };
-            this.__options = ui_utils_1._.cloneDeep(this.__original);
+            this.options = newValue;
+            this.__isFiltered = false;
+            this.__isGrouped = !ui_utils_1._.isArray(newValue);
+            this.__options = ui_utils_1._.cloneDeep(this.options);
             setTimeout(function () { return _this.valueChanged(_this.value); }, 500);
         };
         UIComboBox.prototype.__select = function (item) {
             if (item !== null) {
-                if (this.value !== item.dataset['value'])
-                    ui_event_1.UIEvent.fireEvent('select', this.element, item['model']);
                 this.value = item.dataset['value'];
+                this.__searchText = item.model[this.displayProperty];
             }
             else {
                 this.value = this.__searchText = '';
             }
-            this.__options = ui_utils_1._.cloneDeep(this.__original);
+            if (this.__isFiltered) {
+                this.__isFiltered = false;
+                this.__options = ui_utils_1._.cloneDeep(this.options);
+                this.__noResult = isEmpty(this.__options);
+            }
             this.__focus = false;
-            this.__noResult = isEmpty(this.__options);
         };
         UIComboBox.prototype.__clicked = function ($event) {
             var o = getParentByClass($event.target, 'ui-list-item', 'ui-list');
@@ -157,18 +166,45 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UIComboBox.prototype.__searchTextChanged = function () {
             var _this = this;
             if (ui_utils_1._.isEmpty(this.__searchText)) {
-                this.__options = ui_utils_1._.cloneDeep(this.__original);
+                this.__options = ui_utils_1._.cloneDeep(this.options);
                 this.__noResult = isEmpty(this.__options);
+                this.__isFiltered = false;
                 return;
             }
-            var opts = ui_utils_1._.cloneDeep(this.__original);
+            var opts = ui_utils_1._.cloneDeep(this.options);
             var rx = new RegExp(ui_utils_1.UIUtils.getAscii(this.__searchText), 'i');
-            this.__options = ui_utils_1._.forEach(opts, function (v, k) {
-                opts[k] = ui_utils_1._.filter(v, function (n) {
+            if (this.__isGrouped) {
+                this.__options = ui_utils_1._.forEach(opts, function (v, k) {
+                    opts[k] = ui_utils_1._.filter(v, function (n) {
+                        var lbl = n;
+                        if (!isEmpty(n[_this.displayProperty])) {
+                            lbl = n[_this.displayProperty];
+                        }
+                        lbl = lbl + '';
+                        var asc = ui_utils_1.UIUtils.getAscii(lbl);
+                        if (rx.test(asc)) {
+                            if (n.hasOwnProperty(_this.displayProperty)) {
+                                var start = asc.search(rx);
+                                lbl = lbl.substr(0, start + _this.__searchText.length) + '</u>' +
+                                    lbl.substr(start + _this.__searchText.length);
+                                lbl = lbl.substr(0, start) + '<u>' + lbl.substr(start);
+                                n['__display'] = lbl;
+                            }
+                            return true;
+                        }
+                        return false;
+                    });
+                    if (opts[k].length === 0)
+                        delete opts[k];
+                });
+            }
+            if (!this.__isGrouped) {
+                this.__options = ui_utils_1._.filter(opts, function (n) {
                     var lbl = n;
                     if (!isEmpty(n[_this.displayProperty])) {
                         lbl = n[_this.displayProperty];
                     }
+                    lbl = lbl + '';
                     var asc = ui_utils_1.UIUtils.getAscii(lbl);
                     if (rx.test(asc)) {
                         if (n.hasOwnProperty(_this.displayProperty)) {
@@ -182,9 +218,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
                     }
                     return false;
                 });
-                if (opts[k].length === 0)
-                    delete opts[k];
-            });
+            }
+            this.__isFiltered = true;
             this.__noResult = isEmpty(this.__options);
             setTimeout(function () { return _this.__hilight = _this.__list.querySelector(".ui-list-item") || _this.__hilight; }, 100);
         };

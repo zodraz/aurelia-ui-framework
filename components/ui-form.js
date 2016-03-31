@@ -24,7 +24,7 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "aurelia
                 setTimeout(function () { return _this.busyChanged(true); }, 200);
         };
         UIForm.prototype.busyChanged = function (newValue) {
-            var els = this.element.querySelectorAll('ui-button,ui-combo,ui-date,ui-input,ui-input-dual,ui-markdown,ui-checkbox,ui-radio,ui-phone,ui-switch,ui-textarea');
+            var els = this.element.querySelectorAll('ui-button,ui-combo,ui-date,ui-input,ui-input-dual,ui-language,ui-markdown,ui-checkbox,ui-radio,ui-phone,ui-switch,ui-tags,ui-textarea');
             _.forEach(els, function (el) {
                 try {
                     el.au.controller.viewModel.disable(isTrue(newValue));

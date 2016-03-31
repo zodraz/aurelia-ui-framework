@@ -28,7 +28,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.dir = '';
             this.options = [];
             this.valueProperty = 'id';
-            this.displayProperty = 'text';
+            this.displayProperty = 'name';
             this.iconProperty = '';
             this.iconClass = '';
             this.emptyText = 'No Results Found...';
@@ -45,18 +45,32 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UITags.prototype.detached = function () {
         };
         UITags.prototype.valueChanged = function (newValue) {
-            var v = this.value || [];
+            var v = newValue || [];
             if (!ui_utils_1._.isArray(v))
                 v = v.split(',');
-            this.__options = ui_utils_1._.cloneDeep(this.options);
-            this.__tags = ui_utils_1._['removeByValues'](this.__options['§'], this.valueProperty, v);
+            this.__options = this.__available = ui_utils_1._.cloneDeep(this.options);
+            this.__tags = ui_utils_1._['removeByValues'](this.__available, this.valueProperty, v);
         };
         UITags.prototype.optionsChanged = function (newValue) {
             this.__noResult = isEmpty(newValue);
             this.options = newValue;
-            if (ui_utils_1._.isArray(newValue) && !isEmpty(newValue))
-                this.options = { '§': newValue };
-            this.__options = ui_utils_1._.cloneDeep(this.options);
+            this.__isFiltered = false;
+            this.__isGrouped = !ui_utils_1._.isArray(newValue);
+            this.__options = this.__available = ui_utils_1._.cloneDeep(this.options);
+        };
+        UITags.prototype.readonlyChanged = function () {
+            _super.prototype.readonlyChanged.call(this);
+            if (isTrue(this.readonly))
+                this.__tagInput.classList.add('ui-readonly');
+            else
+                this.__tagInput.classList.remove('ui-readonly');
+        };
+        UITags.prototype.disable = function (disabled) {
+            _super.prototype.disable.call(this, disabled);
+            if (disabled === true || this.disabled === true || this.checked === false)
+                this.__tagInput.classList.add('ui-disabled');
+            else
+                this.__tagInput.classList.remove('ui-disabled');
         };
         UITags.prototype.__select = function (item) {
             this.__searchText = '';
@@ -64,6 +78,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
         };
         UITags.prototype.__deselect = function (item) {
+            if (isEmpty(item))
+                return;
             ui_utils_1._.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
             this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
         };
@@ -80,9 +96,11 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
                 _this.__input.select();
                 _this.__scrollIntoView();
             }, 20);
+            this.__tagInput.classList.add('ui-focus');
         };
         UITags.prototype.__lostFocus = function () {
             this.__focus = false;
+            this.__tagInput.classList.remove('ui-focus');
         };
         UITags.prototype.inputClicked = function (evt) {
             var b = getParentByClass(evt.target, 'ui-tag', 'ui-input');
@@ -159,16 +177,43 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             if (ui_utils_1._.isEmpty(this.__searchText)) {
                 this.__options = ui_utils_1._.cloneDeep(this.options);
                 this.__noResult = isEmpty(this.__options);
+                this.__isFiltered = false;
                 return;
             }
-            var opts = ui_utils_1._.cloneDeep(this.options);
+            var opts = ui_utils_1._.cloneDeep(this.__available);
             var rx = new RegExp(ui_utils_1.UIUtils.getAscii(this.__searchText), 'i');
-            this.__options = ui_utils_1._.forEach(opts, function (v, k) {
-                opts[k] = ui_utils_1._.filter(v, function (n) {
+            if (this.__isGrouped) {
+                this.__options = ui_utils_1._.forEach(opts, function (v, k) {
+                    opts[k] = ui_utils_1._.filter(v, function (n) {
+                        var lbl = n;
+                        if (!isEmpty(n[_this.displayProperty])) {
+                            lbl = n[_this.displayProperty];
+                        }
+                        lbl = lbl + '';
+                        var asc = ui_utils_1.UIUtils.getAscii(lbl);
+                        if (rx.test(asc)) {
+                            if (n.hasOwnProperty(_this.displayProperty)) {
+                                var start = asc.search(rx);
+                                lbl = lbl.substr(0, start + _this.__searchText.length) + '</u>' +
+                                    lbl.substr(start + _this.__searchText.length);
+                                lbl = lbl.substr(0, start) + '<u>' + lbl.substr(start);
+                                n['__display'] = lbl;
+                            }
+                            return true;
+                        }
+                        return false;
+                    });
+                    if (opts[k].length === 0)
+                        delete opts[k];
+                });
+            }
+            if (!this.__isGrouped) {
+                this.__options = ui_utils_1._.filter(opts, function (n) {
                     var lbl = n;
                     if (!isEmpty(n[_this.displayProperty])) {
                         lbl = n[_this.displayProperty];
                     }
+                    lbl = lbl + '';
                     var asc = ui_utils_1.UIUtils.getAscii(lbl);
                     if (rx.test(asc)) {
                         if (n.hasOwnProperty(_this.displayProperty)) {
@@ -182,11 +227,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
                     }
                     return false;
                 });
-                if (opts[k].length === 0)
-                    delete opts[k];
-            });
+            }
+            this.__isFiltered = true;
             this.__noResult = isEmpty(this.__options);
-            setTimeout(function () { return _this.__hilight = _this.__list.querySelector(".ui-list-item") || _this.__hilight; }, 100);
+            setTimeout(function () { return _this.__hilight = _this.__list.querySelector(".ui-list-item") || null; }, 100);
         };
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 

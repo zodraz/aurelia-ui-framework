@@ -75,10 +75,12 @@
 
 			<div ref="__preview" class="ui-markdown ui-markdown-preview ui-hide">
 				<ui-ribbon info>Preview</ui-ribbon>
-				<span innerhtml.bind="value | markdown"></span>
+				<span innerhtml.bind="value | markdown" dir="${dir}"></span>
 			</div>
 			<div ref="__help" class="ui-markdown ui-markdown-help ui-hide" dir="ltr">
 				<h2 class="ui-small-caps ui-text-primary ui-strong">Markdown Syntax</h2>
+				<hr/>
+				<p>Add a blank line to create a separate paragraph</p>
 				<hr/>
 				<p class="ui-text-primary">Headers</p>
 

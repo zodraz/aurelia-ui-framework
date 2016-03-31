@@ -74,7 +74,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
                     return txt.charAt(0).toUpperCase() + txt.substr(1);
                 });
             }
-            else if (this.__format === 'email' || this.__format === 'url') {
+            else if (this.__format === 'email') {
                 val = val.toLowerCase();
             }
             evt.target.value = val;

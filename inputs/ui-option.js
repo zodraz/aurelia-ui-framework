@@ -129,8 +129,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
                 var radios = _this.element.querySelectorAll('.ui-radio .ui-option-input');
                 _.forEach(radios, function (b) {
                     b.setAttribute('name', _this.name || _this.__name);
-                    if (_this.value + '' === b.value + '')
+                    if (_this.value + '' === b.value + '') {
                         b.setAttribute('checked', "true");
+                        b.checked = true;
+                    }
                 });
             }, 200);
             if (this.element.hasAttribute('required'))
@@ -138,8 +140,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         };
         UIOptionGroup.prototype.valueChanged = function (newValue) {
             var opt = this.element.querySelector(".ui-option-input[value=\"" + newValue + "\"]");
-            if (opt)
+            if (opt) {
                 opt.setAttribute('checked', 'true');
+                opt.checked = true;
+            }
         };
         UIOptionGroup.prototype.checkChanged = function ($event) {
             this.value = $event.detail;

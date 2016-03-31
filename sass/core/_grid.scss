@@ -73,6 +73,8 @@
 
 .ui-column
 {
+    display: block;
+
     @include flex(0 0 100%);
 
     &.ui-align-top

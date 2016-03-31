@@ -39,9 +39,19 @@
 
     .ui-list-item
     {
-        padding: .4em .5em;
+        font-size: .9em;
 
         cursor: pointer;
+
+        @include flex-row(center, flex-start, false);
+        .ui-text
+        {
+            padding: .4em .5em;
+        }
+        .ui-icon
+        {
+            margin: 0 .5em;
+        }
 
         &:hover,
         &.hilight
@@ -61,6 +71,8 @@
         display: block;
         > p
         {
+            font-size: .75em;
+
             padding: .2em .5em;
 
             color: $text-muted;
@@ -99,6 +111,7 @@
 
         cursor: pointer;
 
+        color: $input-text;
         border: none;
         border-radius: $base-border-radius;
         background: shade($input-bg, 5%);
@@ -117,6 +130,24 @@
             color: $text-muted;
 
             @include position(absolute, $r: 0, $t : 0, $b : 0);
+        }
+    }
+    &.ui-readonly
+    {
+        pointer-events: none;
+
+        background: $input-readonly-bg;
+    }
+    &.ui-disabled
+    {
+        cursor: not-allowed;
+        pointer-events: none;
+
+        color: rgba($input-text, .5);
+        background: $input-disabled-bg;
+        .ui-tag
+        {
+            opacity: .7;
         }
     }
 }

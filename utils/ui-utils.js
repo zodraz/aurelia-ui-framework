@@ -163,24 +163,53 @@ define(["require", "exports", "lodash", "moment", "numeral", "aurelia-framework"
         UIUtils.getAscii = getAscii;
         exports._.mixin({
             'findByValues': function (collection, property, values) {
-                return exports._.filter(collection, function (item) {
-                    return exports._.indexOf(values, item[property]) > -1;
-                });
+                if (exports._.isArray(collection)) {
+                    return exports._.filter(collection, function (item) {
+                        return exports._.indexOf(values, item[property] + '') > -1;
+                    });
+                }
+                else {
+                    var ret_1 = [];
+                    exports._.forEach(collection, function (list) {
+                        ret_1.concat(exports._.filter(list, function (item) {
+                            return exports._.indexOf(values, item[property] + '') > -1;
+                        }));
+                    });
+                    return ret_1;
+                }
             },
             'removeByValues': function (collection, property, values) {
-                return exports._.remove(collection, function (item) {
-                    return exports._.indexOf(values, item[property]) > -1;
-                });
+                if (exports._.isArray(collection)) {
+                    return exports._.remove(collection, function (item) {
+                        return exports._.indexOf(values, item[property] + '') > -1;
+                    }) || [];
+                }
+                else {
+                    var ret_2 = [];
+                    exports._.forEach(collection, function (list, key) {
+                        ret_2 = ret_2.concat(exports._.remove(list, function (item) {
+                            return exports._.indexOf(values, item[property] + '') > -1;
+                        }));
+                    });
+                    return ret_2;
+                }
             },
             'findDeep': function (collection, property, value) {
-                var ret;
-                exports._.forEach(collection, function (item) {
-                    ret = exports._.find(item, function (v) {
-                        return v[property] == value;
+                if (exports._.isArray(collection)) {
+                    return exports._.find(collection, function (item) {
+                        return item[property] + '' === value + '';
                     });
-                    return ret === undefined;
-                });
-                return ret;
+                }
+                else {
+                    var ret_3;
+                    exports._.forEach(collection, function (item) {
+                        ret_3 = exports._.find(item, function (v) {
+                            return v[property] + '' === value + '';
+                        });
+                        return ret_3 === undefined;
+                    });
+                    return ret_3;
+                }
             }
         });
     })(UIUtils = exports.UIUtils || (exports.UIUtils = {}));
