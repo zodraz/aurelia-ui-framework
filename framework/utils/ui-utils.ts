@@ -179,24 +179,53 @@ export module UIUtils {
   // LoDash Mixins
   _.mixin({
 				'findByValues': function(collection, property, values) {
-      return _.filter(collection, function(item) {
-        return _.indexOf(values, item[property] + '') > -1;
-      });
+      if (_.isArray(collection)) {
+        return _.filter(collection, function(item) {
+          return _.indexOf(values, item[property] + '') > -1;
+        });
+      }
+      else {
+        let ret = [];
+        _.forEach(collection, function(list) {
+          ret.concat(_.filter(list, function(item) {
+            return _.indexOf(values, item[property] + '') > -1;
+          }));
+        });
+        return ret;
+      }
 				},
 				'removeByValues': function(collection, property, values) {
-      return _.remove(collection, function(item) {
-        return _.indexOf(values, item[property] + '') > -1;
-      });
+      if (_.isArray(collection)) {
+        return _.remove(collection, function(item) {
+          return _.indexOf(values, item[property] + '') > -1;
+        }) || [];
+      }
+      else {
+        let ret = [];
+        _.forEach(collection, function(list, key) {
+          ret = ret.concat(_.remove(list, function(item) {
+            return _.indexOf(values, item[property] + '') > -1;
+          }));
+        });
+        return ret;
+      }
 				},
 				'findDeep': function(collection, property, value) {
-      let ret;
-      _.forEach(collection, function(item) {
-        ret = _.find(item, v=> {
-          return v[property] == value;
+      if (_.isArray(collection)) {
+        return _.find(collection, function(item) {
+          return item[property] + '' === value + '';
         });
-        return ret === undefined;
-      });
-      return ret;
+      }
+      else {
+        let ret;
+        _.forEach(collection, function(item) {
+          ret = _.find(item, v=> {
+            return v[property] + '' === value + '';
+          });
+          return ret === undefined;
+        });
+        return ret;
+      }
 				}
   });
 

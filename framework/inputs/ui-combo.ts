@@ -15,7 +15,8 @@ export class UIComboBox extends UIInputGroup {
   __list;
   __focus;
   __options;
-  __original;
+  __isGrouped;
+  __isFiltered;
   __searchText;
   __subscribeSearch;
   __noResult = false;
@@ -164,7 +165,7 @@ export class UIComboBox extends UIInputGroup {
 
   valueChanged(newValue) {
     if (!isEmpty(newValue)) {
-      let v = _['findDeep'](this.__original, this.valueProperty, newValue);
+      let v = _['findDeep'](this.options, this.valueProperty, newValue);
       this.__searchText = v ? v[this.displayProperty] : '';
       if (v === null) this.value = null;
       UIEvent.fireEvent('select', this.element, v);
@@ -177,9 +178,10 @@ export class UIComboBox extends UIInputGroup {
 
   optionsChanged(newValue) {
     this.__noResult = isEmpty(newValue);
-    this.__original = newValue;
-    if (_.isArray(newValue) && !isEmpty(newValue)) this.__original = { '§': newValue };
-    this.__options = _.cloneDeep(this.__original);
+    this.options = newValue;
+    this.__isFiltered = false;
+    this.__isGrouped = !_.isArray(newValue);
+    this.__options = _.cloneDeep(this.options);
     setTimeout(() => this.valueChanged(this.value), 500);
   }
 
@@ -191,9 +193,12 @@ export class UIComboBox extends UIInputGroup {
     else {
       this.value = this.__searchText = '';
     }
-    this.__options = _.cloneDeep(this.__original);
+    if (this.__isFiltered) {
+      this.__isFiltered = false;
+      this.__options = _.cloneDeep(this.options);
+      this.__noResult = isEmpty(this.__options);
+    }
     this.__focus = false;
-    this.__noResult = isEmpty(this.__options);
   }
 
   __clicked($event) {
@@ -283,14 +288,39 @@ export class UIComboBox extends UIInputGroup {
 
   __searchTextChanged() {
     if (_.isEmpty(this.__searchText)) {
-      this.__options = _.cloneDeep(this.__original);
+      this.__options = _.cloneDeep(this.options);
       this.__noResult = isEmpty(this.__options);
+      this.__isFiltered = false;
       return;
     }
-    var opts = _.cloneDeep(this.__original);
+    var opts = _.cloneDeep(this.options);
     var rx = new RegExp(UIUtils.getAscii(this.__searchText), 'i');
-    this.__options = _.forEach(opts, (v, k) => {
-      opts[k] = _.filter(v, (n: any) => {
+    if (this.__isGrouped) {
+      this.__options = _.forEach(opts, (v, k) => {
+        opts[k] = _.filter(v, (n: any) => {
+          var lbl = n;
+          if (!isEmpty(n[this.displayProperty])) {
+            lbl = n[this.displayProperty];
+          }
+          lbl = lbl + '';
+          let asc = UIUtils.getAscii(lbl);
+          if (rx.test(asc)) {
+            if (n.hasOwnProperty(this.displayProperty)) {
+              let start = asc.search(rx);
+              lbl = lbl.substr(0, start + this.__searchText.length) + '</u>' +
+              lbl.substr(start + this.__searchText.length);
+              lbl = lbl.substr(0, start) + '<u>' + lbl.substr(start);
+              n['__display'] = lbl;
+            }
+            return true;
+          }
+          return false;
+        });
+        if (opts[k].length === 0) delete opts[k];
+      });
+    }
+    if (!this.__isGrouped) {
+      this.__options = _.filter(opts, (n: any) => {
         var lbl = n;
         if (!isEmpty(n[this.displayProperty])) {
           lbl = n[this.displayProperty];
@@ -309,8 +339,8 @@ export class UIComboBox extends UIInputGroup {
         }
         return false;
       });
-      if (opts[k].length === 0) delete opts[k];
-    });
+    }
+    this.__isFiltered = true;
     this.__noResult = isEmpty(this.__options);
     setTimeout(() => this.__hilight = this.__list.querySelector(`.ui-list-item`) || this.__hilight, 100);
   }

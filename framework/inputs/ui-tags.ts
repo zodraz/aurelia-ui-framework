@@ -16,12 +16,15 @@ export class UITags extends UIInputGroup {
   __focus;
   __options;
   __tagInput;
+  __isGrouped;
+  __isFiltered;
   __searchText;
   __ignoreChange;
   __subscribeSearch;
   __noResult = false;
 
   __tags = [];
+  __available;
   __hilight;
 
   constructor(element: Element) {
@@ -165,17 +168,18 @@ export class UITags extends UIInputGroup {
   }
 
   valueChanged(newValue) {
-    let v: any = this.value || [];
+    let v: any = newValue || [];
     if (!_.isArray(v)) v = v.split(',');
-    this.__options = _.cloneDeep(this.options);
-    this.__tags = _['removeByValues'](this.__options['§'], this.valueProperty, v);
+    this.__options = this.__available = _.cloneDeep(this.options);
+    this.__tags = _['removeByValues'](this.__available, this.valueProperty, v);
   }
 
   optionsChanged(newValue) {
     this.__noResult = isEmpty(newValue);
     this.options = newValue;
-    if (_.isArray(newValue) && !isEmpty(newValue)) this.options = { '§': newValue };
-    this.__options = _.cloneDeep(this.options);
+    this.__isFiltered = false;
+    this.__isGrouped = !_.isArray(newValue);
+    this.__options = this.__available = _.cloneDeep(this.options);
   }
   readonlyChanged() {
     super.readonlyChanged();
@@ -199,6 +203,7 @@ export class UITags extends UIInputGroup {
   }
 
   __deselect(item) {
+    if (isEmpty(item)) return;
     _.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
     this.value = _.map(this.__tags, this.valueProperty).join(',');
   }
@@ -299,17 +304,42 @@ export class UITags extends UIInputGroup {
     if (_.isEmpty(this.__searchText)) {
       this.__options = _.cloneDeep(this.options);
       this.__noResult = isEmpty(this.__options);
+      this.__isFiltered = false;
       return;
     }
-    var opts = _.cloneDeep(this.options);
+    var opts = _.cloneDeep(this.__available);
     var rx = new RegExp(UIUtils.getAscii(this.__searchText), 'i');
-    this.__options = _.forEach(opts, (v, k) => {
-      opts[k] = _.filter(v, (n: any) => {
+    if (this.__isGrouped) {
+      this.__options = _.forEach(opts, (v, k) => {
+        opts[k] = _.filter(v, (n: any) => {
+          var lbl = n;
+          if (!isEmpty(n[this.displayProperty])) {
+            lbl = n[this.displayProperty];
+          }
+          lbl = lbl + '';
+          let asc = UIUtils.getAscii(lbl);
+          if (rx.test(asc)) {
+            if (n.hasOwnProperty(this.displayProperty)) {
+              let start = asc.search(rx);
+              lbl = lbl.substr(0, start + this.__searchText.length) + '</u>' +
+              lbl.substr(start + this.__searchText.length);
+              lbl = lbl.substr(0, start) + '<u>' + lbl.substr(start);
+              n['__display'] = lbl;
+            }
+            return true;
+          }
+          return false;
+        });
+        if (opts[k].length === 0) delete opts[k];
+      });
+    }
+    if (!this.__isGrouped) {
+      this.__options = _.filter(opts, (n: any) => {
         var lbl = n;
         if (!isEmpty(n[this.displayProperty])) {
           lbl = n[this.displayProperty];
         }
-
+        lbl = lbl + '';
         let asc = UIUtils.getAscii(lbl);
         if (rx.test(asc)) {
           if (n.hasOwnProperty(this.displayProperty)) {
@@ -323,9 +353,9 @@ export class UITags extends UIInputGroup {
         }
         return false;
       });
-      if (opts[k].length === 0) delete opts[k];
-    });
+    }
+    this.__isFiltered = true;
     this.__noResult = isEmpty(this.__options);
-    setTimeout(() => this.__hilight = this.__list.querySelector(`.ui-list-item`) || this.__hilight, 100);
+    setTimeout(() => this.__hilight = this.__list.querySelector(`.ui-list-item`) || null, 100);
   }
 }

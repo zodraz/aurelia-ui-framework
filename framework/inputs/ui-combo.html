@@ -26,7 +26,9 @@
 					 mousewheel.trigger="$event.cancelBubble = true"
 					 mousedown.trigger="__clicked($event)" ref="__list">
 					<div class="ui-list-group">
-						<compose containerless view="./ui-list-item.html"
+						<compose containerless view="./ui-list-item.html" if.bind="!__isGrouped"
+								 repeat.for="opt of __options"></compose>
+					  <compose containerless view="./ui-list-group.html" if.bind="__isGrouped"
 								 repeat.for="key of __options | keys"></compose>
 					</div>
 					<!--<div class="ui-list-option" model.bind="opt" if.bind="__options | isArray"-->

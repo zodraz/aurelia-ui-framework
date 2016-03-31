@@ -228,10 +228,12 @@
 								  display-property="name" value-property="iso2" value.bind="model.ctry">Countries
 						</ui-combo>
 						<ui-tags options.bind="months" disabled.bind="!enabled" value.bind="model.tags">Tag Input</ui-tags>
+						<ui-tags options.bind="countries" value-property="iso3" disabled.bind="!enabled" value.bind="model.ctries">Grouped Tag Input</ui-tags>
 						<ui-input file button-icon="fi-ui-circle-remove" name="file">File</ui-input>
-						<div><pre>${getDisplay(model.tags, model.month, model.phone, model.internationalPhone, model.ctry)}</pre></div>
+						<div><pre>${getDisplay(model.tags, model.month, model.phone, model.internationalPhone, model.ctry, model.ctries)}</pre></div>
 					</ui-column>
 					<ui-column padded>
+						<ui-language>Language</ui-language>
 						<ui-markdown>Markdown Editor</ui-markdown>
 						<ui-date-view date.bind="dt"></ui-date-view>
 					</ui-column>

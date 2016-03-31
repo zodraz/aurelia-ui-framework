@@ -2,10 +2,11 @@
 {
     display: inline-block;
 
-    min-width: 24px;
-    min-height: 24px;
+    min-width: 1.5em;
+    min-height: 1.5em;
 
-    background: none no-repeat center center;;
+    background: none no-repeat center center;
+    background-size: auto 1.5em;;
 }
 
 .ui-flag
