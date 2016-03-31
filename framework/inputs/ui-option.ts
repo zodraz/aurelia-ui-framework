@@ -153,15 +153,21 @@ export class UIOptionGroup {
       let radios = this.element.querySelectorAll('.ui-radio .ui-option-input');
       _.forEach(radios, (b: HTMLInputElement) => {
         b.setAttribute('name', this.name || this.__name);
-        if (this.value + '' === b.value + '') b.setAttribute('checked', "true");
+        if (this.value + '' === b.value + '') {
+          b.setAttribute('checked', "true");
+          b.checked = true;
+        }
       });
     }, 200);
     if (this.element.hasAttribute('required')) this.__label.classList.add('ui-required');
   }
 
   valueChanged(newValue) {
-    let opt = this.element.querySelector(`.ui-option-input[value="${newValue}"]`);
-    if (opt) opt.setAttribute('checked', 'true');
+    let opt = <HTMLInputElement>this.element.querySelector(`.ui-option-input[value="${newValue}"]`);
+    if (opt) {
+      opt.setAttribute('checked', 'true');
+      opt.checked = true;
+    }
   }
 
   checkChanged($event) {
