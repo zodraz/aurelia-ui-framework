@@ -229,8 +229,9 @@
 						</ui-combo>
 						<ui-tags options.bind="months" disabled.bind="!enabled" value.bind="model.tags">Tag Input</ui-tags>
 						<ui-tags options.bind="countries" value-property="iso3" disabled.bind="!enabled" value.bind="model.ctries">Grouped Tag Input</ui-tags>
+						<ui-tags value.bind="model.custom" no-list>Tag Input</ui-tags>
 						<ui-input file button-icon="fi-ui-circle-remove" name="file">File</ui-input>
-						<div><pre>${getDisplay(model.email, model.lat, model.long, model.tags, model.month, model.phone, model.internationalPhone, model.ctry, model.ctries)}</pre></div>
+						<div><pre>${getDisplay(model.email, model.custom, model.lat, model.long, model.tags, model.month, model.phone, model.internationalPhone, model.ctry, model.ctries)}</pre></div>
 					</ui-column>
 					<ui-column padded>
 						<ui-language>Language</ui-language>

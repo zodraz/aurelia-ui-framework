@@ -129,6 +129,7 @@ export class UIPhone extends UIInputGroup {
     this.prefixText = '+' + PhoneLib.getDialingCode(this.country);
     this.placeholder = PhoneLib.getExample(this.country, this.__phoneType,
       this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL);
+    this.valueChanged(this.value);
   }
 
   valueChanged(newValue) {

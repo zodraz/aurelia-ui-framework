@@ -14,6 +14,7 @@ import {UIEvent} from "../utils/ui-event";
 export class UITags extends UIInputGroup {
   __list;
   __focus;
+  __noList;
   __options;
   __tagInput;
   __isGrouped;
@@ -157,6 +158,7 @@ export class UITags extends UIInputGroup {
   bind() {
     super.bind();
     this.optionsChanged(this.options);
+    this.__noList = this.element.hasAttribute('no-list');
   }
 
   attached() {
@@ -170,8 +172,13 @@ export class UITags extends UIInputGroup {
   valueChanged(newValue) {
     let v: any = newValue || [];
     if (!_.isArray(v)) v = v.split(',');
-    this.__options = this.__available = _.cloneDeep(this.options);
-    this.__tags = _['removeByValues'](this.__available, this.valueProperty, v);
+    if (this.__noList) {
+      this.__tags = v;
+    }
+    else {
+      this.__options = this.__available = _.cloneDeep(this.options);
+      this.__tags = _['removeByValues'](this.__available, this.valueProperty, v);
+    }
   }
 
   optionsChanged(newValue) {
@@ -199,9 +206,18 @@ export class UITags extends UIInputGroup {
   }
 
   __select(item) {
-    this.__searchText = '';
-    this.__tags.push(item['model']);
-    this.value = _.map(this.__tags, this.valueProperty).join(',');
+    if (this.__noList) {
+      let v = _.trim(this.__searchText);
+      if (!isEmpty(v) && this.__tags.indexOf(v) == -1) this.__tags.push(v);
+      this.value = this.__tags.join(',');
+      this.__searchText = '';
+      this.__focus = true;
+    }
+    else if (item) {
+      this.__searchText = '';
+      this.__tags.push(item['model']);
+      this.value = _.map(this.__tags, this.valueProperty).join(',');
+    }
   }
 
   __deselect(item) {
@@ -303,6 +319,7 @@ export class UITags extends UIInputGroup {
   }
 
   __searchTextChanged() {
+    if (this.__noList) return;
     if (_.isEmpty(this.__searchText)) {
       this.__options = _.cloneDeep(this.options);
       this.__noResult = isEmpty(this.__options);

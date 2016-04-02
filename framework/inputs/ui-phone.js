@@ -65,6 +65,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
         UIPhone.prototype.countryChanged = function () {
             this.prefixText = '+' + PhoneLib.getDialingCode(this.country);
             this.placeholder = PhoneLib.getExample(this.country, this.__phoneType, this.__phoneFormat !== PhoneLib.FORMAT.INTERNATIONAL);
+            this.valueChanged(this.value);
         };
         UIPhone.prototype.valueChanged = function (newValue) {
             var _this = this;
