@@ -16,6 +16,7 @@ import {UIApplication} from "../utils/ui-application";
 export class UILogin {
   model: LoginModel;
 
+  __page;
   __temp;
   __content;
 
@@ -43,12 +44,17 @@ export class UILogin {
       .catch(e=> {
     });
   }
+
+  toast(config) {
+    if (typeof config === 'string') config = { message: config };
+    config.extraClass = 'ui-page-toast';
+    UIUtils.showToast(this.__page, config);
+  }
 }
 
 @transient()
 @autoinject()
 export class LoginModel extends UIModel {
-
   username: string = '';
   password: string = '';
 
