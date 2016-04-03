@@ -76,10 +76,14 @@ define(["require", "exports", "../utils/ui-event"], function (require, exports, 
             this.__input.focus();
         };
         UIInputGroup.prototype.clearInput = function (isSecond) {
-            if (isSecond === true)
+            if (isSecond === true) {
                 this.valueSecond = '';
-            if (isSecond !== true)
+                this.__input2.focus();
+            }
+            if (isSecond !== true) {
                 this.value = '';
+                this.__input.focus();
+            }
         };
         UIInputGroup.prototype.checkedChanged = function () {
             if (!this.__chkbox)

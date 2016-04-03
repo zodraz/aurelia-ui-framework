@@ -27,7 +27,7 @@
 					 mousedown.trigger="__clicked($event)" ref="__list">
 					<div class="ui-list-group">
 						<compose containerless view="./ui-list-item.html" if.bind="!__isGrouped"
-								 repeat.for="opt of __options"></compose>
+								 repeat.for="opt of __isGrouped?[]:__options"></compose>
 					  <compose containerless view="./ui-list-group.html" if.bind="__isGrouped"
 								 repeat.for="key of __options | keys"></compose>
 					</div>

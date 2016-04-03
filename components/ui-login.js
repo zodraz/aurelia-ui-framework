@@ -36,6 +36,12 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event", "../util
                 .catch(function (e) {
             });
         };
+        UILogin.prototype.toast = function (config) {
+            if (typeof config === 'string')
+                config = { message: config };
+            config.extraClass = 'ui-page-toast';
+            ui_utils_1.UIUtils.showToast(this.__page, config);
+        };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)

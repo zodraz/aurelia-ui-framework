@@ -12,7 +12,7 @@
         {
             > .ui-col-#{$prefix}-#{$i}
             {
-                @include flex(0 0 (($i/12)*100));;
+                @include flex(0 0 (($i/12)*100%));
             }
         }
     }
