@@ -63,7 +63,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.options = newValue;
             this.__isFiltered = false;
             this.__isGrouped = !ui_utils_1._.isArray(newValue);
-            this.__options = ui_utils_1._.cloneDeep(this.options);
+            this.__options = ui_utils_1._.cloneDeep(this.options || []);
             setTimeout(function () { return _this.valueChanged(_this.value); }, 500);
         };
         UIComboBox.prototype.__select = function (item) {

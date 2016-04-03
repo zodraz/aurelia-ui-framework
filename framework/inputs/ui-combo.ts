@@ -181,7 +181,7 @@ export class UIComboBox extends UIInputGroup {
     this.options = newValue;
     this.__isFiltered = false;
     this.__isGrouped = !_.isArray(newValue);
-    this.__options = _.cloneDeep(this.options);
+    this.__options = _.cloneDeep(this.options || []);
     setTimeout(() => this.valueChanged(this.value), 500);
   }
 
