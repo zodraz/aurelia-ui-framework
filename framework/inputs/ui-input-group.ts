@@ -94,8 +94,14 @@ export class UIInputGroup {
   }
 
   clearInput(isSecond) {
-    if (isSecond === true) this.valueSecond = '';
-    if (isSecond !== true) this.value = '';
+    if (isSecond === true) {
+      this.valueSecond = '';
+      this.__input2.focus();
+    }
+    if (isSecond !== true) {
+      this.value = '';
+      this.__input.focus();
+    }
   }
 
   checkedChanged() {
