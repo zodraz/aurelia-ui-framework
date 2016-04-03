@@ -26,6 +26,75 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             this.rows = '5';
             this.dir = '';
         }
+        UITextArea.prototype.attached = function () {
+            var _this = this;
+            _super.prototype.attached.call(this);
+            if (!isEmpty(this.autoComplete))
+                this.__input.onkeydown = function (evt) { return _this.showList(evt); };
+        };
+        UITextArea.prototype.showList = function (evt) {
+            var code = (evt.keyCode || evt.which);
+            console.log(this.getTextFromHeadToCaret());
+        };
+        UITextArea.prototype.getTextFromHeadToCaret = function () {
+            var range = window.getSelection().getRangeAt(0);
+            var selection = range.cloneRange();
+            selection.selectNodeContents(range.startContainer);
+            return selection.toString().substring(0, range.startOffset);
+        };
+        UITextArea.prototype.keyPress = function (evt) {
+            if (evt.ctrlKey || evt.altKey || evt.metaKey || (evt.keyCode || evt.which) === 0)
+                return true;
+            var code = (evt.keyCode || evt.which);
+            if (code == 13 && this.__focus) {
+                this.__focus = false;
+                return false;
+            }
+            if (code === 38) {
+                var h = this.__list.querySelector('.ui-list-item.hilight');
+                if (h === null)
+                    h = this.__list.querySelector('.ui-list-item.selected');
+                if (h != null) {
+                    h = h.previousElementSibling;
+                    if (h.tagName === 'P')
+                        h = h.previousElementSibling;
+                    if (h !== null) {
+                        if (this.__hilight != null)
+                            this.__hilight.classList.remove('hilight');
+                        (this.__hilight = h).classList.add('hilight');
+                        this.__scrollIntoView();
+                    }
+                }
+                return false;
+            }
+            else if (code === 40) {
+                var h = this.__list.querySelector('.ui-list-item.hilight');
+                if (h === null)
+                    h = this.__list.querySelector('.ui-list-item.selected');
+                if (h !== null)
+                    h = h.nextElementSibling;
+                if (h === null)
+                    h = this.__list.querySelector('.ui-list-item');
+                if (h.tagName === 'P')
+                    h = h.nextElementSibling;
+                if (h !== null) {
+                    if (this.__hilight != null)
+                        this.__hilight.classList.remove('hilight');
+                    (this.__hilight = h).classList.add('hilight');
+                    this.__scrollIntoView();
+                }
+                return false;
+            }
+            return _super.prototype.keyPress.call(this, evt);
+        };
+        UITextArea.prototype.__clicked = function ($event) {
+            var o = getParentByClass($event.target, 'ui-list-item', 'ui-list');
+            if (o !== null) {
+            }
+        };
+        UITextArea.prototype.__scrollIntoView = function () {
+            this.__list.scrollTop = (this.__hilight !== null ? this.__hilight.offsetTop - (this.__list.offsetHeight / 2) : 0);
+        };
         __decorate([
             aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }), 
             __metadata('design:type', String)
@@ -82,6 +151,10 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group"], function
             aurelia_framework_1.bindable(), 
             __metadata('design:type', String)
         ], UITextArea.prototype, "dir", void 0);
+        __decorate([
+            aurelia_framework_1.bindable(), 
+            __metadata('design:type', Object)
+        ], UITextArea.prototype, "autoComplete", void 0);
         UITextArea = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-textarea'), 

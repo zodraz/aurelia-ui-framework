@@ -36,6 +36,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UITags.prototype.bind = function () {
             _super.prototype.bind.call(this);
             this.optionsChanged(this.options);
+            this.__noList = this.element.hasAttribute('no-list');
         };
         UITags.prototype.attached = function () {
             var _this = this;
@@ -48,8 +49,13 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             var v = newValue || [];
             if (!ui_utils_1._.isArray(v))
                 v = v.split(',');
-            this.__options = this.__available = ui_utils_1._.cloneDeep(this.options);
-            this.__tags = ui_utils_1._['removeByValues'](this.__available, this.valueProperty, v);
+            if (this.__noList) {
+                this.__tags = v;
+            }
+            else {
+                this.__options = this.__available = ui_utils_1._.cloneDeep(this.options);
+                this.__tags = ui_utils_1._['removeByValues'](this.__available, this.valueProperty, v);
+            }
         };
         UITags.prototype.optionsChanged = function (newValue) {
             this.__noResult = isEmpty(newValue);
@@ -73,9 +79,19 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
                 this.__tagInput.classList.remove('ui-disabled');
         };
         UITags.prototype.__select = function (item) {
-            this.__searchText = '';
-            this.__tags.push(item['model']);
-            this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
+            if (this.__noList) {
+                var v = ui_utils_1._.trim(this.__searchText);
+                if (!isEmpty(v) && this.__tags.indexOf(v) == -1)
+                    this.__tags.push(v);
+                this.value = this.__tags.join(',');
+                this.__searchText = '';
+                this.__focus = true;
+            }
+            else if (item) {
+                this.__searchText = '';
+                this.__tags.push(item['model']);
+                this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
+            }
         };
         UITags.prototype.__deselect = function (item) {
             if (isEmpty(item))
@@ -174,6 +190,8 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         };
         UITags.prototype.__searchTextChanged = function () {
             var _this = this;
+            if (this.__noList)
+                return;
             if (ui_utils_1._.isEmpty(this.__searchText)) {
                 this.__options = ui_utils_1._.cloneDeep(this.options);
                 this.__noResult = isEmpty(this.__options);
