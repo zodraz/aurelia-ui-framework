@@ -127,7 +127,7 @@
 				font-variant: small-caps;
 				@include flex(1 1 0);
 
-				&.not(.nohover):before {
+				&:not(.nohover):before {
 					content    : '\f150';
 					font-family: Framework;
 				}
