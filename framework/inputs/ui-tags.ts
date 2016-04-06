@@ -221,9 +221,14 @@ export class UITags extends UIInputGroup {
   }
 
   __deselect(item) {
-    if (isEmpty(item)) return;
-    _.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
-    this.value = _.map(this.__tags, this.valueProperty).join(',');
+    this.__tags.splice(this.__tags.indexOf(item), 1);
+    if (this.__noList) {
+      this.value = this.__tags.join(',');
+    }
+    else {
+      // _.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
+      this.value = _.map(this.__tags, this.valueProperty).join(',');
+    }
   }
 
   __clicked($event) {
@@ -265,12 +270,11 @@ export class UITags extends UIInputGroup {
       return UIEvent.fireEvent('enterpressed', this.element, this);
     }
 
-    if (this.__noResult) return true;
-
     this.__focus = true;
     if (code === 8 && isEmpty(this.__searchText)) {
-      this.__deselect(this.__tags.pop());
+      this.__deselect(null);
     }
+    if (this.__noResult) return true;
     if (code === 38) {
       let h = this.__list.querySelector('.ui-list-item.hilight');
       // if no hilight get selected
