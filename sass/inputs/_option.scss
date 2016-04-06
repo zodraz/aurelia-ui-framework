@@ -4,146 +4,119 @@
  *	@company	HMC
  *  @copyright 	2015-2016, Adarsh Pastakia
  **/
+.ui-option {
+	position  : relative;
+	min-height: 1.2em;
+	margin-top: 0.2em;
+	text-align: center;
+	border    : 1px solid transparent;
+	@include flexbox(( display: inline-flex, flex-direction:row, flex-wrap:nowrap, align-items:center ));
 
-.ui-option
-{
-    position: relative;
+	> .ui-option-input {
+		z-index: 2;
+		margin : 0;
+		cursor : pointer;
+		opacity: 0;
+		@include position(absolute, 0,0,0,0);
+		@include size(1.5em, 1.5em);
+	}
 
-    min-height: 1.2em;
-    margin-top: .2em;
+	> .ui-check-mark {
+		line-height     : 1;
+		z-index         : 1;
+		cursor          : pointer;
+		color           : $input-text;
+		border-radius   : 0.1em;
+		background-color: $input-bg;
+		@include flex(0 0 auto);
+		@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-text));
 
-    text-align: center;
+		&:after {
+			font      : {
+				size  : 1.2em;
+				weight: 100;
+				family: Framework;
+			}
+			position  : relative;
+			text-align: left;
+		}
+	}
 
-    border: 1px solid transparent;
+	&.ui-checkbox .ui-check-mark {
+		&:after {
+			content: $font-ui-check-off;
+		}
+	}
 
-    @include flexbox((
-		  display: inline-flex,
-		  flex-direction:row,
-		  flex-wrap:nowrap,
-		  align-items:center
-  ));
+	&.ui-radio .ui-check-mark {
+		border-radius: 50%;
 
-    > .ui-option-input
-    {
-        z-index: 2;
+		&:after {
+			content: $font-ui-radio-off;
+		}
+	}
 
-        margin: 0;
+	&.ui-checkbox .ui-option-input:checked ~ .ui-check-mark:after {
+		content: $font-ui-check-on;
+	}
 
-        cursor: pointer;
+	&.ui-radio .ui-option-input:checked ~ .ui-check-mark:after {
+		content: $font-ui-radio-on;
+	}
 
-        opacity: 0;
+	.ui-option-label {
+		padding: 0.15em 0;
+		color  : $input-label;
+		@include flex(0 0 auto);
+		@include padding(end, .5em);
+		@include padding(start, .2em);
+	}
 
-        @include position(absolute, 0,0,0,0);
-        @include size(1.5em, 1.5em);
-    }
-    > .ui-check-mark
-    {
-        line-height: 1;
+	.ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
+	.ui-option-input:hover:not(:disabled) ~ .ui-check-mark {
+		color       : $input-focus-border;
+		border-color: $input-focus-border;
+		@include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 3px 1px $input-focus-border);
+	}
 
-        z-index: 1;
+	.ui-option-input:disabled {
+		cursor: not-allowed;
 
-        cursor: pointer;
+		~ .ui-check-mark {
+			cursor : not-allowed;
+			opacity: 0.5;
+		}
 
-        color: $input-text;
-        border-radius: .1em;
-        background-color: $input-bg;
-
-        @include flex(0 0 auto);
-        @include box-shadow(-1px -1px 1px 0 $base-shadow-color, 1px 1px 1px 0 contrast($input-text));
-
-        &:after
-        {
-            font: 
-            {
-                size: 1.2em;
-                weight: 100;
-                family: Framework;
-            }
-
-            position: relative;
-
-            text-align: left;
-        }
-    }
-
-    &.ui-checkbox .ui-check-mark
-    {
-        &:after
-        {
-            content: $font-ui-check-off;
-        }
-    }
-    &.ui-radio .ui-check-mark
-    {
-        border-radius: 50%;
-        &:after
-        {
-            content: $font-ui-radio-off;
-        }
-    }
-    &.ui-checkbox .ui-option-input:checked ~ .ui-check-mark:after
-    {
-        content: $font-ui-check-on;
-    }
-    &.ui-radio .ui-option-input:checked ~ .ui-check-mark:after
-    {
-        content: $font-ui-radio-on;
-    }
-
-    .ui-option-label
-    {
-        padding: .15em 0;
-
-        color: $input-label;
-
-        @include flex(0 0 auto);
-        @include padding(end, .5em);
-        @include padding(start, .2em);
-    }
-
-    .ui-option-input:focus:not(:disabled) ~ .ui-check-mark,
-    .ui-option-input:hover:not(:disabled) ~ .ui-check-mark
-    {
-        color: $input-focus-border;
-        border-color: $input-focus-border;
-
-        @include box-shadow(-1px -1px 1px 0 $base-shadow-color, 0 0 3px 1px $input-focus-border);
-    }
-    .ui-option-input:disabled
-    {
-        cursor: not-allowed;
-        ~ .ui-check-mark
-        {
-            cursor: not-allowed;
-
-            opacity: .5;
-        }
-        ~ .ui-option-label
-        {
-            cursor: not-allowed;
-
-            opacity: .5;
-        }
-    }
+		~ .ui-option-label {
+			cursor : not-allowed;
+			opacity: 0.5;
+		}
+	}
 }
 
-.ui-option-group
-{
-    padding: 0 .2em;
+.ui-option-group {
+	padding: 0 0.2em;
+	@include flex-row(flex-start);
 
-    @include flex-row(flex-start);
-    .ui-option
-    {
-        @include flex(0 0 10em);
-        .ui-label
-        {
-            display: block;
+	.ui-option {
+		@include flex(0 0 10em);
 
-            @include ellipsis();
-        }
-    }
-    .ui-switch-control
-    {
-        @include flex(0 0 10em);
-    }
+		.ui-label {
+			display: block;
+			@include ellipsis();
+		}
+	}
+
+	&.ui-vertical {
+		@include flex-direction(column);
+
+		.ui-option {
+			margin: 0.2em 0;
+      @include flex(0 0 auto);
+		}
+	}
+
+	.ui-switch-control {
+		@include flex(0 0 10em);
+	}
 }
