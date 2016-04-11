@@ -8,8 +8,8 @@ Pending
 -	[] Add support for textarea auto-complete
 -	[] Add time selector for date input
 -	[] Add multi-select element
+-	[] Add simple list element
 -	[] Combobox config and support for accepting non listed value
--	[] Update tag input to filter list on input
 
 Completed
 ---------
