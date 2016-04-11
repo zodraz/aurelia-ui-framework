@@ -7,7 +7,7 @@ define(["require", "exports", "aurelia-ui-framework"], function (require, export
             config.App.Key = 'App';
             config.App.Title = 'Aurelia UI Framework';
             config.App.Version = '2.00';
-            config.Http.BaseUrl = 'https://api.hmcmosaic.com/api';
+            config.Http.BaseUrl = './';
             config.Http.Headers = {
                 'X-API-VERSION': '2'
             };
