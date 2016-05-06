@@ -19,6 +19,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         function UITags(element) {
             _super.call(this, element);
             this.__noResult = false;
+            this.__reverse = false;
             this.__tags = [];
             this.value = '';
             this.checked = false;
@@ -111,6 +112,15 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         UITags.prototype.__gotFocus = function () {
             var _this = this;
             this.__focus = true;
+            var el = this.element;
+            if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 30) {
+                this.__reverse = true;
+                this.__list.style.bottom = el.offsetHeight + 'px';
+            }
+            else {
+                this.__reverse = false;
+                this.__list.style.bottom = "auto";
+            }
             setTimeout(function () {
                 _this.__input.select();
                 _this.__scrollIntoView();
