@@ -19,6 +19,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
         function UIComboBox(element) {
             _super.call(this, element);
             this.__noResult = false;
+            this.__reverse = false;
             this.__hilight = null;
             this.value = '';
             this.checked = false;
@@ -91,6 +92,15 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             var _this = this;
             this.__hilight = this.__list.querySelector("[data-value=\"" + this.value + "\"]");
             this.__focus = true;
+            var el = this.element;
+            if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 30) {
+                this.__reverse = true;
+                this.__list.style.bottom = el.offsetHeight + 'px';
+            }
+            else {
+                this.__reverse = false;
+                this.__list.style.bottom = "auto";
+            }
             setTimeout(function () {
                 _this.__input.select();
                 _this.__scrollIntoView();

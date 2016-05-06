@@ -94,10 +94,13 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             }
         };
         UITags.prototype.__deselect = function (item) {
-            if (isEmpty(item))
-                return;
-            ui_utils_1._.remove(this.__tags, [this.valueProperty, item[this.valueProperty]]);
-            this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
+            this.__tags.splice(this.__tags.indexOf(item), 1);
+            if (this.__noList) {
+                this.value = this.__tags.join(',');
+            }
+            else {
+                this.value = ui_utils_1._.map(this.__tags, this.valueProperty).join(',');
+            }
         };
         UITags.prototype.__clicked = function ($event) {
             var o = getParentByClass($event.target, 'ui-list-item', 'ui-list');
@@ -135,12 +138,12 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             else if (code == 13 && !this.__focus) {
                 return ui_event_1.UIEvent.fireEvent('enterpressed', this.element, this);
             }
-            if (this.__noResult)
-                return true;
             this.__focus = true;
             if (code === 8 && isEmpty(this.__searchText)) {
-                this.__deselect(this.__tags.pop());
+                this.__deselect(null);
             }
+            if (this.__noResult)
+                return true;
             if (code === 38) {
                 var h = this.__list.querySelector('.ui-list-item.hilight');
                 if (h === null)

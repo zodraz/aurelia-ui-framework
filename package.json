@@ -1,8 +1,8 @@
 {
   "name": "aurelia-ui-framework",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Aurelia UX Framework for Business Applications",
-  "main": "aurelia-ui-framwork.js",
+  "main": "aurelia-ui-framework.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

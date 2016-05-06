@@ -1,144 +1,132 @@
-.ui-dialog-container
-{
-    &.ui-dragging
-    {
+.ui-dialog-container {
+    &.ui-dragging {
         pointer-events: all;
     }
 
-    .ui-dialog-wrapper
-    {
+    .ui-dialog-wrapper {
         z-index: $z-index-floating - 1;
-        &.ui-modal
-        {
-            z-index: $z-index-floating;
+
+        &.ui-modal {
+            z-index       : $z-index-floating;
 
             pointer-events: all;
 
-            background: rgba($white, .5);
-
+            background    : rgba($white, .5);
             @include position(absolute, 0, 0, 0, 0);
             @include flex-column(center, center);
-            .ui-dialog
-            {
-                position: relative;
 
+            .ui-dialog {
+                position: relative;
                 @include flex(0 1 auto);
             }
         }
     }
 
-    .ui-dialog
-    {
-        position: absolute;
+    .ui-dialog {
+        position      : absolute;
 
-        min-width: 300px;
-        min-height: 200px;
+        min-width     : 300px;
+        min-height    : 200px;
 
         pointer-events: all;
 
-        border: 1px solid $primary;
-        border-radius: $base-border-radius;
-        background: $base-bg;
-
+        border        : 1px solid $primary;
+        border-radius : $base-border-radius;
+        background    : $base-bg;
         @include flex-column($align: stretch, $justify : flex-start);
         @include box-shadow(0 0 20px 5px rgba($black, .5), 0 0 5px 0 $primary inset);
 
-        .ui-header
-        {
-            button
-            {
+        .ui-header {
+            button {
                 font-size: 1.2em;
 
-                padding: 0;
+                padding  : 0;
             }
-            .ui-collapse span:before
-            {
-                content: $font-ui-dialog-minimize;
+
+            .ui-collapse span:before {
+                font-family: 'Framework';
+                content    : $font-ui-dialog-minimize;
             }
-            .ui-expand span:before
-            {
-                content: $font-ui-dialog-maximize;
+
+            .ui-expand span:before {
+                font-family: 'Framework';
+                content    : $font-ui-dialog-maximize;
             }
-            .ui-close span:before
-            {
-                content: $font-ui-dialog-close;
+
+            .ui-close span:before {
+                font-family: 'Framework';
+                content    : $font-ui-dialog-close;
             }
         }
 
-        .ui-resizer
-        {
+        .ui-resizer {
             font-size: 1.5em;
 
-            position: absolute;
-            z-index: 10;
-            right: 0;
-            bottom: 0;
+            position : absolute;
+            z-index  : 10;
+            right    : 0;
+            bottom   : 0;
 
-            cursor: nwse-resize;
+            cursor   : nwse-resize;
 
-            opacity: .3 !important;
-            &:before
-            {
+            opacity  : .3 !important;
+
+            &:before {
                 content: $font-ui-dialog-resize;
             }
-            &:hover,
-            &:active
-            {
+
+            &:active,
+            &:hover {
                 opacity: .6 !important;
             }
         }
 
-        &.ui-maximize
-        {
+        &.ui-maximize {
             position: absolute !important;
-            top: 1em !important;
-            right: 1em !important;
-            bottom: 3em !important;
-            left: 1em !important;
+            top     : 1em !important;
+            right   : 1em !important;
+            bottom  : 3em !important;
+            left    : 1em !important;
 
-            width: auto !important;
-            height: auto !important;
-            .ui-resizer
-            {
+            width   : auto !important;
+            height  : auto !important;
+
+            .ui-resizer {
                 display: none;
             }
-            .ui-expand span:before
-            {
+
+            .ui-expand span:before {
                 content: $font-ui-dialog-restore;
             }
         }
 
-        &.ui-minimize
-        {
+        &.ui-minimize {
             display: none;
         }
 
-        &.ui-active
-        {
+        &.ui-active {
             z-index: 5;
-            > :not(.ui-header)
-            {
+
+            > :not(.ui-header) {
                 opacity: 1;
             }
         }
-        &.ui-inactive
-        {
+
+        &.ui-inactive {
             z-index: 1;
-            > :not(.ui-header)
-            {
+
+            > :not(.ui-header) {
                 opacity: .65;
             }
-            > .ui-header
-            {
-                color: $secondary-text;
+
+            > .ui-header {
+                color     : $secondary-text;
                 background: $secondary;
             }
         }
 
-        &.ui-dragging
-        {
-            > :not(.ui-header)
-            {
+        &.ui-dragging {
+            > :not(.ui-header) {
                 opacity: .5;
             }
         }
