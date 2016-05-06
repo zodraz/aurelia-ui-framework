@@ -12,10 +12,20 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
     var UIPanel = (function () {
         function UIPanel(element) {
             this.element = element;
+            this.expanded = false;
+            this.collapsed = false;
         }
         UIPanel.prototype.close = function () {
             this.element.remove();
         };
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIPanel.prototype, "expanded", void 0);
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Object)
+        ], UIPanel.prototype, "collapsed", void 0);
         UIPanel = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement('ui-panel'), 
@@ -91,6 +101,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             if (this.element.hasAttribute('padded'))
                 this.element.classList.add('ui-pad-all');
         }
+        UIBody.prototype.expand = function ($event) {
+            if ($event)
+                $event.cancelBubble = true;
+            this.element.classList.toggle('ui-expanded');
+        };
         UIBody = __decorate([
             aurelia_framework_1.autoinject(),
             aurelia_framework_1.customElement("ui-body"),

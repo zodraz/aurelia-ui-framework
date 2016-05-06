@@ -6,12 +6,11 @@
 				<h1 class="ui-text-primary">Aurelia UI Framework v2
 					<small class="ui-text-warning">Re-thought, Re-designed, and Re-worked</small>
 				</h1>
-				<p>Most important change to the new version, removed the dependency on jQuery and jQuery based
-					components.</p>
+				<p>Most important change to the new version, removed the dependency on jQuery and jQuery based components.
+				</p>
 				<p>Flattened look & feel, using only shadows as visual indicators on buttons and switches.</p>
 				<p>Glyph icon fonts included <a href="./fonts/material/flaticon.html" target="_blank">Google Material
-					Font</a>, <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a
-						href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
+					Font</a>, <a href="./fonts/vaadin/flaticon.html" target="_blank">Vaadin</a>, <a href="./fonts/metrize/flaticon.html" target="_blank">Metrize</a></p>
 				<p>Changed color library from Crayola Crayon colors to <a href="#/colors">Copic Marker</a> colors.</p>
 				<p>Current theme colors: (primary, secondary, info, danger, success, warning)</p>
 				<div>
@@ -101,8 +100,7 @@
 			</div>
 			<hr/>
 			<div>
-				<ui-switch primary checked.bind="enabled" label-on="All Enabled" label-off="All Disabled"
-						   width="8">
+				<ui-switch primary checked.bind="enabled" label-on="All Enabled" label-off="All Disabled" width="8">
 					Disable Elements
 				</ui-switch>
 			</div>
@@ -112,18 +110,12 @@
 					<small>Click to show toast messages</small>
 				</h4>
 				<div>
-					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Normal"
-							   click.trigger="toastMe('page')"></ui-button>
-					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
-							   primary click.trigger="toastMe('global', 'primary')"></ui-button>
-					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"
-							   info click.trigger="toastMe('global', 'info')"></ui-button>
-					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger"
-							   danger click.trigger="toastMe('global', 'danger')"></ui-button>
-					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
-							   success click.trigger="toastMe('global', 'success')"></ui-button>
-					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
-							   warning click.trigger="toastMe('global', 'warning')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Normal" click.trigger="toastMe('page')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary" primary click.trigger="toastMe('global', 'primary')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info" info click.trigger="toastMe('global', 'info')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger" danger click.trigger="toastMe('global', 'danger')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success" success click.trigger="toastMe('global', 'success')"></ui-button>
+					<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning" warning click.trigger="toastMe('global', 'warning')"></ui-button>
 				</div>
 				<h4>Styles</h4>
 				<div>
@@ -136,16 +128,11 @@
 				<h4>Button Groups</h4>
 				<div>
 					<ui-button-group click.trigger="changeTheme($event)">
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"
-								   primary></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"
-								   info></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger"
-								   danger></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"
-								   success></ui-button>
-						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"
-								   warning></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary" primary></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info" info></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger" danger></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success" success></ui-button>
+						<ui-button disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning" warning></ui-button>
 					</ui-button-group>
 				</div>
 				<h6>
@@ -156,16 +143,11 @@
 				</h6>
 				<div>
 					<ui-button-group toggle.bind="toggle?'multiple':'single'" round value="0" primary ref="__bgToggle">
-						<ui-button value="0" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
-								   label="Primary"></ui-button>
-						<ui-button value="1" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
-								   label="Info"></ui-button>
-						<ui-button value="2" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
-								   label="Danger"></ui-button>
-						<ui-button value="3" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
-								   label="Success"></ui-button>
-						<ui-button value="4" disabled.bind="!enabled" icon="fi-vaadin-circle-1"
-								   label="Warning"></ui-button>
+						<ui-button value="0" disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Primary"></ui-button>
+						<ui-button value="1" disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Info"></ui-button>
+						<ui-button value="2" disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Danger"></ui-button>
+						<ui-button value="3" disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Success"></ui-button>
+						<ui-button value="4" disabled.bind="!enabled" icon="fi-vaadin-circle-1" label="Warning"></ui-button>
 					</ui-button-group>
 				</div>
 			</div>
@@ -191,8 +173,7 @@
 					</ui-checkbox>
 					<ui-checkbox disabled="true">Disabled</ui-checkbox>
 				</ui-option-group>
-				<ui-option-group label.bind="'Radios<small>Value:'+optVal+'</small>'"
-								 name="radio" value.bind="optVal" required change.trigger="change($event)">
+				<ui-option-group label.bind="'Radios<small>Value:'+optVal+'</small>'" class="ui-vertical" name="radio" value.bind="optVal" required change.trigger="change($event)">
 					<ui-radio disabled.bind="!enabled" value="1">Check 1</ui-radio>
 					<ui-radio disabled.bind="!enabled" value="2">Check 2</ui-radio>
 					<ui-radio disabled.bind="!enabled" value="3">Check 3</ui-radio>
@@ -207,25 +188,18 @@
 			<ui-form validate.bind="validation" busy.bind="formBusy" submit.trigger="onSubmit()">
 				<ui-row>
 					<ui-column padded>
-						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..."
-								  capitalize value.bind="model.email" disabled.bind="!enabled"
-								  prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
+						<ui-input value="Hello" class="ui-invalid" required clear placeholder="Enter an email..." capitalize value.bind="model.email" disabled.bind="!enabled" prefix-icon="fi-vaadin-envelope-1" suffix-text="@clubhotel.com">Input
 						</ui-input>
 						<ui-input value="Hello" required readonly button-text="Send!">Readonly</ui-input>
-						<ui-input-dual required decimal checkbox prefix-icon="fi-vaadin-placeholder"
-									   prefix-text="Lat." center-text="Long."
-									   value.bind="model.lat" value-second.bind="model.long"
-									   placeholder="-90 to 90" placeholder-second="-180 to 180">Location
+						<ui-input-dual required decimal checkbox prefix-icon="fi-vaadin-placeholder" prefix-text="Lat." center-text="Long." value.bind="model.lat" value-second.bind="model.long" placeholder="-90 to 90" placeholder-second="-180 to 180">Location
 						</ui-input-dual>
-						<ui-textarea help-text="A multiline input" disabled.bind="!enabled">Textarea</ui-textarea>
+						<ui-textarea help-text="A multiline input" disabled.bind="!enabled" auto-complete.bind="autoCompleteList">Textarea</ui-textarea>
 						<ui-phone country.bind="model.ctry" area-code.bind="model.areaCode" phone.bind="model.phone">National Phone</ui-phone>
 						<ui-phone international value.bind="model.internationalPhone">International Phone</ui-phone>
 						<ui-date date="1979-03-02">Date</ui-date>
 						<ui-date range>Date Range</ui-date>
 						<ui-combo options.bind="months" disabled.bind="!enabled" value.bind="model.month">ComboBox</ui-combo>
-						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag"
-								  prefix-icon="ui-flag ${model.ctry}"
-								  display-property="name" value-property="iso2" value.bind="model.ctry">Countries
+						<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag" prefix-icon="ui-flag ${model.ctry}" display-property="name" value-property="iso2" value.bind="model.ctry">Countries
 						</ui-combo>
 						<ui-tags options.bind="months" disabled.bind="!enabled" value.bind="model.tags">Tag Input</ui-tags>
 						<ui-tags options.bind="countries" value-property="iso3" disabled.bind="!enabled" value.bind="model.ctries">Grouped Tag Input</ui-tags>
@@ -246,13 +220,15 @@
 				<ui-column fill>
 					<ui-panel>
 						<ui-body>
-							<h3>A Simple Panel</h3>
+							<h3 class="ui-pad-all">A Simple Panel</h3>
+							<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag" prefix-icon="ui-flag ${model.ctry}" display-property="name" value-property="iso2" value.bind="model.ctry">Countries
+							</ui-combo>
 						</ui-body>
 					</ui-panel>
 					<ui-panel>
-						<ui-header collapse="true" close="true" secondary>My Panel</ui-header>
+						<ui-header collapse="true" close="true" expand="true" secondary>My Panel</ui-header>
 						<ui-body>
-							<h3>A Closable Panel</h3>
+							<h3 class="ui-pad-all">A Closable Panel</h3>
 						</ui-body>
 					</ui-panel>
 				</ui-column>
@@ -260,7 +236,7 @@
 					<ui-panel>
 						<ui-header collapse="true" primary>My Panel</ui-header>
 						<ui-body>
-							<h3>A Panel with Header</h3>
+							<h3 class="ui-pad-all">A Panel with Header</h3>
 						</ui-body>
 					</ui-panel>
 				</ui-column>
@@ -283,21 +259,20 @@
 					</ui-tab>
 					<ui-tab label="DataGrid" flex>
 						<ui-toolbar>
-							<ui-column fill><p>Filters Here</p></ui-column>
+							<ui-column fill>
+								<p>Filters Here</p>
+							</ui-column>
 							<ui-column>
 								<ui-pager total="5"></ui-pager>
 							</ui-column>
 							<ui-divider></ui-divider>
 							<ui-button square small icon="fi-vaadin-rotate-left"></ui-button>
 						</ui-toolbar>
-						<ui-datagrid data-list.bind="data" summary-row="true" default-sort="FName"
-									 linkclick.trigger="linkClicked($event)">
+						<ui-datagrid data-list.bind="data" summary-row="true" default-sort="FName" linkclick.trigger="linkClicked($event)">
 							<ui-data-column locked center width="50" data-id="id">ID</ui-data-column>
-							<ui-data-column locked resizeable sortable link summary="Total"
-											data-id="FName" display.call="formatName($event)">Name
+							<ui-data-column locked resizeable sortable link summary="Total" data-id="FName" display.call="formatName($event)">Name
 							</ui-data-column>
-							<ui-data-column locked data-id="view" view button-title="Preview"
-											width="90" button.call="checkAge($event)"></ui-data-column>
+							<ui-data-column locked data-id="view" view button-title="Preview" width="90" button.call="checkAge($event)"></ui-data-column>
 							<ui-data-column locked data-id="edit" edit></ui-data-column>
 							<ui-data-column locked data-id="delete" delete></ui-data-column>
 							<ui-data-column date sortable data-id="SDate" format="DD MMM YYYY">Birthday</ui-data-column>
@@ -311,9 +286,7 @@
 					<ui-tab label="Tree" flex>
 						<ui-section row>
 							<ui-sidebar>
-								<ui-tree checked.trigger="checked = $event.detail" model.bind="treeModel"
-										 options.bind="treeOpts"
-										 view-model.ref="__tree"></ui-tree>
+								<ui-tree checked.trigger="checked = $event.detail" model.bind="treeModel" options.bind="treeOpts" view-model.ref="__tree"></ui-tree>
 							</ui-sidebar>
 							<ui-content scroll>
 								<h3>Tree View</h3>

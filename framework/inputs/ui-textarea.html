@@ -18,6 +18,13 @@
 					   value.bind="__value" placeholder.bind="placeholder" ref="__input"></textarea>
 				<span class="ui-clear fi-ui-close-light ${__value?'show-clear':''}"
 					  click.trigger="clearInput()" if.bind="__clear"></span>
+
+						<div class="ui-list floating" show.bind="__focus && !readonly"
+							 mousewheel.trigger="$event.cancelBubble = true"
+							 mousedown.trigger="__clicked($event)" ref="__list">
+							 <div repeat.for="opt of __autoComplete" class="ui-list-item" data-value="${opt}">
+						 		<span class="ui-text ui-col-fill" innerhtml.bind="opt"></span></div>
+						 </div>
 			</div>
 			<div class="ui-addon" if.bind="suffixIcon || suffixText">
 				<span if.bind="suffixIcon" class="ui-icon ${suffixIcon}"></span>

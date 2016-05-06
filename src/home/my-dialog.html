@@ -1,6 +1,8 @@
 <template>
 	<ui-content class="ui-pad-all ui-scroll">
 		<div innerhtml.bind="md | markdown"></div>
+		<ui-combo options.bind="countries" icon-property="iso2" icon-class="ui-flag" prefix-icon="ui-flag ${model.ctry}" display-property="name" value-property="iso2" value.bind="model.ctry">Countries
+		</ui-combo>
 	</ui-content>
 	<ui-toolbar>
 		<ui-button click.trigger="close()" label="Close"></ui-button>

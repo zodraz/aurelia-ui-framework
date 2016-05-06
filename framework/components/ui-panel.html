@@ -1,4 +1,3 @@
-<template class="ui-panel ${collapse?'ui-collapse':''}" close.delegate="close()"
-		  collapse.delegate="collapse=!collapse">
+<template class="ui-panel ${collapsed?'ui-collapse':''} ${expanded?'ui-expanded':''}" close.delegate="close()" collapse.delegate="collapsed=!collapsed" expand.delegate="expanded=!expanded">
 	<content></content>
 </template>

@@ -34,6 +34,9 @@ define(["require", "exports", "aurelia-validation", "aurelia-framework", "../../
             this.model = {
                 email: '', lat: null, long: null, ctry: 'AE'
             };
+            this.autoCompleteList = [
+                'Alfa Romeo', 'Ferrari', 'Maseratti', 'Lamborghini', 'Lancia', 'Fiat', 'Aprilia', 'Vespa', 'Piaggio'
+            ];
             this.treeOpts = new index_1.UITreeOptions({
                 showCheckbox: true,
                 selectionLevel: 0

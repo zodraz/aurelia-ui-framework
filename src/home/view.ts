@@ -33,6 +33,10 @@ export class Home {
     return JSON.stringify(this.model, null, 4);
   }
 
+  autoCompleteList = [
+    'Alfa Romeo', 'Ferrari', 'Maseratti', 'Lamborghini', 'Lancia', 'Fiat', 'Aprilia', 'Vespa', 'Piaggio'
+  ]
+
   __page;
   __content;
   __bgToggle;
