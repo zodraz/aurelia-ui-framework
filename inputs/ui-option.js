@@ -39,10 +39,6 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             this.disabled = isTrue(newValue);
             this.disable();
         };
-        UIOption.prototype.valueChanged = function ($event) {
-            $event.cancelBubble = true;
-            ui_event_1.UIEvent.fireEvent('change', this.element, this.checked);
-        };
         return UIOption;
     }());
     exports.UIOption = UIOption;
@@ -61,6 +57,11 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
         UICheckbox.prototype.attached = function () {
             _super.prototype.attached.call(this);
             this.element.classList.add('ui-checkbox');
+        };
+        UICheckbox.prototype.valueChanged = function ($event) {
+            this.checked = !this.checked;
+            $event.cancelBubble = true;
+            ui_event_1.UIEvent.fireEvent('change', this.element, this.checked);
         };
         __decorate([
             aurelia_framework_1.bindable(), 
@@ -94,6 +95,10 @@ define(["require", "exports", "aurelia-framework", "../utils/ui-event"], functio
             }
             _super.prototype.attached.call(this);
             this.element.classList.add('ui-radio');
+        };
+        UIRadio.prototype.valueChanged = function ($event) {
+            $event.cancelBubble = true;
+            ui_event_1.UIEvent.fireEvent('change', this.element, this.value);
         };
         __decorate([
             aurelia_framework_1.bindable(), 

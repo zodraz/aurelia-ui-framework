@@ -93,7 +93,7 @@ define(["require", "exports", "aurelia-framework", "./ui-input-group", "../utils
             this.__hilight = this.__list.querySelector("[data-value=\"" + this.value + "\"]");
             this.__focus = true;
             var el = this.element;
-            if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 30) {
+            if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 50) {
                 this.__reverse = true;
                 this.__list.style.bottom = el.offsetHeight + 'px';
             }
