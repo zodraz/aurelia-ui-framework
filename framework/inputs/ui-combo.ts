@@ -215,7 +215,7 @@ export class UIComboBox extends UIInputGroup {
         this.__focus = true;
 
         let el = <HTMLElement>this.element;
-        if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 30) {
+        if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 50) {
             this.__reverse = true;
             this.__list.style.bottom = el.offsetHeight + 'px';
         }

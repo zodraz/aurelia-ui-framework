@@ -241,19 +241,21 @@ export class UITags extends UIInputGroup {
 
     __gotFocus() {
         this.__focus = true;
-        let el = <HTMLElement>this.element;
-        if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 30) {
-            this.__reverse = true;
-            this.__list.style.bottom = el.offsetHeight + 'px';
+        if (!this.__noList) {
+            let el = <HTMLElement>this.element;
+            if (el.offsetParent.scrollTop + el.offsetParent['offsetHeight'] < el.offsetHeight + el.offsetTop + 50) {
+                this.__reverse = true;
+                this.__list.style.bottom = el.offsetHeight + 'px';
+            }
+            else {
+                this.__reverse = false;
+                this.__list.style.bottom = "auto";
+            }
+            setTimeout(() => {
+                this.__input.select();
+                this.__scrollIntoView();
+            }, 20);
         }
-        else {
-            this.__reverse = false;
-            this.__list.style.bottom = "auto";
-        }
-        setTimeout(() => {
-            this.__input.select();
-            this.__scrollIntoView();
-        }, 20);
         this.__tagInput.classList.add('ui-focus');
     }
 
